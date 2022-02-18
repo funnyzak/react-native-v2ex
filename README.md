@@ -3,8 +3,8 @@
 [![js-standard-style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/feross/standard)
 [![license][license-image]][repository-url]
 
-[license-image]: https://img.shields.io/github/license/funnyzat/reach-native-.svg?style=flat-square
-[repository-url]: https://github.com/funnyzat/reach-native-quick-start
+[license-image]: https://img.shields.io/github/license/funnyzat/react-native-.svg?style=flat-square
+[repository-url]: https://github.com/funnyzat/react-native-quick-start
 
 React Native 快手开发脚手架项目。
 
