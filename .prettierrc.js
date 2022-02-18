@@ -3,7 +3,7 @@ module.exports = {
   // Specify the line length that the printer will wrap on.
   printWidth: 150,
   // Print trailing commas wherever possible in multi-line comma-separated syntactic structures. (A single-line array, for example, never gets trailing commas.)
-  trailingComma: 'es5',
+  trailingComma: 'none',
   // Specify the number of spaces per indentation-level.
   tabWidth: 2,
   useTabs: false,
@@ -20,5 +20,5 @@ module.exports = {
   // Include parentheses around a sole arrow function parameter.
   arrowParens: 'always',
 
-  endOfLine: 'lf',
+  endOfLine: 'lf'
 }
