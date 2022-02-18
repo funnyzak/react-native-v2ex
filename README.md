@@ -89,6 +89,7 @@ yarn android
 - [debugging](https://twitter.com/i/spaces/1YqJDqDpqzAxV)
 - [react native typescript](https://reactnative.dev/docs/typescript)
 - [react native cn](https://reactnative.cn/)
+- [react-devtools](https://www.npmjs.com/package/react-devtools)
 - [watchman](https://facebook.github.io/watchman/docs/cli-options.html)
 - [EsLint](https://eslint.org/docs/user-guide/configuring/)
 - [eslintignore-file](https://eslint.org/docs/user-guide/configuring/ignoring-code#the-eslintignore-file)
