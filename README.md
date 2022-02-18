@@ -49,7 +49,7 @@ cd ./ios && pod install
 yarn ios
 
 # android build
-# 注意gradle和java sdk(java home)的版本对应
+# 注意gradle和java sdk(java home)的版本对应，可在 ./android/gradle.properties 设置 org.gradle.java.home
 yarn android
 
 ```
@@ -87,6 +87,7 @@ yarn android
 - [enviroment setup](https://reactnative.dev/docs/environment-setup)
 - [running on device](https://reactnative.dev/docs/running-on-device)
 - [react native typescript](https://reactnative.dev/docs/typescript)
+- [react native cn](https://reactnative.cn/)
 - [watchman](https://facebook.github.io/watchman/docs/cli-options.html)
 - [EsLint](https://eslint.org/docs/user-guide/configuring/)
 - [eslintignore-file](https://eslint.org/docs/user-guide/configuring/ignoring-code#the-eslintignore-file)
