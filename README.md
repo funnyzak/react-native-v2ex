@@ -87,6 +87,7 @@ yarn android
 - [enviroment setup](https://reactnative.dev/docs/environment-setup)
 - [running on device](https://reactnative.dev/docs/running-on-device)
 - [react native typescript](https://reactnative.dev/docs/typescript)
+- [watchman](https://facebook.github.io/watchman/docs/cli-options.html)
 - [EsLint](https://eslint.org/docs/user-guide/configuring/)
 - [eslintignore-file](https://eslint.org/docs/user-guide/configuring/ignoring-code#the-eslintignore-file)
 - [TSconfig](https://www.typescriptlang.org/tsconfig/)
