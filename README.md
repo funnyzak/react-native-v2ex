@@ -27,6 +27,8 @@ React Native 快手开发脚手架项目。
 - axion
 - react-native-render-html
 - react-navigation
+- react-devtools
+- react-native-webview
 
 ## 运行
 
@@ -43,7 +45,7 @@ yarn
 
 # ios build
 # install ios deps
-cd ./ios && pod install
+npx pod-install
 
 # cmd under root folder
 yarn ios
@@ -52,7 +54,19 @@ yarn ios
 # 注意gradle和java sdk(java home)的版本对应，可在 ./android/gradle.properties 设置 org.gradle.java.home
 yarn android
 
+# 打印版本信息
+npx react-native info
+
+# 升级到最新版
+npx react-native upgrade
+
 ```
+
+## 调试
+
+### iOS 调试
+
+> 可以通过摇晃设备或是选择 iOS 模拟器的"Hardware"菜单中的"Shake Gesture"选项来打开开发菜单。另外，如果是在 iOS 模拟器中运行，还可以按下 Command⌘ + D 快捷键，Android 模拟器对应的则是 Command⌘ + M（windows 上可能是 F1 或者 F2），或是直接在命令行中运行 adb shell input keyevent 82 来发送菜单键命令。
 
 ## 目录
 
@@ -90,6 +104,8 @@ yarn android
 - [react native typescript](https://reactnative.dev/docs/typescript)
 - [react native cn](https://reactnative.cn/)
 - [react-devtools](https://www.npmjs.com/package/react-devtools)
+- [fetch](https://reactnative.cn/docs/network)
+- [android build](https://reactnative.cn/docs/signed-apk-android)
 - [watchman](https://facebook.github.io/watchman/docs/cli-options.html)
 - [EsLint](https://eslint.org/docs/user-guide/configuring/)
 - [eslintignore-file](https://eslint.org/docs/user-guide/configuring/ignoring-code#the-eslintignore-file)

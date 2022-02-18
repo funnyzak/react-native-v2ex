@@ -35,6 +35,7 @@
     "react": "17.0.2",
     "react-native": "0.67.2",
     "react-native-render-html": "^6.3.4",
+    "react-native-webview": "^11.17.2",
     "react-navigation": "^4.4.4"
   },
   "devDependencies": {
@@ -52,6 +53,7 @@
     "jest": "^26.6.3",
     "lint-staged": ">=10",
     "metro-react-native-babel-preset": "^0.66.2",
+    "pod-install": "^0.1.32",
     "prettier": "^2.5.1",
     "react-devtools": "^4.23.0",
     "react-test-renderer": "17.0.2",
