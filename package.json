@@ -70,6 +70,10 @@
       "node"
     ]
   },
+  "engines": {
+    "node": ">= 16.0.0",
+    "npm": ">= 7.10.0"
+  },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
     "*.{js,css,md}": "prettier --write"
