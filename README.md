@@ -19,7 +19,7 @@ React Native 快手开发脚手架项目。
 
 ## 环境
 
-构建运行环境 **Node 16.13.0**，为避免冲突，建议使用此版本。可以使用 **_nvm_** 管理 Node 版本。
+构建运行环境 **Node 16.0.0**，为避免冲突，建议使用此版本。可以使用 **_nvm_** 管理 Node 版本。
 
 主要依赖库：
 
@@ -86,6 +86,7 @@ yarn android
 
 - [enviroment setup](https://reactnative.dev/docs/environment-setup)
 - [running on device](https://reactnative.dev/docs/running-on-device)
+- [debugging](https://twitter.com/i/spaces/1YqJDqDpqzAxV)
 - [react native typescript](https://reactnative.dev/docs/typescript)
 - [react native cn](https://reactnative.cn/)
 - [watchman](https://facebook.github.io/watchman/docs/cli-options.html)
