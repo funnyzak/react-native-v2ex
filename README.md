@@ -48,6 +48,9 @@ cd ./ios && pod install
 # cmd under root folder
 yarn ios
 
+## android build
+yarn android
+
 ```
 
 ## 目录
@@ -81,6 +84,8 @@ yarn ios
 
 ## 参考
 
+- [enviroment setup](https://reactnative.dev/docs/environment-setup)
+- [running on device](https://reactnative.dev/docs/running-on-device)
 - [react native typescript](https://reactnative.dev/docs/typescript)
 - [EsLint](https://eslint.org/docs/user-guide/configuring/)
 - [eslintignore-file](https://eslint.org/docs/user-guide/configuring/ignoring-code#the-eslintignore-file)
