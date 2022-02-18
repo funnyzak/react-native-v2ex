@@ -10,8 +10,8 @@ React Native 快手开发脚手架项目。
 
 特点
 
-1. 基于React Native 0.67.2版本。
-2. 使用TypeScript编写。
+1. 基于 React Native 0.67.2 版本。
+2. 使用 TypeScript 编写。
 
 下一步
 
@@ -48,7 +48,8 @@ cd ./ios && pod install
 # cmd under root folder
 yarn ios
 
-## android build
+# android build
+# 注意gradle和java sdk(java home)的版本对应
 yarn android
 
 ```
@@ -80,7 +81,6 @@ yarn android
     ├── package.json
     ├── tsconfig.json
     └── yarn.lock
-
 
 ## 参考
 
