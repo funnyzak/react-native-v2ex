@@ -31,9 +31,12 @@
   },
   "homepage": "https://github.com/funnyzak/react-native-quick-start#readme",
   "dependencies": {
+    "@types/i18n-js": "^3.8.2",
     "axios": "^0.26.0",
+    "i18n-js": "^3.8.0",
     "react": "17.0.2",
     "react-native": "0.67.2",
+    "react-native-localize": "^2.2.0",
     "react-native-render-html": "^6.3.4",
     "react-native-webview": "^11.17.2",
     "react-navigation": "^4.4.4"

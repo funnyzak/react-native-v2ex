@@ -1,0 +1,80 @@
+{
+  "common": {
+    "brandName": "rn quick start",
+    "ok": "OK!",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "select": "Select",
+    "save": "Save",
+    "update": "Update",
+    "apply": "Apply",
+    "next": "Next",
+    "back": "Back",
+    "total": "Total",
+    "subTotal": "Subtotal",
+    "grandTotal": "Grand Total",
+    "price": "Price",
+    "quantity": "Qty",
+    "sku": "SKU",
+    "discount": "Discount",
+    "order": "Order",
+    "email": "Email",
+    "password": "Password",
+    "continueShopping": "Continue Shopping",
+    "min": "Min.",
+    "max": "Max.",
+    "region": "Region",
+    "country": "Country",
+    "firstName": "Firstname",
+    "lastName": "Lastname",
+    "postcode": "Postcode",
+    "street": "Street",
+    "city": "City",
+    "telephone": "Telephone",
+    "shipping": "Shipping",
+    "sort": "Sort",
+    "filter": "Filter",
+    "sortOption": {
+      "aToZ": "Name: a to z",
+      "zToA": "Name: z to a"
+    }
+  },
+  "errors": {
+    "error": "Error",
+    "noProduct": "No products found"
+  },
+  "account": {
+    "title": "Account",
+    "contactInformation": "Contact Information",
+    "logoutButton": "LOG OUT",
+    "myOrdersButton": "My Orders",
+    "myAddressButton": "My Address"
+  },
+  "addAccountAddress": {
+    "title": "My Address"
+  },
+  "login": {
+    "title": "Login",
+    "loginButton": "LOG IN",
+    "signupButton": "SIGN UP",
+    "forgetPassword": "Forget password?"
+  },
+ 
+  "passwordReset": {
+    "title": "Reset Password",
+    "resetButton": "RESET MY PASSWORD",
+    "passwordRecovery": "PASSWORD RECOVERY",
+    "passwordRecoveryInstructions": "Please enter your email address below to receive a password reset link"
+  },
+  "signup": {
+    "title": "Sign Up",
+    "createAccountButton": "CREATE ACCOUNT"
+  },
+  "search": {
+    "title": "Search",
+    "searchPlaceholderText": "Type here..."
+  },
+  "home": {
+    "title": "React Native Quick Start"
+  }
+}

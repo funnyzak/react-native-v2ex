@@ -16,6 +16,7 @@ React Native 快手开发脚手架项目。
 
 1. 基于 React Native 0.67.2 版本。
 2. 使用 TypeScript 编写。
+3. i18n 集成，支持多国语言。
 
 下一步
 
@@ -33,6 +34,7 @@ React Native 快手开发脚手架项目。
 - react-navigation
 - react-devtools
 - react-native-webview
+- react-native-localize
 
 ## 运行
 
