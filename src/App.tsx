@@ -13,6 +13,8 @@ import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, useColorScheme, 
 
 import { Colors, DebugInstructions, Header, LearnMoreLinks, ReloadInstructions } from 'react-native/Libraries/NewAppScreen'
 
+import { translate } from './i18n'
+
 const Section: React.FC<{
   title: string
 }> = ({ children, title }) => {
@@ -26,7 +28,7 @@ const Section: React.FC<{
             color: isDarkMode ? Colors.white : Colors.black
           }
         ]}>
-        {title}
+        {title} {`${translate('common.brandName')}`}
       </Text>
       <Text
         style={[
