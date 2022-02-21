@@ -2,7 +2,11 @@
 
 [![js-standard-style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/feross/standard)
 [![license][license-image]][repository-url]
+[![GitHub last commit][last-commit-image]][repository-url]
+[![GitHub commit activity][commit-activity-image]][repository-url]
 
+[commit-activity-image]: https://img.shields.io/github/commit-activity/m/funnyzak/react-native-quick-start?style=flat-square
+[last-commit-image]: https://img.shields.io/github/last-commit/funnyzak/react-native-quick-start?style=flat-square
 [license-image]: https://img.shields.io/github/license/funnyzak/react-native-quick-start.svg?style=flat-square
 [repository-url]: https://github.com/funnyzak/react-native-quick-start
 
