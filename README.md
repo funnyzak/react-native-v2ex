@@ -17,6 +17,7 @@ React Native 快手开发脚手架项目。
 1. 基于 React Native 0.67.2 版本。
 2. 使用 TypeScript 编写。
 3. i18n 集成，支持多国语言。
+4. redux 应用，并数据持久化。
 
 下一步
 
@@ -29,11 +30,13 @@ React Native 快手开发脚手架项目。
 主要依赖库：
 
 - eslint: ^7.14.0
-- axion
+- axios
+- redux
 - react-native-render-html
 - react-navigation
 - react-devtools
 - react-native-webview
+- async-storage
 - react-native-localize
 
 ## 运行
