@@ -1,4 +1,6 @@
 import { Platform } from 'react-native'
+import { IThemeTypography } from './types'
+
 import colors from './colors'
 
 const fontFamily = Platform.select({ android: 'sans-serif', ios: 'Helvetica' })
@@ -11,7 +13,7 @@ const titleTextColor = colors.titleText
 const bodyTextColor = colors.bodyText
 const captionTextColor = colors.captionText
 
-export default {
+const typographys: IThemeTypography = {
   /**
    * Title is reserved for the title of a screen(Toolbar)
    * and the titles of Modal dialogs.
@@ -128,3 +130,5 @@ export default {
     color: colors.titleText
   }
 }
+
+export default typographys

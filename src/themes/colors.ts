@@ -1,4 +1,6 @@
-export default {
+import { IThemeColor } from './types'
+
+const colors: IThemeColor = {
   /**
    * ========================= Primary color : (Brand color) =========================
    * primaryDark: color for the status bar and for dark tint
@@ -69,3 +71,5 @@ export default {
   black: '#000000',
   white: '#ffffff'
 }
+
+export default colors

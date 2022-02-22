@@ -1,8 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { ITheme } from './types'
 import ThemeContext from './ThemeContext'
 
-const ThemeProvider = ({ theme, children }) => <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
+type Props = {
+  theme: ITheme
+  children?: JSX.Element
+}
+
+const ThemeProvider = ({ theme, children }: Props) => <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
 
 ThemeProvider.propTypes = {
   theme: PropTypes.object.isRequired,

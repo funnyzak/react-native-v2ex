@@ -1,11 +1,14 @@
+import { ITheme } from './types'
 import colors from './colors'
 import spacing from './spacing'
 import dimens from './dimens'
 import typography from './typography'
 
-export default {
+const theme: ITheme = {
   colors,
   spacing,
   dimens,
   typography
 }
+
+export default theme

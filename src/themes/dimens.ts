@@ -3,7 +3,9 @@ import { Dimensions } from 'react-native'
 const screenWidth = Dimensions.get('window').width
 const screenHeight = Dimensions.get('window').height
 
-export default {
+import { IThemeDimen } from './types'
+
+const dimens: IThemeDimen = {
   /**
    * App level constants
    */
@@ -20,3 +22,5 @@ export default {
    */
   avatarSize: 60
 }
+
+export default dimens
