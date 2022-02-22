@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/funnyzak/react-native-quick-start#readme",
   "dependencies": {
+    "@react-native-community/async-storage": "^1.12.1",
     "@types/i18n-js": "^3.8.2",
     "axios": "^0.26.0",
     "i18n-js": "^3.8.0",
@@ -39,7 +40,12 @@
     "react-native-localize": "^2.2.0",
     "react-native-render-html": "^6.3.4",
     "react-native-webview": "^11.17.2",
-    "react-navigation": "^4.4.4"
+    "react-navigation": "^4.4.4",
+    "react-redux": "^7.2.6",
+    "redux": "^4.1.2",
+    "redux-persist": "^6.0.0",
+    "redux-persist-transform-filter": "^0.0.20",
+    "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
