@@ -28,7 +28,7 @@ const Section: React.FC<{
             color: isDarkMode ? Colors.white : Colors.black
           }
         ]}>
-        {title} {`${translate('common.brandName')}`}
+        {title}
       </Text>
       <Text
         style={[
@@ -55,6 +55,7 @@ const App = () => {
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView contentInsetAdjustmentBehavior="automatic" style={backgroundStyle}>
         <Header />
+        <Text>{`${translate('common.brandName')}`}</Text>
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white
