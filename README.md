@@ -5,10 +5,10 @@
 [![GitHub last commit][last-commit-image]][repository-url]
 [![GitHub commit activity][commit-activity-image]][repository-url]
 
-[commit-activity-image]: https://img.shields.io/github/commit-activity/m/funnyzak/react-native-quick-start?style=flat-square
-[last-commit-image]: https://img.shields.io/github/last-commit/funnyzak/react-native-quick-start?style=flat-square
-[license-image]: https://img.shields.io/github/license/funnyzak/react-native-quick-start.svg?style=flat-square
-[repository-url]: https://github.com/funnyzak/react-native-quick-start
+[commit-activity-image]: https://img.shields.io/github/commit-activity/m/funnyzak/react-native-starter?style=flat-square
+[last-commit-image]: https://img.shields.io/github/last-commit/funnyzak/react-native-starter?style=flat-square
+[license-image]: https://img.shields.io/github/license/funnyzak/react-native-starter.svg?style=flat-square
+[repository-url]: https://github.com/funnyzak/react-native-starter
 
 React Native 快手开发脚手架项目。
 
@@ -44,10 +44,10 @@ NodeJS、Java、cocoapods、XCode、Watchman。 具体请参考[这里](https://
 ```bash
 
 # clone repos
-git clone https://github.com/funnyzak/react-native-quick-start.git
+git clone https://github.com/funnyzak/react-native-starter.git
 
 # enter src folder
-cd react-native-quick-start
+cd react-native-starter
 
 # deps install
 yarn
