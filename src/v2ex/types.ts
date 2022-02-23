@@ -3,7 +3,7 @@ export const MEMBER_TYPE = 'v2ex_member_type'
 /**
  * V2ex Response
  */
-export interface V2exResponse<T> {
+export interface IV2exResponse<T> {
   success: boolean
   message: string
   result?: T
@@ -12,7 +12,7 @@ export interface V2exResponse<T> {
 /**
  * V2ex API Configuration
  */
-export interface V2exConfiguration {
+export interface IV2exConfiguration {
   url?: string
   store?: string
   userAgent?: string
@@ -24,7 +24,7 @@ export interface V2exConfiguration {
   extend?: { [name: string]: string | undefined }
 }
 
-export type Method =
+export type IRequestMethod =
   | 'get'
   | 'GET'
   | 'delete'
@@ -49,27 +49,28 @@ export type Method =
 /**
  * V2ex Main API
  */
-export interface V2exAPI {
-  configuration: V2exConfiguration
+export interface IV2exAPI {
+  configuration: IV2exConfiguration
   root_path?: string
   token?: string
-  member?: any
-  setOptions: (options: V2exConfiguration) => void
+  member: IMemberAPI
+  setOptions: (options: IV2exConfiguration) => void
   init: () => void
-  post<T>(path: string, params?: Record<string, string>, type?: string): Promise<V2exResponse<T>>
-  put<T>(path: string, params?: Record<string, string>, type?: string): Promise<V2exResponse<T>>
-  get<T>(path: string, params?: Record<string, string>, data?: any, type?: string): Promise<V2exResponse<T>>
-  delete<T>(path: string, params?: Record<string, string>, type?: string): Promise<V2exResponse<T>>
-  send<T>(path: string, method: string, params?: Record<string, string>, data?: any, type?: string): Promise<V2exResponse<T>>
+  setToken(token?: string): void
+  post<T>(path: string, params?: Record<string, string>, type?: string): Promise<IV2exResponse<T>>
+  put<T>(path: string, params?: Record<string, string>, type?: string): Promise<IV2exResponse<T>>
+  get<T>(path: string, params?: Record<string, string>, data?: any, type?: string): Promise<IV2exResponse<T>>
+  delete<T>(path: string, params?: Record<string, string>, type?: string): Promise<IV2exResponse<T>>
+  send<T>(path: string, method: string, params?: Record<string, string>, data?: any, type?: string): Promise<IV2exResponse<T>>
   getErrorMessageForResponse(data: any): string
 }
 
-export interface MemberAPI {
-  getTokenDetail: () => Promise<V2exResponse<MemberTokenDetail>>
-  getProfile: () => Promise<V2exResponse<MemberProfile>>
+export interface IMemberAPI {
+  getTokenDetail: () => Promise<IV2exResponse<IMemberTokenDetail>>
+  getProfile: () => Promise<IV2exResponse<IMemberProfile>>
 }
 
-export interface MemberTokenDetail {
+export interface IMemberTokenDetail {
   token: string
   scope: string
   expiration: number
@@ -79,7 +80,7 @@ export interface MemberTokenDetail {
   created: number
 }
 
-export interface MemberProfile {
+export interface IMemberProfile {
   id: number
   username: string
   url: string

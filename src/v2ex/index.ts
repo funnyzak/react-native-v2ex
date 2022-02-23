@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { MEMBER_TYPE, V2exAPI, V2exConfiguration, V2exResponse, Method, MemberAPI } from './types'
+import { MEMBER_TYPE, IV2exAPI, IV2exConfiguration, IV2exResponse, IRequestMethod, IMemberAPI } from './types'
 import member from './lib/member'
 // import node from './lib/node'
 // import notification from './lib/notification'
@@ -21,12 +21,12 @@ const defaultConfiguration = {
 }
 
 class V2ex {
-  configuration: V2exConfiguration = defaultConfiguration
+  configuration: IV2exConfiguration = defaultConfiguration
   root_path?: string
   token?: string
-  member?: MemberAPI
+  member: IMemberAPI = member(this)
 
-  setOptions(options: V2exConfiguration) {
+  setOptions(options: IV2exConfiguration) {
     this.configuration = { ...defaultConfiguration, ...options }
     this.root_path = `/api/${this.configuration.store}`
 
@@ -45,23 +45,27 @@ class V2ex {
     throw new Error('Need Integration Token!')
   }
 
-  post<T>(path: string, params?: Record<string, string>, type: string = MEMBER_TYPE): Promise<V2exResponse<T>> {
+  setToken(token?: string) {
+    this.token = token
+  }
+
+  post<T>(path: string, params?: Record<string, string>, type: string = MEMBER_TYPE): Promise<IV2exResponse<T>> {
     return this.send(path, 'POST', undefined, params, type)
   }
 
-  put<T>(path: string, params?: Record<string, string>, type: string = MEMBER_TYPE): Promise<V2exResponse<T>> {
+  put<T>(path: string, params?: Record<string, string>, type: string = MEMBER_TYPE): Promise<IV2exResponse<T>> {
     return this.send(path, 'PUT', undefined, params, type)
   }
 
-  get<T>(path: string, params?: Record<string, string>, data?: any, type: string = MEMBER_TYPE): Promise<V2exResponse<T>> {
+  get<T>(path: string, params?: Record<string, string>, data?: any, type: string = MEMBER_TYPE): Promise<IV2exResponse<T>> {
     return this.send(path, 'GET', params, data, type)
   }
 
-  delete<T>(path: string, params?: Record<string, string>, type: string = MEMBER_TYPE): Promise<V2exResponse<T>> {
+  delete<T>(path: string, params?: Record<string, string>, type: string = MEMBER_TYPE): Promise<IV2exResponse<T>> {
     return this.send(path, 'DELETE', params, undefined, type)
   }
 
-  send<T>(path: string, method: Method, params?: Record<string, string>, data?: any, type?: string): Promise<V2exResponse<T>> {
+  send<T>(path: string, method: IRequestMethod, params?: Record<string, string>, data?: any, type?: string): Promise<IV2exResponse<T>> {
     let uri = `${this.configuration.url}${this.root_path}${path}`
 
     if (params) {
@@ -80,7 +84,7 @@ class V2ex {
       headers.Authorization = `Bearer ${this.token}`
     }
 
-    return new Promise<V2exResponse<any>>((resolve, reject) => {
+    return new Promise<IV2exResponse<any>>((resolve, reject) => {
       console.log({
         uri,
         method,
@@ -131,4 +135,4 @@ class V2ex {
   }
 }
 
-export const v2ex: V2exAPI = new V2ex()
+export const v2ex: IV2exAPI = new V2ex()
