@@ -1,4 +1,4 @@
-# React Native Quick Start
+# React Native Starter
 
 [![js-standard-style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/feross/standard)
 [![license][license-image]][repository-url]
