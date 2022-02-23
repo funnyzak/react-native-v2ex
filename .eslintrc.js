@@ -78,7 +78,8 @@ module.exports = {
           {
             enforceForRenamedProperties: false
           }
-        ]
+        ],
+        '@typescript-eslint/no-unused-vars': 'off'
       }
     }
   ]

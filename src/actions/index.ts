@@ -1,3 +1,4 @@
+export * from './RestActions'
 export * from './UIActions'
 export * from './MemberActions'
 export * from './NodeActions'
