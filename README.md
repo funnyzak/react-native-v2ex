@@ -29,8 +29,8 @@ NodeJS、Java、cocoapods、XCode、Watchman。 具体请参考[这里](https://
 
 主要依赖库：
 
-- eslint: ^7.14.0
-- axios
+- eslint
+- lodash
 - redux
 - react-native-render-html
 - react-navigation
@@ -123,6 +123,7 @@ npx react-native upgrade
 - [gitignore](https://git-scm.com/docs/gitignore)
 - [prettier](https://prettier.io/docs/en/index.html)
 - [v2ex api 2.0](https://v2ex.com/help/api)
+- [v2ex token](https://www.v2ex.com/settings/tokens)
 
 ## License
 
