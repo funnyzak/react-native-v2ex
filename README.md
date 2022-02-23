@@ -10,7 +10,7 @@
 [license-image]: https://img.shields.io/github/license/funnyzak/react-native-starter.svg?style=flat-square
 [repository-url]: https://github.com/funnyzak/react-native-starter
 
-React Native 快手开发脚手架项目。
+React Native 快手开发脚手架项目。项目基于 V2EX 开放 API，提供了一个简单的社区类应用样板。
 
 特点
 
@@ -122,6 +122,7 @@ npx react-native upgrade
 - [npmrc](https://docs.npmjs.com/cli/v7/configuring-npm/npmrc)
 - [gitignore](https://git-scm.com/docs/gitignore)
 - [prettier](https://prettier.io/docs/en/index.html)
+- [v2ex api 2.0](https://v2ex.com/help/api)
 
 ## License
 
