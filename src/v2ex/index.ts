@@ -49,24 +49,24 @@ class V2ex {
     this.token = token
   }
 
-  post<T>(path: string, params?: Record<string, string>, type: string = V2exAPI.MEMBER_TYPE): Promise<T> {
-    return this.send<T>(path, 'POST', undefined, params, type)
+  post<T>(path: string, params?: Record<string, string>, version?: V2exAPI.API_VERSION): Promise<T> {
+    return this.send<T>(path, 'POST', undefined, params, version)
   }
 
-  put<T>(path: string, params?: Record<string, string>, type: string = V2exAPI.MEMBER_TYPE): Promise<T> {
-    return this.send<T>(path, 'PUT', undefined, params, type)
+  put<T>(path: string, params?: Record<string, string>, version?: V2exAPI.API_VERSION): Promise<T> {
+    return this.send<T>(path, 'PUT', undefined, params, version)
   }
 
-  get<T>(path: string, params?: Record<string, string>, data?: any, type: string = V2exAPI.MEMBER_TYPE): Promise<T> {
-    return this.send<T>(path, 'GET', params, data, type)
+  get<T>(path: string, params?: Record<string, string>, data?: any, version?: V2exAPI.API_VERSION): Promise<T> {
+    return this.send<T>(path, 'GET', params, data, version)
   }
 
-  delete<T>(path: string, params?: Record<string, string>, type: string = V2exAPI.MEMBER_TYPE): Promise<T> {
-    return this.send<T>(path, 'DELETE', params, undefined, type)
+  delete<T>(path: string, params?: Record<string, string>, version?: V2exAPI.API_VERSION): Promise<T> {
+    return this.send<T>(path, 'DELETE', params, undefined, version)
   }
 
-  send<T>(path: string, method: V2exAPI.RequestMethod, params?: Record<string, string>, data?: any, type?: string): Promise<T> {
-    let uri = `${this.configuration.url}${this.root_path}${path}`
+  send<T>(path: string, method: V2exAPI.RequestMethod, params?: Record<string, string>, data?: any, version?: V2exAPI.API_VERSION): Promise<T> {
+    let uri = `${this.configuration.url}${this.root_path}${version === 'v2' ? '/v2' : ''}${path}`
 
     if (params) {
       let separator = '?'
@@ -80,7 +80,7 @@ class V2ex {
       'User-Agent': this.configuration.userAgent || 'Starter App Api Library',
       'Content-Type': 'application/json'
     }
-    if (this.token && type === V2exAPI.MEMBER_TYPE) {
+    if (this.token) {
       headers.Authorization = `Bearer ${this.token}`
     }
 
@@ -107,6 +107,11 @@ class V2ex {
         .then((responseData) => {
           // debugger;
           console.log(responseData)
+
+          if (version === 'v2') {
+            const res = responseData as V2exAPI.V2exResponse<T>
+            return resolve(res.result)
+          }
           resolve(responseData)
         })
         .catch((error) => {

@@ -1,6 +1,5 @@
 export declare module V2exAPI {
-  export type API_VERSION = '' | 'v2'
-  export const MEMBER_TYPE = 'v2ex_member_type'
+  export type API_VERSION = undefined | 'v2'
 
   /**
    * V2ex Response
@@ -8,7 +7,7 @@ export declare module V2exAPI {
   export interface V2exResponse<T> {
     success: boolean
     message: string
-    result?: T
+    result: T
   }
 
   /**
@@ -59,11 +58,11 @@ export declare module V2exAPI {
     setOptions: (options: V2exConfiguration) => void
     init: () => void
     setToken(token?: string): void
-    post<T>(path: string, params?: Record<string, string>, type?: string): Promise<T>
-    put<T>(path: string, params?: Record<string, string>, type?: string): Promise<T>
-    get<T>(path: string, params?: Record<string, string>, data?: any, type?: string): Promise<T>
-    delete<T>(path: string, params?: Record<string, string>, type?: string): Promise<T>
-    send<T>(path: string, method: string, params?: Record<string, string>, data?: any, type?: string): Promise<T>
+    post<T>(path: string, params?: Record<string, string>, version?: API_VERSION): Promise<T>
+    put<T>(path: string, params?: Record<string, string>, version?: API_VERSION): Promise<T>
+    get<T>(path: string, params?: Record<string, string>, data?: any, version?: API_VERSION): Promise<T>
+    delete<T>(path: string, params?: Record<string, string>, version?: API_VERSION): Promise<T>
+    send<T>(path: string, method: string, params?: Record<string, string>, data?: any, version?: API_VERSION): Promise<T>
     getErrorMessageForResponse(data: any): string
   }
 
