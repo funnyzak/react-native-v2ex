@@ -13,8 +13,7 @@ export const onAppStart = async (store: Store) => {
 
   if (memberToken) {
     try {
-      const tokenDetail = await v2ex.member.getTokenDetail()
-      store.dispatch(setCurrentToken(tokenDetail.result))
+      store.dispatch(setCurrentToken(await v2ex.member.token()))
     } catch (error) {
       console.log('onAppStart -> unable to retrieve current token', error)
       logError(error)
