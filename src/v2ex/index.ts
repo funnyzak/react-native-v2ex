@@ -11,7 +11,7 @@ import { logError } from '../helper/logger'
  */
 const defaultConfiguration = {
   url: 'https://www.v2ex.com',
-  store: 'v2',
+  store: 'api',
   userAgent: 'Starter App Api Library',
   authentication: {
     token: undefined,
@@ -28,7 +28,7 @@ class V2ex {
 
   setOptions(options: V2exAPI.V2exConfiguration) {
     this.configuration = { ...defaultConfiguration, ...options }
-    this.root_path = `/api/${this.configuration.store}`
+    this.root_path = `/${this.configuration.store}`
 
     this.member = member(this)
 
@@ -49,63 +49,23 @@ class V2ex {
     this.token = token
   }
 
-  getLatestTopics = async () => {
-    try {
-      const response = await fetch(`${this.configuration.url}/api/topics/latest.json`)
-      return response.json()
-    } catch (error) {
-      logError(error)
-      return null
-    }
+  post<T>(path: string, params?: Record<string, string>, type: string = V2exAPI.MEMBER_TYPE): Promise<T> {
+    return this.send<T>(path, 'POST', undefined, params, type)
   }
 
-  getHotTopics = async () => {
-    try {
-      const response = await fetch(`${this.configuration.url}/api/topics/hot.json`)
-      return response.json()
-    } catch (error) {
-      logError(error)
-      return null
-    }
+  put<T>(path: string, params?: Record<string, string>, type: string = V2exAPI.MEMBER_TYPE): Promise<T> {
+    return this.send<T>(path, 'PUT', undefined, params, type)
   }
 
-  getNode = async (name: string) => {
-    try {
-      const response = await fetch(`${this.configuration.url}/api/nodes/show.json?name=${name}`)
-      return response.json()
-    } catch (error) {
-      logError(error)
-      return null
-    }
+  get<T>(path: string, params?: Record<string, string>, data?: any, type: string = V2exAPI.MEMBER_TYPE): Promise<T> {
+    return this.send<T>(path, 'GET', params, data, type)
   }
 
-  getMemver = async (id: string | number) => {
-    try {
-      const response = await fetch(`${this.configuration.url}/members/show.json?${typeof id === 'string' ? 'username' : 'id'}=${id}`)
-      return response.json()
-    } catch (error) {
-      logError(error)
-      return null
-    }
+  delete<T>(path: string, params?: Record<string, string>, type: string = V2exAPI.MEMBER_TYPE): Promise<T> {
+    return this.send<T>(path, 'DELETE', params, undefined, type)
   }
 
-  post<T>(path: string, params?: Record<string, string>, type: string = V2exAPI.MEMBER_TYPE): Promise<V2exAPI.V2exResponse<T>> {
-    return this.send(path, 'POST', undefined, params, type)
-  }
-
-  put<T>(path: string, params?: Record<string, string>, type: string = V2exAPI.MEMBER_TYPE): Promise<V2exAPI.V2exResponse<T>> {
-    return this.send(path, 'PUT', undefined, params, type)
-  }
-
-  get<T>(path: string, params?: Record<string, string>, data?: any, type: string = V2exAPI.MEMBER_TYPE): Promise<V2exAPI.V2exResponse<T>> {
-    return this.send(path, 'GET', params, data, type)
-  }
-
-  delete<T>(path: string, params?: Record<string, string>, type: string = V2exAPI.MEMBER_TYPE): Promise<V2exAPI.V2exResponse<T>> {
-    return this.send(path, 'DELETE', params, undefined, type)
-  }
-
-  send<T>(path: string, method: V2exAPI.RequestMethod, params?: Record<string, string>, data?: any, type?: string): Promise<V2exAPI.V2exResponse<T>> {
+  send<T>(path: string, method: V2exAPI.RequestMethod, params?: Record<string, string>, data?: any, type?: string): Promise<T> {
     let uri = `${this.configuration.url}${this.root_path}${path}`
 
     if (params) {
@@ -124,7 +84,7 @@ class V2ex {
       headers.Authorization = `Bearer ${this.token}`
     }
 
-    return new Promise<V2exAPI.V2exResponse<any>>((resolve, reject) => {
+    return new Promise<T>((resolve, reject) => {
       console.log({
         uri,
         method,
