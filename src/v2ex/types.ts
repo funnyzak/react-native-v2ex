@@ -1,4 +1,5 @@
 export declare module V2exAPI {
+  export type API_VERSION = '' | 'v2'
   export const MEMBER_TYPE = 'v2ex_member_type'
 
   /**
@@ -58,21 +59,88 @@ export declare module V2exAPI {
     setOptions: (options: V2exConfiguration) => void
     init: () => void
     setToken(token?: string): void
-    post<T>(path: string, params?: Record<string, string>, type?: string): Promise<V2exResponse<T>>
-    put<T>(path: string, params?: Record<string, string>, type?: string): Promise<V2exResponse<T>>
-    get<T>(path: string, params?: Record<string, string>, data?: any, type?: string): Promise<V2exResponse<T>>
-    delete<T>(path: string, params?: Record<string, string>, type?: string): Promise<V2exResponse<T>>
-    send<T>(path: string, method: string, params?: Record<string, string>, data?: any, type?: string): Promise<V2exResponse<T>>
+    post<T>(path: string, params?: Record<string, string>, type?: string): Promise<T>
+    put<T>(path: string, params?: Record<string, string>, type?: string): Promise<T>
+    get<T>(path: string, params?: Record<string, string>, data?: any, type?: string): Promise<T>
+    delete<T>(path: string, params?: Record<string, string>, type?: string): Promise<T>
+    send<T>(path: string, method: string, params?: Record<string, string>, data?: any, type?: string): Promise<T>
     getErrorMessageForResponse(data: any): string
   }
 
   export interface MemberAPI {
-    getTokenDetail: () => Promise<V2exResponse<V2exObject.MemberToken>>
-    getProfile: () => Promise<V2exResponse<V2exObject.MemberProfile>>
+    /**
+     * Get my token info
+     */
+    token: () => Promise<V2exObject.MToken>
+
+    /**
+     * Get my profile
+     */
+    mime: () => Promise<V2exObject.Member>
+
+    /**
+     * Get user profile
+     */
+    profile: (id: string | number) => Promise<V2exObject.Member>
+  }
+
+  export interface NodeAPI {
+    /**
+     * Get node info by node name
+     * @param name
+     * @param version
+     */
+    get(name: string, version: API_VERSION): Promise<V2exObject.Node>
+  }
+
+  export interface NotificationAPI {
+    /**
+     * Get my latest notifications
+     */
+    list: (page: number) => Promise<V2exObject.Notification[]>
+
+    /**
+     * Remove notification
+     */
+    remove: (id: string) => Promise<boolean>
+  }
+
+  export interface TopicAPI {
+    /**
+     *  Get node topic list
+     * @param name : node name
+     */
+    topicsByNode(name: string): Promise<V2exObject.Topic[]>
+
+    /**
+     * Get latest topic list
+     */
+    latestTopics: () => Promise<V2exObject.Topic[]>
+
+    /**
+     * Get hot topic list
+     */
+    hotTopics: () => Promise<V2exObject.Topic[]>
+
+    /**
+     * Get topic info by topic id
+     * @param id : topic id
+     */
+    get(id: string): Promise<V2exObject.Topic>
+
+    /**
+     * Get topic replies
+     * @param topic_id : topic id
+     * @param page : page num
+     */
+    replies(topic_id: string, page: number): Promise<V2exObject.TopicReplay[]>
   }
 }
 export declare module V2exObject {
-  export interface MemberToken {
+  /**
+   * Member Token Info
+   */
+  export interface MToken {
     token: string
     scope: string
     expiration: number
@@ -82,7 +150,10 @@ export declare module V2exObject {
     created: number
   }
 
-  export interface MemberProfile {
+  /**
+   * Member Profile
+   */
+  export interface Member {
     id: number
     username: string
     url: string
@@ -125,7 +196,7 @@ export declare module V2exObject {
 
   export interface Topic {
     node: Node
-    member: MemberProfile
+    member: Member
     last_reply_by: string
     last_touched: number
     title: string
@@ -138,4 +209,14 @@ export declare module V2exObject {
     replies: number
     id: number
   }
+
+  export interface TopicReplay {
+    id: number
+    content: string
+    content_rendered: string
+    created: number
+    member: Member
+  }
+
+  export interface Notification {}
 }
