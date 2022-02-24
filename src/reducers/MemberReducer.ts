@@ -1,4 +1,4 @@
-import { V2EX_CURRNET_TOKEN, V2EX_CURRNET_PROFILE, StoreAction, IState } from '../actions/types'
+import { V2EX_CURRNET_TOKEN, V2EX_CURRNET_PROFILE, StoreAction, IState } from '@src/actions/types'
 
 export default (state: IState.IMemberState, action: StoreAction) => {
   switch (action.type) {
