@@ -1,8 +1,8 @@
 module.exports = {
   root: true,
-  extends: ['@react-native-community', 'prettier'],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
+  plugins: ['react', 'react-native', '@typescript-eslint'],
+  extends: ['@react-native-community', 'prettier'],
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
@@ -85,7 +85,13 @@ module.exports = {
             endOfLine: 'auto'
           }
         ],
-        '@typescript-eslint/no-unused-vars': 'off'
+        '@typescript-eslint/no-unused-vars': 'off',
+        'react-native/no-unused-styles': 2,
+        'react-native/split-platform-components': 2,
+        'react-native/no-inline-styles': 2,
+        'react-native/no-color-literals': 2,
+        'react-native/no-raw-text': 2,
+        'react-native/no-single-element-style-arrays': 2
       }
     }
   ]
