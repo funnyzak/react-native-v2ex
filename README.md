@@ -123,6 +123,7 @@ npx react-native upgrade
 - [gitignore](https://git-scm.com/docs/gitignore)
 - [prettier](https://prettier.io/docs/en/index.html)
 - [v2ex api 2.0](https://v2ex.com/help/api)
+- [v2ex api](https://www.v2ex.com/p/7v9TEc53)
 - [v2ex token](https://www.v2ex.com/settings/tokens)
 
 ## License
