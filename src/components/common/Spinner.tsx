@@ -1,23 +1,23 @@
 import React, { useContext } from 'react'
-import { View, ViewPropTypes, ActivityIndicator } from 'react-native'
+import { View, ViewPropTypes, StyleProp, ViewStyle, ActivityIndicator, FlexAlignType } from 'react-native'
 import PropTypes from 'prop-types'
 import { ThemeContext } from '../../theme'
 
-const Spinner = ({ size, style }) => {
+const Spinner = ({ size, style }: { size: 'large' | 'small'; style: StyleProp<ViewStyle> }) => {
   const theme = useContext(ThemeContext)
   return (
-    <View style={[styles.spinnerStyle, style]}>
+    <View
+      style={[
+        {
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center'
+        },
+        style
+      ]}>
       <ActivityIndicator size={size} color={theme.colors.secondary} />
     </View>
   )
-}
-
-const styles = {
-  spinnerStyle: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
 }
 
 Spinner.propTypes = {
