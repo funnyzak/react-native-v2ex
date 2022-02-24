@@ -58,6 +58,8 @@ export declare module V2exAPI {
     setOptions: (options: Configuration) => void
     init: () => void
     setToken(token?: string): void
+    siteInfo: () => Promise<V2exObject.SiteInfo>
+    siteStat: () => Promise<V2exObject.SiteStat>
     post<T>(path: string, params?: Record<string, string>, version?: API_VERSION): Promise<T>
     put<T>(path: string, params?: Record<string, string>, version?: API_VERSION): Promise<T>
     get<T>(path: string, params?: Record<string, string>, data?: any, version?: API_VERSION): Promise<T>
@@ -65,7 +67,6 @@ export declare module V2exAPI {
     send<T>(path: string, method: string, params?: Record<string, string>, data?: any, version?: API_VERSION): Promise<T>
     getErrorMessageForResponse(data: any): string
   }
-
   export interface Member {
     /**
      * Get my token info
@@ -136,6 +137,18 @@ export declare module V2exAPI {
   }
 }
 export declare module V2exObject {
+  export interface SiteInfo {
+    title: string
+    slogan: string
+    description: string
+    domain: string
+  }
+
+  export interface SiteStat {
+    topic_max: number
+    member_max: number
+  }
+
   /**
    * Member Token Info
    */

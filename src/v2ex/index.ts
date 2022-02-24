@@ -49,6 +49,14 @@ class V2ex {
     this.token = token
   }
 
+  siteInfo() {
+    return this.get<V2exObject.SiteInfo>('/site/info.json', undefined, undefined, undefined)
+  }
+
+  siteStat() {
+    return this.get<V2exObject.SiteStat>('/site/stats.json', undefined, undefined, undefined)
+  }
+
   post<T>(path: string, params?: Record<string, string>, version?: V2exAPI.API_VERSION): Promise<T> {
     return this.send<T>(path, 'POST', undefined, params, version)
   }
