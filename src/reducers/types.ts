@@ -1,11 +1,13 @@
-import { IMemberTokenDetail, IMemberProfile } from '../v2ex/types'
+import { V2exObject } from '../v2ex/types'
 
-export interface IV2exState {
-  v2ex: any
-  errorMessage?: any
-}
+export declare module IState {
+  export interface IV2exState {
+    v2ex: any
+    errorMessage?: any
+  }
 
-export interface IMemberState {
-  token: IMemberTokenDetail
-  profile: IMemberProfile
+  export interface IMemberState {
+    token: V2exObject.MToken
+    profile: V2exObject.Member
+  }
 }
