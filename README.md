@@ -37,7 +37,11 @@ NodeJS、Java、cocoapods、XCode、Watchman。 具体请参考[这里](https://
 - react-devtools
 - react-native-webview
 - async-storage
+- react-native-gesture-handler
+- react-native-fast-image
+- react-native-reanimated
 - react-native-localize
+- prettier
 
 ## 运行
 
