@@ -10,4 +10,8 @@ export declare module IState {
     token: V2exObject.MToken
     profile: V2exObject.Member
   }
+
+  export interface IUIState {
+    languageTag: 'zh' | 'en'
+  }
 }

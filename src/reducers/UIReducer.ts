@@ -1,13 +1,14 @@
-import { V2EX_LOCALES, StoreAction } from '../actions/types'
+import { V2EX_LOCALES, StoreAction, IState } from '../actions/types'
 
 const INITIAL_STATE = {
   languageTag: 'zh'
 }
 
-export default (state = INITIAL_STATE, action: StoreAction) => {
+export default (state: IState.IUIState, action: StoreAction) => {
+  const s = { ...INITIAL_STATE, ...state }
   switch (action.type) {
     case V2EX_LOCALES:
-      return { ...state, languageTag: action.payload }
+      return { ...s, languageTag: action.payload }
     default:
       return state
   }
