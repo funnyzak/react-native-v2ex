@@ -1,10 +1,10 @@
-import { IV2exState, V2EX_INIT, V2EX_INIT_ERROR, StoreAction } from '../actions/types'
+import { V2EX_INIT, V2EX_INIT_ERROR, StoreAction, IState } from '@src/actions/types'
 
 const INITIAL_STATE = {
   v2ex: null
 }
 
-export default (state: IV2exState = INITIAL_STATE, action: StoreAction) => {
+export default (state: IState.IV2exState, action: StoreAction) => {
   switch (action.type) {
     case V2EX_INIT:
       return { ...state, v2ex: action.payload }

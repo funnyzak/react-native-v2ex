@@ -38,3 +38,5 @@ export interface StoreAction {
 export * from './../reducers/types'
 
 export * from './../v2ex/types'
+
+export declare const window: any

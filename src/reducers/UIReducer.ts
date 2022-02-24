@@ -1,4 +1,4 @@
-import { V2EX_LOCALES, StoreAction, IState } from '../actions/types'
+import { V2EX_LOCALES, StoreAction, IState } from '@types'
 
 const INITIAL_STATE = {
   languageTag: 'zh'

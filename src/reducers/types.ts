@@ -1,4 +1,4 @@
-import { V2exObject } from '../v2ex/types'
+import { V2exObject } from '@src/v2ex/types'
 
 export declare module IState {
   export interface IV2exState {
@@ -14,4 +14,10 @@ export declare module IState {
   export interface IUIState {
     languageTag: 'zh' | 'en'
   }
+
+  export interface INotificationState {}
+
+  export interface ITopicState {}
+
+  export interface INoticeState {}
 }

@@ -7,7 +7,8 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 import createFilter, { createBlacklistFilter } from 'redux-persist-transform-filter'
 import AsyncStorage from '@react-native-community/async-storage'
 
-import reducers from '../reducers'
+import reducers from '@src/reducers'
+import { window } from '@types'
 
 const accountSubsetBlacklistFilter = createBlacklistFilter('account', ['refreshing'])
 const uiSubsetBlacklistFilter = createBlacklistFilter('ui', ['refreshing'])
@@ -19,13 +20,13 @@ const persistConfig = {
   stateReconciler: autoMergeLevel2
 }
 
-const persistedReducer = persistReducer(persistConfig, reducers)
+const persistedReducer = persistReducer(persistConfig, reducers as any)
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 export const store = createStore(persistedReducer, composeEnhancer(applyMiddleware(thunk)))
 
-export const persistor = persistStore(store)
+export const persistor = persistStore(store as any)
 
 // TODO: remove `persistor.purge()` to persist your application data
 persistor.purge()
