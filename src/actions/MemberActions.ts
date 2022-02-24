@@ -18,7 +18,7 @@ export const getToken = () => async (dispatch: Dispatch) => {
   })
 }
 
-export const setCurrentToken = (token?: V2exObject.MemberToken) => ({
+export const setCurrentToken = (token?: V2exObject.MToken) => ({
   type: V2EX_CURRNET_TOKEN,
   payload: token
 })
