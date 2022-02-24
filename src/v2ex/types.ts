@@ -2,9 +2,9 @@ export declare module V2exAPI {
   export type API_VERSION = undefined | 'v2'
 
   /**
-   * V2ex Response
+   * V2ex Version 2.0 Response
    */
-  export interface V2exResponse<T> {
+  export interface V2Response<T> {
     success: boolean
     message: string
     result: T
@@ -13,7 +13,7 @@ export declare module V2exAPI {
   /**
    * V2ex API Configuration
    */
-  export interface V2exConfiguration {
+  export interface Configuration {
     url?: string
     store?: string
     userAgent?: string
@@ -25,7 +25,7 @@ export declare module V2exAPI {
     extend?: { [name: string]: string | undefined }
   }
 
-  export type RequestMethod =
+  export type Method =
     | 'get'
     | 'GET'
     | 'delete'
@@ -51,11 +51,11 @@ export declare module V2exAPI {
    * V2ex Main API
    */
   export interface V2ex {
-    configuration: V2exConfiguration
+    configuration: Configuration
     root_path?: string
     token?: string
-    member: MemberAPI
-    setOptions: (options: V2exConfiguration) => void
+    member: Member
+    setOptions: (options: Configuration) => void
     init: () => void
     setToken(token?: string): void
     post<T>(path: string, params?: Record<string, string>, version?: API_VERSION): Promise<T>
@@ -66,7 +66,7 @@ export declare module V2exAPI {
     getErrorMessageForResponse(data: any): string
   }
 
-  export interface MemberAPI {
+  export interface Member {
     /**
      * Get my token info
      */
@@ -83,7 +83,7 @@ export declare module V2exAPI {
     profile: (id: string | number) => Promise<V2exObject.Member>
   }
 
-  export interface NodeAPI {
+  export interface Node {
     /**
      * Get node info by node name
      * @param name
@@ -92,7 +92,7 @@ export declare module V2exAPI {
     get(name: string, version: API_VERSION): Promise<V2exObject.Node>
   }
 
-  export interface NotificationAPI {
+  export interface Notification {
     /**
      * Get my latest notifications
      */
@@ -101,10 +101,10 @@ export declare module V2exAPI {
     /**
      * Remove notification
      */
-    remove: (id: string) => Promise<boolean>
+    remove: (id: string) => Promise<void>
   }
 
-  export interface TopicAPI {
+  export interface Topic {
     /**
      *  Get node topic list
      * @param name : node name

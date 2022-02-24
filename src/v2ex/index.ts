@@ -21,12 +21,12 @@ const defaultConfiguration = {
 }
 
 class V2ex {
-  configuration: V2exAPI.V2exConfiguration = defaultConfiguration
+  configuration: V2exAPI.Configuration = defaultConfiguration
   root_path?: string
   token?: string
-  member: V2exAPI.MemberAPI = member(this)
+  member: V2exAPI.Member = member(this)
 
-  setOptions(options: V2exAPI.V2exConfiguration) {
+  setOptions(options: V2exAPI.Configuration) {
     this.configuration = { ...defaultConfiguration, ...options }
     this.root_path = `/${this.configuration.store}`
 
@@ -65,7 +65,7 @@ class V2ex {
     return this.send<T>(path, 'DELETE', params, undefined, version)
   }
 
-  send<T>(path: string, method: V2exAPI.RequestMethod, params?: Record<string, string>, data?: any, version?: V2exAPI.API_VERSION): Promise<T> {
+  send<T>(path: string, method: V2exAPI.Method, params?: Record<string, string>, data?: any, version?: V2exAPI.API_VERSION): Promise<T> {
     let uri = `${this.configuration.url}${this.root_path}${version === 'v2' ? '/v2' : ''}${path}`
 
     if (params) {
@@ -109,7 +109,7 @@ class V2ex {
           console.log(responseData)
 
           if (version === 'v2') {
-            const res = responseData as V2exAPI.V2exResponse<T>
+            const res = responseData as V2exAPI.V2Response<T>
             return resolve(res.result)
           }
           resolve(responseData)

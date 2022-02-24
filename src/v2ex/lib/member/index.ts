@@ -1,6 +1,6 @@
 import { V2exAPI, V2exObject } from '../../types'
 
-export default (v2ex: V2exAPI.V2ex): V2exAPI.MemberAPI => ({
+export default (v2ex: V2exAPI.V2ex): V2exAPI.Member => ({
   token: () => v2ex.get<V2exObject.MToken>('/token', undefined, undefined, 'v2'),
   mime: () => v2ex.get<V2exObject.Member>('/member', undefined, undefined, 'v2'),
   profile: (id: string | number) =>
