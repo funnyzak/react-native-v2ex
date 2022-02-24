@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
-import { Text as RNText, StyleSheet } from 'react-native'
+import { Text as RNText, StyleSheet, StyleProp, ViewStyle } from 'react-native'
 import PropTypes from 'prop-types'
 import { ThemeContext } from '../../theme'
+import { ITheme, IThemeTypographyProps } from '../../theme/types'
 
 // Possible value for prop "type" for Text
 const HEADING = 'heading'
@@ -10,10 +11,18 @@ const BODY = 'body'
 const LABEL = 'label'
 const CAPTION = 'caption'
 
+type TextType = 'heading' | 'subheading' | 'body' | 'label' | 'caption'
+
+interface TextProps {
+  type: TextType
+  bold: boolean
+  style?: StyleProp<ViewStyle>
+}
+
 const Text = ({
   /**
    * @type prop helps style Text with pre default styling define in
-   * typography.js. Possible value of type can be:
+   * typography.ts. Possible value of type can be:
    * 1. 'heading'
    * 2. 'subheading'
    * 3. 'body'
@@ -36,12 +45,12 @@ const Text = ({
    */
   style,
   ...props
-}) => {
+}: TextProps) => {
   const theme = useContext(ThemeContext)
   return <RNText style={StyleSheet.flatten([styles.text(type, bold, theme), style])} {...props} />
 }
 
-const getTextStyle = (type, bold, theme) => {
+const getTextStyle = (type: TextType, bold: boolean, theme: ITheme): IThemeTypographyProps => {
   let style = ''
   switch (type) {
     case HEADING:
@@ -62,11 +71,15 @@ const getTextStyle = (type, bold, theme) => {
   if (bold) {
     style += 'Bold'
   }
-  return theme.typography[style]
+
+  if (style === 'bodyText') {
+    return theme.typography[style]
+  }
+  return theme.typography.bodyText
 }
 
 const styles = {
-  text: (type, bold, theme) => ({
+  text: (type: TextType, bold: boolean, theme: ITheme) => ({
     ...getTextStyle(type, bold, theme)
   })
 }
