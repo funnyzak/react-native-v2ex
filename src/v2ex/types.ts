@@ -157,40 +157,42 @@ export declare module V2exObject {
     username: string
     url: string
     website: string
-    twitter: string
-    psn: string
+    twitter?: string
+    psn?: string
     github: string
-    btc: string
-    location: string
-    tagline: string
+    btc?: string
+    location?: string
+    tagline?: string
     bio: string
-    avatar_mini: string
-    avatar_normal: string
-    avatar_large: string
-    avatar_xlarge: string
-    avatar_xxlarge: string
-    avatar_xxxlarge: string
+    avatar_mini?: string
+    avatar_normal?: string
+    avatar_large?: string
+    avatar_xlarge?: string
+    avatar_xxlarge?: string
+    avatar_xxxlarge?: string
     created: number
-    last_modified: number
-    status: string
+    last_modified?: number
+    status?: string
   }
 
   export interface Node {
-    avatar_large: string
+    avatar_large?: string
     name: string
-    avatar_normal: string
+    avatar_normal?: string
     title: string
     url: string
     topics: number
     footer: string
     header: string
-    title_alternative: string
-    avatar_mini: string
-    stars: number
-    aliases: any[]
-    root: boolean
+    title_alternative?: string
+    avatar_mini?: string
+    stars?: number
+    aliases?: any[]
+    root?: boolean
     id: number
     parent_node_name: string
+    last_modified?: number
+    created?: number
   }
 
   export interface Topic {
