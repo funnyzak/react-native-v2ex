@@ -22,7 +22,8 @@ export const MEMBER_FOLLOW_PEOPLE = 'follow_people'
 export const MEMBER_LIKE_TOPICS = 'like_topics'
 export const MEMBER_TOKEN = 'member_token'
 
-export const FEEDBACK = 'feedback'
+export const FEEDBACKING = 'feedbacking'
+export const FEEDBACK_DONE = 'feedback_done'
 
 export const TOPIC_GET = 'topic_get'
 export const TOPIC_REPLIES = 'topic_replies'
@@ -48,9 +49,10 @@ export const ActionTypes = {
   MEMBER_FOLLOW_PEOPLE,
   MEMBER_LIKE_TOPICS,
   MEMBER_TOKEN,
-  FEEDBACK,
+  FEEDBACKING,
   TOPIC_GET,
   TOPIC_REPLIES,
+  FEEDBACK_DONE,
   APP_AUTH,
   APP_LOGOUT,
   APP_LOGIN_SUCCESS,
