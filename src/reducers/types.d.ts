@@ -6,11 +6,9 @@ export declare module IState {
    */
   export interface AppState {
     v2ex?: V2exAPI.V2ex
-    latestNode?: NodeState
-    hotNode?: NodeState
     name?: string
     version?: string
-    icon: string
+    icon?: string
     aboutUs: {
       author: string
       email: string
