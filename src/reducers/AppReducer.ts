@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   v2ex: null
 }
 
-export default (state: IState.IV2exState, action: StoreAction) => {
+export default (state: IState.AppState, action: StoreAction) => {
   switch (action.type) {
     case V2EX_INIT:
       return { ...state, v2ex: action.payload }

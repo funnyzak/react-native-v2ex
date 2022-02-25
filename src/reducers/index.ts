@@ -1,12 +1,18 @@
 import { combineReducers } from 'redux'
 import UIReducer from './UIReducer'
-import V2exReducer from './V2exReducer'
+import AppReducer from './AppReducer'
 import MemberReducer from './MemberReducer'
+import HomeReducer from './HomeReducer'
+import NotificationReducer from './NotificationReducer'
+import SettingReducer from './SettingReducer'
 
 const reducers = combineReducers({
   ui: UIReducer,
-  memer: MemberReducer,
-  v2ex: V2exReducer
+  member: MemberReducer,
+  app: AppReducer,
+  home: HomeReducer,
+  notification: NotificationReducer,
+  setting: SettingReducer
 })
 
 export default reducers
