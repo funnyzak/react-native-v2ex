@@ -5,6 +5,7 @@
 export const APP_INIT = 'v2ex_init'
 export const APP_LATEST_VERSION = 'v2ex_latest_version'
 export const APP_SITE_INFO = 'v2ex_site_info'
+export const APP_SITE_STAT = 'v2ex_site_stat'
 export const APP_INIT_ERROR = 'v2ex_init_error'
 
 export const APP_HOME_SWITCH_NODE = 'v2ex_home_switch_node'
@@ -51,6 +52,7 @@ export const ActionTypes = {
   MEMBER_TOKEN,
   FEEDBACKING,
   TOPIC_GET,
+  APP_SITE_STAT,
   TOPIC_REPLIES,
   FEEDBACK_DONE,
   APP_AUTH,

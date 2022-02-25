@@ -39,6 +39,9 @@ export declare module IState {
     }
 
     siteInfo?: V2exObject.SiteInfo
+
+    siteStat?: V2exObject.SiteStat
+
     errorMessage?: Error[]
   }
 

@@ -2,7 +2,7 @@ import { Dispatch } from 'redux'
 import _ from 'lodash'
 import { v2exLib } from '@src/v2ex'
 import { v2exOptions } from '@src/config/v2ex'
-import { APP_INIT, APP_INIT_ERROR, APP_SITE_INFO, IState } from '@types'
+import { APP_INIT, APP_SITE_STAT, APP_INIT_ERROR, APP_SITE_INFO, IState } from '@types'
 import { logError } from '@src/helper/logger'
 import { theme } from '@src/theme'
 import DeviceInfo from 'react-native-device-info'
@@ -18,6 +18,8 @@ export const initV2ex = () => {
       v2exLib.setUserAgent(await DeviceInfo.getUserAgent())
 
       dispatchSiteInfo(dispatch)
+
+      dispatchSiteStat(dispatch)
 
       dispatch({
         type: APP_INIT,
@@ -60,6 +62,19 @@ const dispatchSiteInfo = async (dispatch: Dispatch) => {
     dispatch({
       type: APP_SITE_INFO,
       payload: site_info
+    })
+  } catch (e) {
+    logError(e)
+  }
+}
+
+const dispatchSiteStat = async (dispatch: Dispatch) => {
+  try {
+    const site_stat = await v2exLib.siteStat()
+
+    dispatch({
+      type: APP_SITE_STAT,
+      payload: site_stat
     })
   } catch (e) {
     logError(e)
