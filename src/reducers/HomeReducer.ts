@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import { APP_HOME_SWITCH_NODE, APP_HOME_NODE_TOPICS, APP_HOME_LOAD_MORE_TOPICS, Action, IState } from '@types'
 import { HOME_NODES } from '@src/navigation/tabs'
 
