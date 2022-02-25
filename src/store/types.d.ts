@@ -13,6 +13,10 @@ export declare module IState {
     deviceInfo?: {
       brand: string
       bunildId: string
+      systemName: string
+      uniqueId: string
+      userAgent: string
+      systemVersion: string
     }
 
     version: {

@@ -49,7 +49,11 @@ class V2ex {
   }
 
   setToken(token?: string) {
-    this.token = token
+    this.token = token || this.configuration.authentication.token
+  }
+
+  setUserAgent(userAgent?: string) {
+    this.configuration.userAgent = userAgent || this.configuration.userAgent
   }
 
   siteInfo() {

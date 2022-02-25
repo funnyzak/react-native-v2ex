@@ -15,6 +15,8 @@ export const initV2ex = () => {
     try {
       v2exLib.init()
 
+      v2exLib.setUserAgent(await DeviceInfo.getUserAgent())
+
       dispatchSiteInfo(dispatch)
 
       dispatch({
@@ -27,7 +29,11 @@ export const initV2ex = () => {
 
           deviceInfo: {
             brand: DeviceInfo.getBrand(),
-            bundleId: DeviceInfo.getBundleId()
+            bundleId: DeviceInfo.getBundleId(),
+            systemName: DeviceInfo.getSystemName(),
+            systemVersion: DeviceInfo.getSystemVersion(),
+            uniqueId: DeviceInfo.getUniqueId(),
+            userAgent: await DeviceInfo.getUserAgent()
           },
 
           version: {

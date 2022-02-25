@@ -1,4 +1,4 @@
-export * from '@src/reducers/types'
+export * from '@src/store/types'
 
 export * from '@src/v2ex/types'
 

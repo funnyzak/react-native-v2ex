@@ -12,7 +12,7 @@ import { window } from '@types'
 
 const memberSubsetBlacklistFilter = createBlacklistFilter('member', ['refreshing'])
 const uiSubsetBlacklistFilter = createBlacklistFilter('ui', ['refreshing'])
-const appSubsetBlacklistFilter = createBlacklistFilter('app', ['refreshing', 'errorMessage', 'latestVersion', 'v2ex'])
+const appSubsetBlacklistFilter = createBlacklistFilter('app', ['refreshing', 'errorMessage', 'latestVersion', 'deviceInfo', 'v2ex'])
 const homeSubsetBlacklistFilter = createBlacklistFilter('home', ['refreshing'])
 const settingSubsetBlacklistFilter = createBlacklistFilter('setting', ['refreshing'])
 const notificationSubsetBlacklistFilter = createBlacklistFilter('notification', ['refreshing'])

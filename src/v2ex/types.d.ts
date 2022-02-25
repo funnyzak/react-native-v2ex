@@ -58,6 +58,7 @@ export declare module V2exAPI {
     setOptions: (options: Configuration) => void
     init: () => void
     setToken(token?: string): void
+    setUserAgent(userAgent?: string): void
     siteInfo: () => Promise<V2exObject.SiteInfo>
     siteStat: () => Promise<V2exObject.SiteStat>
     post<T>(path: string, params?: Record<string, string>, version?: API_VERSION): Promise<T>
