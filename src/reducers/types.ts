@@ -60,9 +60,7 @@ export declare module IState {
    * 主页状态
    */
   export interface HomeState {
-    current: {
-      nodeName: string
-    }
+    currentNode: NodeState
     nodes: NodeState[]
   }
 
@@ -125,6 +123,6 @@ export declare module IState {
    */
   export interface NotificationState {
     refreshing: boolean
-    list: V2exObject.Notification[]
+    list?: V2exObject.Notification[]
   }
 }
