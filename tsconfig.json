@@ -43,6 +43,9 @@
       "@config/*": [
         "src/config/*"
       ],
+      "@res/*": [
+        "src/assets/*"
+      ],
       "@types": [
         "src/types",
       ],
