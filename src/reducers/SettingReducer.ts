@@ -1,14 +1,14 @@
-import { V2EX_LOCALES, StoreAction, IState } from '@types'
+import { APP_SETTING_LOCALES, Action, IState } from '@types'
 
-const INITIAL_STATE = {
+const INITIAL_STATE: IState.SettingState = {
   languageTag: 'zh'
 }
 
-export default (state: IState.SettingState, action: StoreAction) => {
-  const s = { ...INITIAL_STATE, ...state }
+export default (state: IState.SettingState, action: Action): IState.SettingState => {
+  const _merge = { ...INITIAL_STATE, ...state }
   switch (action.type) {
-    case V2EX_LOCALES:
-      return { ...s, languageTag: action.payload }
+    case APP_SETTING_LOCALES:
+      return { ..._merge, languageTag: action.payload }
     default:
       return state
   }
