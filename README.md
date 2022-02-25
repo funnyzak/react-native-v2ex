@@ -41,6 +41,7 @@ NodeJS、Java、cocoapods、XCode、Watchman。 具体请参考[这里](https://
 - react-native-fast-image
 - react-native-reanimated
 - react-native-localize
+- react-native-device-info
 - prettier
 
 ## 运行
