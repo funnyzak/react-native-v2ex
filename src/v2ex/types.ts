@@ -193,17 +193,17 @@ export declare module V2exObject {
     name: string
     avatar_normal?: string
     title: string
-    url: string
-    topics: number
-    footer: string
-    header: string
+    url?: string
+    topics?: number
+    footer?: string
+    header?: string
     title_alternative?: string
     avatar_mini?: string
     stars?: number
     aliases?: any[]
     root?: boolean
-    id: number
-    parent_node_name: string
+    id?: number
+    parent_node_name?: string
     last_modified?: number
     created?: number
   }
