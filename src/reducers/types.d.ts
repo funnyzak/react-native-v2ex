@@ -6,20 +6,34 @@ export declare module IState {
    */
   export interface AppState {
     v2ex?: V2exAPI.V2ex
+
     name?: string
-    version?: string
     icon?: string
+
+    deviceInfo?: {
+      brand: string
+      bunildId: string
+    }
+
+    version: {
+      version: string
+      buildId?: string
+      buildNumber?: string
+    }
+
+    latestVersion?: {
+      version: string
+      buildId: string
+      features: string
+    }
+
     aboutUs: {
       author: string
       email: string
       github: string
       wechat: string
     }
-    latestVersion?: {
-      version: string
-      build: number
-      features: string
-    }
+
     siteInfo?: V2exObject.SiteInfo
     errorMessage?: Error[]
   }

@@ -2,7 +2,10 @@ import { APP_INIT, APP_INIT_ERROR, APP_SITE_INFO, APP_LATEST_VERSION, Action, IS
 import { aboutUs } from '@src/config/v2ex'
 
 const INITIAL_STATE: IState.AppState = {
-  aboutUs
+  aboutUs,
+  version: {
+    version: '1.0.0'
+  }
 }
 
 export default (state: IState.AppState, action: Action): IState.AppState => {
