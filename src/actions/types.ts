@@ -13,6 +13,7 @@ export const APP_HOME_NODE_TOPICS = 'v2ex_home_node_topics'
 
 export const APP_SETTING_LOCALES = 'v2ex_locales'
 
+export const APP_NOTIFICATION_PULL = 'notification_pull'
 export const APP_NOTIFICATION_LATEST = 'notification'
 export const APP_NOTIFICATION_REMOVE = 'notification_remove'
 
@@ -39,6 +40,7 @@ export const ActionTypes = {
   APP_HOME_SWITCH_NODE,
   APP_HOME_NODE_TOPICS,
   APP_HOME_LOAD_MORE_TOPICS,
+  APP_NOTIFICATION_PULL,
   APP_SETTING_LOCALES,
   APP_NOTIFICATION_LATEST,
   APP_NOTIFICATION_REMOVE,
