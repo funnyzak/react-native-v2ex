@@ -7,18 +7,19 @@ export const APP_LATEST_VERSION = 'v2ex_latest_version'
 export const APP_SITE_INFO = 'v2ex_site_info'
 export const APP_INIT_ERROR = 'v2ex_init_error'
 
-export const SETTING_LOCALES = 'v2ex_locales'
+export const APP_HOME_SWITCH_NODE = 'v2ex_home_switch_node'
+export const APP_HOME_LOAD_MORE_TOPICS = 'v2ex_home_load_more_topics'
+export const APP_HOME_NODE_TOPICS = 'v2ex_home_node_topics'
 
-export const NOTIFICATION_LATEST = 'notification'
-export const NOTIFICATION_REMOVE = 'notification_remove'
+export const APP_SETTING_LOCALES = 'v2ex_locales'
+
+export const APP_NOTIFICATION_LATEST = 'notification'
+export const APP_NOTIFICATION_REMOVE = 'notification_remove'
 
 export const MEMBER_PROFILE = 'profile'
 export const MEMBER_FOLLOW_PEOPLE = 'follow_people'
 export const MEMBER_LIKE_TOPICS = 'like_topics'
 export const MEMBER_TOKEN = 'member_token'
-
-export const NODE_PULL = 'node'
-export const NODE_TOPICS = 'node_topic_list'
 
 export const FEEDBACK = 'feedback'
 
@@ -35,18 +36,19 @@ export const ActionTypes = {
   APP_LATEST_VERSION,
   APP_SITE_INFO,
   APP_INIT_ERROR,
-  SETTING_LOCALES,
-  NOTIFICATION_LIST_PULL: NOTIFICATION_LATEST,
-  NOTIFICATION_REMOVE,
-  MEMBER_PROFILE_PULL: MEMBER_PROFILE,
-  MEMBER_FOLLOW_PEOPLE_PULL: MEMBER_FOLLOW_PEOPLE,
-  MEMBER_LIKE_TOPICS_PULL: MEMBER_LIKE_TOPICS,
-  MEMBER_TOKEN_REFRESHING: MEMBER_TOKEN,
-  NODE_PULL,
-  NODE_TOPIC_LIST_PULL: NODE_TOPICS,
+  APP_HOME_SWITCH_NODE,
+  APP_HOME_NODE_TOPICS,
+  APP_HOME_LOAD_MORE_TOPICS,
+  APP_SETTING_LOCALES,
+  APP_NOTIFICATION_LATEST,
+  APP_NOTIFICATION_REMOVE,
+  MEMBER_PROFILE,
+  MEMBER_FOLLOW_PEOPLE,
+  MEMBER_LIKE_TOPICS,
+  MEMBER_TOKEN,
   FEEDBACK,
   TOPIC_GET,
-  TOPIC_REPLIES_PULL: TOPIC_REPLIES,
+  TOPIC_REPLIES,
   APP_AUTH,
   APP_LOGOUT,
   APP_LOGIN_SUCCESS,
