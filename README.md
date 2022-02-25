@@ -15,7 +15,7 @@ React Native 快手开发脚手架项目。项目基于 V2EX 开放 API，提供
 特点
 
 1. 基于 React Native 0.67.2 版本。
-2. 使用 TypeScript 编写。
+2. 引入 TypeScript 强类型检查，保证维护性、可读性、稳定性。
 3. i18n 集成，支持多国语言。
 4. redux 应用，并数据持久化。
 
