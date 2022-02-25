@@ -1,4 +1,6 @@
-import { TextStyle } from 'react-native'
+/**
+ * Created by leon<silenceace@gmail.com> on 22/2/21.
+ */
 export interface IThemeColor {
   primaryDark: string
   primary: string
@@ -100,9 +102,39 @@ export interface IThemeTypography {
   inputText: IThemeTypographyProps
 }
 
+export interface IThemeAssets {
+  images: {
+    icons: {
+      logo: string
+      icon: string
+      home: string
+      homeInactive: string
+      discovery: string
+      discoveryInactive: string
+      notification: string
+      notificationInactive: string
+      profile: string
+      profileInactive: string
+      moreCycleGrey: string
+      timeCycleGrey: string
+      heartGrey: string
+      heartRed: string
+      gold: string
+      silver: string
+      bronze: string
+      arrowRightGrey: string
+      send: string
+      starOutline: string
+      starFilled: string
+      chatGrey: string
+    }
+  }
+}
+
 export interface ITheme {
   colors: IThemeColor
   spacing: IThemeSpacing
   dimens: IThemeDimen
   typography: IThemeTypography
+  assets: IThemeAssets
 }

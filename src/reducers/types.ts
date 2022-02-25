@@ -5,13 +5,13 @@ export declare module IState {
    * @description 全局状态
    */
   export interface AppState {
-    v2ex: V2exAPI.V2ex
-    latestTopics: NodeState
-    hotTopics: NodeState
-    name: string
-    version: string
+    v2ex?: V2exAPI.V2ex
+    latestNode?: NodeState
+    hotNode?: NodeState
+    name?: string
+    version?: string
     icon: string
-    aboutus: {
+    aboutUs: {
       author: string
       email: string
       github: string

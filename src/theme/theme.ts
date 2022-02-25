@@ -3,12 +3,14 @@ import colors from './colors'
 import spacing from './spacing'
 import dimens from './dimens'
 import typography from './typography'
+import assets from './assets'
 
 const theme: ITheme = {
   colors,
-  spacing,
+  spacing: spacing,
   dimens,
-  typography
+  typography,
+  assets
 }
 
 export default theme
