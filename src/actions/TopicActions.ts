@@ -2,7 +2,7 @@
  * Created by leon<silenceace@gmail.com> on 22/2/22.
  */
 
-import { TOPIC_GET, TOPIC_REPLIES_PULL } from './types'
+import { TOPIC_GET, TOPIC_REPLIES_PULL } from '@types'
 
 export const topicGet = () => async (dispatch: any) => {
   dispatch({

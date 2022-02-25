@@ -1,4 +1,4 @@
-import { SETTING_LOCALES } from './types'
+import { SETTING_LOCALES } from '@types'
 
 export const setLocales = (languageTag: string) => ({
   type: SETTING_LOCALES,

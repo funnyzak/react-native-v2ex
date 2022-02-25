@@ -1,9 +1,9 @@
 import _ from 'lodash'
 import { V2exAPI, V2exObject } from './types'
 import member from './lib/member'
-// import node from './lib/node'
-// import notification from './lib/notification'
-// import topic from './lib/topic'
+import node from './lib/node'
+import notification from './lib/notification'
+import topic from './lib/topic'
 import { logError } from '../helper/logger'
 
 /**
@@ -12,7 +12,7 @@ import { logError } from '../helper/logger'
 const defaultConfiguration = {
   url: 'https://www.v2ex.com',
   store: 'api',
-  userAgent: 'Starter App Api Library',
+  userAgent: 'V2ex App API Library',
   authentication: {
     token: undefined,
     scope: undefined,
@@ -25,15 +25,19 @@ class V2ex {
   root_path?: string
   token?: string
   member: V2exAPI.Member = member(this)
+  node: V2exAPI.Node = node(this)
+  topic: V2exAPI.Topic = topic(this)
+  notification: V2exAPI.Notification = notification(this)
 
   setOptions(options: V2exAPI.Configuration) {
-    this.configuration = { ...defaultConfiguration, ...options }
+    this.configuration = _.merge(this.configuration, options)
     this.root_path = `/${this.configuration.store}`
 
     this.member = member(this)
+    this.node = node(this)
+    this.notification = notification(this)
+    this.topic = topic(this)
 
-    // this.node = node(this)
-    // this.notification = notification(this)
     logError(new Error(JSON.stringify(options)))
   }
 
@@ -42,7 +46,6 @@ class V2ex {
       this.token = this.configuration.authentication.token
       return
     }
-    throw new Error('Need Integration Token!')
   }
 
   setToken(token?: string) {
@@ -88,7 +91,12 @@ class V2ex {
       'User-Agent': this.configuration.userAgent || 'Starter App Api Library',
       'Content-Type': 'application/json'
     }
-    if (this.token) {
+
+    if (version === 'v2' && !this.token) {
+      throw new Error('Need Integration Token!')
+    }
+
+    if (this.token && version === 'v2') {
       headers.Authorization = `Bearer ${this.token}`
     }
 
@@ -148,4 +156,6 @@ class V2ex {
   }
 }
 
-export const v2ex: V2exAPI.V2ex = new V2ex()
+const v2exLib: V2exAPI.V2ex = new V2ex()
+
+export { v2exLib }
