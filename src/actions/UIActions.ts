@@ -1,6 +1,6 @@
-import { APP_LOCALES } from './types'
+import { SETTING_LOCALES } from './types'
 
 export const setLocales = (languageTag: string) => ({
-  type: APP_LOCALES,
+  type: SETTING_LOCALES,
   payload: { languageTag }
 })

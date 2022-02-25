@@ -2,23 +2,23 @@
  * Created by leon<silenceace@gmail.com> on 22/2/22.
  */
 import { Dispatch } from 'redux'
-import { MEMBER_PROFILE_GET, MEMBER_TOKEN_GET, V2EX_CURRNET_TOKEN, V2exObject } from './types'
+import { MEMBER_PROFILE_PULL, MEMBER_TOKEN, V2exObject } from '@types'
 
 export const getProfile = () => async (dispatch: Dispatch) => {
   dispatch({
-    type: MEMBER_PROFILE_GET,
+    type: MEMBER_PROFILE_PULL,
     payload: {}
   })
 }
 
 export const getToken = () => async (dispatch: Dispatch) => {
   dispatch({
-    type: MEMBER_TOKEN_GET,
+    type: MEMBER_TOKEN,
     payload: {}
   })
 }
 
 export const setCurrentToken = (token?: V2exObject.MToken) => ({
-  type: V2EX_CURRNET_TOKEN,
+  type: MEMBER_TOKEN,
   payload: token
 })
