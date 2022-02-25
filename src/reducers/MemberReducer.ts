@@ -1,11 +1,18 @@
-import { V2EX_CURRNET_TOKEN, V2EX_CURRNET_PROFILE, StoreAction, IState } from '@types'
+import { Action, IState, MEMBER_TOKEN, MEMBER_PROFILE } from '@types'
 
-export default (state: IState.MemberState, action: StoreAction) => {
+const INIT_STATE: IState.MemberState = {
+  loginState: {
+    logined: false
+  },
+  refreshing: false
+}
+
+export default (state: IState.MemberState, action: Action): IState.MemberState => {
   switch (action.type) {
-    case V2EX_CURRNET_TOKEN:
-      return { ...state, token: action.payload }
-    case V2EX_CURRNET_PROFILE:
-      return { ...state, profile: action.payload }
+    case MEMBER_TOKEN:
+      return { ...INIT_STATE, ...state, token: action.payload }
+    case MEMBER_PROFILE:
+      return { ...INIT_STATE, ...state, profile: action.payload }
     default:
       return state
   }

@@ -2,11 +2,11 @@
  * Created by leon<silenceace@gmail.com> on 22/2/22.
  */
 import { Dispatch } from 'redux'
-import { MEMBER_PROFILE_PULL, MEMBER_TOKEN, V2exObject } from '@types'
+import { MEMBER_PROFILE, MEMBER_TOKEN, V2exObject } from '@types'
 
 export const getProfile = () => async (dispatch: Dispatch) => {
   dispatch({
-    type: MEMBER_PROFILE_PULL,
+    type: MEMBER_PROFILE,
     payload: {}
   })
 }
