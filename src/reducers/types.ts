@@ -11,7 +11,7 @@ export declare module IState {
     name: string
     version: string
     icon: string
-    aboutUS: {
+    aboutus: {
       author: string
       email: string
       github: string
@@ -45,9 +45,13 @@ export declare module IState {
    * 节点状态
    */
   export interface NodeState {
-    refreshing: boolean
-    loadmore: boolean
+    refreshing?: boolean
+    loadmore?: boolean
+
     name: string
+    title?: string
+    loginRequired: boolean
+
     node?: V2exObject.Node
     topicList?: V2exObject.Topic[]
   }
