@@ -1,3 +1,6 @@
+/**
+ * Created by leon<silenceace@gmail.com> on 22/2/23.
+ */
 import { NavigationActions, NavigationContainerComponent } from 'react-navigation'
 
 let navigator: NavigationContainerComponent

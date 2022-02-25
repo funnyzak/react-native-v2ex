@@ -1,3 +1,6 @@
+/**
+ * Created by leon<silenceace@gmail.com> on 22/2/24.
+ */
 export const NAVIGATION_HOME_PATH = 'home'
 
 export const NAVIGATION_LATEST_PATH = 'latest_topics'
