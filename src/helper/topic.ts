@@ -1,1 +1,1 @@
-import { v2exLib } from '../v2ex'
+import { v2exLib } from '@src/v2ex'

@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux'
 import _ from 'lodash'
 import { v2exLib } from '@src/v2ex'
-import { v2exOptions } from '@src/config/v2ex'
+import { v2exOptions } from '@config/v2ex'
 import { APP_INIT, APP_SITE_STAT, APP_INIT_ERROR, APP_SITE_INFO, IState } from '@types'
 import { logError } from '@src/helper/logger'
 import { theme } from '@src/theme'
