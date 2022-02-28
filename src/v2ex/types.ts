@@ -54,6 +54,9 @@ export declare module V2exAPI {
     configuration: Configuration
     root_path?: string
     token?: string
+    node: Node
+    topic: Topic
+    notification: Notification
     member: Member
     setOptions: (options: Configuration) => void
     init: () => void
