@@ -33,6 +33,7 @@ export interface IThemeDimen {
   WINDOW_WIDTH: number
   WINDOW_HEIGHT: number
   headerButtonSize: number
+  badgeSize: number
   borderRadius: number
   defaultButtonWidth: number
   defaultButtonHeight: number
@@ -53,10 +54,10 @@ export interface IThemeSpacing {
 }
 
 export interface IThemeTypographyProps {
-  fontFamily: string
+  fontFamily?: string
   color: string
   fontSize: number
-  fontStyle: 'normal' | 'italic' | undefined
+  fontStyle?: 'normal' | 'italic' | undefined
   fontWeight: 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | undefined
 }
 

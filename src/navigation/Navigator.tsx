@@ -33,13 +33,12 @@ const renderIcon = (focused: boolean, activeIcon: any, inactiveIcon: any): Eleme
   return <Image source={icon} />
 }
 
-const badgeSize = 18
 const badgeStyles = StyleSheet.create({
   badge: {
-    height: badgeSize,
-    fontSize: badgeSize - 6,
+    height: theme.dimens.badgeSize,
+    fontSize: theme.dimens.badgeSize - 6,
     fontWeight: 'bold',
-    borderRadius: badgeSize
+    borderRadius: theme.dimens.badgeSize
   }
 })
 
