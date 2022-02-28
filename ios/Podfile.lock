@@ -367,7 +367,7 @@ PODS:
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
-  - RNGestureHandler (2.2.0):
+  - RNGestureHandler (1.10.3):
     - React-Core
   - RNLocalize (2.2.0):
     - React-Core
@@ -624,7 +624,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
   RNDeviceInfo: 4944cf8787b9c5bffaf301fda68cc1a2ec003341
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
-  RNGestureHandler: bf572f552ea324acd5b5464b8d30755b2d8c1de6
+  RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNLocalize: 6571ea792a7dcb6d217c98c14d9147e9417cef62
   RNReanimated: 32c91e28f5780937b8efc07ddde1bab8d373fe0b
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d

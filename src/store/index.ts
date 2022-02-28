@@ -8,7 +8,7 @@ import { createBlacklistFilter } from 'redux-persist-transform-filter'
 import AsyncStorage from '@react-native-community/async-storage'
 
 import reducers from '@src/reducers'
-import { window } from '../types'
+import { window } from '@src/types'
 
 const memberSubsetBlacklistFilter = createBlacklistFilter('member', ['refreshing'])
 const uiSubsetBlacklistFilter = createBlacklistFilter('ui', ['refreshing'])

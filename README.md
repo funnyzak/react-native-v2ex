@@ -130,6 +130,9 @@ npx react-native upgrade
 
     [https://stackoverflow.com/questions/64768328/invariant-violation-module-appregistry-is-not-a-registered-callable-module-cal](https://stackoverflow.com/questions/64768328/invariant-violation-module-appregistry-is-not-a-registered-callable-module-cal)
 
+2.  ** RCTBridge required dispatch_sync to load RNGestureHandlerModule**
+    > [https://github.com/software-mansion/react-native-gesture-handler/issues/722](https://github.com/software-mansion/react-native-gesture-handler/issues/722)
+
 ## 参考
 
 - [enviroment setup](https://reactnative.dev/docs/environment-setup)
