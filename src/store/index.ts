@@ -39,5 +39,10 @@ export const store = createStore(persistedReducer, composeEnhancer(applyMiddlewa
 
 export const persistor = persistStore(store as any)
 
+export type TStore = typeof store
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+
 // TODO: remove `persistor.purge()` to persist your application data
 // persistor.purge()
