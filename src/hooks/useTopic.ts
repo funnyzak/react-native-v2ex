@@ -10,8 +10,12 @@ export const useTopic = ({ topicId }: { topicId: string }) => {
   const v2ex = useAppSelector((_state: any) => _state.app.v2ex as V2exAPI.V2ex)
 
   useEffect(() => {
-    setTopic(undefined)
-  }, [topicId])
+    const fetchTopic = async () => {
+      const _topic = await v2ex.topic.get(topicId)
+      setTopic(_topic)
+    }
+    fetchTopic()
+  }, [topicId]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return {
     topic
