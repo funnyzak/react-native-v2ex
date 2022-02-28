@@ -39,6 +39,13 @@
       "zToA": "Name: z to a"
     }
   },
+  "router": {
+    "home": "Home",
+    "node": "Node",
+    "notification": "Notification",
+    "setting": "Setting",
+    "mine": "My"
+  },
   "errors": {
     "error": "Error",
     "noProduct": "No products found"

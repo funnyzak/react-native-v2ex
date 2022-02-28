@@ -142,6 +142,7 @@ export declare module IState {
    */
   export interface NotificationState {
     refreshing: boolean
+    unread: number
     list?: V2exObject.Notification[]
   }
 }

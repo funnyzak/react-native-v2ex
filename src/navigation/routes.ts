@@ -5,6 +5,8 @@
 import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 export type RootStackParamList = {
+  Draw: undefined
+  BottomTab: undefined
   Home: undefined
   Home2: undefined
   LatestTopics: undefined

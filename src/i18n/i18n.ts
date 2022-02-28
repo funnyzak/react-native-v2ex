@@ -13,7 +13,7 @@ i18n.translations = {
   zh
 }
 
-const fallback = { languageTag: 'en', isRTL: false }
+const fallback = { languageTag: 'zh', isRTL: false }
 
 const { languageTag } = RNLocalize.findBestAvailableLanguage(Object.keys(i18n.translations)) || fallback
 

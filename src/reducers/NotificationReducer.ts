@@ -1,7 +1,8 @@
 import { APP_NOTIFICATION_PULL, APP_NOTIFICATION_LATEST, APP_NOTIFICATION_REMOVE, Action, IState } from '../types'
 
 const INITIAL_STATE: IState.NotificationState = {
-  refreshing: false
+  refreshing: false,
+  unread: 0
 }
 
 export default (state: IState.NotificationState = INITIAL_STATE, action: Action): IState.NotificationState => {
