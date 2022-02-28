@@ -32,6 +32,7 @@ NodeJS、Java、cocoapods、XCode、Watchman。 具体请参考[这里](https://
 - eslint
 - lodash
 - redux
+- react-native-safe-area-context
 - react-native-render-html
 - react-navigation
 - react-devtools
@@ -68,6 +69,9 @@ yarn ios
 # 注意gradle和java sdk(java home)的版本对应，可在 ./android/gradle.properties 设置 org.gradle.java.home
 yarn android
 
+# debug
+npx react-devtools
+
 # 打印版本信息
 npx react-native info
 
@@ -81,6 +85,8 @@ npx react-native upgrade
 ### iOS 调试
 
 > 可以通过摇晃设备或是选择 iOS 模拟器的"Hardware"菜单中的"Shake Gesture"选项来打开开发菜单。另外，如果是在 iOS 模拟器中运行，还可以按下 Command⌘ + D 快捷键，Android 模拟器对应的则是 Command⌘ + M（windows 上可能是 F1 或者 F2），或是直接在命令行中运行 adb shell input keyevent 82 来发送菜单键命令。
+
+安装 **Flipper** 虚拟机注入调试。
 
 ## 目录
 
@@ -109,6 +115,20 @@ npx react-native upgrade
     ├── package.json
     ├── tsconfig.json
     └── yarn.lock
+
+## 常见问题
+
+1.  **Invariant Violation: Module AppRegistry is not a registered callable module**
+
+        remove app from the emulator
+        npm cache clean --force
+        watchman watch-del-all
+        cd ios
+        pod update / pod install
+        cd ..
+        npx react-native run-ios
+
+    [https://stackoverflow.com/questions/64768328/invariant-violation-module-appregistry-is-not-a-registered-callable-module-cal](https://stackoverflow.com/questions/64768328/invariant-violation-module-appregistry-is-not-a-registered-callable-module-cal)
 
 ## 参考
 

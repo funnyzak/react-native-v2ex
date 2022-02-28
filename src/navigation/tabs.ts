@@ -2,7 +2,7 @@
  * Created by leon<silenceace@gmail.com> on 22/2/25.
  */
 
-import { IState } from '@types'
+import { IState } from '../types'
 
 export const NODE_TABS = {
   LATEST: 'latest',

@@ -8,7 +8,7 @@ import { createBlacklistFilter } from 'redux-persist-transform-filter'
 import AsyncStorage from '@react-native-community/async-storage'
 
 import reducers from '@src/reducers'
-import { window } from '@types'
+import { window } from '../types'
 
 const memberSubsetBlacklistFilter = createBlacklistFilter('member', ['refreshing'])
 const uiSubsetBlacklistFilter = createBlacklistFilter('ui', ['refreshing'])
@@ -33,11 +33,11 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, reducers as any)
 
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const composeEnhancer = window ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose
 
 export const store = createStore(persistedReducer, composeEnhancer(applyMiddleware(thunk)))
 
 export const persistor = persistStore(store as any)
 
 // TODO: remove `persistor.purge()` to persist your application data
-persistor.purge()
+// persistor.purge()

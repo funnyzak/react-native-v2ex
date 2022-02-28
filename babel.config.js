@@ -9,8 +9,7 @@ module.exports = {
         alias: {
           '@src': './src',
           '@config': './src/config',
-          '@res': './src/assets',
-          '@type': './src/types'
+          '@res': './src/assets'
         }
       }
     ],
