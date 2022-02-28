@@ -69,7 +69,9 @@ const colors: IThemeColor = {
    */
   captionText: '#8c8c8c',
   black: '#000000',
-  white: '#ffffff'
+  white: '#ffffff',
+
+  modalBackground: '#999999'
 }
 
 export default colors

@@ -23,6 +23,7 @@ export interface IThemeColor {
   captionText: string
   black: string
   white: string
+  modalBackground: string
 }
 
 export interface IThemeDimen {
