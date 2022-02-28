@@ -153,6 +153,8 @@ npx react-native upgrade
 - [v2ex api 2.0](https://v2ex.com/help/api)
 - [v2ex api](https://www.v2ex.com/p/7v9TEc53)
 - [v2ex token](https://www.v2ex.com/settings/tokens)
+- [react native sample](https://github.com/facebook/react-native)
+- [react native typescript sample](https://github.com/react-native-community/react-native-template-typescript)
 
 ## License
 

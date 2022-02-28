@@ -1,26 +1,21 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/2/23.
  */
-import { NavigationActions, NavigationContainerComponent } from 'react-navigation'
+import { createNavigationContainerRef, NavigationContainerRefWithCurrent } from '@react-navigation/native'
+import { RootStackParamList } from './routes'
 
-let navigator: NavigationContainerComponent
+let navigationRef = createNavigationContainerRef<RootStackParamList>()
 
-function setTopLevelNavigator(navigatorRef: NavigationContainerComponent) {
-  navigator = navigatorRef
+function setTopLevelNavigator(navigatorRef: NavigationContainerRefWithCurrent<RootStackParamList>) {
+  navigationRef = navigatorRef
 }
 
-function navigate(routeName: string, params: Record<string, string>) {
-  navigator.dispatch(
-    NavigationActions.navigate({
-      routeName,
-      params
-    })
-  )
+function navigate(screen: keyof RootStackParamList, params: any = undefined) {
+  navigationRef.navigate(screen, params)
 }
 
 function goBack() {
-  //navigator._navigation.goBack();
-  navigator.dispatch(NavigationActions.back())
+  navigationRef.goBack()
 }
 
 // add other navigation functions that you need and export them
