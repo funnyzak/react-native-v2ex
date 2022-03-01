@@ -2,14 +2,21 @@
   "common": {
     "ok": "确定",
     "cancel": "取消",
-    "back": "返回"
+    "back": "返回",
+    "token": "令牌"
   },
-  "router":{
+  "router": {
     "home": "首页",
     "node": "节点",
     "notification": "通知",
     "setting": "设置",
     "mine": "我的"
+  },
+  "placeholder": {
+    "token": "请输入令牌"
+  },
+  "login": {
+    "loginButton": "授权登陆",
+    "getToken": "获取令牌"
   }
 }
-
