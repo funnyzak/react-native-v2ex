@@ -6,7 +6,6 @@ import { APP_INIT, APP_SITE_STAT, APP_INIT_ERROR, APP_SITE_INFO, IState } from '
 import { logError } from '@src/helper/logger'
 import { theme } from '@src/theme'
 import DeviceInfo from 'react-native-device-info'
-import { DeviceEventEmitter } from 'react-native'
 
 export const initV2ex = () => {
   v2exLib.setOptions(v2exOptions)

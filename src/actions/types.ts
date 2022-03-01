@@ -21,7 +21,6 @@ export const APP_NOTIFICATION_REMOVE = 'notification_remove'
 export const MEMBER_PROFILE = 'profile'
 export const MEMBER_FOLLOW_PEOPLE = 'follow_people'
 export const MEMBER_LIKE_TOPICS = 'like_topics'
-export const MEMBER_TOKEN = 'member_token'
 
 export const FEEDBACKING = 'feedbacking'
 export const FEEDBACK_DONE = 'feedback_done'
@@ -29,9 +28,10 @@ export const FEEDBACK_DONE = 'feedback_done'
 export const TOPIC_GET = 'topic_get'
 export const TOPIC_REPLIES = 'topic_replies'
 
-export const APP_AUTH = 'v2ex_auth'
+export const APP_AUTH_LOADING = 'v2ex_auth_loading'
+export const APP_AUTH = 'member_token'
 export const APP_LOGOUT = 'v2ex_logout'
-export const APP_LOGIN_SUCCESS = 'v2ex_login_success'
+export const APP_AUTH_SUCCESS = 'v2ex_auth_success'
 export const APP_AUTH_ERROR = 'v2ex_auth_error'
 
 export const ActionTypes = {
@@ -47,17 +47,17 @@ export const ActionTypes = {
   APP_NOTIFICATION_LATEST,
   APP_NOTIFICATION_REMOVE,
   MEMBER_PROFILE,
+  APP_AUTH_LOADING,
   MEMBER_FOLLOW_PEOPLE,
   MEMBER_LIKE_TOPICS,
-  MEMBER_TOKEN,
+  MEMBER_TOKEN: APP_AUTH,
   FEEDBACKING,
   TOPIC_GET,
   APP_SITE_STAT,
   TOPIC_REPLIES,
   FEEDBACK_DONE,
-  APP_AUTH,
   APP_LOGOUT,
-  APP_LOGIN_SUCCESS,
+  APP_AUTH_SUCCESS,
   APP_AUTH_ERROR
 }
 
