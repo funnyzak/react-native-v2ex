@@ -52,6 +52,10 @@ export declare module IState {
     login: {
       token?: string
       tokenGeneratedLink: string
+
+      error: string | null
+      success: string | null
+      loading: boolean
     }
     feedback: {
       processing: boolean
