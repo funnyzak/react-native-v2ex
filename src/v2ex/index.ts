@@ -113,26 +113,27 @@ class V2ex {
         ...params
       })
       fetch(uri, { method, headers, body: JSON.stringify(data) })
-        .then((response) => {
-          console.log(response)
+        .then((response: Response) => {
+          console.log(response, response.status, response.ok)
           if (response.ok) {
             return response.json()
           }
           // Possible 401 or other network error
           return response.json().then((errorResponse) => {
-            logError(errorResponse)
             reject(errorResponse)
           })
         })
         .then((responseData) => {
-          // debugger;
-          console.log(responseData)
+          if (responseData) {
+            // debugger;
+            console.log(responseData)
 
-          if (version === 'v2') {
-            const res = responseData as V2exAPI.V2Response<T>
-            return resolve(res.result)
+            if (version === 'v2') {
+              const res = responseData as V2exAPI.V2Response<T>
+              return resolve(res.result)
+            }
+            resolve(responseData)
           }
-          resolve(responseData)
         })
         .catch((error) => {
           logError(error)
