@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import { Text as RNText, StyleSheet, StyleProp, ViewStyle } from 'react-native'
+import { Text as RNText, TextProps as NativeTextProps, StyleSheet, StyleProp, ViewStyle } from 'react-native'
 import PropTypes from 'prop-types'
-import { ThemeContext } from '../../theme'
-import { ITheme, IThemeTypographyProps } from '../../theme/types'
+import { ThemeContext } from '@src/theme'
+import { ITheme, IThemeTypographyProps } from '@src/types'
 
 // Possible value for prop "type" for Text
 const HEADING = 'heading'
@@ -13,10 +13,9 @@ const CAPTION = 'caption'
 
 type TextType = 'heading' | 'subheading' | 'body' | 'label' | 'caption'
 
-interface TextProps {
+interface TextProps extends NativeTextProps {
   type: TextType
   bold: boolean
-  style?: StyleProp<ViewStyle>
 }
 
 const Text = ({
