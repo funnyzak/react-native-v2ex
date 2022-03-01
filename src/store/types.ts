@@ -92,17 +92,6 @@ export declare module IState {
    */
   export interface MemberState {
     /**
-     * @description 用户登陆状态
-     */
-    loginState: {
-      logined: boolean
-      cookies?: string
-      is2faRequired?: boolean
-      errorList?: Error[]
-      once?: boolean
-    }
-
-    /**
      * @description 用户令牌信息
      */
     token?: V2exObject.MToken

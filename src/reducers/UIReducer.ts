@@ -23,7 +23,7 @@ export default (state: IState.UIState = INITIAL_STATE, action: Action): IState.U
     case APP_AUTH_ERROR:
       return _.merge(state, { login: { loading: false, error: action.payload } })
     case APP_AUTH_SUCCESS:
-      return _.merge(state, { login: { loading: false, token: action.payload } })
+      return _.merge(state, { login: { loading: false, token: action.payload, error: '' } })
     case FEEDBACKING:
       return _.merge(state, { feedback: { processing: true } })
     case FEEDBACK_DONE:

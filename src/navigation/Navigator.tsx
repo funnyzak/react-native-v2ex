@@ -6,6 +6,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer'
 import { DrawerToggleButton } from '@react-navigation/drawer'
 import { Image, StyleSheet } from 'react-native'
 import { translate } from '@src/i18n'
+import { useAppDispatch, useAppSelector } from '@src/hooks'
 
 import { store } from '@src/store'
 import { RootStackParamList } from './routes'
@@ -101,17 +102,24 @@ const DrawNavigator = () => {
 }
 
 const StackNavigator = createNativeStackNavigator<RootStackParamList>()
+
 function Natigator() {
-  const {
-    member: { loginState }
-  }: any = store.getState()
+  const { token } = useAppSelector((state: any) => state.member)
 
   return (
     <StackNavigator.Navigator>
-      {loginState.logined ? (
-        <StackNavigator.Screen name="BottomTab" component={MainAppNavigator} options={{ title: 'Home', headerShown: false }} />
+      {!token ? (
+        <StackNavigator.Screen
+          name="SignIn"
+          component={SignInScreen}
+          options={{
+            title: 'SignIn',
+            headerShown: false,
+            animationTypeForReplace: !token ? 'pop' : 'push'
+          }}
+        />
       ) : (
-        <StackNavigator.Screen name="SignIn" component={SignInScreen} options={{ title: 'SignIn', headerShown: false }} />
+        <StackNavigator.Screen name="BottomTab" component={MainAppNavigator} options={{ title: 'Home', headerShown: false }} />
       )}
     </StackNavigator.Navigator>
   )

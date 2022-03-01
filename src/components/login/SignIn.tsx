@@ -8,13 +8,12 @@ import { translate } from '@src/i18n'
 import { connect } from 'react-redux'
 import { Spinner, Button, Input, Text } from '../common'
 import { useAppDispatch, useAppSelector } from '@src/hooks'
-import { TouchableOpacity, KeyboardAvoidingView, View, Platform, ViewStyle, TextStyle } from 'react-native'
+import { TouchableOpacity, Linking, KeyboardAvoidingView, View, Platform, ViewStyle, TextStyle } from 'react-native'
 import { SignInScreenProps } from '@src/navigation/routes'
 import { tokenSync } from '@src/actions'
 
 const Screen = ({ loading, error, success, navigation, route, auth: _auth }: SignInScreenProps) => {
   const [token, setToken] = useState('')
-  const dispatch = useAppDispatch()
 
   const theme = useContext(ThemeContext)
   const {
@@ -25,7 +24,14 @@ const Screen = ({ loading, error, success, navigation, route, auth: _auth }: Sig
     _auth(token)
   }
 
-  const onGetTokenPress = () => {}
+  const onGetTokenPress = async () => {
+    const supported = await Linking.canOpenURL(tokenGeneratedLink)
+    if (supported) {
+      await Linking.openURL(tokenGeneratedLink)
+    } else {
+      Alert.alert({ message: `Don't know how to open this URL: ${tokenGeneratedLink}` })
+    }
+  }
 
   const renderButtons = () => {
     if (loading) {

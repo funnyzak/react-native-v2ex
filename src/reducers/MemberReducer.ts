@@ -1,8 +1,5 @@
 import { Action, IState, APP_AUTH, MEMBER_PROFILE, APP_LOGOUT } from '../types'
 const INITIAL_STATE: IState.MemberState = {
-  loginState: {
-    logined: false
-  },
   refreshing: false
 }
 
