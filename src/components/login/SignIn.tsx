@@ -62,7 +62,9 @@ const Screen = ({ loading, error, success, navigation, route, auth: _auth }: Sig
 
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container(theme)}>
-      <Logo width={131.25} height={75} />
+      <View style={{ marginBottom: 20 }}>
+        <Logo width={131.25} height={75} />
+      </View>
       <Input
         autoCapitalize="none"
         underlineColorAndroid="transparent"
@@ -93,7 +95,7 @@ const styles = {
     paddingTop: theme.dimens.WINDOW_HEIGHT * 0.1
   }),
   inputContainer: (theme: ITheme): ViewStyle => ({
-    width: theme.dimens.WINDOW_WIDTH * 0.7,
+    width: theme.dimens.WINDOW_WIDTH * 0.9,
     marginBottom: theme.spacing.large
   }),
   buttonMargin: (theme: ITheme): ViewStyle => ({

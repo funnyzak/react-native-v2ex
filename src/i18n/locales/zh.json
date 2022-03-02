@@ -10,7 +10,8 @@
     "node": "节点",
     "notification": "通知",
     "setting": "设置",
-    "mine": "我的"
+    "mine": "我的",
+    "signIn": "登录"
   },
   "placeholder": {
     "token": "请输入令牌"

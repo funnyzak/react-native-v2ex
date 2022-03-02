@@ -31,14 +31,14 @@ const colors: IThemeColor = {
   disabledDark: 'hsl(208, 8%, 60%)',
   /**
    * A helper for making something see-thru. Use sparingly as many layers of transparency
-   * can cause older Android devices to slow down due to the excessive compositing required
+   * can cause older AndroiddisabledDark devices to slow down due to the excessive compositing required
    * by their under-powered GPUs.
    */
   transparent: 'transparent',
   /**
    * The screen background.
    */
-  background: '#F7F6F4',
+  background: '#ffffff',
   /**
    * To be used as a default background for all components, like Card, CardSection, List etc
    */

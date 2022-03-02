@@ -113,8 +113,7 @@ function Natigator() {
           name="SignIn"
           component={SignInScreen}
           options={{
-            title: 'SignIn',
-            headerShown: false,
+            title: translate('router.signIn'),
             animationTypeForReplace: !token ? 'pop' : 'push'
           }}
         />
