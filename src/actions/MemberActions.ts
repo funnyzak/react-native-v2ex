@@ -7,9 +7,10 @@ import { MEMBER_PROFILE, APP_AUTH, APP_AUTH_LOADING, APP_LOGOUT, APP_AUTH_ERROR,
 import { v2exLib } from '@src/v2ex'
 import { logError } from '@src/helper/logger'
 import NavigationService from '@src/navigation/NavigationService'
+import { MEMBER_TOKEN_KEY } from '@src/config/constants'
 
 export const myProfile = () => async (dispatch: Dispatch) => {
-  const _member = await v2exLib.member.mime()
+  const _member = await v2exLib.member.myProfile()
 
   dispatch({
     type: MEMBER_PROFILE,
@@ -29,34 +30,35 @@ export const setCurrentToken = (token?: V2exObject.MToken) => ({
   payload: token
 })
 
-export const tokenSync = (token?: string) => async (dispatch: Dispatch) => {
+export const tokenSync = (token: string) => async (dispatch: Dispatch) => {
   try {
     dispatch({ type: APP_AUTH_LOADING })
 
-    v2exLib.setToken(token)
-    const _token = await v2exLib.member.token()
-
-    tokenSyncSuccess(dispatch, _token)
+    const token_info = await v2exLib.member.token(token)
+    tokenSyncSuccess(dispatch, token_info)
   } catch (e: any) {
     logError(e)
     tokenSyncFail(dispatch, e.message)
   }
 }
 
-const tokenSyncFail = (dispatch: Dispatch, message: string) => {
-  dispatch(errorMessage(message))
-}
-
 const tokenSyncSuccess = async (dispatch: Dispatch, token: V2exObject.MToken) => {
-  await AsyncStorage.setItem('memberToken', token.token)
+  await AsyncStorage.setItem(MEMBER_TOKEN_KEY, token.token)
+
+  v2exLib.setToken(token.token)
 
   dispatch(setCurrentToken(token))
 
-  dispatch({ type: APP_AUTH_SUCCESS, payload: token.token })
+  dispatch({ type: APP_AUTH_SUCCESS, payload: token })
 
   dispatch(myProfile() as any)
 }
 
+const tokenSyncFail = (dispatch: Dispatch, message: string) => {
+  AsyncStorage.removeItem(MEMBER_TOKEN_KEY)
+
+  dispatch(errorMessage(message))
+}
 export const errorMessage = (error: string) => ({
   type: APP_AUTH_ERROR,
   payload: error
@@ -65,6 +67,6 @@ export const errorMessage = (error: string) => ({
 export const logout = () => (dispatch: Dispatch) => {
   dispatch({ type: APP_LOGOUT })
   NavigationService.navigate('SignIn')
-  AsyncStorage.setItem('memberToken', '')
+  AsyncStorage.setItem(MEMBER_TOKEN_KEY, '')
   v2exLib.setToken(undefined)
 }

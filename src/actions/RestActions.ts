@@ -1,7 +1,9 @@
+import AsyncStorage from '@react-native-community/async-storage'
 import { Dispatch } from 'redux'
 import _ from 'lodash'
 import { v2exLib } from '@src/v2ex'
 import { v2exOptions } from '@config/v2ex'
+import { MEMBER_TOKEN_KEY } from '@config/constants'
 import { APP_INIT, APP_SITE_STAT, APP_INIT_ERROR, APP_SITE_INFO, IState } from '../types'
 import { logError } from '@src/helper/logger'
 import { theme } from '@src/theme'
@@ -14,7 +16,12 @@ export const initV2ex = () => {
     try {
       v2exLib.init()
 
+      const customerToken = await AsyncStorage.getItem(MEMBER_TOKEN_KEY)
+
       v2exLib.setUserAgent(await DeviceInfo.getUserAgent())
+      if (customerToken !== null) {
+        v2exLib.setToken(customerToken)
+      }
 
       dispatchSiteInfo(dispatch)
 
