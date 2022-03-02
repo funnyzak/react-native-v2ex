@@ -6,11 +6,8 @@ import { persistStore, persistReducer } from 'redux-persist'
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 import { createBlacklistFilter } from 'redux-persist-transform-filter'
 import AsyncStorage from '@react-native-community/async-storage'
-
 import { composeWithDevTools } from '@redux-devtools/extension'
-
 import reducers from '@src/reducers'
-import { window } from '@src/types'
 
 const memberSubsetBlacklistFilter = createBlacklistFilter('member', ['refreshing'])
 const uiSubsetBlacklistFilter = createBlacklistFilter('ui', [
