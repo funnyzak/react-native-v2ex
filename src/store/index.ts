@@ -11,8 +11,15 @@ import reducers from '@src/reducers'
 import { window } from '@src/types'
 
 const memberSubsetBlacklistFilter = createBlacklistFilter('member', ['refreshing'])
-const uiSubsetBlacklistFilter = createBlacklistFilter('ui', ['refreshing'])
-const appSubsetBlacklistFilter = createBlacklistFilter('app', ['refreshing', 'errorMessage', 'latestVersion', 'deviceInfo', 'v2ex'])
+const uiSubsetBlacklistFilter = createBlacklistFilter('ui', [
+  'refreshing',
+  'login.message',
+  'login.loading',
+  'login.success',
+  'login.error',
+  'feedback.processing'
+])
+const appSubsetBlacklistFilter = createBlacklistFilter('app', ['refreshing', 'errorMessage', 'version', 'latestVersion', 'deviceInfo', 'v2ex'])
 const homeSubsetBlacklistFilter = createBlacklistFilter('home', ['refreshing'])
 const settingSubsetBlacklistFilter = createBlacklistFilter('setting', ['refreshing'])
 const notificationSubsetBlacklistFilter = createBlacklistFilter('notification', ['refreshing'])

@@ -58,8 +58,6 @@ export declare module IState {
     }
     feedback: {
       processing: boolean
-      email?: string
-      message?: string
     }
   }
 
