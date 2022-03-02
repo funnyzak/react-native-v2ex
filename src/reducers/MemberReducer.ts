@@ -8,7 +8,7 @@ export default (state: IState.MemberState = INITIAL_STATE, action: Action): ISta
     case APP_AUTH:
       return { ...state, token: action.payload }
     case APP_LOGOUT:
-      return { ...state, token: undefined }
+      return { ...state, token: undefined, profile: undefined }
     case MEMBER_PROFILE:
       return { ...state, profile: action.payload }
     default:
