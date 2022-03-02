@@ -36,6 +36,7 @@ NodeJS、Java、cocoapods、XCode、Watchman。 具体请参考[这里](https://
 - react-native-render-html
 - react-navigation
 - react-devtools
+- @redux-devtools/extension
 - react-native-webview
 - async-storage
 - react-native-gesture-handler
@@ -87,6 +88,10 @@ npx react-native upgrade
 > 可以通过摇晃设备或是选择 iOS 模拟器的"Hardware"菜单中的"Shake Gesture"选项来打开开发菜单。另外，如果是在 iOS 模拟器中运行，还可以按下 Command⌘ + D 快捷键，Android 模拟器对应的则是 Command⌘ + M（windows 上可能是 F1 或者 F2），或是直接在命令行中运行 adb shell input keyevent 82 来发送菜单键命令。
 
 安装 **Flipper** 虚拟机注入调试。
+
+使用 **[react-native-debugger](https://github.com/jhen0409/react-native-debugger)**
+
+使用 **[react-devtools](https://www.npmjs.com/package/react-devtools)**。
 
 ## 目录
 

@@ -7,6 +7,8 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 import { createBlacklistFilter } from 'redux-persist-transform-filter'
 import AsyncStorage from '@react-native-community/async-storage'
 
+import { composeWithDevTools } from '@redux-devtools/extension'
+
 import reducers from '@src/reducers'
 import { window } from '@src/types'
 
@@ -40,7 +42,9 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, reducers as any)
 
-const composeEnhancer = window ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose
+const composeEnhancer = composeWithDevTools({
+  // Specify name here, actionsDenylist, actionsCreators and other options if needed
+})
 
 export const store = createStore(persistedReducer, composeEnhancer(applyMiddleware(thunk)))
 
