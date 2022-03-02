@@ -64,28 +64,40 @@ export declare module V2exAPI {
     setUserAgent(userAgent?: string): void
     siteInfo: () => Promise<V2exObject.SiteInfo>
     siteStat: () => Promise<V2exObject.SiteStat>
-    post<T>(path: string, params?: Record<string, string>, version?: API_VERSION): Promise<T>
-    put<T>(path: string, params?: Record<string, string>, version?: API_VERSION): Promise<T>
-    get<T>(path: string, params?: Record<string, string>, data?: any, version?: API_VERSION): Promise<T>
-    delete<T>(path: string, params?: Record<string, string>, version?: API_VERSION): Promise<T>
-    send<T>(path: string, method: string, params?: Record<string, string>, data?: any, version?: API_VERSION): Promise<T>
+    post<T>(path: string, headers?: { [name: string]: string }, params?: Record<string, string>, version?: API_VERSION): Promise<T>
+    put<T>(path: string, headers?: { [name: string]: string }, params?: Record<string, string>, version?: API_VERSION): Promise<T>
+    get<T>(path: string, headers?: { [name: string]: string }, params?: Record<string, string>, data?: any, version?: API_VERSION): Promise<T>
+    delete<T>(path: string, headers?: { [name: string]: string }, params?: Record<string, string>, version?: API_VERSION): Promise<T>
+    send<T>(
+      path: string,
+      method: string,
+      headers?: { [name: string]: string },
+      params?: Record<string, string>,
+      data?: any,
+      version?: API_VERSION
+    ): Promise<T>
     getErrorMessageForResponse(data: any): string
   }
   export interface Member {
     /**
      * Get my token info
      */
-    token: () => Promise<V2exObject.MToken>
+    myToken: () => Promise<V2exObject.MToken>
 
     /**
      * Get my profile
      */
-    mime: () => Promise<V2exObject.Member>
+    myProfile: () => Promise<V2exObject.Member>
 
     /**
      * Get user profile
      */
     profile: (id: string | number) => Promise<V2exObject.Member>
+
+    /**
+     * check user token
+     */
+    token: (token: string) => Promise<V2exObject.MToken>
   }
 
   export interface Node {

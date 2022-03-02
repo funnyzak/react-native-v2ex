@@ -64,23 +64,30 @@ class V2ex {
     return this.get<V2exObject.SiteStat>('/site/stats.json', undefined, undefined, undefined)
   }
 
-  post<T>(path: string, params?: Record<string, string>, version?: V2exAPI.API_VERSION): Promise<T> {
-    return this.send<T>(path, 'POST', undefined, params, version)
+  post<T>(path: string, headers?: { [name: string]: string }, params?: Record<string, string>, version?: V2exAPI.API_VERSION): Promise<T> {
+    return this.send<T>(path, 'POST', headers, undefined, params, version)
   }
 
-  put<T>(path: string, params?: Record<string, string>, version?: V2exAPI.API_VERSION): Promise<T> {
-    return this.send<T>(path, 'PUT', undefined, params, version)
+  put<T>(path: string, headers?: { [name: string]: string }, params?: Record<string, string>, version?: V2exAPI.API_VERSION): Promise<T> {
+    return this.send<T>(path, 'PUT', headers, undefined, params, version)
   }
 
-  get<T>(path: string, params?: Record<string, string>, data?: any, version?: V2exAPI.API_VERSION): Promise<T> {
-    return this.send<T>(path, 'GET', params, data, version)
+  get<T>(path: string, headers?: { [name: string]: string }, params?: Record<string, string>, data?: any, version?: V2exAPI.API_VERSION): Promise<T> {
+    return this.send<T>(path, 'GET', headers, params, data, version)
   }
 
-  delete<T>(path: string, params?: Record<string, string>, version?: V2exAPI.API_VERSION): Promise<T> {
-    return this.send<T>(path, 'DELETE', params, undefined, version)
+  delete<T>(path: string, headers?: { [name: string]: string }, params?: Record<string, string>, version?: V2exAPI.API_VERSION): Promise<T> {
+    return this.send<T>(path, 'DELETE', headers, params, undefined, version)
   }
 
-  send<T>(path: string, method: V2exAPI.Method, params?: Record<string, string>, data?: any, version?: V2exAPI.API_VERSION): Promise<T> {
+  send<T>(
+    path: string,
+    method: V2exAPI.Method,
+    headers?: { [name: string]: string },
+    params?: Record<string, string>,
+    data?: any,
+    version?: V2exAPI.API_VERSION
+  ): Promise<T> {
     let uri = `${this.configuration.url}${this.root_path}${version === 'v2' ? '/v2' : ''}${path}`
 
     if (params) {
@@ -91,7 +98,7 @@ class V2ex {
       })
     }
 
-    let headers: { [name: string]: string } = {
+    let _headers: { [name: string]: string } = {
       'User-Agent': this.configuration.userAgent || 'Starter App Api Library',
       'Content-Type': 'application/json'
     }
@@ -101,8 +108,10 @@ class V2ex {
     }
 
     if (this.token && version === 'v2') {
-      headers.Authorization = `Bearer ${this.token}`
+      _headers.Authorization = `Bearer ${this.token}`
     }
+
+    headers = _.merge(_headers, headers)
 
     return new Promise<T>((resolve, reject) => {
       console.log({
