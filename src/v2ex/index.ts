@@ -38,7 +38,7 @@ class V2ex {
     this.notification = notification(this)
     this.topic = topic(this)
 
-    logError(new Error(JSON.stringify(options)))
+    logError(JSON.stringify(options))
   }
 
   init() {
