@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/funnyzak/react-native-starter.git"
+    "url": "git@github.com:funnyzak/react-native-starter.git"
   },
   "keywords": [
     "react",

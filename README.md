@@ -44,6 +44,9 @@ yarn
 # install ios deps
 npx pod-install
 
+# debug start: react-native-debugger
+yarn debug
+
 # cmd under root folder
 yarn ios
 
@@ -112,8 +115,8 @@ npx react-native upgrade
 ### react-native-debugger 调试
 
 1. 安装 **[react-native-debugger](https://github.com/jhen0409/react-native-debugger)**；
-2. 启动模拟器 `yarn ios`，在模拟器打开 debug remote；
-3. `yarn debug` 启动 react-native-debugger。
+2. `yarn debug` 启动 react-native-debugger。
+3. 启动模拟器 `yarn ios`，在模拟器打开 debug remote 选项；
 
 ## 常见问题
 
