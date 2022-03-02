@@ -12,41 +12,22 @@
 
 React Native 快手开发脚手架项目。项目基于 V2EX 开放 API，提供了一个简单的社区类应用样板。
 
-特点
+下一步
+
+- [ ] 优化
+
+## 特点
 
 1. 基于 React Native 0.67.2 版本。
 2. 引入 TypeScript 强类型检查，保证维护性、可读性、稳定性。
 3. i18n 集成，支持多国语言。
 4. redux 应用，并数据持久化。
 
-下一步
-
-- [ ] 优化
-
 ## 环境
 
 NodeJS、Java、cocoapods、XCode、Watchman。 具体请参考[这里](https://reactnative.dev/docs/environment-setup)。
 
-主要依赖库：
-
-- eslint
-- lodash
-- redux
-- react-native-safe-area-context
-- react-native-render-html
-- react-navigation
-- react-devtools
-- @redux-devtools/extension
-- react-native-webview
-- async-storage
-- react-native-gesture-handler
-- react-native-fast-image
-- react-native-reanimated
-- react-native-localize
-- react-native-device-info
-- prettier
-
-## 运行
+## 启动
 
 ```bash
 
@@ -156,6 +137,25 @@ npx react-native upgrade
 
         删除编译缓存
         rm -rf ~/Library/Developer/Xcode/DerivedData
+
+## 依赖库
+
+- eslint
+- lodash
+- redux
+- react-native-safe-area-context
+- react-native-render-html
+- react-navigation
+- react-devtools
+- @redux-devtools/extension
+- react-native-webview
+- async-storage
+- react-native-gesture-handler
+- react-native-fast-image
+- react-native-reanimated
+- react-native-localize
+- react-native-device-info
+- prettier
 
 ## 参考
 
