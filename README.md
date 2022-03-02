@@ -81,17 +81,19 @@ npx react-native upgrade
 
 ```
 
-## 调试
-
-### iOS 调试
+## iOS 调试
 
 > 可以通过摇晃设备或是选择 iOS 模拟器的"Hardware"菜单中的"Shake Gesture"选项来打开开发菜单。另外，如果是在 iOS 模拟器中运行，还可以按下 Command⌘ + D 快捷键，Android 模拟器对应的则是 Command⌘ + M（windows 上可能是 F1 或者 F2），或是直接在命令行中运行 adb shell input keyevent 82 来发送菜单键命令。
 
-安装 **Flipper** 虚拟机注入调试。
-
-使用 **[react-native-debugger](https://github.com/jhen0409/react-native-debugger)**
+使用 **Flipper** 调试。
 
 使用 **[react-devtools](https://www.npmjs.com/package/react-devtools)**。
+
+### react-native-debugger 调试
+
+1. 安装 **[react-native-debugger](https://github.com/jhen0409/react-native-debugger)**；
+2. 启动模拟器 `yarn ios`，在模拟器打开 debug remote；
+3. `yarn debug` 启动 react-native-debugger。
 
 ## 目录
 
@@ -136,7 +138,13 @@ npx react-native upgrade
     [https://stackoverflow.com/questions/64768328/invariant-violation-module-appregistry-is-not-a-registered-callable-module-cal](https://stackoverflow.com/questions/64768328/invariant-violation-module-appregistry-is-not-a-registered-callable-module-cal)
 
 2.  ** RCTBridge required dispatch_sync to load RNGestureHandlerModule**
+
     > [https://github.com/software-mansion/react-native-gesture-handler/issues/722](https://github.com/software-mansion/react-native-gesture-handler/issues/722)
+
+3.  **xcode 编译报错**
+
+        # 删除编译缓存
+        rm -rf ~/Library/Developer/Xcode/DerivedData
 
 ## 参考
 

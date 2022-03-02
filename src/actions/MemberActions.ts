@@ -33,7 +33,6 @@ export const setCurrentToken = (token?: V2exObject.MToken) => ({
 export const loginByToken = (token: string) => async (dispatch: Dispatch) => {
   try {
     dispatch({ type: APP_AUTH_LOADING })
-
     const token_info = await v2exLib.member.token(token)
     loginByTokenSuccess(dispatch, token_info)
   } catch (e: any) {

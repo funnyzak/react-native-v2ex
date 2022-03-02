@@ -10,7 +10,8 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "prepare": "if [[ $NODE_ENV != \"production\" ]]; then husky install; fi"
+    "prepare": "if [[ $NODE_ENV != \"production\" ]]; then husky install; fi",
+    "debug": "open \"rndebugger://set-debugger-loc?host=localhost&port=8081\""
   },
   "repository": {
     "type": "git",
