@@ -18,5 +18,8 @@
   "login": {
     "loginButton": "授权登陆",
     "getToken": "获取令牌"
+  },
+  "tips": {
+    "authSuccess": "授权成功"
   }
 }

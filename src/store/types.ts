@@ -50,7 +50,6 @@ export declare module IState {
    */
   export interface UIState {
     login: {
-      token?: string
       tokenGeneratedLink: string
 
       error: string | null
