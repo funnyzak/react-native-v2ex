@@ -30,19 +30,19 @@ export const setCurrentToken = (token?: V2exObject.MToken) => ({
   payload: token
 })
 
-export const tokenSync = (token: string) => async (dispatch: Dispatch) => {
+export const loginByToken = (token: string) => async (dispatch: Dispatch) => {
   try {
     dispatch({ type: APP_AUTH_LOADING })
 
     const token_info = await v2exLib.member.token(token)
-    tokenSyncSuccess(dispatch, token_info)
+    loginByTokenSuccess(dispatch, token_info)
   } catch (e: any) {
     logError(e)
-    tokenSyncFail(dispatch, e.message)
+    loginByTokenFail(dispatch, e.message)
   }
 }
 
-const tokenSyncSuccess = async (dispatch: Dispatch, token: V2exObject.MToken) => {
+const loginByTokenSuccess = async (dispatch: Dispatch, token: V2exObject.MToken) => {
   await AsyncStorage.setItem(MEMBER_TOKEN_KEY, token.token)
 
   v2exLib.setToken(token.token)
@@ -54,7 +54,7 @@ const tokenSyncSuccess = async (dispatch: Dispatch, token: V2exObject.MToken) =>
   dispatch(myProfile() as any)
 }
 
-const tokenSyncFail = (dispatch: Dispatch, message: string) => {
+const loginByTokenFail = (dispatch: Dispatch, message: string) => {
   AsyncStorage.removeItem(MEMBER_TOKEN_KEY)
 
   dispatch(errorMessage(message))

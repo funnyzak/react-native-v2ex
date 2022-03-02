@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef, FunctionComponent } from 'react'
+import React, { useState, useContext } from 'react'
 
 import { IState, ITheme } from '@src/types'
 import { Logo } from '@src/components/atoms'
@@ -7,10 +7,10 @@ import * as Alert from '@src/utils/alert'
 import { translate } from '@src/i18n'
 import { connect } from 'react-redux'
 import { Spinner, Button, Input, Text } from '../common'
-import { useAppDispatch, useAppSelector } from '@src/hooks'
+import { useAppSelector } from '@src/hooks'
 import { TouchableOpacity, Linking, KeyboardAvoidingView, View, Platform, ViewStyle, TextStyle } from 'react-native'
 import { SignInScreenProps } from '@src/navigation/routes'
-import { tokenSync } from '@src/actions'
+import { loginByToken } from '@src/actions'
 
 const Screen = ({ loading, error, success, navigation, route, auth: _auth }: SignInScreenProps) => {
   const [token, setToken] = useState('')
@@ -136,4 +136,4 @@ const mapStateToProps = ({ ui: { login } }: { ui: IState.UIState }) => {
   return { error, success, loading }
 }
 
-export default connect(mapStateToProps, { auth: tokenSync })(Screen)
+export default connect(mapStateToProps, { auth: loginByToken })(Screen)
