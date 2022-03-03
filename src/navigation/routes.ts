@@ -78,19 +78,44 @@ export const ROUTES: {
    * @description 抽屉
    */
   Draw: 'Draw',
-  // 一级导航器
+  /**
+   * @description 导航器
+   */
   Main: 'Main',
-  // 主页
+  /**
+   * @description 首页
+   */
   Home: 'Home',
-  // 最新更新
+  /**
+   * @description 最新话题
+   */
   LatestTopics: 'LatestTopics',
   // 热门
   HotTopics: 'HotTopics',
-  // 登入
+  /**
+   * @description 登录
+   */
   SignIn: 'SignIn',
-  // 提醒
+  /**
+   * @description 通知
+   */
   Notification: 'Notification',
-
+  /**
+   * @description 节点列表
+   */
+  NodeList: 'NodeList',
+  /**
+   * @description 节点话题
+   */
+  NodeTopics: 'NodeTopics',
+  /**
+   * @description 话题详情
+   */
+  TopicDetail: 'TopicDetail',
+  /**
+   * @description 我的
+   */
+  AccountHome: 'AccountHome',
   /**
    * @description 关注用户列表
    */
@@ -104,12 +129,24 @@ export const ROUTES: {
    */
   Setting: 'Setting',
   /**
-   * @description 关于
+   * @description 语言设置
    */
   Language: 'Language',
+  /**
+   * @description 关于
+   */
   About: 'About',
+  /**
+   * @description 反馈
+   */
   Feedback: 'Feedback',
+  /**
+   * @description 主题设置
+   */
   Theme: 'Theme',
+  /**
+   * @description 搜索
+   */
   Search: 'Search'
 } as const
 
