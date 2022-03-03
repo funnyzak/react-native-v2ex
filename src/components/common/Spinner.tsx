@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
-import { View, ViewPropTypes, StyleProp, ViewStyle, ActivityIndicator, FlexAlignType } from 'react-native'
+import React from 'react'
+import { View, ViewPropTypes, StyleProp, ViewStyle, ActivityIndicator } from 'react-native'
 import PropTypes from 'prop-types'
-import { ThemeContext } from '../../theme'
+import { useTheme } from '@src/theme'
 
 const Spinner = ({ size, style }: { size: 'large' | 'small'; style: StyleProp<ViewStyle> }) => {
-  const theme = useContext(ThemeContext)
+  const { theme } = useTheme()
   return (
     <View
       style={[

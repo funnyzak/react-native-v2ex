@@ -1,20 +1,20 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { TouchableOpacity, Linking, KeyboardAvoidingView, View, Platform, ViewStyle, TextStyle } from 'react-native'
 import { connect } from 'react-redux'
 
 import { IState, ITheme } from '@src/types'
-import { ThemeContext } from '@src/theme'
 import * as Alert from '@src/utils/alert'
 import { translate } from '@src/i18n'
 import { Logo, Spinner, Button, Input, Text } from '@src/components'
 import { useAppSelector } from '@src/hooks'
 import { SignInScreenProps } from '@src/navigation/routes'
 import { loginByToken } from '@src/actions'
+import { useTheme } from '@src/theme'
 
 const Screen = ({ loading, error, success, navigation, route, auth: _auth }: SignInScreenProps) => {
   const [token, setToken] = useState('')
 
-  const theme = useContext(ThemeContext)
+  const { theme } = useTheme()
   const {
     login: { tokenGeneratedLink }
   } = useAppSelector((state: any) => state.ui)

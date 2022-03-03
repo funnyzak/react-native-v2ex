@@ -1,4 +1,4 @@
-import Colors from '@src/theme/colors'
+import { useTheme } from '@src/theme'
 import React from 'react'
 import { ActivityIndicator, View } from 'react-native'
 
@@ -7,7 +7,9 @@ interface IProps {
 }
 
 const LoadingComponent = ({ visible }: IProps) => {
-  return <View>{visible && <ActivityIndicator color={Colors.vi} size={48} />}</View>
+  const { theme } = useTheme()
+
+  return <View>{visible && <ActivityIndicator color={theme.colors.secondary} size={48} />}</View>
 }
 
 const Loading = React.memo(LoadingComponent)

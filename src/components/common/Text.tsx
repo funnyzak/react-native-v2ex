@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
-import { Text as RNText, TextProps as NativeTextProps, StyleSheet, StyleProp, ViewStyle } from 'react-native'
+import React from 'react'
+import { useTheme } from '@src/theme'
+import { Text as RNText, TextProps as NativeTextProps, StyleSheet, TextStyle } from 'react-native'
 import PropTypes from 'prop-types'
-import { ThemeContext } from '@src/theme'
-import { ITheme, IThemeTypographyProps } from '@src/types'
+import { ITheme } from '@src/types'
 
 // Possible value for prop "type" for Text
 const HEADING = 'heading'
@@ -45,11 +45,11 @@ const Text = ({
   style,
   ...props
 }: TextProps) => {
-  const theme = useContext(ThemeContext)
+  const { theme } = useTheme()
   return <RNText style={StyleSheet.flatten([styles.text(type, bold, theme), style])} {...props} />
 }
 
-const getTextStyle = (type: TextType, bold: boolean, theme: ITheme): IThemeTypographyProps => {
+const getTextStyle = (type: TextType, bold: boolean, theme: ITheme): TextStyle => {
   let style = ''
   switch (type) {
     case HEADING:

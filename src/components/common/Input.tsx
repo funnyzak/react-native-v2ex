@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { TextInput, View, ViewPropTypes, TextInputProps as NativeTextInputProps, ViewStyle, TextStyle } from 'react-native'
 import PropTypes from 'prop-types'
 import { Text } from './Text'
-import { ThemeContext } from '@src/theme'
+import { useTheme } from '@src/theme'
 import { ITheme } from '@src/types'
 
 export interface TextInputProps extends NativeTextInputProps {
@@ -25,7 +25,7 @@ const Input = ({
   inputStyle,
   ...props
 }: TextInputProps) => {
-  const theme = useContext(ThemeContext)
+  const { theme } = useTheme()
 
   return (
     <View style={[styles.containerStyle(theme), containerStyle]}>

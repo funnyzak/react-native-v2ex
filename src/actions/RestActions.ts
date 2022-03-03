@@ -6,7 +6,6 @@ import { v2exOptions } from '@src/config/v2ex'
 import { MEMBER_TOKEN_KEY } from '@src/config/constants'
 import { APP_INIT, APP_SITE_STAT, APP_INIT_ERROR, APP_SITE_INFO, IState } from '../types'
 import { logError } from '@src/helper/logger'
-import { theme } from '@src/theme'
 import DeviceInfo from 'react-native-device-info'
 
 export const initV2ex = () => {
@@ -33,7 +32,6 @@ export const initV2ex = () => {
           v2ex: v2exLib,
 
           name: DeviceInfo.getApplicationName(),
-          icon: theme.assets.images.icons.icon,
 
           deviceInfo: {
             brand: DeviceInfo.getBrand(),

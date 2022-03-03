@@ -1,17 +1,18 @@
-import Colors from '@src/theme/colors'
 import React from 'react'
-import { Modal, StyleSheet, View } from 'react-native'
+import { Modal, View, ViewStyle } from 'react-native'
 import Loading from '../loading'
+import { useTheme } from '@src/theme'
 
 interface IProps {
   visible: boolean
 }
 
 const LoadingModalComponent = ({ visible }: IProps) => {
+  const { theme } = useTheme()
   return (
     <Modal visible={visible} transparent>
-      <View style={styles.modal}>
-        <View style={styles.modalContainer}>
+      <View style={styles.modal(theme)}>
+        <View style={styles.modalContainer(theme)}>
           <Loading visible />
         </View>
       </View>
@@ -23,22 +24,22 @@ const LoadingModal = React.memo(LoadingModalComponent)
 
 export default LoadingModal
 
-const styles = StyleSheet.create({
-  modal: {
+const styles = {
+  modal: (theme: ITheme): ViewStyle => ({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.modalBackground
-  },
-  modalContainer: {
+    backgroundColor: theme.colors.modalBackground
+  }),
+  modalContainer: (theme: ITheme): ViewStyle => ({
     width: 80,
     height: 80,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.white,
+    backgroundColor: theme.colors.white,
     borderRadius: 8,
 
-    shadowColor: Colors.black,
+    shadowColor: theme.colors.black,
     shadowOffset: {
       width: 0,
       height: 1
@@ -47,5 +48,5 @@ const styles = StyleSheet.create({
     shadowRadius: 1.41,
 
     elevation: 2
-  }
-})
+  })
+}

@@ -1,7 +1,6 @@
-import { APP_SETTING_LOCALES, APP_SETTING_THEME } from '../types'
-import { ThemeType } from '@src/theme/themes'
+import { APP_SETTING_LOCALES, APP_SETTING_THEME, ThemeType, LanguageTagType } from '../types'
 
-export const setLocales = (languageTag: string) => ({
+export const setLocales = (languageTag: LanguageTagType) => ({
   type: APP_SETTING_LOCALES,
   payload: { languageTag }
 })

@@ -47,7 +47,7 @@ const Hello = () => {
           backgroundColor: isDarkMode ? Colors.black : Colors.white
         }}>
         <Section title="Step One">
-          <Button onPress={() => NavigationService.navigate('Home2')} title="Learn More" />
+          <Button onPress={() => NavigationService.navigate('Home')} title="Learn More" />
         </Section>
         <Section title="See Your Changes">
           <ReloadInstructions />
