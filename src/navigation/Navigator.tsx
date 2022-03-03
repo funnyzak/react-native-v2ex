@@ -13,11 +13,12 @@ import { getFocusedRouteNameFromRoute } from '@react-navigation/native'
 
 import { translate } from '@src/i18n'
 import { useAppSelector } from '@src/hooks'
-import { theme } from '@src/theme'
+import { themes } from '@src/theme'
 import { HomeScreen, DrawScreen, NodeScreen, NotificationScreen, AccountScreen, SignInScreen } from '@src/screens'
 import { useUnRead } from '@src/hooks/useUnRead'
 import { ROUTES, RootStackParamList } from './routes'
 
+const theme = themes.light
 const Drawer = createDrawerNavigator()
 const MainNavigator = createBottomTabNavigator()
 
@@ -29,7 +30,7 @@ const defaultHeaderSetting = {
     height: theme.dimens.headerHeight
   },
   headerTitleStyle: {
-    ...theme.typography.titleTextSemiBold,
+    ...(theme.typography.titleTextSemiBold as any),
     alignSelf: 'center'
   },
   headerBackTitle: undefined,

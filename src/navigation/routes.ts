@@ -71,9 +71,7 @@ export type SearchScreenProps = NativeStackScreenProps<RootStackParamList, 'Sear
 
 type k1 = keyof RootStackParamList
 
-export const ROUTES: {
-  [T in keyof RootStackParamList]: string
-} = {
+export const ROUTES = {
   /**
    * @description 抽屉
    */
