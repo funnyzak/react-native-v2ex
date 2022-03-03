@@ -13,6 +13,7 @@ export const APP_HOME_LOAD_MORE_TOPICS = 'v2ex_home_load_more_topics'
 export const APP_HOME_NODE_TOPICS = 'v2ex_home_node_topics'
 
 export const APP_SETTING_LOCALES = 'v2ex_locales'
+export const APP_SETTING_THEME = 'v2ex_theme'
 
 export const APP_NOTIFICATION_PULL = 'notification_pull'
 export const APP_NOTIFICATION_LATEST = 'notification'
@@ -45,12 +46,13 @@ export const ActionTypes = {
   APP_NOTIFICATION_PULL,
   APP_SETTING_LOCALES,
   APP_NOTIFICATION_LATEST,
+  APP_SETTING_THEME,
   APP_NOTIFICATION_REMOVE,
   MEMBER_PROFILE,
   APP_AUTH_LOADING,
   MEMBER_FOLLOW_PEOPLE,
   MEMBER_LIKE_TOPICS,
-  MEMBER_TOKEN: APP_AUTH,
+  APP_AUTH,
   FEEDBACKING,
   TOPIC_GET,
   APP_SITE_STAT,
