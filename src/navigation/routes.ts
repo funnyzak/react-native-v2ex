@@ -6,9 +6,8 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 export type RootStackParamList = {
   Draw: undefined
-  BottomTab: undefined
+  Main: undefined
   Home: undefined
-  Home2: undefined
   LatestTopics: undefined
   HotTopics: undefined
   SignIn: undefined
@@ -28,29 +27,47 @@ export type RootStackParamList = {
   Search: undefined
 }
 
-export type HomeScreenNatigationProps = NativeStackScreenProps<RootStackParamList, 'Home'>
-export type Home2ScreenNatigationProps = NativeStackScreenProps<RootStackParamList, 'Home2'>
-export type LatestTopicsScreenNatigationProps = NativeStackScreenProps<RootStackParamList, 'LatestTopics'>
-export type HotTopicsScreenNatigationProps = NativeStackScreenProps<RootStackParamList, 'HotTopics'>
-export type SignInScreenNavigationProps = NativeStackScreenProps<RootStackParamList, 'SignIn'>
-export type NotificationScreenNatigationProps = NativeStackScreenProps<RootStackParamList, 'Notification'>
-export type NodeListScreenNatigationProps = NativeStackScreenProps<RootStackParamList, 'NodeList'>
-export type NodeTopicsScreenNatigationProps = NativeStackScreenProps<RootStackParamList, 'NodeTopics'>
-export type TopicDetailScreenNatigationProps = NativeStackScreenProps<RootStackParamList, 'TopicDetail'>
-export type AccountHomeScreenNatigationProps = NativeStackScreenProps<RootStackParamList, 'AccountHome'>
-export type FollowPeopleScreenNatigationProps = NativeStackScreenProps<RootStackParamList, 'FollowPeople'>
-export type LikeTopicsScreenNatigationProps = NativeStackScreenProps<RootStackParamList, 'LikeTopics'>
-export type AuthLoadingSwitchScreenNatigationProps = NativeStackScreenProps<RootStackParamList, 'AuthLoadingSwitch'>
-export type SettingScreenNatigationProps = NativeStackScreenProps<RootStackParamList, 'Setting'>
-export type LanguageScreenNatigationProps = NativeStackScreenProps<RootStackParamList, 'Language'>
-export type AboutScreenNatigationProps = NativeStackScreenProps<RootStackParamList, 'About'>
-export type FeedbackScreenNatigationProps = NativeStackScreenProps<RootStackParamList, 'Feedback'>
-export type ThemeScreenNatigationProps = NativeStackScreenProps<RootStackParamList, 'Theme'>
-export type SearchScreenNatigationProps = NativeStackScreenProps<RootStackParamList, 'Search'>
-
-export type SignInScreenProps = SignInScreenNavigationProps & {
+export type CommonScreenProps = {
   loading: boolean
   error: string | null
   success: string | null
-  auth: (token: string) => void
 }
+
+export type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'> & CommonScreenProps
+
+export type LatestTopicsScreenProps = NativeStackScreenProps<RootStackParamList, 'LatestTopics'> & CommonScreenProps
+
+export type HotTopicsScreenProps = NativeStackScreenProps<RootStackParamList, 'HotTopics'> & CommonScreenProps
+
+export type SignInScreenProps = NativeStackScreenProps<RootStackParamList, 'SignIn'> &
+  CommonScreenProps & {
+    auth: (token: string) => void
+  }
+
+export type NotificationScreenProps = NativeStackScreenProps<RootStackParamList, 'Notification'> & CommonScreenProps
+
+export type NodeListScreenProps = NativeStackScreenProps<RootStackParamList, 'NodeList'> & CommonScreenProps
+
+export type NodeTopicsScreenProps = NativeStackScreenProps<RootStackParamList, 'NodeTopics'> & CommonScreenProps
+
+export type TopicDetailScreenProps = NativeStackScreenProps<RootStackParamList, 'TopicDetail'> & CommonScreenProps
+
+export type AccountHomeScreenProps = NativeStackScreenProps<RootStackParamList, 'AccountHome'> & CommonScreenProps
+
+export type FollowPeopleScreenProps = NativeStackScreenProps<RootStackParamList, 'FollowPeople'> & CommonScreenProps
+
+export type LikeTopicsScreenProps = NativeStackScreenProps<RootStackParamList, 'LikeTopics'> & CommonScreenProps
+
+export type AuthLoadingSwitchScreenProps = NativeStackScreenProps<RootStackParamList, 'AuthLoadingSwitch'> & CommonScreenProps
+
+export type SettingScreenProps = NativeStackScreenProps<RootStackParamList, 'Setting'> & CommonScreenProps
+
+export type LanguageScreenProps = NativeStackScreenProps<RootStackParamList, 'Language'> & CommonScreenProps
+
+export type AboutScreenProps = NativeStackScreenProps<RootStackParamList, 'About'> & CommonScreenProps
+
+export type FeedbackScreenProps = NativeStackScreenProps<RootStackParamList, 'Feedback'> & CommonScreenProps
+
+export type ThemeScreenProps = NativeStackScreenProps<RootStackParamList, 'Theme'> & CommonScreenProps
+
+export type SearchScreenProps = NativeStackScreenProps<RootStackParamList, 'Search'> & CommonScreenProps

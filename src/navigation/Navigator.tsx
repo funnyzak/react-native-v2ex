@@ -13,7 +13,7 @@ import { HomeScreen, DrawScreen, NodeScreen, NotificationScreen, AccountScreen, 
 import { useUnRead } from '@src/hooks/useUnRead'
 
 const Drawer = createDrawerNavigator()
-const BottomTab = createBottomTabNavigator()
+const MainNavigator = createBottomTabNavigator()
 
 const defaultHeader = {
   headerStyle: {
@@ -45,8 +45,8 @@ const badgeStyles = StyleSheet.create({
 const MainAppNavigator = () => {
   const { unread } = useUnRead()
   return (
-    <BottomTab.Navigator>
-      <BottomTab.Screen
+    <MainNavigator.Navigator>
+      <MainNavigator.Screen
         name="Home"
         component={HomeScreen}
         options={{
@@ -55,7 +55,7 @@ const MainAppNavigator = () => {
           tabBarIcon: ({ focused }) => renderIcon(focused, theme.assets.images.icons.home, theme.assets.images.icons.homeInactive)
         }}
       />
-      <BottomTab.Screen
+      <MainNavigator.Screen
         name="Node"
         component={NodeScreen}
         options={{
@@ -64,7 +64,7 @@ const MainAppNavigator = () => {
           tabBarIcon: ({ focused }) => renderIcon(focused, theme.assets.images.icons.discovery, theme.assets.images.icons.discoveryInactive)
         }}
       />
-      <BottomTab.Screen
+      <MainNavigator.Screen
         name="Notification"
         component={NotificationScreen}
         options={{
@@ -75,7 +75,7 @@ const MainAppNavigator = () => {
           tabBarBadgeStyle: badgeStyles.badge
         }}
       />
-      <BottomTab.Screen
+      <MainNavigator.Screen
         name="AccountHome"
         component={AccountScreen}
         options={{
@@ -84,7 +84,7 @@ const MainAppNavigator = () => {
           tabBarIcon: ({ focused }) => renderIcon(focused, theme.assets.images.icons.profile, theme.assets.images.icons.profileInactive)
         }}
       />
-    </BottomTab.Navigator>
+    </MainNavigator.Navigator>
   )
 }
 
@@ -116,7 +116,7 @@ function Natigator() {
           }}
         />
       ) : (
-        <StackNavigator.Screen name="BottomTab" component={MainAppNavigator} options={{ title: 'Home', headerShown: false }} />
+        <StackNavigator.Screen name="Main" component={MainAppNavigator} options={{ title: 'Home', headerShown: false }} />
       )}
     </StackNavigator.Navigator>
   )

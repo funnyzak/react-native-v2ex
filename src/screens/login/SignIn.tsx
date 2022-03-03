@@ -1,14 +1,13 @@
 import React, { useState, useContext } from 'react'
+import { TouchableOpacity, Linking, KeyboardAvoidingView, View, Platform, ViewStyle, TextStyle } from 'react-native'
+import { connect } from 'react-redux'
 
 import { IState, ITheme } from '@src/types'
-import { Logo } from '@src/components/atoms'
 import { ThemeContext } from '@src/theme'
 import * as Alert from '@src/utils/alert'
 import { translate } from '@src/i18n'
-import { connect } from 'react-redux'
-import { Spinner, Button, Input, Text } from '../common'
+import { Logo, Spinner, Button, Input, Text } from '@src/components'
 import { useAppSelector } from '@src/hooks'
-import { TouchableOpacity, Linking, KeyboardAvoidingView, View, Platform, ViewStyle, TextStyle } from 'react-native'
 import { SignInScreenProps } from '@src/navigation/routes'
 import { loginByToken } from '@src/actions'
 
