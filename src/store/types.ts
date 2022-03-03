@@ -1,5 +1,5 @@
 import { V2exAPI, V2exObject } from '@src/v2ex/types'
-
+import { ThemeType } from '@src/theme/themes'
 export declare module IState {
   /**
    * @description 全局状态
@@ -124,7 +124,14 @@ export declare module IState {
    * @description 应用设置状态
    */
   export interface SettingState {
+    /**
+     * @description 应用语言设置
+     */
     languageTag: 'zh' | 'en'
+    /**
+     * @description 应用主题
+     */
+    theme: ThemeType
   }
 
   /**

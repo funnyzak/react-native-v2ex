@@ -12,7 +12,8 @@ import { RootStackParamList } from './navigation/routes'
 import { Natigator } from './navigation/Navigator'
 
 import { onAppStart } from './helper/app'
-import { ThemeProvider, theme } from './theme'
+import { ThemeProvider } from './theme'
+import { useTheme } from './hooks/useTheme'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { store, persistor } from '@src/store'
 import { Spinner } from './components/common'
@@ -21,6 +22,8 @@ import NavigationService from './navigation/NavigationService'
 onAppStart(store)
 
 const App = () => {
+  const { theme } = useTheme()
+
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>

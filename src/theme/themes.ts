@@ -28,4 +28,14 @@ export const darkTheme: ITheme = {
   assets: dark_assets
 }
 
-export default defaultTheme
+const themes = {
+  light: defaultTheme,
+  dark: darkTheme
+} as const
+
+/**
+ * @description 主题类型
+ */
+export type ThemeType = keyof typeof themes
+
+export default themes

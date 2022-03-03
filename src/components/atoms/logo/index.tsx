@@ -1,4 +1,4 @@
-import Assets from '@src/theme/assets'
+import Assets from '@src/theme/default/assets'
 import React from 'react'
 import { Image, StyleSheet, View } from 'react-native'
 
