@@ -12,6 +12,7 @@ const dimens: IThemeDimen = {
   WINDOW_WIDTH: screenWidth,
   WINDOW_HEIGHT: screenHeight,
   headerButtonSize: 23,
+  headerHeight: 50,
   borderRadius: 2,
   badgeSize: 18,
   defaultButtonWidth: screenWidth * 0.9,

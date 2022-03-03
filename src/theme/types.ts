@@ -1,9 +1,12 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/2/21.
  */
+
+import { TextStyle } from 'react-native'
 export interface IThemeColor {
   primaryDark: string
   primary: string
+  headerBackground: string
   tabBarBackground: string
   tabBarIconInactive: string
   appbarTint: string
@@ -32,6 +35,7 @@ export interface IThemeDimen {
    */
   WINDOW_WIDTH: number
   WINDOW_HEIGHT: number
+  headerHeight: number
   headerButtonSize: number
   badgeSize: number
   borderRadius: number
@@ -53,55 +57,47 @@ export interface IThemeSpacing {
   extraLarge: number
 }
 
-export interface IThemeTypographyProps {
-  fontFamily?: string
-  color: string
-  fontSize: number
-  fontStyle?: 'normal' | 'italic' | undefined
-  fontWeight: 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | undefined
-}
-
 export interface IThemeTypography {
   /**
    * Title is reserved for the title of a screen(Toolbar)
    * and the titles of Modal dialogs.
    */
-  titleText: IThemeTypographyProps
-  titleTextSemiBold: IThemeTypographyProps
+  titleText: TextStyle
+  titleTextSemiBold: TextStyle
   /**
    * Use the Heading style for card titles.
    */
-  headingText: IThemeTypographyProps
-  headingTextBold: IThemeTypographyProps
+  headingText: TextStyle
+  headingTextBold: TextStyle
   /**
    * Use the Subheading style to denote new sections within cards.
    */
-  subheadingText: IThemeTypographyProps
-  subheadingTextBold: IThemeTypographyProps
+  subheadingText: TextStyle
+  subheadingTextBold: TextStyle
   /**
    * The Body text style is used widely throughout the UI.
    * Any text that isn’t a title, heading, subheading, label
    * or caption would generally use the Body style.
    */
-  bodyText: IThemeTypographyProps
-  bodyTextBold: IThemeTypographyProps
+  bodyText: TextStyle
+  bodyTextBold: TextStyle
   /**
    * Use labels with form field and input elements to
    * signify the element’s function to the user.
    */
-  labelText: IThemeTypographyProps
-  labelTextBold: IThemeTypographyProps
+  labelText: TextStyle
+  labelTextBold: TextStyle
   /**
    * Use the Caption style for help/hint text.
    * It’s used with some form fields which require a description,
    * and can also be used stand-alone within a card when necessary.
    */
-  captionText: IThemeTypographyProps
-  captionTextBold: IThemeTypographyProps
+  captionText: TextStyle
+  captionTextBold: TextStyle
   /**
    * Use this style to change <Input /> element text style
    */
-  inputText: IThemeTypographyProps
+  inputText: TextStyle
 }
 
 export interface IThemeAssets {

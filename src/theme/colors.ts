@@ -11,6 +11,7 @@ const colors: IThemeColor = {
    */
   primaryDark: '#000',
   primary: '#fff',
+
   tabBarBackground: '#fff',
   tabBarIconInactive: '#8c8c8c',
   appbarTint: '#000',
