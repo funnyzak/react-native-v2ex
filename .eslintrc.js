@@ -8,7 +8,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.ts', '*.tsx'],
+      files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
       rules: {
         '@typescript-eslint/no-shadow': ['error'],
         'no-undef': 'off',
