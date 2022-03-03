@@ -1,4 +1,4 @@
-import { IThemeColor } from './types'
+import { IThemeColor } from '../types'
 
 const colors: IThemeColor = {
   /**

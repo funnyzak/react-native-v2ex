@@ -1,10 +1,10 @@
 import { ITheme } from './types'
 
-import default_colors from './default/colors'
-import default_spacing from './default/spacing'
-import default_dimens from './default/dimens'
-import default_typography from './default/typography'
-import default_assets from './default/assets'
+import light_colors from './light/colors'
+import light_spacing from './light/spacing'
+import light_dimens from './light/dimens'
+import light_typography from './light/typography'
+import light_assets from './light/assets'
 
 import dark_colors from './dark/colors'
 import dark_spacing from './dark/spacing'
@@ -12,15 +12,17 @@ import dark_dimens from './dark/dimens'
 import dark_typography from './dark/typography'
 import dark_assets from './dark/assets'
 
-export const defaultTheme: ITheme = {
-  colors: default_colors,
-  spacing: default_spacing,
-  dimens: default_dimens,
-  typography: default_typography,
-  assets: default_assets
+export const light: ITheme = {
+  name: 'light',
+  colors: light_colors,
+  spacing: light_spacing,
+  dimens: light_dimens,
+  typography: light_typography,
+  assets: light_assets
 }
 
-export const darkTheme: ITheme = {
+export const dark: ITheme = {
+  name: 'dark',
   colors: dark_colors,
   spacing: dark_spacing,
   dimens: dark_dimens,
@@ -29,8 +31,8 @@ export const darkTheme: ITheme = {
 }
 
 const themes = {
-  light: defaultTheme,
-  dark: darkTheme
+  light,
+  dark
 } as const
 
 /**

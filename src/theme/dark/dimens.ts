@@ -3,7 +3,7 @@ import { Dimensions } from 'react-native'
 const screenWidth = Dimensions.get('window').width
 const screenHeight = Dimensions.get('window').height
 
-import { IThemeDimen } from './types'
+import { IThemeDimen } from './../types'
 
 const dimens: IThemeDimen = {
   /**

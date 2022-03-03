@@ -1,5 +1,5 @@
 import { Platform } from 'react-native'
-import { IThemeTypography } from './types'
+import { IThemeTypography } from '../types'
 
 import colors from './colors'
 

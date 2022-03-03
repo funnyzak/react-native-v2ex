@@ -1,4 +1,4 @@
-import { IThemeColor } from './types'
+import { IThemeColor } from '../types'
 
 const colors: IThemeColor = {
   /**
@@ -10,7 +10,7 @@ const colors: IThemeColor = {
    * Example: If primary color is dark, make appbarTintColor light
    */
   primaryDark: '#000',
-  primary: '#fff',
+  primary: '#999',
 
   tabBarBackground: '#fff',
   tabBarIconInactive: '#8c8c8c',

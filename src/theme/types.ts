@@ -129,6 +129,7 @@ export interface IThemeAssets {
 }
 
 export interface ITheme {
+  name: string
   colors: IThemeColor
   spacing: IThemeSpacing
   dimens: IThemeDimen

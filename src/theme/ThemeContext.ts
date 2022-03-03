@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ITheme } from './types'
-import theme from './themes'
+import themes, { ThemeType } from './themes'
 
-const ThemeContext = React.createContext<ITheme>(theme.light)
+export interface ThemeContextProps {
+  theme: ITheme
+  themeName: ThemeType
+  setTheme: (theme: ThemeType) => void
+}
+
+const ThemeContext = React.createContext<ThemeContextProps>({
+  theme: themes.light,
+  themeName: 'light',
+  setTheme: () => {}
+})
 
 export default ThemeContext
+
+export const useTheme = () => useContext(ThemeContext)
