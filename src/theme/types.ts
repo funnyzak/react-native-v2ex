@@ -8,6 +8,7 @@ export interface IThemeColor {
   primary: string
   tabBarBackground: string
   tabBarIconInactive: string
+  tarBarIconActive: string
   appbarTint: string
   secondaryLight: string
   secondary: string
