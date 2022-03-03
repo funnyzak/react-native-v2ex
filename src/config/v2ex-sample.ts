@@ -13,3 +13,10 @@ export const v2exOptions = {
     token: 'hello world'
   }
 }
+
+export const aboutUs = {
+  author: 'leon',
+  email: 'silenceace@gmail.com',
+  github: '@funnyzak',
+  wechat: '@funnyzak'
+}
