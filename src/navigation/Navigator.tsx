@@ -3,15 +3,13 @@ import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createDrawerNavigator } from '@react-navigation/drawer'
-import { DrawerToggleButton } from '@react-navigation/drawer'
 import { Image, StyleSheet } from 'react-native'
-import { translate } from '@src/i18n'
-import { useAppDispatch, useAppSelector } from '@src/hooks'
 
-import { store } from '@src/store'
+import { translate } from '@src/i18n'
+import { useAppSelector } from '@src/hooks'
 import { RootStackParamList } from './routes'
 import { theme } from '../theme'
-import { HomeScreen, NodeScreen, NotificationScreen, AccountScreen, DrawScreen, SignInScreen } from '../components'
+import { HomeScreen, DrawScreen, NodeScreen, NotificationScreen, AccountScreen, SignInScreen } from '../screens'
 import { useUnRead } from '@src/hooks/useUnRead'
 
 const Drawer = createDrawerNavigator()
