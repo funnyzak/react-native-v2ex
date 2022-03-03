@@ -44,7 +44,7 @@
     "NodeList": "Node",
     "Notification": "Notification",
     "Setting": "Setting",
-    "AccountHome": "Me",
+    "AccountHome": "My",
     "SignIn": "SignIn"
   },
   "placeholder": {
