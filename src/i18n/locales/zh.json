@@ -6,19 +6,19 @@
     "token": "令牌"
   },
   "router": {
-    "home": "首页",
-    "node": "节点",
-    "notification": "通知",
-    "setting": "设置",
-    "mine": "我的",
-    "signIn": "登录"
+    "Home": "首页",
+    "NodeList": "节点",
+    "Notification": "通知",
+    "Setting": "设置",
+    "AccountHome": "我的",
+    "SignIn": "登录"
   },
   "placeholder": {
-    "token": "请输入令牌"
+    "token": "请输入登陆令牌"
   },
   "login": {
     "loginButton": "授权登陆",
-    "getToken": "获取令牌"
+    "getToken": "从 V2ex 官方获取令牌"
   },
   "tips": {
     "authSuccess": "授权成功"
