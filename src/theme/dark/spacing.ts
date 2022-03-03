@@ -8,7 +8,7 @@
  *
  * Feel free to delete this block.
  */
-import { IThemeSpacing } from './types'
+import { IThemeSpacing } from '../types'
 
 const baseSpacing = 10
 

@@ -6,7 +6,6 @@ import { TextStyle } from 'react-native'
 export interface IThemeColor {
   primaryDark: string
   primary: string
-  headerBackground: string
   tabBarBackground: string
   tabBarIconInactive: string
   appbarTint: string
