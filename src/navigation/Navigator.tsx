@@ -73,6 +73,12 @@ const getHeaderTitle = (
   }
 }
 
+const defaultTabBarSetting = {
+  headerShown: false,
+  tabBarActiveTintColor: theme.colors.tabBarIconActive,
+  tabBarInactiveTintColor: theme.colors.tabBarIconInactive
+}
+
 const MainAppNavigator = () => {
   const { unread } = useUnRead()
   return (
@@ -82,7 +88,7 @@ const MainAppNavigator = () => {
         component={HomeScreen}
         options={{
           title: translate(`router.${ROUTES.Home}`),
-          headerShown: false,
+          ...defaultTabBarSetting,
           tabBarIcon: ({ focused }) => renderIcon(focused, theme.assets.images.icons.home, theme.assets.images.icons.homeInactive)
         }}
       />
@@ -91,7 +97,7 @@ const MainAppNavigator = () => {
         component={NodeScreen}
         options={{
           title: translate(`router.${ROUTES.NodeList}`),
-          headerShown: false,
+          ...defaultTabBarSetting,
           tabBarIcon: ({ focused }) => renderIcon(focused, theme.assets.images.icons.discovery, theme.assets.images.icons.discoveryInactive)
         }}
       />
@@ -100,7 +106,7 @@ const MainAppNavigator = () => {
         component={NotificationScreen}
         options={{
           title: translate(`router.${ROUTES.Notification}`),
-          headerShown: false,
+          ...defaultTabBarSetting,
           tabBarIcon: ({ focused }) => renderIcon(focused, theme.assets.images.icons.notification, theme.assets.images.icons.notificationInactive),
           tabBarBadge: unread > 0 ? unread : undefined,
           tabBarBadgeStyle: badgeStyles.badge
@@ -111,7 +117,7 @@ const MainAppNavigator = () => {
         component={AccountScreen}
         options={{
           title: translate(`router.${ROUTES.AccountHome}`),
-          headerShown: false,
+          ...defaultTabBarSetting,
           tabBarIcon: ({ focused }) => renderIcon(focused, theme.assets.images.icons.profile, theme.assets.images.icons.profileInactive)
         }}
       />

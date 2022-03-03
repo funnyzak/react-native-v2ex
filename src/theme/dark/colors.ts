@@ -14,7 +14,7 @@ const colors: IThemeColor = {
 
   tabBarBackground: '#fff',
   tabBarIconInactive: '#8c8c8c',
-  tarBarIconActive: '#333',
+  tabBarIconActive: '#333',
   appbarTint: '#000',
   /**
    * ========================= Secondary color =========================

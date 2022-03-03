@@ -13,7 +13,7 @@ const colors: IThemeColor = {
   primary: '#fff',
 
   tabBarBackground: '#fff',
-  tarBarIconActive: '#333',
+  tabBarIconActive: '#333',
   tabBarIconInactive: '#8c8c8c',
   appbarTint: '#000',
   /**
