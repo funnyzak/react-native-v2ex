@@ -8,10 +8,12 @@ const zh = require('./locales/zh')
 i18n.fallbacks = true
 
 // Define the supported translation
-i18n.translations = {
+const translations = {
   en,
   zh
-}
+} as const
+
+i18n.translations = translations
 
 const fallback = { languageTag: 'zh', isRTL: false }
 
@@ -20,3 +22,5 @@ const { languageTag } = RNLocalize.findBestAvailableLanguage(Object.keys(i18n.tr
 i18n.locale = languageTag
 
 export default i18n
+
+export type LanguageTagType = keyof typeof translations

@@ -1,5 +1,7 @@
-import { V2exAPI, V2exObject } from '@src/v2ex/types'
-import { ThemeType } from '@src/theme/themes'
+import { V2exAPI, V2exObject } from '@src/types'
+import { ThemeType } from '@src/theme'
+import { LanguageTagType } from '@src/i18n'
+
 export declare module IState {
   /**
    * @description 全局状态
@@ -8,7 +10,6 @@ export declare module IState {
     v2ex?: V2exAPI.V2ex
 
     name?: string
-    icon?: string
 
     deviceInfo?: {
       brand: string
@@ -127,7 +128,7 @@ export declare module IState {
     /**
      * @description 应用语言设置
      */
-    languageTag: 'zh' | 'en'
+    languageTag: LanguageTagType
     /**
      * @description 应用主题
      */
