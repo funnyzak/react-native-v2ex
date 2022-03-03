@@ -18,7 +18,6 @@ export type RootStackParamList = {
   AccountHome: undefined
   FollowPeople: undefined
   LikeTopics: undefined
-  AuthLoadingSwitch: undefined
   Setting: undefined
   Language: undefined
   About: undefined
@@ -58,8 +57,6 @@ export type FollowPeopleScreenProps = NativeStackScreenProps<RootStackParamList,
 
 export type LikeTopicsScreenProps = NativeStackScreenProps<RootStackParamList, 'LikeTopics'> & CommonScreenProps
 
-export type AuthLoadingSwitchScreenProps = NativeStackScreenProps<RootStackParamList, 'AuthLoadingSwitch'> & CommonScreenProps
-
 export type SettingScreenProps = NativeStackScreenProps<RootStackParamList, 'Setting'> & CommonScreenProps
 
 export type LanguageScreenProps = NativeStackScreenProps<RootStackParamList, 'Language'> & CommonScreenProps
@@ -71,3 +68,50 @@ export type FeedbackScreenProps = NativeStackScreenProps<RootStackParamList, 'Fe
 export type ThemeScreenProps = NativeStackScreenProps<RootStackParamList, 'Theme'> & CommonScreenProps
 
 export type SearchScreenProps = NativeStackScreenProps<RootStackParamList, 'Search'> & CommonScreenProps
+
+type k1 = keyof RootStackParamList
+
+export const ROUTES: {
+  [T in keyof RootStackParamList]: string
+} = {
+  /**
+   * @description 抽屉
+   */
+  Draw: 'Draw',
+  // 一级导航器
+  Main: 'Main',
+  // 主页
+  Home: 'Home',
+  // 最新更新
+  LatestTopics: 'LatestTopics',
+  // 热门
+  HotTopics: 'HotTopics',
+  // 登入
+  SignIn: 'SignIn',
+  // 提醒
+  Notification: 'Notification',
+
+  /**
+   * @description 关注用户列表
+   */
+  FollowPeople: 'FollowPeople',
+  /**
+   * @description 喜欢的话题列表
+   */
+  LikeTopics: 'LikeTopics',
+  /**
+   * @description 设置
+   */
+  Setting: 'Setting',
+  /**
+   * @description 关于
+   */
+  Language: 'Language',
+  About: 'About',
+  Feedback: 'Feedback',
+  Theme: 'Theme',
+  Search: 'Search'
+} as const
+
+// see https://stackoverflow.com/questions/52393730/typescript-string-literal-union-type-from-enum
+export type ROUTES = typeof ROUTES[keyof typeof ROUTES]
