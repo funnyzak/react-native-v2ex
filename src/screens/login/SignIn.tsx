@@ -40,10 +40,10 @@ const Screen = ({ loading, error, success, navigation, route, auth: _auth }: Sig
     return (
       <View>
         <Button disabled={token === ''} onPress={onLoginPress}>
-          {translate('login.loginButton')}
+          {translate('button.login')}
         </Button>
         <TouchableOpacity onPress={onGetTokenPress} style={styles.link(theme)}>
-          <Text style={styles.linkTitle()}>{translate('login.getToken')}</Text>
+          <Text style={styles.linkTitle()}>{translate('link.getToken')}</Text>
         </TouchableOpacity>
       </View>
     )

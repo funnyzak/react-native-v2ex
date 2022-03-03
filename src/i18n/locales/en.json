@@ -1,6 +1,5 @@
 {
   "common": {
-    "brandName": "react native quick start",
     "ok": "OK!",
     "cancel": "Cancel",
     "continue": "Continue",
@@ -34,17 +33,31 @@
     "shipping": "Shipping",
     "sort": "Sort",
     "filter": "Filter",
+    "token": "Token",
     "sortOption": {
       "aToZ": "Name: a to z",
       "zToA": "Name: z to a"
     }
   },
   "router": {
-    "home": "Home",
-    "node": "Node",
-    "notification": "Notification",
-    "setting": "Setting",
-    "mine": "My"
+    "Home": "Home",
+    "NodeList": "Node",
+    "Notification": "Notification",
+    "Setting": "Setting",
+    "AccountHome": "Me",
+    "SignIn": "SignIn"
+  },
+  "placeholder": {
+    "token": "Place input token here"
+  },
+  "button": {
+    "login": "Login"
+  },
+  "link": {
+    "getToken": "Get token Here"
+  },
+  "tips": {
+    "authSuccess": "Auth Success."
   },
   "errors": {
     "error": "Error",
@@ -66,7 +79,6 @@
     "signupButton": "SIGN UP",
     "forgetPassword": "Forget password?"
   },
- 
   "passwordReset": {
     "title": "Reset Password",
     "resetButton": "RESET MY PASSWORD",

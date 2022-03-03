@@ -16,8 +16,10 @@
   "placeholder": {
     "token": "请输入登陆令牌"
   },
-  "login": {
-    "loginButton": "授权登陆",
+  "button": {
+    "login": "授权登陆"
+  },
+  "link": {
     "getToken": "从 V2ex 官方获取令牌"
   },
   "tips": {
