@@ -14,7 +14,7 @@ React Native 快手开发脚手架项目。项目基于 V2EX 开放 API，提供
 
 下一步
 
-- [ ] UI优化
+- [ ] UI 优化
 
 ## 特点
 
@@ -108,7 +108,7 @@ npx react-native upgrade
 
 > 可以通过摇晃设备或是选择 iOS 模拟器的"Hardware"菜单中的"Shake Gesture"选项来打开开发菜单。另外，如果是在 iOS 模拟器中运行，还可以按下 Command⌘ + D 快捷键，Android 模拟器对应的则是 Command⌘ + M（windows 上可能是 F1 或者 F2），或是直接在命令行中运行 adb shell input keyevent 82 来发送菜单键命令。
 
-使用 **Flipper** 调试。
+使用 **[Flipper](https://fbflipper.com/docs/getting-started/index/)** 调试。
 
 使用 **[react-devtools](https://www.npmjs.com/package/react-devtools)**。
 
