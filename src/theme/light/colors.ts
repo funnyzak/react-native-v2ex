@@ -13,8 +13,8 @@ const colors: IThemeColor = {
   primary: '#fff',
 
   tabBarBackground: '#fff',
-  tabBarIconActive: '#333',
-  tabBarIconInactive: '#8c8c8c',
+  tabBarIconActive: '#200E32',
+  tabBarIconInactive: '#999999',
   appbarTint: '#000',
   /**
    * ========================= Secondary color =========================
