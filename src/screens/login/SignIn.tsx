@@ -7,11 +7,11 @@ import * as Alert from '@src/utils/alert'
 import { translate } from '@src/i18n'
 import { Logo, Spinner, Button, Input, Text } from '@src/components'
 import { useAppSelector } from '@src/hooks'
-import { SignInScreenProps } from '@src/navigation/routes'
+import { SignInScreenProps as ScreenProps } from '@src/navigation/routes'
 import { loginByToken } from '@src/actions'
 import { useTheme } from '@src/theme'
 
-const Screen = ({ loading, error, success, navigation, route, auth: _auth }: SignInScreenProps) => {
+const Screen = ({ loading, error, success, navigation, route, auth: _auth }: ScreenProps) => {
   const [token, setToken] = useState('')
 
   const { theme } = useTheme()
@@ -84,7 +84,7 @@ const Screen = ({ loading, error, success, navigation, route, auth: _auth }: Sig
 }
 
 /**
- * styles
+ * @description styles settings
  */
 const styles = {
   container: (theme: ITheme): ViewStyle => ({
