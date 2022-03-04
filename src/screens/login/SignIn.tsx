@@ -40,7 +40,7 @@ const Screen = ({ loading, error, success, navigation, route, auth: _auth }: Scr
     return (
       <View>
         <Button disabled={token === ''} onPress={onLoginPress}>
-          {translate('button.login')}
+          {translate('common.login')}
         </Button>
         <TouchableOpacity onPress={onGetTokenPress} style={styles.link(theme)}>
           <Text style={styles.linkTitle()}>{translate('link.getToken')}</Text>
