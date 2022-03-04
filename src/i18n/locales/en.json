@@ -55,7 +55,8 @@
     "About": "About",
     "Feedback": "Feedback",
     "Theme": "Theme Setting",
-    "Search": "Search"
+    "Search": "Search",
+    "Profile": "Profile"
   },
   "placeholder": {
     "token": "Place input token here",

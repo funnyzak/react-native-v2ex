@@ -55,7 +55,8 @@
     "About": "关于我们",
     "Feedback": "建议与反馈",
     "Theme": "主题设置",
-    "Search": "搜索"
+    "Search": "搜索",
+    "Profile": "个人资料"
   },
   "placeholder": {
     "token": "请输入登陆令牌"

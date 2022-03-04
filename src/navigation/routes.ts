@@ -12,10 +12,11 @@ export type RootStackParamList = {
   HotTopics: undefined
   SignIn: undefined
   Notification: undefined
-  NodeList: undefined
-  NodeTopics: undefined
+  Node: undefined
+  NodeTopics: { nodeName: string }
   TopicDetail: { topicId: string }
-  AccountHome: undefined
+  My: undefined
+  Profile: { username: string }
   FollowPeople: undefined
   LikeTopics: undefined
   Setting: undefined
@@ -23,7 +24,7 @@ export type RootStackParamList = {
   About: undefined
   Feedback: undefined
   Theme: undefined
-  Search: undefined
+  Search: { query: string }
 }
 
 export type CommonScreenProps = {
@@ -45,13 +46,15 @@ export type SignInScreenProps = NativeStackScreenProps<RootStackParamList, 'Sign
 
 export type NotificationScreenProps = NativeStackScreenProps<RootStackParamList, 'Notification'> & CommonScreenProps
 
-export type NodeListScreenProps = NativeStackScreenProps<RootStackParamList, 'NodeList'> & CommonScreenProps
+export type NodeScreenProps = NativeStackScreenProps<RootStackParamList, 'Node'> & CommonScreenProps
 
 export type NodeTopicsScreenProps = NativeStackScreenProps<RootStackParamList, 'NodeTopics'> & CommonScreenProps
 
 export type TopicDetailScreenProps = NativeStackScreenProps<RootStackParamList, 'TopicDetail'> & CommonScreenProps
 
-export type AccountHomeScreenProps = NativeStackScreenProps<RootStackParamList, 'AccountHome'> & CommonScreenProps
+export type MyScreenProps = NativeStackScreenProps<RootStackParamList, 'My'> & CommonScreenProps
+
+export type ProfileScreenProps = NativeStackScreenProps<RootStackParamList, 'Profile'> & CommonScreenProps
 
 export type FollowPeopleScreenProps = NativeStackScreenProps<RootStackParamList, 'FollowPeople'> & CommonScreenProps
 
@@ -85,6 +88,10 @@ export const ROUTES = {
    */
   Home: 'Home',
   /**
+   * @description 个人主页
+   */
+  Profile: 'Profile',
+  /**
    * @description 最新话题
    */
   LatestTopics: 'LatestTopics',
@@ -101,7 +108,7 @@ export const ROUTES = {
   /**
    * @description 节点列表
    */
-  NodeList: 'NodeList',
+  Node: 'Node',
   /**
    * @description 节点话题
    */
@@ -113,7 +120,7 @@ export const ROUTES = {
   /**
    * @description 我的
    */
-  AccountHome: 'AccountHome',
+  My: 'My',
   /**
    * @description 关注用户列表
    */

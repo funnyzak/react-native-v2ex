@@ -5,6 +5,7 @@ export { default as SignInScreen } from './login/SignIn'
 export { default as HelloReactNative } from './hello/Hello'
 export { default as DrawScreen } from './catalog/Draw'
 export { default as SearchScreen } from './search'
+export { default as ProfileScreen } from './profile'
 
 export * from './my'
 export * from './setting'
