@@ -1,5 +1,20 @@
 {
   "common": {
+    "login": "Log In",
+    "search": "Search",
+    "setting": "Setting",
+    "theme": "Theme",
+    "feedback": "Feedback",
+    "about": "About",
+    "version": "Version",
+    "Build": "Build",
+    "darkColor": "Dark",
+    "lightColor": "Light",
+    "loading": "Loading...",
+    "contact": "contact",
+    "replay": "replay",
+    "topic": "Topic",
+    "count": "Count",
     "ok": "OK!",
     "cancel": "Cancel",
     "continue": "Continue",
@@ -10,90 +25,59 @@
     "next": "Next",
     "back": "Back",
     "total": "Total",
-    "subTotal": "Subtotal",
-    "grandTotal": "Grand Total",
-    "price": "Price",
-    "quantity": "Qty",
-    "sku": "SKU",
-    "discount": "Discount",
-    "order": "Order",
     "email": "Email",
     "password": "Password",
-    "continueShopping": "Continue Shopping",
     "min": "Min.",
     "max": "Max.",
-    "region": "Region",
-    "country": "Country",
-    "firstName": "Firstname",
-    "lastName": "Lastname",
-    "postcode": "Postcode",
-    "street": "Street",
-    "city": "City",
     "telephone": "Telephone",
-    "shipping": "Shipping",
     "sort": "Sort",
     "filter": "Filter",
     "token": "Token",
-    "sortOption": {
-      "aToZ": "Name: a to z",
-      "zToA": "Name: z to a"
-    }
+    "github": "Github",
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "google": "Google"
   },
   "router": {
     "Home": "Home",
-    "NodeList": "Node",
+    "Node": "Node",
     "Notification": "Notification",
     "Setting": "Setting",
-    "AccountHome": "My",
-    "SignIn": "SignIn"
+    "My": "My",
+    "SignIn": "Sign In",
+    "LatestTopics": "Latest",
+    "HotTopics": "Hot",
+    "NodeTopics": "Topics",
+    "TopicDetail": "Topic",
+    "FollowPeople": "Follow",
+    "LikeTopics": "Like",
+    "Language": "Language Setting",
+    "About": "About",
+    "Feedback": "Feedback",
+    "Theme": "Theme Setting",
+    "Search": "Search"
   },
   "placeholder": {
-    "token": "Place input token here"
+    "token": "Place input token here",
+    "search": "Type here...",
+    "message": "Type here...",
+    "empty": "Empty."
   },
   "button": {
-    "login": "Login"
+    "followPeople": "Follow",
+    "likeTopics": "Like",
+    "readed": "Readed",
+    "clickToLogin": "Click here to login"
   },
   "link": {
     "getToken": "Get token Here"
   },
   "tips": {
-    "authSuccess": "Auth Success."
+    "authSuccess": "Auth Success.",
+    "login": "experience more features"
   },
   "errors": {
     "error": "Error",
-    "noProduct": "No products found"
-  },
-  "account": {
-    "title": "Account",
-    "contactInformation": "Contact Information",
-    "logoutButton": "LOG OUT",
-    "myOrdersButton": "My Orders",
-    "myAddressButton": "My Address"
-  },
-  "addAccountAddress": {
-    "title": "My Address"
-  },
-  "login": {
-    "title": "Login",
-    "loginButton": "LOG IN",
-    "signupButton": "SIGN UP",
-    "forgetPassword": "Forget password?"
-  },
-  "passwordReset": {
-    "title": "Reset Password",
-    "resetButton": "RESET MY PASSWORD",
-    "passwordRecovery": "PASSWORD RECOVERY",
-    "passwordRecoveryInstructions": "Please enter your email address below to receive a password reset link"
-  },
-  "signup": {
-    "title": "Sign Up",
-    "createAccountButton": "CREATE ACCOUNT"
-  },
-  "search": {
-    "title": "Search",
-    "searchPlaceholderText": "Type here..."
-  },
-  "home": {
-    "title": "React Native Quick Start"
+    "noFound": "No found"
   }
 }

@@ -1,28 +1,80 @@
 {
   "common": {
-    "ok": "确定",
-    "cancel": "取消",
-    "back": "返回",
-    "token": "令牌"
+    "login": "登陆",
+    "search": "搜索",
+    "setting": "设置",
+    "theme": "主题",
+    "feedback": "反馈",
+    "about": "关于",
+    "version": "版本",
+    "Build": "Build",
+    "darkColor": "黑色",
+    "lightColor": "亮色",
+    "loading": "Loading...",
+    "contact": "contact",
+    "replay": "replay",
+    "topic": "Topic",
+    "count": "Count",
+    "ok": "OK!",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "select": "Select",
+    "save": "Save",
+    "update": "Update",
+    "apply": "Apply",
+    "next": "Next",
+    "back": "Back",
+    "total": "Total",
+    "email": "Email",
+    "password": "Password",
+    "min": "Min.",
+    "max": "Max.",
+    "telephone": "Telephone",
+    "sort": "Sort",
+    "filter": "Filter",
+    "token": "Token",
+    "github": "Github",
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "google": "Google"
   },
   "router": {
-    "Home": "首页",
-    "NodeList": "节点",
+    "Home": "主页",
+    "Node": "节点",
     "Notification": "通知",
     "Setting": "设置",
-    "AccountHome": "我的",
-    "SignIn": "登录"
+    "My": "我的",
+    "SignIn": "登入",
+    "LatestTopics": "最新",
+    "HotTopics": "热门",
+    "NodeTopics": "主题",
+    "TopicDetail": "主题详情",
+    "FollowPeople": "关注的人",
+    "LikeTopics": "收藏主题",
+    "Language": "语言设置",
+    "About": "关于我们",
+    "Feedback": "建议与反馈",
+    "Theme": "主题设置",
+    "Search": "搜索"
   },
   "placeholder": {
     "token": "请输入登陆令牌"
   },
   "button": {
-    "login": "授权登陆"
+    "followPeople": "关注",
+    "likeTopics": "收藏",
+    "readed": "已读",
+    "clickToLogin": "点击此处授权登陆"
   },
   "link": {
     "getToken": "从 V2ex 官方获取令牌"
   },
   "tips": {
-    "authSuccess": "授权成功"
+    "authSuccess": "授权成功",
+    "login": "登陆 V2EX，体验更多功能"
+  },
+  "errors": {
+    "error": "错误",
+    "noFound": "未找到"
   }
 }
