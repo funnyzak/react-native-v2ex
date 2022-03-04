@@ -3,6 +3,7 @@
  */
 
 import type { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { ITheme } from '@src/types'
 
 export type RootStackParamList = {
   Draw: undefined
@@ -31,6 +32,7 @@ export type CommonScreenProps = {
   loading: boolean
   error: string | null
   success: string | null
+  theme: ITheme
 }
 
 export type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'> & CommonScreenProps

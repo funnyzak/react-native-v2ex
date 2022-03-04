@@ -22,7 +22,13 @@ export const NODE_TABS = {
 
 export type NODE_TABS = typeof NODE_TABS[keyof typeof NODE_TABS]
 
-export const HOME_NODES: Array<IState.NodeState> = [
+export type NODE_TAB_TYPE = {
+  name: string
+  title: string
+  loginRequired: boolean
+}
+
+export const HOME_NODES: Array<NODE_TAB_TYPE> = [
   {
     name: NODE_TABS.LATEST,
     title: '最新',
