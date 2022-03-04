@@ -286,7 +286,7 @@ PODS:
   - React-jsinspector (0.67.2)
   - React-logger (0.67.2):
     - glog
-  - react-native-safe-area-context (4.0.1):
+  - react-native-safe-area-context (4.1.2):
     - RCT-Folly
     - RCTRequired
     - RCTTypeSafety
@@ -399,7 +399,7 @@ PODS:
     - React-RCTText
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (3.12.0):
+  - RNScreens (3.13.1):
     - React-Core
     - React-RCTImage
   - SDWebImage (5.11.1):
@@ -613,7 +613,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 52beb652bbc61201bd70cbe4f0b8edb607e8da4f
   React-jsinspector: 595f76eba2176ebd8817a1fffd47b84fbdab9383
   React-logger: 23de8ea0f44fa00ee77e96060273225607fd4d78
-  react-native-safe-area-context: eec048ba481a7ec7b1bf9d7b7a78fb1103f4806d
+  react-native-safe-area-context: 114e9a74df2643012b9d6cc1460b94f3b6a90780
   react-native-webview: 380c1a03ec94b7ed764dac8db1e7c9952d08c93a
   React-perflogger: 3c9bb7372493e49036f07a82c44c8cf65cbe88db
   React-RCTActionSheet: 052606483045a408693aa7e864410b4a052f541a
@@ -633,7 +633,7 @@ SPEC CHECKSUMS:
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNLocalize: 6571ea792a7dcb6d217c98c14d9147e9417cef62
   RNReanimated: 32c91e28f5780937b8efc07ddde1bab8d373fe0b
-  RNScreens: 2559f98b0835103cbef3b26ba77fa61d4bb37ae7
+  RNScreens: 40a2cb40a02a609938137a1e0acfbf8fc9eebf19
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815
   Yoga: 9b6696970c3289e8dea34b3eda93f23e61fb8121
