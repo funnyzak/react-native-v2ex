@@ -14,7 +14,7 @@ import { getFocusedRouteNameFromRoute } from '@react-navigation/native'
 import { translate } from '@src/i18n'
 import { useAppSelector } from '@src/hooks'
 import { themes } from '@src/theme'
-import { HomeScreen, DrawScreen, NodeScreen, NotificationScreen, AccountScreen, SignInScreen } from '@src/screens'
+import * as Screens from '@src/screens'
 import { useUnRead } from '@src/hooks/useUnRead'
 import { ROUTES, RootStackParamList } from './routes'
 
@@ -64,12 +64,12 @@ const getHeaderTitle = (
   switch (routeName) {
     case ROUTES.Home:
       return translate(`router.${ROUTES.Home}`)
-    case ROUTES.NodeList:
-      return translate(`router.${ROUTES.NodeList}`)
+    case ROUTES.Node:
+      return translate(`router.${ROUTES.Node}`)
     case ROUTES.Notification:
       return translate(`router.${ROUTES.Notification}`)
-    case ROUTES.AccountHome:
-      return translate(`router.${ROUTES.AccountHome}`)
+    case ROUTES.My:
+      return translate(`router.${ROUTES.My}`)
   }
 }
 
@@ -85,7 +85,7 @@ const MainAppNavigator = () => {
     <MainNavigator.Navigator>
       <MainNavigator.Screen
         name={ROUTES.Home}
-        component={HomeScreen}
+        component={Screens.HomeScreen}
         options={{
           title: translate(`router.${ROUTES.Home}`),
           ...defaultTabBarSetting,
@@ -93,17 +93,17 @@ const MainAppNavigator = () => {
         }}
       />
       <MainNavigator.Screen
-        name={ROUTES.NodeList}
-        component={NodeScreen}
+        name={ROUTES.Node}
+        component={Screens.NodeScreen}
         options={{
-          title: translate(`router.${ROUTES.NodeList}`),
+          title: translate(`router.${ROUTES.Node}`),
           ...defaultTabBarSetting,
           tabBarIcon: ({ focused }) => renderIcon(focused, theme.assets.images.icons.discovery, theme.assets.images.icons.discoveryInactive)
         }}
       />
       <MainNavigator.Screen
         name={ROUTES.Notification}
-        component={NotificationScreen}
+        component={Screens.NotificationScreen}
         options={{
           title: translate(`router.${ROUTES.Notification}`),
           ...defaultTabBarSetting,
@@ -113,10 +113,10 @@ const MainAppNavigator = () => {
         }}
       />
       <MainNavigator.Screen
-        name={ROUTES.AccountHome}
-        component={AccountScreen}
+        name={ROUTES.My}
+        component={Screens.MyScreen}
         options={{
-          title: translate(`router.${ROUTES.AccountHome}`),
+          title: translate(`router.${ROUTES.My}`),
           ...defaultTabBarSetting,
           tabBarIcon: ({ focused }) => renderIcon(focused, theme.assets.images.icons.profile, theme.assets.images.icons.profileInactive)
         }}
@@ -128,7 +128,7 @@ const MainAppNavigator = () => {
 const DrawNavigator = () => {
   return (
     <Drawer.Navigator initialRouteName="Draw">
-      <Drawer.Screen name="Draw" component={DrawScreen} options={{ title: '导航器', headerShown: false }} />
+      <Drawer.Screen name="Draw" component={Screens.DrawScreen} options={{ title: '导航器', headerShown: false }} />
       <Drawer.Screen name="AuthLoadingSwitch" component={MainAppNavigator} options={{ title: '最新', headerShown: false }} />
       <Drawer.Screen name="TopicDetail" component={MainAppNavigator} options={{ title: '热点', headerShown: false }} />
       <Drawer.Screen name="Language" component={MainAppNavigator} options={{ title: '关于', headerShown: false }} />
@@ -146,7 +146,7 @@ function Natigator() {
       {!token ? (
         <StackNavigator.Screen
           name={ROUTES.SignIn}
-          component={SignInScreen}
+          component={Screens.SignInScreen}
           options={{
             title: translate(`router.${ROUTES.SignIn}`),
             animationTypeForReplace: !token ? 'pop' : 'push'
