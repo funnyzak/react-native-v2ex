@@ -1,6 +1,5 @@
 import React from 'react'
 import { TextInput, View, ViewPropTypes, TextInputProps as NativeTextInputProps, ViewStyle, TextStyle } from 'react-native'
-import PropTypes from 'prop-types'
 import { Text } from './Text'
 import { useTheme } from '@src/theme'
 import { ITheme } from '@src/types'
@@ -69,16 +68,6 @@ const styles = {
     paddingLeft: _theme.spacing.large,
     flex: 1
   })
-}
-
-Input.propTypes = {
-  label: PropTypes.string,
-  value: PropTypes.string,
-  onChangeText: PropTypes.func,
-  placeholder: PropTypes.string,
-  secureTextEntry: PropTypes.bool,
-  containerStyle: ViewPropTypes.style,
-  assignRef: PropTypes.func
 }
 
 Input.defaultProps = {

@@ -1,6 +1,5 @@
 import React from 'react'
-import { View, ViewPropTypes, StyleProp, ViewStyle, ActivityIndicator } from 'react-native'
-import PropTypes from 'prop-types'
+import { View, StyleProp, ViewStyle, ActivityIndicator } from 'react-native'
 import { useTheme } from '@src/theme'
 
 const Spinner = ({ size, style }: { size: 'large' | 'small'; style: StyleProp<ViewStyle> }) => {
@@ -18,11 +17,6 @@ const Spinner = ({ size, style }: { size: 'large' | 'small'; style: StyleProp<Vi
       <ActivityIndicator size={size} color={theme.colors.secondary} />
     </View>
   )
-}
-
-Spinner.propTypes = {
-  size: PropTypes.oneOf(['large', 'small']),
-  style: ViewPropTypes.style
 }
 
 Spinner.defaultProps = {

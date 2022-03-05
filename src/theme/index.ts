@@ -4,3 +4,5 @@ import ThemeProvider from './ThemeProvider'
 
 export type { ThemeType }
 export { ThemeProvider, ThemeContext, themes, useTheme }
+
+export * from './types'

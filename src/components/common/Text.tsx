@@ -83,12 +83,6 @@ const styles = {
   })
 }
 
-Text.propTypes = {
-  type: PropTypes.oneOf([HEADING, SUB_HEADING, BODY, LABEL, CAPTION]),
-  bold: PropTypes.bool,
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
-}
-
 Text.defaultProps = {
   type: BODY,
   bold: false,

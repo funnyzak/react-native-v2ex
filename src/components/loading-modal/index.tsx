@@ -1,7 +1,7 @@
 import React from 'react'
 import { Modal, View, ViewStyle } from 'react-native'
 import Loading from '../loading'
-import { useTheme } from '@src/theme'
+import { useTheme, ITheme } from '@src/theme'
 
 interface IProps {
   visible: boolean
