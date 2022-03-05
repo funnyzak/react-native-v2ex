@@ -1,5 +1,6 @@
 {
   "common": {
+    "auth": "Auth",
     "login": "Log In",
     "search": "Search",
     "setting": "Setting",
@@ -59,7 +60,7 @@
     "Profile": "Profile"
   },
   "placeholder": {
-    "token": "Place input token here",
+    "token": "Type token here..",
     "search": "Type here...",
     "message": "Type here...",
     "empty": "Empty."
