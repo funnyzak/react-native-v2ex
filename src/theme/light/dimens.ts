@@ -18,6 +18,7 @@ const dimens: IThemeDimen = {
   defaultButtonWidth: screenWidth * 0.9,
   defaultButtonHeight: 40,
   defaultInputBoxHeight: 40,
+  topicListItemInBetweenSpace: 10,
 
   /**
    * avatar witth

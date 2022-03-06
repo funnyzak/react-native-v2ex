@@ -1,9 +1,7 @@
 import React from 'react'
 import { TouchableOpacity, ViewPropTypes, TouchableOpacityProps as NativeTouchableOpacityProps, ViewStyle, TextStyle } from 'react-native'
-import PropTypes from 'prop-types'
 import { Text } from './Text'
-import { useTheme } from '@src/theme'
-import { ITheme } from '@src/types'
+import { useTheme, ITheme } from '@src/theme'
 
 export interface TouchableOpacityProps extends NativeTouchableOpacityProps {
   disabled: boolean
@@ -32,13 +30,6 @@ const styles = {
     color: disabled ? _theme.colors.disabledDark : _theme.colors.white,
     alignSelf: 'center'
   })
-}
-
-Button.propTypes = {
-  onPress: PropTypes.func.isRequired,
-  children: PropTypes.string.isRequired,
-  style: ViewPropTypes.style,
-  disabled: PropTypes.bool
 }
 
 Button.defaultProps = {
