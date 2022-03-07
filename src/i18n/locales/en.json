@@ -76,6 +76,7 @@
   },
   "tips": {
     "authSuccess": "Auth Success.",
+    "loadSuccess": "Load Success.",
     "login": "experience more features"
   },
   "errors": {

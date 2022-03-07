@@ -54,7 +54,16 @@ export default (state: IState.UIState = INITIAL_STATE, action: Action): IState.U
     case APP_HOME_REFRESH:
       return { ...state, home: { ...state.home, error: '', success: '', list: undefined, refreshing: true } }
     case APP_HOME_SUCCESS:
-      return { ...state, home: { ...state.home, error: '', success: '', list: (state.home.list || []).concat(action.payload), refreshing: false } }
+      return {
+        ...state,
+        home: {
+          ...state.home,
+          error: '',
+          success: translate('tip.loadSuccess'),
+          list: (state.home.list || []).concat(action.payload),
+          refreshing: false
+        }
+      }
     case FEEDBACKING:
       return { ...state, feedback: { processing: true } }
     case FEEDBACK_DONE:

@@ -19,10 +19,10 @@ import {
 import { NODE_TAB_TYPE } from '@src/navigation'
 import { SPECIAL_NODE_NAME_MAP } from '@src/config/constants'
 
-export const homeSwithTab = (tab: NODE_TAB_TYPE) => {
+export const switchHomeTab = (tab: NODE_TAB_TYPE) => {
   return async (dispath: Dispatch) => {
     dispath({ type: APP_HOME_SWITCH_NODE, payload: tab })
-    dispath(homeTopicList(tab.name, 1) as any)
+    dispath(getHomeTopics(tab.name, 1) as any)
   }
 }
 
@@ -32,7 +32,7 @@ export const homeSwithTab = (tab: NODE_TAB_TYPE) => {
  * @param page 获取页数
  * @returns
  */
-export const homeTopicList =
+export const getHomeTopics =
   (nodeName: string, page: number = 1) =>
   async (dispatch: Dispatch) => {
     const specialNode = Object.values(SPECIAL_NODE_NAME_MAP).includes(nodeName)

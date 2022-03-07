@@ -16,6 +16,12 @@ const colors: IThemeColor = {
   tabBarIconInactive: '#8c8c8c',
   tabBarIconActive: '#333',
   appbarTint: '#000',
+
+  lightGrey: '#F5F6FA',
+  tabShadowColor: '#000000',
+  tabActiveTintColor: '#200E32',
+  tabInactiveTintColor: '#999999',
+
   /**
    * ========================= Secondary color =========================
    * secondaryLight: to be used for hover state

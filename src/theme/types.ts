@@ -10,6 +10,12 @@ export interface IThemeColor {
   tabBarIconInactive: string
   tabBarIconActive: string
   appbarTint: string
+
+  lightGrey: string
+  tabShadowColor: string
+  tabActiveTintColor: string
+  tabInactiveTintColor: string
+
   secondaryLight: string
   secondary: string
   secondaryDark: string
