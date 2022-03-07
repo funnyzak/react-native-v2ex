@@ -34,7 +34,7 @@ module.exports = {
         // http://eslint.org/docs/rules/comma-style
         'comma-style': [2, 'last'],
         // 圈复杂度
-        'complexity': [2, 12],
+        'complexity': [2, 20],
         // 文件末尾强制换行
         'eol-last': 2,
         // 方法表达式是否需要命名
