@@ -1,68 +1,70 @@
-import React, { useState } from 'react'
-import { StyleSheet, View, ViewStyle, TextStyle, RefreshControl } from 'react-native'
+import React, { useMemo } from 'react'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 
-import { connect } from 'react-redux'
-import { IState, ITheme, V2exObject } from '@src/types'
-import { TopicTabList, TopicList } from '../components'
-import { HomeScreenProps as ScreenProps, HOME_NODES, NODE_TAB_TYPE, ROUTES } from '@src/navigation'
+import { HomeScreenProps, HOME_NODES as tabs, NODE_TAB_TYPE } from '@src/navigation'
+import { useTheme } from '@src/theme'
+import { useAppSelector } from '@src/hooks'
+import NodeTopicList from '../topic/NodeTopicList'
 
-const Home = ({ route, navigation, theme, loading }: ScreenProps) => {
-  const [currentTab, setCurrentTab] = useState<NODE_TAB_TYPE>(HOME_NODES[0])
-  const [canLoadMoreContent, setCanLoadMoreContent] = useState<boolean>(true)
-  const [topics, setTopics] = useState<V2exObject.Topic[] | undefined>(undefined)
-  const [searchIndicator, setSearchIndicator] = useState<boolean>(false)
-  const [refreshing, setRefreshing] = useState<boolean>(false)
+const Tab = createMaterialTopTabNavigator()
 
-  const onEndReached = () => {
-    if (canLoadMoreContent) {
-    }
-  }
+const TopicTabList = ({}: HomeScreenProps) => {
+  const { theme } = useTheme()
+  const isLogged = useAppSelector((state: any) => (state.member ? true : false))
 
-  const onRefresh = () => {
-    setTopics(undefined)
-    setSearchIndicator(false)
-  }
+  const filterNodes = useMemo(() => tabs.filter((item) => !item.loginRequired || (item.loginRequired && isLogged)), [isLogged])
 
   return (
-    <View>
-      <TopicTabList
-        tabs={HOME_NODES}
-        onPress={(tab: NODE_TAB_TYPE) => {
-          setCurrentTab(tab)
-        }}
-        currentTab={currentTab}
-      />
-      <TopicList
-        onRowPress={(topic: V2exObject.Topic) => {
-          navigation.navigate(ROUTES.TopicDetail, { topicId: topic.id.toString() })
-        }}
-        topics={topics}
-        onEndReached={onEndReached}
-        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-      />
-    </View>
+    <Tab.Navigator
+      initialLayout={{ width: theme.dimens.WINDOW_WIDTH }}
+      tabBarPosition="top"
+      initialRouteName="NODE-R2"
+      style={{
+        padding: 0
+      }}
+      screenOptions={{
+        lazy: true,
+        tabBarActiveTintColor: theme.colors.tabActiveTintColor,
+        tabBarInactiveTintColor: theme.colors.tabInactiveTintColor,
+        tabBarScrollEnabled: true,
+        tabBarItemStyle: {
+          height: 35,
+          width: 70,
+          minHeight: 35,
+          padding: 0
+        },
+        tabBarStyle: {
+          elevation: 0,
+          shadowColor: theme.colors.tabShadowColor,
+          shadowOffset: { width: 5, height: 10 }, // change this for more shadow
+          shadowOpacity: 0.3,
+          shadowRadius: 6,
+          borderBottomWidth: 1,
+          borderColor: theme.colors.lightGrey,
+          backgroundColor: theme.colors.lightGrey
+        },
+        tabBarLabelStyle: {
+          padding: 0,
+          margin: 0,
+          fontSize: 14
+        },
+        tabBarIndicatorStyle: {
+          backgroundColor: theme.colors.lightGrey
+        },
+        tabBarIndicatorContainerStyle: {}
+      }}>
+      {filterNodes.map((item: NODE_TAB_TYPE) => (
+        <Tab.Screen
+          key={`NODE-${item.name}`}
+          name={`NODE-${item.name}`}
+          component={NodeTopicList}
+          options={{
+            title: item.title
+          }}
+        />
+      ))}
+    </Tab.Navigator>
   )
 }
 
-/**
- * @description styles settings
- */
-const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    flex: 1
-  })
-}
-
-/**
- * default props
- */
-Home.defaultProps = {
-  loading: false
-}
-
-const mapStateToProps = ({ ui: { home } }: { ui: IState.UIState }) => {
-  const { error, success, list, refreshing } = home
-  return { error, success, refreshing, list }
-}
-
-export default connect(mapStateToProps)(Home)
+export default TopicTabList

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { View, Text, FlatList, TouchableOpacity, ViewStyle, TextStyle } from 'react-native'
 import { IState, ITheme, V2exObject } from '@src/types'
 import TopicItem from './TopicItem'
@@ -6,21 +6,23 @@ import { Spinner } from '@src/components'
 import { useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
 
-const TopicList = ({
-  onRowPress,
-  canLoadMoreContent,
-  topics,
-  onEndReached,
-  refreshControl,
-  searchIndicator
-}: {
+export interface TopicListProps {
   onRowPress: (topic: V2exObject.Topic) => void
   canLoadMoreContent: boolean
   topics?: Array<V2exObject.Topic>
   onEndReached: () => void
   refreshControl: React.ReactElement
   searchIndicator: boolean
-}) => {
+}
+
+const TopicList: React.FC<TopicListProps> = ({
+  onRowPress,
+  canLoadMoreContent,
+  topics,
+  onEndReached,
+  refreshControl,
+  searchIndicator
+}: TopicListProps) => {
   const { theme } = useTheme()
 
   const renderItemRow = ({ item, index }: { item: V2exObject.Topic; index: number }) => (
@@ -67,7 +69,11 @@ const TopicList = ({
     }
   }
 
-  return <View style={styles.container}>{renderContent()}</View>
+  return (
+    <>
+      <View style={styles.container}>{renderContent()}</View>
+    </>
+  )
 }
 
 /**
@@ -120,15 +126,6 @@ const styles = {
     backgroundColor: theme.colors.border,
     marginVertical: theme.spacing.small
   })
-}
-
-TopicList.defaultProps = {
-  topics: [],
-  onRowPress: () => {},
-  canLoadMoreContent: false,
-  onEndReached: () => {},
-  refreshControl: undefined,
-  searchIndicator: false
 }
 
 export default TopicList
