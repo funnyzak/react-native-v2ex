@@ -5,7 +5,8 @@ export default (v2ex: V2exAPI.V2ex): V2exAPI.Topic => ({
    *  Get node topic list
    * @param name : node name
    */
-  topicsByNode: (name = 'python') => v2ex.get<V2exObject.Topic[]>(`/nodes/${name}/topics`, undefined, undefined, undefined, 'v2'),
+  topicsByNode: (name = 'python', page: number = 1) =>
+    v2ex.get<V2exObject.Topic[]>(`/nodes/${name}/topics?p=${page}`, undefined, undefined, undefined, 'v2'),
 
   /**
    * Get latest topic list

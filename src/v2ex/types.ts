@@ -126,7 +126,7 @@ export declare module V2exAPI {
      *  Get node topic list
      * @param name : node name
      */
-    topicsByNode(name: string): Promise<V2exObject.Topic[]>
+    topicsByNode(name: string, page: number): Promise<V2exObject.Topic[]>
 
     /**
      * Get latest topic list
