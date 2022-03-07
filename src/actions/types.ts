@@ -8,10 +8,6 @@ export const APP_SITE_INFO = 'v2ex_site_info'
 export const APP_SITE_STAT = 'v2ex_site_stat'
 export const APP_INIT_ERROR = 'v2ex_init_error'
 
-export const APP_HOME_SWITCH_NODE = 'v2ex_home_switch_node'
-export const APP_HOME_LOAD_MORE_TOPICS = 'v2ex_home_load_more_topics'
-export const APP_HOME_NODE_TOPICS = 'v2ex_home_node_topics'
-
 export const APP_SETTING_LOCALES = 'v2ex_locales'
 export const APP_SETTING_THEME = 'v2ex_theme'
 
@@ -35,8 +31,18 @@ export const APP_LOGOUT = 'v2ex_logout'
 export const APP_AUTH_SUCCESS = 'v2ex_auth_success'
 export const APP_AUTH_ERROR = 'v2ex_auth_error'
 
+export const APP_HOME_SWITCH_NODE = 'v2ex_home_switch_node'
+export const APP_HOME_LOAD_MORE_TOPICS = 'v2ex_home_load_more_topics'
+export const APP_HOME_NODE_TOPICS = 'v2ex_home_node_topics'
+export const APP_HOME_REFRESH = 'v2ex_home_loading'
+export const APP_HOME_SUCCESS = 'v2ex_home_success'
+export const APP_HOME_ERROR = 'v2ex_home_error'
+
 export const ActionTypes = {
   APP_INIT,
+  APP_HOME_ERROR,
+  APP_HOME_SUCCESS,
+  APP_HOME_REFRESH,
   APP_LATEST_VERSION,
   APP_SITE_INFO,
   APP_INIT_ERROR,
