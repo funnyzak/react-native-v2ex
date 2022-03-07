@@ -1,7 +1,7 @@
 import { V2exAPI, V2exObject } from '@src/types'
 import { ThemeType } from '@src/theme'
 import { LanguageTagType } from '@src/i18n'
-
+import { NODE_TAB_TYPE } from '@src/navigation'
 export declare module IState {
   /**
    * @description 全局状态
@@ -56,6 +56,13 @@ export declare module IState {
       error: string | null
       success: string | null
       loading: boolean
+    }
+    home: {
+      error: string | null
+      success: string | null
+      currentTab: NODE_TAB_TYPE
+      list?: V2exObject.Topic[]
+      refreshing: boolean
     }
     feedback: {
       processing: boolean

@@ -16,7 +16,11 @@ const uiSubsetBlacklistFilter = createBlacklistFilter('ui', [
   'login.loading',
   'login.success',
   'login.error',
-  'feedback.processing'
+  'feedback.processing',
+  'home.refreshing',
+  'home.success',
+  'home.error',
+  'home.list'
 ])
 const appSubsetBlacklistFilter = createBlacklistFilter('app', ['refreshing', 'errorMessage', 'version', 'latestVersion', 'deviceInfo', 'v2ex'])
 const homeSubsetBlacklistFilter = createBlacklistFilter('home', ['refreshing'])
