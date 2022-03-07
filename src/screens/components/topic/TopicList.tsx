@@ -16,7 +16,7 @@ const TopicList = ({
 }: {
   onRowPress: (topic: V2exObject.Topic) => void
   canLoadMoreContent: boolean
-  topics: Array<V2exObject.Topic>
+  topics?: Array<V2exObject.Topic>
   onEndReached: () => void
   refreshControl: React.ReactElement
   searchIndicator: boolean
@@ -26,6 +26,14 @@ const TopicList = ({
   const renderItemRow = ({ item, index }: { item: V2exObject.Topic; index: number }) => (
     <TopicItem imageStyle={styles.imageStyle(theme)} viewContainerStyle={{ flex: 1 }} topic={item} onRowPress={onRowPress} />
   )
+
+  const renderFooter = () => {
+    if (canLoadMoreContent) {
+      return <Spinner style={{ padding: theme.spacing.large }} />
+    }
+
+    return null
+  }
 
   const renderItemSeparator = () => <View style={styles.itemSeparator(theme)} />
 
@@ -43,6 +51,7 @@ const TopicList = ({
           keyExtractor={(item, index) => index.toString()}
           onEndReached={onEndReached}
           onEndReachedThreshold={0.1}
+          ListFooterComponent={renderFooter}
           numColumns={1}
           key={'ONE COLUMN'}
           ItemSeparatorComponent={renderItemSeparator}
@@ -86,6 +95,30 @@ const styles = {
   }),
   notFoundText: (): TextStyle => ({
     textAlign: 'center'
+  }),
+  headerContainerStyle: (theme: ITheme): ViewStyle => ({
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    borderBottomWidth: 1,
+    borderBottomColor: theme.colors.border
+  }),
+  iconWrapper: (theme: ITheme) => ({
+    flex: 1,
+    height: 32,
+    margin: theme.spacing.small,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }),
+  headerTextStyle: (theme: ITheme) => ({
+    textTransform: 'uppercase',
+    marginLeft: theme.spacing.small
+  }),
+  separator: (theme: ITheme) => ({
+    width: 1,
+    backgroundColor: theme.colors.border,
+    marginVertical: theme.spacing.small
   })
 }
 
