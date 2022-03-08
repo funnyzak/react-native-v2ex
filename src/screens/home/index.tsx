@@ -18,7 +18,7 @@ const TopicTabList = ({}: HomeScreenProps) => {
     <Tab.Navigator
       initialLayout={{ width: theme.dimens.WINDOW_WIDTH }}
       tabBarPosition="top"
-      initialRouteName="NODE-R2"
+      initialRouteName={`NODE-${tabs[0].name}`}
       style={{
         padding: 0
       }}
@@ -27,21 +27,26 @@ const TopicTabList = ({}: HomeScreenProps) => {
         tabBarActiveTintColor: theme.colors.tabActiveTintColor,
         tabBarInactiveTintColor: theme.colors.tabInactiveTintColor,
         tabBarScrollEnabled: true,
+        swipeEnabled: false,
         tabBarItemStyle: {
           height: 35,
-          width: 70,
+          width: 'auto',
           minHeight: 35,
-          padding: 0
+          padding: 0,
+          paddingLeft: 3,
+          paddingRight: 3,
+          marginLeft: 10,
+          marginRight: 10
         },
         tabBarStyle: {
           elevation: 0,
           shadowColor: theme.colors.tabShadowColor,
           shadowOffset: { width: 5, height: 10 }, // change this for more shadow
-          shadowOpacity: 0.3,
+          shadowOpacity: 0,
           shadowRadius: 6,
           borderBottomWidth: 1,
           borderColor: theme.colors.lightGrey,
-          backgroundColor: theme.colors.lightGrey
+          backgroundColor: theme.colors.primary
         },
         tabBarLabelStyle: {
           padding: 0,
@@ -49,9 +54,11 @@ const TopicTabList = ({}: HomeScreenProps) => {
           fontSize: 14
         },
         tabBarIndicatorStyle: {
-          backgroundColor: theme.colors.lightGrey
+          backgroundColor: theme.colors.secondary
         },
-        tabBarIndicatorContainerStyle: {}
+        tabBarIndicatorContainerStyle: {
+          backgroundColor: theme.colors.primary
+        }
       }}>
       {filterNodes.map((item: NODE_TAB_TYPE) => (
         <Tab.Screen
@@ -60,6 +67,9 @@ const TopicTabList = ({}: HomeScreenProps) => {
           component={NodeTopicList}
           options={{
             title: item.title
+          }}
+          initialParams={{
+            nodeName: item.name
           }}
         />
       ))}
