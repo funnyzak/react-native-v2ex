@@ -66,11 +66,30 @@ export declare module IState {
    * 节点状态
    */
   export interface TabNodeState {
+    /**
+     * @description 失败提示
+     */
     error: string | null
+    /**
+     * @description 拉取成功提示
+     */
     success: string | null
+    /**
+     * @description 节点基本信息
+     */
     nodeTab: NODE_TAB_TYPE
+    /**
+     * @description 节点主题列表
+     */
     list?: V2exObject.Topic[]
+    /**
+     * @description 节点主题列表刷新状态
+     */
     refreshing: boolean
+    /**
+     * @description has more topics
+     */
+    // hasMore: boolean
   }
 
   /**
