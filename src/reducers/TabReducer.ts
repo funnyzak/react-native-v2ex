@@ -38,13 +38,14 @@ export default (state: IState.TabsState = INITIAL_STATE, action: Action): IState
       node = {
         ...node,
         error: '',
-        success: translate('tip.loadSuccess'),
-        list: (node.list || []).concat(action.payload),
+        success: translate('tips.loadSuccess'),
+        list: (!node.list || node.list === null ? [] : node.list).concat(action.payload.data),
         refreshing: false
       }
     default:
       node = { ...node }
   }
+
   state.list = state.list.filter((v) => v.nodeTab.name !== nodeName).concat([node])
-  return state
+  return { ...state }
 }
