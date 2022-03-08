@@ -31,24 +31,22 @@ export const APP_LOGOUT = 'v2ex_logout'
 export const APP_AUTH_SUCCESS = 'v2ex_auth_success'
 export const APP_AUTH_ERROR = 'v2ex_auth_error'
 
-export const APP_HOME_SWITCH_NODE = 'v2ex_home_switch_node'
-export const APP_HOME_LOAD_MORE_TOPICS = 'v2ex_home_load_more_topics'
-export const APP_HOME_NODE_TOPICS = 'v2ex_home_node_topics'
-export const APP_HOME_REFRESH = 'v2ex_home_loading'
-export const APP_HOME_SUCCESS = 'v2ex_home_success'
-export const APP_HOME_ERROR = 'v2ex_home_error'
+export const APP_NODE_LOAD_MORE_TOPICS = 'v2ex_node_load_more_topics'
+export const APP_NODE_NODE_TOPICS = 'v2ex_node_node_topics'
+export const APP_NODE_TOPICS_REFRESH = 'v2ex_node_loading'
+export const APP_NODE_TOPICS_LOAD_SUCCESS = 'v2ex_node_success'
+export const APP_NODE_LOAD_ERROR = 'v2ex_node_error'
 
 export const ActionTypes = {
   APP_INIT,
-  APP_HOME_ERROR,
-  APP_HOME_SUCCESS,
-  APP_HOME_REFRESH,
+  APP_NODE_LOAD_ERROR,
+  APP_NODE_TOPICS_LOAD_SUCCESS,
+  APP_NODE_TOPICS_REFRESH,
   APP_LATEST_VERSION,
   APP_SITE_INFO,
   APP_INIT_ERROR,
-  APP_HOME_SWITCH_NODE,
-  APP_HOME_NODE_TOPICS,
-  APP_HOME_LOAD_MORE_TOPICS,
+  APP_NODE_NODE_TOPICS,
+  APP_NODE_LOAD_MORE_TOPICS,
   APP_NOTIFICATION_PULL,
   APP_SETTING_LOCALES,
   APP_NOTIFICATION_LATEST,

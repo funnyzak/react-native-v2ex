@@ -9,69 +9,66 @@ import { logError } from '@src/helper/logger'
 import {
   TOPIC_GET,
   TOPIC_REPLIES,
-  APP_HOME_ERROR,
-  APP_HOME_REFRESH,
-  APP_HOME_LOAD_MORE_TOPICS,
-  APP_HOME_SWITCH_NODE,
-  APP_HOME_SUCCESS,
+  APP_NODE_LOAD_ERROR,
+  APP_NODE_TOPICS_REFRESH,
+  APP_NODE_LOAD_MORE_TOPICS,
+  APP_NODE_TOPICS_LOAD_SUCCESS,
   V2exObject
 } from '@src/types'
-import { NODE_TAB_TYPE } from '@src/navigation'
 import { SPECIAL_NODE_NAME_MAP } from '@src/config/constants'
-
-export const switchHomeTab = (tab: NODE_TAB_TYPE) => {
-  return async (dispath: Dispatch) => {
-    dispath({ type: APP_HOME_SWITCH_NODE, payload: tab })
-    dispath(getHomeTopics(tab.name, 1) as any)
-  }
-}
 
 /**
  * 获取首页主题列表
- * @param nodeName 节点name
+ * @param node 节点name
  * @param page 获取页数
  * @returns
  */
 export const getHomeTopics =
-  (nodeName: string, page: number = 1) =>
+  (node: string, page: number = 1) =>
   async (dispatch: Dispatch) => {
-    const specialNode = Object.values(SPECIAL_NODE_NAME_MAP).includes(nodeName)
+    const specialNode = Object.values(SPECIAL_NODE_NAME_MAP).includes(node)
     const refreshing = page === 1 || specialNode
     const loadmore = !refreshing && page > 1
 
     if (refreshing) {
       dispatch({
-        type: APP_HOME_REFRESH,
-        payload: {}
+        type: APP_NODE_TOPICS_REFRESH,
+        payload: { node }
       })
     } else if (loadmore) {
       dispatch({
-        type: APP_HOME_LOAD_MORE_TOPICS,
-        payload: {}
+        type: APP_NODE_LOAD_MORE_TOPICS,
+        payload: { node }
       })
     }
 
     try {
       let _topics: V2exObject.Topic[] = []
       if (specialNode) {
-        if (nodeName === SPECIAL_NODE_NAME_MAP.HOT) {
+        if (node === SPECIAL_NODE_NAME_MAP.HOT) {
           _topics = await v2exLib.topic.hotTopics()
-        } else if (nodeName === SPECIAL_NODE_NAME_MAP.LATEST) {
+        } else if (node === SPECIAL_NODE_NAME_MAP.LATEST) {
           _topics = await v2exLib.topic.latestTopics()
         }
       } else {
-        _topics = await v2exLib.topic.topicsByNode(nodeName, page)
+        _topics = await v2exLib.topic.topicsByNode(node, page)
       }
 
       dispatch({
-        type: APP_HOME_SUCCESS,
-        payload: _topics
+        type: APP_NODE_TOPICS_LOAD_SUCCESS,
+        payload: {
+          node,
+          data: _topics
+        }
       })
     } catch (error) {
       logError(error)
       dispatch({
-        type: APP_HOME_ERROR,
-        payload: error
+        type: APP_NODE_LOAD_ERROR,
+        payload: {
+          node,
+          data: error
+        }
       })
     }
   }
