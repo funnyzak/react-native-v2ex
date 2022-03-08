@@ -18,12 +18,12 @@ import {
 import { SPECIAL_NODE_NAME_MAP } from '@src/config/constants'
 
 /**
- * 获取首页主题列表
+ * 获取主题列表
  * @param node 节点name
  * @param page 获取页数
  * @returns
  */
-export const getHomeTopics =
+export const getNodeTopics =
   (node: string, page: number = 1) =>
   async (dispatch: Dispatch) => {
     const specialNode = Object.values(SPECIAL_NODE_NAME_MAP).includes(node)
