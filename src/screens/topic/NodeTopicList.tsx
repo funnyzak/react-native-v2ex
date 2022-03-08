@@ -1,19 +1,47 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { connect } from 'react-redux'
-import { StyleSheet, View, ViewStyle, TextStyle } from 'react-native'
+import { StyleSheet, View, ViewStyle, TextStyle, RefreshControl } from 'react-native'
 
 import { translate } from '@src/i18n'
 import { useTheme } from '@src/theme'
 import { IState, ITheme, V2exObject } from '@src/types'
-import * as CompS from '../components'
+import { TopicList } from '../components'
 import { Text, Spinner } from '@src/components'
-import { NodeTopicsScreenProps as ScreenProps } from '@src/navigation/routes'
+import { NodeTopicsScreenProps as ScreenProps, ROUTES } from '@src/navigation'
+import { getNodeTopics } from '@src/actions'
 
-const NodeTopics = ({ route, navigation, loading }: ScreenProps) => {
+const NodeTopics = ({
+  route,
+  navigation,
+  tabNodeList,
+  fetchTopics
+}: ScreenProps & {
+  tabNodeList: IState.TabNodeState[]
+  fetchTopics: (node: string, page: number) => void
+}) => {
   const { theme } = useTheme()
+  const { error, success, list, nodeTab, refreshing } = useMemo(
+    () => tabNodeList.find((v) => v.nodeTab.name === route.params.nodeName) || tabNodeList[0],
+    [route, tabNodeList]
+  )
+
+  const onRefresh = () => {}
+
+  const onReached = () => {}
+
   return (
     <View>
-      <Text>Hello, NodeTopics.</Text>
+      <Text>
+        Hello, NodeTopics. {route.params.nodeName} {nodeTab.title}
+      </Text>
+      <TopicList
+        topics={list}
+        onRowPress={(item: V2exObject.Topic) => navigation.navigate(ROUTES.TopicDetail, { topicId: item.id.toString() })}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+        onEndReached={onReached}
+        canLoadMoreContent={true}
+        searchIndicator={false}
+      />
     </View>
   )
 }
@@ -27,16 +55,14 @@ const styles = {
   })
 }
 
-/**
- * default props
- */
-NodeTopics.defaultProps = {
-  loading: false
+const mapStateToProps = ({
+  tab: { list }
+}: {
+  tab: {
+    list: IState.TabNodeState[]
+  }
+}) => {
+  return { tabNodeList: list }
 }
 
-const mapStateToProps = ({ ui: { login } }: { ui: IState.UIState }) => {
-  const { error, success, loading } = login
-  return { error, success, loading }
-}
-
-export default connect(mapStateToProps)(NodeTopics)
+export default connect(mapStateToProps, { fetchTopics: getNodeTopics })(NodeTopics)
