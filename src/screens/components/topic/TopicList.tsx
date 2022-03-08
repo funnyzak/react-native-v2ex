@@ -25,9 +25,10 @@ const TopicList: React.FC<TopicListProps> = ({
 }: TopicListProps) => {
   const { theme } = useTheme()
 
-  const renderItemRow = ({ item, index }: { item: V2exObject.Topic; index: number }) => (
-    <TopicItem imageStyle={styles.imageStyle(theme)} viewContainerStyle={{ flex: 1 }} topic={item} onRowPress={onRowPress} />
-  )
+  const renderItemRow = ({ item }: { item: V2exObject.Topic }) =>
+    !item || item === null ? null : (
+      <TopicItem imageStyle={styles.imageStyle(theme)} viewContainerStyle={{ flex: 1 }} topic={item} onRowPress={onRowPress} />
+    )
 
   const renderFooter = () => {
     if (canLoadMoreContent) {
@@ -41,7 +42,7 @@ const TopicList: React.FC<TopicListProps> = ({
 
   const renderContent = () => {
     if (!topics) {
-      return <Spinner />
+      return <Spinner style={{ marginTop: 50 }} />
     }
 
     if (topics.length) {
