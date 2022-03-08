@@ -4,7 +4,7 @@ import thunk from 'redux-thunk'
 // https://github.com/rt2zz/redux-persist
 import { persistStore, persistReducer } from 'redux-persist'
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
-import { createBlacklistFilter } from 'redux-persist-transform-filter'
+import { createBlacklistFilter, createWhitelistFilter } from 'redux-persist-transform-filter'
 import AsyncStorage from '@react-native-community/async-storage'
 import { composeWithDevTools } from '@redux-devtools/extension'
 import reducers from '@src/reducers'
@@ -16,14 +16,10 @@ const uiSubsetBlacklistFilter = createBlacklistFilter('ui', [
   'login.loading',
   'login.success',
   'login.error',
-  'feedback.processing',
-  'home.refreshing',
-  'home.success',
-  'home.error',
-  'home.list'
+  'feedback.processing'
 ])
 const appSubsetBlacklistFilter = createBlacklistFilter('app', ['refreshing', 'errorMessage', 'version', 'latestVersion', 'deviceInfo', 'v2ex'])
-const homeSubsetBlacklistFilter = createBlacklistFilter('home', ['refreshing'])
+const tabSubsetWhitelistFilter = createWhitelistFilter('tab', ['tab'])
 const settingSubsetBlacklistFilter = createBlacklistFilter('setting', ['refreshing'])
 const notificationSubsetBlacklistFilter = createBlacklistFilter('notification', ['refreshing'])
 
@@ -33,7 +29,7 @@ const persistConfig = {
     memberSubsetBlacklistFilter,
     uiSubsetBlacklistFilter,
     appSubsetBlacklistFilter,
-    homeSubsetBlacklistFilter,
+    tabSubsetWhitelistFilter,
     settingSubsetBlacklistFilter,
     notificationSubsetBlacklistFilter
   ],

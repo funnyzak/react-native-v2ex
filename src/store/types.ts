@@ -57,13 +57,6 @@ export declare module IState {
       success: string | null
       loading: boolean
     }
-    home: {
-      error: string | null
-      success: string | null
-      currentTab: NODE_TAB_TYPE
-      list?: V2exObject.Topic[]
-      refreshing: boolean
-    }
     feedback: {
       processing: boolean
     }
@@ -72,24 +65,22 @@ export declare module IState {
   /**
    * 节点状态
    */
-  export interface NodeState {
-    refreshing?: boolean
-    loadmore?: boolean
-
-    name: string
-    title?: string
-    loginRequired: boolean
-
-    node?: V2exObject.Node
-    topicList?: V2exObject.Topic[]
+  export interface TabNodeState {
+    error: string | null
+    success: string | null
+    nodeTab: NODE_TAB_TYPE
+    list?: V2exObject.Topic[]
+    refreshing: boolean
   }
 
   /**
-   * 主页状态
+   * Node Topics状态
    */
-  export interface HomeState {
-    currentNode: NodeState
-    nodes: NodeState[]
+  export interface TabsState {
+    /**
+     * @description 节点状态
+     */
+    list: TabNodeState[]
   }
 
   /**
