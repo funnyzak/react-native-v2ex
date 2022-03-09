@@ -67,6 +67,14 @@ const My = ({
         <TouchableOpacity
           style={styles.listItem(theme)}
           onPress={() => {
+            navigation.navigate(ROUTES.Language)
+          }}>
+          <Text style={styles.listItemText(theme)}>{translate('common.language')}</Text>
+          <Image style={styles.listItemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.listItem(theme)}
+          onPress={() => {
             navigation.navigate(ROUTES.About)
           }}>
           <Text style={styles.listItemText(theme)}>{translate('common.about')}</Text>
