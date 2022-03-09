@@ -13,6 +13,6 @@ export default (state: IState.SettingState = INITIAL_STATE, action: Action): ISt
     case APP_SETTING_THEME:
       return { ...state, theme: action.payload }
     default:
-      return state
+      return { ...state }
   }
 }

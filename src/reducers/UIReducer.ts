@@ -16,14 +16,14 @@ const INITIAL_STATE: IState.UIState = {
 
 export default (state: IState.UIState = INITIAL_STATE, action: Action): IState.UIState => {
   switch (action.type) {
-    case APP_LOGOUT:
-      return { ...state }
     case APP_AUTH_LOADING:
       return { ...state, login: { ...state.login, loading: true, error: '', success: '' } }
     case APP_AUTH_ERROR:
       return { ...state, login: { ...state.login, loading: false, error: action.payload, success: '' } }
     case APP_AUTH_SUCCESS:
       return { ...state, login: { ...state.login, loading: false, error: '', success: translate('tips.authSuccess') } }
+    case APP_LOGOUT:
+      return { ...state, login: { ...state.login, loading: false, error: '', success: '' } }
     case FEEDBACKING:
       return { ...state, feedback: { processing: true } }
     case FEEDBACK_DONE:

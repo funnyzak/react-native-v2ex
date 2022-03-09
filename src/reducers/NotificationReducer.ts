@@ -1,4 +1,4 @@
-import { APP_NOTIFICATION_PULL, APP_NOTIFICATION_LATEST, APP_NOTIFICATION_REMOVE, Action, IState } from '../types'
+import { APP_NOTIFICATION_PULL, APP_LOGOUT, APP_NOTIFICATION_LATEST, APP_NOTIFICATION_REMOVE, Action, IState } from '../types'
 
 const INITIAL_STATE: IState.NotificationState = {
   refreshing: false,
@@ -13,6 +13,8 @@ export default (state: IState.NotificationState = INITIAL_STATE, action: Action)
       return { ...state, list: action.payload, refreshing: false }
     case APP_NOTIFICATION_REMOVE:
       return { ...state, list: action.payload, refreshing: false }
+    case APP_LOGOUT:
+      return { ...INITIAL_STATE }
     default:
       return state
   }
