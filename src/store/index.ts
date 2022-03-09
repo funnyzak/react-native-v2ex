@@ -9,18 +9,10 @@ import AsyncStorage from '@react-native-community/async-storage'
 import { composeWithDevTools } from '@redux-devtools/extension'
 import reducers from '@src/reducers'
 
-const memberSubsetBlacklistFilter = createBlacklistFilter('member', ['refreshing'])
-const uiSubsetBlacklistFilter = createBlacklistFilter('ui', [
-  'refreshing',
-  'login.message',
-  'login.loading',
-  'login.success',
-  'login.error',
-  'feedback.processing'
-])
-const appSubsetBlacklistFilter = createBlacklistFilter('app', ['refreshing', 'errorMessage', 'version', 'latestVersion', 'deviceInfo', 'v2ex'])
-const tabSubsetWhitelistFilter = createWhitelistFilter('tab', ['tab'])
-const settingSubsetBlacklistFilter = createBlacklistFilter('setting', ['refreshing'])
+const memberSubsetBlacklistFilter = createBlacklistFilter('member', ['refreshing', 'followPeople.refreshing', 'likeTopics.refreshing'])
+const uiSubsetBlacklistFilter = createBlacklistFilter('ui', ['refreshing', 'login.loading', 'login.success', 'login.error', 'feedback.processing'])
+const appSubsetBlacklistFilter = createBlacklistFilter('app', ['version', 'latestVersion', 'deviceInfo', 'v2ex', 'aboutUs'])
+const tabSubsetWhitelistFilter = createBlacklistFilter('tab', ['list'])
 const notificationSubsetBlacklistFilter = createBlacklistFilter('notification', ['refreshing'])
 
 const persistConfig = {
@@ -30,7 +22,6 @@ const persistConfig = {
     uiSubsetBlacklistFilter,
     appSubsetBlacklistFilter,
     tabSubsetWhitelistFilter,
-    settingSubsetBlacklistFilter,
     notificationSubsetBlacklistFilter
   ],
   storage: AsyncStorage,

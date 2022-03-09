@@ -17,6 +17,7 @@ import { themes } from '@src/theme'
 import * as Screens from '@src/screens'
 import { useUnRead } from '@src/hooks/useUnRead'
 import { ROUTES, RootStackParamList, MainScreenProps } from './routes'
+import { store } from '@src/store'
 
 const theme = themes.light
 const Drawer = createDrawerNavigator()
@@ -169,11 +170,7 @@ const StackNavigator = createNativeStackNavigator<RootStackParamList>()
 
 function Natigator() {
   const { token } = useAppSelector((state: any) => state.member)
-  const { languageTag } = useAppSelector((state: any) => state.setting)
-
-  useEffect(() => {
-    changeLocale(languageTag)
-  }, [languageTag])
+  changeLocale((store.getState() as any).setting.languageTag)
 
   return (
     <StackNavigator.Navigator initialRouteName={ROUTES.SignIn}>
