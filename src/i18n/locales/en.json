@@ -1,6 +1,8 @@
 {
   "common": {
+    "tip": "Tip",
     "auth": "Auth",
+    "logout": "Logout",
     "login": "Log In",
     "search": "Search",
     "setting": "Setting",
@@ -79,6 +81,9 @@
     "authSuccess": "Auth Success.",
     "loadSuccess": "Load Success.",
     "login": "experience more features"
+  },
+  "confirm":{
+    "logout": "Are you sure to logout?"
   },
   "errors": {
     "error": "Error",

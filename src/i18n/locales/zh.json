@@ -56,7 +56,8 @@
     "Feedback": "建议与反馈",
     "Theme": "主题设置",
     "Search": "搜索",
-    "Profile": "个人资料"
+    "Profile": "个人资料",
+    "Readed": "已读主题"
   },
   "placeholder": {
     "token": "请输入登陆令牌"
