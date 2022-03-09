@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { TouchableOpacity, Linking, KeyboardAvoidingView, View, Platform, ViewStyle, TextStyle } from 'react-native'
+import { Platform, TouchableOpacity, KeyboardAvoidingView, View, ViewStyle, TextStyle } from 'react-native'
 import { connect } from 'react-redux'
 
 import { IState, ITheme } from '@src/types'
-import * as Alert from '@src/utils/alert'
+import * as utils from '@src/utils'
 import { translate } from '@src/i18n'
 import { Logo, Spinner, Button, Input, Text } from '@src/components'
 import { useAppSelector } from '@src/hooks'
@@ -23,13 +23,8 @@ const Screen = ({ loading, error, success, navigation, route, auth: _auth }: Scr
     _auth(token)
   }
 
-  const onGetTokenPress = async () => {
-    const supported = await Linking.canOpenURL(tokenGeneratedLink)
-    if (supported) {
-      await Linking.openURL(tokenGeneratedLink)
-    } else {
-      Alert.alert({ message: `Don't know how to open this URL: ${tokenGeneratedLink}` })
-    }
+  const onGetTokenPress = () => {
+    utils.linking(tokenGeneratedLink)
   }
 
   const renderButtons = () => {

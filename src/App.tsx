@@ -15,14 +15,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { store, persistor } from '@src/store'
 import { Spinner } from './components/common'
 import NavigationService from './navigation/NavigationService'
-import { changeLocale } from './i18n'
 
 onAppStart(store)
-
-/**
- * set app locale
- */
-changeLocale((store.getState() as any).setting.languageTag)
 
 const App = () => {
   return (

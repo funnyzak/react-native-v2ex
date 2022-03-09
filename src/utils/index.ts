@@ -1,9 +1,22 @@
-import * as utils from './utils'
+import { Linking, Platform } from 'react-native'
 
-import * as adapter from './adapter'
+export * as Utils from './utils'
 
-import * as params from './params'
+export * as Adapter from './adapter'
 
-import * as parser from './parser'
+export * as Params from './params'
 
-import * as alert from './alert'
+export * as Parser from './parser'
+
+export * as Alert from './alert'
+
+import * as Alert from './alert'
+
+export const linking = async (url: string) => {
+  const supported = await Linking.canOpenURL(url)
+  if (supported) {
+    await Linking.openURL(url)
+  } else {
+    Alert.alert({ message: `Don't know how to open this URL: ${url}` })
+  }
+}

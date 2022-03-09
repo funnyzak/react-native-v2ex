@@ -85,7 +85,7 @@ const styles = {
     flex: 1
   },
   itemSeparator: (theme: ITheme) => ({
-    height: theme.dimens.topicListItemInBetweenSpace,
+    height: theme.dimens.listItemInBetweenSpace,
     backgroundColor: theme.colors.border,
     flex: 1
   }),
