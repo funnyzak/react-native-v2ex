@@ -57,7 +57,8 @@
     "Feedback": "Feedback",
     "Theme": "Theme Setting",
     "Search": "Search",
-    "Profile": "Profile"
+    "Profile": "Profile",
+    "Readed": "Readed"
   },
   "placeholder": {
     "token": "Type token here..",
