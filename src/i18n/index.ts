@@ -1,7 +1,7 @@
-import i18n, { LanguageTagType } from './i18n'
+import i18n, { LanguageTagType, translationTitle } from './i18n'
 export * from './translate'
 
-export { i18n }
+export { i18n, translationTitle }
 
 export type { LanguageTagType }
 

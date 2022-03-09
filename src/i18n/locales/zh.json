@@ -1,5 +1,9 @@
 {
   "common": {
+    "tip": "提示",
+    "language": "语言",
+    "auth": "授权",
+    "logout": "登出",
     "login": "登陆",
     "search": "搜索",
     "setting": "设置",
@@ -10,33 +14,33 @@
     "Build": "Build",
     "darkColor": "黑色",
     "lightColor": "亮色",
-    "loading": "Loading...",
+    "loading": "加载中...",
     "contact": "contact",
-    "replay": "replay",
-    "topic": "Topic",
-    "count": "Count",
-    "ok": "OK!",
-    "cancel": "Cancel",
-    "continue": "Continue",
-    "select": "Select",
-    "save": "Save",
+    "replay": "回复",
+    "topic": "主题",
+    "count": "数量",
+    "ok": "成功!",
+    "cancel": "取消",
+    "continue": "继续",
+    "select": "选择",
+    "save": "保存",
     "update": "Update",
     "apply": "Apply",
     "next": "Next",
-    "back": "Back",
+    "back": "返回",
     "total": "Total",
-    "email": "Email",
-    "password": "Password",
+    "email": "邮件",
+    "password": "密码",
     "min": "Min.",
     "max": "Max.",
-    "telephone": "Telephone",
-    "sort": "Sort",
+    "telephone": "电话",
+    "sort": "排序",
     "filter": "Filter",
-    "token": "Token",
+    "token": "令牌",
     "github": "Github",
-    "twitter": "Twitter",
-    "facebook": "Facebook",
-    "google": "Google"
+    "twitter": "推特",
+    "facebook": "脸书",
+    "google": "谷歌"
   },
   "router": {
     "HomeTabs": "主页",
@@ -60,19 +64,23 @@
     "Readed": "已读主题"
   },
   "placeholder": {
-    "token": "请输入登陆令牌"
+    "token": "请输入登陆令牌",
+    "search": "输入关键字...",
+    "message": "写点什么...",
+    "empty": "无内容."
   },
   "button": {
-    "followPeople": "关注",
-    "likeTopics": "收藏",
-    "readed": "已读",
+    "followPeople": "关注的人",
+    "likeTopics": "收藏主题",
+    "readed": "已读主题",
     "clickToLogin": "点击此处授权登陆"
   },
   "link": {
     "getToken": "从 V2ex 官方获取令牌"
   },
   "tips": {
-    "authSuccess": "授权成功",
+    "authSuccess": "授权成功.",
+    "loadSuccess": "加载成功.",
     "login": "登陆 V2EX，体验更多功能"
   },
   "errors": {

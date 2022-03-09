@@ -1,6 +1,7 @@
 {
   "common": {
     "tip": "Tip",
+    "language": "Language",
     "auth": "Auth",
     "logout": "Logout",
     "login": "Log In",
