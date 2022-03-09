@@ -7,6 +7,5 @@ export type { LanguageTagType }
 
 export function changeLocale(language: LanguageTagType) {
   i18n.locale = language
-
   console.log('changeLocale', language)
 }

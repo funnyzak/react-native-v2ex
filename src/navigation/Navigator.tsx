@@ -2,7 +2,7 @@
  * Created by leon<silenceace@gmail.com> on 22/2/21.
  */
 
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationState, PartialState, Route } from '@react-navigation/native'
@@ -11,7 +11,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer'
 import { Image, StyleSheet } from 'react-native'
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native'
 
-import { translate } from '@src/i18n'
+import { translate, changeLocale } from '@src/i18n'
 import { useAppSelector } from '@src/hooks'
 import { themes } from '@src/theme'
 import * as Screens from '@src/screens'
@@ -169,6 +169,11 @@ const StackNavigator = createNativeStackNavigator<RootStackParamList>()
 
 function Natigator() {
   const { token } = useAppSelector((state: any) => state.member)
+  const { languageTag } = useAppSelector((state: any) => state.setting)
+
+  useEffect(() => {
+    changeLocale(languageTag)
+  }, [languageTag])
 
   return (
     <StackNavigator.Navigator initialRouteName={ROUTES.SignIn}>
