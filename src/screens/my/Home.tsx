@@ -5,10 +5,10 @@ import { View, Image, ViewStyle, TextStyle, TouchableOpacity, ImageStyle } from 
 import { translate } from '@src/i18n'
 import { useTheme, SylCommon } from '@src/theme'
 import { IState, ITheme, V2exObject } from '@src/types'
-import * as CompS from '../components'
-import { Text, Spinner, Avatar } from '@src/components'
+import { Text, Button, Avatar } from '@src/components'
 import { MyScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 import * as Actions from '@src/actions'
+import * as utils from '@src/utils'
 
 const My = ({
   route,
@@ -16,11 +16,13 @@ const My = ({
   setting,
   app,
   profile,
-  token
+  token,
+  logout
 }: ScreenProps &
   IState.State & {
     profile?: V2exObject.Member
     token?: V2exObject.MToken
+    logout: () => void
   }) => {
   const { theme } = useTheme()
   return (
@@ -65,19 +67,46 @@ const My = ({
         <TouchableOpacity
           style={styles.listItem(theme)}
           onPress={() => {
-            navigation.navigate(ROUTES.Feedback)
-          }}>
-          <Text style={styles.listItemText(theme)}>{translate('common.feedback')}</Text>
-          <Image style={styles.listItemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.listItem(theme)}
-          onPress={() => {
             navigation.navigate(ROUTES.About)
           }}>
           <Text style={styles.listItemText(theme)}>{translate('common.about')}</Text>
           <Image style={styles.listItemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />
         </TouchableOpacity>
+      </View>
+      <View style={styles.list(theme)}>
+        <TouchableOpacity
+          style={styles.listItem(theme)}
+          onPress={() => {
+            utils.linking(`mailto:${app.aboutUs.email}`)
+          }}>
+          <Text style={styles.listItemText(theme)}>{translate('common.email')}</Text>
+          <Text style={styles.listItemRightText(theme)}>{app.aboutUs.email}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.listItem(theme)}
+          onPress={() => {
+            utils.linking(`https://twitter.com/${app.aboutUs.twitter}`)
+          }}>
+          <Text style={styles.listItemText(theme)}>{translate('common.twitter')}</Text>
+          <Text style={styles.listItemRightText(theme)}>@{app.aboutUs.twitter}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.listItem(theme)}
+          onPress={() => {
+            utils.linking(`https://github.com/${app.aboutUs.github}`)
+          }}>
+          <Text style={styles.listItemText(theme)}>{translate('common.github')}</Text>
+          <Text style={styles.listItemRightText(theme)}>@{app.aboutUs.github}</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.logoutBox(theme)}>
+        <Button
+          style={{}}
+          onPress={() => {
+            utils.Alert.confirm({ message: translate('confirm.logout'), onOk: logout })
+          }}>
+          {translate('common.logout')}
+        </Button>
       </View>
     </View>
   )
@@ -91,7 +120,7 @@ const styles = {
     backgroundColor: theme.colors.background
   }),
   userBox: (theme: ITheme): ViewStyle => ({
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.colors.surface,
     paddingHorizontal: 16,
     paddingVertical: 16
   }),
@@ -115,7 +144,7 @@ const styles = {
     flexDirection: 'row',
     paddingHorizontal: 24,
     justifyContent: 'space-between',
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.colors.surface,
     borderRadius: 8
   }),
   gridItem: (theme: ITheme): ViewStyle => ({
@@ -133,7 +162,7 @@ const styles = {
   }),
   list: (theme: ITheme): ViewStyle => ({
     marginTop: 8,
-    backgroundColor: theme.colors.white
+    backgroundColor: theme.colors.surface
   }),
   listItem: (theme: ITheme): ViewStyle => ({
     padding: 16,
@@ -147,11 +176,17 @@ const styles = {
   }),
   listItemRightText: (theme: ITheme): TextStyle => ({
     fontSize: 12,
-    color: theme.colors.secondary
+    color: theme.colors.bodyText
   }),
   listItemArrow: (theme: ITheme): ImageStyle => ({
     width: 16,
     height: 16
+  }),
+  logoutBox: (theme: ITheme): ViewStyle => ({
+    marginTop: 30,
+    flex: 1,
+    width: '100%',
+    alignItems: 'center'
   })
 }
 

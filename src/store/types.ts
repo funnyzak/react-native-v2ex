@@ -46,6 +46,7 @@ export declare module IState {
       email: string
       github: string
       wechat: string
+      twitter: string
     }
 
     siteInfo?: V2exObject.SiteInfo

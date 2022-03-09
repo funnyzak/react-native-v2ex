@@ -48,7 +48,7 @@ export interface IThemeDimen {
   defaultButtonWidth: number
   defaultButtonHeight: number
   defaultInputBoxHeight: number
-  topicListItemInBetweenSpace: number
+  listItemInBetweenSpace: number
 
   /**
    * avatar witth
