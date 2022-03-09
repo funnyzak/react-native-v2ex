@@ -60,10 +60,10 @@ const getHeaderTitle = (
   // If the focused route is not found, we need to assume it's the initial screen
   // This can happen during if there hasn't been any navigation inside the screen
   // In our case, it's "Feed" as that's the first screen inside the navigator
-  const routeName = getFocusedRouteNameFromRoute(route) ?? ROUTES.Home
+  const routeName = getFocusedRouteNameFromRoute(route) ?? ROUTES.HomeTabs
   switch (routeName) {
-    case ROUTES.Home:
-      return translate(`router.${ROUTES.Home}`)
+    case ROUTES.HomeTabs:
+      return translate(`router.${ROUTES.HomeTabs}`)
     case ROUTES.Node:
       return translate(`router.${ROUTES.Node}`)
     case ROUTES.Notification:

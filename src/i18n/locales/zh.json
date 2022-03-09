@@ -39,7 +39,7 @@
     "google": "Google"
   },
   "router": {
-    "Home": "主页",
+    "HomeTabs": "主页",
     "Node": "节点",
     "Notification": "通知",
     "Setting": "设置",
