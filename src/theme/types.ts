@@ -110,28 +110,28 @@ export interface IThemeTypography {
 export interface IThemeAssets {
   images: {
     icons: {
-      logo: string
-      icon: string
-      home: string
-      homeInactive: string
-      discovery: string
-      discoveryInactive: string
-      notification: string
-      notificationInactive: string
-      profile: string
-      profileInactive: string
-      moreCycleGrey: string
-      timeCycleGrey: string
-      heartGrey: string
-      heartRed: string
-      gold: string
-      silver: string
-      bronze: string
-      arrowRightGrey: string
-      send: string
-      starOutline: string
-      starFilled: string
-      chatGrey: string
+      logo: any
+      icon: any
+      home: any
+      homeInactive: any
+      discovery: any
+      discoveryInactive: any
+      notification: any
+      notificationInactive: any
+      profile: any
+      profileInactive: any
+      moreCycleGrey: any
+      timeCycleGrey: any
+      heartGrey: any
+      heartRed: any
+      gold: any
+      silver: any
+      bronze: any
+      arrowRightGrey: any
+      send: any
+      starOutline: any
+      starFilled: any
+      chatGrey: any
     }
   }
 }
