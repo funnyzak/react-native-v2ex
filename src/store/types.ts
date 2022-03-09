@@ -3,6 +3,15 @@ import { ThemeType } from '@src/theme'
 import { LanguageTagType } from '@src/i18n'
 import { NODE_TAB_TYPE } from '@src/navigation'
 export declare module IState {
+  export interface State {
+    ui: UIState
+    member: MemberState
+    app: AppState
+    tab: TabsState
+    notification: NotificationState
+    setting: SettingState
+  }
+
   /**
    * @description 全局状态
    */
