@@ -175,14 +175,17 @@ const StackNavigator = createNativeStackNavigator<RootStackParamList>()
 
 function Natigator() {
   const { token } = useAppSelector((state: any) => state.member)
-  const [first, setFirst] = useState<boolean>(true)
+  const [mounted, setMounted] = useState<boolean>(false)
   const { languageTag } = useAppSelector((state: any) => state.setting)
 
-  if (first) {
+  if (!mounted) {
     changeLocale((store.getState() as any).setting.languageTag)
-    setFirst(false)
   }
 
+  useEffect(() =>{
+    setMounted(true)
+  },[])
+  
   useEffect(() => {
     changeLocale(languageTag)
   }, [languageTag])
