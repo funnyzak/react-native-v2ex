@@ -8,7 +8,6 @@ export const NODE_TABS = {
   LATEST: 'latest',
   HOT: 'hot',
   QNA: 'qna',
-  CITY: 'city',
   DEALS: 'deals',
   JOBS: 'jobs',
   APPLE: 'apple',
@@ -42,11 +41,6 @@ export const HOME_NODES: Array<NODE_TAB_TYPE> = [
   {
     name: NODE_TABS.QNA,
     title: '问与答',
-    loginRequired: true
-  },
-  {
-    name: NODE_TABS.CITY,
-    title: '城市',
     loginRequired: true
   },
   {
