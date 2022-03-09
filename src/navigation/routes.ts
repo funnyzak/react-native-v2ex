@@ -7,7 +7,9 @@ import { ITheme } from '@src/types'
 
 export type RootStackParamList = {
   Draw: undefined
-  Main: undefined
+  Main: {
+    initialRouteName: string
+  }
   HomeTabs: undefined
   Node: undefined
   Notification: undefined
@@ -26,6 +28,7 @@ export type RootStackParamList = {
   Feedback: undefined
   Theme: undefined
   Search: { query: string }
+  Readed: undefined
 }
 
 export type CommonScreenProps = {
@@ -34,6 +37,10 @@ export type CommonScreenProps = {
   success: string | null
   theme: ITheme
 }
+
+export type MainScreenProps = NativeStackScreenProps<RootStackParamList, 'Main'> & CommonScreenProps
+
+export type ReadedScreenProps = NativeStackScreenProps<RootStackParamList, 'Readed'> & CommonScreenProps
 
 export type HomeTabsScreenProps = NativeStackScreenProps<RootStackParamList, 'HomeTabs'> & CommonScreenProps
 
@@ -97,12 +104,18 @@ export const ROUTES = {
    * @description 最新话题
    */
   LatestTopics: 'LatestTopics',
-  // 热门
+  /**
+   * @description 热门
+   */
   HotTopics: 'HotTopics',
   /**
    * @description 登录
    */
   SignIn: 'SignIn',
+  /**
+   * @description 已读
+   */
+  Readed: 'Readed',
   /**
    * @description 通知
    */

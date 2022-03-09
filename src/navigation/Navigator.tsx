@@ -16,7 +16,7 @@ import { useAppSelector } from '@src/hooks'
 import { themes } from '@src/theme'
 import * as Screens from '@src/screens'
 import { useUnRead } from '@src/hooks/useUnRead'
-import { ROUTES, RootStackParamList } from './routes'
+import { ROUTES, RootStackParamList, MainScreenProps } from './routes'
 
 const theme = themes.light
 const Drawer = createDrawerNavigator()
@@ -79,8 +79,9 @@ const defaultTabBarSetting = {
   tabBarInactiveTintColor: theme.colors.tabBarIconInactive
 }
 
-const MainAppNavigator = () => {
+const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
   const { unread } = useUnRead()
+
   return (
     <MainNavigator.Navigator>
       <MainNavigator.Screen
@@ -188,6 +189,9 @@ function Natigator() {
             ...defaultHeaderSetting,
             headerTitle: getHeaderTitle(route)
           })}
+          initialParams={{
+            initialRouteName: ROUTES.My
+          }}
         />
       )}
       <StackNavigator.Screen
@@ -291,6 +295,14 @@ function Natigator() {
         component={Screens.SearchScreen}
         options={{
           title: translate(`router.${ROUTES.Search}`),
+          headerShown: true
+        }}
+      />
+      <StackNavigator.Screen
+        name={ROUTES.Readed}
+        component={Screens.ReadedScreen}
+        options={{
+          title: translate(`router.${ROUTES.Readed}`),
           headerShown: true
         }}
       />
