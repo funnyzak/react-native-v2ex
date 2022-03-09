@@ -16,7 +16,8 @@ export const v2exOptions = {
 
 export const aboutUs = {
   author: 'leon',
-  email: 'silenceace@gmail.com',
-  github: '@funnyzak',
-  wechat: '@funnyzak'
+  email: 'y@yycc.me',
+  github: 'funnyzak',
+  wechat: 'funnyzak',
+  twitter: 'funnyzak'
 }
