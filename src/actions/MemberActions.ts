@@ -64,8 +64,9 @@ export const errorMessage = (error: string) => ({
 })
 
 export const logout = () => (dispatch: Dispatch) => {
-  dispatch({ type: APP_LOGOUT })
-  NavigationService.navigate('SignIn')
   AsyncStorage.setItem(MEMBER_TOKEN_KEY, '')
   v2exLib.setToken(undefined)
+  dispatch({ type: APP_LOGOUT })
+
+  NavigationService.navigate('SignIn')
 }
