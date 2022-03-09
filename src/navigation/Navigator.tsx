@@ -84,10 +84,10 @@ const MainAppNavigator = () => {
   return (
     <MainNavigator.Navigator>
       <MainNavigator.Screen
-        name={ROUTES.Home}
-        component={Screens.HomeScreen}
+        name={ROUTES.HomeTabs}
+        component={Screens.HomeTopTabListScreen}
         options={{
-          title: translate(`router.${ROUTES.Home}`),
+          title: translate(`router.${ROUTES.HomeTabs}`),
           ...defaultTabBarSetting,
           tabBarIcon: ({ focused }) => renderIcon(focused, theme.assets.images.icons.home, theme.assets.images.icons.homeInactive)
         }}
@@ -128,10 +128,38 @@ const MainAppNavigator = () => {
 const DrawNavigator = () => {
   return (
     <Drawer.Navigator initialRouteName="Draw">
-      <Drawer.Screen name="Draw" component={Screens.DrawScreen} options={{ title: '导航器', headerShown: false }} />
-      <Drawer.Screen name="AuthLoadingSwitch" component={MainAppNavigator} options={{ title: '最新', headerShown: false }} />
-      <Drawer.Screen name="TopicDetail" component={MainAppNavigator} options={{ title: '热点', headerShown: false }} />
-      <Drawer.Screen name="Language" component={MainAppNavigator} options={{ title: '关于', headerShown: false }} />
+      <Drawer.Screen
+        name="Draw"
+        component={Screens.DrawScreen}
+        options={{
+          title: translate(`router.${ROUTES.Draw}`),
+          headerShown: false
+        }}
+      />
+      <Drawer.Screen
+        name={ROUTES.About}
+        component={Screens.AboutScreen}
+        options={{
+          title: translate(`router.${ROUTES.About}`),
+          headerShown: false
+        }}
+      />
+      <Drawer.Screen
+        name={ROUTES.Feedback}
+        component={Screens.FeedbackScreen}
+        options={{
+          title: translate(`router.${ROUTES.Feedback}`),
+          headerShown: false
+        }}
+      />
+      <Drawer.Screen
+        name={ROUTES.Theme}
+        component={Screens.ThemeScreen}
+        options={{
+          title: translate(`router.${ROUTES.Theme}`),
+          headerShown: false
+        }}
+      />
     </Drawer.Navigator>
   )
 }
@@ -162,6 +190,110 @@ function Natigator() {
           })}
         />
       )}
+      <StackNavigator.Screen
+        name={ROUTES.LatestTopics}
+        component={Screens.LatestTopicListScreen}
+        options={{
+          title: translate(`router.${ROUTES.LatestTopics}`),
+          headerShown: true
+        }}
+      />
+      <StackNavigator.Screen
+        name={ROUTES.HotTopics}
+        component={Screens.HotTopicListScreen}
+        options={{
+          title: translate(`router.${ROUTES.HotTopics}`),
+          headerShown: true
+        }}
+      />
+      <StackNavigator.Screen
+        name={ROUTES.NodeTopics}
+        component={Screens.NodeTopicListScreen}
+        options={{
+          title: translate(`router.${ROUTES.NodeTopics}`),
+          headerShown: true
+        }}
+      />
+      <StackNavigator.Screen
+        name={ROUTES.TopicDetail}
+        component={Screens.TopicDetailScreen}
+        options={{
+          title: translate(`router.${ROUTES.TopicDetail}`),
+          headerShown: true
+        }}
+      />
+      <StackNavigator.Screen
+        name={ROUTES.Profile}
+        component={Screens.ProfileScreen}
+        options={{
+          title: translate(`router.${ROUTES.Profile}`),
+          headerShown: true
+        }}
+      />
+      <StackNavigator.Screen
+        name={ROUTES.FollowPeople}
+        component={Screens.FollowPeopleScreen}
+        options={{
+          title: translate(`router.${ROUTES.FollowPeople}`),
+          headerShown: true
+        }}
+      />
+      <StackNavigator.Screen
+        name={ROUTES.LikeTopics}
+        component={Screens.LikeTopicsScreen}
+        options={{
+          title: translate(`router.${ROUTES.LikeTopics}`),
+          headerShown: true
+        }}
+      />
+      <StackNavigator.Screen
+        name={ROUTES.Setting}
+        component={Screens.SettingScreen}
+        options={{
+          title: translate(`router.${ROUTES.Setting}`),
+          headerShown: true
+        }}
+      />
+      <StackNavigator.Screen
+        name={ROUTES.Language}
+        component={Screens.LanguageScreen}
+        options={{
+          title: translate(`router.${ROUTES.Language}`),
+          headerShown: true
+        }}
+      />
+      <StackNavigator.Screen
+        name={ROUTES.About}
+        component={Screens.AboutScreen}
+        options={{
+          title: translate(`router.${ROUTES.About}`),
+          headerShown: true
+        }}
+      />
+      <StackNavigator.Screen
+        name={ROUTES.Feedback}
+        component={Screens.FeedbackScreen}
+        options={{
+          title: translate(`router.${ROUTES.Feedback}`),
+          headerShown: true
+        }}
+      />
+      <StackNavigator.Screen
+        name={ROUTES.Theme}
+        component={Screens.ThemeScreen}
+        options={{
+          title: translate(`router.${ROUTES.Theme}`),
+          headerShown: true
+        }}
+      />
+      <StackNavigator.Screen
+        name={ROUTES.Search}
+        component={Screens.SearchScreen}
+        options={{
+          title: translate(`router.${ROUTES.Search}`),
+          headerShown: true
+        }}
+      />
     </StackNavigator.Navigator>
   )
 }

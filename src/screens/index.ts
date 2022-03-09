@@ -1,6 +1,5 @@
 export { default as NodeScreen } from './node'
 export { default as NotificationScreen } from './notification'
-export { default as HomeScreen } from './home'
 export { default as SignInScreen } from './login/SignIn'
 export { default as HelloReactNative } from './hello/Hello'
 export { default as DrawScreen } from './catalog/Draw'
@@ -8,4 +7,6 @@ export { default as SearchScreen } from './search'
 export { default as ProfileScreen } from './profile'
 
 export * from './my'
+export * from './topic'
 export * from './setting'
+export * from './home'

@@ -8,15 +8,15 @@ import { ITheme } from '@src/types'
 export type RootStackParamList = {
   Draw: undefined
   Main: undefined
-  Home: undefined
+  HomeTabs: undefined
+  Node: undefined
+  Notification: undefined
+  My: undefined
   LatestTopics: undefined
   HotTopics: undefined
   SignIn: undefined
-  Notification: undefined
-  Node: undefined
   NodeTopics: { nodeName: string }
   TopicDetail: { topicId: string }
-  My: undefined
   Profile: { username: string }
   FollowPeople: undefined
   LikeTopics: undefined
@@ -35,7 +35,7 @@ export type CommonScreenProps = {
   theme: ITheme
 }
 
-export type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'> & CommonScreenProps
+export type HomeTabsScreenProps = NativeStackScreenProps<RootStackParamList, 'HomeTabs'> & CommonScreenProps
 
 export type LatestTopicsScreenProps = NativeStackScreenProps<RootStackParamList, 'LatestTopics'> & CommonScreenProps
 
@@ -88,7 +88,7 @@ export const ROUTES = {
   /**
    * @description 首页
    */
-  Home: 'Home',
+  HomeTabs: 'HomeTabs',
   /**
    * @description 个人主页
    */
