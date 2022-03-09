@@ -2,7 +2,7 @@
  * Created by leon<silenceace@gmail.com> on 22/2/21.
  */
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationState, PartialState, Route } from '@react-navigation/native'
@@ -82,6 +82,11 @@ const defaultTabBarSetting = {
 
 const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
   const { unread } = useUnRead()
+  const { languageTag } = useAppSelector((state: any) => state.setting)
+
+  useEffect(() => {
+    changeLocale(languageTag)
+  }, [languageTag])
 
   return (
     <MainNavigator.Navigator>
@@ -170,7 +175,17 @@ const StackNavigator = createNativeStackNavigator<RootStackParamList>()
 
 function Natigator() {
   const { token } = useAppSelector((state: any) => state.member)
-  changeLocale((store.getState() as any).setting.languageTag)
+  const [first, setFirst] = useState<boolean>(true)
+  const { languageTag } = useAppSelector((state: any) => state.setting)
+
+  if (first) {
+    changeLocale((store.getState() as any).setting.languageTag)
+    setFirst(false)
+  }
+
+  useEffect(() => {
+    changeLocale(languageTag)
+  }, [languageTag])
 
   return (
     <StackNavigator.Navigator initialRouteName={ROUTES.SignIn}>
