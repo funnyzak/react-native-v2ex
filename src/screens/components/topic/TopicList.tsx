@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, Text, FlatList, TouchableOpacity, ViewStyle, TextStyle } from 'react-native'
-import { IState, ITheme, V2exObject } from '@src/types'
+import { View, Text, FlatList, ViewStyle, TextStyle } from 'react-native'
+import { ITheme, V2exObject } from '@src/types'
 import TopicItem from './TopicItem'
 import { Spinner } from '@src/components'
 import { useTheme } from '@src/theme'
@@ -72,7 +72,7 @@ const TopicList: React.FC<TopicListProps> = ({
 
   return (
     <>
-      <View style={styles.container}>{renderContent()}</View>
+      <View style={styles.container(theme)}>{renderContent()}</View>
     </>
   )
 }
@@ -81,12 +81,12 @@ const TopicList: React.FC<TopicListProps> = ({
  * @description styles settings
  */
 const styles = {
-  container: {
-    flex: 1
-  },
+  container: (theme: ITheme) => ({
+    flex: 1,
+    backgroundColor: theme.colors.surface
+  }),
   itemSeparator: (theme: ITheme) => ({
-    height: theme.dimens.listItemInBetweenSpace,
-    backgroundColor: theme.colors.border,
+    height: theme.spacing.small,
     flex: 1
   }),
   imageStyle: (theme: ITheme) => ({

@@ -48,26 +48,15 @@ const NodeTopics = ({
   }
 
   return (
-    <View style={{ flex: 1 }}>
-      <TopicList
-        topics={list}
-        onRowPress={itemPress}
-        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-        onEndReached={onReached}
-        canLoadMoreContent={false}
-        searchIndicator={false}
-      />
-    </View>
+    <TopicList
+      topics={list}
+      onRowPress={itemPress}
+      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+      onEndReached={onReached}
+      canLoadMoreContent={false}
+      searchIndicator={false}
+    />
   )
-}
-
-/**
- * @description styles settings
- */
-const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    flex: 1
-  })
 }
 
 const mapStateToProps = ({

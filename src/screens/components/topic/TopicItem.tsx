@@ -64,14 +64,4 @@ const styles = {
   })
 }
 
-TopicItem.defaultProps = {
-  topic: {},
-  onRowPress: () => {},
-  imageStyle: {},
-  infoStyle: {},
-  textStyle: {},
-  viewContainerStyle: {},
-  columnContainerStyle: {}
-}
-
 export default TopicItem
