@@ -5,12 +5,13 @@ import { HomeTabsScreenProps, HOME_NODES as tabs, NODE_TAB_TYPE } from '@src/nav
 import { useTheme } from '@src/theme'
 import { useAppSelector } from '@src/hooks'
 import NodeTopicList from '../topic/NodeTopicList'
+import { RootState } from '@src/store'
 
 const Tab = createMaterialTopTabNavigator()
 
 const TopicTabList = ({}: HomeTabsScreenProps) => {
   const { theme } = useTheme()
-  const isLogged = useAppSelector((state: any) => (state.member ? true : false))
+  const isLogged = useAppSelector((state: RootState) => (state.member ? true : false))
 
   const filterNodes = useMemo(() => tabs.filter((item) => !item.loginRequired || (item.loginRequired && isLogged)), [isLogged])
 

@@ -8,6 +8,7 @@ import { createBlacklistFilter, createWhitelistFilter } from 'redux-persist-tran
 import AsyncStorage from '@react-native-community/async-storage'
 import { composeWithDevTools } from '@redux-devtools/extension'
 import reducers from '@src/reducers'
+import { IState } from './types'
 
 const memberSubsetBlacklistFilter = createBlacklistFilter('member', ['refreshing', 'followPeople.refreshing', 'likeTopics.refreshing'])
 const uiSubsetBlacklistFilter = createBlacklistFilter('ui', ['refreshing', 'login.loading', 'login.success', 'login.error', 'feedback.processing'])
@@ -28,7 +29,7 @@ const persistConfig = {
   stateReconciler: autoMergeLevel2
 }
 
-const persistedReducer = persistReducer(persistConfig, reducers as any)
+const persistedReducer = persistReducer<IState.State>(persistConfig, reducers as any)
 
 const composeEnhancer = composeWithDevTools({
   // Specify name here, actionsDenylist, actionsCreators and other options if needed

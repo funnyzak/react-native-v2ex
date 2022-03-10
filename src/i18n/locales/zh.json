@@ -88,6 +88,9 @@
     "loadSuccess": "加载成功.",
     "login": "登陆 V2EX，体验更多功能"
   },
+    "confirm": {
+      "logout": "确定登出吗？"
+    },
   "errors": {
     "error": "错误",
     "noFound": "未找到"

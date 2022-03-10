@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from 'react'
-import PropTypes from 'prop-types'
 import ThemeContext from './ThemeContext'
 import themes, { ThemeType } from './themes'
 import { store } from '@src/store'
@@ -19,11 +18,5 @@ const ThemeProvider = ({ children }: Props) => {
 
   return <ThemeContext.Provider value={{ theme: theme, themeName, resetTheme }}>{children}</ThemeContext.Provider>
 }
-
-ThemeProvider.propTypes = {
-  children: PropTypes.element.isRequired
-}
-
-ThemeProvider.defaultProps = {}
 
 export default ThemeProvider

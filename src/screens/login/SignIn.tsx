@@ -10,6 +10,7 @@ import { useAppSelector } from '@src/hooks'
 import { SignInScreenProps as ScreenProps } from '@src/navigation/routes'
 import { loginByToken } from '@src/actions'
 import { useTheme } from '@src/theme'
+import { RootState } from '@src/store'
 
 const Screen = ({ loading, error, success, navigation, route, auth: _auth }: ScreenProps) => {
   const [token, setToken] = useState('')
@@ -17,7 +18,7 @@ const Screen = ({ loading, error, success, navigation, route, auth: _auth }: Scr
   const { theme } = useTheme()
   const {
     login: { tokenGeneratedLink }
-  } = useAppSelector((state: any) => state.ui)
+  } = useAppSelector((state: RootState) => state.ui)
 
   const onLoginPress = () => {
     _auth(token)
