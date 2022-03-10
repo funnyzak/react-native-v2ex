@@ -14,7 +14,7 @@ React Native 快手开发脚手架项目。项目基于 V2EX 开放 API，提供
 
 下一步
 
-- [ ] UI 优化
+- [ ] 优化 UI
 
 ## 特点
 
@@ -22,6 +22,10 @@ React Native 快手开发脚手架项目。项目基于 V2EX 开放 API，提供
 2. 引入 TypeScript 强类型检查，保证维护性、可读性、稳定性。
 3. i18n 集成，支持多国语言。
 4. redux 应用，并数据持久化。
+
+## 预览
+
+![my](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/my.png)
 
 ## 环境
 
