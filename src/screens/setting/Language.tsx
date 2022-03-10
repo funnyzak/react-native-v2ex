@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { View, Image, ViewStyle, TextStyle, TouchableOpacity, ImageStyle } from 'react-native'
 
@@ -6,7 +6,7 @@ import { translate } from '@src/i18n'
 import * as Actions from '@src/actions'
 import { useTheme } from '@src/theme'
 import { IState, ITheme, LanguageTagType } from '@src/types'
-import { Text, Spinner } from '@src/components'
+import { Text } from '@src/components'
 import { LanguageScreenProps as ScreenProps } from '@src/navigation/routes'
 import { translationTitle } from '@src/i18n'
 
@@ -73,13 +73,6 @@ const styles = {
     width: 16,
     height: 16
   })
-}
-
-/**
- * default props
- */
-Language.defaultProps = {
-  loading: false
 }
 
 const mapStateToProps = ({ setting: { languageTag } }: { setting: IState.SettingState }) => {

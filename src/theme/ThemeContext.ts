@@ -5,13 +5,13 @@ import themes, { ThemeType } from './themes'
 export interface ThemeContextProps {
   theme: ITheme
   themeName: ThemeType
-  setTheme: (theme: ThemeType) => void
+  resetTheme: (theme: ThemeType) => void
 }
 
 const ThemeContext = React.createContext<ThemeContextProps>({
   theme: themes.light,
   themeName: 'light',
-  setTheme: () => {}
+  resetTheme: (themeName: string) => {}
 })
 
 export default ThemeContext

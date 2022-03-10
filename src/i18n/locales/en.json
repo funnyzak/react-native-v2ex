@@ -42,6 +42,11 @@
     "facebook": "Facebook",
     "google": "Google"
   },
+  "theme": {
+    "light": "Light Theme",
+    "dark": "Dark Theme",
+    "auto": "Auto Theme"
+  },
   "router": {
     "HomeTabs": "Home",
     "Node": "Node",
@@ -83,7 +88,7 @@
     "loadSuccess": "Load Success.",
     "login": "experience more features"
   },
-  "confirm":{
+  "confirm": {
     "logout": "Are you sure to logout?"
   },
   "errors": {

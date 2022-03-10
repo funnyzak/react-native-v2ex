@@ -21,18 +21,18 @@ onAppStart(store)
 const App = () => {
   return (
     <Provider store={store}>
-      <ThemeProvider>
-        <SafeAreaProvider>
-          <NavigationContainer
-            ref={(navigatorRef: NavigationContainerRefWithCurrent<RootStackParamList>) => {
-              NavigationService.setTopLevelNavigator(navigatorRef)
-            }}>
-            <PersistGate loading={<Spinner />} persistor={persistor}>
+      <SafeAreaProvider>
+        <NavigationContainer
+          ref={(navigatorRef: NavigationContainerRefWithCurrent<RootStackParamList>) => {
+            NavigationService.setTopLevelNavigator(navigatorRef)
+          }}>
+          <PersistGate loading={<Spinner />} persistor={persistor}>
+            <ThemeProvider>
               <Natigator />
-            </PersistGate>
-          </NavigationContainer>
-        </SafeAreaProvider>
-      </ThemeProvider>
+            </ThemeProvider>
+          </PersistGate>
+        </NavigationContainer>
+      </SafeAreaProvider>
     </Provider>
   )
 }

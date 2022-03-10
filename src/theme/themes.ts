@@ -30,7 +30,10 @@ export const dark: ITheme = {
   assets: dark_assets
 }
 
+export const auto = undefined
+
 const themes = {
+  auto,
   light,
   dark
 } as const

@@ -42,6 +42,11 @@
     "facebook": "脸书",
     "google": "谷歌"
   },
+  "theme": {
+    "light": "深色",
+    "dark": "浅色",
+    "auto": "自动"
+  },
   "router": {
     "HomeTabs": "主页",
     "Node": "节点",

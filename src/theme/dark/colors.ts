@@ -46,7 +46,7 @@ const colors: IThemeColor = {
   /**
    * The screen background.
    */
-  background: '#ffffff',
+  background: '#999',
   /**
    * To be used as a default background for all components, like Card, CardSection, List etc
    */

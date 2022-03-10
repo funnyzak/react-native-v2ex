@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import ThemeContext from './ThemeContext'
 import themes, { ThemeType } from './themes'
@@ -8,10 +8,16 @@ type Props = {
   children?: JSX.Element
 }
 
-const ThemeProvider = ({ children }: Props) => {
-  const [themeName, setTheme] = useState<ThemeType>((store.getState() as any).setting.theme)
+const isDayTime = () => {
+  const hours = new Date().getHours()
+  return hours > 6 && hours < 20
+}
 
-  return <ThemeContext.Provider value={{ theme: themes[themeName], themeName, setTheme }}>{children}</ThemeContext.Provider>
+const ThemeProvider = ({ children }: Props) => {
+  const [themeName, resetTheme] = useState<ThemeType>((store.getState() as any).setting.theme)
+  const theme = useMemo(() => (themeName === 'auto' ? themes[isDayTime() ? 'light' : 'dark'] : themes[themeName]), [themeName])
+
+  return <ThemeContext.Provider value={{ theme: theme, themeName, resetTheme }}>{children}</ThemeContext.Provider>
 }
 
 ThemeProvider.propTypes = {
