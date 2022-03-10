@@ -23,10 +23,6 @@ React Native 快手开发脚手架项目。项目基于 V2EX 开放 API，提供
 3. i18n 集成，支持多国语言。
 4. redux 应用，并数据持久化。
 
-## 预览
-
-![my](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/my.jpg)
-
 ## 环境
 
 NodeJS、Java、cocoapods、XCode、Watchman。 具体请参考[这里](https://reactnative.dev/docs/environment-setup)。
@@ -144,6 +140,10 @@ npx react-native upgrade
 
         删除编译缓存
         rm -rf ~/Library/Developer/Xcode/DerivedData
+
+## 预览
+
+![my](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/my.jpg)
 
 ## 依赖库
 
