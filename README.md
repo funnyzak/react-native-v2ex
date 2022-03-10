@@ -25,7 +25,7 @@ React Native 快手开发脚手架项目。项目基于 V2EX 开放 API，提供
 
 ## 预览
 
-![my](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/my.png)
+![my](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/my.jpg)
 
 ## 环境
 
