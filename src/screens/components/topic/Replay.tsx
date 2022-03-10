@@ -3,7 +3,7 @@ import { View, Text } from 'react-native'
 
 const Replay = () => {
   return (
-    <View>
+    <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
       <Text>Hello World, Replay.</Text>
     </View>
   )
