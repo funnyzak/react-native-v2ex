@@ -20,6 +20,12 @@ export const Layout = StyleSheet.create({
   }
 })
 
+export const View = {
+  background: (theme: ITheme): ViewStyle => ({
+    backgroundColor: theme.colors.background
+  })
+}
+
 export const Table = {
   container: (theme: ITheme): ViewStyle => ({
     marginTop: theme.spacing.small,

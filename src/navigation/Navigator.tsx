@@ -241,6 +241,7 @@ const AppNavigationContainer = () => {
               component={Screens.HotTopicListScreen}
               options={{
                 title: translate(`router.${ROUTES.HotTopics}`),
+                ...defaultHeaderSetting(theme),
                 headerShown: true
               }}
             />
@@ -249,6 +250,7 @@ const AppNavigationContainer = () => {
               component={Screens.NodeTopicListScreen}
               options={{
                 title: translate(`router.${ROUTES.NodeTopics}`),
+                ...defaultHeaderSetting(theme),
                 headerShown: true
               }}
             />
@@ -257,6 +259,7 @@ const AppNavigationContainer = () => {
               component={Screens.TopicDetailScreen}
               options={{
                 title: translate(`router.${ROUTES.TopicDetail}`),
+                ...defaultHeaderSetting(theme),
                 headerShown: true
               }}
             />
@@ -265,6 +268,7 @@ const AppNavigationContainer = () => {
               component={Screens.ProfileScreen}
               options={{
                 title: translate(`router.${ROUTES.Profile}`),
+                ...defaultHeaderSetting(theme),
                 headerShown: true
               }}
             />
@@ -273,6 +277,7 @@ const AppNavigationContainer = () => {
               component={Screens.FollowPeopleScreen}
               options={{
                 title: translate(`router.${ROUTES.FollowPeople}`),
+                ...defaultHeaderSetting(theme),
                 headerShown: true
               }}
             />
@@ -281,6 +286,7 @@ const AppNavigationContainer = () => {
               component={Screens.LikeTopicsScreen}
               options={{
                 title: translate(`router.${ROUTES.LikeTopics}`),
+                ...defaultHeaderSetting(theme),
                 headerShown: true
               }}
             />
@@ -289,6 +295,7 @@ const AppNavigationContainer = () => {
               component={Screens.SettingScreen}
               options={{
                 title: translate(`router.${ROUTES.Setting}`),
+                ...defaultHeaderSetting(theme),
                 headerShown: true
               }}
             />
@@ -297,6 +304,7 @@ const AppNavigationContainer = () => {
               component={Screens.LanguageScreen}
               options={{
                 title: translate(`router.${ROUTES.Language}`),
+                ...defaultHeaderSetting(theme),
                 headerShown: true
               }}
             />
@@ -305,6 +313,7 @@ const AppNavigationContainer = () => {
               component={Screens.AboutScreen}
               options={{
                 title: translate(`router.${ROUTES.About}`),
+                ...defaultHeaderSetting(theme),
                 headerShown: true
               }}
             />
@@ -313,6 +322,7 @@ const AppNavigationContainer = () => {
               component={Screens.FeedbackScreen}
               options={{
                 title: translate(`router.${ROUTES.Feedback}`),
+                ...defaultHeaderSetting(theme),
                 headerShown: true
               }}
             />
@@ -321,6 +331,7 @@ const AppNavigationContainer = () => {
               component={Screens.ThemeScreen}
               options={{
                 title: translate(`router.${ROUTES.Theme}`),
+                ...defaultHeaderSetting(theme),
                 headerShown: true
               }}
             />
@@ -329,6 +340,7 @@ const AppNavigationContainer = () => {
               component={Screens.SearchScreen}
               options={{
                 title: translate(`router.${ROUTES.Search}`),
+                ...defaultHeaderSetting(theme),
                 headerShown: true
               }}
             />
@@ -337,6 +349,7 @@ const AppNavigationContainer = () => {
               component={Screens.ReadedScreen}
               options={{
                 title: translate(`router.${ROUTES.Readed}`),
+                ...defaultHeaderSetting(theme),
                 headerShown: true
               }}
             />

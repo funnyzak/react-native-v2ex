@@ -24,21 +24,23 @@ const Language = ({
 }) => {
   const { theme } = useTheme()
   return (
-    <View style={SylCommon.Table.container(theme)}>
-      {translationList.map((v) => {
-        const { tag, title } = v
-        return (
-          <TouchableOpacity
-            key={tag}
-            style={SylCommon.Table.item(theme)}
-            onPress={() => {
-              setLocales(tag)
-            }}>
-            <Text style={SylCommon.Table.itemText(theme, tag === languageTag)}>{title}</Text>
-            <Image style={SylCommon.Table.itemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />
-          </TouchableOpacity>
-        )
-      })}
+    <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
+      <View style={SylCommon.Table.container(theme)}>
+        {translationList.map((v) => {
+          const { tag, title } = v
+          return (
+            <TouchableOpacity
+              key={tag}
+              style={SylCommon.Table.item(theme)}
+              onPress={() => {
+                setLocales(tag)
+              }}>
+              <Text style={SylCommon.Table.itemText(theme, tag === languageTag)}>{title}</Text>
+              <Image style={SylCommon.Table.itemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />
+            </TouchableOpacity>
+          )
+        })}
+      </View>
     </View>
   )
 }
