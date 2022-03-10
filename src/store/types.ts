@@ -161,7 +161,6 @@ export declare module IState {
      */
     theme: ThemeType
   }
-
   /**
    * @description 通知状态
    */
