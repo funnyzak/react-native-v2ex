@@ -1,7 +1,7 @@
 // https://prettier.io/docs/en/options.html
 module.exports = {
   // Specify the line length that the printer will wrap on.
-  printWidth: 150,
+  printWidth: 120,
   // Print trailing commas wherever possible in multi-line comma-separated syntactic structures. (A single-line array, for example, never gets trailing commas.)
   trailingComma: 'none',
   // Specify the number of spaces per indentation-level.
