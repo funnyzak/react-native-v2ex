@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { View, Image, ViewStyle, TextStyle, TouchableOpacity, ImageStyle } from 'react-native'
 
@@ -11,12 +11,9 @@ import * as Actions from '@src/actions'
 import * as utils from '@src/utils'
 
 const My = ({
-  route,
   navigation,
-  setting,
   app,
   profile,
-  token,
   logout
 }: ScreenProps &
   IState.State & {
@@ -25,6 +22,7 @@ const My = ({
     logout: () => void
   }) => {
   const { theme } = useTheme()
+
   return (
     <View style={[SylCommon.Layout.fill, styles.container(theme)]}>
       <TouchableOpacity style={[SylCommon.Layout.fullWidth, SylCommon.Layout.row, styles.userBox(theme)]}>
