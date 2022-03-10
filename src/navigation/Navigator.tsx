@@ -182,7 +182,7 @@ const AppNavigationContainer = () => {
   const { token } = useAppSelector((state: RootState) => state.member)
   const { languageTag } = useAppSelector((state: RootState) => state.setting)
 
-  const { theme, themeName } = useTheme()
+  const { theme } = useTheme()
   const [mounted, setMounted] = useState<boolean>(false)
 
   if (!mounted) {
@@ -204,7 +204,7 @@ const AppNavigationContainer = () => {
           ref={(navigatorRef: NavigationContainerRefWithCurrent<RootStackParamList>) => {
             NavigationService.setTopLevelNavigator(navigatorRef)
           }}>
-          <StatusBar backgroundColor={theme.colors.primary} barStyle={themeName === 'dark' ? 'light-content' : 'dark-content'} />
+          <StatusBar backgroundColor={theme.colors.primary} barStyle={theme.name === 'dark' ? 'light-content' : 'dark-content'} />
           <StackNavigator.Navigator initialRouteName={ROUTES.SignIn}>
             {!token ? (
               <StackNavigator.Screen
