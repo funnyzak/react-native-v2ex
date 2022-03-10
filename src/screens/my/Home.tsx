@@ -33,78 +33,78 @@ const My = ({
           <Text style={styles.username(theme)}>{profile?.username}</Text>
         </View>
       </TouchableOpacity>
-      <View style={styles.grid(theme)}>
-        <TouchableOpacity style={styles.gridItem(theme)} onPress={() => navigation.navigate(ROUTES.FollowPeople)}>
-          <Text style={styles.gridItemValue(theme)}>{'7' || '-'}</Text>
-          <Text style={styles.gridItemTitle(theme)}>{translate('button.followPeople')}</Text>
+      <View style={SylCommon.Grid.container(theme)}>
+        <TouchableOpacity style={SylCommon.Grid.item(theme)} onPress={() => navigation.navigate(ROUTES.FollowPeople)}>
+          <Text style={SylCommon.Grid.itemValue(theme)}>{'7' || '-'}</Text>
+          <Text style={SylCommon.Grid.itemTitle(theme)}>{translate('button.followPeople')}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.gridItem(theme)} onPress={() => navigation.navigate(ROUTES.LikeTopics)}>
-          <Text style={styles.gridItemValue(theme)}>{'10' || '-'}</Text>
-          <Text style={styles.gridItemTitle(theme)}>{translate('button.likeTopics')}</Text>
+        <TouchableOpacity style={SylCommon.Grid.item(theme)} onPress={() => navigation.navigate(ROUTES.LikeTopics)}>
+          <Text style={SylCommon.Grid.itemValue(theme)}>{'10' || '-'}</Text>
+          <Text style={SylCommon.Grid.itemTitle(theme)}>{translate('button.likeTopics')}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.gridItem(theme)} onPress={() => navigation.navigate(ROUTES.Readed)}>
-          <Text style={styles.gridItemValue(theme)}>{'8'}</Text>
-          <Text style={styles.gridItemTitle(theme)}>{translate('button.readed')}</Text>
+        <TouchableOpacity style={SylCommon.Grid.item(theme)} onPress={() => navigation.navigate(ROUTES.Readed)}>
+          <Text style={SylCommon.Grid.itemValue(theme)}>{'8'}</Text>
+          <Text style={SylCommon.Grid.itemTitle(theme)}>{translate('button.readed')}</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.list(theme)}>
+      <View style={SylCommon.Table.container(theme)}>
         <TouchableOpacity
-          style={styles.listItem(theme)}
+          style={SylCommon.Table.item(theme)}
           onPress={() => {
             navigation.navigate(ROUTES.Setting)
           }}>
-          <Text style={styles.listItemText(theme)}>{translate('common.setting')}</Text>
-          <Image style={styles.listItemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />
+          <Text style={SylCommon.Table.itemText(theme)}>{translate('common.setting')}</Text>
+          <Image style={SylCommon.Table.itemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.listItem(theme)}
+          style={SylCommon.Table.item(theme)}
           onPress={() => {
             navigation.navigate(ROUTES.Theme)
           }}>
-          <Text style={styles.listItemText(theme)}>{translate('common.theme')}</Text>
-          <Image style={styles.listItemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />
+          <Text style={SylCommon.Table.itemText(theme)}>{translate('common.theme')}</Text>
+          <Image style={SylCommon.Table.itemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.listItem(theme)}
+          style={SylCommon.Table.item(theme)}
           onPress={() => {
             navigation.navigate(ROUTES.Language)
           }}>
-          <Text style={styles.listItemText(theme)}>{translate('common.language')}</Text>
-          <Image style={styles.listItemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />
+          <Text style={SylCommon.Table.itemText(theme)}>{translate('common.language')}</Text>
+          <Image style={SylCommon.Table.itemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.listItem(theme)}
+          style={SylCommon.Table.item(theme)}
           onPress={() => {
             navigation.navigate(ROUTES.About)
           }}>
-          <Text style={styles.listItemText(theme)}>{translate('common.about')}</Text>
-          <Image style={styles.listItemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />
+          <Text style={SylCommon.Table.itemText(theme)}>{translate('common.about')}</Text>
+          <Image style={SylCommon.Table.itemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />
         </TouchableOpacity>
       </View>
-      <View style={styles.list(theme)}>
+      <View style={SylCommon.Table.container(theme)}>
         <TouchableOpacity
-          style={styles.listItem(theme)}
+          style={SylCommon.Table.item(theme)}
           onPress={() => {
             utils.linking(`mailto:${app.aboutUs.email}`)
           }}>
-          <Text style={styles.listItemText(theme)}>{translate('common.email')}</Text>
-          <Text style={styles.listItemRightText(theme)}>{app.aboutUs.email}</Text>
+          <Text style={SylCommon.Table.itemText(theme)}>{translate('common.email')}</Text>
+          <Text style={SylCommon.Table.itemRightText(theme)}>{app.aboutUs.email}</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.listItem(theme)}
+          style={SylCommon.Table.item(theme)}
           onPress={() => {
             utils.linking(`https://twitter.com/${app.aboutUs.twitter}`)
           }}>
-          <Text style={styles.listItemText(theme)}>{translate('common.twitter')}</Text>
-          <Text style={styles.listItemRightText(theme)}>@{app.aboutUs.twitter}</Text>
+          <Text style={SylCommon.Table.itemText(theme)}>{translate('common.twitter')}</Text>
+          <Text style={SylCommon.Table.itemRightText(theme)}>@{app.aboutUs.twitter}</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.listItem(theme)}
+          style={SylCommon.Table.item(theme)}
           onPress={() => {
             utils.linking(`https://github.com/${app.aboutUs.github}`)
           }}>
-          <Text style={styles.listItemText(theme)}>{translate('common.github')}</Text>
-          <Text style={styles.listItemRightText(theme)}>@{app.aboutUs.github}</Text>
+          <Text style={SylCommon.Table.itemText(theme)}>{translate('common.github')}</Text>
+          <Text style={SylCommon.Table.itemRightText(theme)}>@{app.aboutUs.github}</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.logoutBox(theme)}>
@@ -145,50 +145,6 @@ const styles = {
   loginTip: (theme: ITheme): TextStyle => ({
     fontSize: 12,
     color: theme.colors.secondary
-  }),
-  grid: (theme: ITheme): ViewStyle => ({
-    marginTop: 8,
-    paddingVertical: 4,
-    flexDirection: 'row',
-    paddingHorizontal: 24,
-    justifyContent: 'space-between',
-    backgroundColor: theme.colors.surface,
-    borderRadius: 8
-  }),
-  gridItem: (theme: ITheme): ViewStyle => ({
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 8
-  }),
-  gridItemValue: (theme: ITheme): TextStyle => ({
-    fontSize: 18,
-    fontWeight: 'bold'
-  }),
-  gridItemTitle: (theme: ITheme): TextStyle => ({
-    fontSize: 12,
-    color: theme.colors.titleText
-  }),
-  list: (theme: ITheme): ViewStyle => ({
-    marginTop: 8,
-    backgroundColor: theme.colors.surface
-  }),
-  listItem: (theme: ITheme): ViewStyle => ({
-    padding: 16,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  }),
-  listItemText: (theme: ITheme): TextStyle => ({
-    fontSize: 16,
-    color: theme.colors.titleText
-  }),
-  listItemRightText: (theme: ITheme): TextStyle => ({
-    fontSize: 12,
-    color: theme.colors.bodyText
-  }),
-  listItemArrow: (theme: ITheme): ImageStyle => ({
-    width: 16,
-    height: 16
   }),
   logoutBox: (theme: ITheme): ViewStyle => ({
     marginTop: 30,
