@@ -43,9 +43,9 @@
     "google": "谷歌"
   },
   "theme": {
-    "light": "深色",
-    "dark": "浅色",
-    "auto": "自动"
+    "auto": "自动切换",
+    "light": "浅色主题",
+    "dark": "深色主题"
   },
   "router": {
     "HomeTabs": "主页",
