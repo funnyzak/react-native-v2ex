@@ -4,10 +4,6 @@ interface IBaseAlert {
   title?: string
   message: string
 }
-
-const tipTitle = translate('common.tip')
-const btnOk = translate('common.ok')
-const btnCancel = translate('common.cancel')
 interface IAlert extends IBaseAlert {
   title?: string
   message: string
@@ -19,13 +15,13 @@ interface IConfirm extends IBaseAlert {
   onCancel?: (value?: string | undefined) => void
 }
 
-export const alert = ({ title = tipTitle, message, onPress }: IAlert) => {
-  Alert.alert(title, message, [{ text: btnOk, onPress: onPress }])
+export const alert = ({ title = translate('common.tip'), message, onPress }: IAlert) => {
+  Alert.alert(title, message, [{ text: translate('common.ok'), onPress: onPress }])
 }
 
-export const confirm = ({ title = tipTitle, message, onOk: onOK, onCancel }: IConfirm) => {
+export const confirm = ({ title = translate('common.tip'), message, onOk: onOK, onCancel }: IConfirm) => {
   Alert.alert(title, message, [
-    { text: btnOk, onPress: onOK, style: 'default' },
-    { text: btnCancel, onPress: onCancel, style: 'cancel' }
+    { text: translate('common.ok'), onPress: onOK, style: 'default' },
+    { text: translate('common.cancel'), onPress: onCancel, style: 'cancel' }
   ])
 }
