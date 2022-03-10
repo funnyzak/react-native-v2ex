@@ -10,12 +10,12 @@ const colors: IThemeColor = {
    * Example: If primary color is dark, make appbarTintColor light
    */
   primaryDark: '#000',
-  primary: '#999',
+  primary: '#000',
 
-  tabBarBackground: '#fff',
-  tabBarIconInactive: '#8c8c8c',
-  tabBarIconActive: '#333',
-  appbarTint: '#000',
+  tabBarBackground: '#000',
+  tabBarIconInactive: '#ddd',
+  tabBarIconActive: '#fff',
+  appbarTint: '#fff',
 
   lightGrey: '#F5F6FA',
   tabShadowColor: '#000000',
@@ -46,11 +46,11 @@ const colors: IThemeColor = {
   /**
    * The screen background.
    */
-  background: '#999',
+  background: '#000',
   /**
    * To be used as a default background for all components, like Card, CardSection, List etc
    */
-  surface: '#fff',
+  surface: '#111',
   /**
    * Use it for card border
    */
@@ -67,11 +67,11 @@ const colors: IThemeColor = {
    * The default color of text in many components.
    * To be used for heading, subheading, label text
    */
-  titleText: '#595959',
+  titleText: '#fff',
   /**
    * To be used for normal text like paragraph
    */
-  bodyText: '#737373',
+  bodyText: '#eee',
   /**
    * To be used for hint text component
    */
