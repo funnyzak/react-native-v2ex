@@ -7,13 +7,12 @@ export * from './ToastContext'
  */
 
 // import { useToast } from '@src/components/toast'
-// import { useEffect } from 'react'
 // const component = (props) => {
-//   const { toast, setPosition: setToastPosition } = useToast()
+//   const { showToast } = useToast()
 
 //   useEffect(() => {
-//     setToastPosition('top')
-//     toast?.show('hello world')
+//     showToast('hello world')
+//     showToast({text: 'hello world', position: 'top', opacity: 0.5})
 //   }, [])
 
 //   ..
