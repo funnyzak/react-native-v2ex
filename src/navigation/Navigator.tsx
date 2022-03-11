@@ -42,10 +42,12 @@ const MainNavigator = createBottomTabNavigator()
 
 const defaultHeaderSetting = (theme: ITheme) => ({
   headerStyle: {
+    shadowColor: 'transparent', // this covers iOS
     shadowOpacity: 0, // remove shadow on iOS
     elevation: 0, // remove shadow on Android,
     backgroundColor: theme.colors.primary,
-    height: theme.dimens.headerHeight
+    height: theme.dimens.headerHeight,
+    borderBottomWidth: 0
   },
   headerTitleStyle: {
     ...(theme.typography.titleTextSemiBold as any),
@@ -249,6 +251,9 @@ const AppNavigationContainer = () => {
                 component={MainAppNavigator}
                 options={({ route }) => ({
                   ...defaultHeaderSetting(theme),
+                  headerShadowVisible: ![ROUTES.HomeTabs, ROUTES.My].includes(
+                    getFocusedRouteNameFromRoute(route) ?? (ROUTES.Node as any)
+                  ),
                   headerTitle: getHeaderTitle(route)
                 })}
                 initialParams={{
