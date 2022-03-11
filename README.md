@@ -144,7 +144,11 @@ npx react-native upgrade
 
 ## 预览
 
-![my](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/my.jpg)
+![home_light](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/home_light.png)
+![home_apple](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/home_apple.png)
+![home_dark](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/home_dark.png)
+![my_light](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/my_light.png)
+![my_en](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/my_en.png)
 
 ## 依赖库
 
