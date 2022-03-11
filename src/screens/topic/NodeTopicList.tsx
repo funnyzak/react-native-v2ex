@@ -1,14 +1,12 @@
 import React, { useState, useCallback, useEffect, useMemo } from 'react'
 import { connect } from 'react-redux'
-import { StyleSheet, View, ViewStyle, TextStyle, RefreshControl } from 'react-native'
+import { RefreshControl } from 'react-native'
 
-import { translate } from '@src/i18n'
-import { useTheme } from '@src/theme'
-import { IState, ITheme, V2exObject } from '@src/types'
+import { IState, V2exObject } from '@src/types'
 import { TopicList } from '../components'
-import { Text, Spinner } from '@src/components'
 import { NodeTopicsScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 import * as Actions from '@src/actions'
+import { useToast } from '@src/components/toast'
 
 const NodeTopics = ({
   route,
@@ -19,29 +17,50 @@ const NodeTopics = ({
   tabNodeList: IState.TabNodeState[]
   getNodeTopics: (node: string, page: number) => void
 }) => {
-  const { theme } = useTheme()
-  const { error, success, list, nodeTab, refreshing } = useMemo(
+  const [page, setPage] = useState(1)
+  const [mounted, setMounted] = useState<boolean>(false)
+
+  const { showToast } = useToast()
+
+  const { error, success, list, nodeTab, refreshing, hasMore, loadMore } = useMemo(
     () => tabNodeList.find((v) => v.nodeTab.name === route.params.nodeName) || tabNodeList[0],
-    [route, tabNodeList]
+    [tabNodeList, route]
   )
+
+  if (!mounted) {
+    // ...
+  }
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const fetchTopics = useCallback(
-    (page: number = 1) => {
-      getNodeTopics(nodeTab.name, 1)
+    (pageNum: number) => {
+      getNodeTopics(nodeTab.name, pageNum)
     },
     [nodeTab, getNodeTopics]
   )
 
-  useEffect(() => {
-    if (!refreshing) {
-      fetchTopics()
-    }
-  }, [nodeTab, fetchTopics, refreshing])
-
   const onRefresh = () => {
-    fetchTopics()
+    fetchTopics(1)
   }
 
-  const onReached = () => {}
+  useEffect(() => {
+    fetchTopics(page)
+  }, [page, nodeTab, fetchTopics])
+
+  useEffect(() => {
+    if (error !== null && error.length > 0) {
+      showToast(error)
+    }
+  }, [error, showToast])
+
+  const onReached = () => {
+    if (hasMore && !loadMore && !refreshing) {
+      setPage(page + 1)
+    }
+  }
 
   const itemPress = (item: V2exObject.Topic) => {
     navigation.navigate(ROUTES.TopicDetail, { topicId: item.id.toString() })
@@ -53,8 +72,9 @@ const NodeTopics = ({
       onRowPress={itemPress}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
       onEndReached={onReached}
-      canLoadMoreContent={false}
+      canLoadMoreContent={hasMore}
       searchIndicator={false}
+      refreshCallback={onRefresh}
     />
   )
 }
