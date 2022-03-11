@@ -1,4 +1,5 @@
 import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native'
+import { auto } from './themes'
 import { ITheme } from './types'
 
 export const Layout = StyleSheet.create({
@@ -46,6 +47,17 @@ export const Divider = {
     width: '100%',
     backgroundColor: theme.colors.border,
     marginVertical: theme.spacing.medium
+  })
+}
+
+export const Button = {
+  textAction: (theme: ITheme): TextStyle => ({
+    ...theme.typography.labelText,
+    marginTop: theme.spacing.medium,
+    padding: theme.spacing.small,
+    textAlign: 'center',
+    textDecorationLine: 'underline',
+    paddingHorizontal: theme.spacing.medium
   })
 }
 

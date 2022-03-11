@@ -3,8 +3,9 @@ import { View, Text, FlatList, ViewStyle, TextStyle } from 'react-native'
 import { ITheme, V2exObject } from '@src/types'
 import TopicItem from './TopicItem'
 import { Spinner } from '@src/components'
-import { useTheme } from '@src/theme'
+import { SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 export interface TopicListProps {
   onRowPress: (topic: V2exObject.Topic) => void
@@ -13,6 +14,7 @@ export interface TopicListProps {
   onEndReached: () => void
   refreshControl: React.ReactElement
   searchIndicator: boolean
+  refreshCallback: () => void
 }
 
 const TopicList: React.FC<TopicListProps> = ({
@@ -21,20 +23,20 @@ const TopicList: React.FC<TopicListProps> = ({
   topics,
   onEndReached,
   refreshControl,
-  searchIndicator
+  searchIndicator,
+  refreshCallback
 }: TopicListProps) => {
   const { theme } = useTheme()
 
   const renderItemRow = ({ item }: { item: V2exObject.Topic }) =>
     !item || item === null ? null : (
-      <TopicItem imageStyle={styles.imageStyle(theme)} viewContainerStyle={{ flex: 1 }} topic={item} onRowPress={onRowPress} />
+      <TopicItem containerStyle={styles.topicItemContainer(theme)} topic={item} onRowPress={onRowPress} />
     )
 
   const renderFooter = () => {
     if (canLoadMoreContent) {
       return <Spinner style={{ padding: theme.spacing.large }} />
     }
-
     return null
   }
 
@@ -45,7 +47,7 @@ const TopicList: React.FC<TopicListProps> = ({
       return <Spinner style={{ marginTop: 50 }} />
     }
 
-    if (topics.length) {
+    if (topics.length > 0) {
       return (
         <FlatList
           refreshControl={refreshControl}
@@ -64,7 +66,10 @@ const TopicList: React.FC<TopicListProps> = ({
     if (!searchIndicator) {
       return (
         <View style={styles.notFoundTextWrap()}>
-          <Text style={styles.notFoundText()}>{translate('errors.noTopics')}</Text>
+          <Text style={styles.notFoundText(theme)}>{translate('errors.noTopics')}</Text>
+          <TouchableOpacity onPress={refreshCallback}>
+            <Text style={SylCommon.Button.textAction(theme)}>{translate('button.oneceAgain')}</Text>
+          </TouchableOpacity>
         </View>
       )
     }
@@ -82,8 +87,13 @@ const TopicList: React.FC<TopicListProps> = ({
  */
 const styles = {
   container: (theme: ITheme) => ({
-    flex: 1,
+    ...SylCommon.Layout.fill,
+    paddingVertical: theme.spacing.large,
+    paddingHorizontal: theme.spacing.large,
     backgroundColor: theme.colors.surface
+  }),
+  topicItemContainer: (theme: ITheme): ViewStyle => ({
+    flex: 1
   }),
   itemSeparator: (theme: ITheme) => ({
     height: theme.spacing.small,
@@ -91,36 +101,18 @@ const styles = {
   }),
   imageStyle: (theme: ITheme) => ({
     height: theme.dimens.avatarSize,
+    width: undefined,
     margin: theme.spacing.small,
     borderWidth: 1,
-    borderColor: theme.colors.border,
-    width: undefined
+    borderColor: theme.colors.border
   }),
   notFoundTextWrap: (): TextStyle => ({
     flex: 1,
     justifyContent: 'center'
   }),
-  notFoundText: (): TextStyle => ({
+  notFoundText: (theme: ITheme): TextStyle => ({
+    ...theme.typography.labelText,
     textAlign: 'center'
-  }),
-  headerContainerStyle: (theme: ITheme): ViewStyle => ({
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'stretch',
-    borderBottomWidth: 1,
-    borderBottomColor: theme.colors.border
-  }),
-  iconWrapper: (theme: ITheme) => ({
-    flex: 1,
-    height: 32,
-    margin: theme.spacing.small,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  }),
-  headerTextStyle: (theme: ITheme) => ({
-    textTransform: 'uppercase',
-    marginLeft: theme.spacing.small
   }),
   separator: (theme: ITheme) => ({
     width: 1,
