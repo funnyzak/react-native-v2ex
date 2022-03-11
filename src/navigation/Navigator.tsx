@@ -4,14 +4,25 @@
 
 import React, { useEffect, useState } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { NavigationContainer, NavigationState, NavigationContainerRefWithCurrent, PartialState, Route } from '@react-navigation/native'
+import {
+  NavigationContainer,
+  NavigationState,
+  NavigationContainerRefWithCurrent,
+  PartialState,
+  Route
+} from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { Image, StatusBar, TextStyle } from 'react-native'
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
-import { translate, changeLocale } from '@src/i18n'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import zhCN from 'dayjs/locale/zh-cn'
+import enUS from 'dayjs/locale/en'
+
+import { translate, changeLocale, LanguageTagType } from '@src/i18n'
 import { useAppSelector } from '@src/hooks'
 import { ITheme, useTheme } from '@src/theme'
 import * as Screens from '@src/screens'
@@ -20,6 +31,11 @@ import { ROUTES, RootStackParamList, MainScreenProps } from './routes'
 import { store, RootState } from '@src/store'
 import NavigationService from './NavigationService'
 import { ToastProvider } from '@src/components/toast'
+
+/**
+ * dayjs
+ */
+dayjs.extend(relativeTime)
 
 const Drawer = createDrawerNavigator()
 const MainNavigator = createBottomTabNavigator()
@@ -43,6 +59,11 @@ const defaultHeaderSetting = (theme: ITheme) => ({
 const renderIcon = (focused: boolean, activeIcon: any, inactiveIcon: any): Element => {
   const icon = focused ? activeIcon : inactiveIcon
   return <Image source={icon} />
+}
+
+const resetLocales = (locale: LanguageTagType) => {
+  changeLocale(locale)
+  dayjs.locale(locale === 'zh' ? zhCN : enUS)
 }
 
 const badgeStyles = {
@@ -90,7 +111,7 @@ const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
   const { theme } = useTheme()
 
   useEffect(() => {
-    changeLocale(languageTag)
+    resetLocales(languageTag)
   }, [languageTag])
 
   return (
@@ -101,7 +122,8 @@ const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
         options={{
           title: translate(`router.${ROUTES.HomeTabs}`),
           ...defaultTabBarSetting(theme),
-          tabBarIcon: ({ focused }) => renderIcon(focused, theme.assets.images.icons.home, theme.assets.images.icons.homeInactive)
+          tabBarIcon: ({ focused }) =>
+            renderIcon(focused, theme.assets.images.icons.home, theme.assets.images.icons.homeInactive)
         }}
       />
       <MainNavigator.Screen
@@ -110,7 +132,8 @@ const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
         options={{
           title: translate(`router.${ROUTES.Node}`),
           ...defaultTabBarSetting(theme),
-          tabBarIcon: ({ focused }) => renderIcon(focused, theme.assets.images.icons.discovery, theme.assets.images.icons.discoveryInactive)
+          tabBarIcon: ({ focused }) =>
+            renderIcon(focused, theme.assets.images.icons.discovery, theme.assets.images.icons.discoveryInactive)
         }}
       />
       <MainNavigator.Screen
@@ -119,7 +142,8 @@ const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
         options={{
           title: translate(`router.${ROUTES.Notification}`),
           ...defaultTabBarSetting(theme),
-          tabBarIcon: ({ focused }) => renderIcon(focused, theme.assets.images.icons.notification, theme.assets.images.icons.notificationInactive),
+          tabBarIcon: ({ focused }) =>
+            renderIcon(focused, theme.assets.images.icons.notification, theme.assets.images.icons.notificationInactive),
           tabBarBadge: unread > 0 ? unread : undefined,
           tabBarBadgeStyle: badgeStyles.badge(theme)
         }}
@@ -130,7 +154,8 @@ const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
         options={{
           title: translate(`router.${ROUTES.My}`),
           ...defaultTabBarSetting(theme),
-          tabBarIcon: ({ focused }) => renderIcon(focused, theme.assets.images.icons.profile, theme.assets.images.icons.profileInactive)
+          tabBarIcon: ({ focused }) =>
+            renderIcon(focused, theme.assets.images.icons.profile, theme.assets.images.icons.profileInactive)
         }}
       />
     </MainNavigator.Navigator>
@@ -186,7 +211,7 @@ const AppNavigationContainer = () => {
   const [mounted, setMounted] = useState<boolean>(false)
 
   if (!mounted) {
-    changeLocale((store.getState() as any).setting.languageTag)
+    resetLocales((store.getState() as any).setting.languageTag)
   }
 
   useEffect(() => {
@@ -194,7 +219,7 @@ const AppNavigationContainer = () => {
   }, [])
 
   useEffect(() => {
-    changeLocale(languageTag)
+    resetLocales(languageTag)
   }, [languageTag])
 
   return (
@@ -204,7 +229,10 @@ const AppNavigationContainer = () => {
           ref={(navigatorRef: NavigationContainerRefWithCurrent<RootStackParamList>) => {
             NavigationService.setTopLevelNavigator(navigatorRef)
           }}>
-          <StatusBar backgroundColor={theme.colors.primary} barStyle={theme.name === 'dark' ? 'light-content' : 'dark-content'} />
+          <StatusBar
+            backgroundColor={theme.colors.primary}
+            barStyle={theme.name === 'dark' ? 'light-content' : 'dark-content'}
+          />
           <StackNavigator.Navigator initialRouteName={ROUTES.SignIn}>
             {!token ? (
               <StackNavigator.Screen
