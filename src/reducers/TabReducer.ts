@@ -32,23 +32,37 @@ export default (state: IState.TabsState = INITIAL_STATE, action: Action): IState
       node = { ...node, refreshing: false, success: '', error: '', list: action.payload.data }
       break
     case APP_NODE_LOAD_ERROR:
-      node = { ...node, error: action.payload.data, success: '', refreshing: false, loadMore: false, hasMore: false }
+      node = {
+        ...node,
+        error: action.payload.data,
+        success: '',
+        list: [],
+        refreshing: false,
+        loadMore: false,
+        hasMore: false
+      }
       break
     case APP_NODE_LOAD_MORE_TOPICS:
       node = { ...node, error: '', success: '', refreshing: false, loadMore: true }
       break
     case APP_NODE_TOPICS_REFRESH:
-      node = { ...node, error: '', success: '', refreshing: true, hasMore: false, loadMore: false }
+      node = { ...node, error: '', success: '', list: undefined, refreshing: true, hasMore: false, loadMore: false }
       break
     case APP_NODE_TOPICS_LOAD_SUCCESS:
+      let newNodeList = (node.refreshing || !node.list ? [] : node.list)
+        .concat(action.payload.data)
+        .filter((v) => v && v !== null)
+      const hasMore =
+        node.nodeTab.pager &&
+        !(!action.payload.data || action.payload.data.length === null || action.payload.data.length === 0)
       node = {
         ...node,
         error: '',
         success: translate('tips.loadSuccess'),
-        list: (node.refreshing || !node.list ? [] : node.list).concat(action.payload.data),
+        list: newNodeList,
         refreshing: false,
         loadMore: false,
-        hasMore: !(!action.payload.data || action.payload.data.length === null || action.payload.data.length === 0)
+        hasMore
       }
       break
     default:
