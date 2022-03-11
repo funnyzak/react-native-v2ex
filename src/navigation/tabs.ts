@@ -75,20 +75,8 @@ export const HOME_NODES: Array<NODE_TAB_TYPE> = [
     loginRequired: true
   },
   {
-    name: NODE_TABS.CREATIVE,
-    title: '创意',
-    pager: true,
-    loginRequired: true
-  },
-  {
     name: NODE_TABS.TECH,
     title: '技术',
-    pager: true,
-    loginRequired: true
-  },
-  {
-    name: NODE_TABS.R2,
-    title: 'R2',
     pager: true,
     loginRequired: true
   }
