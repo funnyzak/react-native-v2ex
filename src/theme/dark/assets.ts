@@ -1,4 +1,6 @@
-const Assets = {
+import { IThemeAssets } from '../types'
+
+const Assets: IThemeAssets = {
   images: {
     icons: {
       logo: require('@res/images/icon/logo.png'),

@@ -2,7 +2,8 @@
  * Created by leon<silenceace@gmail.com> on 22/2/21.
  */
 
-import { TextStyle } from 'react-native'
+import { TextStyle, ImageSourcePropType } from 'react-native'
+
 export interface IThemeColor {
   /**
    * ========================= Primary color : (Brand color) =========================
@@ -167,28 +168,28 @@ export interface IThemeTypography {
 export interface IThemeAssets {
   images: {
     icons: {
-      logo: any
-      icon: any
-      home: any
-      homeInactive: any
-      discovery: any
-      discoveryInactive: any
-      notification: any
-      notificationInactive: any
-      profile: any
-      profileInactive: any
-      moreCycleGrey: any
-      timeCycleGrey: any
-      heartGrey: any
-      heartRed: any
-      gold: any
-      silver: any
-      bronze: any
-      arrowRightGrey: any
-      send: any
-      starOutline: any
-      starFilled: any
-      chatGrey: any
+      logo: ImageSourcePropType
+      icon: ImageSourcePropType
+      home: ImageSourcePropType
+      homeInactive: ImageSourcePropType
+      discovery: ImageSourcePropType
+      discoveryInactive: ImageSourcePropType
+      notification: ImageSourcePropType
+      notificationInactive: ImageSourcePropType
+      profile: ImageSourcePropType
+      profileInactive: ImageSourcePropType
+      moreCycleGrey: ImageSourcePropType
+      timeCycleGrey: ImageSourcePropType
+      heartGrey: ImageSourcePropType
+      heartRed: ImageSourcePropType
+      gold: ImageSourcePropType
+      silver: ImageSourcePropType
+      bronze: ImageSourcePropType
+      arrowRightGrey: ImageSourcePropType
+      send: ImageSourcePropType
+      starOutline: ImageSourcePropType
+      starFilled: ImageSourcePropType
+      chatGrey: ImageSourcePropType
     }
   }
 }
