@@ -1,5 +1,9 @@
 {
+  "brand":{
+    "intro":"React Native Starter project. The project is based on the V2EX open API and provides a simple sample community class application."
+  },
   "common": {
+    "repoURL": "Source Link",
     "tip": "Tip",
     "language": "Language",
     "auth": "Auth",

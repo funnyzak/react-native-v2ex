@@ -19,3 +19,9 @@ export const SPECIAL_NODE_NAME_MAP = {
   LATEST: 'latest',
   HOT: 'hot'
 }
+
+export const REPO_NAME = 'funnyzak/react-native-starter'
+/**
+ * 项目地址
+ */
+export const REPO_GITHUB_URL = `https://github.com/${REPO_NAME}`
