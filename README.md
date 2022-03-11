@@ -25,7 +25,11 @@ React Native 快手开发脚手架项目。项目基于 V2EX 开放 API，提供
 
 ## 环境
 
-必须 NodeJS(16.0+)、Java(Android)、cocoapods(iOS)、XCode(iOS)、Watchman 等。
+必须安装 NodeJS(16.0+)、Watchman。
+
+- Android：Java JDK、Android Studio、Android SDK、[虚拟机](https://developer.android.com/studio/run/managing-avds)或 Android 模拟器。
+- iOS：cocoapods、XCode、iOS Simulator。
+
 具体可根据官网进行 React Native 开发环境和 iOS、Android 运行环境的配置。
 
 参考[这里](https://reactnative.dev/docs/environment-setup)。
