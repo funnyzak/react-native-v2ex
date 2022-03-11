@@ -6,7 +6,7 @@ import { REPO_GITHUB_URL, REPO_NAME } from '@src/config/constants'
 import { translate } from '@src/i18n'
 import { linking } from '@src/utils'
 import { useTheme, SylCommon } from '@src/theme'
-import { IState, ITheme } from '@src/types'
+import { ITheme } from '@src/types'
 import { AboutScreenProps as ScreenProps } from '@src/navigation/routes'
 
 const About = ({}: ScreenProps) => {
