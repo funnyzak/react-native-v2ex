@@ -99,7 +99,11 @@ export declare module IState {
     /**
      * @description has more topics
      */
-    // hasMore: boolean
+    hasMore: boolean
+    /**
+     * @description 是否显示加载更多状态
+     */
+    loadMore: boolean
   }
 
   /**
