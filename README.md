@@ -164,6 +164,7 @@ npx react-native upgrade
 - react-native-localize
 - react-native-device-info
 - prettier
+- [dayjs](https://dayjs.gitee.io/docs/zh-CN/installation/typescript)
 
 ## 参考
 

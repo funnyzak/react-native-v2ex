@@ -2,7 +2,7 @@
  * Created by leon<silenceace@gmail.com> on 22/2/21.
  */
 
-import React, { useState } from 'react'
+import React from 'react'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { AppNavigationContainer } from './navigation/Navigator'

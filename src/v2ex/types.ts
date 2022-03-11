@@ -64,10 +64,31 @@ export declare module V2exAPI {
     setUserAgent(userAgent?: string): void
     siteInfo: () => Promise<V2exObject.SiteInfo>
     siteStat: () => Promise<V2exObject.SiteStat>
-    post<T>(path: string, headers?: { [name: string]: string }, params?: Record<string, string>, version?: API_VERSION): Promise<T>
-    put<T>(path: string, headers?: { [name: string]: string }, params?: Record<string, string>, version?: API_VERSION): Promise<T>
-    get<T>(path: string, headers?: { [name: string]: string }, params?: Record<string, string>, data?: any, version?: API_VERSION): Promise<T>
-    delete<T>(path: string, headers?: { [name: string]: string }, params?: Record<string, string>, version?: API_VERSION): Promise<T>
+    post<T>(
+      path: string,
+      headers?: { [name: string]: string },
+      params?: Record<string, string>,
+      version?: API_VERSION
+    ): Promise<T>
+    put<T>(
+      path: string,
+      headers?: { [name: string]: string },
+      params?: Record<string, string>,
+      version?: API_VERSION
+    ): Promise<T>
+    get<T>(
+      path: string,
+      headers?: { [name: string]: string },
+      params?: Record<string, string>,
+      data?: any,
+      version?: API_VERSION
+    ): Promise<T>
+    delete<T>(
+      path: string,
+      headers?: { [name: string]: string },
+      params?: Record<string, string>,
+      version?: API_VERSION
+    ): Promise<T>
     send<T>(
       path: string,
       method: string,
@@ -225,8 +246,8 @@ export declare module V2exObject {
   }
 
   export interface Topic {
-    node: Node
-    member: Member
+    node?: Node
+    member?: Member
     last_reply_by: string
     last_touched: number
     title: string
