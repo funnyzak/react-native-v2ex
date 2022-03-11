@@ -57,8 +57,8 @@ const Screen = ({ loading, error, success, navigation, route, auth: _auth }: Scr
 
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container(theme)}>
-      <View style={{ marginBottom: 20 }}>
-        <Logo width={131.25} height={75} />
+      <View style={{ marginBottom: 35 }}>
+        <Logo width={75} height={75} />
       </View>
       <Input
         autoCapitalize="none"

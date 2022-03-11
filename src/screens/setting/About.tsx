@@ -39,6 +39,7 @@ const styles = {
   }),
   logo: (theme: ITheme): ImageStyle => ({
     marginVertical: 32,
+    borderRadius: 10,
     width: 75,
     height: 75,
     alignSelf: 'center'

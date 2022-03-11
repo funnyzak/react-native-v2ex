@@ -18,9 +18,10 @@ const Logo = ({ width = 42, height = 24, resizeMode = 'contain' }: IProps) => {
 
 export default Logo
 
-const styles = StyleSheet.create({
+const styles = {
   logo: {
+    borderRadius: 8,
     width: '100%',
     height: '100%'
   }
-})
+}
