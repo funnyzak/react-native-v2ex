@@ -1,16 +1,17 @@
 import { NavigationService, ROUTES } from '@src/navigation'
 import React from 'react'
-import { Pressable } from 'react-native'
+import { Pressable, ViewStyle } from 'react-native'
 import FastImage, { Source } from 'react-native-fast-image'
 
 interface IProps {
+  style?: ViewStyle
   username?: string
   size?: number
   source: Source | number
   onPress?: () => void
 }
 
-const AvatarComponent = ({ username, size = 24, source, onPress }: IProps) => {
+const AvatarComponent = ({ username, size = 24, source, onPress, style }: IProps) => {
   const _handlePress = () => {
     if (username) {
       NavigationService.navigate(ROUTES.Profile, { username })
@@ -19,7 +20,7 @@ const AvatarComponent = ({ username, size = 24, source, onPress }: IProps) => {
   }
 
   return (
-    <Pressable onPress={_handlePress}>
+    <Pressable style={style} onPress={_handlePress}>
       <FastImage
         source={source}
         style={{
