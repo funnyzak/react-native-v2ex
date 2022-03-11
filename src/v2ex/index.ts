@@ -64,19 +64,40 @@ class V2ex {
     return this.get<V2exObject.SiteStat>('/site/stats.json', undefined, undefined, undefined)
   }
 
-  post<T>(path: string, headers?: { [name: string]: string }, params?: Record<string, string>, version?: V2exAPI.API_VERSION): Promise<T> {
+  post<T>(
+    path: string,
+    headers?: { [name: string]: string },
+    params?: Record<string, string>,
+    version?: V2exAPI.API_VERSION
+  ): Promise<T> {
     return this.send<T>(path, 'POST', headers, undefined, params, version)
   }
 
-  put<T>(path: string, headers?: { [name: string]: string }, params?: Record<string, string>, version?: V2exAPI.API_VERSION): Promise<T> {
+  put<T>(
+    path: string,
+    headers?: { [name: string]: string },
+    params?: Record<string, string>,
+    version?: V2exAPI.API_VERSION
+  ): Promise<T> {
     return this.send<T>(path, 'PUT', headers, undefined, params, version)
   }
 
-  get<T>(path: string, headers?: { [name: string]: string }, params?: Record<string, string>, data?: any, version?: V2exAPI.API_VERSION): Promise<T> {
+  get<T>(
+    path: string,
+    headers?: { [name: string]: string },
+    params?: Record<string, string>,
+    data?: any,
+    version?: V2exAPI.API_VERSION
+  ): Promise<T> {
     return this.send<T>(path, 'GET', headers, params, data, version)
   }
 
-  delete<T>(path: string, headers?: { [name: string]: string }, params?: Record<string, string>, version?: V2exAPI.API_VERSION): Promise<T> {
+  delete<T>(
+    path: string,
+    headers?: { [name: string]: string },
+    params?: Record<string, string>,
+    version?: V2exAPI.API_VERSION
+  ): Promise<T> {
     return this.send<T>(path, 'DELETE', headers, params, undefined, version)
   }
 
@@ -123,10 +144,14 @@ class V2ex {
       })
       fetch(uri, { method, headers, body: JSON.stringify(data) })
         .then((response: Response) => {
-          console.log(response, response.status, response.ok)
           if (response.ok) {
             return response.json()
           }
+
+          if ([404].includes(response.status)) {
+            reject(new Error('No http resource found.'))
+          }
+
           // Possible 401 or other network error
           return response.json().then((errorResponse) => {
             reject(errorResponse)
@@ -134,9 +159,6 @@ class V2ex {
         })
         .then((responseData) => {
           if (responseData) {
-            // debugger;
-            console.log(responseData)
-
             if (version === 'v2') {
               const res = responseData as V2exAPI.V2Response<T>
               return resolve(res.result)
