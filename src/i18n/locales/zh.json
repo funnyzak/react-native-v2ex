@@ -78,7 +78,8 @@
     "followPeople": "关注的人",
     "likeTopics": "收藏主题",
     "readed": "已读主题",
-    "clickToLogin": "点击此处授权登陆"
+    "clickToLogin": "点击此处授权登陆",
+    "oneceAgain": "再试试"
   },
   "link": {
     "getToken": "从 V2ex 官方获取令牌"
@@ -88,11 +89,12 @@
     "loadSuccess": "加载成功.",
     "login": "登陆 V2EX，体验更多功能"
   },
-    "confirm": {
-      "logout": "确定登出吗？"
-    },
+  "confirm": {
+    "logout": "确定登出吗？"
+  },
   "errors": {
     "error": "错误",
-    "noFound": "未找到"
+    "noFound": "未找到相关内容",
+    "noTopics": "暂时没有找到相关主题"
   }
 }

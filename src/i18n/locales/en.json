@@ -78,7 +78,8 @@
     "followPeople": "Follow",
     "likeTopics": "Like",
     "readed": "Readed",
-    "clickToLogin": "Click here to login"
+    "clickToLogin": "Click here to login",
+    "oneceAgain": "Onece Again"
   },
   "link": {
     "getToken": "Get token Here"
@@ -93,6 +94,7 @@
   },
   "errors": {
     "error": "Error",
-    "noFound": "No found"
+    "noFound": "No found",
+    "noTopics": "No topics."
   }
 }
