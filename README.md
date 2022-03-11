@@ -12,62 +12,59 @@
 
 React Native 快手开发脚手架项目。项目基于 V2EX 开放 API，提供了一个简单的社区类应用样板。
 
-下一步
-
-- [ ] 优化 UI
-
 ## 特点
 
 1. 基于 React Native 0.67.2 版本。
 2. 引入 TypeScript 强类型检查，保证维护性、可读性、稳定性。
 3. i18n 集成，支持多国语言。实现了语言切换功能。
-4. 实现主题切换功能。
-5. redux 应用，并数据持久化。
+4. 实现 APP 主题（浅色、深色、自动切换）切换功能。
+5. 使用 Redux，异步用 Redux Thunk，并用 Redux Persist 数据持久化。
+6. 使用 **@redux-devtools/extension** 进行 Redux 调试。
+7. 路由使用 React Navgiation，并使用了 Stack Navigator、 Bottom Tabs Navigator、 Material Top Tabs Navigator。
+8. 日期格式化使用 dayjs。
 
 ## 环境
 
-NodeJS、Java、cocoapods、XCode、Watchman。 具体请参考[这里](https://reactnative.dev/docs/environment-setup)。
+必须 NodeJS(16.0+)、Java(Android)、cocoapods(iOS)、XCode(iOS)、Watchman 等。
+具体可根据官网进行 React Native 开发环境和 iOS、Android 运行环境的配置。
+
+参考[这里](https://reactnative.dev/docs/environment-setup)。
 
 ## 启动
 
 ```bash
 
 # clone repos
-git clone https://github.com/funnyzak/react-native-starter.git
-
-# enter src folder
-cd react-native-starter
+$ git clone https://github.com/funnyzak/react-native-starter.git && cd react-native-starter
 
 # deps install
-yarn
+$ yarn
 
 # ios build
-# install ios deps
 npx pod-install
 
-# debug start: react-native-debugger
+# start react-native-debugger（only mac）
 yarn debug
 
-# cmd under root folder
+# iOS simulator start
 yarn ios
 
-# android build
-# 注意gradle和java sdk(java home)的版本对应，可在 ./android/gradle.properties 设置 org.gradle.java.home
+# Android simulator start
 yarn android
 
 # debug
 npx react-devtools
 
-# 打印版本信息
+# print rn info
 npx react-native info
 
-# 升级到最新版
+# upgrade rn version
 npx react-native upgrade
 
-# iso debug
+# iOS debug info start
 npx react-native run-ios --verbose
 
-# android debug
+# Android debug info start
 npx react-native run-android --verbose
 ```
 
@@ -144,8 +141,12 @@ npx react-native run-android --verbose
 
 3.  **xcode 编译报错**
 
-        删除编译缓存
+        # 删除编译缓存
         rm -rf ~/Library/Developer/Xcode/DerivedData
+
+4.  Android 编译启动注意
+
+    注意 gradle 和 java sdk(java home)的版本对应，可在 ./android/gradle.properties 设置 org.gradle.java.home
 
 ## 预览
 
@@ -200,4 +201,4 @@ npx react-native run-android --verbose
 
 ## License
 
-MIT License © 2021 [funnyzak](https://github.com/funnyzak)
+MIT License © 2022 [funnyzak](https://github.com/funnyzak)
