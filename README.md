@@ -64,6 +64,11 @@ npx react-native info
 # 升级到最新版
 npx react-native upgrade
 
+# iso debug
+npx react-native run-ios --verbose
+
+# android debug
+npx react-native run-android --verbose
 ```
 
 ## 目录
