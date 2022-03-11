@@ -9,7 +9,7 @@ import { Logo, Spinner, Button, Input, Text } from '@src/components'
 import { useAppSelector } from '@src/hooks'
 import { SignInScreenProps as ScreenProps } from '@src/navigation/routes'
 import { loginByToken } from '@src/actions'
-import { useTheme } from '@src/theme'
+import { SylCommon, useTheme } from '@src/theme'
 import { RootState } from '@src/store'
 
 const Screen = ({ loading, error, success, navigation, route, auth: _auth }: ScreenProps) => {
@@ -39,7 +39,7 @@ const Screen = ({ loading, error, success, navigation, route, auth: _auth }: Scr
           {translate('common.auth')}
         </Button>
         <TouchableOpacity onPress={onGetTokenPress} style={styles.link(theme)}>
-          <Text style={styles.linkTitle()}>{translate('link.getToken')}</Text>
+          <Text style={SylCommon.Button.textAction(theme)}>{translate('link.getToken')}</Text>
         </TouchableOpacity>
       </View>
     )
