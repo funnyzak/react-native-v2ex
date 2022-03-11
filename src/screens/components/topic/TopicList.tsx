@@ -87,9 +87,8 @@ const TopicList: React.FC<TopicListProps> = ({
  */
 const styles = {
   container: (theme: ITheme) => ({
+    paddingVertical: theme.spacing.small,
     ...SylCommon.Layout.fill,
-    paddingVertical: theme.spacing.large,
-    paddingHorizontal: theme.spacing.large,
     backgroundColor: theme.colors.surface
   }),
   topicItemContainer: (theme: ITheme): ViewStyle => ({

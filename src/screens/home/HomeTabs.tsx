@@ -13,7 +13,10 @@ const TopicTabList = ({}: HomeTabsScreenProps) => {
   const { theme } = useTheme()
   const isLogged = useAppSelector((state: RootState) => (state.member ? true : false))
 
-  const filterNodes = useMemo(() => tabs.filter((item) => !item.loginRequired || (item.loginRequired && isLogged)), [isLogged])
+  const filterNodes = useMemo(
+    () => tabs.filter((item) => !item.loginRequired || (item.loginRequired && isLogged)),
+    [isLogged]
+  )
 
   return (
     <Tab.Navigator
@@ -45,7 +48,7 @@ const TopicTabList = ({}: HomeTabsScreenProps) => {
           shadowOffset: { width: 5, height: 10 }, // change this for more shadow
           shadowOpacity: 0,
           shadowRadius: 6,
-          borderBottomWidth: 1,
+          borderBottomWidth: 0,
           borderColor: theme.colors.lightGrey,
           backgroundColor: theme.colors.primary
         },

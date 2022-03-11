@@ -40,7 +40,7 @@ const TopicItem = ({
                 onPress={() => {
                   NavigationService.navigate(ROUTES.Profile, { username: topic.member?.username })
                 }}>
-                <Text>{topic.member.username}</Text>
+                <Text style={{ color: theme.colors.bodyText }}>{topic.member.username}</Text>
               </Pressable>
             )}
             <View style={styles.summary(theme)}>
@@ -78,6 +78,7 @@ const TopicItem = ({
  */
 const styles = {
   containerWraper: (theme: ITheme): ViewStyle => ({
+    paddingHorizontal: theme.spacing.large,
     marginVertical: theme.spacing.small
   }),
   container: (theme: ITheme): ViewStyle => ({
