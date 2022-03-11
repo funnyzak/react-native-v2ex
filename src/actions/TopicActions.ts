@@ -30,6 +30,10 @@ export const getNodeTopics =
     const refreshing = page === 1 || specialNode
     const loadmore = !refreshing && page > 1
 
+    if (specialNode && page > 1) {
+      return
+    }
+
     if (refreshing) {
       dispatch({
         type: APP_NODE_TOPICS_REFRESH,
@@ -67,7 +71,7 @@ export const getNodeTopics =
         type: APP_NODE_LOAD_ERROR,
         payload: {
           node,
-          data: error
+          data: (error as any).message
         }
       })
     }
