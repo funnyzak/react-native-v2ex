@@ -5,7 +5,5 @@ export const logError = (error: any) => {
   console.log(error)
   if (error instanceof Error) {
     bugsnag.notify(error)
-  } else if (typeof error === 'string') {
-    bugsnag.notify(new Error(error))
   }
 }
