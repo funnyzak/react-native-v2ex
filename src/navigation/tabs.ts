@@ -11,11 +11,14 @@ export const NODE_TABS = {
   DEALS: 'deals',
   JOBS: 'jobs',
   APPLE: 'apple',
+  IDEAS: 'ideas',
   PLAY: 'play',
   CREATIVE: 'creative',
+  CREATE: 'create',
   TECH: 'tech',
   R2: 'R2',
   NODES: 'nodes',
+  DESIGN: 'design',
   MEMBERS: 'members'
 }
 
@@ -57,8 +60,20 @@ export const HOME_NODES: Array<NODE_TAB_TYPE> = [
     loginRequired: true
   },
   {
+    name: NODE_TABS.CREATE,
+    title: '创造',
+    pager: true,
+    loginRequired: true
+  },
+  {
     name: NODE_TABS.JOBS,
     title: '酷工作',
+    pager: true,
+    loginRequired: true
+  },
+  {
+    name: NODE_TABS.IDEAS,
+    title: '奇思妙想',
     pager: true,
     loginRequired: true
   },
@@ -75,8 +90,26 @@ export const HOME_NODES: Array<NODE_TAB_TYPE> = [
     loginRequired: true
   },
   {
+    name: NODE_TABS.CREATIVE,
+    title: '创意',
+    pager: true,
+    loginRequired: true
+  },
+  {
+    name: NODE_TABS.DESIGN,
+    title: '设计',
+    pager: true,
+    loginRequired: true
+  },
+  {
     name: NODE_TABS.TECH,
     title: '技术',
+    pager: true,
+    loginRequired: true
+  },
+  {
+    name: NODE_TABS.R2,
+    title: 'r2',
     pager: true,
     loginRequired: true
   }
