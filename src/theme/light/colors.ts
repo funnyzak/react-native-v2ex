@@ -66,7 +66,7 @@ const colors: IThemeColor = {
    * The default color of text in many components.
    * To be used for heading, subheading, label text
    */
-  titleText: '#595959',
+  titleText: '#000',
   /**
    * To be used for normal text like paragraph
    */

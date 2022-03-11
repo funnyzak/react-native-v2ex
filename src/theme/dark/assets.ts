@@ -15,6 +15,7 @@ const Assets: IThemeAssets = {
       profileInactive: require('@res/images/icon/profile-inactive.png'),
       moreCycleGrey: require('@res/images/icon/more-circle-grey.png'),
       timeCycleGrey: require('@res/images/icon/time-circle-grey.png'),
+      personCycleGrey: require('@res/images/icon/person-circle-grey.png'),
       heartGrey: require('@res/images/icon/heart-grey.png'),
       heartRed: require('@res/images/icon/heart-red.png'),
       gold: require('@res/images/icon/gold.png'),

@@ -26,6 +26,29 @@ export const View = {
   })
 }
 
+export const Node = {
+  node: (theme: ITheme) => ({
+    fontSize: 12,
+    paddingVertical: 1,
+    paddingHorizontal: 8,
+    backgroundColor: theme.colors.surface,
+    borderRadius: 4,
+    color: theme.colors.secondary
+  }),
+  small: (theme: ITheme) => ({
+    fontSize: 10
+  })
+}
+
+export const Divider = {
+  item: (theme: ITheme): ViewStyle => ({
+    height: 0.5,
+    width: '100%',
+    backgroundColor: theme.colors.border,
+    marginVertical: theme.spacing.medium
+  })
+}
+
 export const Table = {
   container: (theme: ITheme): ViewStyle => ({
     marginTop: theme.spacing.small,

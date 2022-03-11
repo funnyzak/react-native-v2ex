@@ -179,6 +179,7 @@ export interface IThemeAssets {
       profile: ImageSourcePropType
       profileInactive: ImageSourcePropType
       moreCycleGrey: ImageSourcePropType
+      personCycleGrey: ImageSourcePropType
       timeCycleGrey: ImageSourcePropType
       heartGrey: ImageSourcePropType
       heartRed: ImageSourcePropType

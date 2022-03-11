@@ -37,7 +37,7 @@ const Profile = ({
           </View>
           <View />
         </View>
-      </View>{' '}
+      </View>
     </View>
   )
 }
