@@ -19,7 +19,7 @@ const colors: IThemeColor = {
 
   lightGrey: '#F5F6FA',
   tabShadowColor: '#000000',
-  tabActiveTintColor: '#200E32',
+  tabActiveTintColor: '#fff',
   tabInactiveTintColor: '#999999',
 
   /**
