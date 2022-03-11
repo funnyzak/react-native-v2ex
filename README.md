@@ -10,7 +10,7 @@
 [license-image]: https://img.shields.io/github/license/funnyzak/react-native-starter.svg?style=flat-square
 [repository-url]: https://github.com/funnyzak/react-native-starter
 
-React Native 快手开发脚手架项目。项目基于 V2EX 开放 API，提供了一个简单的社区类应用样板。
+React Native 快手开发脚手架项目。项目基于 [V2EX](https://v2ex.com) 开放 API，提供了一个简单的社区类应用样板。
 
 ## 特点
 
@@ -25,10 +25,10 @@ React Native 快手开发脚手架项目。项目基于 V2EX 开放 API，提供
 
 ## 环境
 
-必须安装 NodeJS(16.0+)、Watchman。
+必须安装 NodeJS(16.0+)、Yarn、Watchman。
 
 - Android：Java JDK、Android Studio、Android SDK、[虚拟机](https://developer.android.com/studio/run/managing-avds)或 Android 模拟器。
-- iOS：cocoapods、XCode、iOS Simulator。
+- iOS：CocoaPods、Xcode、iOS Simulator。
 
 具体可根据官网进行 React Native 开发环境和 iOS、Android 运行环境的配置。
 
