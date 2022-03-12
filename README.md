@@ -28,11 +28,18 @@ React Native 快手开发脚手架项目。项目基于 [V2EX](https://v2ex.com)
 必须安装 NodeJS(16.0+)、Yarn、[Watchman](https://reactnative.cn/docs/environment-setup)。
 
 - iOS：[CocoaPods](https://reactnative.cn/docs/environment-setup)、Xcode、iOS Simulator。
-- Android：Java JDK、Android Studio、Android SDK、[Android Home 配置](https://reactnative.cn/docs/environment-setup)、[虚拟机](https://developer.android.com/studio/run/managing-avds)或 Android 模拟器。
+- Android：Java JDK、Android Studio、Gradle、Android SDK、[Android Home 配置](https://reactnative.cn/docs/environment-setup)、[虚拟机](https://developer.android.com/studio/run/managing-avds)或 Android 模拟器。
 
 具体可根据官网进行 React Native 开发环境和 iOS、Android 运行环境的配置。
 
 参考[这里](https://reactnative.dev/docs/environment-setup)。
+
+关于调试可以安装如下工具：
+
+- Flipper
+- react-devtools
+- React Native Debugger
+- Google Chrome
 
 ## 启动
 
@@ -50,14 +57,15 @@ npx pod-install
 # start react-native-debugger（only mac）
 yarn debug
 
+# debug https://reactnative.cn/docs/debugging
+npx react-devtools
+
 # iOS simulator start
 yarn ios
 
 # Android simulator start
 yarn android
 
-# debug
-npx react-devtools
 
 # print rn info
 npx react-native info

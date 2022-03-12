@@ -31,7 +31,7 @@ const About = ({}: ScreenProps) => {
 }
 
 /**
- * @description style.settings(theme)
+ * @description style
  */
 const styles = {
   container: (theme: ITheme): ViewStyle => ({
