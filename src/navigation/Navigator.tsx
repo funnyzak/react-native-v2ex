@@ -12,10 +12,11 @@ import {
   Route
 } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { createDrawerNavigator } from '@react-navigation/drawer'
 import { Image, StatusBar, TextStyle } from 'react-native'
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+
+import SplashScreen from 'react-native-splash-screen'
 
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -31,13 +32,13 @@ import { ROUTES, RootStackParamList, MainScreenProps } from './routes'
 import { store, RootState } from '@src/store'
 import NavigationService from './NavigationService'
 import { ToastProvider } from '@src/components/toast'
+import { wait } from '@src/utils/utils'
 
 /**
  * dayjs
  */
 dayjs.extend(relativeTime)
 
-const Drawer = createDrawerNavigator()
 const MainNavigator = createBottomTabNavigator()
 
 const defaultHeaderSetting = (theme: ITheme) => ({
@@ -164,48 +165,9 @@ const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
   )
 }
 
-const DrawNavigator = () => {
-  return (
-    <Drawer.Navigator initialRouteName="Draw">
-      <Drawer.Screen
-        name="Draw"
-        component={Screens.DrawScreen}
-        options={{
-          title: translate(`router.${ROUTES.Draw}`),
-          headerShown: false
-        }}
-      />
-      <Drawer.Screen
-        name={ROUTES.About}
-        component={Screens.AboutScreen}
-        options={{
-          title: translate(`router.${ROUTES.About}`),
-          headerShown: false
-        }}
-      />
-      <Drawer.Screen
-        name={ROUTES.Feedback}
-        component={Screens.FeedbackScreen}
-        options={{
-          title: translate(`router.${ROUTES.Feedback}`),
-          headerShown: false
-        }}
-      />
-      <Drawer.Screen
-        name={ROUTES.Theme}
-        component={Screens.ThemeScreen}
-        options={{
-          title: translate(`router.${ROUTES.Theme}`),
-          headerShown: false
-        }}
-      />
-    </Drawer.Navigator>
-  )
-}
-
 const StackNavigator = createNativeStackNavigator<RootStackParamList>()
 
-const AppNavigationContainer = () => {
+export const AppNavigationContainer = () => {
   const { token } = useAppSelector((state: RootState) => state.member)
   const { languageTag } = useAppSelector((state: RootState) => state.setting)
 
@@ -218,6 +180,9 @@ const AppNavigationContainer = () => {
 
   useEffect(() => {
     setMounted(true)
+    wait(1000, () => {
+      SplashScreen.hide()
+    })
   }, [])
 
   useEffect(() => {
@@ -392,5 +357,3 @@ const AppNavigationContainer = () => {
     </SafeAreaProvider>
   )
 }
-
-export { AppNavigationContainer }
