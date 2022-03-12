@@ -12,6 +12,10 @@
 
 React Native 快手开发脚手架项目。项目基于 [V2EX](https://v2ex.com) 开放 API，提供了一个简单的社区类应用样板。
 
+运行说明：
+
+在 Mac OS 系统环境开发，代码在 iOS 为 13+ 的 iPhone Simulator/iPhone 12、Android 9.0 的 AVD 模拟器/Mi Phone 均成功运行。
+
 ## 特点
 
 1. 基于 React Native 0.67.2 版本。
@@ -28,7 +32,7 @@ React Native 快手开发脚手架项目。项目基于 [V2EX](https://v2ex.com)
 必须安装 NodeJS(16.0+)、Yarn、[Watchman](https://reactnative.cn/docs/environment-setup)。
 
 - iOS：[CocoaPods](https://reactnative.cn/docs/environment-setup)、Xcode、iOS Simulator。
-- Android：Java JDK、Android Studio、Gradle、Android SDK、[Android Home 配置](https://reactnative.cn/docs/environment-setup)、[虚拟机](https://developer.android.com/studio/run/managing-avds)或 Android 模拟器。
+- Android：Java JDK、Android Studio、Gradle、Android SDK、[Android Home 配置](https://reactnative.cn/docs/environment-setup)、[Android 真机](https://reactnative.cn/docs/running-on-device) 或 [Android AVD](https://developer.android.com/studio/run/managing-avds)（建议用真机）。
 
 具体可根据官网进行 React Native 开发环境和 iOS、Android 运行环境的配置。
 
