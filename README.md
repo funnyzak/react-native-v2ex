@@ -25,7 +25,8 @@ React Native 快手开发脚手架项目。项目基于 [V2EX](https://v2ex.com)
 5. 使用 Redux，异步用 Redux Thunk，并用 Redux Persist 数据持久化。
 6. 使用 **@redux-devtools/extension** 进行 Redux 调试。
 7. 路由使用 React Navgiation，并使用了 Stack Navigator、 Bottom Tabs Navigator、 Material Top Tabs Navigator。
-8. 日期格式化使用 dayjs。
+8. 使用 **react-native-splash-screen** 控制开屏图。
+9. 日期格式化使用 dayjs。
 
 ## 环境
 
@@ -163,6 +164,8 @@ npx react-native run-android --verbose
 4.  Android 编译启动注意
 
     注意 gradle 和 java sdk(java home)的版本对应，可在 ./android/gradle.properties 设置 org.gradle.java.home
+
+5.  开屏图的设置 iOS 使用 LaunchScreen.storyboard，使用 Xcode 修改即可。
 
 ## 依赖库
 
