@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Store } from 'redux'
 import { v2exLib } from '@src/v2ex'
 import { initV2ex, setCurrentToken, logout } from '../actions'

@@ -5,14 +5,30 @@ import thunk from 'redux-thunk'
 import { persistStore, persistReducer } from 'redux-persist'
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 import { createBlacklistFilter, createWhitelistFilter } from 'redux-persist-transform-filter'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { composeWithDevTools } from '@redux-devtools/extension'
 import reducers from '@src/reducers'
 import { IState } from './types'
 
-const memberSubsetBlacklistFilter = createBlacklistFilter('member', ['refreshing', 'followPeople.refreshing', 'likeTopics.refreshing'])
-const uiSubsetBlacklistFilter = createBlacklistFilter('ui', ['refreshing', 'login.loading', 'login.success', 'login.error', 'feedback.processing'])
-const appSubsetBlacklistFilter = createBlacklistFilter('app', ['version', 'latestVersion', 'deviceInfo', 'v2ex', 'aboutUs'])
+const memberSubsetBlacklistFilter = createBlacklistFilter('member', [
+  'refreshing',
+  'followPeople.refreshing',
+  'likeTopics.refreshing'
+])
+const uiSubsetBlacklistFilter = createBlacklistFilter('ui', [
+  'refreshing',
+  'login.loading',
+  'login.success',
+  'login.error',
+  'feedback.processing'
+])
+const appSubsetBlacklistFilter = createBlacklistFilter('app', [
+  'version',
+  'latestVersion',
+  'deviceInfo',
+  'v2ex',
+  'aboutUs'
+])
 const tabSubsetWhitelistFilter = createBlacklistFilter('tab', ['list'])
 const notificationSubsetBlacklistFilter = createBlacklistFilter('notification', ['refreshing'])
 

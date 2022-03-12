@@ -1,9 +1,17 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/2/22.
  */
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Dispatch } from 'redux'
-import { MEMBER_PROFILE, APP_AUTH, APP_AUTH_LOADING, APP_LOGOUT, APP_AUTH_ERROR, APP_AUTH_SUCCESS, V2exObject } from '../types'
+import {
+  MEMBER_PROFILE,
+  APP_AUTH,
+  APP_AUTH_LOADING,
+  APP_LOGOUT,
+  APP_AUTH_ERROR,
+  APP_AUTH_SUCCESS,
+  V2exObject
+} from '../types'
 import { v2exLib } from '@src/v2ex'
 import { logError } from '@src/helper/logger'
 import NavigationService from '@src/navigation/NavigationService'

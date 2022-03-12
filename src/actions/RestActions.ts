@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Dispatch } from 'redux'
 import _ from 'lodash'
 import { v2exLib } from '@src/v2ex'
