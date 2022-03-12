@@ -14,7 +14,7 @@ React Native 快手开发脚手架项目。项目基于 [V2EX](https://v2ex.com)
 
 运行说明：
 
-在 Mac OS 系统环境开发，代码在 iOS 为 13+ 的 iPhone Simulator/iPhone 12、Android 9.0 的 AVD 模拟器/Mi Phone 均成功运行。
+在 MacOS 下开发，代码在 iOS 为 13+ 的 iPhone Simulator/iPhone 12、Android 9.0 的 AVD 模拟器/Mi Phone 均成功运行。
 
 ## 特点
 
@@ -164,14 +164,6 @@ npx react-native run-android --verbose
 
     注意 gradle 和 java sdk(java home)的版本对应，可在 ./android/gradle.properties 设置 org.gradle.java.home
 
-## 预览
-
-![home_light](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/home_light.png)
-![home_apple](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/home_apple.png)
-![home_dark](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/home_dark.png)
-![my_light](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/my_light.png)
-![my_en](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/my_en.png)
-
 ## 依赖库
 
 - eslint
@@ -191,6 +183,21 @@ npx react-native run-android --verbose
 - react-native-device-info
 - prettier
 - [dayjs](https://dayjs.gitee.io/docs/zh-CN/installation/typescript)
+
+## 预览
+
+### iOS 预览
+
+![home_light](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/iOS/home_light.png)
+![home_apple](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/iOS/home_apple.png)
+![home_dark](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/iOS/home_dark.png)
+![my_light](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/iOS/my_light.png)
+![my_en](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/iOS/my_en.png)
+
+### Android 预览
+
+![home_dark](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/Android/home_dark.png)
+![sign_dark](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/Android/sign_dark.png)
 
 ## 参考
 
