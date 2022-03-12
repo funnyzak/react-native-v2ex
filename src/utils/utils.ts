@@ -3,8 +3,11 @@
  * @param timeout milliseconds
  * @returns
  */
-export const wait = (timeout: number) => {
+export const wait = (timeout: number, callback?: () => void) => {
   return new Promise((resolve) => {
-    setTimeout(resolve, timeout)
+    setTimeout(() => {
+      callback && callback()
+      resolve(true)
+    }, timeout)
   })
 }
