@@ -2,15 +2,13 @@
  * @format
  */
 
-import { AppRegistry } from 'react-native'
+import { AppRegistry, LogBox } from 'react-native'
 import App from './src/App'
 import { name as appName } from './app.json'
 import 'react-native-gesture-handler'
 
-// import { LogBox } from 'react-native'
-
 // Ignore log notification by message:
-// LogBox.ignoreLogs(['Warning: ...']);
+LogBox.ignoreLogs(['required dispatch_sync'])
 
 // Ignore all log notifications:
 // LogBox.ignoreAllLogs();
