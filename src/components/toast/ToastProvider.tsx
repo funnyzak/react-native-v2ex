@@ -1,9 +1,12 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/3/10.
  */
+import { translate } from '@src/i18n'
 import React, { useState } from 'react'
 import { TextStyle } from 'react-native'
-import ToastComponent from 'react-native-easy-toast'
+import ToastComponent from 'react-native-easy-toast' // api https://github.com/crazycodeboy/react-native-easy-toast#api
+import ToastMessage from 'react-native-toast-message' // api https://github.com/calintamas/react-native-toast-message/blob/main/docs/api.md
+import { ToastShowParams } from 'react-native-toast-message/lib'
 import ToastContext, { ToastPositionType, ToastShowType } from './ToastContext'
 
 type Props = {
@@ -28,6 +31,20 @@ const ToastProvider = ({ children }: Props) => {
     }
   }
 
+  const showMessage = (params: string | ToastShowParams) => {
+    if (typeof params === 'string') {
+      ToastMessage.show({
+        type: 'info',
+        position: 'top',
+        text1: translate('common.tip'),
+        text2: params
+      })
+      console.log('hello world he')
+    } else {
+      ToastMessage.show(params)
+    }
+  }
+
   const closeToast = (duration?: number) => {
     toast?.close(duration || 1000)
   }
@@ -35,9 +52,8 @@ const ToastProvider = ({ children }: Props) => {
   return (
     <ToastContext.Provider
       value={{
-        toast,
         showToast,
-        closeToast
+        showMessage
       }}>
       <ToastComponent
         ref={(toastRef: ToastComponent) => setToast(toastRef)}
@@ -46,6 +62,7 @@ const ToastProvider = ({ children }: Props) => {
         opacity={toastOpacity}
       />
       {children}
+      <ToastMessage />
     </ToastContext.Provider>
   )
 }

@@ -3,6 +3,7 @@
  */
 import { ReactNode } from 'react'
 import ToastComponent from 'react-native-easy-toast'
+import { ToastShowParams as ToastMessageShowParams } from 'react-native-toast-message/lib'
 import React, { useContext } from 'react'
 
 export type ToastPositionType = 'top' | 'center' | 'bottom'
@@ -16,16 +17,15 @@ export interface ToastShowProps {
 
 export type ToastShowType = ToastShowProps | string
 export interface ToastContextProps {
-  toast: ToastComponent | undefined
   showToast: (opts: ToastShowType) => void
-  closeToast: (duration?: number) => void
+  showMessage: (opts: string | ToastMessageShowParams) => void
 }
 
 export const ToastContext = React.createContext<ToastContextProps>({
-  toast: undefined,
   showToast: () => {},
-  closeToast: () => {}
+  showMessage: () => {}
 })
+
 export const useToast = () => useContext(ToastContext)
 
 export default ToastContext
