@@ -1,6 +1,6 @@
 {
-  "brand":{
-    "intro":"React Native Starter project. The project is based on the V2EX open API and provides a simple sample community class application."
+  "brand": {
+    "intro": "React Native Starter project. The project is based on the V2EX open API and provides a simple sample community class application."
   },
   "common": {
     "repoURL": "Source Link",
@@ -91,7 +91,8 @@
   "tips": {
     "authSuccess": "Auth Success.",
     "loadSuccess": "Load Success.",
-    "login": "experience more features"
+    "login": "experience more features",
+    "noMore": "Have no more data."
   },
   "confirm": {
     "logout": "Are you sure to logout?"

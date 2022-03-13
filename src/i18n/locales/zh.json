@@ -1,6 +1,6 @@
 {
-  "brand":{
-    "intro":"React Native 快手开发脚手架项目。项目基于 V2EX 开放 API，提供了一个简单的社区类应用样板。",
+  "brand": {
+    "intro": "React Native 快手开发脚手架项目。项目基于 V2EX 开放 API，提供了一个简单的社区类应用样板。",
   },
   "common": {
     "repoURL": "开源地址",
@@ -91,7 +91,8 @@
   "tips": {
     "authSuccess": "授权成功.",
     "loadSuccess": "加载成功.",
-    "login": "登陆 V2EX，体验更多功能"
+    "login": "登陆 V2EX，体验更多功能",
+    "noMore": "没有更多内容了"
   },
   "confirm": {
     "logout": "确定登出吗？"

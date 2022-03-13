@@ -3,7 +3,7 @@ import { View, Text, FlatList, ViewStyle, TextStyle } from 'react-native'
 import { ITheme, V2exObject } from '@src/types'
 import TopicItem from './TopicItem'
 import { Spinner } from '@src/components'
-import { SylCommon, useTheme } from '@src/theme'
+import { SylCommon, themes, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
@@ -36,6 +36,12 @@ const TopicList: React.FC<TopicListProps> = ({
   const renderFooter = () => {
     if (canLoadMoreContent) {
       return <Spinner style={{ padding: theme.spacing.large }} />
+    } else if (topics && topics.length > 0) {
+      return (
+        <View style={styles.notFoundTextWrap()}>
+          <Text style={styles.notFoundText(theme)}>{translate('tips.noMore')}</Text>
+        </View>
+      )
     }
     return null
   }
@@ -107,10 +113,11 @@ const styles = {
   }),
   notFoundTextWrap: (): TextStyle => ({
     flex: 1,
+    paddingVertical: 20,
     justifyContent: 'center'
   }),
   notFoundText: (theme: ITheme): TextStyle => ({
-    ...theme.typography.labelText,
+    ...theme.typography.bodyText,
     textAlign: 'center'
   }),
   separator: (theme: ITheme) => ({
