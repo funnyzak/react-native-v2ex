@@ -20,13 +20,15 @@ React Native 快手开发脚手架项目。项目基于 [V2EX](https://v2ex.com)
 
 1. 基于 React Native 0.67.2 版本。
 2. 引入 TypeScript 强类型检查，保证维护性、可读性、稳定性。
-3. i18n 集成，支持多国语言。实现了语言切换功能。
-4. 实现 APP 主题（浅色、深色、自动切换）切换功能。
-5. 使用 Redux，异步用 Redux Thunk，并用 Redux Persist 数据持久化。
-6. 使用 **@redux-devtools/extension** 进行 Redux 调试。
-7. 路由使用 React Navgiation，并使用了 Stack Navigator、 Bottom Tabs Navigator、 Material Top Tabs Navigator。
-8. 使用 **react-native-splash-screen** 控制开屏图。
-9. 日期格式化使用 dayjs。
+3. eslint 代码规范检查，prettier 代码美化、Husky 作为 git hooks 进行代码格式化、规范校验。
+4. i18n 集成，支持多国语言。实现了语言切换功能。
+5. 实现 APP 主题（浅色、深色、自动切换）切换功能。
+6. 使用 Redux，异步用 Redux Thunk，并用 Redux Persist 数据持久化。
+7. 使用 **@redux-devtools/extension** 进行 Redux 调试。
+8. 路由使用 React Navgiation，并使用了 Stack Navigator、 Bottom Tabs Navigator、 Material Top Tabs Navigator。
+9. 使用 **[react-native-splash-screen](https://github.com/crazycodeboy/react-native-splash-screen)** 控制开屏图。
+10. Toast 同时集成了 [react-native-easy-toast](https://github.com/crazycodeboy/react-native-easy-toast#api)、[react-native-toast-message](https://github.com/calintamas/react-native-toast-message)。
+11. 日期格式化使用 [dayjs](https://dayjs.gitee.io/docs/zh-CN/installation/typescript)。
 
 ## 环境
 
@@ -185,7 +187,6 @@ npx react-native run-android --verbose
 - react-native-localize
 - react-native-device-info
 - prettier
-- [dayjs](https://dayjs.gitee.io/docs/zh-CN/installation/typescript)
 
 ## 预览
 
