@@ -39,9 +39,8 @@ const ToastProvider = ({ children }: Props) => {
         text1: translate('common.tip'),
         text2: params
       })
-      console.log('hello world he')
     } else {
-      ToastMessage.show(params)
+      ToastMessage.show({ position: 'top', text1: translate('common.tip'), visibilityTime: 3000, ...params })
     }
   }
 
