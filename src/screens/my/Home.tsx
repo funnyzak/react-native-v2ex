@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { View, Image, ViewStyle, TextStyle, TouchableOpacity, ImageStyle } from 'react-native'
+import { View, Image, ViewStyle, TextStyle, TouchableOpacity } from 'react-native'
 
 import { translate } from '@src/i18n'
 import { useTheme, SylCommon } from '@src/theme'
@@ -26,7 +26,10 @@ const My = ({
   return (
     <View style={[SylCommon.Layout.fill, styles.container(theme)]}>
       <TouchableOpacity style={[SylCommon.Layout.fullWidth, SylCommon.Layout.row, styles.userBox(theme)]}>
-        <Avatar source={profile?.avatar_normal ? { uri: profile?.avatar_normal } : theme.assets.images.icons.profile} size={60} />
+        <Avatar
+          source={profile?.avatar_normal ? { uri: profile?.avatar_normal } : (theme.assets.images.icons.profile as any)}
+          size={60}
+        />
         <View style={styles.userInfo(theme)}>
           <Text style={styles.username(theme)}>{profile?.username}</Text>
         </View>
@@ -119,7 +122,7 @@ const My = ({
 }
 
 /**
- * @description styles.settings(theme)
+ * @description styles.settings
  */
 const styles = {
   container: (theme: ITheme): ViewStyle => ({
