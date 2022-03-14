@@ -22,6 +22,26 @@ React Native 快手开发脚手架项目。项目基于 [V2EX](https://v2ex.com)
 
 在 MacOS 下开发，代码在 iOS 为 13+ 的 iPhone Simulator/iPhone 12、Android 9.0 的 AVD 模拟器/Mi Phone 均成功运行。
 
+## 目录
+
+- [React Native Starter](#react-native-starter)
+  - [目录](#目录)
+  - [特点](#特点)
+  - [环境](#环境)
+  - [启动](#启动)
+  - [目录](#目录-1)
+  - [iOS 调试](#ios-调试)
+    - [react-native-debugger 调试](#react-native-debugger-调试)
+  - [常见问题](#常见问题)
+  - [依赖库](#依赖库)
+  - [预览](#预览)
+    - [iOS 预览](#ios-预览)
+    - [Android 预览](#android-预览)
+  - [参考](#参考)
+  - [赞赏](#赞赏)
+  - [Author](#author)
+  - [License](#license)
+
 ## 特点
 
 1. 基于 React Native 0.67.2 版本。
