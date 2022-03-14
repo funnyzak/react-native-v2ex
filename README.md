@@ -93,6 +93,11 @@ npx react-native run-ios --verbose
 
 # Android debug info start
 npx react-native run-android --verbose
+
+
+# build android release apk
+cd android
+./gradlew bundleRelease
 ```
 
 ## 目录
