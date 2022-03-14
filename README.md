@@ -94,6 +94,8 @@ npx react-native run-ios --verbose
 # Android debug info start
 npx react-native run-android --verbose
 
+# Android release run
+npx react-native run-android --variant=release
 
 # build android release apk
 cd android
