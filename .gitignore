@@ -61,6 +61,3 @@ buck-out/
 
 
 .eslintcache
-
-
-/src/config/v2ex.ts
