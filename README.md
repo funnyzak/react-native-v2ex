@@ -226,6 +226,16 @@ npx react-native run-android --verbose
 - [react native sample](https://github.com/facebook/react-native)
 - [react native typescript sample](https://github.com/react-native-community/react-native-template-typescript)
 
+## 赞赏
+
+![赞赏](https://raw.githubusercontent.com/funnyzak/tts-now/master/public/_docs/assets/img/coffee.png)
+
+## Author
+
+| [![twitter/funnyzak](https://s.gravatar.com/avatar/c2437e240644b1317a4a356c6d6253ee?s=70)](https://twitter.com/funnyzak 'Follow @funnyzak on Twitter') [![Join the chat at https://gitter.im/tts-now/community](https://badges.gitter.im/tts-now/community.svg)](https://gitter.im/tts-now/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [funnyzak](https://yycc.me/)                                                                                                                                                                                                                                                                                                                                                    |
+
 ## License
 
 MIT License © 2022 [funnyzak](https://github.com/funnyzak)
