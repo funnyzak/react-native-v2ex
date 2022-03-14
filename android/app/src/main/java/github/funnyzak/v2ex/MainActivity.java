@@ -1,4 +1,4 @@
-package com.app;
+package github.funnyzak.v2ex;
 
 import com.facebook.react.ReactActivity;
 import android.os.Bundle;
