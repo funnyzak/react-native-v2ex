@@ -26,10 +26,7 @@ const My = ({
   return (
     <View style={[SylCommon.Layout.fill, styles.container(theme)]}>
       <TouchableOpacity style={[SylCommon.Layout.fullWidth, SylCommon.Layout.row, styles.userBox(theme)]}>
-        <Avatar
-          source={profile?.avatar_normal ? { uri: profile?.avatar_normal } : (theme.assets.images.icons.profile as any)}
-          size={60}
-        />
+        <Avatar source={profile?.avatar_normal ? { uri: profile?.avatar_normal } : undefined} size={60} />
         <View style={styles.userInfo(theme)}>
           <Text style={styles.username(theme)}>{profile?.username}</Text>
         </View>
