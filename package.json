@@ -1,6 +1,6 @@
 {
   "name": "react-native-starter",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "react native quick start",
   "main": "index.js",
   "private": false,

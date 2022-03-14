@@ -131,11 +131,11 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.app"
+        applicationId "github.funnyzak.v2ex"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 7
+        versionName "0.1.2"
     }
     splits {
         abi {
