@@ -14,6 +14,7 @@
 [rle-url]: https://github.com/funnyzak/react-native-starter/releases/latest
 [ci-image]: https://img.shields.io/github/workflow/status/funnyzak/react-native-starter/react-native-android-build-apk
 [ci-url]: https://github.com/funnyzak/react-native-starter/actions
+[rle-image]: https://img.shields.io/github/release-date/funnyzak/react-native-starter.svg
 
 React Native 快手开发脚手架项目。项目基于 [V2EX](https://v2ex.com) 开放 API，提供了一个简单的社区类应用样板。
 
