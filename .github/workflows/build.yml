@@ -2,6 +2,9 @@ name: react-native-android-build-apk
 on:
   push:
     tags:
+      - '*'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 jobs:
   install-and-test:
     runs-on: ubuntu-latest
