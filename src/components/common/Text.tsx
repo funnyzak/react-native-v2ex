@@ -45,7 +45,7 @@ const Text = ({
   ...props
 }: TextProps) => {
   const { theme } = useTheme()
-  return <RNText style={StyleSheet.flatten([styles.text(type, bold, theme), style])} {...props} />
+  return <RNText style={[styles.text(type, bold, theme), style]} {...props} />
 }
 
 const getTextStyle = (type: TextType, bold: boolean, theme: ITheme): TextStyle => {
