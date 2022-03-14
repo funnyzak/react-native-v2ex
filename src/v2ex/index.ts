@@ -135,15 +135,16 @@ class V2ex {
     headers = _.merge(_headers, headers)
 
     return new Promise<T>((resolve, reject) => {
-      console.log({
-        uri,
-        method,
-        headers,
-        data,
-        ...params
-      })
+      // console.log({
+      //   uri,
+      //   method,
+      //   headers,
+      //   data,
+      //   ...params
+      // })
       fetch(uri, { method, headers, body: JSON.stringify(data) })
         .then((response: Response) => {
+          // console.log(response.ok, response.status, response.statusText)
           if (response.ok) {
             return response.json()
           }
@@ -151,6 +152,12 @@ class V2ex {
           if ([404].includes(response.status)) {
             reject(new Error('No http resource found.'))
           }
+
+          // if ([403].includes(response.status)) {
+          //   return response.json().then((errorResponse) => {
+          //     reject(errorResponse)
+          //   })
+          // }
 
           // Possible 401 or other network error
           return response.json().then((errorResponse) => {

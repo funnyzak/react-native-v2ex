@@ -124,7 +124,7 @@ Screen.defaultProps = {
   success: null,
   loading: false,
   auth: (token: string) => {
-    Alert.alert({ message: 'token: ' + token })
+    utils.Alert.alert({ message: 'token: ' + token })
   }
 }
 
