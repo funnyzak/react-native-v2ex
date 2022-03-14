@@ -4,11 +4,16 @@
 [![license][license-image]][repository-url]
 [![GitHub last commit][last-commit-image]][repository-url]
 [![GitHub commit activity][commit-activity-image]][repository-url]
+[![action][ci-image]][ci-url]
+[![Release Date][rle-image]][rle-url]
 
 [commit-activity-image]: https://img.shields.io/github/commit-activity/m/funnyzak/react-native-starter?style=flat-square
 [last-commit-image]: https://img.shields.io/github/last-commit/funnyzak/react-native-starter?style=flat-square
 [license-image]: https://img.shields.io/github/license/funnyzak/react-native-starter.svg?style=flat-square
 [repository-url]: https://github.com/funnyzak/react-native-starter
+[rle-url]: https://github.com/funnyzak/react-native-starter/releases/latest
+[ci-image]: https://img.shields.io/github/workflow/status/funnyzak/react-native-starter/react-native-android-build-apk
+[ci-url]: https://github.com/funnyzak/react-native-starter/actions
 
 React Native 快手开发脚手架项目。项目基于 [V2EX](https://v2ex.com) 开放 API，提供了一个简单的社区类应用样板。
 
