@@ -174,6 +174,7 @@ npx react-native run-android --verbose
     注意 gradle 和 java sdk(java home)的版本对应，可在 ./android/gradle.properties 设置 org.gradle.java.home
 
 5.  开屏图的设置 iOS 使用 LaunchScreen.storyboard，使用 Xcode 修改即可。
+6.  修改 bundle name [看这里](https://stackoverflow.com/questions/37389905/change-package-name-for-android-in-react-native)。
 
 ## 依赖库
 
