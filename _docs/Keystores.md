@@ -7,7 +7,7 @@
 To generate keystores for signing Android apps at the command line, use:
 
 ```
-$ keytool -genkey -v -keystore my-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+$ keytool -genkeypair -v -storetype PKCS12 -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
 ```
 
 A debug keystore which is used to sign an Android app during development needs a specific alias and password combination as dictated by Google. To create a debug keystore, use:
@@ -39,3 +39,5 @@ For your debug key that would look like:
 ```
 $ keytool -list -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android
 ```
+
+re
