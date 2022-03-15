@@ -20,3 +20,7 @@ export const linking = async (url: string) => {
     Alert.alert({ message: `Don't know how to open this URL: ${url}` })
   }
 }
+
+export function validKey(key: string | number | symbol, object: object): key is keyof typeof object {
+  return key in object
+}
