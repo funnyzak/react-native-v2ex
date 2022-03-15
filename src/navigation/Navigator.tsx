@@ -227,23 +227,6 @@ export const AppNavigationContainer = () => {
               />
             )}
             <StackNavigator.Screen
-              name={ROUTES.LatestTopics}
-              component={Screens.LatestTopicListScreen}
-              options={{
-                title: translate(`router.${ROUTES.LatestTopics}`),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.HotTopics}
-              component={Screens.HotTopicListScreen}
-              options={{
-                title: translate(`router.${ROUTES.HotTopics}`),
-                ...defaultHeaderSetting(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
               name={ROUTES.NodeTopics}
               component={Screens.NodeTopicListScreen}
               options={{

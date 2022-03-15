@@ -14,8 +14,6 @@ export type RootStackParamList = {
   Node: undefined
   Notification: undefined
   My: undefined
-  LatestTopics: undefined
-  HotTopics: undefined
   SignIn: undefined
   NodeTopics: { nodeName: string; nodeTitle: string }
   TopicDetail: { topicId: string }
@@ -43,10 +41,6 @@ export type MainScreenProps = NativeStackScreenProps<RootStackParamList, 'Main'>
 export type ReadedScreenProps = NativeStackScreenProps<RootStackParamList, 'Readed'> & CommonScreenProps
 
 export type HomeTabsScreenProps = NativeStackScreenProps<RootStackParamList, 'HomeTabs'> & CommonScreenProps
-
-export type LatestTopicsScreenProps = NativeStackScreenProps<RootStackParamList, 'LatestTopics'> & CommonScreenProps
-
-export type HotTopicsScreenProps = NativeStackScreenProps<RootStackParamList, 'HotTopics'> & CommonScreenProps
 
 export type SignInScreenProps = NativeStackScreenProps<RootStackParamList, 'SignIn'> &
   CommonScreenProps & {
