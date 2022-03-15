@@ -89,6 +89,7 @@ module.exports = {
           }
         ],
         '@typescript-eslint/no-unused-vars': 'off',
+        'react-hooks/exhaustive-deps': 'warn',
         'react-native/no-unused-styles': 2,
         'react-native/split-platform-components': 2,
         'react-native/no-inline-styles': 'warn',
