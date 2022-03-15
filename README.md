@@ -94,7 +94,7 @@ npx react-native run-ios --verbose
 # Android debug info start
 npx react-native run-android --verbose
 
-# Android release run
+# Testing the release build
 npx react-native run-android --variant=release
 
 # build android release apk
@@ -228,6 +228,7 @@ cd android
 - [react native cn](https://reactnative.cn/)
 - [react-devtools](https://www.npmjs.com/package/react-devtools)
 - [fetch](https://reactnative.cn/docs/network)
+- [bundle tool](https://developer.android.google.cn/studio/command-line/bundletool)
 - [android build](https://reactnative.cn/docs/signed-apk-android)
 - [watchman](https://facebook.github.io/watchman/docs/cli-options.html)
 - [EsLint](https://eslint.org/docs/user-guide/configuring/)
