@@ -25,7 +25,7 @@ const ToastProvider = ({ children }: Props) => {
       setToastPosition(position || 'bottom')
       setToastOpacity(opacity || 1)
 
-      toast?.show(text, duration || 2000, callback)
+      toast?.show(text, duration || 1500, callback)
     } else {
       toast?.show(opts)
     }
@@ -40,7 +40,7 @@ const ToastProvider = ({ children }: Props) => {
         text2: params
       })
     } else {
-      ToastMessage.show({ position: 'top', text1: translate('common.tip'), visibilityTime: 3000, ...params })
+      ToastMessage.show({ position: 'top', text1: translate('common.tip'), visibilityTime: 2000, ...params })
     }
   }
 
