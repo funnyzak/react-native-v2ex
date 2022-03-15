@@ -19,7 +19,8 @@ export const NODE_TABS = {
   R2: 'R2',
   NODES: 'nodes',
   DESIGN: 'design',
-  MEMBERS: 'members'
+  MEMBERS: 'members',
+  LIFE: 'life'
 }
 
 export type NODE_TABS = typeof NODE_TABS[keyof typeof NODE_TABS]
@@ -110,6 +111,12 @@ export const HOME_NODES: Array<NODE_TAB_TYPE> = [
   {
     name: NODE_TABS.R2,
     title: 'r2',
+    pager: true,
+    loginRequired: true
+  },
+  {
+    name: NODE_TABS.LIFE,
+    title: '生活',
     pager: true,
     loginRequired: true
   }
