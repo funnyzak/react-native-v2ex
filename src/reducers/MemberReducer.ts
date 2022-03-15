@@ -1,4 +1,4 @@
-import { Action, IState, APP_AUTH, MEMBER_PROFILE, APP_LOGOUT } from '../types'
+import { Action, IState, APP_AUTH, MEMBER_PROFILE, APP_LOGOUT, MEMBER_READ_TOPIC } from '../types'
 const INITIAL_STATE: IState.MemberState = {
   refreshing: false
 }
@@ -11,6 +11,11 @@ export default (state: IState.MemberState = INITIAL_STATE, action: Action): ISta
       return { ...INITIAL_STATE }
     case MEMBER_PROFILE:
       return { ...state, profile: action.payload }
+    case MEMBER_READ_TOPIC:
+      const readed_topics = [action.payload].concat(
+        (state.readedTopics ?? []).filter((t) => t.id !== action.payload.id)
+      )
+      return { ...state, readedTopics: readed_topics }
     default:
       return state
   }

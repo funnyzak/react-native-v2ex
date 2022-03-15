@@ -18,6 +18,7 @@ export const APP_NOTIFICATION_REMOVE = 'notification_remove'
 export const MEMBER_PROFILE = 'profile'
 export const MEMBER_FOLLOW_PEOPLE = 'follow_people'
 export const MEMBER_LIKE_TOPICS = 'like_topics'
+export const MEMBER_READ_TOPIC = 'read_topic'
 
 export const FEEDBACKING = 'feedbacking'
 export const FEEDBACK_DONE = 'feedback_done'
@@ -44,6 +45,7 @@ export const ActionTypes = {
   APP_NODE_TOPICS_REFRESH,
   APP_LATEST_VERSION,
   APP_SITE_INFO,
+  MEMBER_READ_TOPIC,
   APP_INIT_ERROR,
   APP_NODE_NODE_TOPICS,
   APP_NODE_LOAD_MORE_TOPICS,

@@ -150,6 +150,11 @@ export declare module IState {
       list: V2exObject.Topic[]
       refreshing: boolean
     }
+
+    /**
+     * 已读主题
+     */
+    readedTopics?: V2exObject.Topic[]
   }
 
   /**

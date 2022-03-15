@@ -14,11 +14,13 @@ const My = ({
   navigation,
   app,
   profile,
+  readedTopics,
   logout
 }: ScreenProps &
   IState.State & {
     profile?: V2exObject.Member
     token?: V2exObject.MToken
+    readedTopics?: V2exObject.Topic[]
     logout: () => void
   }) => {
   const { theme } = useTheme()
@@ -41,7 +43,7 @@ const My = ({
           <Text style={SylCommon.Grid.itemTitle(theme)}>{translate('button.likeTopics')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={SylCommon.Grid.item(theme)} onPress={() => navigation.navigate(ROUTES.Readed)}>
-          <Text style={SylCommon.Grid.itemValue(theme)}>{'8'}</Text>
+          <Text style={SylCommon.Grid.itemValue(theme)}>{readedTopics ? readedTopics.length : 0}</Text>
           <Text style={SylCommon.Grid.itemTitle(theme)}>{translate('button.readed')}</Text>
         </TouchableOpacity>
       </View>
@@ -160,10 +162,11 @@ My.defaultProps = {
 }
 
 const mapStateToProps = ({ member, setting, app }: IState.State) => {
-  const { profile, token } = member
+  const { profile, token, readedTopics } = member
   return {
     profile,
     token,
+    readedTopics,
     setting,
     app
   }

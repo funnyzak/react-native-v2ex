@@ -9,6 +9,7 @@ import { logError } from '@src/helper/logger'
 import {
   TOPIC_GET,
   TOPIC_REPLIES,
+  MEMBER_READ_TOPIC,
   APP_NODE_LOAD_ERROR,
   APP_NODE_TOPICS_REFRESH,
   APP_NODE_LOAD_MORE_TOPICS,
@@ -16,6 +17,16 @@ import {
   V2exObject
 } from '@src/types'
 import { SPECIAL_NODE_NAME_MAP } from '@src/config/constants'
+
+/**
+ * 阅读主题
+ * @param topic
+ * @returns
+ */
+export const readTopic = (topic: V2exObject.Topic) => ({
+  type: MEMBER_READ_TOPIC,
+  payload: topic
+})
 
 /**
  * 获取主题列表
