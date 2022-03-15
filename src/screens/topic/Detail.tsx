@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, ViewStyle, TextStyle, Pressable, ScrollView } from 'react-native'
 import RenderHtml from 'react-native-render-html'
 
 import { translate } from '@src/i18n'
 import { useTheme, SylCommon } from '@src/theme'
-import { ITheme } from '@src/types'
+import { ITheme, V2exObject } from '@src/types'
 import { Text, Spinner, Avatar } from '@src/components'
 import { TopicDetailScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 import { useTopic } from '@src/hooks/useTopic'
@@ -13,6 +13,7 @@ import dayjs from 'dayjs'
 const TopicDetail = ({ route, navigation }: ScreenProps) => {
   const { theme } = useTheme()
   const { topic } = useTopic({ topicId: route.params.topicId })
+  // const [topic] = useState<V2exObject.Topic|undefined>(undefined)
 
   useEffect(() => {
     navigation.setOptions({ title: !topic ? translate(`router.${ROUTES.TopicDetail}`) : `${topic.node?.title}` })
