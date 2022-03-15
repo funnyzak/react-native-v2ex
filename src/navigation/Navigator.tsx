@@ -11,7 +11,7 @@ import {
   PartialState,
   Route
 } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import { Image, StatusBar, TextStyle } from 'react-native'
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
@@ -41,14 +41,12 @@ dayjs.extend(relativeTime)
 
 const MainNavigator = createBottomTabNavigator()
 
-const defaultHeaderSetting = (theme: ITheme) => ({
+const defaultScreenOptions = (theme: ITheme): NativeStackNavigationOptions => ({
+  animationTypeForReplace: 'push',
+  animation: 'slide_from_right',
+  statusBarAnimation: 'fade',
   headerStyle: {
-    shadowColor: 'transparent', // this covers iOS
-    shadowOpacity: 0, // remove shadow on iOS
-    elevation: 0, // remove shadow on Android,
-    backgroundColor: theme.colors.primary,
-    height: theme.dimens.headerHeight,
-    borderBottomWidth: 0
+    backgroundColor: theme.colors.primary
   },
   headerTitleStyle: {
     ...(theme.typography.titleTextSemiBold as any),
@@ -195,6 +193,9 @@ export const AppNavigationContainer = () => {
         <NavigationContainer
           ref={(navigatorRef: NavigationContainerRefWithCurrent<RootStackParamList>) => {
             NavigationService.setTopLevelNavigator(navigatorRef)
+          }}
+          documentTitle={{
+            formatter: (options, route) => `${options?.title ?? route?.name}`
           }}>
           <StatusBar
             backgroundColor={theme.colors.primary}
@@ -215,7 +216,7 @@ export const AppNavigationContainer = () => {
                 name={ROUTES.Main}
                 component={MainAppNavigator}
                 options={({ route }) => ({
-                  ...defaultHeaderSetting(theme),
+                  ...defaultScreenOptions(theme),
                   headerShadowVisible: ![ROUTES.HomeTabs, ROUTES.My].includes(
                     getFocusedRouteNameFromRoute(route) ?? (ROUTES.Node as any)
                   ),
@@ -231,7 +232,7 @@ export const AppNavigationContainer = () => {
               component={Screens.NodeTopicListScreen}
               options={{
                 title: translate(`router.${ROUTES.NodeTopics}`),
-                ...defaultHeaderSetting(theme),
+                ...defaultScreenOptions(theme),
                 headerShown: true
               }}
             />
@@ -240,7 +241,7 @@ export const AppNavigationContainer = () => {
               component={Screens.TopicDetailScreen}
               options={{
                 title: translate(`router.${ROUTES.TopicDetail}`),
-                ...defaultHeaderSetting(theme),
+                ...defaultScreenOptions(theme),
                 headerShown: true
               }}
             />
@@ -249,7 +250,7 @@ export const AppNavigationContainer = () => {
               component={Screens.ProfileScreen}
               options={{
                 title: translate(`router.${ROUTES.Profile}`),
-                ...defaultHeaderSetting(theme),
+                ...defaultScreenOptions(theme),
                 headerShown: true
               }}
             />
@@ -258,7 +259,7 @@ export const AppNavigationContainer = () => {
               component={Screens.FollowPeopleScreen}
               options={{
                 title: translate(`router.${ROUTES.FollowPeople}`),
-                ...defaultHeaderSetting(theme),
+                ...defaultScreenOptions(theme),
                 headerShown: true
               }}
             />
@@ -267,7 +268,7 @@ export const AppNavigationContainer = () => {
               component={Screens.LikeTopicsScreen}
               options={{
                 title: translate(`router.${ROUTES.LikeTopics}`),
-                ...defaultHeaderSetting(theme),
+                ...defaultScreenOptions(theme),
                 headerShown: true
               }}
             />
@@ -276,7 +277,7 @@ export const AppNavigationContainer = () => {
               component={Screens.SettingScreen}
               options={{
                 title: translate(`router.${ROUTES.Setting}`),
-                ...defaultHeaderSetting(theme),
+                ...defaultScreenOptions(theme),
                 headerShown: true
               }}
             />
@@ -285,7 +286,7 @@ export const AppNavigationContainer = () => {
               component={Screens.LanguageScreen}
               options={{
                 title: translate(`router.${ROUTES.Language}`),
-                ...defaultHeaderSetting(theme),
+                ...defaultScreenOptions(theme),
                 headerShown: true
               }}
             />
@@ -294,7 +295,7 @@ export const AppNavigationContainer = () => {
               component={Screens.AboutScreen}
               options={{
                 title: translate(`router.${ROUTES.About}`),
-                ...defaultHeaderSetting(theme),
+                ...defaultScreenOptions(theme),
                 headerShown: true
               }}
             />
@@ -303,7 +304,7 @@ export const AppNavigationContainer = () => {
               component={Screens.FeedbackScreen}
               options={{
                 title: translate(`router.${ROUTES.Feedback}`),
-                ...defaultHeaderSetting(theme),
+                ...defaultScreenOptions(theme),
                 headerShown: true
               }}
             />
@@ -312,7 +313,7 @@ export const AppNavigationContainer = () => {
               component={Screens.ThemeScreen}
               options={{
                 title: translate(`router.${ROUTES.Theme}`),
-                ...defaultHeaderSetting(theme),
+                ...defaultScreenOptions(theme),
                 headerShown: true
               }}
             />
@@ -321,7 +322,7 @@ export const AppNavigationContainer = () => {
               component={Screens.SearchScreen}
               options={{
                 title: translate(`router.${ROUTES.Search}`),
-                ...defaultHeaderSetting(theme),
+                ...defaultScreenOptions(theme),
                 headerShown: true
               }}
             />
@@ -330,7 +331,7 @@ export const AppNavigationContainer = () => {
               component={Screens.ReadedScreen}
               options={{
                 title: translate(`router.${ROUTES.Readed}`),
-                ...defaultHeaderSetting(theme),
+                ...defaultScreenOptions(theme),
                 headerShown: true
               }}
             />

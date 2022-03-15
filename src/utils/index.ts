@@ -14,9 +14,9 @@ import * as Alert from './alert'
 
 export const linking = async (url: string) => {
   const supported = await Linking.canOpenURL(url)
-  if (supported) {
+  try {
     await Linking.openURL(url)
-  } else {
+  } catch (err) {
     Alert.alert({ message: `Don't know how to open this URL: ${url}` })
   }
 }
