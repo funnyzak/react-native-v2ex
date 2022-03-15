@@ -60,7 +60,7 @@ const NodeTopics = ({
         text2: error
       })
     }
-  }, [error, showMessage])
+  }, [error])
 
   const onReached = () => {
     if (hasMore && !loadMore && !refreshing) {

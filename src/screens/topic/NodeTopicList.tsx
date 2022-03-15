@@ -1,35 +1,21 @@
-import React, { useState, useCallback, useEffect, useMemo } from 'react'
-import { connect } from 'react-redux'
+import React, { useState, useCallback, useEffect } from 'react'
 import { RefreshControl } from 'react-native'
 
-import { IState, V2exObject } from '@src/types'
+import { V2exObject } from '@src/types'
 import { TopicList } from '../components'
-import { NodeTopicsScreenProps as ScreenProps, ROUTES } from '@src/navigation'
-import * as Actions from '@src/actions'
+import { NodeTopicsScreenProps as ScreenProps } from '@src/navigation'
 import { useToast } from '@src/components/toast'
+import { v2exLib } from '@src/v2ex'
 
-const NodeTopics = ({
-  route,
-  navigation,
-  tabNodeList,
-  getNodeTopics
-}: ScreenProps & {
-  tabNodeList: IState.TabNodeState[]
-  getNodeTopics: (node: string, page: number) => void
-}) => {
+const NodeTopics = ({ route, navigation }: ScreenProps) => {
+  const { showMessage } = useToast()
+
   const [page, setPage] = useState(1)
   const [mounted, setMounted] = useState<boolean>(false)
-
-  const { showToast } = useToast()
-
-  const { error, list, nodeTab, refreshing, hasMore, loadMore } = useMemo(
-    () => tabNodeList.find((v) => v.nodeTab.name === route.params.nodeName) || tabNodeList[0],
-    [tabNodeList, route]
-  )
-
-  if (!mounted) {
-    // ...
-  }
+  const [refreshing, setRefreshing] = useState<boolean>(false)
+  const [list, setList] = useState<V2exObject.Topic[] | undefined>(undefined)
+  const [hasMore, setHasMore] = useState<boolean>(true)
+  const [loadMore, setLoadMore] = useState<boolean>(false)
 
   useEffect(() => {
     setMounted(true)
@@ -37,24 +23,52 @@ const NodeTopics = ({
 
   const fetchTopics = useCallback(
     (pageNum: number) => {
-      getNodeTopics(nodeTab.name, pageNum)
+      if (pageNum === 1) {
+        setList(undefined)
+      }
+
+      setRefreshing(pageNum === 1)
+      setLoadMore(pageNum > 1)
+
+      v2exLib.topic
+        .topicsByNode(route.params.nodeName, pageNum)
+        .then((rlt: V2exObject.Topic[]) => {
+          if (rlt.length === 0) {
+            setHasMore(false)
+          }
+
+          setRefreshing(false)
+          setLoadMore(false)
+
+          setList((list || []).concat(rlt))
+        })
+        .catch((err) => {
+          console.log('fetchTopics error', err)
+          showMessage(err.message)
+        })
     },
-    [nodeTab, getNodeTopics]
-  )
+    [route, showMessage, page]
+  ) // eslint-disable-line react-hooks/exhaustive-deps
 
   const onRefresh = () => {
+    setPage(1)
     fetchTopics(1)
   }
 
-  useEffect(() => {
-    fetchTopics(page)
-  }, [page, nodeTab, fetchTopics])
+  if (!mounted) {
+    // ..
+  }
 
   useEffect(() => {
-    if (error !== null && error.length > 0) {
-      showToast(error)
-    }
-  }, [error, showToast])
+    navigation.setOptions({
+      title: route.params.nodeTitle
+    })
+    setPage(1)
+  }, [route, navigation])
+
+  useEffect(() => {
+    fetchTopics(page)
+  }, [page, route])
 
   const onReached = () => {
     if (hasMore && !loadMore && !refreshing) {
@@ -62,14 +76,9 @@ const NodeTopics = ({
     }
   }
 
-  const onRowPress = (item: V2exObject.Topic) => {
-    // ...
-  }
-
   return (
     <TopicList
       topics={list}
-      onRowPress={onRowPress}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
       onEndReached={onReached}
       canLoadMoreContent={hasMore}
@@ -79,14 +88,4 @@ const NodeTopics = ({
   )
 }
 
-const mapStateToProps = ({
-  tab: { list }
-}: {
-  tab: {
-    list: IState.TabNodeState[]
-  }
-}) => {
-  return { tabNodeList: list }
-}
-
-export default connect(mapStateToProps, { getNodeTopics: Actions.getNodeTopics })(NodeTopics)
+export default NodeTopics
