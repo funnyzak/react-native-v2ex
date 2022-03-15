@@ -3,19 +3,30 @@ import { connect } from 'react-redux'
 import { StyleSheet, View, ViewStyle, TextStyle } from 'react-native'
 
 import { translate } from '@src/i18n'
+import { TopicList } from '../components'
 import { useTheme, SylCommon } from '@src/theme'
 import { IState, ITheme, V2exObject } from '@src/types'
-import * as CompS from '../components'
+import { NotFound } from '../components'
 import { Text, Spinner } from '@src/components'
 import { ReadedScreenProps as ScreenProps } from '@src/navigation/routes'
 
-const Readed = ({ route, navigation, loading }: ScreenProps) => {
+const Readed = ({
+  route,
+  navigation,
+  readedTopics
+}: ScreenProps & {
+  readedTopics?: V2exObject.Topic[]
+}) => {
   const { theme } = useTheme()
-  return (
-    <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
-      <Text>Hello, Readed.</Text>
-    </View>
-  )
+
+  const renderContent = () => {
+    if (!readedTopics) {
+      return <NotFound />
+    }
+    return <TopicList topics={readedTopics} canLoadMoreContent={false} searchIndicator={false} />
+  }
+
+  return <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>{renderContent()}</View>
 }
 
 /**
@@ -27,16 +38,11 @@ const styles = {
   })
 }
 
-/**
- * default props
- */
-Readed.defaultProps = {
-  loading: false
-}
-
-const mapStateToProps = ({ ui: { login } }: { ui: IState.UIState }) => {
-  const { error, success, loading } = login
-  return { error, success, loading }
+const mapStateToProps = ({ member }: IState.State) => {
+  const { readedTopics } = member
+  return {
+    readedTopics
+  }
 }
 
 export default connect(mapStateToProps)(Readed)

@@ -154,13 +154,6 @@ const styles = {
   })
 }
 
-/**
- * default props
- */
-My.defaultProps = {
-  loading: false
-}
-
 const mapStateToProps = ({ member, setting, app }: IState.State) => {
   const { profile, token, readedTopics } = member
   return {
