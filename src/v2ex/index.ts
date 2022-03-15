@@ -144,13 +144,13 @@ class V2ex {
       // })
       fetch(uri, { method, headers, body: JSON.stringify(data) })
         .then((response: Response) => {
-          // console.log(response.ok, response.status, response.statusText)
+          console.log(uri, response.ok, response.status, response.statusText)
           if (response.ok) {
             return response.json()
           }
 
           if ([404].includes(response.status)) {
-            reject(new Error('No http resource found.'))
+            return reject(new Error('No http resource found.'))
           }
 
           // if ([403].includes(response.status)) {
