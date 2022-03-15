@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { View, ViewStyle, TextStyle } from 'react-native'
+import { View, ViewStyle, TextStyle, Pressable, ScrollView } from 'react-native'
 import RenderHtml from 'react-native-render-html'
 
 import { translate } from '@src/i18n'
 import { useTheme, SylCommon } from '@src/theme'
 import { ITheme } from '@src/types'
 import { Text, Spinner, useToast, Avatar } from '@src/components'
-import { TopicDetailScreenProps as ScreenProps } from '@src/navigation/routes'
+import { TopicDetailScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 import { useTopic } from '@src/hooks/useTopic'
 import dayjs from 'dayjs'
 
@@ -16,36 +16,51 @@ const TopicDetail = ({ route, navigation }: ScreenProps) => {
   const { showMessage } = useToast()
   const { topic } = useTopic({ topicId: route.params.topicId })
 
+  useEffect(() => {
+    navigation.setOptions({ title: !topic ? translate(`router.${ROUTES.TopicDetail}`) : `${topic.node?.title}` })
+  }, [topic, navigation])
+
   const reanderContent = () => {
     if (!topic) {
       return <Spinner style={{ marginTop: 50 }} />
     }
 
-    navigation.setOptions({ title: topic.title })
-
     return (
       <>
-        <View style={styles.titleContainer(theme)}>
-          <Text type="heading">{topic.title}</Text>
-        </View>
-        <View style={styles.summary(theme)}>
-          <Avatar
-            username={topic.member?.username}
-            size={24}
-            source={topic.member ? { uri: topic.member?.avatar_normal } : undefined}
-          />
-          <Text style={styles.author(theme)}>{topic.member?.username}</Text>
-          <Text style={styles.attr(theme)}>{topic.created && dayjs(topic.created * 1000).fromNow()}</Text>
-          {topic.replies !== undefined && (
-            <Text style={styles.attr(theme)}>{`${topic.replies} ${translate('common.replies')}`}</Text>
-          )}
-          <Text style={SylCommon.Node.node(theme)}>{topic.node?.name}</Text>
-        </View>
-        <View style={SylCommon.Divider.item(theme)} />
-        <RenderHtml
-          source={{ html: topic.content || '<p></p>' }}
-          contentWidth={theme.dimens.WINDOW_WIDTH - theme.spacing.large * 2}
-        />
+        <ScrollView>
+          <View style={styles.titleContainer(theme)}>
+            <View>
+              <Text type="heading">{topic.title}</Text>
+            </View>
+            <View style={styles.summary(theme)}>
+              <Avatar
+                username={topic.member?.username}
+                size={24}
+                source={topic.member ? { uri: topic.member.avatar_normal || topic.member.avatar } : undefined}
+              />
+              <Text style={styles.author(theme)}>{topic.member?.username}</Text>
+              <Text type="label" style={styles.attr(theme)}>
+                {topic.created && dayjs(topic.created * 1000).fromNow()}
+              </Text>
+              {topic.replies !== undefined && (
+                <Text style={styles.attr(theme)}>{`${topic.replies} ${translate('common.replies')}`}</Text>
+              )}
+              <Pressable
+                onPress={() => {
+                  navigation.navigate(ROUTES.NodeTopics, { nodeName: topic.node?.name || 'hot' })
+                }}>
+                <Text style={SylCommon.Node.node(theme)}>{topic.node?.name}</Text>
+              </Pressable>
+            </View>
+          </View>
+          <View style={SylCommon.Divider.item(theme)} />
+          <View style={styles.titleContainer(theme)}>
+            <RenderHtml
+              source={{ html: topic.content_rendered || '<p></p>' }}
+              contentWidth={theme.dimens.WINDOW_WIDTH - theme.spacing.large * 2}
+            />
+          </View>
+        </ScrollView>
       </>
     )
   }
@@ -58,7 +73,8 @@ const TopicDetail = ({ route, navigation }: ScreenProps) => {
  */
 const styles = {
   titleContainer: (theme: ITheme): ViewStyle => ({
-    flexDirection: 'row'
+    paddingTop: theme.spacing.small,
+    paddingHorizontal: theme.spacing.large
   }),
   summary: (theme: ITheme): ViewStyle => ({
     marginTop: theme.spacing.medium,
@@ -66,19 +82,10 @@ const styles = {
     alignItems: 'center'
   }),
   author: (theme: ITheme): TextStyle => ({
-    marginHorizontal: 8,
-    fontSize: 14,
-    color: theme.colors.captionText
+    marginHorizontal: 8
   }),
   attr: (theme: ITheme): TextStyle => ({
-    marginRight: 8,
-    fontSize: 12,
-    color: theme.colors.secondary
-  }),
-  replies: (theme: ITheme): TextStyle => ({
-    fontSize: 14,
-    color: theme.colors.secondary,
-    marginTop: 40
+    marginRight: 8
   })
 }
 
