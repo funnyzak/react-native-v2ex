@@ -22,7 +22,7 @@ const NodeTopics = ({
 
   const { showToast } = useToast()
 
-  const { error, success, list, nodeTab, refreshing, hasMore, loadMore } = useMemo(
+  const { error, list, nodeTab, refreshing, hasMore, loadMore } = useMemo(
     () => tabNodeList.find((v) => v.nodeTab.name === route.params.nodeName) || tabNodeList[0],
     [tabNodeList, route]
   )
@@ -62,14 +62,14 @@ const NodeTopics = ({
     }
   }
 
-  const itemPress = (item: V2exObject.Topic) => {
-    navigation.navigate(ROUTES.TopicDetail, { topicId: item.id.toString() })
+  const onRowPress = (item: V2exObject.Topic) => {
+    // ...
   }
 
   return (
     <TopicList
       topics={list}
-      onRowPress={itemPress}
+      onRowPress={onRowPress}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
       onEndReached={onReached}
       canLoadMoreContent={hasMore}

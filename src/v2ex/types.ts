@@ -214,6 +214,7 @@ export declare module V2exObject {
     location?: string
     tagline?: string
     bio: string
+    avatar?: string
     avatar_mini?: string
     avatar_normal?: string
     avatar_large?: string
