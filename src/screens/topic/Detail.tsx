@@ -47,7 +47,10 @@ const TopicDetail = ({ route, navigation }: ScreenProps) => {
               )}
               <Pressable
                 onPress={() => {
-                  navigation.navigate(ROUTES.NodeTopics, { nodeName: topic.node?.name || 'hot' })
+                  navigation.navigate(ROUTES.NodeTopics, {
+                    nodeName: topic.node?.name || 'hot',
+                    nodeTitle: topic.node?.title || 'HOT'
+                  })
                 }}>
                 <Text style={SylCommon.Node.node(theme)}>{topic.node?.name}</Text>
               </Pressable>
