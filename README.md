@@ -99,7 +99,11 @@ npx react-native run-android --variant=release
 
 # build android release apk
 cd android
+# aab file
 ./gradlew bundleRelease
+# apk file
+./gradlew assembleRelease
+
 ```
 
 ## 目录
