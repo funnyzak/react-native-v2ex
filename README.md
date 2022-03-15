@@ -220,8 +220,11 @@ cd android
 
 ### Android 预览
 
-![home_dark](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/Android/home_dark.png)
-![sign_dark](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/Android/sign_dark.png)
+![list](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/Android/list.jpeg)
+![list2](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/Android/list2.jpeg)
+![detail](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/Android/detail.jpeg)
+![my](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/Android/my.jpeg)
+![sign](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/Android/list2.jpeg)
 
 ## 参考
 
