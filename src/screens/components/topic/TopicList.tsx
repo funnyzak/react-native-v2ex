@@ -1,20 +1,21 @@
 import React from 'react'
 import { View, Text, FlatList, ViewStyle, TextStyle } from 'react-native'
 import { ITheme, V2exObject } from '@src/types'
-import TopicItem from './TopicItem'
+import { TopicItem, NotFound } from '../'
 import { Spinner } from '@src/components'
-import { SylCommon, themes, useTheme } from '@src/theme'
+import { SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import { NavigationService, ROUTES } from '@src/navigation'
 
 export interface TopicListProps {
-  onRowPress: (topic: V2exObject.Topic) => void
-  canLoadMoreContent: boolean
+  onRowPress?: (topic: V2exObject.Topic) => void
+  canLoadMoreContent?: boolean
   topics?: Array<V2exObject.Topic>
-  onEndReached: () => void
-  refreshControl: React.ReactElement
-  searchIndicator: boolean
-  refreshCallback: () => void
+  onEndReached?: () => void
+  refreshControl?: React.ReactElement
+  searchIndicator?: boolean
+  refreshCallback?: () => void
 }
 
 const TopicList: React.FC<TopicListProps> = ({
@@ -28,9 +29,15 @@ const TopicList: React.FC<TopicListProps> = ({
 }: TopicListProps) => {
   const { theme } = useTheme()
 
+  const onItemPress = (topic: V2exObject.Topic) => {
+    NavigationService.navigate(ROUTES.TopicDetail, { topicId: topic.id.toString() })
+
+    if (onRowPress) onRowPress(topic)
+  }
+
   const renderItemRow = ({ item }: { item: V2exObject.Topic }) =>
     !item || item === null ? null : (
-      <TopicItem containerStyle={styles.topicItemContainer(theme)} topic={item} onRowPress={onRowPress} />
+      <TopicItem containerStyle={styles.topicItemContainer(theme)} topic={item} onRowPress={onItemPress} />
     )
 
   const renderFooter = () => {
@@ -71,12 +78,11 @@ const TopicList: React.FC<TopicListProps> = ({
     }
     if (!searchIndicator) {
       return (
-        <View style={styles.notFoundTextWrap()}>
-          <Text style={styles.notFoundText(theme)}>{translate('errors.noTopics')}</Text>
-          <TouchableOpacity onPress={refreshCallback}>
-            <Text style={SylCommon.Button.textAction(theme)}>{translate('button.oneceAgain')}</Text>
-          </TouchableOpacity>
-        </View>
+        <NotFound
+          text={translate('errors.noTopics')}
+          buttonText={translate('button.oneceAgain')}
+          buttonPress={refreshCallback}
+        />
       )
     }
   }

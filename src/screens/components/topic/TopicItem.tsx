@@ -31,7 +31,7 @@ const TopicItem = ({
               username={topic.member.username}
               style={styles.avatar(theme)}
               size={32}
-              source={{ uri: topic.member.avatar_normal }}
+              source={{ uri: topic.member.avatar || topic.member.avatar_normal }}
             />
           )}
           <View style={styles.topRight(theme)}>
