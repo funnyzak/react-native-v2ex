@@ -1,8 +1,7 @@
 import React from 'react'
-import { View, Text, TextStyle } from 'react-native'
+import { View, Text, TextStyle, Pressable } from 'react-native'
 import { ITheme } from '@src/types'
 import { SylCommon, useTheme } from '@src/theme'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import { translate } from 'i18n-js'
 
 const NoFound = ({
@@ -20,9 +19,9 @@ const NoFound = ({
     return (
       <View style={styles.notFoundTextWrap()}>
         <Text style={styles.notFoundText(theme)}>{text ?? translate('errors.noFound')}</Text>
-        <TouchableOpacity onPress={buttonPress}>
+        <Pressable onPress={buttonPress}>
           <Text style={SylCommon.Button.textAction(theme)}>{buttonText}</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
     )
   }
