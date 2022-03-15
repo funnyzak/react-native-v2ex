@@ -34,7 +34,7 @@ export const readTopic = (topic: V2exObject.Topic) => ({
  * @param page 获取页数
  * @returns
  */
-export const getNodeTopics =
+export const getHomeNodeTopics =
   (node: string, page: number = 1) =>
   async (dispatch: Dispatch) => {
     const specialNode = Object.values(SPECIAL_NODE_NAME_MAP).includes(node)
