@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TextStyle, Pressable } from 'react-native'
 import { ITheme } from '@src/types'
 import { SylCommon, useTheme } from '@src/theme'
-import { translate } from 'i18n-js'
+import { translate } from '@src/i18n'
 
 const NoFound = ({
   text,

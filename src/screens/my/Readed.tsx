@@ -1,13 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import { StyleSheet, View, ViewStyle, TextStyle } from 'react-native'
+import { View } from 'react-native'
 
-import { translate } from '@src/i18n'
 import { TopicList } from '../components'
 import { useTheme, SylCommon } from '@src/theme'
-import { IState, ITheme, V2exObject } from '@src/types'
+import { IState, V2exObject } from '@src/types'
 import { NotFound } from '../components'
-import { Text, Spinner } from '@src/components'
 import { ReadedScreenProps as ScreenProps } from '@src/navigation/routes'
 
 const Readed = ({
@@ -27,15 +25,6 @@ const Readed = ({
   }
 
   return <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>{renderContent()}</View>
-}
-
-/**
- * @description styles settings
- */
-const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    flex: 1
-  })
 }
 
 const mapStateToProps = ({ member }: IState.State) => {

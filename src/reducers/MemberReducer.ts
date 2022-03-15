@@ -12,9 +12,9 @@ export default (state: IState.MemberState = INITIAL_STATE, action: Action): ISta
     case MEMBER_PROFILE:
       return { ...state, profile: action.payload }
     case MEMBER_READ_TOPIC:
-      const readed_topics = [action.payload].concat(
-        (state.readedTopics ?? []).filter((t) => t.id !== action.payload.id)
-      )
+      const readed_topics = (state.readedTopics ?? []).find((t) => t.id === action.payload.id)
+        ? state.readedTopics
+        : [action.payload].concat(state.readedTopics || [])
       return { ...state, readedTopics: readed_topics }
     default:
       return state
