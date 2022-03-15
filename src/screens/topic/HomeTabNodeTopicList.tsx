@@ -20,7 +20,7 @@ const NodeTopics = ({
   const [page, setPage] = useState(1)
   const [mounted, setMounted] = useState<boolean>(false)
 
-  const { showToast } = useToast()
+  const { showMessage } = useToast()
 
   if (!mounted) {
     // ...
@@ -55,9 +55,12 @@ const NodeTopics = ({
 
   useEffect(() => {
     if (error !== null && error.length > 0) {
-      showToast(error)
+      showMessage({
+        type: 'error',
+        text2: error
+      })
     }
-  }, [error, showToast])
+  }, [error, showMessage])
 
   const onReached = () => {
     if (hasMore && !loadMore && !refreshing) {

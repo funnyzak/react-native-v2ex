@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect } from 'react'
 import { View, ViewStyle, TextStyle, Pressable, ScrollView } from 'react-native'
 import RenderHtml from 'react-native-render-html'
 
 import { translate } from '@src/i18n'
 import { useTheme, SylCommon } from '@src/theme'
 import { ITheme } from '@src/types'
-import { Text, Spinner, useToast, Avatar } from '@src/components'
+import { Text, Spinner, Avatar } from '@src/components'
 import { TopicDetailScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 import { useTopic } from '@src/hooks/useTopic'
 import dayjs from 'dayjs'
 
 const TopicDetail = ({ route, navigation }: ScreenProps) => {
   const { theme } = useTheme()
-  const { showMessage } = useToast()
   const { topic } = useTopic({ topicId: route.params.topicId })
 
   useEffect(() => {
@@ -92,4 +90,4 @@ const styles = {
   })
 }
 
-export default connect()(TopicDetail)
+export default TopicDetail
