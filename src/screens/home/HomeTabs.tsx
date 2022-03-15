@@ -4,7 +4,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { HomeTabsScreenProps, HOME_NODES as tabs, NODE_TAB_TYPE } from '@src/navigation'
 import { useTheme } from '@src/theme'
 import { useAppSelector } from '@src/hooks'
-import NodeTopicList from '../topic/NodeTopicList'
+import { HomeTabNodeTopicListScreen } from '../topic'
 import { RootState } from '@src/store'
 
 const Tab = createMaterialTopTabNavigator()
@@ -68,7 +68,7 @@ const TopicTabList = ({}: HomeTabsScreenProps) => {
         <Tab.Screen
           key={`NODE-${item.name}`}
           name={`NODE-${item.name}`}
-          component={NodeTopicList}
+          component={HomeTabNodeTopicListScreen}
           options={{
             title: item.title
           }}
