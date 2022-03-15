@@ -2,6 +2,7 @@ import React from 'react'
 import { useTheme } from '@src/theme'
 import { Text as RNText, TextProps as NativeTextProps, StyleSheet, TextStyle } from 'react-native'
 import { ITheme } from '@src/types'
+import { validKey } from '@src/utils'
 
 // Possible value for prop "type" for Text
 const HEADING = 'heading'
@@ -70,10 +71,7 @@ const getTextStyle = (type: TextType, bold: boolean, theme: ITheme): TextStyle =
     style += 'Bold'
   }
 
-  if (style === 'bodyText') {
-    return theme.typography[style]
-  }
-  return theme.typography.bodyText
+  return theme.typography[validKey(style, theme.typography) ? style : 'bodyText']
 }
 
 const styles = {
