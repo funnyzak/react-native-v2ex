@@ -17,7 +17,7 @@ export type RootStackParamList = {
   LatestTopics: undefined
   HotTopics: undefined
   SignIn: undefined
-  NodeTopics: { nodeName: string }
+  NodeTopics: { nodeName: string; nodeTitle: string }
   TopicDetail: { topicId: string }
   Profile: { username: string }
   FollowPeople: undefined

@@ -109,12 +109,6 @@ export const HOME_NODES: Array<NODE_TAB_TYPE> = [
     loginRequired: true
   },
   {
-    name: NODE_TABS.R2,
-    title: 'r2',
-    pager: true,
-    loginRequired: true
-  },
-  {
     name: NODE_TABS.LIFE,
     title: '生活',
     pager: true,
