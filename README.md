@@ -18,9 +18,9 @@
 
 这个项目使用了 React Native 构建了一个 [V2EX](https://v2ex.com) 移动客户端应用。主要目的是为了构建一个 React Native 快速开发脚手架。
 
-客户端数据，全部基于 [V2EX](https://v2ex.com) 开放 API。
+客户端数据，全部基于 [V2EX](https://v2ex.com) 开放 API。最新编译发布：[点这里](https://github.com/funnyzak/react-native-v2ex/releases/latest)。
 
-最新编译发布：[点这里](https://github.com/funnyzak/react-native-v2ex/releases/latest)。
+**目前功能还在不断完善中...**
 
 运行说明：
 
