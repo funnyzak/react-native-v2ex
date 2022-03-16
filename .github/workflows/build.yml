@@ -44,14 +44,26 @@ jobs:
         id: get_version
         run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
 
+      - name: Build Changelog
+        id: github_release
+        uses: mikepenz/release-changelog-builder-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Echo changelog
+        run: echo ${{steps.build_changelog.outputs.changelog}} > CHANGELOG.txt
+
       - name: Rename replease name 
         run: mv android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/v2ex-${{ steps.get_version.outputs.VERSION }}.apk
 
-      - name: release
+      - name: Create Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: "android/app/build/outputs/apk/release/v2ex-${{ steps.get_version.outputs.VERSION }}.apk"
+          body_path: CHANGELOG.txt
+          files:  |
+            android/app/build/outputs/apk/release/v2ex-${{ steps.get_version.outputs.VERSION }}.apk
+            CHANGELOG.txt
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
 
