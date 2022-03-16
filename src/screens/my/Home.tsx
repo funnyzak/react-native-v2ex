@@ -4,6 +4,7 @@ import { View, Image, ViewStyle, TextStyle, TouchableOpacity } from 'react-nativ
 
 import { translate } from '@src/i18n'
 import { useTheme, SylCommon } from '@src/theme'
+import { HELP_PAGE_LINK } from '@src/config/constants'
 import { IState, ITheme, V2exObject } from '@src/types'
 import { Text, Button, Avatar } from '@src/components'
 import { MyScreenProps as ScreenProps, ROUTES } from '@src/navigation'
@@ -75,9 +76,9 @@ const My = ({
         <TouchableOpacity
           style={SylCommon.Table.item(theme)}
           onPress={() => {
-            navigation.navigate(ROUTES.WebLink, { title: translate('common.help'), url: app.site.site_url })
+            navigation.navigate(ROUTES.WebLink, { title: translate('common.help'), url: HELP_PAGE_LINK })
           }}>
-          <Text style={SylCommon.Table.itemText(theme)}>{translate('common.language')}</Text>
+          <Text style={SylCommon.Table.itemText(theme)}>{translate('common.help')}</Text>
           <Image style={SylCommon.Table.itemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />
         </TouchableOpacity>
         <TouchableOpacity
