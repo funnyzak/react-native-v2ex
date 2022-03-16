@@ -37,6 +37,7 @@ React Native 快速开发脚手架项目。项目基于 [V2EX](https://v2ex.com)
 9. 使用 **[react-native-splash-screen](https://github.com/crazycodeboy/react-native-splash-screen)** 控制开屏图。
 10. Toast 同时集成了 [react-native-easy-toast](https://github.com/crazycodeboy/react-native-easy-toast#api)、[react-native-toast-message](https://github.com/calintamas/react-native-toast-message)。
 11. 日期格式化使用 [dayjs](https://dayjs.gitee.io/docs/zh-CN/installation/typescript)。
+12. WebView 使用 [react-native-webview](https://github.com/react-native-webview/react-native-webview)。
 
 ## 环境
 
@@ -206,6 +207,7 @@ cd android
 - react-native-reanimated
 - react-native-localize
 - react-native-device-info
+- react-native-webview
 - prettier
 
 ## 预览
