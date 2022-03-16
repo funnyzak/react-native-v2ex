@@ -75,6 +75,14 @@ const My = ({
         <TouchableOpacity
           style={SylCommon.Table.item(theme)}
           onPress={() => {
+            navigation.navigate(ROUTES.WebLink, { title: translate('common.help'), url: app.site.site_url })
+          }}>
+          <Text style={SylCommon.Table.itemText(theme)}>{translate('common.language')}</Text>
+          <Image style={SylCommon.Table.itemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={SylCommon.Table.item(theme)}
+          onPress={() => {
             navigation.navigate(ROUTES.About)
           }}>
           <Text style={SylCommon.Table.itemText(theme)}>{translate('common.about')}</Text>

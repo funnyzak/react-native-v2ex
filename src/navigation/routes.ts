@@ -27,6 +27,7 @@ export type RootStackParamList = {
   Theme: undefined
   Search: { query: string }
   Readed: undefined
+  WebLink: { url: string; title?: string }
 }
 
 export type CommonScreenProps = {
@@ -74,6 +75,8 @@ export type FeedbackScreenProps = NativeStackScreenProps<RootStackParamList, 'Fe
 export type ThemeScreenProps = NativeStackScreenProps<RootStackParamList, 'Theme'> & CommonScreenProps
 
 export type SearchScreenProps = NativeStackScreenProps<RootStackParamList, 'Search'> & CommonScreenProps
+
+export type WebLinkScreenProps = NativeStackScreenProps<RootStackParamList, 'WebLink'> & CommonScreenProps
 
 type k1 = keyof RootStackParamList
 
@@ -161,7 +164,11 @@ export const ROUTES = {
   /**
    * @description 搜索
    */
-  Search: 'Search'
+  Search: 'Search',
+  /**
+   * @description WebUrl
+   */
+  WebLink: 'WebLink'
 } as const
 
 // see https://stackoverflow.com/questions/52393730/typescript-string-literal-union-type-from-enum

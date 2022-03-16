@@ -335,6 +335,15 @@ export const AppNavigationContainer = () => {
                 headerShown: true
               }}
             />
+            <StackNavigator.Screen
+              name={ROUTES.WebLink}
+              component={Screens.WebLinkScreen}
+              options={({ route }) => ({
+                title: route?.params?.title ?? translate('brand.name'),
+                ...defaultScreenOptions(theme),
+                headerShown: true
+              })}
+            />
           </StackNavigator.Navigator>
         </NavigationContainer>
       </ToastProvider>

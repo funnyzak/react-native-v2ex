@@ -1,8 +1,10 @@
 {
   "brand": {
+    "name": "V2EX",
     "intro": "React Native Starter project. The project is based on the V2EX open API and provides a simple sample community class application."
   },
   "common": {
+    "help": "Help",
     "replies": "Replies",
     "repoURL": "Source Link",
     "tip": "Tip",
@@ -71,7 +73,8 @@
     "Theme": "Theme Setting",
     "Search": "Search",
     "Profile": "Profile",
-    "Readed": "Readed"
+    "Readed": "Readed",
+    "WebLink": "Web Viewer"
   },
   "placeholder": {
     "token": "Type token here..",

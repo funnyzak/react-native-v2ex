@@ -1,8 +1,10 @@
 {
   "brand": {
+    "name": "V2EX",
     "intro": "React Native 快速开发脚手架项目。项目基于 V2EX 开放 API，提供了一个简单的社区类应用样板。",
   },
   "common": {
+    "help": "帮助",
     "replies": "回复",
     "repoURL": "开源地址",
     "tip": "提示",
@@ -71,7 +73,8 @@
     "Theme": "主题设置",
     "Search": "搜索",
     "Profile": "个人资料",
-    "Readed": "已读主题"
+    "Readed": "已读主题",
+    "WebLink": "查看网页"
   },
   "placeholder": {
     "token": "请输入登陆令牌",
