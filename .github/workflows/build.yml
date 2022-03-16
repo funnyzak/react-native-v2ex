@@ -47,14 +47,16 @@ jobs:
       - name: Build Changelog
         id: github_release
         uses: mikepenz/release-changelog-builder-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          configuration: ".config/changelog_configuration.json"
+          owner: "leon"
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Echo changelog
         run: echo ${{steps.build_changelog.outputs.changelog}} > CHANGELOG.txt
 
-      - name: Rename replease name 
-        run: mv android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/v2ex-${{ steps.get_version.outputs.VERSION }}.apk
+      - name: Rename Apk Name 
+        run: cp android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/v2ex-${{ steps.get_version.outputs.VERSION }}.apk
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
