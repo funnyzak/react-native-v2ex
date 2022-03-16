@@ -44,18 +44,6 @@ jobs:
         id: get_version
         run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
 
-      - name: Build Changelog
-        id: github_release
-        uses: mikepenz/release-changelog-builder-action@v1
-        with:
-          configuration: ".config/changelog_configuration.json"
-          owner: "leon"
-          fromTag: "0.1.6.3"
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Echo changelog
-        run: echo ${{steps.build_changelog.outputs.changelog}} > CHANGELOG.txt
-
       - name: Rename Apk Name 
         run: cp android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/v2ex-${{ steps.get_version.outputs.VERSION }}.apk
 
@@ -66,7 +54,6 @@ jobs:
           body_path: CHANGELOG.txt
           files:  |
             android/app/build/outputs/apk/release/v2ex-${{ steps.get_version.outputs.VERSION }}.apk
-            CHANGELOG.txt
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
 
