@@ -50,6 +50,7 @@ jobs:
         with:
           configuration: ".config/changelog_configuration.json"
           owner: "leon"
+          fromTag: "0.1.6.3"
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Echo changelog
