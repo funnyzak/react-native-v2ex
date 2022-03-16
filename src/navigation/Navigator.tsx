@@ -44,7 +44,7 @@ const MainNavigator = createBottomTabNavigator()
 const defaultScreenOptions = (theme: ITheme): NativeStackNavigationOptions => ({
   animationTypeForReplace: 'push',
   animation: 'slide_from_right',
-  statusBarAnimation: 'fade',
+  // statusBarAnimation: 'fade',
   headerStyle: {
     backgroundColor: theme.colors.primary
   },
