@@ -73,4 +73,4 @@ jobs:
         with:
           key: ${{secrets.JPUSH_KEY}}
           head: ${{github.repository}}已完成打包发布
-          body: 来自GithubAction：${{github.repository}} 发布已完成，下载地址：https://github.com/funnyzak/react-native-starter/releases。
+          body: 来自GithubAction：${{github.repository}} 发布已完成，下载地址：https://github.com/funnyzak/react-native-v2ex/releases。

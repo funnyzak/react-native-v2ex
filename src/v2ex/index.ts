@@ -12,7 +12,7 @@ import { logError } from '../helper/logger'
 const defaultConfiguration = {
   url: 'https://www.v2ex.com',
   store: 'api',
-  userAgent: 'V2ex App API Library',
+  userAgent: 'V2EX API Library',
   authentication: {
     token: undefined,
     scope: undefined,

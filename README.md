@@ -1,4 +1,4 @@
-# React Native Starter
+# React Native V2EX
 
 [![js-standard-style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/feross/standard)
 [![license][license-image]][repository-url]
@@ -7,18 +7,20 @@
 [![action][ci-image]][ci-url]
 [![Release Date][rle-image]][rle-url]
 
-[commit-activity-image]: https://img.shields.io/github/commit-activity/m/funnyzak/react-native-starter?style=flat-square
-[last-commit-image]: https://img.shields.io/github/last-commit/funnyzak/react-native-starter?style=flat-square
-[license-image]: https://img.shields.io/github/license/funnyzak/react-native-starter.svg?style=flat-square
-[repository-url]: https://github.com/funnyzak/react-native-starter
-[rle-url]: https://github.com/funnyzak/react-native-starter/releases/latest
-[ci-image]: https://img.shields.io/github/workflow/status/funnyzak/react-native-starter/react-native-android-build-apk
-[ci-url]: https://github.com/funnyzak/react-native-starter/actions
-[rle-image]: https://img.shields.io/github/release-date/funnyzak/react-native-starter.svg
+[commit-activity-image]: https://img.shields.io/github/commit-activity/m/funnyzak/react-native-v2ex?style=flat-square
+[last-commit-image]: https://img.shields.io/github/last-commit/funnyzak/react-native-v2ex?style=flat-square
+[license-image]: https://img.shields.io/github/license/funnyzak/react-native-v2ex.svg?style=flat-square
+[repository-url]: https://github.com/funnyzak/react-native-v2ex
+[rle-url]: https://github.com/funnyzak/react-native-v2ex/releases/latest
+[ci-image]: https://img.shields.io/github/workflow/status/funnyzak/react-native-v2ex/react-native-android-build-apk
+[ci-url]: https://github.com/funnyzak/react-native-v2ex/actions
+[rle-image]: https://img.shields.io/github/release-date/funnyzak/react-native-v2ex.svg
 
-React Native 快速开发脚手架项目。项目基于 [V2EX](https://v2ex.com) 开放 API，提供了一个简单的社区类应用样板。
+这个项目使用了 React Native 构建了一个 [V2EX](https://v2ex.com) 移动客户端应用。主要目的是为了构建一个 React Native 快速开发脚手架。
 
-最新编译发布：[点这里](https://github.com/funnyzak/react-native-starter/releases/latest)。
+客户端数据，全部基于 [V2EX](https://v2ex.com) 开放 API。
+
+最新编译发布：[点这里](https://github.com/funnyzak/react-native-v2ex/releases/latest)。
 
 运行说明：
 
@@ -62,7 +64,7 @@ React Native 快速开发脚手架项目。项目基于 [V2EX](https://v2ex.com)
 ```bash
 
 # clone repos
-$ git clone https://github.com/funnyzak/react-native-starter.git && cd react-native-starter
+$ git clone https://github.com/funnyzak/react-native-v2ex.git && cd react-native-v2ex
 
 # deps install
 $ yarn
@@ -214,19 +216,19 @@ cd android
 
 ### iOS 预览
 
-![home_light](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/iOS/home_light.png)
-![home_apple](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/iOS/home_apple.png)
-![home_dark](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/iOS/home_dark.png)
-![my_light](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/iOS/my_light.png)
-![my_en](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/iOS/my_en.png)
+![home_light](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/iOS/home_light.png)
+![home_apple](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/iOS/home_apple.png)
+![home_dark](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/iOS/home_dark.png)
+![my_light](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/iOS/my_light.png)
+![my_en](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/iOS/my_en.png)
 
 ### Android 预览
 
-![list](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/Android/list.jpeg)
-![list2](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/Android/list2.jpeg)
-![detail](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/Android/detail.jpeg)
-![my](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/Android/my.jpeg)
-![sign](https://raw.githubusercontent.com/funnyzak/react-native-starter/develop/_docs/assets/screenshot/Android/list2.jpeg)
+![list](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/Android/list.jpeg)
+![list2](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/Android/list2.jpeg)
+![detail](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/Android/detail.jpeg)
+![my](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/Android/my.jpeg)
+![sign](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/Android/list2.jpeg)
 
 ## 参考
 
@@ -252,15 +254,11 @@ cd android
 - [react native sample](https://github.com/facebook/react-native)
 - [react native typescript sample](https://github.com/react-native-community/react-native-template-typescript)
 
-## 赞赏
-
-![赞赏](https://raw.githubusercontent.com/funnyzak/tts-now/master/public/_docs/assets/img/coffee.png)
-
 ## Author
 
-| [![twitter/funnyzak](https://s.gravatar.com/avatar/c2437e240644b1317a4a356c6d6253ee?s=70)](https://twitter.com/funnyzak 'Follow @funnyzak on Twitter') [![Join the chat at https://gitter.im/tts-now/community](https://badges.gitter.im/tts-now/community.svg)](https://gitter.im/tts-now/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [funnyzak](https://yycc.me/)                                                                                                                                                                                                                                                                                                                                                    |
+| [![twitter/funnyzak](https://s.gravatar.com/avatar/c2437e240644b1317a4a356c6d6253ee?s=70)](https://twitter.com/funnyzak 'Follow @funnyzak on Twitter') [![Join the chat at https://gitter.im/react-native-v2ex/community](https://badges.gitter.im/react-native-v2ex/community.svg)](https://gitter.im/tts-now/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [funnyzak](https://yycc.me/)                                                                                                                                                                                                                                                                                                                                                                        |
 
 ## License
 

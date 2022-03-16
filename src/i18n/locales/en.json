@@ -1,7 +1,7 @@
 {
   "brand": {
     "name": "V2EX",
-    "intro": "React Native Starter project. The project is based on the V2EX open API and provides a simple sample community class application."
+    "intro": "This project used React Native to build a V2EX mobile client application. The main goal was to build a React Native rapid development scaffold."
   },
   "common": {
     "help": "Help",
