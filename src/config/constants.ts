@@ -29,4 +29,4 @@ export const REPO_GITHUB_URL = `https://github.com/${REPO_NAME}`
 /**
  * 帮助文档
  */
-export const HELP_PAGE_LINK = 'https://github.com/funnyzak/react-native-v2ex/blob/develop/_docs/Help.md'
+export const HELP_PAGE_LINK = 'https://yycc.dev/2022/03/17/react-native-v2ex/'

@@ -52,14 +52,6 @@ const My = ({
         <TouchableOpacity
           style={SylCommon.Table.item(theme)}
           onPress={() => {
-            navigation.navigate(ROUTES.Setting)
-          }}>
-          <Text style={SylCommon.Table.itemText(theme)}>{translate('common.setting')}</Text>
-          <Image style={SylCommon.Table.itemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={SylCommon.Table.item(theme)}
-          onPress={() => {
             navigation.navigate(ROUTES.Theme)
           }}>
           <Text style={SylCommon.Table.itemText(theme)}>{translate('common.theme')}</Text>
@@ -98,14 +90,6 @@ const My = ({
           }}>
           <Text style={SylCommon.Table.itemText(theme)}>{translate('common.email')}</Text>
           <Text style={SylCommon.Table.itemRightText(theme)}>{app.aboutUs.email}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={SylCommon.Table.item(theme)}
-          onPress={() => {
-            utils.linking(`https://twitter.com/${app.aboutUs.twitter}`)
-          }}>
-          <Text style={SylCommon.Table.itemText(theme)}>{translate('common.twitter')}</Text>
-          <Text style={SylCommon.Table.itemRightText(theme)}>@{app.aboutUs.twitter}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={SylCommon.Table.item(theme)}
