@@ -6,25 +6,36 @@ import { REPO_GITHUB_URL, REPO_NAME } from '@src/config/constants'
 import { translate } from '@src/i18n'
 import { linking } from '@src/utils'
 import { useTheme, SylCommon } from '@src/theme'
-import { ITheme } from '@src/types'
+import { IState, ITheme } from '@src/types'
 import { AboutScreenProps as ScreenProps } from '@src/navigation/routes'
 
-const About = ({}: ScreenProps) => {
+const About = ({
+  app
+}: ScreenProps & {
+  app: IState.AppState
+}) => {
   const { theme } = useTheme()
   return (
-    <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme), styles.container(theme)]}>
-      <Image style={styles.logo(theme)} source={theme.assets.images.icons.icon} resizeMode="contain" />
-      <Text style={styles.desc(theme)}>{translate('brand.intro')}</Text>
-      <View style={styles.content(theme)}>
-        <View style={SylCommon.Layout.fill}>
-          <Text>{translate('common.repoURL')}：</Text>
-          <Text style={styles.link(theme)} onPress={() => linking(REPO_GITHUB_URL)}>
-            {REPO_NAME}
-          </Text>
+    <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
+      <View style={styles.container(theme)}>
+        <Image style={styles.logo(theme)} source={theme.assets.images.icons.icon} resizeMode="contain" />
+        <Text style={styles.desc(theme)}>
+          V{app.version.version}(Build {app.version.buildId})
+        </Text>
+      </View>
+      <View style={styles.container(theme)}>
+        <Text style={styles.desc(theme)}>{translate('brand.intro')}</Text>
+        <View style={styles.content(theme)}>
+          <View style={SylCommon.Layout.fill}>
+            <Text>{translate('common.repoURL')}：</Text>
+            <Text style={styles.link(theme)} onPress={() => linking(REPO_GITHUB_URL)}>
+              {REPO_NAME}
+            </Text>
+          </View>
         </View>
       </View>
       <View style={styles.footer(theme)}>
-        <Text style={styles.footerText(theme)}>code by funnyzak</Text>
+        <Text style={styles.footerText(theme)}>@funnyzak 2022</Text>
       </View>
     </View>
   )
@@ -35,17 +46,19 @@ const About = ({}: ScreenProps) => {
  */
 const styles = {
   container: (theme: ITheme): ViewStyle => ({
-    paddingHorizontal: theme.spacing.extraLarge
+    paddingHorizontal: theme.spacing.extraLarge,
+    paddingBottom: 32
   }),
   logo: (theme: ITheme): ImageStyle => ({
-    marginVertical: 32,
+    marginTop: 32,
     borderRadius: 10,
     width: 75,
     height: 75,
     alignSelf: 'center'
   }),
   desc: (theme: ITheme): TextStyle => ({
-    alignSelf: 'center'
+    alignSelf: 'center',
+    paddingTop: theme.spacing.tiny
   }),
   content: (theme: ITheme) => ({
     marginTop: 32
@@ -62,8 +75,12 @@ const styles = {
   }),
   footerText: (theme: ITheme) => ({
     ...theme.typography.captionText,
-    color: theme.colors.secondary
+    color: theme.colors.captionText
   })
 }
 
-export default connect()(About)
+const mapStateToProps = ({ app }: { app: IState.AppState }) => {
+  return { app }
+}
+
+export default connect(mapStateToProps)(About)
