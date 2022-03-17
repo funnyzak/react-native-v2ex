@@ -270,5 +270,16 @@ export declare module V2exObject {
     member: Member
   }
 
-  export interface Notification {}
+  export interface Notification {
+    id: number
+    member_id: number
+    for_member_id: number
+    text: string
+    payload: string
+    payload_rendered: string
+    created: number
+    member: {
+      username: string
+    }
+  }
 }
