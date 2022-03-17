@@ -16,13 +16,27 @@
 [ci-url]: https://github.com/funnyzak/react-native-v2ex/actions
 [rle-image]: https://img.shields.io/github/release-date/funnyzak/react-native-v2ex.svg
 
-这个项目使用了 React Native 构建了一个 [V2EX](https://v2ex.com) 移动客户端应用。主要目的是为了构建一个 React Native 快速开发脚手架。
+这个项目使用了 React Native 构建了一个 [V2EX](https://v2ex.com) 移动客户端应用。
 
-客户端数据，全部基于 [V2EX](https://v2ex.com) 开放 API。最新编译发布：[点这里](https://github.com/funnyzak/react-native-v2ex/releases/latest)。
+**主要目的是为了构建一个 React Native 快速开发脚手架。**
 
-**目前功能还在不断完善中...**
+客户端数据，全部基于 [V2EX](https://v2ex.com) 开放 API。
 
-运行说明：
+**最新编译发布：**
+
+- [Android APK](https://github.com/funnyzak/react-native-v2ex/releases/latest)
+- [iOS Testflight](#)
+
+**目前功能还在不断完善中，下一步**
+
+- [ ] 发布 Testflight 版，体验 iOS
+- [ ] 评论列表
+- [ ] 通知模块
+- [ ] 节点模块
+- [ ] 升级提醒
+- [ ] 通过 cheerio，获取更多的数据，开发交互功能
+
+**运行说明：**
 
 在 MacOS 下开发，在 iOS 为 13+ 的 iPhone Simulator/iPhone 12、Android 9.0 的 AVD 模拟器/Mi Phone 均编译成功运行。
 
