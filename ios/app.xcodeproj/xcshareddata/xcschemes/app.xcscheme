@@ -83,6 +83,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "v2ex"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
