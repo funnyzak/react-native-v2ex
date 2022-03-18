@@ -25,7 +25,7 @@
 **最新编译发布：**
 
 - [Android APK](https://github.com/funnyzak/react-native-v2ex/releases/latest)
-- [iOS Testflight](#)
+- **iOS Testflight(等待审核中...)**
 
 **目前功能还在不断完善中，下一步**
 
