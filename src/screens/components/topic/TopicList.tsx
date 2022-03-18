@@ -5,7 +5,6 @@ import { TopicItem, NotFound } from '../'
 import { Spinner } from '@src/components'
 import { SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import { NavigationService, ROUTES } from '@src/navigation'
 
 export interface TopicListProps {
