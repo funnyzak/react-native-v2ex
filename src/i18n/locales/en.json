@@ -104,6 +104,7 @@
   "errors": {
     "error": "Error",
     "noFound": "No found",
-    "noTopics": "No topics."
+    "noTopics": "No topics",
+    "noNotifications": "No notifications"
   }
 }

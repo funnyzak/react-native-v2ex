@@ -2,7 +2,7 @@
  * Created by leon<silenceace@gmail.com> on 22/2/23.
  */
 import { createNavigationContainerRef, NavigationContainerRefWithCurrent } from '@react-navigation/native'
-import { RootStackParamList } from './routes'
+import { RootStackParamList, ROUTES } from './routes'
 
 let navigationRef = createNavigationContainerRef<RootStackParamList>()
 
@@ -18,11 +18,21 @@ function goBack() {
   navigationRef.goBack()
 }
 
+function goUserProfile(username: string) {
+  navigate(ROUTES.Profile, { username })
+}
+
+function goTopicDetail(topicId: string) {
+  navigate(ROUTES.TopicDetail, { topicId })
+}
+
 export type NavigationType = NavigationContainerRefWithCurrent<RootStackParamList>
 
 // add other navigation functions that you need and export them
 export default {
   goBack,
   navigate,
-  setTopLevelNavigator
+  setTopLevelNavigator,
+  goTopicDetail,
+  goUserProfile
 }

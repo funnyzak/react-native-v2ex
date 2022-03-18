@@ -104,6 +104,7 @@
   "errors": {
     "error": "错误",
     "noFound": "未找到相关内容",
-    "noTopics": "暂时没有找到相关主题"
+    "noTopics": "暂时没有找到相关主题",
+    "noNotifications": "暂时还没有通知"
   }
 }
