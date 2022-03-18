@@ -44,6 +44,8 @@
 
 **如有其他新功能建议的话建议提交 PR 加入到一起开发。**
 
+## 说明
+
 **运行说明：**
 
 在 MacOS 下开发，在 iOS 为 13+ 的 iPhone Simulator/iPhone 12、Android 9.0 的 AVD 模拟器/Mi Phone 均编译成功运行。
