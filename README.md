@@ -6,8 +6,6 @@
 [![GitHub commit activity][commit-activity-image]][repository-url]
 [![action][ci-image]][ci-url]
 [![Release Date][rle-image]][rle-url]
-[![Latest Release Download][down-latest-image]][rle-url]
-[![Total Download][down-total-image]][rle-all-url]
 
 [down-latest-image]: https://img.shields.io/github/downloads/funnyzak/react-native-start/latest/total.svg
 [down-total-image]: https://img.shields.io/github/downloads/funnyzak/react-native-start/total.svg
@@ -26,8 +24,7 @@
 ## 发布
 
 - [Android APK](https://github.com/funnyzak/react-native-v2ex/releases/latest)
-- **iOS Testflight(等待审核中...)**
--
+- iOS Testflight(审核中...)
 
 ## TODO
 
