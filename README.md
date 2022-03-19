@@ -6,49 +6,43 @@
 [![GitHub commit activity][commit-activity-image]][repository-url]
 [![action][ci-image]][ci-url]
 [![Release Date][rle-image]][rle-url]
+[![Latest Release Download][down-latest-image]][rle-url]
+[![Total Download][down-total-image]][rle-all-url]
 
+[down-latest-image]: https://img.shields.io/github/downloads/funnyzak/react-native-start/latest/total.svg
+[down-total-image]: https://img.shields.io/github/downloads/funnyzak/react-native-start/total.svg
 [commit-activity-image]: https://img.shields.io/github/commit-activity/m/funnyzak/react-native-v2ex?style=flat-square
 [last-commit-image]: https://img.shields.io/github/last-commit/funnyzak/react-native-v2ex?style=flat-square
 [license-image]: https://img.shields.io/github/license/funnyzak/react-native-v2ex.svg?style=flat-square
 [repository-url]: https://github.com/funnyzak/react-native-v2ex
 [rle-url]: https://github.com/funnyzak/react-native-v2ex/releases/latest
+[rle-all-url]: https://github.com/funnyzak/react-native-v2ex/releases
 [ci-image]: https://img.shields.io/github/workflow/status/funnyzak/react-native-v2ex/react-native-android-build-apk
 [ci-url]: https://github.com/funnyzak/react-native-v2ex/actions
 [rle-image]: https://img.shields.io/github/release-date/funnyzak/react-native-v2ex.svg
 
-这个项目使用了 React Native 构建了一个 [V2EX](https://v2ex.com) 移动客户端应用。
+这个项目使用了 React Native 构建了一个 [V2EX](https://v2ex.com) 移动客户端应用。目的是为了构建一个 React Native 快速开发脚手架。客户端数据基于 [V2EX](https://v2ex.com) 开放 API。
 
-**主要目的是为了构建一个 React Native 快速开发脚手架。**
-
-客户端数据，全部基于 [V2EX](https://v2ex.com) 开放 API。
-
-**最新编译发布：**
+## 发布
 
 - [Android APK](https://github.com/funnyzak/react-native-v2ex/releases/latest)
 - **iOS Testflight(等待审核中...)**
+-
 
-**目前功能还在不断完善中，下一步**
+## TODO
 
-- [ ] 做整体规划，重新设计功能架构
+- [x] 整体规划，重新设计功能架构
 - [ ] 规划重新设计 UI 交互
 - [ ] 界面语言文案修正
 - [ ] 页面功能组件抽离，提高项目复用性
-- [ ] 整理使用开源库，放到项目里
-- [ ] 发布 Testflight 版，体验 iOS
+- [ ] 整理项目所使用开源库
+- [ ] 发布 Testflight 版
 - [ ] 评论列表
 - [ ] 节点模块
 - [ ] 升级提醒
 - [ ] 通知模块
 - [ ] 上架 App Store、Google Play
 - [ ] 通过 cheerio，获取更多的数据，开发交互功能
-
-**如有其他新功能建议的话建议提交 PR 加入到一起开发。**
-
-## 说明
-
-**运行说明：**
-
-在 MacOS 下开发，在 iOS 为 13+ 的 iPhone Simulator/iPhone 12、Android 9.0 的 AVD 模拟器/Mi Phone 均编译成功运行。
 
 ## 特点
 
@@ -65,7 +59,19 @@
 11. 日期格式化使用 [dayjs](https://dayjs.gitee.io/docs/zh-CN/installation/typescript)。
 12. WebView 使用 [react-native-webview](https://github.com/react-native-webview/react-native-webview)。
 
+## 预览
+
+### iOS
+
+![preview](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/iOS/preview.png)
+
+### Android
+
+![preview](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/Android/preview.png)
+
 ## 环境
+
+在 MacOS 下开发，在 iOS 为 13+ 的 iPhone Simulator/iPhone 12、Android 9.0 的 AVD 模拟器/Mi Phone 均编译成功运行。
 
 必须安装 NodeJS(16.0+)、Yarn、[Watchman](https://reactnative.cn/docs/environment-setup)。
 
@@ -108,7 +114,6 @@ yarn ios
 # Android simulator start
 yarn android
 
-
 # print rn info
 npx react-native info
 
@@ -117,6 +122,9 @@ npx react-native upgrade
 
 # iOS debug info start
 npx react-native run-ios --verbose
+
+# iOS release build
+npx react-native run-ios --configuration Release
 
 # Android debug info start
 npx react-native run-android --verbose
@@ -172,7 +180,17 @@ cd android
 └── yarn.lock                # 依赖版本锁定文件
 ```
 
-## iOS 调试
+## 贡献
+
+如果你有任何的想法或者意见，欢迎提 Issue 或者 PR。
+
+<a href="https://github.com/funnyzak/react-native-v2ex/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=funnyzak/react-native-v2ex" />
+</a>
+
+## 调试
+
+### iOS 调试
 
 > 可以通过摇晃设备或是选择 iOS 模拟器的"Hardware"菜单中的"Shake Gesture"选项来打开开发菜单。另外，如果是在 iOS 模拟器中运行，还可以按下 Command⌘ + D 快捷键，Android 模拟器对应的则是 Command⌘ + M（windows 上可能是 F1 或者 F2），或是直接在命令行中运行 adb shell input keyevent 82 来发送菜单键命令。
 
@@ -216,7 +234,7 @@ cd android
 5.  开屏图的设置 iOS 使用 LaunchScreen.storyboard，使用 Xcode 修改即可。
 6.  修改 bundle name [看这里](https://stackoverflow.com/questions/37389905/change-package-name-for-android-in-react-native)。
 
-## 依赖库
+## 开源库
 
 - eslint
 - lodash
@@ -235,24 +253,6 @@ cd android
 - react-native-device-info
 - react-native-webview
 - prettier
-
-## 预览
-
-### iOS 预览
-
-![home_light](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/iOS/home_light.png)
-![home_apple](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/iOS/home_apple.png)
-![home_dark](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/iOS/home_dark.png)
-![my_light](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/iOS/my_light.png)
-![my_en](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/iOS/my_en.png)
-
-### Android 预览
-
-![list](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/Android/list.jpeg)
-![list2](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/Android/list2.jpeg)
-![detail](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/Android/detail.jpeg)
-![my](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/Android/my.jpeg)
-![sign](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/Android/list2.jpeg)
 
 ## 参考
 
@@ -276,13 +276,7 @@ cd android
 - [v2ex api](https://www.v2ex.com/p/7v9TEc53)
 - [v2ex token](https://www.v2ex.com/settings/tokens)
 - [react native sample](https://github.com/facebook/react-native)
-- [react native typescript sample](https://github.com/react-native-community/react-native-template-typescript)
-
-## Author
-
-| [![twitter/funnyzak](https://s.gravatar.com/avatar/c2437e240644b1317a4a356c6d6253ee?s=70)](https://twitter.com/funnyzak 'Follow @funnyzak on Twitter') [![Join the chat at https://gitter.im/react-native-v2ex/community](https://badges.gitter.im/react-native-v2ex/community.svg)](https://gitter.im/tts-now/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [funnyzak](https://yycc.me/)                                                                                                                                                                                                                                                                                                                                                                        |
+- [react native typescript sample](https://github.com/react-native-community/react-native-template-typescript) |
 
 ## License
 
