@@ -10,5 +10,5 @@ export default (v2ex: V2exAPI.V2ex): V2exAPI.Node => ({
       version
     ),
 
-  all: () => v2ex.get<V2exObject.Node[]>('/nodes/all.json', undefined, undefined, undefined, 'v2')
+  all: () => v2ex.get<V2exObject.Node[]>('/nodes/all.json', undefined, undefined, undefined, undefined)
 })

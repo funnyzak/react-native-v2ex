@@ -28,7 +28,10 @@ export const View = {
 }
 
 export const Node = {
-  node: (theme: ITheme) => ({
+  sectionTitle: (theme: ITheme) => ({
+    ...theme.typography.subheadingText
+  }),
+  nodeTitle: (theme: ITheme) => ({
     fontSize: 12,
     paddingVertical: 1,
     paddingHorizontal: 8,
@@ -36,7 +39,8 @@ export const Node = {
     borderRadius: 4,
     color: theme.colors.secondary
   }),
-  small: (theme: ITheme) => ({
+  smallTitle: (theme: ITheme) => ({
+    ...Node.nodeTitle(theme),
     fontSize: 10
   })
 }
