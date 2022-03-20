@@ -24,7 +24,7 @@
 ## 发布
 
 - [Android APK](https://github.com/funnyzak/react-native-v2ex/releases/latest)
-- [iOS Testflight 体验](<[审核中...](https://testflight.apple.com/join/7UnGRzH1)>)
+- [iOS Testflight](https://testflight.apple.com/join/7UnGRzH1)
 
 ## TODO
 
