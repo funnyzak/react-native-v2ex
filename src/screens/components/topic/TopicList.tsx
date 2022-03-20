@@ -30,7 +30,7 @@ const TopicList: React.FC<TopicListProps> = ({
 
   const onItemPress = (topic: V2exObject.Topic) => {
     if (onRowPress) onRowPress(topic)
-    NavigationService.navigate(ROUTES.TopicDetail, { topicId: topic.id.toString() })
+    NavigationService.navigate(ROUTES.TopicDetail, { topicId: topic.id })
   }
 
   const renderItemRow = ({ item }: { item: V2exObject.Topic }) =>

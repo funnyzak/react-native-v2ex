@@ -31,7 +31,7 @@ const NodeTopics = ({ route, navigation }: ScreenProps) => {
       setLoadMore(pageNum > 1)
 
       v2exLib.topic
-        .topicsByNode(route.params.nodeName, pageNum)
+        .pager(route.params.nodeName, pageNum)
         .then((rlt: V2exObject.Topic[]) => {
           if (rlt.length === 0) {
             setHasMore(false)
@@ -43,7 +43,6 @@ const NodeTopics = ({ route, navigation }: ScreenProps) => {
           setList((list || []).concat(rlt))
         })
         .catch((err) => {
-          console.log('fetchTopics error', err)
           showMessage(err.message)
         })
     },

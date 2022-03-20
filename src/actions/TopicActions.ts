@@ -66,7 +66,7 @@ export const getHomeNodeTopics =
           _topics = await v2exLib.topic.latestTopics()
         }
       } else {
-        _topics = await v2exLib.topic.topicsByNode(node, page)
+        _topics = await v2exLib.topic.pager(node, page)
       }
 
       dispatch({

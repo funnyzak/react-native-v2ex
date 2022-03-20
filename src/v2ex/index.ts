@@ -4,6 +4,8 @@ import member from './lib/member'
 import node from './lib/node'
 import notification from './lib/notification'
 import topic from './lib/topic'
+import reply from './lib/reply'
+
 import { logError } from '../helper/logger'
 
 /**
@@ -24,6 +26,7 @@ class V2ex {
   configuration: V2exAPI.Configuration = defaultConfiguration
   root_path?: string
   token?: string
+  reply: V2exAPI.Reply = reply(this)
   member: V2exAPI.Member = member(this)
   node: V2exAPI.Node = node(this)
   topic: V2exAPI.Topic = topic(this)
