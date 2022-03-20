@@ -58,6 +58,7 @@ export declare module V2exAPI {
     topic: Topic
     notification: Notification
     member: Member
+    reply: Reply
     setOptions: (options: Configuration) => void
     init: () => void
     setToken(token?: string): void
@@ -123,11 +124,16 @@ export declare module V2exAPI {
 
   export interface Node {
     /**
-     * Get node info by node name
-     * @param name
+     * Get node info by node name/id
+     * @param node id or node name
      * @param version
      */
-    get(name: string, version: API_VERSION): Promise<V2exObject.Node>
+    get(id: string | number, version: API_VERSION): Promise<V2exObject.Node>
+
+    /**
+     * Get All nodes by api version 1
+     */
+    all(): Promise<V2exObject.Node[]>
   }
 
   export interface Notification {
@@ -144,33 +150,49 @@ export declare module V2exAPI {
 
   export interface Topic {
     /**
-     *  Get node topic list
-     * @param name : node name
-     */
-    topicsByNode(name: string, page: number): Promise<V2exObject.Topic[]>
-
-    /**
-     * Get latest topic list
+     * Get latest topic list by api version 1
      */
     latestTopics: () => Promise<V2exObject.Topic[]>
 
     /**
-     * Get hot topic list
+     * Get hot topic list by api version 1
      */
     hotTopics: () => Promise<V2exObject.Topic[]>
 
     /**
-     * Get topic info by topic id
+     * Get topic info by topic id use api verson 1
      * @param id : topic id
+     * @param version : api version
      */
-    get(id: string): Promise<V2exObject.Topic>
+    topic(id: number, api_version: API_VERSION): Promise<V2exObject.Topic>
+
+    /**
+     *  pager note topic list by api version 2
+     * @param name : node name
+     */
+    pager(name: string, page: number): Promise<V2exObject.Topic[]>
+
+    /**
+     * get node topic by api version 1
+     * @param id : topic id
+     * @param get_type :  'username' | 'node_id' | 'node_name'
+     */
+    topics(id: string | number, get_type: 'username' | 'node_id' | 'node_name' | 'id'): Promise<V2exObject.Topic[]>
+  }
+
+  export interface Reply {
+    /**
+     * Get topic replies by api version 1
+     * @param topic_id : topic id
+     * @param page : page number
+     */
+    pager(topic_id: number, page: number): Promise<V2exObject.TopicReply[]>
 
     /**
      * Get topic replies
      * @param topic_id : topic id
-     * @param page : page num
      */
-    replies(topic_id: string, page: number): Promise<V2exObject.TopicReplay[]>
+    replies(topic_id: number): Promise<V2exObject.TopicReply[]>
   }
 }
 export declare module V2exObject {
@@ -262,7 +284,7 @@ export declare module V2exObject {
     id: number
   }
 
-  export interface TopicReplay {
+  export interface TopicReply {
     id: number
     content: string
     content_rendered: string
