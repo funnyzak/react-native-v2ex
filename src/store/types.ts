@@ -53,6 +53,8 @@ export declare module IState {
 
     siteStat?: V2exObject.SiteStat
 
+    allNode?: V2exObject.Node[]
+
     errorMessage?: Error[]
   }
 
