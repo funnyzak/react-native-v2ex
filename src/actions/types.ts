@@ -5,6 +5,7 @@
 export const APP_INIT = 'v2ex_init'
 export const APP_LATEST_VERSION = 'v2ex_latest_version'
 export const APP_SITE_INFO = 'v2ex_site_info'
+export const APP_ALL_NODE_INFO = 'v2ex_all_node_info'
 export const APP_SITE_STAT = 'v2ex_site_stat'
 export const APP_INIT_ERROR = 'v2ex_init_error'
 
@@ -46,6 +47,7 @@ export const ActionTypes = {
   APP_LATEST_VERSION,
   APP_SITE_INFO,
   MEMBER_READ_TOPIC,
+  APP_ALL_NODE_INFO,
   APP_INIT_ERROR,
   APP_NODE_NODE_TOPICS,
   APP_NODE_LOAD_MORE_TOPICS,

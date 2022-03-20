@@ -4,7 +4,7 @@ import _ from 'lodash'
 import { v2exLib } from '@src/v2ex'
 import { v2exOptions } from '@src/config/v2ex'
 import { MEMBER_TOKEN_KEY } from '@src/config/constants'
-import { APP_INIT, APP_SITE_STAT, APP_INIT_ERROR, APP_SITE_INFO, IState } from '../types'
+import { APP_INIT, APP_SITE_STAT, APP_INIT_ERROR, APP_SITE_INFO, APP_ALL_NODE_INFO, IState } from '../types'
 import { logError } from '@src/helper/logger'
 import DeviceInfo from 'react-native-device-info'
 
@@ -25,6 +25,8 @@ export const initV2ex = () => {
       dispatchSiteInfo(dispatch)
 
       dispatchSiteStat(dispatch)
+
+      dispatchAllNodeInfo(dispatch)
 
       dispatch({
         type: APP_INIT,
@@ -66,6 +68,19 @@ const dispatchSiteInfo = async (dispatch: Dispatch) => {
     dispatch({
       type: APP_SITE_INFO,
       payload: site_info
+    })
+  } catch (e) {
+    logError(e)
+  }
+}
+
+const dispatchAllNodeInfo = async (dispatch: Dispatch) => {
+  try {
+    const nodes = await v2exLib.node.all()
+
+    dispatch({
+      type: APP_ALL_NODE_INFO,
+      payload: nodes
     })
   } catch (e) {
     logError(e)

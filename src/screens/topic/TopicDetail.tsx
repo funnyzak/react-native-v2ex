@@ -51,7 +51,7 @@ const TopicDetail = ({ route, navigation }: ScreenProps) => {
                     nodeTitle: topic.node?.title || 'HOT'
                   })
                 }}>
-                <Text style={SylCommon.Node.node(theme)}>{topic.node?.name}</Text>
+                <Text style={SylCommon.Node.nodeTitle(theme)}>{topic.node?.name}</Text>
               </Pressable>
             </View>
           </View>
