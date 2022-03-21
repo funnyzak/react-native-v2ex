@@ -7,8 +7,8 @@
 [![action][ci-image]][ci-url]
 [![Release Date][rle-image]][rle-url]
 
-[down-latest-image]: https://img.shields.io/github/downloads/funnyzak/react-native-start/latest/total.svg
-[down-total-image]: https://img.shields.io/github/downloads/funnyzak/react-native-start/total.svg
+[down-latest-image]: https://img.shields.io/github/downloads/funnyzak/react-native-v2ex/latest/total.svg
+[down-total-image]: https://img.shields.io/github/downloads/funnyzak/react-native-v2ex/total.svg
 [commit-activity-image]: https://img.shields.io/github/commit-activity/m/funnyzak/react-native-v2ex?style=flat-square
 [last-commit-image]: https://img.shields.io/github/last-commit/funnyzak/react-native-v2ex?style=flat-square
 [license-image]: https://img.shields.io/github/license/funnyzak/react-native-v2ex.svg?style=flat-square
