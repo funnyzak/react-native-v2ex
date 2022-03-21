@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Dispatch } from 'redux'
 import _ from 'lodash'
 import { v2exLib } from '@src/v2ex'
+import { fetchAllNode } from './NodeActions'
 import { v2exOptions } from '@src/config/v2ex'
 import { MEMBER_TOKEN_KEY } from '@src/config/constants'
 import { APP_INIT, APP_SITE_STAT, APP_INIT_ERROR, APP_SITE_INFO, APP_ALL_NODE_INFO, IState } from '../types'
@@ -26,7 +27,7 @@ export const initV2ex = () => {
 
       dispatchSiteStat(dispatch)
 
-      dispatchAllNodeInfo(dispatch)
+      dispatch(fetchAllNode() as any)
 
       dispatch({
         type: APP_INIT,
@@ -68,19 +69,6 @@ const dispatchSiteInfo = async (dispatch: Dispatch) => {
     dispatch({
       type: APP_SITE_INFO,
       payload: site_info
-    })
-  } catch (e) {
-    logError(e)
-  }
-}
-
-const dispatchAllNodeInfo = async (dispatch: Dispatch) => {
-  try {
-    const nodes = await v2exLib.node.all()
-
-    dispatch({
-      type: APP_ALL_NODE_INFO,
-      payload: nodes
     })
   } catch (e) {
     logError(e)

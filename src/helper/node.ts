@@ -21,12 +21,12 @@ export let TabNodes: TabNodeProps[] = [
   { title: 'V2EX', parentNodeNames: ['v2ex'] }
 ]
 
-export const nodeChildren = (rootNode: TabNodeProps): V2exObject.Node[] => {
+export const nodeChildren = (rootNode: TabNodeProps, nodeData?: V2exObject.Node[]): V2exObject.Node[] => {
   const { title, parentNodeNames: parentNodes } = rootNode
 
   let nodes: V2exObject.Node[] = []
 
-  const all_node = store.getState().app.allNode
+  const all_node = nodeData ?? store.getState().app.allNode
   if (!all_node) return nodes
 
   return all_node.filter((v) => parentNodes.includes(v.parent_node_name))
