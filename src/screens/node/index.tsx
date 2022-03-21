@@ -11,20 +11,30 @@ import { TabNodes, nodeChildren } from '@src/helper/node'
 const Node = ({ route, navigation }: ScreenProps) => {
   const { theme } = useTheme()
 
-  const Item = ({ node }: { node: V2exObject.Node }) => (
-    <TouchableOpacity
-      style={styles.item(theme)}
-      onPress={() => {
-        NavigationService.goNodeTopics(node.name, node.title)
-      }}>
-      <Text style={SylCommon.Node.nodeTitle(theme)}>{node.title}</Text>
-    </TouchableOpacity>
+  const Item = ({ nodes }: { nodes: V2exObject.Node[] }) => (
+    <View style={styles.listContainer(theme)}>
+      {nodes.map((node) => (
+        <TouchableOpacity
+          key={node.name}
+          style={styles.item(theme)}
+          onPress={() => {
+            NavigationService.goNodeTopics(node.name, node.title)
+          }}>
+          <Text style={SylCommon.Node.nodeTitle(theme)}>{node.title}</Text>
+        </TouchableOpacity>
+      ))}
+    </View>
   )
 
   const sectionData = () => {
-    return TabNodes.map((node) => ({
+    return TabNodes.map((node, idx) => ({
       title: node.title,
-      data: nodeChildren(node),
+      data: [
+        {
+          name: 'children' + idx,
+          list: nodeChildren(node)
+        }
+      ],
       key: node.title
     }))
   }
@@ -34,9 +44,9 @@ const Node = ({ route, navigation }: ScreenProps) => {
       <View style={styles.container(theme)}>
         <SectionList
           sections={sectionData()}
-          contentContainerStyle={styles.listContainer(theme)}
+          contentContainerStyle={[]}
           keyExtractor={(item, index) => item.name + index}
-          renderItem={({ item }) => <Item node={item} />}
+          renderItem={({ item }) => <Item nodes={item.list} />}
           stickySectionHeadersEnabled={false}
           renderSectionHeader={({ section: { title } }) => (
             <View style={styles.section(theme)}>
@@ -59,7 +69,8 @@ const Node = ({ route, navigation }: ScreenProps) => {
  */
 const styles = {
   container: (theme: ITheme): ViewStyle => ({
-    width: theme.dimens.WINDOW_WIDTH - 40,
+    width: theme.dimens.WINDOW_WIDTH,
+    paddingLeft: theme.spacing.medium,
     flex: 1
   }),
   section: (theme: ITheme) => ({

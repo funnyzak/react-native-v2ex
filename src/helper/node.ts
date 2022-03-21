@@ -14,11 +14,11 @@ export interface TabNodeProps {
 }
 
 export let TabNodes: TabNodeProps[] = [
-  { title: 'V2EX', parentNodeNames: ['v2ex'] },
   { title: 'Life', parentNodeNames: ['life'] },
   { title: 'Geek', parentNodeNames: ['geek'] },
   { title: 'Programming', parentNodeNames: ['programming'] },
-  { title: 'Earth', parentNodeNames: ['cn', 'us'] }
+  { title: 'Earth', parentNodeNames: ['cn', 'us'] },
+  { title: 'V2EX', parentNodeNames: ['v2ex'] }
 ]
 
 export const nodeChildren = (rootNode: TabNodeProps): V2exObject.Node[] => {
