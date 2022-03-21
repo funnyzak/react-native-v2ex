@@ -58,9 +58,12 @@ export const Button = {
   textAction: (theme: ITheme): TextStyle => ({
     ...theme.typography.labelText,
     marginTop: theme.spacing.medium,
-    padding: theme.spacing.small,
     textAlign: 'center',
-    textDecorationLine: 'underline',
+    borderWidth: 1,
+    borderRadius: 5,
+    maxWidth: 200,
+    alignSelf: 'center',
+    borderBottomColor: theme.colors.border,
     paddingHorizontal: theme.spacing.medium
   })
 }

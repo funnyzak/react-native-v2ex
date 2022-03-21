@@ -87,7 +87,8 @@
     "likeTopics": "收藏主题",
     "readed": "已读主题",
     "clickToLogin": "点击此处授权登陆",
-    "oneceAgain": "再试试"
+    "oneceAgain": "再试试",
+    "tryAgain": "再试试"
   },
   "link": {
     "getToken": "从 V2ex 官方获取令牌"

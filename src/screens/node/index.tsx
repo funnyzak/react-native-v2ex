@@ -7,10 +7,20 @@ import { IState, ITheme, V2exObject } from '@src/types'
 import { Text } from '@src/components'
 import { NodeScreenProps as ScreenProps, NavigationService } from '@src/navigation'
 import { TabNodes, nodeChildren } from '@src/helper/node'
+import { NotFound } from '../components'
+import { translate } from '@src/i18n'
+import * as Actions from '@src/actions'
 
-const Node = ({ route, navigation }: ScreenProps) => {
+const Node = ({
+  route,
+  navigation,
+  allNode,
+  fetchAllNode
+}: ScreenProps & {
+  allNode?: V2exObject.Node[]
+  fetchAllNode: () => void
+}) => {
   const { theme } = useTheme()
-
   const Item = ({ nodes }: { nodes: V2exObject.Node[] }) => (
     <View style={styles.listContainer(theme)}>
       {nodes.map((node) => (
@@ -32,18 +42,31 @@ const Node = ({ route, navigation }: ScreenProps) => {
       data: [
         {
           name: 'children' + idx,
-          list: nodeChildren(node)
+          list: nodeChildren(node, allNode)
         }
       ],
       key: node.title
-    }))
+    })).filter((v) => v.data.length > 0)
   }
 
   const renderContent = () => {
+    const data = sectionData()
+
+    if (data.length === 0) {
+      return (
+        <NotFound
+          text={translate('errors.noFound')}
+          buttonText={translate('button.tryAgain')}
+          buttonPress={() => {
+            fetchAllNode()
+          }}
+        />
+      )
+    }
     return (
       <View style={styles.container(theme)}>
         <SectionList
-          sections={sectionData()}
+          sections={data}
           contentContainerStyle={[]}
           keyExtractor={(item, index) => item.name + index}
           renderItem={({ item }) => <Item nodes={item.list} />}
@@ -89,4 +112,8 @@ const styles = {
   })
 }
 
-export default Node
+const mapStateToProps = ({ app: { allNode } }: IState.State) => {
+  return { allNode }
+}
+
+export default connect(mapStateToProps, { fetchAllNode: Actions.fetchAllNode })(Node)

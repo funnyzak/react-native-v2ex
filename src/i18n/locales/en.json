@@ -87,7 +87,8 @@
     "likeTopics": "Like",
     "readed": "Readed",
     "clickToLogin": "Click here to login",
-    "oneceAgain": "Onece Again"
+    "oneceAgain": "Onece Again",
+    "tryAgain": "Try Again",
   },
   "link": {
     "getToken": "Get token Here"
