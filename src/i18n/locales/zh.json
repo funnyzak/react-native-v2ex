@@ -10,7 +10,7 @@
     "tip": "提示",
     "language": "语言",
     "auth": "授权",
-    "logout": "登出",
+    "logout": "退出登陆",
     "login": "登陆",
     "search": "搜索",
     "setting": "设置",
@@ -50,7 +50,7 @@
     "google": "谷歌"
   },
   "theme": {
-    "auto": "自动切换",
+    "auto": "跟随系统",
     "light": "浅色主题",
     "dark": "深色主题"
   },
@@ -103,9 +103,9 @@
     "logout": "确定登出吗？"
   },
   "errors": {
-    "error": "错误",
-    "noFound": "未找到相关内容",
-    "noTopics": "暂时没有找到相关主题",
-    "noNotifications": "暂时还没有通知"
+    "error": "产生了一个错误。",
+    "noFound": "未找到任何内容",
+    "noTopics": "还没有任何主题.",
+    "noNotifications": "还没有任何通知。"
   }
 }

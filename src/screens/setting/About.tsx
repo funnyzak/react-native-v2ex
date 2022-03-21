@@ -35,7 +35,7 @@ const About = ({
         </View>
       </View>
       <View style={styles.footer(theme)}>
-        <Text style={styles.footerText(theme)}>@funnyzak 2022</Text>
+        <Text style={styles.footerText(theme)}>@2022 Funnyzak</Text>
       </View>
     </View>
   )

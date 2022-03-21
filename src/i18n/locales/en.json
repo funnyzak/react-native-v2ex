@@ -10,7 +10,7 @@
     "tip": "Tip",
     "language": "Language",
     "auth": "Auth",
-    "logout": "Logout",
+    "logout": "Sign Out",
     "login": "Log In",
     "search": "Search",
     "setting": "Setting",
@@ -103,9 +103,9 @@
     "logout": "Are you sure to logout?"
   },
   "errors": {
-    "error": "Error",
-    "noFound": "No found",
-    "noTopics": "No topics",
-    "noNotifications": "No notifications"
+    "error": "Something went wrong.",
+    "noFound": "No found.",
+    "noTopics": "There aren't any topics.",
+    "noNotifications": "There aren't any notifications."
   }
 }
