@@ -26,6 +26,8 @@
 - [Android APK](https://github.com/funnyzak/react-native-v2ex/releases/latest)
 - [iOS Testflight](https://testflight.apple.com/join/7UnGRzH1)
 
+**最近在设计全新 UI 交互，功能上暂时可能不会继续增加，请耐心等待下。😁**
+
 ## TODO
 
 - [x] 整体规划，重新设计功能架构
