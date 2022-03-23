@@ -26,7 +26,7 @@
 - [Android APK](https://github.com/funnyzak/react-native-v2ex/releases/latest)
 - [iOS Testflight](https://testflight.apple.com/join/7UnGRzH1)
 
-**最近在设计全新 UI 交互，功能上暂时可能不会继续增加，请耐心等待下。😁**
+**最近在设计全新 UI 交互，功能上暂时不会继续增加。敬请期待关注。😁**
 
 ## TODO
 
