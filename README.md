@@ -1,12 +1,14 @@
 # React Native V2EX
 
 [![js-standard-style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/feross/standard)
+[![GitHub repo size][repo-size-image]][repository-url]
 [![license][license-image]][repository-url]
 [![GitHub last commit][last-commit-image]][repository-url]
 [![GitHub commit activity][commit-activity-image]][repository-url]
 [![action][ci-image]][ci-url]
 [![Release Date][rle-image]][rle-url]
 
+[repo-size-image]: https://img.shields.io/github/repo-size/funnyzak/react-native-v2ex
 [down-latest-image]: https://img.shields.io/github/downloads/funnyzak/react-native-v2ex/latest/total.svg
 [down-total-image]: https://img.shields.io/github/downloads/funnyzak/react-native-v2ex/total.svg
 [commit-activity-image]: https://img.shields.io/github/commit-activity/m/funnyzak/react-native-v2ex?style=flat-square
