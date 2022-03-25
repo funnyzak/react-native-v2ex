@@ -1,11 +1,11 @@
 # React Native V2EX
 
-[![js-standard-style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/feross/standard)
-[![GitHub repo size][repo-size-image]][repository-url]
 [![license][license-image]][repository-url]
-[![GitHub last commit][last-commit-image]][repository-url]
+[![js-standard-style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/feross/standard)
 [![action][ci-image]][ci-url]
+[![GitHub repo size][repo-size-image]][repository-url]
 [![Release Date][rle-image]][rle-url]
+[![GitHub last commit][last-commit-image]][repository-url]
 
 <!-- [![GitHub commit activity][commit-activity-image]][repository-url] -->
 
