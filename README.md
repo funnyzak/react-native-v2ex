@@ -4,9 +4,10 @@
 [![GitHub repo size][repo-size-image]][repository-url]
 [![license][license-image]][repository-url]
 [![GitHub last commit][last-commit-image]][repository-url]
-[![GitHub commit activity][commit-activity-image]][repository-url]
 [![action][ci-image]][ci-url]
 [![Release Date][rle-image]][rle-url]
+
+<!-- [![GitHub commit activity][commit-activity-image]][repository-url] -->
 
 [repo-size-image]: https://img.shields.io/github/repo-size/funnyzak/react-native-v2ex
 [down-latest-image]: https://img.shields.io/github/downloads/funnyzak/react-native-v2ex/latest/total.svg
