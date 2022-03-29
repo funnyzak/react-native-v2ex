@@ -28,6 +28,16 @@ export type RootStackParamList = {
   Search: { query: string }
   Readed: undefined
   WebLink: { url: string; title?: string }
+
+  SiteStat: undefined
+  NodeDetail: { nodeName: string; nodeTitle: string }
+  MyTopics: undefined
+  CacheSetting: undefined
+  UrlSchemes: undefined
+  OpenSource: undefined
+  Privacy: undefined
+  ChangeLog: undefined
+  HowToUse: undefined
 }
 
 export type CommonScreenProps = {
@@ -76,7 +86,25 @@ export type ThemeScreenProps = NativeStackScreenProps<RootStackParamList, 'Theme
 
 export type SearchScreenProps = NativeStackScreenProps<RootStackParamList, 'Search'> & CommonScreenProps
 
-export type WebLinkScreenProps = NativeStackScreenProps<RootStackParamList, 'WebLink'> & CommonScreenProps
+export type SiteStatScreenProps = NativeStackScreenProps<RootStackParamList, 'SiteStat'> & CommonScreenProps
+
+export type NodeDetailScreenProps = NativeStackScreenProps<RootStackParamList, 'NodeDetail'> & CommonScreenProps
+
+export type MyTopicsScreenProps = NativeStackScreenProps<RootStackParamList, 'MyTopics'> & CommonScreenProps
+
+export type CacheSettingScreenProps = NativeStackScreenProps<RootStackParamList, 'CacheSetting'> & CommonScreenProps
+
+export type UrlSchemesScreenProps = NativeStackScreenProps<RootStackParamList, 'UrlSchemes'> & CommonScreenProps
+
+export type OpenSourceScreenProps = NativeStackScreenProps<RootStackParamList, 'OpenSource'> & CommonScreenProps
+
+export type PrivacyScreenProps = NativeStackScreenProps<RootStackParamList, 'Privacy'> & CommonScreenProps
+
+export type VersionHitoryScreenProps = NativeStackScreenProps<RootStackParamList, 'VersionHitory'> & CommonScreenProps
+
+export type ChangeLogScreenProps = NativeStackScreenProps<RootStackParamList, 'ChangeLog'> & CommonScreenProps
+
+export type HowToUseScreenProps = NativeStackScreenProps<RootStackParamList, 'HowToUse'> & CommonScreenProps
 
 type k1 = keyof RootStackParamList
 
@@ -122,7 +150,7 @@ export const ROUTES = {
    */
   Node: 'Node',
   /**
-   * @description 节点话题
+   * @description 节点话题列表
    */
   NodeTopics: 'NodeTopics',
   /**
@@ -138,7 +166,7 @@ export const ROUTES = {
    */
   FollowPeople: 'FollowPeople',
   /**
-   * @description 喜欢的话题列表
+   * @description 喜欢/收藏的话题列表
    */
   LikeTopics: 'LikeTopics',
   /**
@@ -165,6 +193,52 @@ export const ROUTES = {
    * @description 搜索
    */
   Search: 'Search',
+
+  /**
+   * @description V2EX统计
+   */
+  SiteStat: 'SiteStat',
+
+  /**
+   * @description WebUrl
+   */
+  NodeDetail: 'NodeDetail',
+
+  /**
+   * @description 我的主题
+   */
+  MyTopics: 'MyTopics',
+
+  /**
+   * @description 缓存设置
+   */
+  CacheSetting: 'CacheSetting',
+
+  /**
+   * @description URLSchemes
+   */
+  UrlSchemes: 'UrlSchemes',
+
+  /**
+   * @description 开源列表
+   */
+  OpenSource: 'OpenSource',
+
+  /**
+   * @description 隐私政策
+   */
+  Privacy: 'Privacy',
+
+  /**
+   * @description 更新说明
+   */
+  ChangeLog: 'ChangeLog',
+
+  /**
+   * @description 如何使用
+   */
+  HowToUse: 'HowToUse',
+
   /**
    * @description WebUrl
    */
