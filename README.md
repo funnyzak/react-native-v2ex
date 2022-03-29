@@ -29,12 +29,12 @@
 - [Android APK](https://github.com/funnyzak/react-native-v2ex/releases/latest)
 - [iOS Testflight](https://testflight.apple.com/join/7UnGRzH1)
 
-**最近在设计全新 UI 交互，功能上暂时不会继续增加。敬请期待关注。😁**
+**新 UI 已初步设计完成，编码继续。**
 
 ## TODO
 
 - [x] 整体规划，重新设计功能架构
-- [ ] 规划重新设计 UI 交互
+- [x] 规划重新设计 UI 交互
 - [ ] 界面语言文案修正
 - [ ] 页面功能组件抽离，提高项目复用性
 - [ ] 整理项目所使用开源库
