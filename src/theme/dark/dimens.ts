@@ -17,12 +17,7 @@ const dimens: IThemeDimen = {
   badgeSize: 18,
   defaultButtonWidth: screenWidth * 0.9,
   defaultButtonHeight: 40,
-  defaultInputBoxHeight: 40,
-
-  /**
-   * avatar witth
-   */
-  avatarSize: 60
+  defaultInputBoxHeight: 40
 }
 
 export default dimens

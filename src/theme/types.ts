@@ -124,11 +124,6 @@ export interface IThemeDimen {
   defaultButtonWidth: number
   defaultButtonHeight: number
   defaultInputBoxHeight: number
-
-  /**
-   * avatar witth
-   */
-  avatarSize: number
 }
 
 export interface IThemeSpacing {
