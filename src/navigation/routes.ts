@@ -34,7 +34,7 @@ export type RootStackParamList = {
   NodeDetail: { nodeName: string; nodeTitle: string }
   MyTopics: undefined
   CacheSetting: undefined
-  UrlSchemes: undefined
+  URLSchemes: undefined
   OpenSourceLicense: undefined
   Privacy: undefined
   ChangeLog: undefined
@@ -95,7 +95,7 @@ export type MyTopicsScreenProps = NativeStackScreenProps<RootStackParamList, 'My
 
 export type CacheSettingScreenProps = NativeStackScreenProps<RootStackParamList, 'CacheSetting'> & CommonScreenProps
 
-export type UrlSchemesScreenProps = NativeStackScreenProps<RootStackParamList, 'UrlSchemes'> & CommonScreenProps
+export type URLSchemescreenProps = NativeStackScreenProps<RootStackParamList, 'URLSchemes'> & CommonScreenProps
 
 export type OpenSourceLicenseScreenProps = NativeStackScreenProps<RootStackParamList, 'OpenSourceLicense'> &
   CommonScreenProps
@@ -219,7 +219,7 @@ export const ROUTES = {
   /**
    * @description URLSchemes
    */
-  UrlSchemes: 'UrlSchemes',
+  URLSchemes: 'URLSchemes',
 
   /**
    * @description 开源列表
