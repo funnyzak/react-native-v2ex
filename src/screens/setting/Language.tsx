@@ -14,8 +14,6 @@ const translationList = (Object.keys(translationTitle) as Array<keyof typeof tra
 }))
 
 const Language = ({
-  route,
-  navigation,
   languageTag,
   setLocales
 }: ScreenProps & {

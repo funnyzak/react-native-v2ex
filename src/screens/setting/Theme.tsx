@@ -14,8 +14,6 @@ const themeList = (Object.keys(themes) as Array<keyof typeof themes>).map((v) =>
 }))
 
 const Theme = ({
-  route,
-  navigation,
   themeName,
   setTheme
 }: ScreenProps & {
