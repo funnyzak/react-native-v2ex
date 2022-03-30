@@ -77,7 +77,7 @@ const TopicList: React.FC<TopicListProps> = ({
     if (!searchIndicator) {
       return (
         <NotFound
-          text={translate('errors.noTopics')}
+          text={translate('placeholder.noTopics')}
           buttonText={translate('button.oneceAgain')}
           buttonPress={refreshCallback}
         />

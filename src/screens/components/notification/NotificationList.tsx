@@ -99,7 +99,7 @@ const NotificationList: React.FC<NotificationListProps> = ({
     }
     return (
       <NotFound
-        text={translate('errors.noNotifications')}
+        text={translate('placeholder.noNotifications')}
         buttonText={translate('button.oneceAgain')}
         buttonPress={refreshCallback}
       />
