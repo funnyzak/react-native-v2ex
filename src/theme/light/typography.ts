@@ -22,6 +22,7 @@ const typographys: IThemeTypography = {
     fontFamily,
     color: appbarTitleTextColor,
     fontSize: 18,
+    lineHeight: 30,
     fontStyle: 'normal',
     fontWeight: fontWeightRegular
   },
@@ -29,6 +30,7 @@ const typographys: IThemeTypography = {
     fontFamily,
     color: appbarTitleTextColor,
     fontSize: 18,
+    lineHeight: 30,
     fontStyle: 'normal',
     fontWeight: fontWeightSemiBold
   },
@@ -38,14 +40,16 @@ const typographys: IThemeTypography = {
   headingText: {
     fontFamily,
     color: titleTextColor,
-    fontSize: 18,
+    fontSize: 17,
+    lineHeight: 24,
     fontStyle: 'normal',
     fontWeight: fontWeightRegular
   },
   headingTextBold: {
     fontFamily,
     color: titleTextColor,
-    fontSize: 18,
+    fontSize: 17,
+    lineHeight: 24,
     fontStyle: 'normal',
     fontWeight: fontWeightBold
   },
@@ -56,6 +60,7 @@ const typographys: IThemeTypography = {
     fontFamily,
     color: titleTextColor,
     fontSize: 16,
+    lineHeight: 22,
     fontStyle: 'normal',
     fontWeight: fontWeightRegular
   },
@@ -63,6 +68,7 @@ const typographys: IThemeTypography = {
     fontFamily,
     color: titleTextColor,
     fontSize: 16,
+    lineHeight: 22,
     fontStyle: 'normal',
     fontWeight: fontWeightBold
   },
@@ -75,6 +81,7 @@ const typographys: IThemeTypography = {
     fontFamily,
     color: bodyTextColor,
     fontSize: 15,
+    lineHeight: 21,
     fontStyle: 'normal',
     fontWeight: fontWeightRegular
   },
@@ -82,6 +89,7 @@ const typographys: IThemeTypography = {
     fontFamily,
     color: bodyTextColor,
     fontSize: 15,
+    lineHeight: 21,
     fontStyle: 'normal',
     fontWeight: fontWeightBold
   },
@@ -93,6 +101,7 @@ const typographys: IThemeTypography = {
     fontFamily,
     color: titleTextColor,
     fontSize: 14,
+    lineHeight: 18,
     fontStyle: 'normal',
     fontWeight: fontWeightRegular
   },
@@ -100,6 +109,7 @@ const typographys: IThemeTypography = {
     fontFamily,
     color: titleTextColor,
     fontSize: 14,
+    lineHeight: 18,
     fontStyle: 'normal',
     fontWeight: fontWeightBold
   },
@@ -112,6 +122,7 @@ const typographys: IThemeTypography = {
     fontFamily,
     color: captionTextColor,
     fontSize: 12,
+    lineHeight: 16,
     fontStyle: 'normal',
     fontWeight: fontWeightRegular
   },
@@ -119,6 +130,7 @@ const typographys: IThemeTypography = {
     fontFamily,
     color: captionTextColor,
     fontSize: 12,
+    lineHeight: 16,
     fontStyle: 'normal',
     fontWeight: fontWeightBold
   },
@@ -126,7 +138,10 @@ const typographys: IThemeTypography = {
    * Use this style to change <Input /> element text style
    */
   inputText: {
-    fontSize: 18,
+    fontFamily,
+    fontStyle: 'normal',
+    fontSize: 14,
+    lineHeight: 18,
     color: colors.titleText
   }
 }
