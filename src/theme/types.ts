@@ -6,6 +6,12 @@ import { TextStyle, ImageSourcePropType } from 'react-native'
 
 export interface IThemeColor {
   /**
+   * ========================= V2EX Logo color =========================
+   */
+  v2exLight: string
+  v2exDark: string
+
+  /**
    * ========================= Primary color : (Brand color) =========================
    * primaryDark: color for the status bar and for dark tint
    * primary: to be used as a background color for appbar(toolbar)
@@ -15,12 +21,12 @@ export interface IThemeColor {
    */
   primaryDark: string
   primary: string
+
   tabBarBackground: string
   tabBarIconInactive: string
   tabBarIconActive: string
   appbarTint: string
 
-  lightGrey: string
   tabShadowColor: string
   tabActiveTintColor: string
   tabInactiveTintColor: string
@@ -65,16 +71,6 @@ export interface IThemeColor {
   border: string
 
   /**
-   * Success messages and icons.
-   */
-  success: string
-
-  /**
-   * Error messages and icons.
-   */
-  error: string
-
-  /**
    * The default color of text in many components.
    * To be used for heading, subheading, label text
    */
@@ -89,9 +85,30 @@ export interface IThemeColor {
    * To be used for hint text component
    */
   captionText: string
+
+  /**
+   * Success messages and icons.
+   */
+  success: string
+
+  /**
+   * Error messages and icons.
+   */
+  error: string
+
+  /**
+   * Warning messages and icons.
+   */
+  warning: string
+
+  /**
+   * Info messages and icons.
+   */
+  info: string
+
   black: string
   white: string
-  modalBackground: string
+  lightGrey: string
 }
 
 export interface IThemeDimen {
@@ -107,11 +124,6 @@ export interface IThemeDimen {
   defaultButtonWidth: number
   defaultButtonHeight: number
   defaultInputBoxHeight: number
-
-  /**
-   * avatar witth
-   */
-  avatarSize: number
 }
 
 export interface IThemeSpacing {

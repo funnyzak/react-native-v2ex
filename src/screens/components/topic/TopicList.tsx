@@ -109,7 +109,7 @@ const styles = {
     flex: 1
   }),
   imageStyle: (theme: ITheme) => ({
-    height: theme.dimens.avatarSize,
+    height: 60,
     width: undefined,
     margin: theme.spacing.small,
     borderWidth: 1,
