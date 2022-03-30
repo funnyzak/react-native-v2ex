@@ -2,6 +2,12 @@ import { IThemeColor } from '../types'
 
 const colors: IThemeColor = {
   /**
+   * ========================= V2EX Logo color =========================
+   */
+  v2exLight: '#FBFBFB',
+  v2exDark: '#222223',
+
+  /**
    * ========================= Primary color : (Brand color) =========================
    * primaryDark: color for the status bar and for dark tint
    * primary: to be used as a background color for appbar(toolbar)
@@ -10,75 +16,95 @@ const colors: IThemeColor = {
    * Example: If primary color is dark, make appbarTintColor light
    */
   primaryDark: '#000',
-  primary: '#fff',
+  primary: '#FFF',
 
-  tabBarBackground: '#fff',
-  tabBarIconActive: '#200E32',
-  tabBarIconInactive: '#999999',
+  tabBarBackground: '#FFFFFF',
+  tabBarIconActive: '#025DC9',
+  tabBarIconInactive: '#898B8B',
   appbarTint: '#000',
 
-  lightGrey: '#F5F6FA',
   tabShadowColor: '#666666',
-  tabActiveTintColor: '#200E32',
-  tabInactiveTintColor: '#999999',
+  tabActiveTintColor: '#025DC9',
+  tabInactiveTintColor: '#898B8B',
+
   /**
    * ========================= Secondary color =========================
    * secondaryLight: to be used for hover state
    * secondary: to be used as default button, checkbox, spinner, radio button and other component color
    * secondaryDark: to be used for active state
    */
-  secondaryLight: '#53c3f8',
-  secondary: '#1CB0F6',
-  secondaryDark: '#0999dd',
+  secondaryLight: '#417BBF',
+  secondary: '#0477FF',
+  secondaryDark: '#0667DA',
+
   /**
    * disabled: To be used for disabled component background
    * disabledDark: To be used for disabled component border and text color
    */
-  disabled: 'hsl(208, 8%, 90%)',
-  disabledDark: 'hsl(208, 8%, 60%)',
+  disabled: '#9A9A9A',
+  disabledDark: '#8F8F8F',
+
   /**
    * A helper for making something see-thru. Use sparingly as many layers of transparency
    * can cause older AndroiddisabledDark devices to slow down due to the excessive compositing required
    * by their under-powered GPUs.
    */
   transparent: 'transparent',
+
   /**
    * The screen background.
    */
-  background: '#F5F6FA',
+  background: '#F6F6F6',
+
   /**
    * To be used as a default background for all components, like Card, CardSection, List etc
    */
-  surface: '#fff',
+  surface: '#FFFFFF',
+
   /**
    * Use it for card border
    */
-  border: '#d9d9d9',
-  /**
-   * Success messages and icons.
-   */
-  success: '#52c41a',
-  /**
-   * Error messages and icons.
-   */
-  error: '#ff190c',
+  border: '#E9E9E9',
+
   /**
    * The default color of text in many components.
    * To be used for heading, subheading, label text
    */
-  titleText: '#000',
+  titleText: '#43474A',
+
   /**
    * To be used for normal text like paragraph
    */
-  bodyText: '#737373',
+  bodyText: '#5A5F63',
+
   /**
    * To be used for hint text component
    */
-  captionText: '#8c8c8c',
+  captionText: '#A4A4A4',
+
+  /**
+   * Success messages and icons.
+   */
+  success: '#52c41a',
+
+  /**
+   * Error messages and icons.
+   */
+  error: '#ff190c',
+
+  /**
+   * Warning messages and icons.
+   */
+  warning: '#E6A23C',
+
+  /**
+   * Info messages and icons.
+   */
+  info: '#4F4D4D',
+
   black: '#000000',
   white: '#ffffff',
-
-  modalBackground: '#999999'
+  lightGrey: '#F5F6FA'
 }
 
 export default colors
