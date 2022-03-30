@@ -67,7 +67,7 @@
     "author": "Author",
     "us": "US",
     "me": "Me",
-    "my": "My",
+    "my": "My"
   },
   "label": {
     "registedMember": "Registered Member",
@@ -123,9 +123,9 @@
     "OpenSourceLicense": "License",
     "Privacy": "Privacy Policy",
     "ChangeLog": "Change Log",
-    "LikeNodes": "喜欢",
+    "LikeNodes": "Interest",
     "HowToUse": "How to use",
-    "terms": "Terms of Service",
+    "terms": "Terms of Service"
   },
   "placeholder": {
     "token": "Type token here..",
@@ -171,7 +171,7 @@
     "clearCache": "Cache",
     "clearTmpCache": "Clear temp cache",
     "clearHistory": "Clear history",
-    "clearAllCache": "Clear all cache",
+    "clearAllCache": "Clear all cache"
   },
   "link": {
     "getToken": "Get token Here",
@@ -189,7 +189,7 @@
   },
   "errors": {
     "error": "Something went wrong.",
-    "noFound": "No found.",
+    "noFound": "No found."
   },
   "content": {
     "privacy": "V2Hub does not collect any information from you, all content is provided based on the V2EX open API. This project uses ReactNative to build a V2EX mobile client application. The purpose is to build a ReactNative rapid development scaffold. The client data is based on the V2EX Open API. the project is completely open source, you can Clone code, check the code. Open source address: [funnyzak/react-native-v2ex](https: //github.com/funnyzak/react-native-v2ex)"

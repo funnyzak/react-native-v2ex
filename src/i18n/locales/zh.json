@@ -67,7 +67,7 @@
     "author": "作者",
     "us": "我们",
     "me": "我",
-    "my": "我的",
+    "my": "我的"
   },
   "label": {
     "registedMember": "注册会员",
@@ -125,7 +125,7 @@
     "ChangeLog": "更新说明",
     "LikeNodes": "收藏节点",
     "HowToUse": "如何使用",
-    "terms": "服务条款",
+    "terms": "服务条款"
   },
   "placeholder": {
     "token": "输入API令牌..",
