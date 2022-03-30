@@ -30,11 +30,12 @@ export type RootStackParamList = {
   WebLink: { url: string; title?: string }
 
   SiteStat: undefined
+  LikeNodes: undefined
   NodeDetail: { nodeName: string; nodeTitle: string }
   MyTopics: undefined
   CacheSetting: undefined
   UrlSchemes: undefined
-  OpenSource: undefined
+  OpenSourceLicense: undefined
   Privacy: undefined
   ChangeLog: undefined
   HowToUse: undefined
@@ -96,11 +97,12 @@ export type CacheSettingScreenProps = NativeStackScreenProps<RootStackParamList,
 
 export type UrlSchemesScreenProps = NativeStackScreenProps<RootStackParamList, 'UrlSchemes'> & CommonScreenProps
 
-export type OpenSourceScreenProps = NativeStackScreenProps<RootStackParamList, 'OpenSource'> & CommonScreenProps
+export type OpenSourceLicenseScreenProps = NativeStackScreenProps<RootStackParamList, 'OpenSourceLicense'> &
+  CommonScreenProps
 
 export type PrivacyScreenProps = NativeStackScreenProps<RootStackParamList, 'Privacy'> & CommonScreenProps
 
-export type VersionHitoryScreenProps = NativeStackScreenProps<RootStackParamList, 'VersionHitory'> & CommonScreenProps
+export type LikeNodesScreenProps = NativeStackScreenProps<RootStackParamList, 'LikeNodes'> & CommonScreenProps
 
 export type ChangeLogScreenProps = NativeStackScreenProps<RootStackParamList, 'ChangeLog'> & CommonScreenProps
 
@@ -200,7 +202,7 @@ export const ROUTES = {
   SiteStat: 'SiteStat',
 
   /**
-   * @description WebUrl
+   * @description 节点详情
    */
   NodeDetail: 'NodeDetail',
 
@@ -222,7 +224,7 @@ export const ROUTES = {
   /**
    * @description 开源列表
    */
-  OpenSource: 'OpenSource',
+  OpenSourceLicense: 'OpenSourceLicense',
 
   /**
    * @description 隐私政策
@@ -233,6 +235,11 @@ export const ROUTES = {
    * @description 更新说明
    */
   ChangeLog: 'ChangeLog',
+
+  /**
+   * @description 关注的节点
+   */
+  LikeNodes: 'LikeNodes',
 
   /**
    * @description 如何使用
