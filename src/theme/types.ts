@@ -117,12 +117,15 @@ export interface IThemeDimen {
    */
   WINDOW_WIDTH: number
   WINDOW_HEIGHT: number
+  layoutContainerWidth: number
   headerHeight: number
   headerButtonSize: number
   badgeSize: number
   borderRadius: number
   defaultButtonWidth: number
   defaultButtonHeight: number
+  defaultButtonRadius: number
+  defaultLineHeight: number
   defaultInputBoxHeight: number
 }
 
