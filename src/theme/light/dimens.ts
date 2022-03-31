@@ -24,7 +24,7 @@ const dimens: IThemeDimen = {
   defaultButtonHeight: 42,
   defaultButtonRadius: 5,
 
-  defaultLineHeight: 0.3,
+  defaultLineWidth: 0.3,
 
   defaultInputBoxHeight: 40
 }

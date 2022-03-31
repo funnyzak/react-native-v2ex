@@ -125,7 +125,7 @@ export interface IThemeDimen {
   defaultButtonWidth: number
   defaultButtonHeight: number
   defaultButtonRadius: number
-  defaultLineHeight: number
+  defaultLineWidth: number
   defaultInputBoxHeight: number
 }
 
