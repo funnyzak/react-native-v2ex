@@ -1,40 +1,61 @@
 import React from 'react'
-import { TouchableOpacity, ViewPropTypes, TouchableOpacityProps as NativeTouchableOpacityProps, ViewStyle, TextStyle } from 'react-native'
+import {
+  TouchableOpacity,
+  TouchableOpacityProps as NativeTouchableOpacityProps,
+  ViewStyle,
+  TextStyle
+} from 'react-native'
 import { Text } from './Text'
 import { useTheme, ITheme } from '@src/theme'
 
 export interface TouchableOpacityProps extends NativeTouchableOpacityProps {
   disabled: boolean
+  type: 'large' | 'small'
 }
 
-const Button = ({ onPress, children, style, disabled }: TouchableOpacityProps) => {
+const Button = ({ onPress, children, style, disabled, type }: TouchableOpacityProps) => {
   const { theme } = useTheme()
-  const { buttonStyle, buttonTitle } = styles
+
   return (
-    <TouchableOpacity onPress={onPress} style={[buttonStyle(theme, disabled), style]} disabled={disabled}>
-      <Text style={buttonTitle(theme, disabled)}>{children}</Text>
+    <TouchableOpacity onPress={onPress} style={[styles.buttonStyle(theme, type, disabled), style]} disabled={disabled}>
+      <Text style={styles.buttonTitle(theme, type, disabled)}>{children}</Text>
     </TouchableOpacity>
   )
 }
 
 const styles = {
-  buttonStyle: (_theme: ITheme, disabled: boolean): ViewStyle => ({
-    borderWidth: 1,
-    backgroundColor: disabled ? _theme.colors.disabled : _theme.colors.secondary,
-    borderColor: disabled ? _theme.colors.disabledDark : _theme.colors.secondaryDark,
-    width: _theme.dimens.defaultButtonWidth,
-    height: _theme.dimens.defaultButtonHeight,
-    justifyContent: 'center'
-  }),
-  buttonTitle: (_theme: ITheme, disabled: boolean): TextStyle => ({
-    color: disabled ? _theme.colors.disabledDark : _theme.colors.white,
-    alignSelf: 'center'
-  })
-}
-
-Button.defaultProps = {
-  style: {},
-  disabled: false
+  buttonStyle: (_theme: ITheme, type: 'large' | 'small', disabled: boolean): ViewStyle =>
+    type === 'large'
+      ? {
+          borderWidth: 1,
+          backgroundColor: disabled ? _theme.colors.secondaryLight : _theme.colors.secondary,
+          borderColor: disabled ? _theme.colors.secondaryLight : _theme.colors.secondary,
+          width: _theme.dimens.defaultButtonWidth,
+          height: _theme.dimens.defaultButtonHeight,
+          justifyContent: 'center',
+          borderRadius: _theme.dimens.defaultButtonRadius
+        }
+      : {
+          borderWidth: 1,
+          borderColor: disabled ? _theme.colors.disabled : _theme.colors.secondary,
+          marginHorizontal: 14,
+          marginVertical: 0,
+          height: 24,
+          justifyContent: 'center',
+          borderRadius: _theme.dimens.defaultButtonRadius
+        },
+  buttonTitle: (_theme: ITheme, type: 'large' | 'small', disabled: boolean): TextStyle =>
+    type === 'large'
+      ? {
+          ..._theme.typography.subheadingText,
+          color: _theme.colors.primaryDark,
+          alignSelf: 'center'
+        }
+      : {
+          ..._theme.typography.bodyText,
+          color: disabled ? _theme.colors.disabled : _theme.colors.secondary,
+          alignSelf: 'center'
+        }
 }
 
 export { Button }
