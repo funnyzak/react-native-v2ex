@@ -1,4 +1,4 @@
 export { default as MyScreen } from './Home'
-export { default as FollowPeopleScreen } from './Follow'
-export { default as LikeTopicsScreen } from './Like'
-export { default as ReadedScreen } from './Readed'
+export { default as FollowingScreen } from './Following'
+export { default as FavoriteTopicsScreen } from './Favorite'
+export { default as HistoryScreen } from './History'

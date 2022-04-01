@@ -6,32 +6,32 @@ import { TopicList } from '../components'
 import { useTheme, SylCommon } from '@src/theme'
 import { IState, V2exObject } from '@src/types'
 import { NotFound } from '../components'
-import { ReadedScreenProps as ScreenProps } from '@src/navigation/routes'
+import { HistoryScreenProps as ScreenProps } from '@src/navigation/routes'
 
-const Readed = ({
+const History = ({
   route,
   navigation,
-  readedTopics
+  HistoryTopics
 }: ScreenProps & {
-  readedTopics?: V2exObject.Topic[]
+  HistoryTopics?: V2exObject.Topic[]
 }) => {
   const { theme } = useTheme()
 
   const renderContent = () => {
-    if (!readedTopics) {
+    if (!HistoryTopics) {
       return <NotFound />
     }
-    return <TopicList topics={readedTopics} canLoadMoreContent={false} searchIndicator={false} />
+    return <TopicList topics={HistoryTopics} canLoadMoreContent={false} searchIndicator={false} />
   }
 
   return <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>{renderContent()}</View>
 }
 
 const mapStateToProps = ({ member }: IState.State) => {
-  const { readedTopics } = member
+  const { HistoryTopics } = member
   return {
-    readedTopics
+    HistoryTopics
   }
 }
 
-export default connect(mapStateToProps)(Readed)
+export default connect(mapStateToProps)(History)

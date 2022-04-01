@@ -7,13 +7,13 @@ import { useTheme, SylCommon } from '@src/theme'
 import { IState, ITheme, V2exObject } from '@src/types'
 import * as CompS from '../components'
 import { Text, Spinner } from '@src/components'
-import { FollowPeopleScreenProps as ScreenProps } from '@src/navigation/routes'
+import { FollowingScreenProps as ScreenProps } from '@src/navigation/routes'
 
-const FollowPeople = ({ route, navigation, loading }: ScreenProps) => {
+const Following = ({ route, navigation, loading }: ScreenProps) => {
   const { theme } = useTheme()
   return (
     <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
-      <Text>Hello, FollowPeople.</Text>
+      <Text>Hello, Following.</Text>
     </View>
   )
 }
@@ -30,7 +30,7 @@ const styles = {
 /**
  * default props
  */
-FollowPeople.defaultProps = {
+Following.defaultProps = {
   loading: false
 }
 
@@ -39,4 +39,4 @@ const mapStateToProps = ({ ui: { login } }: { ui: IState.UIState }) => {
   return { error, success, loading }
 }
 
-export default connect(mapStateToProps)(FollowPeople)
+export default connect(mapStateToProps)(Following)

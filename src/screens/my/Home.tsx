@@ -35,15 +35,15 @@ const My = ({
         </View>
       </TouchableOpacity>
       <View style={SylCommon.Grid.container(theme)}>
-        <TouchableOpacity style={SylCommon.Grid.item(theme)} onPress={() => navigation.navigate(ROUTES.FollowPeople)}>
+        <TouchableOpacity style={SylCommon.Grid.item(theme)} onPress={() => navigation.navigate(ROUTES.Following)}>
           <Text style={SylCommon.Grid.itemValue(theme)}>{'7' || '-'}</Text>
           <Text style={SylCommon.Grid.itemTitle(theme)}>{translate('button.followPeople')}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={SylCommon.Grid.item(theme)} onPress={() => navigation.navigate(ROUTES.LikeTopics)}>
+        <TouchableOpacity style={SylCommon.Grid.item(theme)} onPress={() => navigation.navigate(ROUTES.FavoriteTopics)}>
           <Text style={SylCommon.Grid.itemValue(theme)}>{'10' || '-'}</Text>
           <Text style={SylCommon.Grid.itemTitle(theme)}>{translate('button.likeTopics')}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={SylCommon.Grid.item(theme)} onPress={() => navigation.navigate(ROUTES.Readed)}>
+        <TouchableOpacity style={SylCommon.Grid.item(theme)} onPress={() => navigation.navigate(ROUTES.History)}>
           <Text style={SylCommon.Grid.itemValue(theme)}>{readedTopics ? readedTopics.length : 0}</Text>
           <Text style={SylCommon.Grid.itemTitle(theme)}>{translate('button.readed')}</Text>
         </TouchableOpacity>
@@ -52,7 +52,7 @@ const My = ({
         <TouchableOpacity
           style={SylCommon.Table.item(theme)}
           onPress={() => {
-            navigation.navigate(ROUTES.Theme)
+            navigation.navigate(ROUTES.ThemeSetting)
           }}>
           <Text style={SylCommon.Table.itemText(theme)}>{translate('common.theme')}</Text>
           <Image style={SylCommon.Table.itemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />
@@ -68,7 +68,7 @@ const My = ({
         <TouchableOpacity
           style={SylCommon.Table.item(theme)}
           onPress={() => {
-            navigation.navigate(ROUTES.WebLink, { title: translate('common.help'), url: HELP_PAGE_LINK })
+            navigation.navigate(ROUTES.WebViewer, { title: translate('common.help'), url: HELP_PAGE_LINK })
           }}>
           <Text style={SylCommon.Table.itemText(theme)}>{translate('common.help')}</Text>
           <Image style={SylCommon.Table.itemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />

@@ -6,7 +6,7 @@ import { translate } from '@src/i18n'
 import * as Actions from '@src/actions'
 import { useTheme, themes, SylCommon } from '@src/theme'
 import { IState, ThemeType } from '@src/types'
-import { ThemeScreenProps as ScreenProps } from '@src/navigation/routes'
+import { ThemeSettingScreenProps as ScreenProps } from '@src/navigation/routes'
 
 const themeList = (Object.keys(themes) as Array<keyof typeof themes>).map((v) => ({
   name: v,

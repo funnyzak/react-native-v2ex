@@ -11,32 +11,32 @@ export type RootStackParamList = {
     initialRouteName: string
   }
   HomeTabs: undefined
-  Node: undefined
-  Notification: undefined
+  Nodes: undefined
+  Notifications: undefined
   My: undefined
   SignIn: undefined
   NodeTopics: { nodeName: string; nodeTitle: string }
   TopicDetail: { topicId: number }
   Profile: { username: string }
-  FollowPeople: undefined
-  LikeTopics: undefined
+  Following: undefined
+  FavoriteTopics: undefined
   Setting: undefined
   Language: undefined
   About: undefined
   Feedback: undefined
-  Theme: undefined
+  ThemeSetting: undefined
   Search: { query: string }
-  Readed: undefined
-  WebLink: { url: string; title?: string }
+  History: undefined
+  WebViewer: { url: string; title?: string }
 
   SiteStat: undefined
-  LikeNodes: undefined
+  InterestNodes: undefined
   NodeDetail: { nodeName: string; nodeTitle: string }
   MyTopics: undefined
   CacheSetting: undefined
   URLSchemes: undefined
   OpenSourceLicense: undefined
-  Privacy: undefined
+  PrivacyPolicy: undefined
   ChangeLog: undefined
   HowToUse: undefined
 }
@@ -50,7 +50,7 @@ export type CommonScreenProps = {
 
 export type MainScreenProps = NativeStackScreenProps<RootStackParamList, 'Main'> & CommonScreenProps
 
-export type ReadedScreenProps = NativeStackScreenProps<RootStackParamList, 'Readed'> & CommonScreenProps
+export type HistoryScreenProps = NativeStackScreenProps<RootStackParamList, 'History'> & CommonScreenProps
 
 export type HomeTabsScreenProps = NativeStackScreenProps<RootStackParamList, 'HomeTabs'> & CommonScreenProps
 
@@ -59,9 +59,9 @@ export type SignInScreenProps = NativeStackScreenProps<RootStackParamList, 'Sign
     auth: (token: string) => void
   }
 
-export type NotificationScreenProps = NativeStackScreenProps<RootStackParamList, 'Notification'> & CommonScreenProps
+export type NotificationsScreenProps = NativeStackScreenProps<RootStackParamList, 'Notifications'> & CommonScreenProps
 
-export type NodeScreenProps = NativeStackScreenProps<RootStackParamList, 'Node'> & CommonScreenProps
+export type NodesScreenProps = NativeStackScreenProps<RootStackParamList, 'Nodes'> & CommonScreenProps
 
 export type NodeTopicsScreenProps = NativeStackScreenProps<RootStackParamList, 'NodeTopics'> & CommonScreenProps
 
@@ -71,9 +71,9 @@ export type MyScreenProps = NativeStackScreenProps<RootStackParamList, 'My'> & C
 
 export type ProfileScreenProps = NativeStackScreenProps<RootStackParamList, 'Profile'> & CommonScreenProps
 
-export type FollowPeopleScreenProps = NativeStackScreenProps<RootStackParamList, 'FollowPeople'> & CommonScreenProps
+export type FollowingScreenProps = NativeStackScreenProps<RootStackParamList, 'Following'> & CommonScreenProps
 
-export type LikeTopicsScreenProps = NativeStackScreenProps<RootStackParamList, 'LikeTopics'> & CommonScreenProps
+export type FavoriteTopicsScreenProps = NativeStackScreenProps<RootStackParamList, 'FavoriteTopics'> & CommonScreenProps
 
 export type SettingScreenProps = NativeStackScreenProps<RootStackParamList, 'Setting'> & CommonScreenProps
 
@@ -83,7 +83,7 @@ export type AboutScreenProps = NativeStackScreenProps<RootStackParamList, 'About
 
 export type FeedbackScreenProps = NativeStackScreenProps<RootStackParamList, 'Feedback'> & CommonScreenProps
 
-export type ThemeScreenProps = NativeStackScreenProps<RootStackParamList, 'Theme'> & CommonScreenProps
+export type ThemeSettingScreenProps = NativeStackScreenProps<RootStackParamList, 'ThemeSetting'> & CommonScreenProps
 
 export type SearchScreenProps = NativeStackScreenProps<RootStackParamList, 'Search'> & CommonScreenProps
 
@@ -100,9 +100,9 @@ export type URLSchemescreenProps = NativeStackScreenProps<RootStackParamList, 'U
 export type OpenSourceLicenseScreenProps = NativeStackScreenProps<RootStackParamList, 'OpenSourceLicense'> &
   CommonScreenProps
 
-export type PrivacyScreenProps = NativeStackScreenProps<RootStackParamList, 'Privacy'> & CommonScreenProps
+export type PrivacyPolicyScreenProps = NativeStackScreenProps<RootStackParamList, 'PrivacyPolicy'> & CommonScreenProps
 
-export type LikeNodesScreenProps = NativeStackScreenProps<RootStackParamList, 'LikeNodes'> & CommonScreenProps
+export type InterestNodesScreenProps = NativeStackScreenProps<RootStackParamList, 'InterestNodes'> & CommonScreenProps
 
 export type ChangeLogScreenProps = NativeStackScreenProps<RootStackParamList, 'ChangeLog'> & CommonScreenProps
 
@@ -124,7 +124,7 @@ export const ROUTES = {
    */
   HomeTabs: 'HomeTabs',
   /**
-   * @description 个人主页
+   * @description 个人信息页
    */
   Profile: 'Profile',
   /**
@@ -142,15 +142,15 @@ export const ROUTES = {
   /**
    * @description 已读
    */
-  Readed: 'Readed',
+  History: 'History',
   /**
    * @description 通知
    */
-  Notification: 'Notification',
+  Notifications: 'Notifications',
   /**
    * @description 节点列表
    */
-  Node: 'Node',
+  Nodes: 'Nodes',
   /**
    * @description 节点话题列表
    */
@@ -166,11 +166,11 @@ export const ROUTES = {
   /**
    * @description 关注用户列表
    */
-  FollowPeople: 'FollowPeople',
+  Following: 'Following',
   /**
    * @description 喜欢/收藏的话题列表
    */
-  LikeTopics: 'LikeTopics',
+  FavoriteTopics: 'FavoriteTopics',
   /**
    * @description 设置
    */
@@ -190,7 +190,7 @@ export const ROUTES = {
   /**
    * @description 主题设置
    */
-  Theme: 'Theme',
+  ThemeSetting: 'ThemeSetting',
   /**
    * @description 搜索
    */
@@ -229,7 +229,7 @@ export const ROUTES = {
   /**
    * @description 隐私政策
    */
-  Privacy: 'Privacy',
+  PrivacyPolicy: 'PrivacyPolicy',
 
   /**
    * @description 更新说明
@@ -239,7 +239,7 @@ export const ROUTES = {
   /**
    * @description 关注的节点
    */
-  LikeNodes: 'LikeNodes',
+  InterestNodes: 'InterestNodes',
 
   /**
    * @description 如何使用
@@ -249,7 +249,7 @@ export const ROUTES = {
   /**
    * @description WebUrl
    */
-  WebLink: 'WebLink'
+  WebViewer: 'WebViewer'
 } as const
 
 // see https://stackoverflow.com/questions/52393730/typescript-string-literal-union-type-from-enum

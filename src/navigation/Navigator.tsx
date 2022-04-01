@@ -1,7 +1,6 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/2/21.
  */
-
 import React, { useEffect, useState } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import {
@@ -88,10 +87,10 @@ const getHeaderTitle = (
   switch (routeName) {
     case ROUTES.HomeTabs:
       return translate(`router.${ROUTES.HomeTabs}`)
-    case ROUTES.Node:
-      return translate(`router.${ROUTES.Node}`)
-    case ROUTES.Notification:
-      return translate(`router.${ROUTES.Notification}`)
+    case ROUTES.Nodes:
+      return translate(`router.${ROUTES.Nodes}`)
+    case ROUTES.Notifications:
+      return translate(`router.${ROUTES.Notifications}`)
     case ROUTES.My:
       return translate(`router.${ROUTES.My}`)
   }
@@ -128,20 +127,20 @@ const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
         }}
       />
       <MainNavigator.Screen
-        name={ROUTES.Node}
-        component={Screens.NodeScreen}
+        name={ROUTES.Nodes}
+        component={Screens.NodesScreen}
         options={{
-          title: translate(`router.${ROUTES.Node}`),
+          title: translate(`router.${ROUTES.Nodes}`),
           ...defaultTabBarSetting(theme),
           tabBarIcon: ({ focused }) =>
             renderIcon(focused, theme.assets.images.icons.discovery, theme.assets.images.icons.discoveryInactive)
         }}
       />
       <MainNavigator.Screen
-        name={ROUTES.Notification}
-        component={Screens.NotificationScreen}
+        name={ROUTES.Notifications}
+        component={Screens.NotificationsScreen}
         options={{
-          title: translate(`router.${ROUTES.Notification}`),
+          title: translate(`router.${ROUTES.Notifications}`),
           ...defaultTabBarSetting(theme),
           tabBarIcon: ({ focused }) =>
             renderIcon(focused, theme.assets.images.icons.notification, theme.assets.images.icons.notificationInactive),
@@ -218,7 +217,7 @@ export const AppNavigationContainer = () => {
                 options={({ route }) => ({
                   ...defaultScreenOptions(theme),
                   headerShadowVisible: ![ROUTES.HomeTabs, ROUTES.My].includes(
-                    getFocusedRouteNameFromRoute(route) ?? (ROUTES.Node as any)
+                    getFocusedRouteNameFromRoute(route) ?? (ROUTES.Nodes as any)
                   ),
                   headerTitle: getHeaderTitle(route)
                 })}
@@ -255,19 +254,19 @@ export const AppNavigationContainer = () => {
               }}
             />
             <StackNavigator.Screen
-              name={ROUTES.FollowPeople}
-              component={Screens.FollowPeopleScreen}
+              name={ROUTES.Following}
+              component={Screens.FollowingScreen}
               options={{
-                title: translate(`router.${ROUTES.FollowPeople}`),
+                title: translate(`router.${ROUTES.Following}`),
                 ...defaultScreenOptions(theme),
                 headerShown: true
               }}
             />
             <StackNavigator.Screen
-              name={ROUTES.LikeTopics}
-              component={Screens.LikeTopicsScreen}
+              name={ROUTES.FavoriteTopics}
+              component={Screens.FavoriteTopicsScreen}
               options={{
-                title: translate(`router.${ROUTES.LikeTopics}`),
+                title: translate(`router.${ROUTES.FavoriteTopics}`),
                 ...defaultScreenOptions(theme),
                 headerShown: true
               }}
@@ -309,10 +308,10 @@ export const AppNavigationContainer = () => {
               }}
             />
             <StackNavigator.Screen
-              name={ROUTES.Theme}
+              name={ROUTES.ThemeSetting}
               component={Screens.ThemeScreen}
               options={{
-                title: translate(`router.${ROUTES.Theme}`),
+                title: translate(`router.${ROUTES.ThemeSetting}`),
                 ...defaultScreenOptions(theme),
                 headerShown: true
               }}
@@ -327,16 +326,16 @@ export const AppNavigationContainer = () => {
               }}
             />
             <StackNavigator.Screen
-              name={ROUTES.Readed}
-              component={Screens.ReadedScreen}
+              name={ROUTES.History}
+              component={Screens.HistoryScreen}
               options={{
-                title: translate(`router.${ROUTES.Readed}`),
+                title: translate(`router.${ROUTES.History}`),
                 ...defaultScreenOptions(theme),
                 headerShown: true
               }}
             />
             <StackNavigator.Screen
-              name={ROUTES.WebLink}
+              name={ROUTES.WebViewer}
               component={Screens.WebLinkScreen}
               options={({ route }) => ({
                 title: route?.params?.title ?? translate('brand.name'),
