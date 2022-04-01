@@ -59,12 +59,13 @@ export const Button = {
     ...theme.typography.labelText,
     marginTop: theme.spacing.medium,
     textAlign: 'center',
-    borderWidth: 1,
+    borderWidth: 0,
     borderRadius: 5,
     maxWidth: 200,
     alignSelf: 'center',
-    borderBottomColor: theme.colors.border,
-    paddingHorizontal: theme.spacing.medium
+    borderBottomColor: theme.colors.transparent,
+    paddingHorizontal: theme.spacing.medium,
+    color: theme.colors.secondary
   })
 }
 

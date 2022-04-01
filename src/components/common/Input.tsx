@@ -1,11 +1,18 @@
 import React from 'react'
-import { TextInput, View, ViewPropTypes, TextInputProps as NativeTextInputProps, ViewStyle, TextStyle } from 'react-native'
+import {
+  TextInput,
+  View,
+  ViewPropTypes,
+  TextInputProps as NativeTextInputProps,
+  ViewStyle,
+  TextStyle
+} from 'react-native'
 import { Text } from './Text'
 import { useTheme } from '@src/theme'
 import { ITheme } from '@src/types'
 
 export interface TextInputProps extends NativeTextInputProps {
-  label: string
+  label?: string
   assignRef?: (ref: TextInput) => void
   containerStyle?: ViewStyle
   labelStyle?: ViewStyle
@@ -14,11 +21,11 @@ export interface TextInputProps extends NativeTextInputProps {
 
 const Input = ({
   label,
-  value,
+  value = '',
   onChangeText,
-  placeholder,
-  secureTextEntry,
-  assignRef,
+  placeholder = '',
+  secureTextEntry = false,
+  assignRef = () => {},
   containerStyle,
   labelStyle,
   inputStyle,
@@ -60,7 +67,8 @@ const styles = {
     alignItems: 'center'
   }),
   inputStyle: (_theme: ITheme): TextStyle => ({
-    color: _theme.colors.titleText,
+    ..._theme.typography.labelText,
+    color: _theme.colors.captionText,
     padding: _theme.spacing.small,
     flex: 2
   }),
@@ -68,15 +76,6 @@ const styles = {
     paddingLeft: _theme.spacing.large,
     flex: 1
   })
-}
-
-Input.defaultProps = {
-  label: null,
-  value: '',
-  placeholder: '',
-  secureTextEntry: false,
-  assignRef: () => {},
-  onChangeText: () => {}
 }
 
 export { Input }

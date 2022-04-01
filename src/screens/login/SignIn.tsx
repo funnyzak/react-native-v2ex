@@ -12,7 +12,14 @@ import { loginByToken } from '@src/actions'
 import { SylCommon, useTheme } from '@src/theme'
 import { RootState } from '@src/store'
 
-const Screen = ({ loading, error, success, navigation, route, auth: _auth }: ScreenProps) => {
+const Screen = ({
+  loading = false,
+  error,
+  success,
+  auth: _auth = (token: string) => {
+    utils.Alert.alert({ message: 'token: ' + token })
+  }
+}: ScreenProps) => {
   const [token, setToken] = useState('')
 
   const { theme } = useTheme()
@@ -35,7 +42,7 @@ const Screen = ({ loading, error, success, navigation, route, auth: _auth }: Scr
 
     return (
       <View>
-        <Button disabled={token === ''} onPress={onLoginPress}>
+        <Button type="large" disabled={token === ''} onPress={onLoginPress}>
           {translate('common.auth')}
         </Button>
         <TouchableOpacity onPress={onGetTokenPress} style={styles.link(theme)}>
@@ -90,7 +97,7 @@ const styles = {
     paddingTop: theme.dimens.WINDOW_HEIGHT * 0.1
   }),
   inputContainer: (theme: ITheme): ViewStyle => ({
-    width: theme.dimens.WINDOW_WIDTH * 0.9,
+    width: theme.dimens.defaultButtonWidth,
     marginBottom: theme.spacing.large
   }),
   buttonMargin: (theme: ITheme): ViewStyle => ({
@@ -114,18 +121,6 @@ const styles = {
   linkTitle: (): TextStyle => ({
     textAlign: 'center'
   })
-}
-
-/**
- * default props
- */
-Screen.defaultProps = {
-  error: null,
-  success: null,
-  loading: false,
-  auth: (token: string) => {
-    utils.Alert.alert({ message: 'token: ' + token })
-  }
 }
 
 const mapStateToProps = ({ ui: { login } }: { ui: IState.UIState }) => {
