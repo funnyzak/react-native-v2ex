@@ -9,11 +9,11 @@ import { Text } from './Text'
 import { useTheme, ITheme } from '@src/theme'
 
 export interface TouchableOpacityProps extends NativeTouchableOpacityProps {
-  disabled: boolean
-  type: 'large' | 'small'
+  disabled?: boolean
+  type?: 'large' | 'small'
 }
 
-const Button = ({ onPress, children, style, disabled, type }: TouchableOpacityProps) => {
+const Button = ({ onPress, children, style, disabled = false, type = 'large' }: TouchableOpacityProps) => {
   const { theme } = useTheme()
 
   return (
@@ -48,7 +48,7 @@ const styles = {
     type === 'large'
       ? {
           ..._theme.typography.subheadingText,
-          color: _theme.colors.primaryDark,
+          color: _theme.colors.white,
           alignSelf: 'center'
         }
       : {

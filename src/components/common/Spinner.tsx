@@ -8,8 +8,8 @@ const Spinner = ({
   style,
   text
 }: {
-  size: number | 'small' | 'large' | undefined
-  style: StyleProp<ViewStyle>
+  size?: number | 'small' | 'large' | undefined
+  style?: StyleProp<ViewStyle>
   text?: string
 }) => {
   const { theme } = useTheme()
