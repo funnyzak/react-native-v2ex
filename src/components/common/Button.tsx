@@ -38,8 +38,8 @@ const styles = {
       : {
           borderWidth: 1,
           borderColor: disabled ? _theme.colors.disabled : _theme.colors.secondary,
-          marginHorizontal: 14,
-          marginVertical: 0,
+          paddingHorizontal: 14,
+          paddingVertical: 0,
           height: 24,
           justifyContent: 'center',
           borderRadius: _theme.dimens.defaultButtonRadius
