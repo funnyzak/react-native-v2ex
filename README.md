@@ -254,6 +254,7 @@ cd android
 - react-native-localize
 - react-native-device-info
 - react-native-webview
+- [react-native-skeleton-placeholder](https://github.com/chramos/react-native-skeleton-placeholder)
 - prettier
 
 ## 参考

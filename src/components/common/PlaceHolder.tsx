@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, ViewStyle, TextStyle, ImageSourcePropType, Image } from 'react-native'
 import { useTheme, ITheme } from '@src/theme'
-import { Text, Button } from './'
+import { Text, Button } from '.'
 
-const PlaceHolder = ({
+const Placeholder = ({
   style = 'none',
   icon,
   placeholderText,
@@ -67,4 +67,4 @@ const styles = {
   })
 }
 
-export { PlaceHolder }
+export { Placeholder }

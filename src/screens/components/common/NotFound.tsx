@@ -4,6 +4,15 @@ import { ITheme } from '@src/types'
 import { SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
 
+/**
+ * no found placeholder
+ * @param {
+ *   text,
+ *   buttonText,
+ *   buttonPress
+ * }
+ * @returns
+ */
 const NoFound = ({
   text,
   buttonText,
