@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, ViewStyle, TextStyle, ImageSourcePropType, Image } from 'react-native'
 import { useTheme, ITheme } from '@src/theme'
-import { Text, Button } from './'
+import { Text, Button } from '.'
 
-const PlaceHolder = ({
+const Placeholder = ({
   style = 'none',
   icon,
   placeholderText,
@@ -22,7 +22,11 @@ const PlaceHolder = ({
     if (style === 'none') return null
     return (
       <View style={styles.iconStyle(theme)}>
-        {style === 'text' || !icon ? <Text style={styles.iconTextStyle(theme)}>(;-;)</Text> : <Image source={icon} />}
+        {style === 'text' || !icon ? (
+          <Text style={styles.iconTextStyle(theme)}>(;-;)</Text>
+        ) : (
+          <Image source={icon} style={{ width: 60, height: 60 }} />
+        )}
       </View>
     )
   }
@@ -63,4 +67,4 @@ const styles = {
   })
 }
 
-export { PlaceHolder }
+export { Placeholder }
