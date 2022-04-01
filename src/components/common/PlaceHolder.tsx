@@ -22,7 +22,11 @@ const PlaceHolder = ({
     if (style === 'none') return null
     return (
       <View style={styles.iconStyle(theme)}>
-        {style === 'text' || !icon ? <Text style={styles.iconTextStyle(theme)}>(;-;)</Text> : <Image source={icon} />}
+        {style === 'text' || !icon ? (
+          <Text style={styles.iconTextStyle(theme)}>(;-;)</Text>
+        ) : (
+          <Image source={icon} style={{ width: 60, height: 60 }} />
+        )}
       </View>
     )
   }
