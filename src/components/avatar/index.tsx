@@ -52,7 +52,7 @@ const styles = {
   avatar: (size: number) => ({
     width: size,
     height: size,
-    borderRadius: size
+    borderRadius: size * 0.1
   })
 }
 
