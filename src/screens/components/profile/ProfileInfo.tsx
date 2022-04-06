@@ -2,7 +2,7 @@
  * Created by leon<silenceace@gmail.com> on 22/04/01.
  */
 import React from 'react'
-import { View, ViewStyle, TextStyle, TouchableOpacity } from 'react-native'
+import { View, ViewStyle, TextStyle, TouchableOpacity, Image } from 'react-native'
 
 import { Text, Button, Spinner, Placeholder, Avatar } from '@src/components'
 import { TextWithIconPress } from '../common'
@@ -17,16 +17,35 @@ import dayjs from 'dayjs'
  * ProfileInfo props
  */
 export interface ProfileInfoProps {
-  style: 'simple' | 'full'
+  /**
+   * container style
+   */
+  containerStyle?: ViewStyle
+  /**
+   * card style
+   */
+  styleType?: 'simple' | 'full'
+  /**
+   * profile info
+   */
   profile?: V2exObject.Member
+  /**
+   * with right arrow
+   */
+  withArrow?: boolean
 }
 
-const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }: ProfileInfoProps) => {
+const ProfileInfo: React.FC<ProfileInfoProps> = ({
+  profile,
+  containerStyle,
+  styleType = 'simple',
+  withArrow = false
+}: ProfileInfoProps) => {
   const { theme } = useTheme()
 
   const renderContent = () => {
     return (
-      <View style={styles.container(theme)}>
+      <View style={[styles.container(theme), SylCommon.Card.container(theme), containerStyle]}>
         <View style={styles.infoItem(theme)}>
           <View style={styles.baseAvatar(theme)}>
             <Avatar
@@ -36,21 +55,36 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }: ProfileInfoProps) 
             />
           </View>
           <View style={styles.baseRightBox(theme)}>
-            <Text
-              style={[styles.baseRightItem(theme), theme.typography.subheadingText, { color: theme.colors.secondary }]}>
-              {profile?.username}
-            </Text>
-            {profile?.tagline && (
-              <Text style={[styles.baseRightItem(theme), theme.typography.bodyText]}>{profile?.tagline}</Text>
-            )}
-            {profile?.last_modified && (
-              <Text style={[styles.baseRightItem(theme), theme.typography.captionText]}>
-                {translate('label.activeLatest').replace(
-                  '$',
-                  dayjs(profile?.last_modified * 1000).format('YYYY-MM-DD HH:mm:ss')
-                )}
+            <View style={styles.baseRightInfo(theme)}>
+              <Text
+                style={[
+                  styles.baseRightItem(theme),
+                  theme.typography.subheadingText,
+                  { color: theme.colors.secondary }
+                ]}>
+                {profile?.username}
               </Text>
-            )}
+              {profile?.tagline && (
+                <Text style={[styles.baseRightItem(theme), theme.typography.bodyText]}>{profile?.tagline}</Text>
+              )}
+              {profile?.last_modified && (
+                <Text style={[styles.baseRightItem(theme), theme.typography.captionText]}>
+                  {translate('label.activeLatest').replace(
+                    '$',
+                    dayjs(profile?.last_modified * 1000).format('YYYY-MM-DD HH:mm:ss')
+                  )}
+                </Text>
+              )}
+            </View>
+            <View
+              style={{
+                flexGrow: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'flex-start'
+              }}>
+              <Image source={theme.assets.images.icons.table.rightArrow} style={{ width: 14, height: 14 }} />
+            </View>
           </View>
         </View>
         {profile?.bio && <Text style={[styles.infoItem(theme), theme.typography.bodyText]}>{profile?.bio}</Text>}
@@ -64,6 +98,9 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }: ProfileInfoProps) 
           )}
           {profile?.website && (
             <TextWithIconPress
+              press={() => {
+                NavigationService.navigate(ROUTES.WebViewer, { url: profile.website })
+              }}
               style={{ marginRight: theme.spacing.small }}
               text={profile?.website}
               icon={theme.assets.images.icons.profile.urlschme}
@@ -73,6 +110,9 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }: ProfileInfoProps) 
         <View style={styles.infoItem(theme)}>
           {profile?.github && (
             <TextWithIconPress
+              press={() => {
+                NavigationService.navigate(ROUTES.WebViewer, { url: `https://github.com/${profile.twitter}` })
+              }}
               style={{ marginRight: theme.spacing.small }}
               text={profile?.github}
               icon={theme.assets.images.icons.profile.github}
@@ -87,6 +127,9 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }: ProfileInfoProps) 
           )}
           {profile?.twitter && (
             <TextWithIconPress
+              press={() => {
+                NavigationService.navigate(ROUTES.WebViewer, { url: `https://twitter.com/${profile.twitter}` })
+              }}
               style={{ marginRight: theme.spacing.small }}
               text={profile?.twitter}
               icon={theme.assets.images.icons.profile.twitter}
@@ -107,7 +150,6 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }: ProfileInfoProps) 
 
 const styles = {
   container: (theme: ITheme): ViewStyle => ({
-    backgroundColor: theme.colors.surface,
     display: 'flex',
     alignItems: 'flex-start',
     flexDirection: 'column'
@@ -117,7 +159,9 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-start',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    width: '100%',
+    overflow: 'hidden'
   }),
   baseAvatar: (theme: ITheme): ViewStyle => ({
     width: 60,
@@ -127,12 +171,18 @@ const styles = {
   }),
   baseRightBox: (theme: ITheme): ViewStyle => ({
     display: 'flex',
+    flexDirection: 'row',
+    flexGrow: 1,
+    alignItems: 'stretch'
+  }),
+  baseRightInfo: (theme: ITheme): ViewStyle => ({
+    display: 'flex',
     flexDirection: 'column',
     flexGrow: 1,
     alignItems: 'flex-start'
   }),
   baseRightItem: (theme: ITheme): ViewStyle => ({
-    paddingBottom: theme.spacing.small
+    paddingBottom: theme.spacing.tiny
   })
 }
 
