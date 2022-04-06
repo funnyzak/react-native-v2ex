@@ -3,6 +3,7 @@
  */
 import React, { useEffect, useState } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import {
   NavigationContainer,
   NavigationState,
@@ -38,7 +39,9 @@ import { wait } from '@src/utils/utils'
  */
 dayjs.extend(relativeTime)
 
-const MainNavigator = createBottomTabNavigator()
+const MainBottomTabNavigator = createBottomTabNavigator()
+const bottomTabBarHeight = 45
+const bottomTabBarIconSize = 30
 
 const defaultScreenOptions = (theme: ITheme): NativeStackNavigationOptions => ({
   animationTypeForReplace: 'push',
@@ -55,11 +58,6 @@ const defaultScreenOptions = (theme: ITheme): NativeStackNavigationOptions => ({
   headerTintColor: theme.colors.appbarTint,
   headerBackTitleVisible: false
 })
-
-const renderIcon = (focused: boolean, activeIcon: any, inactiveIcon: any): Element => {
-  const icon = focused ? activeIcon : inactiveIcon
-  return <Image source={icon} />
-}
 
 const resetLocales = (locale: LanguageTagType) => {
   changeLocale(locale)
@@ -96,16 +94,30 @@ const getHeaderTitle = (
   }
 }
 
-const defaultTabBarSetting = (theme: ITheme) => ({
-  headerShown: false,
-  tabBarActiveTintColor: theme.colors.tabBarIconActive,
-  tabBarInactiveTintColor: theme.colors.tabBarIconInactive,
-  tabBarStyle: {
-    backgroundColor: theme.colors.tabBarBackground
+const renderBottomIcon = (focused: boolean, activeIcon: any, inactiveIcon: any): Element => {
+  const icon = focused ? activeIcon : inactiveIcon
+  return <Image source={icon} style={{ width: bottomTabBarIconSize, height: bottomTabBarIconSize }} />
+}
+
+const defaultTabBarSetting = (theme: ITheme, insets: EdgeInsets) => {
+  return {
+    headerShown: false,
+    tabBarActiveTintColor: theme.colors.tabBarIconActive,
+    tabBarInactiveTintColor: theme.colors.tabBarIconInactive,
+    tabBarShowLabel: false,
+    tabBarItemStyle: {
+      height: bottomTabBarIconSize,
+      paddingTop: 10
+    },
+    tabBarStyle: {
+      backgroundColor: theme.colors.tabBarBackground,
+      height: bottomTabBarIconSize + insets.bottom - 10
+    }
   }
-})
+}
 
 const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
+  const insets = useSafeAreaInsets()
   const { unread } = useUnRead()
   const { languageTag } = useAppSelector((state: RootState) => state.setting)
   const { theme } = useTheme()
@@ -115,50 +127,80 @@ const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
   }, [languageTag])
 
   return (
-    <MainNavigator.Navigator>
-      <MainNavigator.Screen
-        name={ROUTES.HomeTabs}
+    <MainBottomTabNavigator.Navigator>
+      <MainBottomTabNavigator.Screen
+        name={ROUTES.HotTopics}
         component={Screens.HomeTopTabListScreen}
         options={{
-          title: translate(`router.${ROUTES.HomeTabs}`),
-          ...defaultTabBarSetting(theme),
+          title: translate(`router.${ROUTES.HotTopics}`),
+          ...defaultTabBarSetting(theme, insets),
           tabBarIcon: ({ focused }) =>
-            renderIcon(focused, theme.assets.images.icons.home, theme.assets.images.icons.homeInactive)
+            renderBottomIcon(
+              focused,
+              theme.assets.images.icons.bottomTab.hot.active,
+              theme.assets.images.icons.bottomTab.hot.inActive
+            )
         }}
       />
-      <MainNavigator.Screen
+      <MainBottomTabNavigator.Screen
         name={ROUTES.Nodes}
         component={Screens.NodesScreen}
         options={{
           title: translate(`router.${ROUTES.Nodes}`),
-          ...defaultTabBarSetting(theme),
+          ...defaultTabBarSetting(theme, insets),
           tabBarIcon: ({ focused }) =>
-            renderIcon(focused, theme.assets.images.icons.discovery, theme.assets.images.icons.discoveryInactive)
+            renderBottomIcon(
+              focused,
+              theme.assets.images.icons.bottomTab.nodes.active,
+              theme.assets.images.icons.bottomTab.nodes.inActive
+            )
         }}
       />
-      <MainNavigator.Screen
+      <MainBottomTabNavigator.Screen
+        name={ROUTES.InterestNodes}
+        component={Screens.InterestNodesScreen}
+        options={{
+          title: translate(`router.${ROUTES.InterestNodes}`),
+          ...defaultTabBarSetting(theme, insets),
+          tabBarIcon: ({ focused }) =>
+            renderBottomIcon(
+              focused,
+              theme.assets.images.icons.bottomTab.like.active,
+              theme.assets.images.icons.bottomTab.like.inActive
+            )
+        }}
+      />
+      <MainBottomTabNavigator.Screen
         name={ROUTES.Notifications}
         component={Screens.NotificationsScreen}
         options={{
           title: translate(`router.${ROUTES.Notifications}`),
-          ...defaultTabBarSetting(theme),
+          ...defaultTabBarSetting(theme, insets),
           tabBarIcon: ({ focused }) =>
-            renderIcon(focused, theme.assets.images.icons.notification, theme.assets.images.icons.notificationInactive),
+            renderBottomIcon(
+              focused,
+              theme.assets.images.icons.bottomTab.notifications.active,
+              theme.assets.images.icons.bottomTab.notifications.inActive
+            ),
           tabBarBadge: unread > 0 ? unread : undefined,
           tabBarBadgeStyle: badgeStyles.badge(theme)
         }}
       />
-      <MainNavigator.Screen
+      <MainBottomTabNavigator.Screen
         name={ROUTES.My}
         component={Screens.MyScreen}
         options={{
           title: translate(`router.${ROUTES.My}`),
-          ...defaultTabBarSetting(theme),
+          ...defaultTabBarSetting(theme, insets),
           tabBarIcon: ({ focused }) =>
-            renderIcon(focused, theme.assets.images.icons.profile, theme.assets.images.icons.profileInactive)
+            renderBottomIcon(
+              focused,
+              theme.assets.images.icons.bottomTab.my.active,
+              theme.assets.images.icons.bottomTab.my.inActive
+            )
         }}
       />
-    </MainNavigator.Navigator>
+    </MainBottomTabNavigator.Navigator>
   )
 }
 
