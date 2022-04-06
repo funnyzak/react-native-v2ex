@@ -261,6 +261,7 @@ export interface IThemeAssets {
         }
       }
       table: {
+        rightArrow: ImageSourcePropType
         cached: ImageSourcePropType
         email: ImageSourcePropType
         github: ImageSourcePropType
