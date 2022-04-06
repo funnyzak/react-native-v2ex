@@ -77,22 +77,22 @@ const Assets: IThemeAssets = {
         }
       },
       table: {
-        cached: require('@res/images/icons/tab/cached.png'),
-        email: require('@res/images/icons/tab/email.png'),
-        github: require('@res/images/icons/tab/github.png'),
-        group: require('@res/images/icons/tab/group.png'),
-        language: require('@res/images/icons/tab/language.png'),
-        opensource: require('@res/images/icons/tab/opensource.png'),
-        score: require('@res/images/icons/tab/score.png'),
-        share: require('@res/images/icons/tab/share.png'),
-        theme: require('@res/images/icons/tab/theme.png'),
-        twitter: require('@res/images/icons/tab/twitter.png'),
-        urlschme: require('@res/images/icons/tab/urlscheme.png')
+        cached: require('@res/images/icons/table/cached.png'),
+        email: require('@res/images/icons/table/email.png'),
+        github: require('@res/images/icons/table/github.png'),
+        group: require('@res/images/icons/table/group.png'),
+        language: require('@res/images/icons/table/language.png'),
+        opensource: require('@res/images/icons/table/opensource.png'),
+        score: require('@res/images/icons/table/score.png'),
+        share: require('@res/images/icons/table/share.png'),
+        theme: require('@res/images/icons/table/theme.png'),
+        twitter: require('@res/images/icons/table/twitter.png'),
+        urlschme: require('@res/images/icons/table/urlscheme.png')
       },
       topic: {
         comment: require('@res/images/icons/topic/comment.png'),
         paper: require('@res/images/icons/topic/paper.png'),
-        talk: require('@res/images/icons/topic/people-voic.png'),
+        talk: require('@res/images/icons/topic/people-voice.png'),
         time: require('@res/images/icons/topic/update.png')
       }
     }
