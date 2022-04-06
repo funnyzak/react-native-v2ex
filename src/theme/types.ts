@@ -183,29 +183,98 @@ export interface IThemeTypography {
 export interface IThemeAssets {
   images: {
     icons: {
-      logo: ImageSourcePropType
-      icon: ImageSourcePropType
-      home: ImageSourcePropType
-      homeInactive: ImageSourcePropType
-      discovery: ImageSourcePropType
-      discoveryInactive: ImageSourcePropType
-      notification: ImageSourcePropType
-      notificationInactive: ImageSourcePropType
-      profile: ImageSourcePropType
-      profileInactive: ImageSourcePropType
-      moreCycleGrey: ImageSourcePropType
-      personCycleGrey: ImageSourcePropType
-      timeCycleGrey: ImageSourcePropType
-      heartGrey: ImageSourcePropType
-      heartRed: ImageSourcePropType
-      gold: ImageSourcePropType
-      silver: ImageSourcePropType
-      bronze: ImageSourcePropType
-      arrowRightGrey: ImageSourcePropType
-      send: ImageSourcePropType
-      starOutline: ImageSourcePropType
-      starFilled: ImageSourcePropType
-      chatGrey: ImageSourcePropType
+      app: {
+        icon: ImageSourcePropType
+        arrow: {
+          light: ImageSourcePropType
+          dark: ImageSourcePropType
+        }
+        slogo: {
+          light: ImageSourcePropType
+          dark: ImageSourcePropType
+        }
+      }
+      draw: {
+        hot: {
+          active: ImageSourcePropType
+          inActive: ImageSourcePropType
+        }
+        latest: {
+          active: ImageSourcePropType
+          inActive: ImageSourcePropType
+        }
+      }
+      header: {
+        back: ImageSourcePropType
+        stat: ImageSourcePropType
+        more: ImageSourcePropType
+        search: ImageSourcePropType
+        star: ImageSourcePropType
+        heart: ImageSourcePropType
+      }
+      node: {
+        docment: ImageSourcePropType
+        star: ImageSourcePropType
+        urlscheme: ImageSourcePropType
+      }
+      placeholder: {
+        notification: ImageSourcePropType
+        search: ImageSourcePropType
+      }
+      profile: {
+        github: ImageSourcePropType
+        location: ImageSourcePropType
+        telegram: ImageSourcePropType
+        twitter: ImageSourcePropType
+        urlschme: ImageSourcePropType
+      }
+      bottomTab: {
+        hot: {
+          active: ImageSourcePropType
+          inActive: ImageSourcePropType
+        }
+        nodes: {
+          active: ImageSourcePropType
+          inActive: ImageSourcePropType
+        }
+        like: {
+          active: ImageSourcePropType
+          inActive: ImageSourcePropType
+        }
+        notifications: {
+          active: ImageSourcePropType
+          inActive: ImageSourcePropType
+        }
+        my: {
+          active: ImageSourcePropType
+          inActive: ImageSourcePropType
+        }
+      }
+      tabbar: {
+        title: {
+          comment: ImageSourcePropType
+          latest: ImageSourcePropType
+        }
+      }
+      table: {
+        cached: ImageSourcePropType
+        email: ImageSourcePropType
+        github: ImageSourcePropType
+        group: ImageSourcePropType
+        language: ImageSourcePropType
+        opensource: ImageSourcePropType
+        score: ImageSourcePropType
+        share: ImageSourcePropType
+        theme: ImageSourcePropType
+        twitter: ImageSourcePropType
+        urlschme: ImageSourcePropType
+      }
+      topic: {
+        comment: ImageSourcePropType
+        paper: ImageSourcePropType
+        talk: ImageSourcePropType
+        time: ImageSourcePropType
+      }
     }
   }
 }

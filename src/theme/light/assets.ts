@@ -3,29 +3,98 @@ import { IThemeAssets } from '../types'
 const Assets: IThemeAssets = {
   images: {
     icons: {
-      logo: require('@res/images/icon/logo.png'),
-      icon: require('@res/images/icon/icon.png'),
-      home: require('@res/images/icon/home.png'),
-      homeInactive: require('@res/images/icon/home-inactive.png'),
-      discovery: require('@res/images/icon/discovery.png'),
-      discoveryInactive: require('@res/images/icon/discovery-inactive.png'),
-      notification: require('@res/images/icon/notification.png'),
-      notificationInactive: require('@res/images/icon/notification-inactive.png'),
-      profile: require('@res/images/icon/profile.png'),
-      profileInactive: require('@res/images/icon/profile-inactive.png'),
-      moreCycleGrey: require('@res/images/icon/more-circle-grey.png'),
-      timeCycleGrey: require('@res/images/icon/time-circle-grey.png'),
-      personCycleGrey: require('@res/images/icon/person-circle-grey.png'),
-      heartGrey: require('@res/images/icon/heart-grey.png'),
-      heartRed: require('@res/images/icon/heart-red.png'),
-      gold: require('@res/images/icon/gold.png'),
-      silver: require('@res/images/icon/silver.png'),
-      bronze: require('@res/images/icon/bronze.png'),
-      arrowRightGrey: require('@res/images/icon/arrow-right-grey.png'),
-      send: require('@res/images/icon/send.png'),
-      starOutline: require('@res/images/icon/star-outline.png'),
-      starFilled: require('@res/images/icon/star-filled.png'),
-      chatGrey: require('@res/images/icon/chat-grey.png')
+      app: {
+        icon: require('@res/images/icons/app/256.png'),
+        arrow: {
+          light: require('@res/images/icons/app/arrow/light.png'),
+          dark: require('@res/images/icons/app/arrow/dark.png')
+        },
+        slogo: {
+          light: require('@res/images/icons/app/slogo/light.png'),
+          dark: require('@res/images/icons/app/slogo/dark.png')
+        }
+      },
+      draw: {
+        hot: {
+          active: require('@res/images/icons/draw/fire-active.png'),
+          inActive: require('@res/images/icons/draw/fire-inactive.png')
+        },
+        latest: {
+          active: require('@res/images/icons/draw/news-active.png'),
+          inActive: require('@res/images/icons/draw/news-inactive.png')
+        }
+      },
+      header: {
+        back: require('@res/images/icons/header/back.png'),
+        stat: require('@res/images/icons/header/board.png'),
+        more: require('@res/images/icons/header/more_vert.png'),
+        search: require('@res/images/icons/header/search.png'),
+        star: require('@res/images/icons/header/star.png'),
+        heart: require('@res/images/icons/header/heart.png')
+      },
+      node: {
+        docment: require('@res/images/icons/node/document.png'),
+        star: require('@res/images/icons/node/star.png'),
+        urlscheme: require('@res/images/icons/node/urlscheme.png')
+      },
+      placeholder: {
+        notification: require('@res/images/icons/placeholder/notification.png'),
+        search: require('@res/images/icons/placeholder/search.png')
+      },
+      profile: {
+        github: require('@res/images/icons/profile/github.png'),
+        location: require('@res/images/icons/profile/location.png'),
+        telegram: require('@res/images/icons/profile/telegram.png'),
+        twitter: require('@res/images/icons/profile/twitter.png'),
+        urlschme: require('@res/images/icons/profile/urlscheme.png')
+      },
+      bottomTab: {
+        hot: {
+          active: require('@res/images/icons/tab/bottom/hot.png'),
+          inActive: require('@res/images/icons/tab/bottom/hot-focus.png')
+        },
+        nodes: {
+          active: require('@res/images/icons/tab/bottom/node.png'),
+          inActive: require('@res/images/icons/tab/bottom/node-focus.png')
+        },
+        like: {
+          active: require('@res/images/icons/tab/bottom/like.png'),
+          inActive: require('@res/images/icons/tab/bottom/like-focus.png')
+        },
+        notifications: {
+          active: require('@res/images/icons/tab/bottom/notification.png'),
+          inActive: require('@res/images/icons/tab/bottom/notification-focus.png')
+        },
+        my: {
+          active: require('@res/images/icons/tab/bottom/my.png'),
+          inActive: require('@res/images/icons/tab/bottom/my-focus.png')
+        }
+      },
+      tabbar: {
+        title: {
+          comment: require('@res/images/icons/tab/title/comment.png'),
+          latest: require('@res/images/icons/tab/title/news.png')
+        }
+      },
+      table: {
+        cached: require('@res/images/icons/tab/cached.png'),
+        email: require('@res/images/icons/tab/email.png'),
+        github: require('@res/images/icons/tab/github.png'),
+        group: require('@res/images/icons/tab/group.png'),
+        language: require('@res/images/icons/tab/language.png'),
+        opensource: require('@res/images/icons/tab/opensource.png'),
+        score: require('@res/images/icons/tab/score.png'),
+        share: require('@res/images/icons/tab/share.png'),
+        theme: require('@res/images/icons/tab/theme.png'),
+        twitter: require('@res/images/icons/tab/twitter.png'),
+        urlschme: require('@res/images/icons/tab/urlscheme.png')
+      },
+      topic: {
+        comment: require('@res/images/icons/topic/comment.png'),
+        paper: require('@res/images/icons/topic/paper.png'),
+        talk: require('@res/images/icons/topic/people-voic.png'),
+        time: require('@res/images/icons/topic/update.png')
+      }
     }
   }
 }
