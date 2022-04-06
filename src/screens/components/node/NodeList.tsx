@@ -8,6 +8,7 @@ import { Text, Button, Spinner, Placeholder } from '@src/components'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
+import { V2exObject } from '@src/types'
 
 /**
  * // TODO: NodeList
@@ -26,7 +27,7 @@ export interface NodeListProps {
 }
 
 const NodeList: React.FC<NodeListProps> = ({ width, height }: NodeListProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, NodeList.</Text>
@@ -34,7 +35,7 @@ const NodeList: React.FC<NodeListProps> = ({ width, height }: NodeListProps) => 
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

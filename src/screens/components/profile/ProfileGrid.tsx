@@ -8,6 +8,7 @@ import { Text, Button, Spinner, Placeholder } from '@src/components'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
+import { V2exObject } from '@src/types'
 
 /**
  * // TODO: ProfileGrid
@@ -26,7 +27,7 @@ export interface ProfileGridProps {
 }
 
 const ProfileGrid: React.FC<ProfileGridProps> = ({ width, height }: ProfileGridProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, ProfileGrid.</Text>
@@ -34,7 +35,7 @@ const ProfileGrid: React.FC<ProfileGridProps> = ({ width, height }: ProfileGridP
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

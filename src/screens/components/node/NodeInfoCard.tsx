@@ -8,6 +8,7 @@ import { Text, Button, Spinner, Placeholder } from '@src/components'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
+import { V2exObject } from '@src/types'
 
 /**
  * // TODO: NodeInfoCard
@@ -26,7 +27,7 @@ export interface NodeInfoCardProps {
 }
 
 const NodeInfoCard: React.FC<NodeInfoCardProps> = ({ width, height }: NodeInfoCardProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, NodeInfoCard.</Text>
@@ -34,7 +35,7 @@ const NodeInfoCard: React.FC<NodeInfoCardProps> = ({ width, height }: NodeInfoCa
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

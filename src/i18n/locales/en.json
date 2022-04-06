@@ -77,7 +77,7 @@
     "replyedCount": "Replied Count",
     "replyedTime": "Replyed",
     "createSince": "Created from ",
-    "activeLatest": "Latest active at ",
+    "activeLatest": "Latest active at $ ",
     "favorited": "Favorited",
     "joinSinceTime": "Joined from",
     "joinV2exSinceTime": "Become a V2EX member from $",

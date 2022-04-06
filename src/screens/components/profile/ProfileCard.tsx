@@ -8,6 +8,7 @@ import { Text, Button, Spinner, Placeholder } from '@src/components'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
+import { V2exObject } from '@src/types'
 
 /**
  * // TODO: ProfileCard
@@ -26,7 +27,7 @@ export interface ProfileCardProps {
 }
 
 const ProfileCard: React.FC<ProfileCardProps> = ({ width, height }: ProfileCardProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, ProfileCard.</Text>
@@ -34,7 +35,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ width, height }: ProfileCardP
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

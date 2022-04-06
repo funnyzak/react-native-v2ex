@@ -1,4 +1,4 @@
-import { default as ProfileCard } from './ProfileCard'
-import { default as ProfileDetail } from './ProfileDetail'
-import { default as ProfileGrid } from './ProfileGrid'
-import { default as ProfileInfo } from './ProfileInfo'
+export { default as ProfileCard } from './ProfileCard'
+export { default as ProfileDetail } from './ProfileDetail'
+export { default as ProfileGrid } from './ProfileGrid'
+export { default as ProfileInfo } from './ProfileInfo'

@@ -8,6 +8,7 @@ import { Text, Button, Spinner, Placeholder } from '@src/components'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
+import { V2exObject } from '@src/types'
 
 /**
  * // TODO: TopicReply
@@ -26,7 +27,7 @@ export interface TopicReplyProps {
 }
 
 const TopicReply: React.FC<TopicReplyProps> = ({ width, height }: TopicReplyProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, TopicReply.</Text>
@@ -34,7 +35,7 @@ const TopicReply: React.FC<TopicReplyProps> = ({ width, height }: TopicReplyProp
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

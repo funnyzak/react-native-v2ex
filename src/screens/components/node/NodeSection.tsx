@@ -8,6 +8,7 @@ import { Text, Button, Spinner, Placeholder } from '@src/components'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
+import { V2exObject } from '@src/types'
 
 /**
  * // TODO: NodeSection
@@ -26,7 +27,7 @@ export interface NodeSectionProps {
 }
 
 const NodeSection: React.FC<NodeSectionProps> = ({ width, height }: NodeSectionProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, NodeSection.</Text>
@@ -34,7 +35,7 @@ const NodeSection: React.FC<NodeSectionProps> = ({ width, height }: NodeSectionP
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

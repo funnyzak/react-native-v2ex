@@ -81,6 +81,7 @@ const Assets: IThemeAssets = {
         }
       },
       table: {
+        rightArrow: require('@res/images/icons/table/right-arrow.png'),
         cached: require('@res/images/icons/table/cached.png'),
         email: require('@res/images/icons/table/email.png'),
         github: require('@res/images/icons/table/github.png'),

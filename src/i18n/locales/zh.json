@@ -77,10 +77,10 @@
     "replyedCount": "回复数量",
     "replyedTime": "回复于",
     "createSince": "创建至今",
-    "activeLatest": "最新活跃于",
+    "activeLatest": "最近活跃于 $ 。",
     "favorited": "收藏了",
     "joinSinceTime": "加入于",
-    "joinV2exSinceTime": "从 $ 开始成为V2EX会员",
+    "joinV2exSinceTime": "从 $ 成为V2EX一员。",
     "noLogin": "未登陆",
     "posdedTopics": "$ 发布的主题",
     "openApp": "打开APP"

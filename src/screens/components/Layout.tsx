@@ -8,6 +8,7 @@ import { Text, Button, Spinner, Placeholder } from '@src/components'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
+import { V2exObject } from '@src/types'
 
 /**
  * // TODO: Layout
@@ -26,7 +27,7 @@ export interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ width, height }: LayoutProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, Layout.</Text>
@@ -34,7 +35,7 @@ const Layout: React.FC<LayoutProps> = ({ width, height }: LayoutProps) => {
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

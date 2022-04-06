@@ -8,6 +8,7 @@ import { Text, Button, Spinner, Placeholder } from '@src/components'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
+import { V2exObject } from '@src/types'
 
 /**
  * // TODO: TableList
@@ -26,7 +27,7 @@ export interface TableListProps {
 }
 
 const TableList: React.FC<TableListProps> = ({ width, height }: TableListProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, TableList.</Text>
@@ -34,7 +35,7 @@ const TableList: React.FC<TableListProps> = ({ width, height }: TableListProps) 
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

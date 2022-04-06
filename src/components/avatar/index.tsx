@@ -11,7 +11,12 @@ interface IProps {
   source?: Source | number
   onPress?: () => void
 }
-
+/**
+ * TODO: default avatar icon
+ * Usernames avatar component
+ * @param { username, size = 24, source, onPress, style }
+ * @returns
+ */
 const AvatarComponent = ({ username, size = 24, source, onPress, style }: IProps) => {
   const { theme } = useTheme()
   const [loading, setLoading] = useState<boolean>(true)
@@ -52,7 +57,7 @@ const styles = {
   avatar: (size: number) => ({
     width: size,
     height: size,
-    borderRadius: size
+    borderRadius: size * 0.1
   })
 }
 
