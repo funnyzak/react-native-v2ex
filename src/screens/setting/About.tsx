@@ -18,7 +18,7 @@ const About = ({
   return (
     <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
       <View style={styles.container(theme)}>
-        <Image style={styles.logo(theme)} source={theme.assets.images.icons.icon} resizeMode="contain" />
+        <Image style={styles.logo(theme)} source={theme.assets.images.icons.app.icon} resizeMode="contain" />
         <Text style={styles.desc(theme)}>
           V{app.version.version}(Build {app.version.buildId})
         </Text>
