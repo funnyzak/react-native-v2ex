@@ -27,7 +27,7 @@ export interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ width, height }: LayoutProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, Layout.</Text>
@@ -35,7 +35,7 @@ const Layout: React.FC<LayoutProps> = ({ width, height }: LayoutProps) => {
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

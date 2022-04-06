@@ -27,7 +27,7 @@ export interface NodeSectionProps {
 }
 
 const NodeSection: React.FC<NodeSectionProps> = ({ width, height }: NodeSectionProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, NodeSection.</Text>
@@ -35,7 +35,7 @@ const NodeSection: React.FC<NodeSectionProps> = ({ width, height }: NodeSectionP
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

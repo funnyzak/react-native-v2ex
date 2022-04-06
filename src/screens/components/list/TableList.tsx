@@ -27,7 +27,7 @@ export interface TableListProps {
 }
 
 const TableList: React.FC<TableListProps> = ({ width, height }: TableListProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, TableList.</Text>
@@ -35,7 +35,7 @@ const TableList: React.FC<TableListProps> = ({ width, height }: TableListProps) 
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

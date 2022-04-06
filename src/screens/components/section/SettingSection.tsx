@@ -27,7 +27,7 @@ export interface SettingSectionProps {
 }
 
 const SettingSection: React.FC<SettingSectionProps> = ({ width, height }: SettingSectionProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, SettingSection.</Text>
@@ -35,7 +35,7 @@ const SettingSection: React.FC<SettingSectionProps> = ({ width, height }: Settin
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

@@ -27,7 +27,7 @@ export interface ProfileGridProps {
 }
 
 const ProfileGrid: React.FC<ProfileGridProps> = ({ width, height }: ProfileGridProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, ProfileGrid.</Text>
@@ -35,7 +35,7 @@ const ProfileGrid: React.FC<ProfileGridProps> = ({ width, height }: ProfileGridP
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

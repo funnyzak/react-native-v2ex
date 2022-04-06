@@ -27,7 +27,7 @@ export interface NodeListProps {
 }
 
 const NodeList: React.FC<NodeListProps> = ({ width, height }: NodeListProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, NodeList.</Text>
@@ -35,7 +35,7 @@ const NodeList: React.FC<NodeListProps> = ({ width, height }: NodeListProps) => 
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

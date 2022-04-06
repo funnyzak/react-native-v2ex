@@ -27,7 +27,7 @@ export interface GridListProps {
 }
 
 const GridList: React.FC<GridListProps> = ({ width, height }: GridListProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, GridList.</Text>
@@ -35,7 +35,7 @@ const GridList: React.FC<GridListProps> = ({ width, height }: GridListProps) => 
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

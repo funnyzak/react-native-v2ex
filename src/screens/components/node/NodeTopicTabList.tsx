@@ -27,7 +27,7 @@ export interface NodeTopicTabListProps {
 }
 
 const NodeTopicTabList: React.FC<NodeTopicTabListProps> = ({ width, height }: NodeTopicTabListProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, NodeTopicTabList.</Text>
@@ -35,7 +35,7 @@ const NodeTopicTabList: React.FC<NodeTopicTabListProps> = ({ width, height }: No
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

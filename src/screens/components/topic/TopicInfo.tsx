@@ -27,7 +27,7 @@ export interface TopicInfoProps {
 }
 
 const TopicInfo: React.FC<TopicInfoProps> = ({ width, height }: TopicInfoProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, TopicInfo.</Text>
@@ -35,7 +35,7 @@ const TopicInfo: React.FC<TopicInfoProps> = ({ width, height }: TopicInfoProps) 
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

@@ -27,7 +27,7 @@ export interface ProfileCardProps {
 }
 
 const ProfileCard: React.FC<ProfileCardProps> = ({ width, height }: ProfileCardProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, ProfileCard.</Text>
@@ -35,7 +35,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ width, height }: ProfileCardP
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

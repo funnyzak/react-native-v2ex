@@ -27,7 +27,7 @@ export interface ProfileDetailProps {
 }
 
 const ProfileDetail: React.FC<ProfileDetailProps> = ({ width, height }: ProfileDetailProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, ProfileDetail.</Text>
@@ -35,7 +35,7 @@ const ProfileDetail: React.FC<ProfileDetailProps> = ({ width, height }: ProfileD
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

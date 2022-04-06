@@ -27,7 +27,7 @@ export interface NodeInfoCardProps {
 }
 
 const NodeInfoCard: React.FC<NodeInfoCardProps> = ({ width, height }: NodeInfoCardProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, NodeInfoCard.</Text>
@@ -35,7 +35,7 @@ const NodeInfoCard: React.FC<NodeInfoCardProps> = ({ width, height }: NodeInfoCa
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {

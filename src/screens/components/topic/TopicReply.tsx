@@ -27,7 +27,7 @@ export interface TopicReplyProps {
 }
 
 const TopicReply: React.FC<TopicReplyProps> = ({ width, height }: TopicReplyProps) => {
-  const readerContent = () => {
+  const renderContent = () => {
     return (
       <View>
         <Text>Hello World, TopicReply.</Text>
@@ -35,7 +35,7 @@ const TopicReply: React.FC<TopicReplyProps> = ({ width, height }: TopicReplyProp
     )
   }
 
-  return readerContent()
+  return renderContent()
 }
 
 const styles = {
