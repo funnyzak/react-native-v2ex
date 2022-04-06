@@ -231,11 +231,12 @@ export declare module V2exObject {
     website: string
     twitter?: string
     psn?: string
-    github: string
+    github?: string
+    telegram?: string
     btc?: string
     location?: string
     tagline?: string
-    bio: string
+    bio?: string
     avatar?: string
     avatar_mini?: string
     avatar_normal?: string
