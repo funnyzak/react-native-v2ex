@@ -229,6 +229,10 @@ export interface IThemeAssets {
         urlschme: ImageSourcePropType
       }
       bottomTab: {
+        home: {
+          active: ImageSourcePropType
+          inActive: ImageSourcePropType
+        }
         hot: {
           active: ImageSourcePropType
           inActive: ImageSourcePropType

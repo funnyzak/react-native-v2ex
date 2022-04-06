@@ -49,25 +49,29 @@ const Assets: IThemeAssets = {
         urlschme: require('@res/images/icons/profile/urlscheme.png')
       },
       bottomTab: {
+        home: {
+          active: require('@res/images/icons/tab/bottom/home-focus.png'),
+          inActive: require('@res/images/icons/tab/bottom/home.png')
+        },
         hot: {
-          active: require('@res/images/icons/tab/bottom/hot.png'),
-          inActive: require('@res/images/icons/tab/bottom/hot-focus.png')
+          active: require('@res/images/icons/tab/bottom/hot-focus.png'),
+          inActive: require('@res/images/icons/tab/bottom/hot.png')
         },
         nodes: {
-          active: require('@res/images/icons/tab/bottom/node.png'),
-          inActive: require('@res/images/icons/tab/bottom/node-focus.png')
+          active: require('@res/images/icons/tab/bottom/node-focus.png'),
+          inActive: require('@res/images/icons/tab/bottom/node.png')
         },
         like: {
-          active: require('@res/images/icons/tab/bottom/like.png'),
-          inActive: require('@res/images/icons/tab/bottom/like-focus.png')
+          active: require('@res/images/icons/tab/bottom/like-focus.png'),
+          inActive: require('@res/images/icons/tab/bottom/like.png')
         },
         notifications: {
-          active: require('@res/images/icons/tab/bottom/notification.png'),
-          inActive: require('@res/images/icons/tab/bottom/notification-focus.png')
+          active: require('@res/images/icons/tab/bottom/notification-focus.png'),
+          inActive: require('@res/images/icons/tab/bottom/notification.png')
         },
         my: {
-          active: require('@res/images/icons/tab/bottom/my.png'),
-          inActive: require('@res/images/icons/tab/bottom/my-focus.png')
+          active: require('@res/images/icons/tab/bottom/my-focus.png'),
+          inActive: require('@res/images/icons/tab/bottom/my.png')
         }
       },
       tabbar: {
