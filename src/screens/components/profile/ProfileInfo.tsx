@@ -8,24 +8,16 @@ import { Text, Button, Spinner, Placeholder } from '@src/components'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
-
+import { V2exObject } from '@src/types'
 /**
  * // TODO: ProfileInfo
  * ProfileInfo props
  */
 export interface ProfileInfoProps {
-  /**
-   * ProfileInfo width
-   */
-  width?: number | string
-
-  /**
-   * ProfileInfo height
-   */
-  height?: number | string
+  profile: V2exObject.Member
 }
 
-const ProfileInfo: React.FC<ProfileInfoProps> = ({ width, height }: ProfileInfoProps) => {
+const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }: ProfileInfoProps) => {
   const readerContent = () => {
     return (
       <View>
