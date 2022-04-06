@@ -9,18 +9,19 @@ import { Image, ImageSourcePropType, ImageStyle, TextStyle, TouchableOpacity, Vi
 /**
  * TextWithIconPress props
  */
-export interface TextWithIconPress {
+export interface TextWithIconPressProps {
   text: string
   icon?: ImageSourcePropType
+  style?: ViewStyle
   press?: () => void
 }
 
-const TextWithIconPress: React.FC<TextWithIconPress> = ({ text, icon, press }: TextWithIconPress) => {
+const TextWithIconPress: React.FC<TextWithIconPressProps> = ({ text, icon, style, press }: TextWithIconPressProps) => {
   const { theme } = useTheme()
 
   const renderContent = () => {
     return (
-      <TouchableOpacity style={styles.textWithIconPress.container(theme)} onPress={press}>
+      <TouchableOpacity style={[styles.textWithIconPress.container(theme), style]} onPress={press}>
         {icon && <Image source={icon} style={styles.textWithIconPress.icon(theme)} />}
         <Text style={styles.textWithIconPress.text(theme)}>{text}</Text>
       </TouchableOpacity>
@@ -33,7 +34,6 @@ const TextWithIconPress: React.FC<TextWithIconPress> = ({ text, icon, press }: T
 const styles = {
   textWithIconPress: {
     container: (theme: ITheme): ViewStyle => ({
-      flex: 1,
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
