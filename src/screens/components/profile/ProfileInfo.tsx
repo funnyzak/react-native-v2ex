@@ -191,7 +191,7 @@ const styles = {
     justifyContent: 'center'
   }),
   baseRightItem: (theme: ITheme): ViewStyle => ({
-    paddingBottom: theme.spacing.tiny
+    paddingBottom: theme.spacing.small
   })
 }
 

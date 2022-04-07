@@ -64,7 +64,17 @@ const TextGrid: React.FC<TextGridProps> = ({ list, columnNum }: TextGridProps) =
   return renderContent()
 }
 
+const BorderLine = () => {
+  const { theme } = useTheme()
+  return <View style={styles.borderLine(theme)} />
+}
+
 const styles = {
+  borderLine: (theme: ITheme) => ({
+    width: '100%',
+    height: 0.3,
+    backgroundColor: theme.colors.border
+  }),
   textWithIconPress: {
     container: (theme: ITheme): ViewStyle => ({
       display: 'flex',
@@ -111,4 +121,4 @@ const styles = {
   }
 }
 
-export { TextWithIconPress, TextGrid }
+export { TextWithIconPress, TextGrid, BorderLine }
