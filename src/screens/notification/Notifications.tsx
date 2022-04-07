@@ -1,5 +1,6 @@
-import { Text } from '@src/components'
-import { NotificationsScreenProps as ScreenProps } from '@src/navigation/routes'
+import { Text, Placeholder } from '@src/components'
+import { translate } from '@src/i18n'
+import { NotificationsScreenProps as ScreenProps, ROUTES } from '@src/navigation/routes'
 import { SylCommon, useTheme } from '@src/theme'
 import { IState, ITheme } from '@src/types'
 import React from 'react'
@@ -10,7 +11,11 @@ const Notification = ({ route, navigation, loading }: ScreenProps) => {
   const { theme } = useTheme()
   return (
     <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
-      <Text>Hello, Notification.</Text>
+      <Placeholder
+        style="icon"
+        icon={theme.assets.images.icons.placeholder.construction}
+        placeholderText={translate(`router.${ROUTES.Notifications}`) + translate('label.underConstruction')}
+      />
     </View>
   )
 }

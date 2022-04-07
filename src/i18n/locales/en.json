@@ -85,7 +85,8 @@
     "posdedTopics": "Topics posted by $",
     "openApp": "Open APP",
     "goLogin": "Login Now",
-    "loginTips": "experience more features"
+    "loginTips": "experience more features",
+    "underConstruction": "Under Construction"
   },
   "theme": {
     "light": "Light",
@@ -125,7 +126,7 @@
     "OpenSourceLicense": "License",
     "PrivacyPolicy": "Privacy Policy",
     "ChangeLog": "Change Log",
-    "LikeNodes": "Interest",
+    "InterestNodes": "Interest",
     "HowToUse": "How to use",
     "TermsOfService": "Terms of Service"
   },

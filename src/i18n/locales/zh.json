@@ -85,7 +85,8 @@
     "posdedTopics": "$ 发布的主题",
     "openApp": "打开APP",
     "goLogin": "去登陆",
-    "loginTips": "登陆体验更多V2HUB功能"
+    "loginTips": "登陆体验更多V2HUB功能",
+    "underConstruction": "正在建设中"
   },
   "theme": {
     "auto": "自动",
@@ -125,7 +126,7 @@
     "OpenSourceLicense": "开源协议",
     "PrivacyPolic": "隐私政策",
     "ChangeLog": "更新说明",
-    "InterestNodes": "收藏节点",
+    "InterestNodes": "关注",
     "HowToUse": "如何使用",
     "TermsOfService": "服务条款"
   },
