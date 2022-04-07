@@ -4,7 +4,16 @@
 import { Text } from '@src/components'
 import { ITheme, useTheme } from '@src/theme'
 import React from 'react'
-import { Image, View, ImageSourcePropType, ImageStyle, TextStyle, TouchableOpacity, ViewStyle } from 'react-native'
+import {
+  Image,
+  View,
+  ImageSourcePropType,
+  ImageStyle,
+  TextStyle,
+  TouchableOpacity,
+  ViewStyle,
+  Pressable
+} from 'react-native'
 
 /**
  * TextWithIconPress props
@@ -69,6 +78,13 @@ const BorderLine = () => {
   return <View style={styles.borderLine(theme)} />
 }
 
+const HeaderButton = ({ source, onPress }: { source: ImageSourcePropType; onPress: () => void }) => {
+  return (
+    <Pressable onPress={onPress}>
+      <Image source={source} width={24} />
+    </Pressable>
+  )
+}
 const styles = {
   borderLine: (theme: ITheme) => ({
     width: '100%',
@@ -121,4 +137,4 @@ const styles = {
   }
 }
 
-export { TextWithIconPress, TextGrid, BorderLine }
+export { TextWithIconPress, TextGrid, BorderLine, HeaderButton }
