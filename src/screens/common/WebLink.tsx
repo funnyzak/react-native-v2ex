@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect } from 'react'
+import React, { useEffect, useLayoutEffect, useMemo } from 'react'
 import { View } from 'react-native'
 import { WebView } from 'react-native-webview'
 
@@ -12,6 +12,10 @@ import { translate } from '@src/i18n'
 const WebLink = ({ route, navigation }: ScreenProps) => {
   const { theme } = useTheme()
   const [loading, setLoading] = React.useState(true)
+  const url = useMemo(
+    () => (!route.params.url.startsWith('http') ? `http://${route.params.url}` : route.params.url),
+    [route]
+  )
 
   useEffect(() => {
     if (loading) {
@@ -25,7 +29,7 @@ const WebLink = ({ route, navigation }: ScreenProps) => {
         <HeaderButton
           source={theme.assets.images.icons.header.link}
           onPress={() => {
-            linking(route.params.url)
+            linking(url)
           }}
         />
       )
@@ -37,13 +41,15 @@ const WebLink = ({ route, navigation }: ScreenProps) => {
       {loading && <Spinner text="努力载入中..." />}
       <WebView
         originWhitelist={['*']}
-        source={{ uri: route.params.url }}
+        source={{ uri: url }}
         onLoad={(syntheticEvent) => {
           const { nativeEvent } = syntheticEvent
         }}
         onError={(syntheticEvent) => {
           const { nativeEvent } = syntheticEvent
           setLoading(false)
+          navigation.setOptions({ title: translate('errors.error') })
+
           console.warn('WebView error: ', nativeEvent)
         }}
         onLoadEnd={(syntheticEvent) => {
