@@ -12,7 +12,6 @@ import { Image, TouchableOpacity, View, ViewStyle } from 'react-native'
 import { TextWithIconPress } from '../common'
 
 /**
- * // TODO: ProfileInfo
  * ProfileInfo props
  */
 export interface ProfileInfoProps {

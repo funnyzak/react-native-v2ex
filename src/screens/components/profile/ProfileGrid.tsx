@@ -1,47 +1,60 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/04/01.
  */
-import React from 'react'
-import { View, ViewStyle, TextStyle } from 'react-native'
-
-import { Text, Button, Spinner, Placeholder } from '@src/components'
-import { ITheme, SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
-import { V2exObject } from '@src/types'
+import { SylCommon, useTheme } from '@src/theme'
+import React, { useMemo } from 'react'
+import { View } from 'react-native'
+import { TextGrid } from '../common'
 
 /**
- * // TODO: ProfileGrid
  * ProfileGrid props
  */
 export interface ProfileGridProps {
-  /**
-   * ProfileGrid width
-   */
-  width?: number | string
-
-  /**
-   * ProfileGrid height
-   */
-  height?: number | string
+  topics?: number
+  favorites?: number
+  following?: number
+  history?: number
 }
 
-const ProfileGrid: React.FC<ProfileGridProps> = ({ width, height }: ProfileGridProps) => {
+const ProfileGrid: React.FC<ProfileGridProps> = ({ topics, favorites, following, history }: ProfileGridProps) => {
+  const { theme } = useTheme()
+
+  const list = useMemo(
+    () => [
+      {
+        text: translate('router.MyTopics'),
+        count: topics,
+        press: () => NavigationService.navigate(ROUTES.MyTopics)
+      },
+      {
+        text: translate('router.FavoriteTopics'),
+        count: topics,
+        press: () => NavigationService.navigate(ROUTES.FavoriteTopics)
+      },
+      {
+        text: translate('router.Following'),
+        count: topics,
+        press: () => NavigationService.navigate(ROUTES.Following)
+      },
+      {
+        text: translate('router.History'),
+        count: topics,
+        press: () => NavigationService.navigate(ROUTES.History)
+      }
+    ],
+    [topics, favorites, following, history]
+  )
   const renderContent = () => {
     return (
-      <View>
-        <Text>Hello World, ProfileGrid.</Text>
+      <View style={SylCommon.Card.container(theme)}>
+        <TextGrid list={list} />
       </View>
     )
   }
 
   return renderContent()
-}
-
-const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    flex: 1
-  })
 }
 
 export default ProfileGrid
