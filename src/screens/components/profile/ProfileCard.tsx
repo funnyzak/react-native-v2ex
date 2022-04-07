@@ -25,13 +25,16 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ info, stat, containerStyle }:
         style={[
           {
             backgroundColor: theme.colors.surface,
-            paddingTop: theme.spacing.small
+            paddingTop: theme.spacing.medium
           },
           containerStyle
         ]}>
         <ProfileInfo {...info} containerStyle={SylCommon.Card.container(theme)} />
         <BorderLine />
-        <ProfileGrid {...stat} containerStyle={SylCommon.Card.container(theme)} />
+        <ProfileGrid
+          {...stat}
+          containerStyle={[SylCommon.Card.container(theme), { paddingTop: theme.spacing.small }]}
+        />
       </View>
     )
   }

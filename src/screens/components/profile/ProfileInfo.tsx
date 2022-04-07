@@ -8,7 +8,7 @@ import { ITheme, SylCommon, useTheme } from '@src/theme'
 import { V2exObject } from '@src/types'
 import dayjs from 'dayjs'
 import React, { useMemo } from 'react'
-import { Image, TouchableOpacity, View, ViewStyle } from 'react-native'
+import { Image, StyleProp, TouchableOpacity, View, ViewStyle } from 'react-native'
 import { TextWithIconPress } from '../common'
 
 /**
@@ -18,7 +18,7 @@ export interface ProfileInfoProps {
   /**
    * container style
    */
-  containerStyle?: ViewStyle
+  containerStyle?: StyleProp<ViewStyle>
   /**
    * card style
    */

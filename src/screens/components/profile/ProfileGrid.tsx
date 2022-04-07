@@ -4,7 +4,7 @@
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
 import React, { useMemo } from 'react'
-import { View, ViewStyle } from 'react-native'
+import { StyleProp, View, ViewStyle } from 'react-native'
 import { TextGrid } from '../common'
 
 /**
@@ -14,8 +14,7 @@ export interface ProfileGridProps {
   /**
    * container style
    */
-  containerStyle?: ViewStyle
-
+  containerStyle?: StyleProp<ViewStyle>
   topics?: number
   favorites?: number
   following?: number
