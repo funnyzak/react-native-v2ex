@@ -47,11 +47,7 @@ const ProfileGrid: React.FC<ProfileGridProps> = ({ topics, favorites, following,
     [topics, favorites, following, history]
   )
   const renderContent = () => {
-    return (
-      <View style={SylCommon.Card.container(theme)}>
-        <TextGrid list={list} />
-      </View>
-    )
+    return <TextGrid list={list} columnNum={4} />
   }
 
   return renderContent()
