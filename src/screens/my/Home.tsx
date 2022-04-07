@@ -88,7 +88,7 @@ const My = ({
         <TouchableOpacity
           style={SylCommon.Table.item(theme)}
           onPress={() => {
-            linking(`https://twitter.com/${app.aboutUs.twitter}`)
+            navigation.navigate(ROUTES.WebViewer, { url: `https://twitter.com/${app.aboutUs.twitter}` })
           }}>
           <Text style={SylCommon.Table.itemText(theme)}>{translate('common.twitter')}</Text>
           <Text style={SylCommon.Table.itemRightText(theme)}>@{app.aboutUs.twitter}</Text>
@@ -96,7 +96,7 @@ const My = ({
         <TouchableOpacity
           style={SylCommon.Table.item(theme)}
           onPress={() => {
-            linking(`https://github.com/${app.aboutUs.github}`)
+            navigation.navigate(ROUTES.WebViewer, { url: `https://github.com/${app.aboutUs.github}` })
           }}>
           <Text style={SylCommon.Table.itemText(theme)}>{translate('common.github')}</Text>
           <Text style={SylCommon.Table.itemRightText(theme)}>@{app.aboutUs.github}</Text>
