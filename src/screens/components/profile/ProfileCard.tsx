@@ -2,46 +2,28 @@
  * Created by leon<silenceace@gmail.com> on 22/04/01.
  */
 import React from 'react'
-import { View, ViewStyle, TextStyle } from 'react-native'
-
-import { Text, Button, Spinner, Placeholder } from '@src/components'
-import { ITheme, SylCommon, useTheme } from '@src/theme'
-import { translate } from '@src/i18n'
-import { NavigationService, ROUTES } from '@src/navigation'
-import { V2exObject } from '@src/types'
+import ProfileGrid, { ProfileGridProps } from './ProfileGrid'
+import ProfileInfo, { ProfileInfoProps } from './ProfileInfo'
 
 /**
- * // TODO: ProfileCard
  * ProfileCard props
  */
 export interface ProfileCardProps {
-  /**
-   * ProfileCard width
-   */
-  width?: number | string
-
-  /**
-   * ProfileCard height
-   */
-  height?: number | string
+  info: ProfileInfoProps
+  stat: ProfileGridProps
 }
 
-const ProfileCard: React.FC<ProfileCardProps> = ({ width, height }: ProfileCardProps) => {
+const ProfileCard: React.FC<ProfileCardProps> = ({ info, stat }: ProfileCardProps) => {
   const renderContent = () => {
     return (
-      <View>
-        <Text>Hello World, ProfileCard.</Text>
-      </View>
+      <>
+        <ProfileInfo {...info} />
+        <ProfileGrid {...stat} />
+      </>
     )
   }
 
   return renderContent()
-}
-
-const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    flex: 1
-  })
 }
 
 export default ProfileCard
