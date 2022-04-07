@@ -4,7 +4,7 @@
 import { Text } from '@src/components'
 import { ITheme, useTheme } from '@src/theme'
 import React from 'react'
-import { Image, ImageSourcePropType, ImageStyle, TextStyle, TouchableOpacity, ViewStyle } from 'react-native'
+import { Image, View, ImageSourcePropType, ImageStyle, TextStyle, TouchableOpacity, ViewStyle } from 'react-native'
 
 /**
  * TextWithIconPress props
@@ -25,6 +25,39 @@ const TextWithIconPress: React.FC<TextWithIconPressProps> = ({ text, icon, style
         {icon && <Image source={icon} style={styles.textWithIconPress.icon(theme)} />}
         <Text style={styles.textWithIconPress.text(theme)}>{text}</Text>
       </TouchableOpacity>
+    )
+  }
+
+  return renderContent()
+}
+
+/**
+ * TextGrid props
+ */
+export interface TextGridProps {
+  columnNum?: number
+  list: {
+    count?: number
+    text: string
+    press?: () => void
+  }[]
+}
+
+const TextGrid: React.FC<TextGridProps> = ({ list, columnNum }: TextGridProps) => {
+  const { theme } = useTheme()
+
+  const renderContent = () => {
+    return (
+      <View style={styles.textGrid.container(theme)}>
+        {list.map((item, index) => {
+          return (
+            <TouchableOpacity key={index} style={styles.textGrid.item(theme, columnNum)} onPress={item.press}>
+              <Text style={styles.textGrid.count(theme)}>{item.count ?? 0}</Text>
+              <Text style={styles.textGrid.item(theme)}>{item.text}</Text>
+            </TouchableOpacity>
+          )
+        })}
+      </View>
     )
   }
 
@@ -52,7 +85,30 @@ const styles = {
       ...theme.typography.captionText,
       color: theme.colors.captionText
     })
+  },
+  textGrid: {
+    container: (theme: ITheme): ViewStyle => ({
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      flexWrap: 'wrap',
+      justifyContent: 'space-between'
+    }),
+    item: (theme: ITheme, columnNum?: number): ViewStyle => ({
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      paddingVertical: theme.spacing.small
+    }),
+    count: (theme: ITheme): TextStyle => ({
+      alignSelf: 'center',
+      ...theme.typography.subheadingTextBold
+    }),
+    text: (theme: ITheme): TextStyle => ({
+      alignSelf: 'center',
+      ...theme.typography.bodyText
+    })
   }
 }
 
-export { TextWithIconPress }
+export { TextWithIconPress, TextGrid }
