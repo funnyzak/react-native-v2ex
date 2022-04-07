@@ -211,6 +211,7 @@ export interface IThemeAssets {
         search: ImageSourcePropType
         star: ImageSourcePropType
         heart: ImageSourcePropType
+        link: ImageSourcePropType
       }
       node: {
         docment: ImageSourcePropType
