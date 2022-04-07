@@ -40,7 +40,8 @@ const Assets: IThemeAssets = {
       },
       placeholder: {
         notification: require('@res/images/icons/placeholder/notification.png'),
-        search: require('@res/images/icons/placeholder/search.png')
+        search: require('@res/images/icons/placeholder/search.png'),
+        construction: require('@res/images/icons/placeholder/construction.png')
       },
       profile: {
         avatar: require('@res/images/icons/profile/default-avatar.png'),

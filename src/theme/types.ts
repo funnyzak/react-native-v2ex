@@ -221,6 +221,7 @@ export interface IThemeAssets {
       placeholder: {
         notification: ImageSourcePropType
         search: ImageSourcePropType
+        construction: ImageSourcePropType
       }
       profile: {
         avatar: ImageSourcePropType
