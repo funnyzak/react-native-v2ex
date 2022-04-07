@@ -1,20 +1,34 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useLayoutEffect } from 'react'
 import { View } from 'react-native'
 import { WebView } from 'react-native-webview'
 
 import { useTheme, SylCommon } from '@src/theme'
-import { WebLinkScreenProps as ScreenProps } from '@src/navigation/routes'
+import { WebViewerScreenProps as ScreenProps } from '@src/navigation/routes'
 import { Spinner } from '@src/components'
+import { HeaderButton } from '../components'
+import { linking } from '@src/utils'
+import { translate } from '@src/i18n'
 
 const WebLink = ({ route, navigation }: ScreenProps) => {
   const { theme } = useTheme()
   const [loading, setLoading] = React.useState(true)
 
   useEffect(() => {
-    if (route.params.title) {
-      navigation.setOptions({ title: route.params.title })
-    }
+    navigation.setOptions({ title: translate('placeholder.loading') })
   }, [])
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <HeaderButton
+          source={theme.assets.images.icons.header.link}
+          onPress={() => {
+            linking(route.params.url)
+          }}
+        />
+      )
+    })
+  }, [navigation])
 
   return (
     <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
@@ -35,11 +49,9 @@ const WebLink = ({ route, navigation }: ScreenProps) => {
           const { nativeEvent } = syntheticEvent
           setLoading(false)
 
-          if (!route.params.title) {
-            navigation.setOptions({
-              title: nativeEvent.title
-            })
-          }
+          navigation.setOptions({
+            title: !route.params.title ? nativeEvent.title : route.params.title
+          })
         }}
       />
     </View>
