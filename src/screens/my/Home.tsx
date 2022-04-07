@@ -38,7 +38,7 @@ const My = ({
         stat={{
           favorites: 0,
           topics: 0,
-          history: 0,
+          history: readedTopics?.length ?? 0,
           following: 0
         }}
       />

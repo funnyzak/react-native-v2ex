@@ -11,26 +11,26 @@ import { HistoryScreenProps as ScreenProps } from '@src/navigation/routes'
 const History = ({
   route,
   navigation,
-  HistoryTopics
+  readedTopics
 }: ScreenProps & {
-  HistoryTopics?: V2exObject.Topic[]
+  readedTopics?: V2exObject.Topic[]
 }) => {
   const { theme } = useTheme()
 
   const renderContent = () => {
-    if (!HistoryTopics) {
+    if (!readedTopics) {
       return <NotFound />
     }
-    return <TopicList topics={HistoryTopics} canLoadMoreContent={false} searchIndicator={false} />
+    return <TopicList topics={readedTopics} canLoadMoreContent={false} searchIndicator={false} />
   }
 
   return <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>{renderContent()}</View>
 }
 
 const mapStateToProps = ({ member }: IState.State) => {
-  const { HistoryTopics } = member
+  const { readedTopics } = member
   return {
-    HistoryTopics
+    readedTopics
   }
 }
 

@@ -37,17 +37,17 @@ const ProfileGrid: React.FC<ProfileGridProps> = ({
       },
       {
         text: translate('router.FavoriteTopics'),
-        count: topics,
+        count: favorites,
         press: () => NavigationService.navigate(ROUTES.FavoriteTopics)
       },
       {
         text: translate('router.Following'),
-        count: topics,
+        count: following,
         press: () => NavigationService.navigate(ROUTES.Following)
       },
       {
         text: translate('router.History'),
-        count: topics,
+        count: history,
         press: () => NavigationService.navigate(ROUTES.History)
       }
     ],
