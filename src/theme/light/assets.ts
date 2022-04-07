@@ -42,6 +42,7 @@ const Assets: IThemeAssets = {
         search: require('@res/images/icons/placeholder/search.png')
       },
       profile: {
+        avatar: require('@res/images/icons/profile/default-avatar.png'),
         github: require('@res/images/icons/profile/github.png'),
         location: require('@res/images/icons/profile/location.png'),
         telegram: require('@res/images/icons/profile/telegram.png'),

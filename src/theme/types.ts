@@ -222,6 +222,7 @@ export interface IThemeAssets {
         search: ImageSourcePropType
       }
       profile: {
+        avatar: ImageSourcePropType
         github: ImageSourcePropType
         location: ImageSourcePropType
         telegram: ImageSourcePropType
