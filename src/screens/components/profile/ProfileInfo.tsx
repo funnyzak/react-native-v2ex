@@ -63,19 +63,19 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
                 ]}>
                 {profile?.username ?? translate('label.goLogin')}
               </Text>
-              {(!isLogin || (isLogin && profile?.tagline)) && (
+              {!isLogin || (isLogin && profile?.tagline) ? (
                 <Text style={[styles.baseRightItem(theme), theme.typography.bodyText]}>
                   {profile?.tagline ?? translate('label.loginTips')}
                 </Text>
-              )}
-              {profile?.last_modified && (
+              ) : null}
+              {profile?.last_modified ? (
                 <Text style={[styles.baseRightItem(theme), theme.typography.captionText]}>
                   {translate('label.activeLatest').replace(
                     '$',
                     dayjs(profile?.last_modified * 1000).format('YYYY-MM-DD HH:mm:ss')
                   )}
                 </Text>
-              )}
+              ) : null}
             </View>
             {withArrow && (
               <TouchableOpacity
@@ -92,16 +92,18 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
         </View>
         {styleType === 'full' && (
           <>
-            {profile?.bio && <Text style={[styles.infoItem(theme), theme.typography.bodyText]}>{profile?.bio}</Text>}
+            {profile?.bio ? (
+              <Text style={[styles.infoItem(theme), theme.typography.bodyText]}>{profile?.bio}</Text>
+            ) : null}
             <View style={styles.infoItem(theme)}>
-              {profile?.location && (
+              {profile?.location ? (
                 <TextWithIconPress
                   style={{ marginRight: theme.spacing.small }}
                   text={profile?.location}
                   icon={theme.assets.images.icons.profile.location}
                 />
-              )}
-              {profile?.website && (
+              ) : null}
+              {profile?.website ? (
                 <TextWithIconPress
                   press={() => {
                     NavigationService.navigate(ROUTES.WebViewer, { url: profile.website })
@@ -110,10 +112,10 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
                   text={profile?.website}
                   icon={theme.assets.images.icons.profile.urlschme}
                 />
-              )}
+              ) : null}
             </View>
             <View style={styles.infoItem(theme)}>
-              {profile?.github && (
+              {profile?.github ? (
                 <TextWithIconPress
                   press={() => {
                     NavigationService.navigate(ROUTES.WebViewer, { url: `https://github.com/${profile.twitter}` })
@@ -122,15 +124,15 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
                   text={profile?.github}
                   icon={theme.assets.images.icons.profile.github}
                 />
-              )}
-              {profile?.telegram && (
+              ) : null}
+              {profile?.telegram ? (
                 <TextWithIconPress
                   style={{ marginRight: theme.spacing.small }}
                   text={profile?.telegram}
                   icon={theme.assets.images.icons.profile.telegram}
                 />
-              )}
-              {profile?.twitter && (
+              ) : null}
+              {profile?.twitter ? (
                 <TextWithIconPress
                   press={() => {
                     NavigationService.navigate(ROUTES.WebViewer, { url: `https://twitter.com/${profile.twitter}` })
@@ -139,13 +141,13 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
                   text={profile?.twitter}
                   icon={theme.assets.images.icons.profile.twitter}
                 />
-              )}
+              ) : null}
             </View>
-            {profile?.created && (
+            {profile?.created ? (
               <Text style={[styles.infoItem(theme), theme.typography.captionText]}>
                 {translate('label.joinV2exSinceTime').replace('$', dayjs(profile?.created * 1000).format())}
               </Text>
-            )}
+            ) : null}
           </>
         )}
       </View>
