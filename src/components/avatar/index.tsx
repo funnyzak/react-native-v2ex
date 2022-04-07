@@ -59,7 +59,7 @@ const styles = {
     height: size,
     borderWidth: 0.3,
     borderColor: theme.colors.border,
-    borderRadius: size * 0.1
+    borderRadius: size * 0.12
   })
 }
 

@@ -87,6 +87,8 @@ export type ThemeSettingScreenProps = NativeStackScreenProps<RootStackParamList,
 
 export type SearchScreenProps = NativeStackScreenProps<RootStackParamList, 'Search'> & CommonScreenProps
 
+export type WebViewerScreenProps = NativeStackScreenProps<RootStackParamList, 'WebViewer'> & CommonScreenProps
+
 export type SiteStatScreenProps = NativeStackScreenProps<RootStackParamList, 'SiteStat'> & CommonScreenProps
 
 export type NodeDetailScreenProps = NativeStackScreenProps<RootStackParamList, 'NodeDetail'> & CommonScreenProps

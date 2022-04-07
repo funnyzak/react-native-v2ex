@@ -30,7 +30,8 @@ const Assets: IThemeAssets = {
         more: require('@res/images/icons/header/more_vert.png'),
         search: require('@res/images/icons/header/search.png'),
         star: require('@res/images/icons/header/star.png'),
-        heart: require('@res/images/icons/header/heart.png')
+        heart: require('@res/images/icons/header/heart.png'),
+        link: require('@res/images/icons/header/urlscheme.png')
       },
       node: {
         docment: require('@res/images/icons/node/document.png'),
