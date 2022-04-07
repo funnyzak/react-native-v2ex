@@ -14,7 +14,9 @@ const WebLink = ({ route, navigation }: ScreenProps) => {
   const [loading, setLoading] = React.useState(true)
 
   useEffect(() => {
-    navigation.setOptions({ title: translate('placeholder.loading') })
+    if (loading) {
+      navigation.setOptions({ title: translate('placeholder.loading') })
+    }
   }, [])
 
   useLayoutEffect(() => {
@@ -32,7 +34,7 @@ const WebLink = ({ route, navigation }: ScreenProps) => {
 
   return (
     <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
-      {loading && <Spinner style={{ height: '100%', marginTop: '50%', marginBottom: 10000 }} />}
+      {loading && <Spinner text="努力载入中..." />}
       <WebView
         originWhitelist={['*']}
         source={{ uri: route.params.url }}
@@ -45,7 +47,6 @@ const WebLink = ({ route, navigation }: ScreenProps) => {
           console.warn('WebView error: ', nativeEvent)
         }}
         onLoadEnd={(syntheticEvent) => {
-          // update component to be aware of loading status
           const { nativeEvent } = syntheticEvent
           setLoading(false)
 
