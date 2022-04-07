@@ -1,16 +1,15 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/04/01.
  */
-import React from 'react'
-import { View, ViewStyle, TextStyle, TouchableOpacity, Image } from 'react-native'
-
-import { Text, Button, Spinner, Placeholder, Avatar } from '@src/components'
-import { TextWithIconPress } from '../common'
-import { ITheme, SylCommon, useTheme } from '@src/theme'
+import { Avatar, Text } from '@src/components'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
+import { ITheme, SylCommon, useTheme } from '@src/theme'
 import { V2exObject } from '@src/types'
 import dayjs from 'dayjs'
+import React, { useMemo } from 'react'
+import { Image, TouchableOpacity, View, ViewStyle } from 'react-native'
+import { TextWithIconPress } from '../common'
 
 /**
  * // TODO: ProfileInfo
@@ -42,6 +41,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
   withArrow = false
 }: ProfileInfoProps) => {
   const { theme } = useTheme()
+  const isLogin = useMemo(() => profile && profile.username, [profile])
 
   const renderContent = () => {
     return (
@@ -62,10 +62,12 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
                   theme.typography.subheadingText,
                   { color: theme.colors.secondary }
                 ]}>
-                {profile?.username}
+                {profile?.username ?? translate('label.goLogin')}
               </Text>
-              {profile?.tagline && (
-                <Text style={[styles.baseRightItem(theme), theme.typography.bodyText]}>{profile?.tagline}</Text>
+              {(!isLogin || (isLogin && profile?.tagline)) && (
+                <Text style={[styles.baseRightItem(theme), theme.typography.bodyText]}>
+                  {profile?.tagline ?? translate('label.loginTips')}
+                </Text>
               )}
               {profile?.last_modified && (
                 <Text style={[styles.baseRightItem(theme), theme.typography.captionText]}>
@@ -76,9 +78,13 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
                 </Text>
               )}
             </View>
-            {withArrow && profile && (
+            {withArrow && (
               <TouchableOpacity
-                onPress={() => NavigationService.navigate(ROUTES.Profile, { username: profile?.username })}
+                onPress={() =>
+                  isLogin
+                    ? NavigationService.navigate(ROUTES.Profile, { username: profile?.username })
+                    : NavigationService.navigate(ROUTES.SignIn)
+                }
                 style={styles.baseRightArrow(theme)}>
                 <Image source={theme.assets.images.icons.table.rightArrow} style={{ width: 14, height: 14 }} />
               </TouchableOpacity>
