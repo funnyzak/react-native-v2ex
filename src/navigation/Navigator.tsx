@@ -3,7 +3,7 @@
  */
 import React, { useEffect, useState } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { EdgeInsets, useSafeAreaInsets } from 'react-native-safe-area-context'
 import {
   NavigationContainer,
   NavigationState,
@@ -40,7 +40,6 @@ import { wait } from '@src/utils/utils'
 dayjs.extend(relativeTime)
 
 const MainBottomTabNavigator = createBottomTabNavigator()
-const bottomTabBarHeight = 45
 const bottomTabBarIconSize = 30
 
 const defaultScreenOptions = (theme: ITheme): NativeStackNavigationOptions => ({
@@ -51,8 +50,7 @@ const defaultScreenOptions = (theme: ITheme): NativeStackNavigationOptions => ({
     backgroundColor: theme.colors.primary
   },
   headerTitleStyle: {
-    ...(theme.typography.titleTextSemiBold as any),
-    alignSelf: 'center'
+    fontWeight: 'bold'
   },
   headerBackTitle: undefined,
   headerTintColor: theme.colors.appbarTint,
@@ -258,7 +256,8 @@ export const AppNavigationContainer = () => {
                 component={MainAppNavigator}
                 options={({ route }) => ({
                   ...defaultScreenOptions(theme),
-                  headerShadowVisible: ![ROUTES.HomeTabs, ROUTES.My].includes(
+                  // header bottom border
+                  headerShadowVisible: ![ROUTES.HomeTabs].includes(
                     getFocusedRouteNameFromRoute(route) ?? (ROUTES.Nodes as any)
                   ),
                   headerTitle: getHeaderTitle(route)

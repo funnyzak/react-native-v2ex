@@ -1,7 +1,7 @@
 import { NavigationService, ROUTES } from '@src/navigation'
+import { ITheme, useTheme } from '@src/theme'
 import React, { useState } from 'react'
 import { Image, Pressable, ViewStyle } from 'react-native'
-import { useTheme } from '@src/theme'
 import FastImage, { Source } from 'react-native-fast-image'
 
 interface IProps {
@@ -34,7 +34,7 @@ const AvatarComponent = ({ username, size = 24, source, onPress, style }: IProps
         <>
           <FastImage
             source={source}
-            style={loading ? { width: 0, height: 0 } : styles.avatar(size)}
+            style={loading ? { width: 0, height: 0 } : styles.avatar(theme, size)}
             onLoadEnd={() => {
               setLoading(false)
             }}
@@ -42,10 +42,10 @@ const AvatarComponent = ({ username, size = 24, source, onPress, style }: IProps
               setLoading(false)
             }}
           />
-          {loading && <Image source={theme.assets.images.icons.profile} style={styles.avatar(size)} />}
+          {loading && <Image source={theme.assets.images.icons.profile.avatar} style={styles.avatar(theme, size)} />}
         </>
       ) : (
-        <Image source={theme.assets.images.icons.profile} style={styles.avatar(size)} />
+        <Image source={theme.assets.images.icons.profile.avatar} style={styles.avatar(theme, size)} />
       )}
     </Pressable>
   )
@@ -54,9 +54,11 @@ const AvatarComponent = ({ username, size = 24, source, onPress, style }: IProps
 const avatar = React.memo(AvatarComponent)
 
 const styles = {
-  avatar: (size: number) => ({
+  avatar: (theme: ITheme, size: number) => ({
     width: size,
     height: size,
+    borderWidth: 0.3,
+    borderColor: theme.colors.border,
     borderRadius: size * 0.1
   })
 }

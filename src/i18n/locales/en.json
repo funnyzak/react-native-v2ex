@@ -83,7 +83,9 @@
     "joinV2exSinceTime": "Become a V2EX member from $",
     "noLogin": "Not logged in",
     "posdedTopics": "Topics posted by $",
-    "openApp": "Open APP"
+    "openApp": "Open APP",
+    "goLogin": "Login Now",
+    "loginTips": "experience more features"
   },
   "theme": {
     "light": "Light",
@@ -175,8 +177,8 @@
   },
   "link": {
     "getToken": "Get token Here",
-      "skipLogin": "Skip Login",
-      "confirmTerms": "By logging in, you agree to Terms of Service and Privacy Policy.",
+    "skipLogin": "Skip Login",
+    "confirmTerms": "By logging in, you agree to Terms of Service and Privacy Policy.",
   },
   "tips": {
     "authSuccess": "Auth Success.",

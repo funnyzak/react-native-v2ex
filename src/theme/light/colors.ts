@@ -21,7 +21,7 @@ const colors: IThemeColor = {
   tabBarBackground: '#FFFFFF',
   tabBarIconActive: '#025DC9',
   tabBarIconInactive: '#898B8B',
-  appbarTint: '#000',
+  appbarTint: '#333333',
 
   tabShadowColor: '#666666',
   tabActiveTintColor: '#025DC9',

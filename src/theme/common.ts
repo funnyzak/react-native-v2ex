@@ -18,8 +18,21 @@ export const Layout = StyleSheet.create({
   },
   fullHeight: {
     height: '100%'
+  },
+  flexRowStart: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-start'
   }
 })
+
+export const Card = {
+  container: (theme: ITheme): ViewStyle => ({
+    ...Layout.fullWidth,
+    backgroundColor: theme.colors.surface,
+    paddingHorizontal: (theme.dimens.WINDOW_WIDTH - theme.dimens.layoutContainerWidth) / 2
+  })
+}
 
 export const View = {
   background: (theme: ITheme): ViewStyle => ({
