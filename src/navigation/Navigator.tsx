@@ -12,7 +12,7 @@ import {
   Route
 } from '@react-navigation/native'
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack'
-import { Image, StatusBar, TextStyle } from 'react-native'
+import { Button, Image, StatusBar, TextStyle } from 'react-native'
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
@@ -33,6 +33,9 @@ import { store, RootState } from '@src/store'
 import NavigationService from './NavigationService'
 import { ToastProvider } from '@src/components/toast'
 import { wait } from '@src/utils/utils'
+import { Screen } from 'react-native-screens'
+import { Alert } from '@src/utils'
+import { HeaderButton } from '../screens/components'
 
 /**
  * dayjs
@@ -50,7 +53,8 @@ const defaultScreenOptions = (theme: ITheme): NativeStackNavigationOptions => ({
     backgroundColor: theme.colors.primary
   },
   headerTitleStyle: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: theme.typography.titleText.fontSize
   },
   headerBackTitle: undefined,
   headerTintColor: theme.colors.appbarTint,
@@ -205,7 +209,7 @@ const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
 const StackNavigator = createNativeStackNavigator<RootStackParamList>()
 
 export const AppNavigationContainer = () => {
-  const { token } = useAppSelector((state: RootState) => state.member)
+  const { token, profile } = useAppSelector((state: RootState) => state.member)
   const { languageTag } = useAppSelector((state: RootState) => state.setting)
 
   const { theme } = useTheme()
@@ -256,11 +260,21 @@ export const AppNavigationContainer = () => {
                 component={MainAppNavigator}
                 options={({ route }) => ({
                   ...defaultScreenOptions(theme),
-                  // header bottom border
                   headerShadowVisible: ![ROUTES.HomeTabs].includes(
                     getFocusedRouteNameFromRoute(route) ?? (ROUTES.Nodes as any)
                   ),
-                  headerTitle: getHeaderTitle(route)
+                  headerTitle: getHeaderTitle(route),
+                  headerRight: () => {
+                    const focusRoute = getFocusedRouteNameFromRoute(route)
+                    return focusRoute === ROUTES.My && profile ? (
+                      <HeaderButton
+                        source={theme.assets.images.icons.header.more}
+                        onPress={() => {
+                          NavigationService.navigate(ROUTES.WebViewer, { url: profile?.url })
+                        }}
+                      />
+                    ) : null
+                  }
                 })}
                 initialParams={{
                   initialRouteName: ROUTES.My
@@ -308,6 +322,15 @@ export const AppNavigationContainer = () => {
               component={Screens.FavoriteTopicsScreen}
               options={{
                 title: translate(`router.${ROUTES.FavoriteTopics}`),
+                ...defaultScreenOptions(theme),
+                headerShown: true
+              }}
+            />
+            <StackNavigator.Screen
+              name={ROUTES.MyTopics}
+              component={Screens.MyTopics}
+              options={{
+                title: translate(`router.${ROUTES.MyTopics}`),
                 ...defaultScreenOptions(theme),
                 headerShown: true
               }}

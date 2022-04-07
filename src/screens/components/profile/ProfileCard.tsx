@@ -4,6 +4,7 @@
 import React from 'react'
 import ProfileGrid, { ProfileGridProps } from './ProfileGrid'
 import ProfileInfo, { ProfileInfoProps } from './ProfileInfo'
+import { BorderLine } from '../common'
 import { SylCommon, useTheme } from '@src/theme'
 import { View, ViewStyle } from 'react-native'
 
@@ -22,12 +23,18 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ info, stat, containerStyle }:
     return (
       <View
         style={[
-          SylCommon.Card.container(theme),
-          { backgroundColor: theme.colors.surface, paddingTop: theme.spacing.small },
+          {
+            backgroundColor: theme.colors.surface,
+            paddingTop: theme.spacing.medium
+          },
           containerStyle
         ]}>
-        <ProfileInfo {...info} />
-        <ProfileGrid {...stat} />
+        <ProfileInfo {...info} containerStyle={SylCommon.Card.container(theme)} />
+        <BorderLine />
+        <ProfileGrid
+          {...stat}
+          containerStyle={[SylCommon.Card.container(theme), { paddingTop: theme.spacing.small }]}
+        />
       </View>
     )
   }

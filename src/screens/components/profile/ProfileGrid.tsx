@@ -3,24 +3,31 @@
  */
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
-import { SylCommon, useTheme } from '@src/theme'
 import React, { useMemo } from 'react'
-import { View } from 'react-native'
+import { StyleProp, View, ViewStyle } from 'react-native'
 import { TextGrid } from '../common'
 
 /**
  * ProfileGrid props
  */
 export interface ProfileGridProps {
+  /**
+   * container style
+   */
+  containerStyle?: StyleProp<ViewStyle>
   topics?: number
   favorites?: number
   following?: number
   history?: number
 }
 
-const ProfileGrid: React.FC<ProfileGridProps> = ({ topics, favorites, following, history }: ProfileGridProps) => {
-  const { theme } = useTheme()
-
+const ProfileGrid: React.FC<ProfileGridProps> = ({
+  containerStyle,
+  topics,
+  favorites,
+  following,
+  history
+}: ProfileGridProps) => {
   const list = useMemo(
     () => [
       {
@@ -47,7 +54,11 @@ const ProfileGrid: React.FC<ProfileGridProps> = ({ topics, favorites, following,
     [topics, favorites, following, history]
   )
   const renderContent = () => {
-    return <TextGrid list={list} columnNum={4} />
+    return (
+      <View style={containerStyle}>
+        <TextGrid list={list} columnNum={4} />
+      </View>
+    )
   }
 
   return renderContent()
