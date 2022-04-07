@@ -29,7 +29,12 @@ const My = ({
 
   return (
     <View>
-      <ProfileInfo styleType="full" profile={profile} containerStyle={{ paddingTop: theme.spacing.small }} />
+      <ProfileInfo
+        styleType="simple"
+        withArrow={true}
+        profile={profile}
+        containerStyle={{ paddingTop: theme.spacing.small }}
+      />
       <View style={SylCommon.Grid.container(theme)}>
         <TouchableOpacity style={SylCommon.Grid.item(theme)} onPress={() => navigation.navigate(ROUTES.Following)}>
           <Text style={SylCommon.Grid.itemValue(theme)}>{'7' || '-'}</Text>

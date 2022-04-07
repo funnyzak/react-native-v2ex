@@ -76,70 +76,72 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
                 </Text>
               )}
             </View>
-            <View
-              style={{
-                flexGrow: 0,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'flex-start'
-              }}>
-              <Image source={theme.assets.images.icons.table.rightArrow} style={{ width: 14, height: 14 }} />
-            </View>
+            {withArrow && profile && (
+              <TouchableOpacity
+                onPress={() => NavigationService.navigate(ROUTES.Profile, { username: profile?.username })}
+                style={styles.baseRightArrow(theme)}>
+                <Image source={theme.assets.images.icons.table.rightArrow} style={{ width: 14, height: 14 }} />
+              </TouchableOpacity>
+            )}
           </View>
         </View>
-        {profile?.bio && <Text style={[styles.infoItem(theme), theme.typography.bodyText]}>{profile?.bio}</Text>}
-        <View style={styles.infoItem(theme)}>
-          {profile?.location && (
-            <TextWithIconPress
-              style={{ marginRight: theme.spacing.small }}
-              text={profile?.location}
-              icon={theme.assets.images.icons.profile.location}
-            />
-          )}
-          {profile?.website && (
-            <TextWithIconPress
-              press={() => {
-                NavigationService.navigate(ROUTES.WebViewer, { url: profile.website })
-              }}
-              style={{ marginRight: theme.spacing.small }}
-              text={profile?.website}
-              icon={theme.assets.images.icons.profile.urlschme}
-            />
-          )}
-        </View>
-        <View style={styles.infoItem(theme)}>
-          {profile?.github && (
-            <TextWithIconPress
-              press={() => {
-                NavigationService.navigate(ROUTES.WebViewer, { url: `https://github.com/${profile.twitter}` })
-              }}
-              style={{ marginRight: theme.spacing.small }}
-              text={profile?.github}
-              icon={theme.assets.images.icons.profile.github}
-            />
-          )}
-          {profile?.telegram && (
-            <TextWithIconPress
-              style={{ marginRight: theme.spacing.small }}
-              text={profile?.telegram}
-              icon={theme.assets.images.icons.profile.telegram}
-            />
-          )}
-          {profile?.twitter && (
-            <TextWithIconPress
-              press={() => {
-                NavigationService.navigate(ROUTES.WebViewer, { url: `https://twitter.com/${profile.twitter}` })
-              }}
-              style={{ marginRight: theme.spacing.small }}
-              text={profile?.twitter}
-              icon={theme.assets.images.icons.profile.twitter}
-            />
-          )}
-        </View>
-        {profile?.created && (
-          <Text style={[styles.infoItem(theme), theme.typography.captionText]}>
-            {translate('label.joinV2exSinceTime').replace('$', dayjs(profile?.created * 1000).format())}
-          </Text>
+        {styleType === 'full' && (
+          <>
+            {profile?.bio && <Text style={[styles.infoItem(theme), theme.typography.bodyText]}>{profile?.bio}</Text>}
+            <View style={styles.infoItem(theme)}>
+              {profile?.location && (
+                <TextWithIconPress
+                  style={{ marginRight: theme.spacing.small }}
+                  text={profile?.location}
+                  icon={theme.assets.images.icons.profile.location}
+                />
+              )}
+              {profile?.website && (
+                <TextWithIconPress
+                  press={() => {
+                    NavigationService.navigate(ROUTES.WebViewer, { url: profile.website })
+                  }}
+                  style={{ marginRight: theme.spacing.small }}
+                  text={profile?.website}
+                  icon={theme.assets.images.icons.profile.urlschme}
+                />
+              )}
+            </View>
+            <View style={styles.infoItem(theme)}>
+              {profile?.github && (
+                <TextWithIconPress
+                  press={() => {
+                    NavigationService.navigate(ROUTES.WebViewer, { url: `https://github.com/${profile.twitter}` })
+                  }}
+                  style={{ marginRight: theme.spacing.small }}
+                  text={profile?.github}
+                  icon={theme.assets.images.icons.profile.github}
+                />
+              )}
+              {profile?.telegram && (
+                <TextWithIconPress
+                  style={{ marginRight: theme.spacing.small }}
+                  text={profile?.telegram}
+                  icon={theme.assets.images.icons.profile.telegram}
+                />
+              )}
+              {profile?.twitter && (
+                <TextWithIconPress
+                  press={() => {
+                    NavigationService.navigate(ROUTES.WebViewer, { url: `https://twitter.com/${profile.twitter}` })
+                  }}
+                  style={{ marginRight: theme.spacing.small }}
+                  text={profile?.twitter}
+                  icon={theme.assets.images.icons.profile.twitter}
+                />
+              )}
+            </View>
+            {profile?.created && (
+              <Text style={[styles.infoItem(theme), theme.typography.captionText]}>
+                {translate('label.joinV2exSinceTime').replace('$', dayjs(profile?.created * 1000).format())}
+              </Text>
+            )}
+          </>
         )}
       </View>
     )
@@ -160,26 +162,28 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    width: '100%',
-    overflow: 'hidden'
+    width: '100%'
   }),
   baseAvatar: (theme: ITheme): ViewStyle => ({
     width: 60,
     height: 60,
-    marginRight: theme.spacing.medium,
-    flexGrow: 0
+    marginRight: theme.spacing.medium
   }),
   baseRightBox: (theme: ITheme): ViewStyle => ({
     display: 'flex',
     flexDirection: 'row',
-    flexGrow: 1,
-    alignItems: 'stretch'
+    flex: 1
   }),
   baseRightInfo: (theme: ITheme): ViewStyle => ({
     display: 'flex',
     flexDirection: 'column',
-    flexGrow: 1,
+    flex: 1,
     alignItems: 'flex-start'
+  }),
+  baseRightArrow: (theme: ITheme): ViewStyle => ({
+    width: 14,
+    display: 'flex',
+    justifyContent: 'center'
   }),
   baseRightItem: (theme: ITheme): ViewStyle => ({
     paddingBottom: theme.spacing.tiny
