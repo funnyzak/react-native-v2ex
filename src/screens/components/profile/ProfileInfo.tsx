@@ -12,7 +12,6 @@ import { Image, TouchableOpacity, View, ViewStyle } from 'react-native'
 import { TextWithIconPress } from '../common'
 
 /**
- * // TODO: ProfileInfo
  * ProfileInfo props
  */
 export interface ProfileInfoProps {
@@ -45,7 +44,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
 
   const renderContent = () => {
     return (
-      <View style={[styles.container(theme), SylCommon.Card.container(theme), containerStyle]}>
+      <View style={[styles.container(theme), containerStyle]}>
         <View style={styles.infoItem(theme)}>
           <View style={styles.baseAvatar(theme)}>
             <Avatar

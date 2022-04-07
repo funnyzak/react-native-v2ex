@@ -10,7 +10,7 @@ import { Text, Button } from '@src/components'
 import { MyScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 import { logout as logoutAction } from '@src/actions'
 import { linking, Alert } from '@src/utils'
-import { ProfileInfo } from '../components'
+import { ProfileCard } from '../components'
 
 const My = ({
   navigation,
@@ -29,26 +29,19 @@ const My = ({
 
   return (
     <View>
-      <ProfileInfo
-        styleType="simple"
-        withArrow={true}
-        profile={profile}
-        containerStyle={{ paddingTop: theme.spacing.small }}
+      <ProfileCard
+        info={{
+          styleType: 'simple',
+          withArrow: true,
+          profile: profile
+        }}
+        stat={{
+          favorites: 0,
+          topics: 0,
+          history: 0,
+          following: 0
+        }}
       />
-      <View style={SylCommon.Grid.container(theme)}>
-        <TouchableOpacity style={SylCommon.Grid.item(theme)} onPress={() => navigation.navigate(ROUTES.Following)}>
-          <Text style={SylCommon.Grid.itemValue(theme)}>{'7' || '-'}</Text>
-          <Text style={SylCommon.Grid.itemTitle(theme)}>{translate('button.followPeople')}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={SylCommon.Grid.item(theme)} onPress={() => navigation.navigate(ROUTES.FavoriteTopics)}>
-          <Text style={SylCommon.Grid.itemValue(theme)}>{'10' || '-'}</Text>
-          <Text style={SylCommon.Grid.itemTitle(theme)}>{translate('button.likeTopics')}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={SylCommon.Grid.item(theme)} onPress={() => navigation.navigate(ROUTES.History)}>
-          <Text style={SylCommon.Grid.itemValue(theme)}>{readedTopics ? readedTopics.length : 0}</Text>
-          <Text style={SylCommon.Grid.itemTitle(theme)}>{translate('button.readed')}</Text>
-        </TouchableOpacity>
-      </View>
       <View style={SylCommon.Table.container(theme)}>
         <TouchableOpacity
           style={SylCommon.Table.item(theme)}

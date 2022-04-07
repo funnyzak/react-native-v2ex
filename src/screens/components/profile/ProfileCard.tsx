@@ -2,46 +2,36 @@
  * Created by leon<silenceace@gmail.com> on 22/04/01.
  */
 import React from 'react'
-import { View, ViewStyle, TextStyle } from 'react-native'
-
-import { Text, Button, Spinner, Placeholder } from '@src/components'
-import { ITheme, SylCommon, useTheme } from '@src/theme'
-import { translate } from '@src/i18n'
-import { NavigationService, ROUTES } from '@src/navigation'
-import { V2exObject } from '@src/types'
+import ProfileGrid, { ProfileGridProps } from './ProfileGrid'
+import ProfileInfo, { ProfileInfoProps } from './ProfileInfo'
+import { SylCommon, useTheme } from '@src/theme'
+import { View, ViewStyle } from 'react-native'
 
 /**
- * // TODO: ProfileCard
  * ProfileCard props
  */
 export interface ProfileCardProps {
-  /**
-   * ProfileCard width
-   */
-  width?: number | string
-
-  /**
-   * ProfileCard height
-   */
-  height?: number | string
+  containerStyle?: ViewStyle
+  info: ProfileInfoProps
+  stat: ProfileGridProps
 }
 
-const ProfileCard: React.FC<ProfileCardProps> = ({ width, height }: ProfileCardProps) => {
+const ProfileCard: React.FC<ProfileCardProps> = ({ info, stat, containerStyle }: ProfileCardProps) => {
+  const { theme } = useTheme()
   const renderContent = () => {
     return (
-      <View>
-        <Text>Hello World, ProfileCard.</Text>
+      <View
+        style={[
+          SylCommon.Card.container(theme),
+          { backgroundColor: theme.colors.surface, paddingTop: theme.spacing.small },
+          containerStyle
+        ]}>
+        <ProfileInfo {...info} />
+        <ProfileGrid {...stat} />
       </View>
     )
   }
-
   return renderContent()
-}
-
-const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    flex: 1
-  })
 }
 
 export default ProfileCard
