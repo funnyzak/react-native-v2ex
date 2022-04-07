@@ -4,12 +4,13 @@ import { ActivityIndicator, View } from 'react-native'
 
 interface IProps {
   visible: boolean
+  size?: number
 }
 
-const LoadingComponent = ({ visible }: IProps) => {
+const LoadingComponent = ({ visible, size = 70 }: IProps) => {
   const { theme } = useTheme()
 
-  return <View>{visible && <ActivityIndicator color={theme.colors.secondary} size={48} />}</View>
+  return <View>{visible && <ActivityIndicator color={theme.colors.secondary} size={size} />}</View>
 }
 
 const Loading = React.memo(LoadingComponent)
