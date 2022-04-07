@@ -33,6 +33,7 @@ import { store, RootState } from '@src/store'
 import NavigationService from './NavigationService'
 import { ToastProvider } from '@src/components/toast'
 import { wait } from '@src/utils/utils'
+import { Screen } from 'react-native-screens'
 
 /**
  * dayjs
@@ -308,6 +309,15 @@ export const AppNavigationContainer = () => {
               component={Screens.FavoriteTopicsScreen}
               options={{
                 title: translate(`router.${ROUTES.FavoriteTopics}`),
+                ...defaultScreenOptions(theme),
+                headerShown: true
+              }}
+            />
+            <StackNavigator.Screen
+              name={ROUTES.MyTopics}
+              component={Screens.MyTopics}
+              options={{
+                title: translate(`router.${ROUTES.MyTopics}`),
                 ...defaultScreenOptions(theme),
                 headerShown: true
               }}
