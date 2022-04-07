@@ -130,6 +130,7 @@
     "TermsOfService": "Terms of Service"
   },
   "placeholder": {
+    "loading": "Loading...",
     "token": "Type token here..",
     "search": "Search V2EX",
     "message": "Type here...",
