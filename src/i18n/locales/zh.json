@@ -85,7 +85,8 @@
     "posdedTopics": "$ 发布的主题",
     "openApp": "打开APP",
     "goLogin": "去登陆",
-    "loginTips": "登陆体验更多V2HUB功能"
+    "loginTips": "登陆体验更多V2HUB功能",
+    "underConstruction": "正在建设中"
   },
   "theme": {
     "auto": "自动",
