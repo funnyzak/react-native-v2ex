@@ -70,7 +70,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
               ) : null}
               {profile?.last_modified ? (
                 <Text style={[styles.baseRightItem(theme), theme.typography.captionText]}>
-                  {translate('label.activeLatest').replace(
+                  {translate('label.profileLastModified').replace(
                     '$',
                     dayjs(profile?.last_modified * 1000).format('YYYY-MM-DD HH:mm:ss')
                   )}
