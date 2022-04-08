@@ -38,7 +38,7 @@ const WebLink = ({ route, navigation }: ScreenProps) => {
 
   return (
     <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
-      {loading && <Spinner text="努力载入中..." />}
+      {loading && <Spinner text={translate('placeholder.loading')} />}
       <WebView
         originWhitelist={['*']}
         source={{ uri: url }}
