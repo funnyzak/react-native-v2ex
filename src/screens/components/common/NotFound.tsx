@@ -5,7 +5,7 @@ import { SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
 
 /**
- * no found placeholder
+ * NotFound placeholder
  * @param {
  *   text,
  *   buttonText,
