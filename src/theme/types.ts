@@ -278,6 +278,7 @@ export interface IThemeAssets {
         theme: ImageSourcePropType
         twitter: ImageSourcePropType
         urlschme: ImageSourcePropType
+        check: ImageSourcePropType
       }
       topic: {
         comment: ImageSourcePropType

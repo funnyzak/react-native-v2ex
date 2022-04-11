@@ -1,17 +1,12 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { View, Image, TouchableOpacity, Text } from 'react-native'
-
 import * as Actions from '@src/actions'
-import { useTheme, SylCommon } from '@src/theme'
-import { IState, LanguageTagType } from '@src/types'
+import { translate, translationTitle } from '@src/i18n'
 import { LanguageScreenProps as ScreenProps } from '@src/navigation/routes'
-import { translationTitle } from '@src/i18n'
-
-const translationList = (Object.keys(translationTitle) as Array<keyof typeof translationTitle>).map((v) => ({
-  tag: v,
-  title: translationTitle[v]
-}))
+import { SylCommon, useTheme } from '@src/theme'
+import { IState, LanguageTagType } from '@src/types'
+import React, { useMemo } from 'react'
+import { View } from 'react-native'
+import { connect } from 'react-redux'
+import { TableList, TableRow } from '../components'
 
 const Language = ({
   languageTag,
@@ -21,24 +16,31 @@ const Language = ({
   setLocales: (languageTag: LanguageTagType) => void
 }) => {
   const { theme } = useTheme()
+  const translationList = useMemo(
+    () =>
+      (Object.keys(translationTitle) as Array<keyof typeof translationTitle>).map((v) => ({
+        tag: v,
+        title: v !== 'auto' ? translationTitle[v] : translate('common.auto')
+      })),
+    [languageTag]
+  )
+
   return (
-    <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
-      <View style={SylCommon.Table.container(theme)}>
-        {translationList.map((v) => {
-          const { tag, title } = v
-          return (
-            <TouchableOpacity
-              key={tag}
-              style={SylCommon.Table.item(theme)}
-              onPress={() => {
-                setLocales(tag)
-              }}>
-              <Text style={SylCommon.Table.itemText(theme, tag === languageTag)}>{title}</Text>
-              <Image style={SylCommon.Table.itemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />
-            </TouchableOpacity>
-          )
-        })}
-      </View>
+    <View style={[SylCommon.Layout.fill, { backgroundColor: theme.colors.background }]}>
+      <TableList containerStyle={[{ marginTop: theme.spacing.tiny }]}>
+        {translationList.map((item, index) => (
+          <TableRow
+            key={index}
+            title={item.title}
+            highlightTitle={item.tag === languageTag}
+            rightIcon={item.tag === languageTag ? theme.assets.images.icons.table.check : undefined}
+            withArrow={false}
+            onPress={() => {
+              setLocales(item.tag)
+            }}
+          />
+        ))}
+      </TableList>
     </View>
   )
 }

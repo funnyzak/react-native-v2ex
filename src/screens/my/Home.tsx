@@ -43,7 +43,7 @@ const My = ({
       <TableList title={translate('common.setting')}>
         <TableRow
           title={translate(`router.${ROUTES.ThemeSetting}`)}
-          icon={theme.assets.images.icons.table.theme}
+          leftIcon={theme.assets.images.icons.table.theme}
           withArrow={true}
           onPress={() => {
             navigation.navigate(ROUTES.ThemeSetting)
@@ -51,7 +51,7 @@ const My = ({
         />
         <TableRow
           title={translate(`router.${ROUTES.Language}`)}
-          icon={theme.assets.images.icons.table.language}
+          leftIcon={theme.assets.images.icons.table.language}
           withArrow={true}
           onPress={() => {
             navigation.navigate(ROUTES.Language)
@@ -59,7 +59,7 @@ const My = ({
         />
         <TableRow
           title={translate(`router.${ROUTES.CacheSetting}`)}
-          icon={theme.assets.images.icons.table.cached}
+          leftIcon={theme.assets.images.icons.table.cached}
           withArrow={true}
           onPress={() => {
             navigation.navigate(ROUTES.CacheSetting)
@@ -70,19 +70,19 @@ const My = ({
       <TableList title={translate('common.integrated')}>
         <TableRow
           title={translate(`button.rate`)}
-          icon={theme.assets.images.icons.table.score}
+          leftIcon={theme.assets.images.icons.table.score}
           withArrow={true}
           onPress={() => {}}
         />
         <TableRow
           title={translate(`button.shareFriend`)}
-          icon={theme.assets.images.icons.table.share}
+          leftIcon={theme.assets.images.icons.table.share}
           withArrow={true}
           onPress={() => {}}
         />
         <TableRow
           title={translate(`router.${ROUTES.URLSchemes}`)}
-          icon={theme.assets.images.icons.table.urlschme}
+          leftIcon={theme.assets.images.icons.table.urlschme}
           withArrow={true}
           onPress={() => {
             navigation.navigate(ROUTES.URLSchemes)
@@ -90,7 +90,7 @@ const My = ({
         />
         <TableRow
           title={translate(`router.${ROUTES.OpenSourceLicense}`)}
-          icon={theme.assets.images.icons.table.opensource}
+          leftIcon={theme.assets.images.icons.table.opensource}
           withArrow={true}
           onPress={() => {
             navigation.navigate(ROUTES.OpenSourceLicense)
@@ -98,7 +98,7 @@ const My = ({
         />
         <TableRow
           title={translate(`router.${ROUTES.About}`)}
-          icon={theme.assets.images.icons.table.group}
+          leftIcon={theme.assets.images.icons.table.group}
           withArrow={true}
           onPress={() => {
             navigation.navigate(ROUTES.About)
@@ -109,7 +109,7 @@ const My = ({
       <TableList title={translate('common.feedback')}>
         <TableRow
           title={translate(`common.email`)}
-          icon={theme.assets.images.icons.table.email}
+          leftIcon={theme.assets.images.icons.table.email}
           withArrow={true}
           rightText={`${app.aboutUs.email}`}
           onPress={() => {
@@ -118,7 +118,7 @@ const My = ({
         />
         <TableRow
           title={translate(`common.twitter`)}
-          icon={theme.assets.images.icons.table.twitter}
+          leftIcon={theme.assets.images.icons.table.twitter}
           withArrow={true}
           rightText={`@${app.aboutUs.twitter}`}
           onPress={() => {
@@ -127,7 +127,7 @@ const My = ({
         />
         <TableRow
           title={translate(`common.github`)}
-          icon={theme.assets.images.icons.table.github}
+          leftIcon={theme.assets.images.icons.table.github}
           withArrow={true}
           rightText={`@${app.aboutUs.github}`}
           onPress={() => {
