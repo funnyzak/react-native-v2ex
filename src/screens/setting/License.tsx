@@ -1,36 +1,27 @@
-import React, { useState } from 'react'
+import { OPENSOURCE_LIST } from '@src/config/constants'
+import { OpenSourceLicenseScreenProps as ScreenProps, ROUTES } from '@src/navigation/routes'
+import { useTheme } from '@src/theme'
+import { linking } from '@src/utils'
+import React from 'react'
 import { connect } from 'react-redux'
-import { View, ViewStyle, TouchableOpacity } from 'react-native'
+import { TableList, TableRow } from '../components'
 
-import * as Actions from '@src/actions'
-import { translate } from '@src/i18n'
-import { useTheme, SylCommon } from '@src/theme'
-import { IState, ITheme, V2exObject } from '@src/types'
-import * as CompS from '../components'
-import { Text, Spinner } from '@src/components'
-import { OpenSourceLicenseScreenProps as ScreenProps } from '@src/navigation/routes'
-
-const OpenSourceLicense = ({ route, navigation, loading }: ScreenProps) => {
+const OpenSourceLicense = ({ navigation }: ScreenProps) => {
   const { theme } = useTheme()
   return (
-    <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
-      <Text>Hello, OpenSourceLicense.</Text>
-    </View>
+    <TableList containerStyle={[{ marginTop: theme.spacing.tiny }]}>
+      {OPENSOURCE_LIST.map((item, index) => (
+        <TableRow
+          key={index}
+          title={item.name}
+          withArrow={true}
+          onPress={() => {
+            navigation.navigate(ROUTES.WebViewer, { url: item.repoUrl })
+          }}
+        />
+      ))}
+    </TableList>
   )
 }
 
-/**
- * @description styles settings
- */
-const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    flex: 1
-  })
-}
-
-const mapStateToProps = ({ ui: { login } }: { ui: IState.UIState }) => {
-  const { error, success, loading } = login
-  return { error, success, loading }
-}
-
-export default connect(mapStateToProps)(OpenSourceLicense)
+export default connect()(OpenSourceLicense)

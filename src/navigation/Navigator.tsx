@@ -383,6 +383,69 @@ export const AppNavigationContainer = () => {
               }}
             />
             <StackNavigator.Screen
+              name={ROUTES.URLSchemes}
+              component={Screens.URLSchemes}
+              options={{
+                title: translate(`router.${ROUTES.URLSchemes}`),
+                ...defaultScreenOptions(theme),
+                headerShown: true
+              }}
+            />
+            <StackNavigator.Screen
+              name={ROUTES.CacheSetting}
+              component={Screens.CacheSettingScreen}
+              options={{
+                title: translate(`router.${ROUTES.CacheSetting}`),
+                ...defaultScreenOptions(theme),
+                headerShown: true
+              }}
+            />
+            <StackNavigator.Screen
+              name={ROUTES.ChangeLog}
+              component={Screens.ChangeLogScreen}
+              options={{
+                title: translate(`router.${ROUTES.ChangeLog}`),
+                ...defaultScreenOptions(theme),
+                headerShown: true
+              }}
+            />
+            <StackNavigator.Screen
+              name={ROUTES.HowToUse}
+              component={Screens.HowToUseScreen}
+              options={{
+                title: translate(`router.${ROUTES.HowToUse}`),
+                ...defaultScreenOptions(theme),
+                headerShown: true
+              }}
+            />
+            <StackNavigator.Screen
+              name={ROUTES.PrivacyPolicy}
+              component={Screens.PrivacyScreen}
+              options={{
+                title: translate(`router.${ROUTES.PrivacyPolicy}`),
+                ...defaultScreenOptions(theme),
+                headerShown: true
+              }}
+            />
+            <StackNavigator.Screen
+              name={ROUTES.SiteStat}
+              component={Screens.SiteStatScreen}
+              options={{
+                title: translate(`router.${ROUTES.SiteStat}`),
+                ...defaultScreenOptions(theme),
+                headerShown: true
+              }}
+            />
+            <StackNavigator.Screen
+              name={ROUTES.OpenSourceLicense}
+              component={Screens.OpenSourceScreen}
+              options={{
+                title: translate(`router.${ROUTES.OpenSourceLicense}`),
+                ...defaultScreenOptions(theme),
+                headerShown: true
+              }}
+            />
+            <StackNavigator.Screen
               name={ROUTES.Search}
               component={Screens.SearchScreen}
               options={{
