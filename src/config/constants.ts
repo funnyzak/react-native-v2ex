@@ -37,6 +37,13 @@ declare type openSourceInfoType = {
 }
 
 /**
+ * URLSchemes
+ */
+export const URLSchemeList = {
+  OpenApp: 'v2hub://run'
+}
+
+/**
  * 使用开源列表
  */
 export const OPENSOURCE_LIST: Array<openSourceInfoType> = [

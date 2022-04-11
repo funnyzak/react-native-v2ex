@@ -1,10 +1,8 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/3/10.
  */
-import { ReactNode } from 'react'
-import ToastComponent from 'react-native-easy-toast'
+import React, { ReactNode, useContext } from 'react'
 import { ToastShowParams as ToastMessageShowParams } from 'react-native-toast-message/lib'
-import React, { useContext } from 'react'
 
 export type ToastPositionType = 'top' | 'center' | 'bottom'
 export interface ToastShowProps {

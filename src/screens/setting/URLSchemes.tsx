@@ -1,36 +1,35 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import { View, ViewStyle, TouchableOpacity } from 'react-native'
-
-import * as Actions from '@src/actions'
+import { URLSchemeList } from '@src/config/constants'
 import { translate } from '@src/i18n'
-import { useTheme, SylCommon } from '@src/theme'
-import { IState, ITheme, V2exObject } from '@src/types'
-import * as CompS from '../components'
-import { Text, Spinner } from '@src/components'
-import { URLSchemescreenProps as ScreenProps } from '@src/navigation/routes'
+import { URLSchemescreenProps as ScreenProps } from '@src/navigation'
+import { SylCommon, useTheme } from '@src/theme'
+import React from 'react'
+import { View } from 'react-native'
+import { connect } from 'react-redux'
+import { TableList, TableRow } from '../components'
+import { useToast } from '@src/components/toast'
 
-const URLSchemes = ({ route, navigation, loading }: ScreenProps) => {
+const URLSchemes = ({}: ScreenProps) => {
   const { theme } = useTheme()
+  const { showMessage } = useToast()
+
   return (
-    <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
-      <Text>Hello, URLSchemes.</Text>
+    <View style={[SylCommon.Layout.fill, { backgroundColor: theme.colors.background }]}>
+      <TableList containerStyle={[{ marginTop: theme.spacing.tiny }]}>
+        <TableRow
+          title={translate('label.openApp')}
+          description={URLSchemeList.OpenApp}
+          withArrow={false}
+          onPress={() => {
+            // TODO: open app
+            showMessage({
+              type: 'error',
+              text2: translate('label.underConstruction')
+            })
+          }}
+        />
+      </TableList>
     </View>
   )
 }
 
-/**
- * @description styles settings
- */
-const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    flex: 1
-  })
-}
-
-const mapStateToProps = ({ ui: { login } }: { ui: IState.UIState }) => {
-  const { error, success, loading } = login
-  return { error, success, loading }
-}
-
-export default connect(mapStateToProps)(URLSchemes)
+export default connect()(URLSchemes)
