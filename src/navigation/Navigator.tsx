@@ -1,41 +1,35 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/2/21.
  */
-import React, { useEffect, useState } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { EdgeInsets, useSafeAreaInsets } from 'react-native-safe-area-context'
 import {
+  getFocusedRouteNameFromRoute,
   NavigationContainer,
-  NavigationState,
   NavigationContainerRefWithCurrent,
+  NavigationState,
   PartialState,
   Route
 } from '@react-navigation/native'
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack'
-import { Button, Image, StatusBar, TextStyle } from 'react-native'
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
-
-import SplashScreen from 'react-native-splash-screen'
-
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
-import zhCN from 'dayjs/locale/zh-cn'
-import enUS from 'dayjs/locale/en'
-
-import { translate, changeLocale, LanguageTagType } from '@src/i18n'
-import { useAppSelector } from '@src/hooks'
-import { ITheme, useTheme } from '@src/theme'
-import * as Screens from '@src/screens'
-import { useUnRead } from '@src/hooks/useUnRead'
-import { ROUTES, RootStackParamList, MainScreenProps } from './routes'
-import { store, RootState } from '@src/store'
-import NavigationService from './NavigationService'
 import { ToastProvider } from '@src/components/toast'
+import { useAppSelector } from '@src/hooks'
+import { useUnRead } from '@src/hooks/useUnRead'
+import { changeLocale, LanguageTagType, translate } from '@src/i18n'
+import * as Screens from '@src/screens'
+import { RootState, store } from '@src/store'
+import { ITheme, useTheme } from '@src/theme'
 import { wait } from '@src/utils/utils'
-import { Screen } from 'react-native-screens'
-import { Alert } from '@src/utils'
+import dayjs from 'dayjs'
+import enUS from 'dayjs/locale/en'
+import zhCN from 'dayjs/locale/zh-cn'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import React, { useEffect, useState } from 'react'
+import { Image, StatusBar, TextStyle } from 'react-native'
+import { EdgeInsets, SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context'
+import SplashScreen from 'react-native-splash-screen'
 import { HeaderButton } from '../screens/components'
+import NavigationService from './NavigationService'
+import { MainScreenProps, RootStackParamList, ROUTES } from './routes'
 
 /**
  * dayjs
@@ -50,7 +44,7 @@ const defaultScreenOptions = (theme: ITheme): NativeStackNavigationOptions => ({
   animation: 'slide_from_right',
   // statusBarAnimation: 'fade',
   headerStyle: {
-    backgroundColor: theme.colors.primary
+    backgroundColor: theme.colors.headerBackground
   },
   headerTitleStyle: {
     fontWeight: 'bold',

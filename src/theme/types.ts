@@ -22,6 +22,8 @@ export interface IThemeColor {
   primaryDark: string
   primary: string
 
+  headerBackground: string
+
   tabBarBackground: string
   tabBarIconInactive: string
   tabBarIconActive: string
@@ -276,6 +278,7 @@ export interface IThemeAssets {
         theme: ImageSourcePropType
         twitter: ImageSourcePropType
         urlschme: ImageSourcePropType
+        check: ImageSourcePropType
       }
       topic: {
         comment: ImageSourcePropType

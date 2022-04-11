@@ -7,7 +7,9 @@ const colors: IThemeColor = {
    */
   ...lightColors,
 
-  tabBarBackground: '#000',
+  headerBackground: '#161921',
+
+  tabBarBackground: '#161921',
   tabBarIconInactive: '#898B8B',
   tabBarIconActive: '#025DC9',
   appbarTint: '#fff',

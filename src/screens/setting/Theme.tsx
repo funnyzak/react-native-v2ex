@@ -1,17 +1,12 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { View, Image, TouchableOpacity, Text } from 'react-native'
-
-import { translate } from '@src/i18n'
 import * as Actions from '@src/actions'
-import { useTheme, themes, SylCommon } from '@src/theme'
-import { IState, ThemeType } from '@src/types'
+import { translate } from '@src/i18n'
 import { ThemeSettingScreenProps as ScreenProps } from '@src/navigation/routes'
-
-const themeList = (Object.keys(themes) as Array<keyof typeof themes>).map((v) => ({
-  name: v,
-  theme: themes[v]
-}))
+import { SylCommon, themes, useTheme } from '@src/theme'
+import { IState, ThemeType } from '@src/types'
+import React, { useMemo } from 'react'
+import { View } from 'react-native'
+import { connect } from 'react-redux'
+import { TableList, TableRow } from '../components'
 
 const Theme = ({
   themeName,
@@ -20,27 +15,33 @@ const Theme = ({
   themeName: ThemeType
   setTheme: (themeType: ThemeType) => void
 }) => {
+  const themeList = useMemo(
+    () =>
+      (Object.keys(themes) as Array<keyof typeof themes>).map((v) => ({
+        name: v,
+        theme: themes[v]
+      })),
+    [themeName]
+  )
   const { theme, resetTheme } = useTheme()
 
   return (
     <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
-      <View style={SylCommon.Table.container(theme)}>
-        {themeList.map((v) => {
-          const { name, theme: _theme } = v
-          return (
-            <TouchableOpacity
-              key={name}
-              style={SylCommon.Table.item(theme)}
-              onPress={() => {
-                resetTheme(name)
-                setTheme(name)
-              }}>
-              <Text style={SylCommon.Table.itemText(theme, name === themeName)}>{translate(`theme.${name}`)}</Text>
-              <Image style={SylCommon.Table.itemArrow(theme)} source={theme.assets.images.icons.arrowRightGrey} />
-            </TouchableOpacity>
-          )
-        })}
-      </View>
+      <TableList containerStyle={[{ marginTop: theme.spacing.tiny }]}>
+        {themeList.map((item, index) => (
+          <TableRow
+            key={index}
+            title={translate(`theme.${item.name}`)}
+            highlightTitle={item.name === themeName}
+            rightIcon={item.name === themeName ? theme.assets.images.icons.table.check : undefined}
+            withArrow={false}
+            onPress={() => {
+              resetTheme(item.name)
+              setTheme(item.name)
+            }}
+          />
+        ))}
+      </TableList>
     </View>
   )
 }

@@ -31,12 +31,17 @@ export interface TableRowProps {
   /**
    * Optional
    */
-  icon?: ImageSourcePropType
+  leftIcon?: ImageSourcePropType
 
   /**
    * Row title
    */
   title: string
+
+  /**
+   * highlight title
+   */
+  highlightTitle?: boolean
 
   /**
    * Row description
@@ -47,6 +52,11 @@ export interface TableRowProps {
    * Row right arrow icon
    */
   withArrow?: boolean
+
+  /**
+   * custom right icon
+   */
+  rightIcon?: ImageSourcePropType
 
   /**
    * Row right text
@@ -65,15 +75,18 @@ const TableRow: React.FC<TableRowProps> = (data: TableRowProps) => {
   return (
     <TouchableOpacity onPress={data.onPress} style={[data.containerStyle, rowStyles.container(theme)]}>
       <View style={rowStyles.left(theme)}>
-        {data.icon && <Image source={data.icon} style={rowStyles.icon(theme)} />}
+        {data.leftIcon && <Image source={data.leftIcon} style={rowStyles.leftIcon(theme)} />}
         <View style={rowStyles.textBox(theme)}>
-          <Text style={rowStyles.title(theme)}>{data.title}</Text>
+          <Text style={rowStyles.title(theme, data.highlightTitle ?? false)}>{data.title}</Text>
           {data.description && <Text style={rowStyles.description(theme)}>{data.description}</Text>}
         </View>
       </View>
       <View style={rowStyles.right(theme)}>
         {data.rightText && <Text style={rowStyles.rightText(theme)}>{data.rightText}</Text>}
-        <Image source={theme.assets.images.icons.table.rightArrow} style={rowStyles.arrow(theme)} />
+        {data.withArrow && (
+          <Image source={theme.assets.images.icons.table.rightArrow} style={rowStyles.rightIcon(theme)} />
+        )}
+        {data.rightIcon && <Image source={data.rightIcon} style={rowStyles.rightIcon(theme)} />}
       </View>
     </TouchableOpacity>
   )
@@ -126,7 +139,7 @@ const rowStyles = {
     justifyContent: 'flex-start',
     alignItems: 'center'
   }),
-  icon: (theme: ITheme): ImageStyle => ({
+  leftIcon: (theme: ITheme): ImageStyle => ({
     height: 21,
     width: 21,
     marginRight: theme.spacing.small
@@ -136,8 +149,9 @@ const rowStyles = {
     flexDirection: 'column',
     justifyContent: 'center'
   }),
-  title: (theme: ITheme): TextStyle => ({
-    ...theme.typography.labelText
+  title: (theme: ITheme, highlightTitle: boolean): TextStyle => ({
+    ...theme.typography.labelText,
+    color: highlightTitle ? theme.colors.secondary : theme.colors.bodyText
   }),
   description: (theme: ITheme): TextStyle => ({}),
   right: (theme: ITheme): ViewStyle => ({
@@ -149,7 +163,7 @@ const rowStyles = {
   rightText: (theme: ITheme): TextStyle => ({
     ...theme.typography.captionText
   }),
-  arrow: (theme: ITheme): ImageStyle => ({
+  rightIcon: (theme: ITheme): ImageStyle => ({
     width: 16,
     height: 16
   })

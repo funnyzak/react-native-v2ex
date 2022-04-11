@@ -23,9 +23,10 @@ i18n.locale = languageTag
 
 export default i18n
 
-export type LanguageTagType = keyof typeof translations
+export type LanguageTagType = keyof typeof translations | 'auto'
 
 export const translationTitle = {
+  auto: 'Auto',
   en: 'English',
   zh: '简体中文'
 }

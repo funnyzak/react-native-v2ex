@@ -50,7 +50,7 @@ const TopicTabList = ({}: HomeTabsScreenProps) => {
           shadowRadius: 6,
           borderBottomWidth: 0,
           borderColor: theme.colors.lightGrey,
-          backgroundColor: theme.colors.primary
+          backgroundColor: theme.colors.tabBarBackground
         },
         tabBarLabelStyle: {
           padding: 0,
@@ -61,7 +61,7 @@ const TopicTabList = ({}: HomeTabsScreenProps) => {
           backgroundColor: theme.colors.secondary
         },
         tabBarIndicatorContainerStyle: {
-          backgroundColor: theme.colors.primary
+          backgroundColor: theme.colors.tabBarBackground
         }
       }}>
       {filterNodes.map((item: NODE_TAB_TYPE) => (

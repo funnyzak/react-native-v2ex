@@ -1,5 +1,4 @@
 import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native'
-import { auto } from './themes'
 import { ITheme } from './types'
 
 export const Layout = StyleSheet.create({

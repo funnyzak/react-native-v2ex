@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { View, ViewStyle, TextStyle, Pressable, ScrollView } from 'react-native'
-import RenderHtml from 'react-native-render-html'
-
-import { translate } from '@src/i18n'
-import { useTheme, SylCommon } from '@src/theme'
-import { ITheme, V2exObject } from '@src/types'
-import { Text, Spinner, Avatar } from '@src/components'
-import { TopicDetailScreenProps as ScreenProps, ROUTES } from '@src/navigation'
+import { Avatar, Spinner, Text } from '@src/components'
 import { useTopic } from '@src/hooks/useTopic'
+import { translate } from '@src/i18n'
+import { ROUTES, TopicDetailScreenProps as ScreenProps } from '@src/navigation'
+import { SylCommon, useTheme } from '@src/theme'
+import { ITheme } from '@src/types'
 import dayjs from 'dayjs'
+import React, { useEffect } from 'react'
+import { Pressable, ScrollView, TextStyle, View, ViewStyle } from 'react-native'
+import RenderHtml from 'react-native-render-html'
 
 const TopicDetail = ({ route, navigation }: ScreenProps) => {
   const { theme } = useTheme()
   const { topic } = useTopic({ topicId: route.params.topicId })
-  // const [topic] = useState<V2exObject.Topic|undefined>(undefined)
 
   useEffect(() => {
     navigation.setOptions({ title: !topic ? translate(`router.${ROUTES.TopicDetail}`) : `${topic.node?.title}` })
@@ -27,7 +25,7 @@ const TopicDetail = ({ route, navigation }: ScreenProps) => {
     return (
       <>
         <ScrollView>
-          <View style={styles.titleContainer(theme)}>
+          <View style={styles.textContainer(theme)}>
             <View>
               <Text type="heading">{topic.title}</Text>
             </View>
@@ -56,9 +54,11 @@ const TopicDetail = ({ route, navigation }: ScreenProps) => {
             </View>
           </View>
           <View style={SylCommon.Divider.item(theme)} />
-          <View style={styles.titleContainer(theme)}>
+          <View style={styles.textContainer(theme)}>
             <RenderHtml
-              source={{ html: topic.content_rendered || '<p></p>' }}
+              source={{
+                html: `<div style="color:${theme.colors.bodyText}">${topic.content_rendered}</div>` || '<p></p>'
+              }}
               contentWidth={theme.dimens.WINDOW_WIDTH - theme.spacing.large * 2}
             />
           </View>
@@ -74,7 +74,7 @@ const TopicDetail = ({ route, navigation }: ScreenProps) => {
  * @description styles settings
  */
 const styles = {
-  titleContainer: (theme: ITheme): ViewStyle => ({
+  textContainer: (theme: ITheme): ViewStyle => ({
     paddingTop: theme.spacing.small,
     paddingHorizontal: theme.spacing.large
   }),

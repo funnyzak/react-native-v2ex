@@ -95,7 +95,8 @@ const Assets: IThemeAssets = {
         share: require('@res/images/icons/table/share.png'),
         theme: require('@res/images/icons/table/theme.png'),
         twitter: require('@res/images/icons/table/twitter.png'),
-        urlschme: require('@res/images/icons/table/urlscheme.png')
+        urlschme: require('@res/images/icons/table/urlscheme.png'),
+        check: require('@res/images/icons/table/check-right.png')
       },
       topic: {
         comment: require('@res/images/icons/topic/comment.png'),
