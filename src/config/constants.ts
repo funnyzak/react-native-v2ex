@@ -39,7 +39,7 @@ declare type openSourceInfoType = {
 /**
  * 使用开源列表
  */
-export const OPENSOURCE_List: Array<openSourceInfoType> = [
+export const OPENSOURCE_LIST: Array<openSourceInfoType> = [
   {
     name: 'lodash',
     repoUrl: 'https://github.com/lodash/lodash'
