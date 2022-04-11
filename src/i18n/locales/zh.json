@@ -1,9 +1,10 @@
 {
   "brand": {
-    "name": "V2EX",
+    "name": "V2HUB",
     "intro": "这个项目使用了 React Native 构建了一个 V2EX 移动客户端应用。主要目的是为了构建一个 React Native 快速开发脚手架。"
   },
   "common": {
+    "integrated": "综合",
     "help": "帮助",
     "replies": "回复",
     "repoURL": "开源地址",
@@ -77,7 +78,7 @@
     "replyedCount": "回复数量",
     "replyedTime": "回复于",
     "createSince": "创建至今",
-    "profileLastModified":"最近修改于 $。",
+    "profileLastModified": "最近修改于 $。",
     "activeLatest": "最近活跃于 $。",
     "favorited": "收藏了",
     "joinSinceTime": "加入于",
@@ -123,7 +124,7 @@
     "NodeDetail": "节点",
     "MyTopics": "我的主题",
     "CacheSetting": "缓存清理",
-    "URLSechmes": "URL Schemes",
+    "URLSchemes": "URL Schemes",
     "OpenSourceLicense": "开源协议",
     "PrivacyPolic": "隐私政策",
     "ChangeLog": "更新说明",
