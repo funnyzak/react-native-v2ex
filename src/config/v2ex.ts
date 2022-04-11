@@ -14,6 +14,8 @@ export const v2exOptions = {
   }
 }
 
+export const brandName = 'V2HUB'
+
 export const aboutUs = {
   author: 'leon',
   email: 'y@yycc.me',
