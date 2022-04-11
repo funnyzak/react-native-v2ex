@@ -1,15 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { View, Image, ViewStyle, TextStyle, TouchableOpacity, ScrollView } from 'react-native'
+import { ViewStyle, TextStyle, ScrollView } from 'react-native'
 
 import { translate } from '@src/i18n'
-import { useTheme, SylCommon } from '@src/theme'
-import { HELP_PAGE_LINK } from '@src/config/constants'
+import { useTheme } from '@src/theme'
 import { IState, ITheme, V2exObject } from '@src/types'
-import { Text, Button } from '@src/components'
 import { MyScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 import { logout as logoutAction } from '@src/actions'
-import { linking, Alert } from '@src/utils'
+import { linking } from '@src/utils'
 import { ProfileCard, TableList, TableRow, Footer } from '../components'
 
 const My = ({
@@ -113,6 +111,7 @@ const My = ({
           title={translate(`common.email`)}
           icon={theme.assets.images.icons.table.email}
           withArrow={true}
+          rightText={`${app.aboutUs.email}`}
           onPress={() => {
             linking(`mailto:${app.aboutUs.email}`)
           }}
@@ -121,6 +120,7 @@ const My = ({
           title={translate(`common.twitter`)}
           icon={theme.assets.images.icons.table.twitter}
           withArrow={true}
+          rightText={`@${app.aboutUs.twitter}`}
           onPress={() => {
             navigation.navigate(ROUTES.WebViewer, { url: `https://twitter.com/${app.aboutUs.twitter}` })
           }}
@@ -129,6 +129,7 @@ const My = ({
           title={translate(`common.github`)}
           icon={theme.assets.images.icons.table.github}
           withArrow={true}
+          rightText={`@${app.aboutUs.github}`}
           onPress={() => {
             navigation.navigate(ROUTES.WebViewer, { url: `https://github.com/${app.aboutUs.github}` })
           }}
