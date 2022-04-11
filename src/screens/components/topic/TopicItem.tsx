@@ -101,6 +101,7 @@ const styles = {
   }),
   title: (theme: ITheme): TextStyle => ({
     ...theme.typography.subheadingText,
+    color: theme.colors.bodyText,
     marginTop: theme.spacing.small
   }),
   node: (theme: ITheme): ViewStyle => ({

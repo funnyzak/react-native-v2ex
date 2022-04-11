@@ -22,6 +22,8 @@ export interface IThemeColor {
   primaryDark: string
   primary: string
 
+  headerBackground: string
+
   tabBarBackground: string
   tabBarIconInactive: string
   tabBarIconActive: string

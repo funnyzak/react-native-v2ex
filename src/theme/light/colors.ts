@@ -18,10 +18,12 @@ const colors: IThemeColor = {
   primaryDark: '#000',
   primary: '#FFF',
 
+  headerBackground: '#FFF',
+
   tabBarBackground: '#FFFFFF',
   tabBarIconActive: '#025DC9',
   tabBarIconInactive: '#898B8B',
-  appbarTint: '#333333',
+  appbarTint: '#43474A',
 
   tabShadowColor: '#666666',
   tabActiveTintColor: '#025DC9',

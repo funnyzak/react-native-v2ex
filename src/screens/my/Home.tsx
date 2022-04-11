@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { ViewStyle, TextStyle, ScrollView } from 'react-native'
 
 import { translate } from '@src/i18n'
-import { useTheme } from '@src/theme'
+import { SylCommon, useTheme } from '@src/theme'
 import { IState, ITheme, V2exObject } from '@src/types'
 import { MyScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 import { logout as logoutAction } from '@src/actions'
@@ -26,7 +26,7 @@ const My = ({
   const { theme } = useTheme()
 
   return (
-    <ScrollView>
+    <ScrollView style={[SylCommon.Layout.fill, { backgroundColor: theme.colors.background }]}>
       <ProfileCard
         info={{
           styleType: 'simple',
