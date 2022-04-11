@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { View, Image, ViewStyle, TextStyle, TouchableOpacity } from 'react-native'
+import { View, Image, ViewStyle, TextStyle, TouchableOpacity, ScrollView } from 'react-native'
 
 import { translate } from '@src/i18n'
 import { useTheme, SylCommon } from '@src/theme'
@@ -10,7 +10,7 @@ import { Text, Button } from '@src/components'
 import { MyScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 import { logout as logoutAction } from '@src/actions'
 import { linking, Alert } from '@src/utils'
-import { ProfileCard } from '../components'
+import { ProfileCard, TableList, TableRow, Footer } from '../components'
 
 const My = ({
   navigation,
@@ -28,7 +28,7 @@ const My = ({
   const { theme } = useTheme()
 
   return (
-    <View>
+    <ScrollView>
       <ProfileCard
         info={{
           styleType: 'simple',
@@ -42,76 +42,100 @@ const My = ({
           following: 0
         }}
       />
-      <View style={SylCommon.Table.container(theme)}>
-        <TouchableOpacity
-          style={SylCommon.Table.item(theme)}
+      <TableList title={translate('common.setting')}>
+        <TableRow
+          title={translate(`router.${ROUTES.ThemeSetting}`)}
+          icon={theme.assets.images.icons.table.theme}
+          withArrow={true}
           onPress={() => {
             navigation.navigate(ROUTES.ThemeSetting)
-          }}>
-          <Text style={SylCommon.Table.itemText(theme)}>{translate('common.theme')}</Text>
-          <Image style={SylCommon.Table.itemArrow(theme)} source={theme.assets.images.icons.table.rightArrow} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={SylCommon.Table.item(theme)}
+          }}
+        />
+        <TableRow
+          title={translate(`router.${ROUTES.Language}`)}
+          icon={theme.assets.images.icons.table.language}
+          withArrow={true}
           onPress={() => {
             navigation.navigate(ROUTES.Language)
-          }}>
-          <Text style={SylCommon.Table.itemText(theme)}>{translate('common.language')}</Text>
-          <Image style={SylCommon.Table.itemArrow(theme)} source={theme.assets.images.icons.table.rightArrow} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={SylCommon.Table.item(theme)}
+          }}
+        />
+        <TableRow
+          title={translate(`router.${ROUTES.CacheSetting}`)}
+          icon={theme.assets.images.icons.table.cached}
+          withArrow={true}
           onPress={() => {
-            navigation.navigate(ROUTES.WebViewer, { title: translate('common.help'), url: HELP_PAGE_LINK })
-          }}>
-          <Text style={SylCommon.Table.itemText(theme)}>{translate('common.help')}</Text>
-          <Image style={SylCommon.Table.itemArrow(theme)} source={theme.assets.images.icons.table.rightArrow} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={SylCommon.Table.item(theme)}
+            navigation.navigate(ROUTES.CacheSetting)
+          }}
+        />
+      </TableList>
+
+      <TableList title={translate('common.integrated')}>
+        <TableRow
+          title={translate(`button.rate`)}
+          icon={theme.assets.images.icons.table.score}
+          withArrow={true}
+          onPress={() => {}}
+        />
+        <TableRow
+          title={translate(`button.shareFriend`)}
+          icon={theme.assets.images.icons.table.share}
+          withArrow={true}
+          onPress={() => {}}
+        />
+        <TableRow
+          title={translate(`router.${ROUTES.URLSchemes}`)}
+          icon={theme.assets.images.icons.table.urlschme}
+          withArrow={true}
+          onPress={() => {
+            navigation.navigate(ROUTES.URLSchemes)
+          }}
+        />
+        <TableRow
+          title={translate(`router.${ROUTES.OpenSourceLicense}`)}
+          icon={theme.assets.images.icons.table.opensource}
+          withArrow={true}
+          onPress={() => {
+            navigation.navigate(ROUTES.OpenSourceLicense)
+          }}
+        />
+        <TableRow
+          title={translate(`router.${ROUTES.About}`)}
+          icon={theme.assets.images.icons.table.group}
+          withArrow={true}
           onPress={() => {
             navigation.navigate(ROUTES.About)
-          }}>
-          <Text style={SylCommon.Table.itemText(theme)}>{translate('common.about')}</Text>
-          <Image style={SylCommon.Table.itemArrow(theme)} source={theme.assets.images.icons.table.rightArrow} />
-        </TouchableOpacity>
-      </View>
-      <View style={SylCommon.Table.container(theme)}>
-        <TouchableOpacity
-          style={SylCommon.Table.item(theme)}
+          }}
+        />
+      </TableList>
+
+      <TableList title={translate('common.feedback')}>
+        <TableRow
+          title={translate(`common.email`)}
+          icon={theme.assets.images.icons.table.email}
+          withArrow={true}
           onPress={() => {
             linking(`mailto:${app.aboutUs.email}`)
-          }}>
-          <Text style={SylCommon.Table.itemText(theme)}>{translate('common.email')}</Text>
-          <Text style={SylCommon.Table.itemRightText(theme)}>{app.aboutUs.email}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={SylCommon.Table.item(theme)}
+          }}
+        />
+        <TableRow
+          title={translate(`common.twitter`)}
+          icon={theme.assets.images.icons.table.twitter}
+          withArrow={true}
           onPress={() => {
             navigation.navigate(ROUTES.WebViewer, { url: `https://twitter.com/${app.aboutUs.twitter}` })
-          }}>
-          <Text style={SylCommon.Table.itemText(theme)}>{translate('common.twitter')}</Text>
-          <Text style={SylCommon.Table.itemRightText(theme)}>@{app.aboutUs.twitter}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={SylCommon.Table.item(theme)}
+          }}
+        />
+        <TableRow
+          title={translate(`common.github`)}
+          icon={theme.assets.images.icons.table.github}
+          withArrow={true}
           onPress={() => {
             navigation.navigate(ROUTES.WebViewer, { url: `https://github.com/${app.aboutUs.github}` })
-          }}>
-          <Text style={SylCommon.Table.itemText(theme)}>{translate('common.github')}</Text>
-          <Text style={SylCommon.Table.itemRightText(theme)}>@{app.aboutUs.github}</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.logoutBox(theme)}>
-        <Button
-          style={{}}
-          onPress={() => {
-            Alert.confirm({ message: translate('confirm.logout'), onOk: logout })
-          }}>
-          {translate('common.logout')}
-        </Button>
-      </View>
-    </View>
+          }}
+        />
+      </TableList>
+      <Footer />
+    </ScrollView>
   )
 }
 
