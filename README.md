@@ -246,7 +246,6 @@ cd android
 - react-navigation
 - react-devtools
 - @redux-devtools/extension
-- react-native-webview
 - async-storage
 - react-native-gesture-handler
 - react-native-fast-image
