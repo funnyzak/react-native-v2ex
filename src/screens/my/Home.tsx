@@ -9,6 +9,7 @@ import { MyScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 import { logout as logoutAction } from '@src/actions'
 import { linking } from '@src/utils'
 import { ProfileCard, TableList, TableRow, Footer } from '../components'
+import { useToast } from '@src/components/toast'
 
 const My = ({
   navigation,
@@ -24,9 +25,20 @@ const My = ({
     logout: () => void
   }) => {
   const { theme } = useTheme()
+  const { showMessage } = useToast()
+
+  const underConstruction = () => {
+    showMessage({
+      type: 'error',
+      text2: translate('label.underConstruction')
+    })
+  }
 
   return (
-    <ScrollView style={[SylCommon.Layout.fill, { backgroundColor: theme.colors.background }]}>
+    <ScrollView
+      overScrollMode={'never'}
+      bounces={false}
+      style={[SylCommon.Layout.fill, { backgroundColor: theme.colors.background }]}>
       <ProfileCard
         info={{
           styleType: 'simple',
@@ -72,13 +84,13 @@ const My = ({
           title={translate(`button.rate`)}
           leftIcon={theme.assets.images.icons.table.score}
           withArrow={true}
-          onPress={() => {}}
+          onPress={underConstruction}
         />
         <TableRow
           title={translate(`button.shareFriend`)}
           leftIcon={theme.assets.images.icons.table.share}
           withArrow={true}
-          onPress={() => {}}
+          onPress={underConstruction}
         />
         <TableRow
           title={translate(`router.${ROUTES.URLSchemes}`)}

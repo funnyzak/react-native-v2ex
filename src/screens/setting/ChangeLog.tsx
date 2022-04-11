@@ -7,15 +7,17 @@ import { translate } from '@src/i18n'
 import { useTheme, SylCommon } from '@src/theme'
 import { IState, ITheme, V2exObject } from '@src/types'
 import * as CompS from '../components'
-import { Text, Spinner } from '@src/components'
-import { ChangeLogScreenProps as ScreenProps } from '@src/navigation/routes'
+import { Text, Spinner, Placeholder } from '@src/components'
+import { ChangeLogScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 
 const ChangeLog = ({ route, navigation, loading }: ScreenProps) => {
   const { theme } = useTheme()
   return (
-    <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
-      <Text>Hello, ChangeLog.</Text>
-    </View>
+    <Placeholder
+      style="icon"
+      icon={theme.assets.images.icons.placeholder.construction}
+      placeholderText={translate(`router.${ROUTES.ChangeLog}`) + translate('label.underConstruction')}
+    />
   )
 }
 

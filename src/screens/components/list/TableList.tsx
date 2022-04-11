@@ -153,7 +153,9 @@ const rowStyles = {
     ...theme.typography.labelText,
     color: highlightTitle ? theme.colors.secondary : theme.colors.bodyText
   }),
-  description: (theme: ITheme): TextStyle => ({}),
+  description: (theme: ITheme): TextStyle => ({
+    ...theme.typography.captionText
+  }),
   right: (theme: ITheme): ViewStyle => ({
     display: 'flex',
     flexDirection: 'row',
