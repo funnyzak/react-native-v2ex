@@ -3,6 +3,7 @@
  */
 import { Text } from '@src/components'
 import { ITheme, useTheme } from '@src/theme'
+import { useAppSelector } from '@src/hooks'
 import React from 'react'
 import {
   Image,
@@ -14,6 +15,8 @@ import {
   ViewStyle,
   Pressable
 } from 'react-native'
+import { IState } from '@src/types'
+import { translate } from '@src/i18n'
 
 /**
  * TextWithIconPress props
@@ -85,8 +88,35 @@ const HeaderButton = ({ source, onPress }: { source: ImageSourcePropType; onPres
     </Pressable>
   )
 }
+
+const Footer = () => {
+  const { theme } = useTheme()
+  const app = useAppSelector((_state: IState.State) => _state.app)
+
+  return (
+    <View style={styles.footer(theme)}>
+      <Text style={styles.footerItem(theme)}>
+        {translate('brand.name')} {app.version.version}({app.version.buildId})
+      </Text>
+      <Text style={styles.footerItem(theme)}>
+        {app.siteInfo?.title} - {app.siteInfo?.description}
+      </Text>
+    </View>
+  )
+}
+
 const styles = {
-  borderLine: (theme: ITheme) => ({
+  footer: (theme: ITheme): ViewStyle => ({
+    marginVertical: theme.spacing.extraLarge,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  }),
+  footerItem: (theme: ITheme): TextStyle => ({
+    marginBottom: theme.spacing.small,
+    ...theme.typography.captionText
+  }),
+  borderLine: (theme: ITheme): ViewStyle => ({
     width: '100%',
     height: 0.3,
     backgroundColor: theme.colors.border
@@ -137,4 +167,4 @@ const styles = {
   }
 }
 
-export { TextWithIconPress, TextGrid, BorderLine, HeaderButton }
+export { TextWithIconPress, TextGrid, BorderLine, HeaderButton, Footer }

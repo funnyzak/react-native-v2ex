@@ -1,9 +1,10 @@
 {
   "brand": {
-    "name": "V2EX",
+    "name": "V2HUB",
     "intro": "This project used React Native to build a V2EX mobile client application. The main goal was to build a React Native rapid development scaffold."
   },
   "common": {
+    "integrated": "Integrated",
     "help": "Help",
     "replies": "Replies",
     "repoURL": "Repo Link",
@@ -123,7 +124,7 @@
     "NodeDetail": "Node",
     "MyTopics": "Topics",
     "CacheSetting": "Cache",
-    "URLSechmes": "URL Schemes",
+    "URLSchemes": "URL Schemes",
     "OpenSourceLicense": "License",
     "PrivacyPolicy": "Privacy Policy",
     "ChangeLog": "Change Log",
