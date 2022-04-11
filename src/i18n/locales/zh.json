@@ -133,7 +133,7 @@
     "TermsOfService": "服务条款"
   },
   "placeholder": {
-    "loading": "努力拉取中...",
+    "loading": "加载中...",
     "token": "输入API令牌..",
     "search": "搜索关键字...",
     "message": "写点啥...",
