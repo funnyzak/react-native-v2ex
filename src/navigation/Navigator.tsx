@@ -252,6 +252,7 @@ export const AppNavigationContainer = () => {
                 component={Screens.SignInScreen}
                 options={{
                   title: translate(`router.${ROUTES.SignIn}`),
+                  headerShown: false,
                   animationTypeForReplace: !token ? 'pop' : 'push'
                 }}
               />
