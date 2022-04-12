@@ -45,7 +45,15 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
   const renderContent = () => {
     return (
       <View style={[styles.container(theme), containerStyle]}>
-        <View style={styles.infoItem(theme)}>
+        <TouchableOpacity
+          onPress={() =>
+            !withArrow
+              ? undefined
+              : isLogin
+              ? NavigationService.navigate(ROUTES.Profile, { username: profile?.username })
+              : NavigationService.navigate(ROUTES.SignIn)
+          }
+          style={styles.infoItem(theme)}>
           <View style={styles.baseAvatar(theme)}>
             <Avatar
               size={60}
@@ -78,18 +86,12 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
               ) : null}
             </View>
             {withArrow && (
-              <TouchableOpacity
-                onPress={() =>
-                  isLogin
-                    ? NavigationService.navigate(ROUTES.Profile, { username: profile?.username })
-                    : NavigationService.navigate(ROUTES.SignIn)
-                }
-                style={styles.baseRightArrow(theme)}>
+              <View style={styles.baseRightArrow(theme)}>
                 <Image source={theme.assets.images.icons.table.rightArrow} style={{ width: 14, height: 14 }} />
-              </TouchableOpacity>
+              </View>
             )}
           </View>
-        </View>
+        </TouchableOpacity>
         {styleType === 'full' && (
           <>
             {profile?.bio ? (
