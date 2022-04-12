@@ -1,25 +1,24 @@
 import { NavigationService, ROUTES } from '@src/navigation'
 import { ITheme, useTheme } from '@src/theme'
-import React, { useState } from 'react'
-import { Image, Pressable, ViewStyle } from 'react-native'
+import React, { useEffect, useRef, useState } from 'react'
+import { Image, View, Pressable, ViewStyle, Animated } from 'react-native'
 import FastImage, { Source } from 'react-native-fast-image'
 
 interface IProps {
   style?: ViewStyle
   username?: string
   size?: number
-  source?: Source | number
+  source?: Source
   onPress?: () => void
 }
 /**
- * TODO: default avatar icon
  * Usernames avatar component
  * @param { username, size = 24, source, onPress, style }
  * @returns
  */
 const AvatarComponent = ({ username, size = 24, source, onPress, style }: IProps) => {
   const { theme } = useTheme()
-  const [loading, setLoading] = useState<boolean>(true)
+  const avatarImageScaleValue = useRef(new Animated.Value(0)).current
 
   const _handlePress = () => {
     if (username) {
@@ -28,22 +27,29 @@ const AvatarComponent = ({ username, size = 24, source, onPress, style }: IProps
     onPress && onPress()
   }
 
+  const onAvatarImageLoadEnd = () => {
+    Animated.timing(avatarImageScaleValue, {
+      toValue: 1,
+      duration: 300,
+      delay: 5,
+      useNativeDriver: true
+    }).start()
+  }
+
   return (
     <Pressable style={style} onPress={_handlePress}>
       {source ? (
-        <>
+        <Animated.View style={{ opacity: avatarImageScaleValue }}>
           <FastImage
-            source={source}
-            style={loading ? { width: 0, height: 0 } : styles.avatar(theme, size)}
-            onLoadEnd={() => {
-              setLoading(false)
+            source={{
+              uri: source.uri,
+              cache: FastImage.cacheControl.web
             }}
-            onError={() => {
-              setLoading(false)
-            }}
+            onLoadEnd={onAvatarImageLoadEnd}
+            onError={onAvatarImageLoadEnd}
+            style={styles.avatar(theme, size)}
           />
-          {loading && <Image source={theme.assets.images.icons.profile.avatar} style={styles.avatar(theme, size)} />}
-        </>
+        </Animated.View>
       ) : (
         <Image source={theme.assets.images.icons.profile.avatar} style={styles.avatar(theme, size)} />
       )}
@@ -58,6 +64,7 @@ const styles = {
     width: size,
     height: size,
     borderWidth: 0.3,
+    backgroundColor: theme.colors.border,
     borderColor: theme.colors.border,
     borderRadius: size * 0.12
   })
