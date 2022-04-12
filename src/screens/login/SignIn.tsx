@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Platform, TouchableOpacity, KeyboardAvoidingView, View, ViewStyle, TextStyle } from 'react-native'
+import { Platform, TouchableOpacity, KeyboardAvoidingView, View, ViewStyle, StatusBar, TextStyle } from 'react-native'
 import { connect } from 'react-redux'
 
 import { IState, ITheme } from '@src/types'
@@ -11,6 +11,7 @@ import { SignInScreenProps as ScreenProps } from '@src/navigation/routes'
 import { loginByToken } from '@src/actions'
 import { SylCommon, useTheme } from '@src/theme'
 import { RootState } from '@src/store'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const Screen = ({
   loading = false,
@@ -63,25 +64,34 @@ const Screen = ({
   }
 
   return (
-    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container(theme)}>
-      <View style={{ marginBottom: 35 }}>
-        <Logo width={75} height={75} />
-      </View>
-      <Input
-        autoCapitalize="none"
-        underlineColorAndroid="transparent"
-        placeholder={translate('placeholder.token')}
-        keyboardType="default"
-        returnKeyType="next"
-        autoCorrect={false}
-        value={token}
-        editable={!loading}
-        onChangeText={setToken}
-        containerStyle={styles.inputContainer(theme)}
-        textContentType="none"
+    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <StatusBar
+        backgroundColor={theme.colors.background}
+        barStyle={theme.name === 'dark' ? 'light-content' : 'dark-content'}
       />
-      {renderButtons()}
-      {renderMessages()}
+      <SafeAreaView style={[SylCommon.Layout.fill, { backgroundColor: theme.colors.background }]}>
+        <View style={styles.container(theme)}>
+          <View style={{ marginBottom: 35 }}>
+            <Logo width={75} height={75} />
+          </View>
+
+          <Input
+            autoCapitalize="none"
+            underlineColorAndroid="transparent"
+            placeholder={translate('placeholder.token')}
+            keyboardType="default"
+            returnKeyType="next"
+            autoCorrect={false}
+            value={token}
+            editable={!loading}
+            onChangeText={setToken}
+            containerStyle={styles.inputContainer(theme)}
+            textContentType="none"
+          />
+          {renderButtons()}
+          {renderMessages()}
+        </View>
+      </SafeAreaView>
     </KeyboardAvoidingView>
   )
 }
@@ -91,11 +101,14 @@ const Screen = ({
  */
 const styles = {
   container: (theme: ITheme): ViewStyle => ({
-    flex: 1,
-    backgroundColor: theme.colors.background,
-    alignItems: 'center',
-    paddingTop: theme.dimens.WINDOW_HEIGHT * 0.1
+    paddingTop: '30%',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
   }),
+
+  logo: (theme: ITheme): ViewStyle => ({}),
+
   inputContainer: (theme: ITheme): ViewStyle => ({
     width: theme.dimens.defaultButtonWidth,
     marginBottom: theme.spacing.large
