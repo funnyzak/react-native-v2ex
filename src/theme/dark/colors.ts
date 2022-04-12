@@ -7,6 +7,8 @@ const colors: IThemeColor = {
    */
   ...lightColors,
 
+  primaryDark: '#161921',
+
   headerBackground: '#161921',
 
   tabBarBackground: '#161921',
