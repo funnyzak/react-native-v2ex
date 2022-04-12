@@ -42,6 +42,10 @@ const bottomTabBarIconSize = 30
 const defaultScreenOptions = (theme: ITheme): NativeStackNavigationOptions => ({
   animationTypeForReplace: 'push',
   animation: 'slide_from_right',
+
+  // hide header shadow
+  headerShadowVisible: true,
+
   // statusBarAnimation: 'fade',
   headerStyle: {
     backgroundColor: theme.colors.headerBackground
@@ -109,7 +113,8 @@ const defaultTabBarSetting = (theme: ITheme, insets: EdgeInsets) => {
     },
     tabBarStyle: {
       backgroundColor: theme.colors.tabBarBackground,
-      height: bottomTabBarIconSize + insets.bottom + 10
+      height: bottomTabBarIconSize + insets.bottom + 10,
+      borderTopColor: theme.colors.border
     }
   }
 }
@@ -259,6 +264,7 @@ export const AppNavigationContainer = () => {
                   headerShadowVisible: ![ROUTES.HomeTabs].includes(
                     getFocusedRouteNameFromRoute(route) ?? (ROUTES.Nodes as any)
                   ),
+
                   headerTitle: getHeaderTitle(route),
                   headerRight: () => {
                     const focusRoute = getFocusedRouteNameFromRoute(route)
