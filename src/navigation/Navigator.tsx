@@ -105,11 +105,11 @@ const defaultTabBarSetting = (theme: ITheme, insets: EdgeInsets) => {
     tabBarShowLabel: false,
     tabBarItemStyle: {
       height: bottomTabBarIconSize,
-      paddingTop: 10
+      marginTop: 5
     },
     tabBarStyle: {
       backgroundColor: theme.colors.tabBarBackground,
-      height: bottomTabBarIconSize + insets.bottom - 10
+      height: bottomTabBarIconSize + insets.bottom
     }
   }
 }
