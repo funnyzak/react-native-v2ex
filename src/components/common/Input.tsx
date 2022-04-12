@@ -61,15 +61,16 @@ const styles = {
   containerStyle: (_theme: ITheme): ViewStyle => ({
     height: _theme.dimens.defaultInputBoxHeight,
     backgroundColor: _theme.colors.surface,
-    borderWidth: 1,
+    borderWidth: 0.3,
+    borderRadius: _theme.dimens.borderRadius,
     borderColor: _theme.colors.border,
     flexDirection: 'row',
     alignItems: 'center'
   }),
   inputStyle: (_theme: ITheme): TextStyle => ({
-    ..._theme.typography.labelText,
+    ..._theme.typography.inputText,
     color: _theme.colors.captionText,
-    padding: _theme.spacing.small,
+    paddingHorizontal: _theme.spacing.small,
     flex: 2
   }),
   labelStyle: (_theme: ITheme): ViewStyle => ({
