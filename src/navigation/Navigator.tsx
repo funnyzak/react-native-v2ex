@@ -109,7 +109,7 @@ const defaultTabBarSetting = (theme: ITheme, insets: EdgeInsets) => {
     },
     tabBarStyle: {
       backgroundColor: theme.colors.tabBarBackground,
-      height: bottomTabBarIconSize + insets.bottom + 5
+      height: bottomTabBarIconSize + insets.bottom + 10
     }
   }
 }
@@ -227,7 +227,7 @@ export const AppNavigationContainer = () => {
   }, [languageTag])
 
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider style={{ backgroundColor: theme.colors.background }}>
       <ToastProvider>
         <NavigationContainer
           ref={(navigatorRef: NavigationContainerRefWithCurrent<RootStackParamList>) => {
@@ -237,7 +237,7 @@ export const AppNavigationContainer = () => {
             formatter: (options, route) => `${options?.title ?? route?.name}`
           }}>
           <StatusBar
-            backgroundColor={theme.colors.primary}
+            backgroundColor={theme.name === 'dark' ? theme.colors.primaryDark : theme.colors.primary}
             barStyle={theme.name === 'dark' ? 'light-content' : 'dark-content'}
           />
           <StackNavigator.Navigator initialRouteName={ROUTES.SignIn}>
