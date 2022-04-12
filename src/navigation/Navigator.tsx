@@ -245,45 +245,42 @@ export const AppNavigationContainer = () => {
             backgroundColor={theme.name === 'dark' ? theme.colors.primaryDark : theme.colors.primary}
             barStyle={theme.name === 'dark' ? 'light-content' : 'dark-content'}
           />
-          <StackNavigator.Navigator initialRouteName={ROUTES.SignIn}>
-            {!token ? (
-              <StackNavigator.Screen
-                name={ROUTES.SignIn}
-                component={Screens.SignInScreen}
-                options={{
-                  title: translate(`router.${ROUTES.SignIn}`),
-                  headerShown: false,
-                  animationTypeForReplace: !token ? 'pop' : 'push'
-                }}
-              />
-            ) : (
-              <StackNavigator.Screen
-                name={ROUTES.Main}
-                component={MainAppNavigator}
-                options={({ route }) => ({
-                  ...defaultScreenOptions(theme),
-                  headerShadowVisible: ![ROUTES.HomeTabs].includes(
-                    getFocusedRouteNameFromRoute(route) ?? (ROUTES.Nodes as any)
-                  ),
+          <StackNavigator.Navigator initialRouteName={!token ? ROUTES.SignIn : ROUTES.Main}>
+            <StackNavigator.Screen
+              name={ROUTES.SignIn}
+              component={Screens.SignInScreen}
+              options={{
+                title: translate(`router.${ROUTES.SignIn}`),
+                headerShown: false,
+                animationTypeForReplace: !token ? 'pop' : 'push'
+              }}
+            />
+            <StackNavigator.Screen
+              name={ROUTES.Main}
+              component={MainAppNavigator}
+              options={({ route }) => ({
+                ...defaultScreenOptions(theme),
+                headerShadowVisible: ![ROUTES.HomeTabs].includes(
+                  getFocusedRouteNameFromRoute(route) ?? (ROUTES.Nodes as any)
+                ),
 
-                  headerTitle: getHeaderTitle(route),
-                  headerRight: () => {
-                    const focusRoute = getFocusedRouteNameFromRoute(route)
-                    return focusRoute === ROUTES.My && profile ? (
-                      <HeaderButton
-                        source={theme.assets.images.icons.header.more}
-                        onPress={() => {
-                          NavigationService.navigate(ROUTES.WebViewer, { url: profile?.url })
-                        }}
-                      />
-                    ) : null
-                  }
-                })}
-                initialParams={{
-                  initialRouteName: ROUTES.My
-                }}
-              />
-            )}
+                headerTitle: getHeaderTitle(route),
+                headerRight: () => {
+                  const focusRoute = getFocusedRouteNameFromRoute(route)
+                  return focusRoute === ROUTES.My && profile ? (
+                    <HeaderButton
+                      source={theme.assets.images.icons.header.more}
+                      onPress={() => {
+                        NavigationService.navigate(ROUTES.WebViewer, { url: profile?.url })
+                      }}
+                    />
+                  ) : null
+                }
+              })}
+              initialParams={{
+                initialRouteName: ROUTES.My
+              }}
+            />
             <StackNavigator.Screen
               name={ROUTES.NodeTopics}
               component={Screens.NodeTopicListScreen}

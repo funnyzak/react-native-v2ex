@@ -8,7 +8,7 @@ import { ITheme } from '@src/types'
 export type RootStackParamList = {
   Draw: undefined
   Main: {
-    initialRouteName: string
+    initialRouteName?: string
   }
   HomeTabs: undefined
   Nodes: undefined
