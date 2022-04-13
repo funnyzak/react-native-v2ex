@@ -1,3 +1,5 @@
-export * as App from './app'
+export * as AppHelper from './app'
 
-export * as Logger from './logger'
+export * as LoggerHelper from './logger'
+
+export * as ScreenHelper from './screen'

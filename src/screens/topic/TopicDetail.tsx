@@ -4,6 +4,7 @@ import { translate } from '@src/i18n'
 import { ROUTES, TopicDetailScreenProps as ScreenProps } from '@src/navigation'
 import { SylCommon, useTheme } from '@src/theme'
 import { ITheme } from '@src/types'
+import { ScreenHelper } from '@src/helper'
 import dayjs from 'dayjs'
 import React, { useEffect } from 'react'
 import { Pressable, ScrollView, TextStyle, View, ViewStyle } from 'react-native'
@@ -12,6 +13,8 @@ import RenderHtml from 'react-native-render-html'
 const TopicDetail = ({ route, navigation }: ScreenProps) => {
   const { theme } = useTheme()
   const { topic } = useTopic({ topicId: route.params.topicId })
+
+  ScreenHelper.useFocusStatusBarColor()
 
   useEffect(() => {
     navigation.setOptions({ title: !topic ? translate(`router.${ROUTES.TopicDetail}`) : `${topic.node?.title}` })
