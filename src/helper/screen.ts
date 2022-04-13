@@ -4,14 +4,16 @@
 
 import { useFocusEffect } from '@react-navigation/native'
 import { useTheme } from '@src/theme'
-import { StatusBar } from 'react-native'
+import { Platform, StatusBar } from 'react-native'
 
 export const useFocusStatusBarColor = (backgroundColor?: string) => {
   const { theme } = useTheme()
 
   useFocusEffect(() => {
-    StatusBar.setBackgroundColor(
-      backgroundColor ?? (theme.name === 'dark' ? theme.colors.primaryDark : theme.colors.primary)
-    )
+    if (Platform.OS === 'android') {
+      StatusBar.setBackgroundColor(
+        backgroundColor ?? (theme.name === 'dark' ? theme.colors.primaryDark : theme.colors.primary)
+      )
+    }
   })
 }
