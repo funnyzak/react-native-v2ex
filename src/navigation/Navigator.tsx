@@ -27,7 +27,6 @@ import React, { useEffect, useState } from 'react'
 import { Image, StatusBar, TextStyle } from 'react-native'
 import { EdgeInsets, SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context'
 import SplashScreen from 'react-native-splash-screen'
-import { HeaderButton } from '../screens/components'
 import NavigationService from './NavigationService'
 import { MainScreenProps, RootStackParamList, ROUTES } from './routes'
 
@@ -46,7 +45,7 @@ const defaultScreenOptions = (theme: ITheme): NativeStackNavigationOptions => ({
   // hide header shadow
   headerShadowVisible: true,
 
-  // statusBarAnimation: 'fade',
+  statusBarAnimation: 'fade',
   headerStyle: {
     backgroundColor: theme.colors.headerBackground
   },
@@ -210,9 +209,8 @@ const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
 const StackNavigator = createNativeStackNavigator<RootStackParamList>()
 
 export const AppNavigationContainer = () => {
-  const { token, profile } = useAppSelector((state: RootState) => state.member)
+  const { token } = useAppSelector((state: RootState) => state.member)
   const { languageTag } = useAppSelector((state: RootState) => state.setting)
-
   const { theme } = useTheme()
   const [mounted, setMounted] = useState<boolean>(false)
 
@@ -264,18 +262,7 @@ export const AppNavigationContainer = () => {
                   getFocusedRouteNameFromRoute(route) ?? (ROUTES.Nodes as any)
                 ),
 
-                headerTitle: getHeaderTitle(route),
-                headerRight: () => {
-                  const focusRoute = getFocusedRouteNameFromRoute(route)
-                  return focusRoute === ROUTES.My && profile ? (
-                    <HeaderButton
-                      source={theme.assets.images.icons.header.more}
-                      onPress={() => {
-                        NavigationService.navigate(ROUTES.WebViewer, { url: profile?.url })
-                      }}
-                    />
-                  ) : null
-                }
+                headerTitle: getHeaderTitle(route)
               })}
               initialParams={{
                 initialRouteName: ROUTES.My

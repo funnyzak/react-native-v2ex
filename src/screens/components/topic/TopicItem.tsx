@@ -47,7 +47,7 @@ const TopicItem = ({
               {topic.node && <Text style={[styles.node(theme), styles.attrText(theme)]}>{topic.node.title}</Text>}
               {topic.last_reply_by.length > 0 && (
                 <View style={styles.attr(theme)}>
-                  <Image style={styles.attrIcon(theme)} source={theme.assets.images.icons.personCycleGrey} />
+                  <Image style={styles.attrIcon(theme)} source={theme.assets.images.icons.topic.talk} />
                   <Pressable
                     onPress={() => {
                       NavigationService.navigate(ROUTES.Profile, { username: topic.last_reply_by })
@@ -57,11 +57,11 @@ const TopicItem = ({
                 </View>
               )}
               <View style={styles.attr(theme)}>
-                <Image style={styles.attrIcon(theme)} source={theme.assets.images.icons.timeCycleGrey} />
+                <Image style={styles.attrIcon(theme)} source={theme.assets.images.icons.topic.time} />
                 <Text style={styles.attrText(theme)}>{dayjs(topic.last_touched * 1000).fromNow()}</Text>
               </View>
               <View style={styles.attr(theme)}>
-                <Image style={styles.attrIcon(theme)} source={theme.assets.images.icons.moreCycleGrey} />
+                <Image style={styles.attrIcon(theme)} source={theme.assets.images.icons.topic.comment} />
                 <Text style={styles.attrText(theme)}>{topic.replies}</Text>
               </View>
             </View>
