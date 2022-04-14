@@ -61,6 +61,8 @@ const TopicList: React.FC<TopicListProps> = ({
     if (topics.length > 0) {
       return (
         <FlatList
+          style={{ backgroundColor: theme.colors.surface }}
+          contentContainerStyle={{ flexGrow: 1 }}
           refreshControl={refreshControl}
           data={topics}
           renderItem={renderItemRow}
@@ -69,6 +71,7 @@ const TopicList: React.FC<TopicListProps> = ({
           onEndReachedThreshold={0.1}
           ListFooterComponent={renderFooter}
           numColumns={1}
+          horizontal={false}
           key={'ONE COLUMN'}
           ItemSeparatorComponent={renderItemSeparator}
         />
@@ -85,28 +88,19 @@ const TopicList: React.FC<TopicListProps> = ({
     }
   }
 
-  return (
-    <>
-      <View style={styles.container(theme)}>{renderContent()}</View>
-    </>
-  )
+  return <View style={styles.container(theme)}>{renderContent()}</View>
 }
 
 /**
  * @description styles settings
  */
 const styles = {
-  container: (theme: ITheme) => ({
-    paddingVertical: theme.spacing.small,
-    ...SylCommon.Layout.fill,
-    backgroundColor: theme.colors.surface
-  }),
-  topicItemContainer: (theme: ITheme): ViewStyle => ({
+  container: (theme: ITheme): ViewStyle => ({
     flex: 1
   }),
+  topicItemContainer: (theme: ITheme): ViewStyle => ({}),
   itemSeparator: (theme: ITheme) => ({
-    height: theme.spacing.small,
-    flex: 1
+    height: theme.spacing.small
   }),
   imageStyle: (theme: ITheme) => ({
     height: 60,

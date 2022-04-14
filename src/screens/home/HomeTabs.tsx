@@ -1,11 +1,10 @@
-import React, { useMemo } from 'react'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
-
-import { HomeTabsScreenProps, HOME_NODES as tabs, NODE_TAB_TYPE } from '@src/navigation'
-import { useTheme } from '@src/theme'
 import { useAppSelector } from '@src/hooks'
-import { HomeTabNodeTopicListScreen } from '../topic'
+import { HomeTabsScreenProps, HOME_NODES as tabs, NODE_TAB_TYPE } from '@src/navigation'
 import { RootState } from '@src/store'
+import { useTheme } from '@src/theme'
+import React, { useMemo } from 'react'
+import { HomeTabNodeTopicListScreen } from '../topic'
 
 const Tab = createMaterialTopTabNavigator()
 
@@ -23,9 +22,6 @@ const TopicTabList = ({}: HomeTabsScreenProps) => {
       initialLayout={{ width: theme.dimens.WINDOW_WIDTH }}
       tabBarPosition="top"
       initialRouteName={`NODE-${tabs[0].name}`}
-      style={{
-        padding: 0
-      }}
       screenOptions={{
         lazy: true,
         tabBarActiveTintColor: theme.colors.tabActiveTintColor,

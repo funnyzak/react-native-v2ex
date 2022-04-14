@@ -32,6 +32,7 @@ export const APP_AUTH = 'member_token'
 export const APP_LOGOUT = 'v2ex_logout'
 export const APP_AUTH_SUCCESS = 'v2ex_auth_success'
 export const APP_AUTH_ERROR = 'v2ex_auth_error'
+export const APP_AUTH_RESET = 'v2ex_auth_reset'
 
 export const APP_NODE_LOAD_MORE_TOPICS = 'v2ex_node_load_more_topics'
 export const APP_NODE_NODE_TOPICS = 'v2ex_node_node_topics'
@@ -58,6 +59,7 @@ export const ActionTypes = {
   APP_NOTIFICATION_REMOVE,
   MEMBER_PROFILE,
   APP_AUTH_LOADING,
+  APP_AUTH_RESET,
   MEMBER_FOLLOW_PEOPLE,
   MEMBER_LIKE_TOPICS,
   APP_AUTH,

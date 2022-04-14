@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { ViewStyle, TextStyle, ScrollView } from 'react-native'
 
@@ -8,15 +8,14 @@ import { IState, ITheme, V2exObject } from '@src/types'
 import { MyScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 import { logout as logoutAction } from '@src/actions'
 import { linking } from '@src/utils'
-import { ProfileCard, TableList, TableRow, Footer } from '../components'
+import { ProfileCard, TableList, TableRow, Footer, HeaderButton, SetStatusBar } from '../components'
 import { useToast } from '@src/components/toast'
 
 const My = ({
   navigation,
   app,
   profile,
-  readedTopics,
-  logout
+  readedTopics
 }: ScreenProps &
   IState.State & {
     profile?: V2exObject.Member
@@ -34,11 +33,26 @@ const My = ({
     })
   }
 
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () =>
+        profile && (
+          <HeaderButton
+            source={theme.assets.images.icons.header.more}
+            onPress={() => {
+              navigation.navigate(ROUTES.WebViewer, { url: profile?.url })
+            }}
+          />
+        )
+    })
+  }, [])
+
   return (
     <ScrollView
       overScrollMode={'never'}
       bounces={false}
       style={[SylCommon.Layout.fill, { backgroundColor: theme.colors.background }]}>
+      <SetStatusBar />
       <ProfileCard
         info={{
           styleType: 'simple',

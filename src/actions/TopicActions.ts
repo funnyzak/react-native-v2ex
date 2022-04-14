@@ -35,13 +35,13 @@ export const readTopic = (topic: V2exObject.Topic) => ({
  * @returns
  */
 export const getHomeNodeTopics =
-  (node: string, page: number = 1) =>
+  (node: string, page: number = 1, v2Use: boolean = false) =>
   async (dispatch: Dispatch) => {
     const specialNode = Object.values(SPECIAL_NODE_NAME_MAP).includes(node)
     const refreshing = page === 1 || specialNode
     const loadmore = !refreshing && page > 1
 
-    if (specialNode && page > 1) {
+    if ((!v2Use || specialNode) && page > 1) {
       return
     }
 
@@ -66,7 +66,7 @@ export const getHomeNodeTopics =
           _topics = await v2exLib.topic.latestTopics()
         }
       } else {
-        _topics = await v2exLib.topic.pager(node, page)
+        _topics = await (v2Use ? v2exLib.topic.pager(node, page) : v2exLib.topic.topics(node, 'node_name'))
       }
 
       dispatch({

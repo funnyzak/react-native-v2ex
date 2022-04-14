@@ -44,7 +44,7 @@ const Input = ({
         {...props}
         secureTextEntry={secureTextEntry}
         placeholder={placeholder}
-        placeholderTextColor={theme.colors.bodyText}
+        placeholderTextColor={theme.colors.grey}
         autoCorrect={false}
         style={[styles.inputStyle(theme), inputStyle]}
         value={value}
@@ -60,16 +60,17 @@ const Input = ({
 const styles = {
   containerStyle: (_theme: ITheme): ViewStyle => ({
     height: _theme.dimens.defaultInputBoxHeight,
-    backgroundColor: _theme.colors.surface,
-    borderWidth: 1,
+    backgroundColor: _theme.colors.white,
+    borderWidth: 0.3,
+    borderRadius: _theme.dimens.borderRadius * 2,
     borderColor: _theme.colors.border,
     flexDirection: 'row',
     alignItems: 'center'
   }),
   inputStyle: (_theme: ITheme): TextStyle => ({
-    ..._theme.typography.labelText,
-    color: _theme.colors.captionText,
-    padding: _theme.spacing.small,
+    ..._theme.typography.inputText,
+    color: _theme.colors.darkGrey,
+    paddingHorizontal: _theme.spacing.small,
     flex: 2
   }),
   labelStyle: (_theme: ITheme): ViewStyle => ({

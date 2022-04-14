@@ -1,8 +1,10 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/04/01.
  */
+import { useAppSelector } from '@src/hooks'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
+import { IState } from '@src/types'
 import React, { useMemo } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import { TextGrid } from '../common'
@@ -28,6 +30,7 @@ const ProfileGrid: React.FC<ProfileGridProps> = ({
   following,
   history
 }: ProfileGridProps) => {
+  const { languageTag } = useAppSelector((state: IState.State) => state.setting)
   const list = useMemo(
     () => [
       {
@@ -51,7 +54,7 @@ const ProfileGrid: React.FC<ProfileGridProps> = ({
         press: () => NavigationService.navigate(ROUTES.History)
       }
     ],
-    [topics, favorites, following, history]
+    [topics, favorites, following, history, languageTag]
   )
   const renderContent = () => {
     return (

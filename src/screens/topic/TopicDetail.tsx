@@ -8,7 +8,7 @@ import dayjs from 'dayjs'
 import React, { useEffect } from 'react'
 import { Pressable, ScrollView, TextStyle, View, ViewStyle } from 'react-native'
 import RenderHtml from 'react-native-render-html'
-
+import { SetStatusBar } from '../components'
 const TopicDetail = ({ route, navigation }: ScreenProps) => {
   const { theme } = useTheme()
   const { topic } = useTopic({ topicId: route.params.topicId })
@@ -24,6 +24,7 @@ const TopicDetail = ({ route, navigation }: ScreenProps) => {
 
     return (
       <>
+        <SetStatusBar />
         <ScrollView>
           <View style={styles.textContainer(theme)}>
             <View>

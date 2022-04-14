@@ -23,11 +23,10 @@ import dayjs from 'dayjs'
 import enUS from 'dayjs/locale/en'
 import zhCN from 'dayjs/locale/zh-cn'
 import relativeTime from 'dayjs/plugin/relativeTime'
-import React, { useEffect, useState } from 'react'
-import { Image, StatusBar, TextStyle } from 'react-native'
+import React, { ReactNode, useEffect, useState } from 'react'
+import { Image, Platform, StatusBar, TextStyle, View } from 'react-native'
 import { EdgeInsets, SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context'
 import SplashScreen from 'react-native-splash-screen'
-import { HeaderButton } from '../screens/components'
 import NavigationService from './NavigationService'
 import { MainScreenProps, RootStackParamList, ROUTES } from './routes'
 
@@ -39,21 +38,40 @@ dayjs.extend(relativeTime)
 const MainBottomTabNavigator = createBottomTabNavigator()
 const bottomTabBarIconSize = 30
 
+/**
+ * header background default style
+ * @param borderWidth
+ * @returns
+ */
+const defaultHeaderBackground = (theme: ITheme, borderWidth?: number): ReactNode => {
+  return (
+    <View
+      style={{
+        height: '100%',
+        width: '100%',
+        backgroundColor: theme.colors.headerBackground,
+        borderBottomColor: theme.colors.border,
+        borderBottomWidth: borderWidth ?? 0.3
+      }}
+    />
+  )
+}
+
 const defaultScreenOptions = (theme: ITheme): NativeStackNavigationOptions => ({
   animationTypeForReplace: 'push',
   animation: 'slide_from_right',
 
   // hide header shadow
-  headerShadowVisible: true,
+  headerShadowVisible: false,
 
-  // statusBarAnimation: 'fade',
   headerStyle: {
-    backgroundColor: theme.colors.headerBackground
+    backgroundColor: theme.colors.transparent
   },
   headerTitleStyle: {
     fontWeight: 'bold',
     fontSize: theme.typography.titleText.fontSize
   },
+  headerBackground: () => defaultHeaderBackground(theme),
   headerBackTitle: undefined,
   headerTintColor: theme.colors.appbarTint,
   headerBackTitleVisible: false
@@ -210,9 +228,8 @@ const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
 const StackNavigator = createNativeStackNavigator<RootStackParamList>()
 
 export const AppNavigationContainer = () => {
-  const { token, profile } = useAppSelector((state: RootState) => state.member)
+  const { token } = useAppSelector((state: RootState) => state.member)
   const { languageTag } = useAppSelector((state: RootState) => state.setting)
-
   const { theme } = useTheme()
   const [mounted, setMounted] = useState<boolean>(false)
 
@@ -242,48 +259,40 @@ export const AppNavigationContainer = () => {
             formatter: (options, route) => `${options?.title ?? route?.name}`
           }}>
           <StatusBar
-            backgroundColor={theme.name === 'dark' ? theme.colors.primaryDark : theme.colors.primary}
+            backgroundColor={
+              Platform.OS === 'ios'
+                ? 'default'
+                : theme.name === 'dark'
+                ? theme.colors.primaryDark
+                : theme.colors.primary
+            }
             barStyle={theme.name === 'dark' ? 'light-content' : 'dark-content'}
           />
-          <StackNavigator.Navigator initialRouteName={ROUTES.SignIn}>
-            {!token ? (
-              <StackNavigator.Screen
-                name={ROUTES.SignIn}
-                component={Screens.SignInScreen}
-                options={{
-                  title: translate(`router.${ROUTES.SignIn}`),
-                  headerShown: false,
-                  animationTypeForReplace: !token ? 'pop' : 'push'
-                }}
-              />
-            ) : (
-              <StackNavigator.Screen
-                name={ROUTES.Main}
-                component={MainAppNavigator}
-                options={({ route }) => ({
-                  ...defaultScreenOptions(theme),
-                  headerShadowVisible: ![ROUTES.HomeTabs].includes(
-                    getFocusedRouteNameFromRoute(route) ?? (ROUTES.Nodes as any)
-                  ),
-
-                  headerTitle: getHeaderTitle(route),
-                  headerRight: () => {
-                    const focusRoute = getFocusedRouteNameFromRoute(route)
-                    return focusRoute === ROUTES.My && profile ? (
-                      <HeaderButton
-                        source={theme.assets.images.icons.header.more}
-                        onPress={() => {
-                          NavigationService.navigate(ROUTES.WebViewer, { url: profile?.url })
-                        }}
-                      />
-                    ) : null
-                  }
-                })}
-                initialParams={{
-                  initialRouteName: ROUTES.My
-                }}
-              />
-            )}
+          <StackNavigator.Navigator initialRouteName={!token ? ROUTES.SignIn : ROUTES.Main}>
+            <StackNavigator.Screen
+              name={ROUTES.SignIn}
+              component={Screens.SignInScreen}
+              options={{
+                ...defaultScreenOptions,
+                headerBackground: () => null,
+                title: translate(`router.${ROUTES.SignIn}`),
+                headerShown: true
+              }}
+            />
+            <StackNavigator.Screen
+              name={ROUTES.Main}
+              component={MainAppNavigator}
+              options={({ route }) => ({
+                ...defaultScreenOptions(theme),
+                headerShadowVisible: ![ROUTES.HomeTabs].includes(
+                  getFocusedRouteNameFromRoute(route) ?? (ROUTES.Nodes as any)
+                ),
+                headerTitle: getHeaderTitle(route)
+              })}
+              initialParams={{
+                initialRouteName: ROUTES.My
+              }}
+            />
             <StackNavigator.Screen
               name={ROUTES.NodeTopics}
               component={Screens.NodeTopicListScreen}
@@ -385,7 +394,7 @@ export const AppNavigationContainer = () => {
             />
             <StackNavigator.Screen
               name={ROUTES.URLSchemes}
-              component={Screens.URLSchemes}
+              component={Screens.URLSchemesScreen}
               options={{
                 title: translate(`router.${ROUTES.URLSchemes}`),
                 ...defaultScreenOptions(theme),
@@ -424,6 +433,15 @@ export const AppNavigationContainer = () => {
               component={Screens.PrivacyScreen}
               options={{
                 title: translate(`router.${ROUTES.PrivacyPolicy}`),
+                ...defaultScreenOptions(theme),
+                headerShown: true
+              }}
+            />
+            <StackNavigator.Screen
+              name={ROUTES.TermsOfService}
+              component={Screens.TermsOfServiceScreen}
+              options={{
+                title: translate(`router.${ROUTES.TermsOfService}`),
                 ...defaultScreenOptions(theme),
                 headerShown: true
               }}

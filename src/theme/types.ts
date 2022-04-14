@@ -110,7 +110,9 @@ export interface IThemeColor {
 
   black: string
   white: string
+  grey: string
   lightGrey: string
+  darkGrey: string
 }
 
 export interface IThemeDimen {
@@ -214,6 +216,7 @@ export interface IThemeAssets {
         star: ImageSourcePropType
         heart: ImageSourcePropType
         link: ImageSourcePropType
+        logout: ImageSourcePropType
       }
       node: {
         docment: ImageSourcePropType

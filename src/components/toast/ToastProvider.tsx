@@ -40,7 +40,7 @@ const ToastProvider = ({ children }: Props) => {
         text2: params
       })
     } else {
-      ToastMessage.show({ position: 'top', text1: translate('common.tip'), visibilityTime: 2000, ...params })
+      ToastMessage.show({ position: 'top', text1: translate('common.tip'), visibilityTime: 1200, ...params })
     }
   }
 

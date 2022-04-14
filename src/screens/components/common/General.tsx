@@ -81,10 +81,23 @@ const BorderLine = () => {
   return <View style={styles.borderLine(theme)} />
 }
 
-const HeaderButton = ({ source, onPress }: { source: ImageSourcePropType; onPress: () => void }) => {
+const HeaderButton = ({
+  source,
+  onPress,
+  text,
+  textColor
+}: {
+  source?: ImageSourcePropType
+  text?: string
+  textColor?: string
+  onPress: () => void
+}) => {
+  const { theme } = useTheme()
+
   return (
     <Pressable onPress={onPress}>
-      <Image source={source} width={24} />
+      {source && <Image source={source} width={24} />}
+      {text && <Text style={styles.headerText(theme, textColor)}>{text}</Text>}
     </Pressable>
   )
 }
@@ -106,6 +119,10 @@ const Footer = () => {
 }
 
 const styles = {
+  headerText: (theme: ITheme, textColor?: string): TextStyle => ({
+    ...theme.typography.bodyText,
+    color: textColor ?? theme.colors.secondary
+  }),
   footer: (theme: ITheme): ViewStyle => ({
     marginVertical: theme.spacing.extraLarge,
     display: 'flex',
