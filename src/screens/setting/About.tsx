@@ -1,42 +1,106 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Image, ImageStyle, Text, ViewStyle, TextStyle, View } from 'react-native'
+/**
+ * Created by leon<silenceace@gmail.com> on 22/04/14.
+ */
 
-import { REPO_GITHUB_URL, REPO_NAME } from '@src/config/constants'
+import { HELP_PAGE_LINK, RELEASE_NOTES_LINK, REPO_GITHUB_URL, REPO_NAME } from '@src/config/constants'
 import { translate } from '@src/i18n'
-import { linking } from '@src/utils'
-import { useTheme, SylCommon } from '@src/theme'
+import { AboutScreenProps as ScreenProps, ROUTES } from '@src/navigation'
+import { SylCommon, useTheme } from '@src/theme'
 import { IState, ITheme } from '@src/types'
-import { AboutScreenProps as ScreenProps } from '@src/navigation/routes'
+import React from 'react'
+import { Image, ImageStyle, Text, TextStyle, View, ViewStyle } from 'react-native'
+import { connect } from 'react-redux'
+import { SetStatusBar, TableList, TableRow } from '../components'
 
 const About = ({
-  app
+  app,
+  navigation
 }: ScreenProps & {
   app: IState.AppState
 }) => {
   const { theme } = useTheme()
   return (
-    <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
-      <View style={styles.container(theme)}>
-        <Image style={styles.logo(theme)} source={theme.assets.images.icons.app.icon} resizeMode="contain" />
-        <Text style={styles.desc(theme)}>
-          V{app.version.version}(Build {app.version.buildId})
-        </Text>
-      </View>
-      <View style={styles.container(theme)}>
-        <Text style={styles.desc(theme)}>{translate('brand.intro')}</Text>
-        <View style={styles.content(theme)}>
-          <View style={SylCommon.Layout.fill}>
-            <Text>{translate('common.repoURL')}：</Text>
-            <Text style={styles.link(theme)} onPress={() => linking(REPO_GITHUB_URL)}>
-              {REPO_NAME}
-            </Text>
-          </View>
+    <View style={[SylCommon.Layout.fill, { backgroundColor: theme.colors.background, display: 'flex' }]}>
+      <SetStatusBar />
+      <View style={{ flex: 1 }}>
+        <View style={styles.logoContainer(theme)}>
+          <Image style={styles.logo(theme)} source={theme.assets.images.icons.app.icon} resizeMode="contain" />
+          <Text style={styles.desc(theme)}>
+            {translate('brand.name')} {app.version.version}({app.version.buildId})
+          </Text>
         </View>
+        <TableList title={translate('common.about')}>
+          <TableRow
+            title={translate(`common.author`)}
+            withArrow={true}
+            onPress={() => {
+              navigation.navigate(ROUTES.WebViewer, { title: app.aboutUs.author, url: `${app.aboutUs.site}` })
+            }}
+          />
+          <TableRow
+            title={translate(`router.${ROUTES.ChangeLog}`)}
+            withArrow={true}
+            onPress={() => {
+              navigation.navigate(ROUTES.WebViewer, {
+                title: translate(`router.${ROUTES.ChangeLog}`),
+                url: RELEASE_NOTES_LINK
+              })
+            }}
+          />
+          <TableRow
+            title={translate(`router.${ROUTES.HowToUse}`)}
+            withArrow={true}
+            onPress={() => {
+              navigation.navigate(ROUTES.WebViewer, {
+                title: translate(`router.${ROUTES.HowToUse}`),
+                url: HELP_PAGE_LINK
+              })
+            }}
+          />
+          <TableRow
+            title={translate(`router.${ROUTES.PrivacyPolicy}`)}
+            withArrow={true}
+            onPress={() => {
+              navigation.navigate(ROUTES.PrivacyPolicy)
+            }}
+          />
+          <TableRow
+            title={translate(`common.repoURL`)}
+            withArrow={true}
+            rightText={REPO_NAME}
+            onPress={() => {
+              navigation.navigate(ROUTES.WebViewer, { url: `${REPO_GITHUB_URL}` })
+            }}
+          />
+        </TableList>
+        <TableList title={translate('common.contact')}>
+          <TableRow
+            title={translate(`common.weibo`)}
+            withArrow={true}
+            rightText={`@${app.aboutUs.author}`}
+            onPress={() => {
+              navigation.navigate(ROUTES.WebViewer, { url: `https://weibo.com/u/${app.aboutUs.weibo}` })
+            }}
+          />
+          <TableRow
+            title={translate(`common.discord`)}
+            withArrow={true}
+            rightText={`@${app.aboutUs.author}`}
+            onPress={() => {
+              navigation.navigate(ROUTES.WebViewer, { url: `${app.aboutUs.discord}` })
+            }}
+          />
+          <TableRow
+            title={translate(`common.telegram`)}
+            withArrow={true}
+            rightText={`@${app.aboutUs.telegram}`}
+            onPress={() => {
+              navigation.navigate(ROUTES.WebViewer, { url: `https://t.me/${app.aboutUs.telegram}` })
+            }}
+          />
+        </TableList>
       </View>
-      <View style={styles.footer(theme)}>
-        <Text style={styles.footerText(theme)}>@2022 Funnyzak</Text>
-      </View>
+      <Text style={styles.footerText(theme)}>{app.aboutUs.copyright}</Text>
     </View>
   )
 }
@@ -45,9 +109,11 @@ const About = ({
  * @description style
  */
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    paddingHorizontal: theme.spacing.extraLarge,
-    paddingBottom: 32
+  logoContainer: (theme: ITheme): ViewStyle => ({
+    height: 170,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
   }),
   logo: (theme: ITheme): ImageStyle => ({
     marginTop: 32,
@@ -57,24 +123,14 @@ const styles = {
     alignSelf: 'center'
   }),
   desc: (theme: ITheme): TextStyle => ({
-    alignSelf: 'center',
+    ...theme.typography.labelText,
+    color: theme.colors.captionText,
     paddingTop: theme.spacing.tiny
   }),
-  content: (theme: ITheme) => ({
-    marginTop: 32
-  }),
-  link: (theme: ITheme): TextStyle => ({
-    color: theme.colors.secondaryLight,
-    textDecorationLine: 'underline',
-    textAlign: 'justify'
-  }),
-  footer: (theme: ITheme): ViewStyle => ({
-    position: 'absolute',
-    bottom: 36,
-    alignSelf: 'center'
-  }),
-  footerText: (theme: ITheme) => ({
-    ...theme.typography.captionText,
+  footerText: (theme: ITheme): TextStyle => ({
+    height: 50,
+    alignSelf: 'center',
+    ...theme.typography.bodyText,
     color: theme.colors.captionText
   })
 }
