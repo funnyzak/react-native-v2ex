@@ -1,12 +1,12 @@
 import { useFocusEffect } from '@react-navigation/native'
 import { loginByToken } from '@src/actions'
 import { Button, Input, Text, useToast } from '@src/components'
-import { useAppSelector } from '@src/hooks'
+import { useAppDispatch, useAppSelector } from '@src/hooks'
 import { translate } from '@src/i18n'
 import { ROUTES, SignInScreenProps as ScreenProps } from '@src/navigation'
 import { RootState } from '@src/store'
 import { SylCommon, useTheme } from '@src/theme'
-import { IState, ITheme } from '@src/types'
+import { APP_AUTH_RESET, IState, ITheme } from '@src/types'
 import * as utils from '@src/utils'
 import React, { useEffect, useState } from 'react'
 import {
@@ -23,6 +23,7 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { connect } from 'react-redux'
+import { HeaderButton } from '../components'
 
 const Screen = ({
   navigation,
@@ -33,9 +34,11 @@ const Screen = ({
     utils.Alert.alert({ message: 'token: ' + token })
   }
 }: ScreenProps) => {
+  const dispatch = useAppDispatch()
   const [token, setToken] = useState('')
   const { theme } = useTheme()
   const { showMessage } = useToast()
+
   const {
     login: { tokenGeneratedLink }
   } = useAppSelector((state: RootState) => state.ui)
@@ -44,13 +47,30 @@ const Screen = ({
     if (Platform.OS === 'android') {
       // This will run when component is `focused` or mounted.
       StatusBar.setBackgroundColor(theme.colors.background)
+    }
+    // This will run when component is `blured` or unmounted.
+    return () => {
+      // dispatch({ type: APP_AUTH_RESET })
 
-      // This will run when component is `blured` or unmounted.
-      return () => {
+      if (Platform.OS === 'android') {
+        // statusbar style setting
         StatusBar.setBackgroundColor(theme.name === 'dark' ? theme.colors.primaryDark : theme.colors.primary)
       }
     }
   })
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <HeaderButton
+          text={translate('button.getToken')}
+          onPress={() => {
+            navigation.navigate(ROUTES.WebViewer, { url: tokenGeneratedLink })
+          }}
+        />
+      )
+    })
+  }, [])
 
   const goNextRoute = () => {
     navigation.reset({
@@ -164,7 +184,7 @@ const styles = {
     flex: 1,
     width: theme.dimens.defaultButtonWidth,
     backgroundColor: theme.colors.transparent,
-    paddingTop: theme.dimens.WINDOW_HEIGHT / 3,
+    paddingTop: theme.dimens.WINDOW_HEIGHT / 5,
     alignSelf: 'center',
     flexDirection: 'column',
     justifyContent: 'flex-start',
@@ -188,7 +208,7 @@ const styles = {
   }),
   input: (theme: ITheme): ViewStyle => ({
     width: '100%',
-    marginBottom: theme.spacing.medium * 2
+    marginBottom: theme.spacing.large
   }),
   button: (theme: ITheme): ViewStyle => ({
     width: '100%'
