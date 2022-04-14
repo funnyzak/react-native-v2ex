@@ -14,6 +14,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Pressable,
+  StatusBar,
   TextStyle,
   TouchableOpacity,
   View,
@@ -104,6 +105,7 @@ const Screen = ({
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <SetStatusBar backgroundColor={theme.colors.background} />
+      <StatusBar backgroundColor={theme.colors.background} />
       <SafeAreaView style={[SylCommon.Layout.fill, { backgroundColor: theme.colors.background }]}>
         <View style={[SylCommon.Card.container(theme), styles.mainContainer(theme)]}>
           <View style={styles.columnItem(theme)}>

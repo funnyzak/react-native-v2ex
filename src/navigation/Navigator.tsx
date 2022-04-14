@@ -276,8 +276,7 @@ export const AppNavigationContainer = () => {
                 ...defaultScreenOptions,
                 headerBackground: () => null,
                 title: translate(`router.${ROUTES.SignIn}`),
-                headerShown: true,
-                animationTypeForReplace: !token ? 'pop' : 'push'
+                headerShown: true
               }}
             />
             <StackNavigator.Screen
