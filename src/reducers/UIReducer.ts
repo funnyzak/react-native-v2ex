@@ -1,4 +1,14 @@
-import { APP_AUTH_SUCCESS, FEEDBACKING, FEEDBACK_DONE, Action, IState, APP_AUTH_LOADING, APP_AUTH_ERROR, APP_LOGOUT } from '../types'
+import {
+  APP_AUTH_SUCCESS,
+  FEEDBACKING,
+  FEEDBACK_DONE,
+  Action,
+  IState,
+  APP_AUTH_RESET,
+  APP_AUTH_LOADING,
+  APP_AUTH_ERROR,
+  APP_LOGOUT
+} from '../types'
 import { translate } from '@src/i18n'
 
 const INITIAL_STATE: IState.UIState = {
@@ -16,6 +26,8 @@ const INITIAL_STATE: IState.UIState = {
 
 export default (state: IState.UIState = INITIAL_STATE, action: Action): IState.UIState => {
   switch (action.type) {
+    case APP_AUTH_RESET:
+      return { ...state, login: { ...state.login, loading: false, error: '', success: '' } }
     case APP_AUTH_LOADING:
       return { ...state, login: { ...state.login, loading: true, error: '', success: '' } }
     case APP_AUTH_ERROR:
