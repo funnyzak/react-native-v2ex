@@ -277,6 +277,7 @@ export const AppNavigationContainer = () => {
                 headerBackground: () => null,
                 title: translate(`router.${ROUTES.SignIn}`),
                 headerTitleStyle: { color: theme.colors.transparent },
+                headerBackTitleVisible: false,
                 headerShown: true
               }}
             />
