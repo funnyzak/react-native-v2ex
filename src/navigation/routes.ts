@@ -37,6 +37,7 @@ export type RootStackParamList = {
   URLSchemes: undefined
   OpenSourceLicense: undefined
   PrivacyPolicy: undefined
+  TermsOfService: undefined
   ChangeLog: undefined
   HowToUse: undefined
 }
@@ -110,146 +111,153 @@ export type ChangeLogScreenProps = NativeStackScreenProps<RootStackParamList, 'C
 
 export type HowToUseScreenProps = NativeStackScreenProps<RootStackParamList, 'HowToUse'> & CommonScreenProps
 
+export type TermsOfServiceScreenProps = NativeStackScreenProps<RootStackParamList, 'TermsOfService'> & CommonScreenProps
+
 type k1 = keyof RootStackParamList
 
 export const ROUTES = {
   /**
-   * @description 抽屉
+   * 抽屉
    */
   Draw: 'Draw',
   /**
-   * @description 导航器
+   * 导航器
    */
   Main: 'Main',
   /**
-   * @description 首页
+   * 首页
    */
   HomeTabs: 'HomeTabs',
   /**
-   * @description 个人信息页
+   * 个人信息页
    */
   Profile: 'Profile',
   /**
-   * @description 最新话题
+   * 最新话题
    */
   LatestTopics: 'LatestTopics',
   /**
-   * @description 热门
+   * 热门
    */
   HotTopics: 'HotTopics',
   /**
-   * @description 登录
+   * 登录
    */
   SignIn: 'SignIn',
   /**
-   * @description 已读
+   * 已读
    */
   History: 'History',
   /**
-   * @description 通知
+   * 通知
    */
   Notifications: 'Notifications',
   /**
-   * @description 节点列表
+   * 节点列表
    */
   Nodes: 'Nodes',
   /**
-   * @description 节点话题列表
+   * 节点话题列表
    */
   NodeTopics: 'NodeTopics',
   /**
-   * @description 话题详情
+   * 话题详情
    */
   TopicDetail: 'TopicDetail',
   /**
-   * @description 我的
+   * 我的
    */
   My: 'My',
   /**
-   * @description 关注用户列表
+   * 关注用户列表
    */
   Following: 'Following',
   /**
-   * @description 喜欢/收藏的话题列表
+   * 喜欢/收藏的话题列表
    */
   FavoriteTopics: 'FavoriteTopics',
   /**
-   * @description 设置
+   * 设置
    */
   Setting: 'Setting',
   /**
-   * @description 语言设置
+   * 语言设置
    */
   Language: 'Language',
   /**
-   * @description 关于
+   * 关于
    */
   About: 'About',
   /**
-   * @description 反馈
+   * 反馈
    */
   Feedback: 'Feedback',
   /**
-   * @description 主题设置
+   * 主题设置
    */
   ThemeSetting: 'ThemeSetting',
   /**
-   * @description 搜索
+   * 搜索
    */
   Search: 'Search',
 
   /**
-   * @description V2EX统计
+   * V2EX统计
    */
   SiteStat: 'SiteStat',
 
   /**
-   * @description 节点详情
+   * 节点详情
    */
   NodeDetail: 'NodeDetail',
 
   /**
-   * @description 我的主题
+   * 我的主题
    */
   MyTopics: 'MyTopics',
 
   /**
-   * @description 缓存设置
+   * 缓存设置
    */
   CacheSetting: 'CacheSetting',
 
   /**
-   * @description URLSchemes
+   * URLSchemes
    */
   URLSchemes: 'URLSchemes',
 
   /**
-   * @description 开源列表
+   * 开源列表
    */
   OpenSourceLicense: 'OpenSourceLicense',
 
   /**
-   * @description 隐私政策
+   * 隐私政策
    */
   PrivacyPolicy: 'PrivacyPolicy',
 
   /**
-   * @description 更新说明
+   * 服务条款
+   */
+  TermsOfService: 'TermsOfService',
+
+  /**
+   * 更新说明
    */
   ChangeLog: 'ChangeLog',
 
   /**
-   * @description 关注的节点
+   * 关注的节点
    */
   InterestNodes: 'InterestNodes',
 
   /**
-   * @description 如何使用
+   * 如何使用
    */
   HowToUse: 'HowToUse',
 
   /**
-   * @description WebUrl
+   * WebUrl
    */
   WebViewer: 'WebViewer'
 } as const

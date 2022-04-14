@@ -110,7 +110,9 @@ export interface IThemeColor {
 
   black: string
   white: string
+  grey: string
   lightGrey: string
+  darkGrey: string
 }
 
 export interface IThemeDimen {

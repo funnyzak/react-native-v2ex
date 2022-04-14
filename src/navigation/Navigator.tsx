@@ -373,7 +373,7 @@ export const AppNavigationContainer = () => {
             />
             <StackNavigator.Screen
               name={ROUTES.URLSchemes}
-              component={Screens.URLSchemes}
+              component={Screens.URLSchemesScreen}
               options={{
                 title: translate(`router.${ROUTES.URLSchemes}`),
                 ...defaultScreenOptions(theme),
@@ -412,6 +412,15 @@ export const AppNavigationContainer = () => {
               component={Screens.PrivacyScreen}
               options={{
                 title: translate(`router.${ROUTES.PrivacyPolicy}`),
+                ...defaultScreenOptions(theme),
+                headerShown: true
+              }}
+            />
+            <StackNavigator.Screen
+              name={ROUTES.TermsOfService}
+              component={Screens.TermsOfServiceScreen}
+              options={{
+                title: translate(`router.${ROUTES.TermsOfService}`),
                 ...defaultScreenOptions(theme),
                 headerShown: true
               }}

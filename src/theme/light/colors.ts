@@ -106,7 +106,10 @@ const colors: IThemeColor = {
 
   black: '#000000',
   white: '#ffffff',
-  lightGrey: '#F5F6FA'
+
+  grey: '#999',
+  lightGrey: '#F5F6FA',
+  darkGrey: '#666'
 }
 
 export default colors
