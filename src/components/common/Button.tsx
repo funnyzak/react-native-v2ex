@@ -3,21 +3,33 @@ import {
   TouchableOpacity,
   TouchableOpacityProps as NativeTouchableOpacityProps,
   ViewStyle,
-  TextStyle
+  TextStyle,
+  ActivityIndicator
 } from 'react-native'
 import { Text } from './Text'
 import { useTheme, ITheme } from '@src/theme'
 
 export interface TouchableOpacityProps extends NativeTouchableOpacityProps {
+  loading?: boolean
   disabled?: boolean
   type?: 'large' | 'small'
 }
 
-const Button = ({ onPress, children, style, disabled = false, type = 'large' }: TouchableOpacityProps) => {
+const Button = ({
+  onPress,
+  children,
+  style,
+  loading = false,
+  disabled = false,
+  type = 'large'
+}: TouchableOpacityProps) => {
   const { theme } = useTheme()
 
   return (
     <TouchableOpacity onPress={onPress} style={[styles.buttonStyle(theme, type, disabled), style]} disabled={disabled}>
+      {loading && (
+        <ActivityIndicator size={'small'} color={theme.colors.white} style={{ marginRight: theme.spacing.tiny }} />
+      )}
       <Text style={styles.buttonTitle(theme, type, disabled)}>{children}</Text>
     </TouchableOpacity>
   )
@@ -32,7 +44,10 @@ const styles = {
           borderColor: disabled ? _theme.colors.secondaryLight : _theme.colors.secondary,
           width: _theme.dimens.defaultButtonWidth,
           height: _theme.dimens.defaultButtonHeight,
+          display: 'flex',
+          alignItems: 'center',
           justifyContent: 'center',
+          flexDirection: 'row',
           borderRadius: _theme.dimens.defaultButtonRadius
         }
       : {
@@ -41,6 +56,7 @@ const styles = {
           paddingHorizontal: 14,
           paddingVertical: 0,
           height: 24,
+          alignItems: 'center',
           justifyContent: 'center',
           borderRadius: _theme.dimens.defaultButtonRadius
         },
