@@ -162,6 +162,7 @@
     "openLinkFailAndTryAgain": "Failed to load, try to open in default browser?!"
   },
   "button": {
+    "getToken": "Get Token",
     "followPeople": "Following",
     "likeTopics": "Favorite",
     "readed": "History",

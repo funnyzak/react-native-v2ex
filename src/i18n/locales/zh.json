@@ -162,6 +162,7 @@
     "openLinkFailAndTryAgain": "载入失败，试着默认浏览器打开？!"
   },
   "button": {
+    "getToken": "获取令牌",
     "followPeople": "关注的人",
     "likeTopics": "收藏主题",
     "readed": "浏览记录",

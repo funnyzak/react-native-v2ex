@@ -24,7 +24,7 @@ import enUS from 'dayjs/locale/en'
 import zhCN from 'dayjs/locale/zh-cn'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import React, { useEffect, useState } from 'react'
-import { Image, Platform, StatusBar, TextStyle } from 'react-native'
+import { Image, Platform, StatusBar, TextStyle, View } from 'react-native'
 import { EdgeInsets, SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context'
 import SplashScreen from 'react-native-splash-screen'
 import NavigationService from './NavigationService'
@@ -254,7 +254,11 @@ export const AppNavigationContainer = () => {
               component={Screens.SignInScreen}
               options={{
                 title: translate(`router.${ROUTES.SignIn}`),
-                headerShown: false,
+                headerShown: true,
+                headerStyle: {
+                  backgroundColor: theme.colors.transparent
+                },
+                headerTitleStyle: { color: theme.colors.transparent },
                 animationTypeForReplace: !token ? 'pop' : 'push'
               }}
             />
