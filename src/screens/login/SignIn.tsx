@@ -1,27 +1,28 @@
-import React, { useEffect, useState } from 'react'
-import {
-  Platform,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  View,
-  ViewStyle,
-  StatusBar,
-  TextStyle,
-  Image
-} from 'react-native'
-import { connect } from 'react-redux'
-
+import { useFocusEffect } from '@react-navigation/native'
+import { loginByToken } from '@src/actions'
+import { Button, Input, Text, useToast } from '@src/components'
+import { useAppSelector } from '@src/hooks'
+import { translate } from '@src/i18n'
+import { ROUTES, SignInScreenProps as ScreenProps } from '@src/navigation'
+import { RootState } from '@src/store'
+import { SylCommon, useTheme } from '@src/theme'
 import { IState, ITheme } from '@src/types'
 import * as utils from '@src/utils'
-import { translate } from '@src/i18n'
-import { Spinner, Button, Input, Text, useToast } from '@src/components'
-import { useAppSelector } from '@src/hooks'
-import { ROUTES, SignInScreenProps as ScreenProps } from '@src/navigation'
-import { loginByToken } from '@src/actions'
-import { SylCommon, useTheme } from '@src/theme'
-import { RootState } from '@src/store'
+import React, { useEffect, useState } from 'react'
+import {
+  Image,
+  ImageStyle,
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  StatusBar,
+  TextStyle,
+  TouchableOpacity,
+  View,
+  ViewStyle
+} from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { ImageStyle } from 'react-native'
+import { connect } from 'react-redux'
 
 const Screen = ({
   navigation,
@@ -39,9 +40,29 @@ const Screen = ({
     login: { tokenGeneratedLink }
   } = useAppSelector((state: RootState) => state.ui)
 
+  useFocusEffect(() => {
+    if (Platform.OS === 'android') {
+      // This will run when component is `focused` or mounted.
+      StatusBar.setBackgroundColor(theme.colors.background)
+
+      // This will run when component is `blured` or unmounted.
+      return () => {
+        StatusBar.setBackgroundColor(theme.name === 'dark' ? theme.colors.primaryDark : theme.colors.primary)
+      }
+    }
+  })
+
+  const goNextRoute = () => {
+    navigation.reset({
+      index: 0,
+      routes: [{ name: ROUTES.Main }]
+    })
+  }
+
   useEffect(() => {
     if (success) {
       showMessage({ type: 'success', text2: success })
+      goNextRoute()
     }
   }, [success])
 
@@ -55,11 +76,6 @@ const Screen = ({
     _auth(token)
   }
 
-  const onSkip = () => {
-    navigation.navigate(ROUTES.Main, { initialRouteName: ROUTES.HotTopics })
-    StatusBar.setBackgroundColor(theme.name === 'dark' ? theme.colors.primaryDark : theme.colors.primary)
-  }
-
   const onGetTokenPress = () => {
     utils.linking(tokenGeneratedLink)
   }
@@ -67,10 +83,15 @@ const Screen = ({
   const renderButtons = () => {
     return (
       <View>
-        <Button style={styles.button(theme)} type="large" disabled={token === '' || loading} onPress={onLoginPress}>
+        <Button
+          style={styles.button(theme)}
+          type="large"
+          disabled={token === '' || loading}
+          onPress={onLoginPress}
+          loading={loading}>
           {translate('button.loginByToken')}
         </Button>
-        <TouchableOpacity onPress={onSkip}>
+        <TouchableOpacity onPress={goNextRoute}>
           <Text style={[SylCommon.Button.textAction(theme), styles.linkSkip(theme)]}>
             {translate('link.skipLogin')}
           </Text>
@@ -86,7 +107,7 @@ const Screen = ({
         barStyle={theme.name === 'dark' ? 'light-content' : 'dark-content'}
       />
       <SafeAreaView style={[SylCommon.Layout.fill, { backgroundColor: theme.colors.background }]}>
-        <View style={[SylCommon.Card.container(theme), styles.container(theme)]}>
+        <View style={[SylCommon.Card.container(theme), styles.mainContainer(theme)]}>
           <View style={styles.columnItem(theme)}>
             <Image
               source={
@@ -114,6 +135,22 @@ const Screen = ({
             {renderButtons()}
           </View>
         </View>
+        <View style={styles.footer(theme)}>
+          <Text style={styles.footerText(theme)}>登陆即表示你同意</Text>
+          <Pressable
+            onPress={() => {
+              navigation.navigate(ROUTES.PrivacyPolicy)
+            }}>
+            <Text style={[styles.footerText(theme), { color: theme.colors.secondary }]}>隐私政策</Text>
+          </Pressable>
+          <Text style={styles.footerText(theme)}>和</Text>
+          <Pressable
+            onPress={() => {
+              navigation.navigate(ROUTES.TermsOfService)
+            }}>
+            <Text style={[styles.footerText(theme), { color: theme.colors.secondary }]}>服务条款</Text>
+          </Pressable>
+        </View>
       </SafeAreaView>
     </KeyboardAvoidingView>
   )
@@ -123,7 +160,7 @@ const Screen = ({
  * @description styles settings
  */
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
+  mainContainer: (theme: ITheme): ViewStyle => ({
     flex: 1,
     width: theme.dimens.defaultButtonWidth,
     backgroundColor: theme.colors.transparent,
@@ -143,7 +180,7 @@ const styles = {
     width: 150 * 0.9,
     height: 128 * 0.9,
     alignSelf: 'center',
-    marginBottom: theme.spacing.large * 3
+    marginBottom: 100
   }),
   actionContainer: (theme: ITheme): ViewStyle => ({
     flexDirection: 'column',
@@ -151,15 +188,24 @@ const styles = {
   }),
   input: (theme: ITheme): ViewStyle => ({
     width: '100%',
-    marginBottom: theme.spacing.large
+    marginBottom: theme.spacing.medium * 2
   }),
   button: (theme: ITheme): ViewStyle => ({
     width: '100%'
   }),
   linkSkip: (theme: ITheme): TextStyle => ({
-    marginTop: theme.spacing.large * 2,
+    marginTop: theme.spacing.large * 3,
     color: theme.colors.bodyText,
     height: 30
+  }),
+  footer: (theme: ITheme): ViewStyle => ({
+    flexDirection: 'row',
+    height: 20,
+    alignItems: 'center',
+    justifyContent: 'center'
+  }),
+  footerText: (theme: ITheme): TextStyle => ({
+    ...theme.typography.labelText
   })
 }
 
