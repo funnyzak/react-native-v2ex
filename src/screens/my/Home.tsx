@@ -8,7 +8,7 @@ import { IState, ITheme, V2exObject } from '@src/types'
 import { MyScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 import { logout as logoutAction } from '@src/actions'
 import { linking } from '@src/utils'
-import { ProfileCard, TableList, TableRow, Footer, HeaderButton } from '../components'
+import { ProfileCard, TableList, TableRow, Footer, HeaderButton, SetStatusBar } from '../components'
 import { useToast } from '@src/components/toast'
 
 const My = ({
@@ -52,6 +52,7 @@ const My = ({
       overScrollMode={'never'}
       bounces={false}
       style={[SylCommon.Layout.fill, { backgroundColor: theme.colors.background }]}>
+      <SetStatusBar />
       <ProfileCard
         info={{
           styleType: 'simple',

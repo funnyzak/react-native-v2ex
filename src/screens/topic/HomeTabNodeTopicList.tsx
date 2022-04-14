@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { View, RefreshControl } from 'react-native'
 
 import { IState, V2exObject } from '@src/types'
-import { TopicList } from '../components'
+import { SetStatusBar, TopicList } from '../components'
 import { NodeTopicsScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 import * as Actions from '@src/actions'
 import { useToast } from '@src/components/toast'
@@ -73,15 +73,18 @@ const NodeTopics = ({
   }
 
   return (
-    <TopicList
-      topics={list}
-      onRowPress={onRowPress}
-      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-      onEndReached={onReached}
-      canLoadMoreContent={hasMore}
-      searchIndicator={false}
-      refreshCallback={onRefresh}
-    />
+    <>
+      <SetStatusBar />
+      <TopicList
+        topics={list}
+        onRowPress={onRowPress}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+        onEndReached={onReached}
+        canLoadMoreContent={hasMore}
+        searchIndicator={false}
+        refreshCallback={onRefresh}
+      />
+    </>
   )
 }
 
