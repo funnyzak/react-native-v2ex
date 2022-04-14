@@ -31,6 +31,11 @@ export const REPO_GITHUB_URL = `https://github.com/${REPO_NAME}`
  */
 export const HELP_PAGE_LINK = 'https://yycc.dev/2022/03/17/react-native-v2ex/'
 
+/**
+ * 最新发布
+ */
+export const RELEASE_NOTES_LINK = `${REPO_GITHUB_URL}/releases`
+
 declare type openSourceInfoType = {
   name: string
   repoUrl: string
