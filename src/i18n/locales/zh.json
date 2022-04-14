@@ -68,7 +68,12 @@
     "author": "作者",
     "us": "我们",
     "me": "我",
-    "my": "我的"
+    "my": "我的",
+    "and": "和"
+  },
+  "symbol": {
+    "comma": "，",
+    "period": "。"
   },
   "label": {
     "registedMember": "注册会员",
@@ -88,7 +93,8 @@
     "openApp": "打开APP",
     "goLogin": "去登陆",
     "loginTips": "登陆体验更多V2HUB功能",
-    "underConstruction": "正在建设中"
+    "underConstruction": "正在建设中",
+    "confirmTerms": "登陆即表示你同意"
   },
   "theme": {
     "auto": "自动",

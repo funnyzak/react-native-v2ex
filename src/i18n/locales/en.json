@@ -68,7 +68,12 @@
     "author": "Author",
     "us": "US",
     "me": "Me",
-    "my": "My"
+    "my": "My",
+    "and": " and "
+  },
+  "symbol": {
+    "comma": ",",
+    "period": "."
   },
   "label": {
     "registedMember": "Registered Member",
@@ -88,7 +93,8 @@
     "openApp": "Open APP",
     "goLogin": "Login Now",
     "loginTips": "experience more features",
-    "underConstruction": "Under Construction"
+    "underConstruction": "Under Construction",
+    "confirmTerms": "By logging in, you agree to "
   },
   "theme": {
     "light": "Light",

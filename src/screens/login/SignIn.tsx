@@ -136,19 +136,23 @@ const Screen = ({
           </View>
         </View>
         <View style={styles.footer(theme)}>
-          <Text style={styles.footerText(theme)}>登陆即表示你同意</Text>
+          <Text style={styles.footerText(theme)}>{translate('label.confirmTerms')}</Text>
           <Pressable
             onPress={() => {
               navigation.navigate(ROUTES.PrivacyPolicy)
             }}>
-            <Text style={[styles.footerText(theme), { color: theme.colors.secondary }]}>隐私政策</Text>
+            <Text style={[styles.footerText(theme), { color: theme.colors.secondary }]}>
+              {translate('common.privacyPolicy')}
+            </Text>
           </Pressable>
-          <Text style={styles.footerText(theme)}>和</Text>
+          <Text style={styles.footerText(theme)}>{translate('common.and')}</Text>
           <Pressable
             onPress={() => {
               navigation.navigate(ROUTES.TermsOfService)
             }}>
-            <Text style={[styles.footerText(theme), { color: theme.colors.secondary }]}>服务条款</Text>
+            <Text style={[styles.footerText(theme), { color: theme.colors.secondary }]}>
+              {translate('common.termsOfService')}
+            </Text>
           </Pressable>
         </View>
       </SafeAreaView>
@@ -199,10 +203,13 @@ const styles = {
     height: 30
   }),
   footer: (theme: ITheme): ViewStyle => ({
+    width: '80%',
+    marginBottom: theme.spacing.medium,
     flexDirection: 'row',
-    height: 20,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignSelf: 'center',
+    flexWrap: 'wrap'
   }),
   footerText: (theme: ITheme): TextStyle => ({
     ...theme.typography.labelText
