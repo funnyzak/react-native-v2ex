@@ -23,7 +23,7 @@ import dayjs from 'dayjs'
 import enUS from 'dayjs/locale/en'
 import zhCN from 'dayjs/locale/zh-cn'
 import relativeTime from 'dayjs/plugin/relativeTime'
-import React, { useEffect, useState } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
 import { Image, Platform, StatusBar, TextStyle, View } from 'react-native'
 import { EdgeInsets, SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context'
 import SplashScreen from 'react-native-splash-screen'
@@ -38,20 +38,40 @@ dayjs.extend(relativeTime)
 const MainBottomTabNavigator = createBottomTabNavigator()
 const bottomTabBarIconSize = 30
 
+/**
+ * header background default style
+ * @param borderWidth
+ * @returns
+ */
+const defaultHeaderBackground = (theme: ITheme, borderWidth?: number): ReactNode => {
+  return (
+    <View
+      style={{
+        height: '100%',
+        width: '100%',
+        backgroundColor: theme.colors.headerBackground,
+        borderBottomColor: theme.colors.border,
+        borderBottomWidth: borderWidth ?? 0.3
+      }}
+    />
+  )
+}
+
 const defaultScreenOptions = (theme: ITheme): NativeStackNavigationOptions => ({
   animationTypeForReplace: 'push',
   animation: 'slide_from_right',
 
   // hide header shadow
-  headerShadowVisible: true,
+  headerShadowVisible: false,
 
   headerStyle: {
-    backgroundColor: theme.colors.headerBackground
+    backgroundColor: theme.colors.transparent
   },
   headerTitleStyle: {
     fontWeight: 'bold',
     fontSize: theme.typography.titleText.fontSize
   },
+  headerBackground: () => defaultHeaderBackground(theme),
   headerBackTitle: undefined,
   headerTintColor: theme.colors.appbarTint,
   headerBackTitleVisible: false
@@ -253,12 +273,10 @@ export const AppNavigationContainer = () => {
               name={ROUTES.SignIn}
               component={Screens.SignInScreen}
               options={{
+                ...defaultScreenOptions,
+                headerBackground: () => null,
                 title: translate(`router.${ROUTES.SignIn}`),
                 headerShown: true,
-                headerStyle: {
-                  backgroundColor: theme.colors.transparent
-                },
-                headerTitleStyle: { color: theme.colors.transparent },
                 animationTypeForReplace: !token ? 'pop' : 'push'
               }}
             />
