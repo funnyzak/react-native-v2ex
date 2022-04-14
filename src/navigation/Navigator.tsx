@@ -266,7 +266,6 @@ export const AppNavigationContainer = () => {
                 headerShadowVisible: ![ROUTES.HomeTabs].includes(
                   getFocusedRouteNameFromRoute(route) ?? (ROUTES.Nodes as any)
                 ),
-
                 headerTitle: getHeaderTitle(route)
               })}
               initialParams={{

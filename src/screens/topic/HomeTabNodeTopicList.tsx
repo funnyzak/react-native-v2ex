@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect, useMemo } from 'react'
 import { connect } from 'react-redux'
-import { RefreshControl } from 'react-native'
+import { View, RefreshControl } from 'react-native'
 
 import { IState, V2exObject } from '@src/types'
 import { TopicList } from '../components'
