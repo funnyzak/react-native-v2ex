@@ -74,7 +74,12 @@ const defaultScreenOptions = (theme: ITheme): NativeStackNavigationOptions => ({
   headerBackground: () => defaultHeaderBackground(theme),
   headerBackTitle: undefined,
   headerTintColor: theme.colors.appbarTint,
-  headerBackTitleVisible: false
+  headerBackTitleVisible: false,
+
+  // screen main content style
+  contentStyle: {
+    backgroundColor: theme.colors.background
+  }
 })
 
 const resetLocales = (locale: LanguageTagType) => {
