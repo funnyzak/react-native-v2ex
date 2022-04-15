@@ -18,25 +18,33 @@ import {
 } from 'react-native'
 import { IState } from '@src/types'
 import { translate } from '@src/i18n'
+import { ViewProps } from 'react-native'
 
 /**
  * TextWithIconPress props
  */
 export interface TextWithIconPressProps {
+  containerStyle?: StyleProp<ViewStyle>
+  textStyle?: StyleProp<TextStyle>
   text: string
   icon?: ImageSourcePropType
-  style?: ViewStyle
-  press?: () => void
+  onPress?: () => void
 }
 
-const TextWithIconPress: React.FC<TextWithIconPressProps> = ({ text, icon, style, press }: TextWithIconPressProps) => {
+const TextWithIconPress: React.FC<TextWithIconPressProps> = ({
+  text,
+  icon,
+  containerStyle,
+  textStyle,
+  onPress
+}: TextWithIconPressProps) => {
   const { theme } = useTheme()
 
   const renderContent = () => {
     return (
-      <TouchableOpacity style={[styles.textWithIconPress.container(theme), style]} onPress={press}>
+      <TouchableOpacity style={[styles.textWithIconPress.container(theme), containerStyle]} onPress={onPress}>
         {icon && <Image source={icon} style={styles.textWithIconPress.icon(theme)} />}
-        <Text style={styles.textWithIconPress.text(theme)}>{text}</Text>
+        <Text style={[styles.textWithIconPress.text(theme), textStyle]}>{text}</Text>
       </TouchableOpacity>
     )
   }

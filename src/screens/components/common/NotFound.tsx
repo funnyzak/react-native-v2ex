@@ -1,10 +1,11 @@
 import React from 'react'
-import { View, Text, TextStyle, Pressable, ViewStyle } from 'react-native'
+import { View, Text, TextStyle, Pressable, ViewStyle, StyleProp } from 'react-native'
 import { ITheme } from '@src/types'
 import { SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
 
 /**
+ * TODO: 可移除
  * NotFound placeholder
  * @param {
  *   text,
@@ -15,9 +16,11 @@ import { translate } from '@src/i18n'
  */
 const NoFound = ({
   text,
+  containerStyle,
   buttonText,
   buttonPress
 }: {
+  containerStyle?: StyleProp<ViewStyle>
   text?: string
   buttonText?: string
   buttonPress?: () => void
@@ -26,7 +29,7 @@ const NoFound = ({
 
   const renderContent = () => {
     return (
-      <View style={styles.notFoundTextWrap()}>
+      <View style={[styles.notFoundTextWrap(), containerStyle]}>
         <Text style={styles.notFoundText(theme)}>{text ?? translate('errors.noFound')}</Text>
         <Pressable onPress={buttonPress} style={[]}>
           <View style={styles.btnWrap(theme)}>
