@@ -22,14 +22,14 @@
 [ci-url]: https://github.com/funnyzak/react-native-v2ex/actions
 [rle-image]: https://img.shields.io/github/release-date/funnyzak/react-native-v2ex.svg
 
-这个项目使用了 React Native 构建了一个 [V2EX](https://v2ex.com) 移动客户端应用。目的是为了构建一个 React Native 快速开发脚手架。客户端数据基于 [V2EX](https://v2ex.com) 开放 API。
+## Overview
 
-## 发布
+项目使用了 React Native 构建了一个 [V2EX](https://v2ex.com) 移动客户端应用。目的是为了构建一个 React Native 快速开发脚手架。客户端数据完全基于 [V2EX](https://v2ex.com) 开放 API。
+
+## Installation
 
 - [Android APK](https://github.com/funnyzak/react-native-v2ex/releases/latest)
 - [iOS Testflight](https://testflight.apple.com/join/7UnGRzH1)
-
-**新 UI 已初步设计完成，编码继续。**
 
 ## TODO
 
@@ -46,7 +46,7 @@
 - [ ] 上架 App Store、Google Play
 - [ ] 通过 cheerio，获取更多的数据，开发交互功能
 
-## 特点
+## Features
 
 1. 基于 React Native 0.67.2 版本。
 2. 引入 TypeScript 强类型检查，保证维护性、可读性、稳定性。
@@ -61,7 +61,7 @@
 11. 日期格式化使用 [dayjs](https://dayjs.gitee.io/docs/zh-CN/installation/typescript)。
 12. WebView 使用 [react-native-webview](https://github.com/react-native-webview/react-native-webview)。
 
-## 预览
+## Preview
 
 ### iOS
 
@@ -71,7 +71,7 @@
 
 ![preview](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/Android/preview.png)
 
-## 环境
+## Development
 
 在 MacOS 下开发，在 iOS 为 13+ 的 iPhone Simulator/iPhone 12、Android 9.0 的 AVD 模拟器/Mi Phone 均编译成功运行。
 
@@ -91,7 +91,7 @@
 - React Native Debugger
 - Google Chrome
 
-## 启动
+## Quick Start
 
 ```bash
 
@@ -143,7 +143,7 @@ cd android
 
 ```
 
-## 目录
+## Structure
 
 ```plain
 ├── src                      # 源码目录
@@ -182,7 +182,7 @@ cd android
 └── yarn.lock                # 依赖版本锁定文件
 ```
 
-## 贡献
+## Contribution
 
 如果你有任何的想法或者意见，欢迎提 Issue 或者 PR。
 
@@ -190,9 +190,9 @@ cd android
   <img src="https://contrib.rocks/image?repo=funnyzak/react-native-v2ex" />
 </a>
 
-## 调试
+## Debug
 
-### iOS 调试
+### iOS Debug
 
 > 可以通过摇晃设备或是选择 iOS 模拟器的"Hardware"菜单中的"Shake Gesture"选项来打开开发菜单。另外，如果是在 iOS 模拟器中运行，还可以按下 Command⌘ + D 快捷键，Android 模拟器对应的则是 Command⌘ + M（windows 上可能是 F1 或者 F2），或是直接在命令行中运行 adb shell input keyevent 82 来发送菜单键命令。
 
@@ -206,7 +206,7 @@ cd android
 2. `yarn debug` 启动 react-native-debugger。
 3. 启动模拟器 `yarn ios`，在模拟器打开 debug remote 选项；
 
-## 常见问题
+## Question
 
 1.  **Invariant Violation: Module AppRegistry is not a registered callable module**
 
@@ -236,7 +236,7 @@ cd android
 5.  开屏图的设置 iOS 使用 LaunchScreen.storyboard，使用 Xcode 修改即可。
 6.  修改 bundle name [看这里](https://stackoverflow.com/questions/37389905/change-package-name-for-android-in-react-native)。
 
-## 开源库
+## Dependencies
 
 - eslint
 - lodash
@@ -256,7 +256,7 @@ cd android
 - [react-native-skeleton-placeholder](https://github.com/chramos/react-native-skeleton-placeholder)
 - prettier
 
-## 参考
+## Reference
 
 - [enviroment setup](https://reactnative.dev/docs/environment-setup)
 - [running on device](https://reactnative.dev/docs/running-on-device)
