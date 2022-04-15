@@ -147,7 +147,9 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
             </View>
             {profile?.created ? (
               <Text style={[styles.infoItem(theme), theme.typography.captionText]}>
-                {translate('label.joinV2exSinceTime').replace('$', dayjs(profile?.created * 1000).format())}
+                {translate('label.joinV2exSinceTime')
+                  .replace('$', profile?.id.toString())
+                  .replace('$', dayjs(profile?.created * 1000).format())}
               </Text>
             ) : null}
           </>

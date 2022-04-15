@@ -87,7 +87,7 @@
     "activeLatest": "Last actived at $ ",
     "favorited": "Favorited",
     "joinSinceTime": "Joined from",
-    "joinV2exSinceTime": "Become a V2EX member from $",
+    "joinV2exSinceTime": "V2EXer #$, joined on $.",
     "noLogin": "Not logged in",
     "posdedTopics": "Topics posted by $",
     "openApp": "Open APP",

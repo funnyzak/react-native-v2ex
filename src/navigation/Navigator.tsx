@@ -74,7 +74,12 @@ const defaultScreenOptions = (theme: ITheme): NativeStackNavigationOptions => ({
   headerBackground: () => defaultHeaderBackground(theme),
   headerBackTitle: undefined,
   headerTintColor: theme.colors.appbarTint,
-  headerBackTitleVisible: false
+  headerBackTitleVisible: false,
+
+  // screen main content style
+  contentStyle: {
+    backgroundColor: theme.colors.background
+  }
 })
 
 const resetLocales = (locale: LanguageTagType) => {
@@ -121,6 +126,7 @@ const renderBottomIcon = (focused: boolean, activeIcon: any, inactiveIcon: any):
 
 const defaultTabBarSetting = (theme: ITheme, insets: EdgeInsets) => {
   return {
+    ...defaultScreenOptions,
     headerShown: false,
     tabBarActiveTintColor: theme.colors.tabBarIconActive,
     tabBarInactiveTintColor: theme.colors.tabBarIconInactive,
@@ -155,6 +161,7 @@ const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
         options={{
           title: translate(`router.${ROUTES.HotTopics}`),
           ...defaultTabBarSetting(theme, insets),
+
           tabBarIcon: ({ focused }) =>
             renderBottomIcon(
               focused,

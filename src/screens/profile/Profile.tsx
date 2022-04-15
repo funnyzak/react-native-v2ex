@@ -53,7 +53,7 @@ const Profile = ({
   }, [navigation, profile])
 
   return (
-    <View>
+    <View style={SylCommon.Layout.fill}>
       <View style={[SylCommon.Card.container(theme), styles.container(theme)]}>
         {profile ? (
           <ProfileInfo profile={profile} styleType="full" />

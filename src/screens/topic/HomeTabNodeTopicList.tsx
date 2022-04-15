@@ -7,6 +7,7 @@ import { SetStatusBar, TopicList } from '../components'
 import { NodeTopicsScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 import * as Actions from '@src/actions'
 import { useToast } from '@src/components/toast'
+import { SylCommon, themes, useTheme } from '@src/theme'
 
 const NodeTopics = ({
   route,
@@ -17,6 +18,7 @@ const NodeTopics = ({
   tabNodeList: IState.TabNodeState[]
   getNodeTopics: (node: string, page: number) => void
 }) => {
+  const { theme } = useTheme()
   const [page, setPage] = useState(1)
   const [mounted, setMounted] = useState<boolean>(false)
 
@@ -73,7 +75,13 @@ const NodeTopics = ({
   }
 
   return (
-    <>
+    <View
+      style={[
+        SylCommon.Layout.fill,
+        {
+          backgroundColor: theme.colors.background
+        }
+      ]}>
       <SetStatusBar />
       <TopicList
         topics={list}
@@ -84,7 +92,7 @@ const NodeTopics = ({
         searchIndicator={false}
         refreshCallback={onRefresh}
       />
-    </>
+    </View>
   )
 }
 

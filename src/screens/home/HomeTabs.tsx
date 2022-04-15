@@ -22,6 +22,11 @@ const TopicTabList = ({}: HomeTabsScreenProps) => {
       initialLayout={{ width: theme.dimens.WINDOW_WIDTH }}
       tabBarPosition="top"
       initialRouteName={`NODE-${tabs[0].name}`}
+      sceneContainerStyle={[
+        {
+          backgroundColor: theme.colors.background
+        }
+      ]}
       screenOptions={{
         lazy: true,
         tabBarActiveTintColor: theme.colors.tabActiveTintColor,
