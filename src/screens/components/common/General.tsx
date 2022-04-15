@@ -13,7 +13,8 @@ import {
   TextStyle,
   TouchableOpacity,
   ViewStyle,
-  Pressable
+  Pressable,
+  StyleProp
 } from 'react-native'
 import { IState } from '@src/types'
 import { translate } from '@src/i18n'
@@ -82,11 +83,13 @@ const BorderLine = () => {
 }
 
 const HeaderButton = ({
+  containerStyle: style,
   source,
   onPress,
   text,
   textColor
 }: {
+  containerStyle?: StyleProp<ViewStyle>
   source?: ImageSourcePropType
   text?: string
   textColor?: string
@@ -95,7 +98,7 @@ const HeaderButton = ({
   const { theme } = useTheme()
 
   return (
-    <Pressable onPress={onPress}>
+    <Pressable onPress={onPress} style={style}>
       {source && <Image source={source} width={24} />}
       {text && <Text style={styles.headerText(theme, textColor)}>{text}</Text>}
     </Pressable>
