@@ -121,6 +121,7 @@ const renderBottomIcon = (focused: boolean, activeIcon: any, inactiveIcon: any):
 
 const defaultTabBarSetting = (theme: ITheme, insets: EdgeInsets) => {
   return {
+    ...defaultScreenOptions,
     headerShown: false,
     tabBarActiveTintColor: theme.colors.tabBarIconActive,
     tabBarInactiveTintColor: theme.colors.tabBarIconInactive,
@@ -155,6 +156,7 @@ const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
         options={{
           title: translate(`router.${ROUTES.HotTopics}`),
           ...defaultTabBarSetting(theme, insets),
+
           tabBarIcon: ({ focused }) =>
             renderBottomIcon(
               focused,
