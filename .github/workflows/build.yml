@@ -47,10 +47,23 @@ jobs:
       - name: Rename Apk Name 
         run: cp android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/v2hub-${{ steps.get_version.outputs.VERSION }}.apk
 
+      - name: build changelog
+        id: build_changelog
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: mikepenz/release-changelog-builder-action@v2.9.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          configuration: ".config/changelog_configuration.json"
+          ignorePreReleases: "false"
+          fromTag: "0.3.0"
+          toTag: "10.0.0"
+
       - name: Create Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
+          body: ${{steps.build_changelog.outputs.changelog}}
           files:  |
             android/app/build/outputs/apk/release/v2hub-${{ steps.get_version.outputs.VERSION }}.apk
         env:
