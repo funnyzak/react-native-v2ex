@@ -32,7 +32,8 @@ const Assets: IThemeAssets = {
         star: require('@res/images/icons/header/star.png'),
         heart: require('@res/images/icons/header/heart.png'),
         logout: require('@res/images/icons/header/logout.png'),
-        link: require('@res/images/icons/header/urlscheme.png')
+        link: require('@res/images/icons/header/urlscheme.png'),
+        refresh: require('@res/images/icons/header/refresh.png')
       },
       node: {
         docment: require('@res/images/icons/node/document.png'),
