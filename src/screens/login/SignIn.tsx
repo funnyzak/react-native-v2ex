@@ -78,10 +78,6 @@ const Screen = ({
     _auth(token)
   }
 
-  const onGetTokenPress = () => {
-    utils.linking(tokenGeneratedLink)
-  }
-
   const renderButtons = () => {
     return (
       <View>
