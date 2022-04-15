@@ -120,7 +120,7 @@ const Footer = () => {
 
 const styles = {
   headerText: (theme: ITheme, textColor?: string): TextStyle => ({
-    ...theme.typography.bodyText,
+    ...theme.typography.subheadingText,
     color: textColor ?? theme.colors.secondary
   }),
   footer: (theme: ITheme): ViewStyle => ({
