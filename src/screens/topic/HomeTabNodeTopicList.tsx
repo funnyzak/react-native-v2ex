@@ -1,13 +1,13 @@
-import React, { useState, useCallback, useEffect, useMemo } from 'react'
-import { connect } from 'react-redux'
-import { View, RefreshControl } from 'react-native'
-
-import { IState, V2exObject } from '@src/types'
-import { SetStatusBar, TopicList } from '../components'
-import { NodeTopicsScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 import * as Actions from '@src/actions'
 import { useToast } from '@src/components/toast'
-import { SylCommon, themes, useTheme } from '@src/theme'
+import { NodeTopicsScreenProps as ScreenProps } from '@src/navigation'
+import { SylCommon, useTheme } from '@src/theme'
+import { IState, V2exObject } from '@src/types'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { RefreshControl, View } from 'react-native'
+import { connect } from 'react-redux'
+import { SetStatusBar, TopicCardList } from '../components'
+
 
 const NodeTopics = ({
   route,
@@ -75,15 +75,9 @@ const NodeTopics = ({
   }
 
   return (
-    <View
-      style={[
-        SylCommon.Layout.fill,
-        {
-          backgroundColor: theme.colors.background
-        }
-      ]}>
+    <View style={[ SylCommon.Layout.fill]}>
       <SetStatusBar />
-      <TopicList
+      <TopicCardList
         topics={list}
         onRowPress={onRowPress}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}

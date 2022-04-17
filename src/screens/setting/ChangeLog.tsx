@@ -14,7 +14,7 @@ const ChangeLog = ({ route, navigation, loading }: ScreenProps) => {
   const { theme } = useTheme()
   return (
     <Placeholder
-      style="icon"
+      displayType="icon"
       icon={theme.assets.images.icons.placeholder.construction}
       placeholderText={translate(`router.${ROUTES.ChangeLog}`) + translate('label.underConstruction')}
     />

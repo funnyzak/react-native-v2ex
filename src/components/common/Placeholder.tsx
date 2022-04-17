@@ -1,16 +1,18 @@
 import React from 'react'
-import { View, ViewStyle, TextStyle, ImageSourcePropType, Image } from 'react-native'
+import { View, ViewStyle, TextStyle, ImageSourcePropType, Image, StyleProp } from 'react-native'
 import { useTheme, ITheme } from '@src/theme'
 import { Text, Button } from '.'
 
 const Placeholder = ({
-  style = 'none',
+  containerStyle,
+  displayType = 'none',
   icon,
   placeholderText,
   buttonText = undefined,
   buttonPress
 }: {
-  style?: 'icon' | 'text' | 'none'
+  containerStyle?: StyleProp<ViewStyle>
+  displayType?: 'icon' | 'text' | 'none'
   icon?: ImageSourcePropType
   placeholderText: string
   buttonText?: string
@@ -19,10 +21,10 @@ const Placeholder = ({
   const { theme } = useTheme()
 
   const renderIcon = () => {
-    if (style === 'none') return null
+    if (displayType === 'none') return null
     return (
       <View style={styles.iconStyle(theme)}>
-        {style === 'text' || !icon ? (
+        {displayType === 'text' || !icon ? (
           <Text style={styles.iconTextStyle(theme)}>(;-;)</Text>
         ) : (
           <Image source={icon} style={{ width: 60, height: 60 }} />
@@ -32,7 +34,7 @@ const Placeholder = ({
   }
 
   return (
-    <View style={styles.containerStyle(theme)}>
+    <View style={[styles.containerStyle(theme), containerStyle]}>
       {renderIcon()}
       <Text style={styles.textStyle(theme)}>{placeholderText}</Text>
 
@@ -50,7 +52,9 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    marginVertical: _theme.spacing.small,
+    marginBottom: _theme.spacing.large
   }),
   iconStyle: (_theme: ITheme): ViewStyle => ({}),
   iconTextStyle: (_theme: ITheme): TextStyle => ({

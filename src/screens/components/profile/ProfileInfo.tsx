@@ -100,17 +100,17 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
             <View style={styles.infoItem(theme)}>
               {profile?.location ? (
                 <TextWithIconPress
-                  style={{ marginRight: theme.spacing.small }}
+                  containerStyle={{ marginRight: theme.spacing.small }}
                   text={profile?.location}
                   icon={theme.assets.images.icons.profile.location}
                 />
               ) : null}
               {profile?.website ? (
                 <TextWithIconPress
-                  press={() => {
+                  onPress={() => {
                     NavigationService.navigate(ROUTES.WebViewer, { url: profile.website })
                   }}
-                  style={{ marginRight: theme.spacing.small }}
+                  containerStyle={{ marginRight: theme.spacing.small }}
                   text={profile?.website}
                   icon={theme.assets.images.icons.profile.urlschme}
                 />
@@ -119,27 +119,27 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
             <View style={styles.infoItem(theme)}>
               {profile?.github ? (
                 <TextWithIconPress
-                  press={() => {
+                  onPress={() => {
                     NavigationService.navigate(ROUTES.WebViewer, { url: `https://github.com/${profile.twitter}` })
                   }}
-                  style={{ marginRight: theme.spacing.small }}
+                  containerStyle={{ marginRight: theme.spacing.small }}
                   text={profile?.github}
                   icon={theme.assets.images.icons.profile.github}
                 />
               ) : null}
               {profile?.telegram ? (
                 <TextWithIconPress
-                  style={{ marginRight: theme.spacing.small }}
+                  containerStyle={{ marginRight: theme.spacing.small }}
                   text={profile?.telegram}
                   icon={theme.assets.images.icons.profile.telegram}
                 />
               ) : null}
               {profile?.twitter ? (
                 <TextWithIconPress
-                  press={() => {
+                  onPress={() => {
                     NavigationService.navigate(ROUTES.WebViewer, { url: `https://twitter.com/${profile.twitter}` })
                   }}
-                  style={{ marginRight: theme.spacing.small }}
+                  containerStyle={{ marginRight: theme.spacing.small }}
                   text={profile?.twitter}
                   icon={theme.assets.images.icons.profile.twitter}
                 />

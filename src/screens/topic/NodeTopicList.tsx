@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react'
 import { RefreshControl } from 'react-native'
 
 import { V2exObject } from '@src/types'
-import { TopicList } from '../components'
+import { TopicCardList } from '../components'
 import { NodeTopicsScreenProps as ScreenProps } from '@src/navigation'
 import { useToast } from '@src/components/toast'
 import { v2exLib } from '@src/v2ex'
@@ -76,7 +76,7 @@ const NodeTopics = ({ route, navigation }: ScreenProps) => {
   }
 
   return (
-    <TopicList
+    <TopicCardList
       topics={list}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
       onEndReached={onReached}

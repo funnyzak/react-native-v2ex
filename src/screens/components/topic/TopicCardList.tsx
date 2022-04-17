@@ -1,13 +1,13 @@
-import React from 'react'
-import { View, Text, FlatList, ViewStyle, TextStyle } from 'react-native'
-import { ITheme, V2exObject } from '@src/types'
-import { TopicItem, NotFound } from '../'
-import { Spinner } from '@src/components'
-import { SylCommon, useTheme } from '@src/theme'
+import { Placeholder, Spinner } from '@src/components'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
+import { SylCommon, useTheme } from '@src/theme'
+import { ITheme, V2exObject } from '@src/types'
+import React from 'react'
+import { FlatList, View, ViewStyle } from 'react-native'
+import TopicCardItem from './TopicCardItem'
 
-export interface TopicListProps {
+export interface TopicCardListProps {
   onRowPress?: (topic: V2exObject.Topic) => void
   canLoadMoreContent?: boolean
   topics?: Array<V2exObject.Topic>
@@ -17,7 +17,7 @@ export interface TopicListProps {
   refreshCallback?: () => void
 }
 
-const TopicList: React.FC<TopicListProps> = ({
+const TopicCardList: React.FC<TopicCardListProps> = ({
   onRowPress,
   canLoadMoreContent,
   topics,
@@ -25,7 +25,7 @@ const TopicList: React.FC<TopicListProps> = ({
   refreshControl,
   searchIndicator,
   refreshCallback
-}: TopicListProps) => {
+}: TopicCardListProps) => {
   const { theme } = useTheme()
 
   const onItemPress = (topic: V2exObject.Topic) => {
@@ -35,18 +35,14 @@ const TopicList: React.FC<TopicListProps> = ({
 
   const renderItemRow = ({ item }: { item: V2exObject.Topic }) =>
     !item || item === null ? null : (
-      <TopicItem containerStyle={styles.topicItemContainer(theme)} topic={item} onRowPress={onItemPress} />
+      <TopicCardItem containerStyle={styles.topicItemContainer(theme)} topic={item} onPress={onItemPress} />
     )
 
   const renderFooter = () => {
     if (canLoadMoreContent) {
       return <Spinner style={{ padding: theme.spacing.large }} />
     } else if (topics && topics.length > 0) {
-      return (
-        <View style={styles.notFoundTextWrap()}>
-          <Text style={styles.notFoundText(theme)}>{translate('tips.noMore')}</Text>
-        </View>
-      )
+      return <Placeholder placeholderText={translate('tips.noMore')} />
     }
     return null
   }
@@ -61,8 +57,7 @@ const TopicList: React.FC<TopicListProps> = ({
     if (topics.length > 0) {
       return (
         <FlatList
-          style={{ backgroundColor: theme.colors.surface }}
-          contentContainerStyle={{ flexGrow: 1 }}
+          contentContainerStyle={[]}
           refreshControl={refreshControl}
           data={topics}
           renderItem={renderItemRow}
@@ -73,15 +68,16 @@ const TopicList: React.FC<TopicListProps> = ({
           numColumns={1}
           horizontal={false}
           key={'ONE COLUMN'}
+          ListFooterComponentStyle={[]}
           ItemSeparatorComponent={renderItemSeparator}
         />
       )
     }
     if (!searchIndicator) {
       return (
-        <NotFound
-          text={translate('placeholder.noTopics')}
-          buttonText={translate('button.oneceAgain')}
+        <Placeholder
+          placeholderText={translate('placeholder.noTopics')}
+          buttonText={translate('button.tryAgain')}
           buttonPress={refreshCallback}
         />
       )
@@ -98,31 +94,13 @@ const styles = {
   container: (theme: ITheme): ViewStyle => ({
     flex: 1
   }),
-  topicItemContainer: (theme: ITheme): ViewStyle => ({}),
+  topicItemContainer: (theme: ITheme): ViewStyle => ({
+    ...SylCommon.Card.container(theme)
+  }),
   itemSeparator: (theme: ITheme) => ({
-    height: theme.spacing.small
-  }),
-  imageStyle: (theme: ITheme) => ({
-    height: 60,
-    width: undefined,
-    margin: theme.spacing.small,
-    borderWidth: 1,
-    borderColor: theme.colors.border
-  }),
-  notFoundTextWrap: (): TextStyle => ({
-    flex: 1,
-    paddingVertical: 20,
-    justifyContent: 'center'
-  }),
-  notFoundText: (theme: ITheme): TextStyle => ({
-    ...theme.typography.bodyText,
-    textAlign: 'center'
-  }),
-  separator: (theme: ITheme) => ({
-    width: 1,
-    backgroundColor: theme.colors.border,
-    marginVertical: theme.spacing.small
+    height: theme.spacing.tiny,
+    backgroundColor: theme.colors.surface
   })
 }
 
-export default TopicList
+export default TopicCardList

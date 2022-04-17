@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { View } from 'react-native'
 
-import { TopicList } from '../components'
+import { TopicCardList } from '../components'
 import { useTheme, SylCommon } from '@src/theme'
 import { IState, V2exObject } from '@src/types'
 import { NotFound } from '../components'
@@ -21,7 +21,7 @@ const History = ({
     if (!readedTopics) {
       return <NotFound />
     }
-    return <TopicList topics={readedTopics} canLoadMoreContent={false} searchIndicator={false} />
+    return <TopicCardList topics={readedTopics} canLoadMoreContent={false} searchIndicator={false} />
   }
 
   return <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>{renderContent()}</View>

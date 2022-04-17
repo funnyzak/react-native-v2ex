@@ -15,7 +15,7 @@ const MyTopics = ({ route, navigation, loading }: ScreenProps) => {
   return (
     <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
       <Placeholder
-        style="icon"
+        displayType="icon"
         icon={theme.assets.images.icons.placeholder.construction}
         placeholderText={translate(`router.${ROUTES.MyTopics}`) + translate('label.underConstruction')}
       />
