@@ -5,7 +5,7 @@
 import * as React from 'react'
 import { View, TouchableOpacity, ViewStyle, TextStyle } from 'react-native'
 import { ITheme, V2exObject } from '@src/types'
-import { useTheme } from '@src/theme'
+import { SylCommon, useTheme } from '@src/theme'
 import { Avatar, Text } from '@src/components'
 import dayjs from 'dayjs'
 import { NavigationService, ROUTES } from '@src/navigation'
@@ -129,7 +129,7 @@ const TopicCardItem = ({ containerStyle, displayStyle = 'auto', topic, onPress }
 
 const styles = {
   container: (theme: ITheme): ViewStyle => ({
-    marginTop: theme.spacing.tiny,
+    paddingTop: theme.spacing.tiny,
     width: '100%',
     flexDirection: 'column',
     justifyContent: 'flex-start',
@@ -151,7 +151,7 @@ const styles = {
   }),
   infoMainItem: (theme: ITheme): ViewStyle => ({
     flexDirection: 'row',
-    marginBottom: theme.spacing.small,
+    marginBottom: theme.spacing.tiny,
     justifyContent: 'space-between'
   }),
   summaryContainer: (theme: ITheme): ViewStyle => ({

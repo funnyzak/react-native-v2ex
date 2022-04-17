@@ -57,7 +57,7 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
     if (topics.length > 0) {
       return (
         <FlatList
-          style={[SylCommon.Card.container(theme), { paddingTop: theme.spacing.tiny }]}
+          contentContainerStyle={[]}
           refreshControl={refreshControl}
           data={topics}
           renderItem={renderItemRow}
@@ -68,6 +68,7 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
           numColumns={1}
           horizontal={false}
           key={'ONE COLUMN'}
+          ListFooterComponentStyle={[]}
           ItemSeparatorComponent={renderItemSeparator}
         />
       )
@@ -93,9 +94,12 @@ const styles = {
   container: (theme: ITheme): ViewStyle => ({
     flex: 1
   }),
-  topicItemContainer: (theme: ITheme): ViewStyle => ({}),
+  topicItemContainer: (theme: ITheme): ViewStyle => ({
+    ...SylCommon.Card.container(theme)
+  }),
   itemSeparator: (theme: ITheme) => ({
-    height: theme.spacing.tiny
+    height: theme.spacing.tiny,
+    backgroundColor: theme.colors.surface
   })
 }
 
