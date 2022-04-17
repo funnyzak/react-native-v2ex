@@ -11,6 +11,7 @@ import {
   Route
 } from '@react-navigation/native'
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack'
+import { createDrawerNavigator } from '@react-navigation/drawer'
 import { ToastProvider } from '@src/components/toast'
 import { useAppSelector } from '@src/hooks'
 import { useUnRead } from '@src/hooks/useUnRead'
@@ -37,6 +38,11 @@ dayjs.extend(relativeTime)
 
 const MainBottomTabNavigator = createBottomTabNavigator()
 const bottomTabBarIconSize = 30
+
+/**
+ * Crate Drawer Navigator
+ */
+const DrawerNavigator = createDrawerNavigator()
 
 /**
  * header background default style
@@ -141,6 +147,31 @@ const defaultTabBarSetting = (theme: ITheme, insets: EdgeInsets) => {
       borderTopColor: theme.colors.border
     }
   }
+}
+
+const HotDrawerNavigator = (initialRouteName?: string) => {
+  initialRouteName = initialRouteName ?? ROUTES.Hot
+
+  return (
+    <DrawerNavigator.Navigator initialRouteName={initialRouteName}>
+      <DrawerNavigator.Screen
+        name={ROUTES.Hot}
+        component={Screens.HotScreen}
+        options={{
+          ...defaultScreenOptions,
+          title: translate(`router.${ROUTES.Hot}`)
+        }}
+      />
+      <DrawerNavigator.Screen
+        name={ROUTES.Latest}
+        component={Screens.LatestScreen}
+        options={{
+          ...defaultScreenOptions,
+          title: translate(`router.${ROUTES.Latest}`)
+        }}
+      />
+    </DrawerNavigator.Navigator>
+  )
 }
 
 const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
@@ -302,6 +333,14 @@ export const AppNavigationContainer = () => {
                 initialRouteName: ROUTES.My
               }}
             />
+            {/* <StackNavigator.Screen
+              name={ROUTES.HotDraw}
+              component={HotDrawerNavigator}
+              options={({ route }) => ({
+                ...defaultScreenOptions(theme),
+                // headerTitle: getHeaderTitle(route)
+              })}
+            /> */}
             <StackNavigator.Screen
               name={ROUTES.NodeTopics}
               component={Screens.NodeTopicListScreen}
