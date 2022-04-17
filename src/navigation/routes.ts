@@ -6,11 +6,13 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ITheme } from '@src/types'
 
 export type RootStackParamList = {
-  Draw: undefined
+  HotDraw: undefined
   Main: {
     initialRouteName?: string
   }
   HomeTabs: undefined
+  Hot: undefined
+  Latest: undefined
   Nodes: undefined
   Notifications: undefined
   My: undefined
@@ -49,7 +51,13 @@ export type CommonScreenProps = {
   theme: ITheme
 }
 
+export type HotDrawScreenProps = NativeStackScreenProps<RootStackParamList, 'HotDraw'> & CommonScreenProps
+
 export type MainScreenProps = NativeStackScreenProps<RootStackParamList, 'Main'> & CommonScreenProps
+
+export type HotScreenProps = NativeStackScreenProps<RootStackParamList, 'Hot'> & CommonScreenProps
+
+export type LatestScreenProps = NativeStackScreenProps<RootStackParamList, 'Latest'> & CommonScreenProps
 
 export type HistoryScreenProps = NativeStackScreenProps<RootStackParamList, 'History'> & CommonScreenProps
 
@@ -117,13 +125,21 @@ type k1 = keyof RootStackParamList
 
 export const ROUTES = {
   /**
-   * 抽屉
+   * 抽屉->热门
    */
-  Draw: 'Draw',
+  HotDraw: 'HotDraw',
   /**
    * 导航器
    */
   Main: 'Main',
+  /**
+   * 热门主题
+   */
+  Hot: 'Hot',
+  /**
+   * 最新主题
+   */
+  Latest: 'Latest',
   /**
    * 首页
    */
