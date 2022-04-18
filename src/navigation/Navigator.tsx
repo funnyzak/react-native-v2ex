@@ -8,6 +8,7 @@ import {
   NavigationContainerRefWithCurrent,
   NavigationState,
   PartialState,
+  DefaultTheme,
   Route
 } from '@react-navigation/native'
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack'
@@ -194,7 +195,6 @@ const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
         options={{
           title: translate(`router.${ROUTES.HotDraw}`),
           ...defaultTabBarSetting(theme, insets),
-
           tabBarIcon: ({ focused }) =>
             renderBottomIcon(
               focused,
@@ -294,6 +294,13 @@ export const AppNavigationContainer = () => {
         <NavigationContainer
           ref={(navigatorRef: NavigationContainerRefWithCurrent<RootStackParamList>) => {
             NavigationService.setTopLevelNavigator(navigatorRef)
+          }}
+          theme={{
+            dark: theme.name === 'dark',
+            colors: {
+              ...DefaultTheme.colors,
+              background: theme.colors.background
+            }
           }}
           documentTitle={{
             formatter: (options, route) => `${options?.title ?? route?.name}`
