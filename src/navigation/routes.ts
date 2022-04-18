@@ -149,14 +149,6 @@ export const ROUTES = {
    */
   Profile: 'Profile',
   /**
-   * 最新话题
-   */
-  LatestTopics: 'LatestTopics',
-  /**
-   * 热门
-   */
-  HotTopics: 'HotTopics',
-  /**
    * 登录
    */
   SignIn: 'SignIn',
