@@ -1,40 +1,17 @@
-import React, { useState } from 'react'
+import { InterestNodesScreenProps as ScreenProps, NODE_TABS } from '@src/navigation'
+import { SylCommon, useTheme } from '@src/theme'
+import React from 'react'
+import { View } from 'react-native'
 import { connect } from 'react-redux'
-import { View, ViewStyle, TouchableOpacity } from 'react-native'
+import { FetchTopicCardList } from '../components'
 
-import * as Actions from '@src/actions'
-import { translate } from '@src/i18n'
-import { useTheme, SylCommon } from '@src/theme'
-import { IState, ITheme, V2exObject } from '@src/types'
-import * as CompS from '../components'
-import { Text, Spinner, Placeholder } from '@src/components'
-import { LatestScreenProps as ScreenProps, ROUTES } from '@src/navigation'
-
-const LatestTopics = ({ route, navigation, loading }: ScreenProps) => {
+const LatestTopics = ({ route, navigation }: ScreenProps) => {
   const { theme } = useTheme()
   return (
-    <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
-      <Placeholder
-        displayType="icon"
-        icon={theme.assets.images.icons.placeholder.construction}
-        placeholderText={translate(`router.${ROUTES.Latest}`) + translate('label.underConstruction')}
-      />
+    <View style={[SylCommon.Layout.fill, { backgroundColor: theme.colors.background }]}>
+      <FetchTopicCardList displayStyle="full" nodeName={NODE_TABS.LATEST} />
     </View>
   )
 }
 
-/**
- * @description styles settings
- */
-const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    flex: 1
-  })
-}
-
-const mapStateToProps = ({ ui: { login } }: { ui: IState.UIState }) => {
-  const { error, success, loading } = login
-  return { error, success, loading }
-}
-
-export default connect(mapStateToProps)(LatestTopics)
+export default connect()(LatestTopics)
