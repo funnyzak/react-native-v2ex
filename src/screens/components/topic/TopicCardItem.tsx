@@ -54,7 +54,14 @@ const TopicCardItem = ({ containerStyle, displayStyle = 'auto', topic, onPress }
   return (
     <View style={[styles.container(theme), containerStyle]}>
       <View style={styles.infoContainer(theme)}>
-        {display_style === 'full' && <Avatar size={40} source={{ uri: avatar_link }} style={styles.avatar(theme)} />}
+        {display_style === 'full' && (
+          <Avatar
+            size={40}
+            source={{ uri: avatar_link }}
+            username={topic.member?.username}
+            style={styles.avatar(theme)}
+          />
+        )}
         <View style={styles.infoMain(theme)}>
           {display_style === 'full' && (
             <View style={styles.infoMainItem(theme)}>
@@ -74,7 +81,7 @@ const TopicCardItem = ({ containerStyle, displayStyle = 'auto', topic, onPress }
             style={styles.infoMainItem(theme)}
             onPress={() => {
               onPress && onPress(topic)
-              NavigationService.navigate(ROUTES.TopicDetail, { topic_id: topic.id })
+              NavigationService.navigate(ROUTES.TopicDetail, { topicId: topic.id })
             }}>
             <Text type="body" style={styles.title(theme)}>
               {topic.title}
@@ -122,7 +129,7 @@ const TopicCardItem = ({ containerStyle, displayStyle = 'auto', topic, onPress }
           </View>
         </View>
       </View>
-      <BorderLine />
+      <BorderLine width={0.4} />
     </View>
   )
 }
@@ -133,8 +140,7 @@ const styles = {
     width: '100%',
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    alignItems: 'center',
-    backgroundColor: theme.colors.surface
+    alignItems: 'center'
   }),
   infoContainer: (theme: ITheme): ViewStyle => ({
     flexDirection: 'row',

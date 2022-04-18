@@ -15,11 +15,17 @@ export interface TopicCardListProps {
   refreshControl?: React.ReactElement
   searchIndicator?: boolean
   refreshCallback?: () => void
+
+  /**
+   * Display Style
+   */
+  displayStyle?: 'simple' | 'full' | 'auto'
 }
 
 const TopicCardList: React.FC<TopicCardListProps> = ({
   onRowPress,
   canLoadMoreContent,
+  displayStyle,
   topics,
   onEndReached,
   refreshControl,
@@ -35,14 +41,24 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
 
   const renderItemRow = ({ item }: { item: V2exObject.Topic }) =>
     !item || item === null ? null : (
-      <TopicCardItem containerStyle={styles.topicItemContainer(theme)} topic={item} onPress={onItemPress} />
+      <TopicCardItem
+        displayStyle={displayStyle}
+        containerStyle={styles.topicItemContainer(theme)}
+        topic={item}
+        onPress={onItemPress}
+      />
     )
 
   const renderFooter = () => {
     if (canLoadMoreContent) {
       return <Spinner style={{ padding: theme.spacing.large }} />
     } else if (topics && topics.length > 0) {
-      return <Placeholder placeholderText={translate('tips.noMore')} />
+      return (
+        <Placeholder
+          containerStyle={[{ backgroundColor: theme.colors.background }]}
+          placeholderText={translate('tips.noMore')}
+        />
+      )
     }
     return null
   }
@@ -57,7 +73,6 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
     if (topics.length > 0) {
       return (
         <FlatList
-          contentContainerStyle={[]}
           refreshControl={refreshControl}
           data={topics}
           renderItem={renderItemRow}
@@ -69,6 +84,8 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
           horizontal={false}
           key={'ONE COLUMN'}
           ListFooterComponentStyle={[]}
+          maxToRenderPerBatch={10}
+          initialNumToRender={10}
           ItemSeparatorComponent={renderItemSeparator}
         />
       )
@@ -98,8 +115,7 @@ const styles = {
     ...SylCommon.Card.container(theme)
   }),
   itemSeparator: (theme: ITheme) => ({
-    height: theme.spacing.tiny,
-    backgroundColor: theme.colors.surface
+    height: 0
   })
 }
 
