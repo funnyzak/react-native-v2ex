@@ -212,6 +212,7 @@ export interface IThemeAssets {
         back: ImageSourcePropType
         stat: ImageSourcePropType
         more: ImageSourcePropType
+        moreVert: ImageSourcePropType
         search: ImageSourcePropType
         star: ImageSourcePropType
         heart: ImageSourcePropType

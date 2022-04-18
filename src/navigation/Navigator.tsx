@@ -9,7 +9,8 @@ import {
   NavigationState,
   PartialState,
   DefaultTheme,
-  Route
+  Route,
+  RouteProp
 } from '@react-navigation/native'
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import { createDrawerNavigator } from '@react-navigation/drawer'
@@ -31,6 +32,7 @@ import { EdgeInsets, SafeAreaProvider, useSafeAreaInsets } from 'react-native-sa
 import SplashScreen from 'react-native-splash-screen'
 import NavigationService from './NavigationService'
 import { MainScreenProps, RootStackParamList, ROUTES } from './routes'
+import { HeaderButton } from '@src/screens/components'
 
 /**
  * dayjs
@@ -177,6 +179,19 @@ const HotDrawerNavigator = (initialRouteName?: string) => {
   )
 }
 
+const MainBottomHeaderLeft = ({ route }: { route: RouteProp<RootStackParamList> }): ReactNode => {
+  const { theme } = useTheme()
+  const focusRouteName = getFocusedRouteNameFromRoute(route) ?? ROUTES.HotDraw
+  return focusRouteName === ROUTES.HotDraw ? <HeaderButton source={theme.assets.images.icons.header.more} /> : undefined
+}
+
+const MainBottomTabHeaderRight = ({ route }: { route: RouteProp<RootStackParamList> }): ReactNode => {
+  const { theme } = useTheme()
+
+  const focusRouteName = getFocusedRouteNameFromRoute(route) ?? ROUTES.HotDraw
+  return focusRouteName === ROUTES.HotDraw ? <HeaderButton source={theme.assets.images.icons.header.stat} /> : undefined
+}
+
 const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
   const insets = useSafeAreaInsets()
   const { unread } = useUnRead()
@@ -315,7 +330,7 @@ export const AppNavigationContainer = () => {
             }
             barStyle={theme.name === 'dark' ? 'light-content' : 'dark-content'}
           />
-          <StackNavigator.Navigator initialRouteName={!token ? ROUTES.SignIn : ROUTES.Main}>
+          <StackNavigator.Navigator initialRouteName={!token ? ROUTES.Main : ROUTES.Main}>
             <StackNavigator.Screen
               name={ROUTES.SignIn}
               component={Screens.SignInScreen}
@@ -333,9 +348,11 @@ export const AppNavigationContainer = () => {
               component={MainAppNavigator}
               options={({ route }) => ({
                 ...defaultScreenOptions(theme),
-                headerShadowVisible: ![ROUTES.HomeTabs].includes(
+                headerShadowVisible: ![ROUTES.HotDraw].includes(
                   getFocusedRouteNameFromRoute(route) ?? (ROUTES.Nodes as any)
                 ),
+                headerLeft: () => MainBottomHeaderLeft({ route }),
+                headerRight: () => MainBottomTabHeaderRight({ route }),
                 headerTitle: getHeaderTitle(route)
               })}
               initialParams={{
