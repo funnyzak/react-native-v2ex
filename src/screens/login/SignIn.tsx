@@ -99,10 +99,9 @@ const Screen = ({
   }
 
   return (
-    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+    <View style={[SylCommon.Layout.fill, { backgroundColor: theme.colors.background }]}>
       <SetStatusBar backgroundColor={theme.colors.background} />
-      <StatusBar backgroundColor={theme.colors.background} />
-      <SafeAreaView style={[SylCommon.Layout.fill, { backgroundColor: theme.colors.background }]}>
+      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{ flex: 1 }}>
         <View style={[SylCommon.Card.container(theme), styles.mainContainer(theme)]}>
           <View style={styles.columnItem(theme)}>
             <Image
@@ -151,8 +150,8 @@ const Screen = ({
             </Text>
           </Pressable>
         </View>
-      </SafeAreaView>
-    </KeyboardAvoidingView>
+      </KeyboardAvoidingView>
+    </View>
   )
 }
 
