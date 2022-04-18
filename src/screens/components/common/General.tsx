@@ -101,7 +101,7 @@ const HeaderButton = ({
   source?: ImageSourcePropType
   text?: string
   textColor?: string
-  onPress: () => void
+  onPress?: () => void
 }) => {
   const { theme } = useTheme()
 
