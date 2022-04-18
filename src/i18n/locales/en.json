@@ -107,6 +107,8 @@
   },
   "router": {
     "HomeTabs": "Home",
+    "Hot": "Hot",
+    "Latest": "Latest",
     "Nodes": "Nodes",
     "Notifications": "Notifications",
     "Setting": "Setting",

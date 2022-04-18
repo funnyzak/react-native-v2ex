@@ -85,9 +85,9 @@ const TextGrid: React.FC<TextGridProps> = ({ list, columnNum }: TextGridProps) =
   return renderContent()
 }
 
-const BorderLine = () => {
+const BorderLine = ({ width = 0.3 }: { width?: number }) => {
   const { theme } = useTheme()
-  return <View style={styles.borderLine(theme)} />
+  return <View style={[styles.borderLine(theme), { height: width }]} />
 }
 
 const HeaderButton = ({

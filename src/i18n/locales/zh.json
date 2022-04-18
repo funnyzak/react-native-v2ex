@@ -107,6 +107,8 @@
   },
   "router": {
     "HomeTabs": "主页",
+    "Hot": "热门",
+    "Latest": "最新",
     "Nodes": "节点",
     "Notifications": "通知",
     "Setting": "设置",

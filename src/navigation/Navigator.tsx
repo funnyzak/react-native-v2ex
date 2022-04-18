@@ -11,6 +11,7 @@ import {
   Route
 } from '@react-navigation/native'
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack'
+import { createDrawerNavigator } from '@react-navigation/drawer'
 import { ToastProvider } from '@src/components/toast'
 import { useAppSelector } from '@src/hooks'
 import { useUnRead } from '@src/hooks/useUnRead'
@@ -37,6 +38,11 @@ dayjs.extend(relativeTime)
 
 const MainBottomTabNavigator = createBottomTabNavigator()
 const bottomTabBarIconSize = 30
+
+/**
+ * Crate Drawer Navigator
+ */
+const DrawerNavigator = createDrawerNavigator()
 
 /**
  * header background default style
@@ -104,10 +110,10 @@ const getHeaderTitle = (
   // If the focused route is not found, we need to assume it's the initial screen
   // This can happen during if there hasn't been any navigation inside the screen
   // In our case, it's "Feed" as that's the first screen inside the navigator
-  const routeName = getFocusedRouteNameFromRoute(route) ?? ROUTES.HotTopics
+  const routeName = getFocusedRouteNameFromRoute(route) ?? ROUTES.HotDraw
   switch (routeName) {
-    case ROUTES.HotTopics:
-      return translate(`router.${ROUTES.HotTopics}`)
+    case ROUTES.HotDraw:
+      return translate(`router.${ROUTES.Hot}`)
     case ROUTES.Nodes:
       return translate(`router.${ROUTES.Nodes}`)
     case ROUTES.Notifications:
@@ -143,6 +149,33 @@ const defaultTabBarSetting = (theme: ITheme, insets: EdgeInsets) => {
   }
 }
 
+const HotDrawerNavigator = (initialRouteName?: string) => {
+  initialRouteName = initialRouteName ?? ROUTES.Hot
+
+  return (
+    <DrawerNavigator.Navigator initialRouteName={initialRouteName}>
+      <DrawerNavigator.Screen
+        name={ROUTES.Hot}
+        component={Screens.HotScreen}
+        options={{
+          ...defaultScreenOptions,
+          headerShown: false,
+          title: translate(`router.${ROUTES.Hot}`)
+        }}
+      />
+      <DrawerNavigator.Screen
+        name={ROUTES.Latest}
+        component={Screens.LatestScreen}
+        options={{
+          ...defaultScreenOptions,
+          headerShown: false,
+          title: translate(`router.${ROUTES.Latest}`)
+        }}
+      />
+    </DrawerNavigator.Navigator>
+  )
+}
+
 const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
   const insets = useSafeAreaInsets()
   const { unread } = useUnRead()
@@ -156,10 +189,10 @@ const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
   return (
     <MainBottomTabNavigator.Navigator>
       <MainBottomTabNavigator.Screen
-        name={ROUTES.HotTopics}
-        component={Screens.HomeTopTabListScreen}
+        name={ROUTES.HotDraw}
+        component={HotDrawerNavigator}
         options={{
-          title: translate(`router.${ROUTES.HotTopics}`),
+          title: translate(`router.${ROUTES.HotDraw}`),
           ...defaultTabBarSetting(theme, insets),
 
           tabBarIcon: ({ focused }) =>
