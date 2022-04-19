@@ -28,6 +28,12 @@
       ]
     },
     {
+      "title": "## ✨ Refactor",
+      "labels": [
+        "refactor"
+      ]
+    },
+    {
       "title": "## 📦 Dependencies",
       "labels": [
         "dependencies"
