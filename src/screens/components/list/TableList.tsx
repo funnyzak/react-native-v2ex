@@ -1,23 +1,19 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/04/01.
  */
+import { Text } from '@src/components'
+import { ITheme, useTheme } from '@src/theme'
 import React from 'react'
 import {
-  View,
-  ViewStyle,
-  TextStyle,
-  StyleProp,
+  Image,
   ImageSourcePropType,
   ImageStyle,
-  Image,
-  TouchableOpacity
+  StyleProp,
+  TextStyle,
+  TouchableOpacity,
+  View,
+  ViewStyle
 } from 'react-native'
-
-import { Text, Button, Spinner, Placeholder } from '@src/components'
-import { ITheme, SylCommon, useTheme } from '@src/theme'
-import { translate } from '@src/i18n'
-import { NavigationService, ROUTES } from '@src/navigation'
-import { V2exObject } from '@src/types'
 
 /**
  * Table Row Item Props
@@ -48,6 +44,10 @@ export interface TableRowProps {
    */
   description?: string
 
+  /**
+   * value
+   */
+  value?: string
   /**
    * Row right arrow icon
    */
@@ -80,6 +80,12 @@ const TableRow: React.FC<TableRowProps> = (data: TableRowProps) => {
           <Text style={rowStyles.title(theme, data.highlightTitle ?? false)}>{data.title}</Text>
           {data.description && <Text style={rowStyles.description(theme)}>{data.description}</Text>}
         </View>
+        {data.value && (
+          <Text
+            style={{ ...theme.typography.bodyText, color: theme.colors.captionText, marginLeft: theme.spacing.large }}>
+            {data.value}
+          </Text>
+        )}
       </View>
       <View style={rowStyles.right(theme)}>
         {data.rightText && <Text style={rowStyles.rightText(theme)}>{data.rightText}</Text>}
