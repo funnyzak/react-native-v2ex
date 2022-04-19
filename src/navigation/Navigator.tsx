@@ -217,6 +217,11 @@ const HotDrawerNavigator = ({
 } & CommonScreenProps) => {
   initialRouteName = initialRouteName ?? ROUTES.Hot
   const { theme } = useTheme()
+  const { languageTag } = useAppSelector((state: RootState) => state.setting)
+
+  useEffect(() => {
+    resetLocales(languageTag)
+  }, [languageTag])
 
   return (
     <HotDraw.Navigator
