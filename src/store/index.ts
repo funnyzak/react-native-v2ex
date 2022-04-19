@@ -15,6 +15,7 @@ const memberSubsetBlacklistFilter = createBlacklistFilter('member', [
   'followPeople.refreshing',
   'likeTopics.refreshing'
 ])
+
 const uiSubsetBlacklistFilter = createBlacklistFilter('ui', [
   'refreshing',
   'login.loading',
@@ -22,6 +23,7 @@ const uiSubsetBlacklistFilter = createBlacklistFilter('ui', [
   'login.error',
   'feedback.processing'
 ])
+
 const appSubsetBlacklistFilter = createBlacklistFilter('app', [
   'version',
   'latestVersion',
@@ -29,7 +31,9 @@ const appSubsetBlacklistFilter = createBlacklistFilter('app', [
   'v2ex',
   'aboutUs'
 ])
+
 const tabSubsetWhitelistFilter = createBlacklistFilter('tab', ['list'])
+
 const notificationSubsetBlacklistFilter = createBlacklistFilter('notification', ['refreshing'])
 
 const persistConfig = {

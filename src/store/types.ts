@@ -10,6 +10,7 @@ export declare module IState {
     tab: TabsState
     notification: NotificationState
     setting: SettingState
+    cache: CacheState
   }
 
   /**
@@ -61,6 +62,18 @@ export declare module IState {
     allNode?: V2exObject.Node[]
 
     errorMessage?: Error[]
+  }
+
+  export interface CacheState {
+    members: {
+      pullTime: number
+      info: V2exObject.Member
+    }[]
+
+    nodes: {
+      pullTime: number
+      info: V2exObject.Node
+    }[]
   }
 
   /**
