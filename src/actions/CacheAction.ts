@@ -1,3 +1,6 @@
+/**
+ * Created by leon<silenceace@gmail.com> on 22/4/19.
+ */
 import { logError } from '@src/helper/logger'
 import { v2exLib } from '@src/v2ex'
 import { Dispatch } from 'redux'
@@ -10,7 +13,7 @@ import {
   APP_CACHE_RESET_NODES
 } from '../types'
 
-export const addMember = (userid: string | number) => async (dispatch: Dispatch) => {
+export const cacheMember = (userid: string | number) => async (dispatch: Dispatch) => {
   try {
     const member = await v2exLib.member.profile(userid)
     dispatch({
@@ -22,7 +25,7 @@ export const addMember = (userid: string | number) => async (dispatch: Dispatch)
   }
 }
 
-export const addNode = (nodeid: string | number) => async (dispatch: Dispatch) => {
+export const cacheNode = (nodeid: string | number) => async (dispatch: Dispatch) => {
   try {
     const node = await v2exLib.node.get(nodeid, undefined)
     dispatch({
