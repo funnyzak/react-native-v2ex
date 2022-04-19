@@ -5,10 +5,11 @@ import { nodeFromCache } from '@src/helper/cache'
 import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '.'
 import { cacheMember as cacheNode } from '../actions'
-import { IState, V2exObject } from '../types'
+import { V2exObject } from '../types'
+import { RootState } from '@src/store'
 
 export const useNode = ({ nodeid: id }: { nodeid: number }) => {
-  const nodes = useAppSelector((_state: IState.State) => _state.cache.nodes)
+  const nodes = useAppSelector((_state: RootState) => _state.cache.nodes)
   const [info, setInfo] = useState<V2exObject.Node | undefined>(nodeFromCache(id, nodes))
 
   const dispatch = useAppDispatch()

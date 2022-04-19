@@ -3,9 +3,10 @@
  */
 
 import { useSelector } from 'react-redux'
+import { RootState } from '@src/store'
 
 export const useUnRead = () => {
-  const { unread } = useSelector((state: any) => {
+  const { unread } = useSelector((state: RootState) => {
     return state.notification
   })
 

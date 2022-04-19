@@ -4,10 +4,11 @@
 import { useEffect, useState } from 'react'
 import { V2exObject, IState } from '../types'
 import { useAppSelector } from '.'
+import { RootState } from '@src/store'
 
 export const useProfile = ({ username }: { username: string | number }) => {
   const [member, setMember] = useState<V2exObject.Member | undefined>(undefined)
-  const v2ex = useAppSelector((_state: IState.State) => _state.app.v2ex)
+  const v2ex = useAppSelector((_state: RootState) => _state.app.v2ex)
 
   useEffect(() => {
     const fetchMember = async () => {
