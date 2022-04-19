@@ -8,22 +8,21 @@ import { useAppDispatch, useAppSelector } from '.'
 import { cacheMember } from '../actions'
 import { V2exObject } from '../types'
 
-export const useMember = ({ userid }: { userid: number }) => {
+export const useMember = ({ userid: id }: { userid: number }) => {
   const members = useAppSelector((_state: RootState) => _state.cache.members)
-  const [info, setInfo] = useState<V2exObject.Member | undefined>(memberFromCache(userid, members))
+  const [info, setInfo] = useState<V2exObject.Member | undefined>(memberFromCache(id, members))
 
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if (info === undefined) {
-      const _info = memberFromCache(userid, members)
-      if (_info === undefined) {
-        dispatch(cacheMember(userid) as any)
-      } else {
-        setInfo(_info)
-      }
+    const _info = memberFromCache(id, members)
+
+    if (_info !== undefined) {
+      setInfo(_info)
+    } else {
+      dispatch(cacheMember(id) as any)
     }
-  }, [userid, info, members])
+  }, [id, info, members])
 
   return {
     member: info
