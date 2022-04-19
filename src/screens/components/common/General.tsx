@@ -2,23 +2,23 @@
  * Created by leon<silenceace@gmail.com> on 22/04/06.
  */
 import { Text } from '@src/components'
-import { ITheme, useTheme } from '@src/theme'
 import { useAppSelector } from '@src/hooks'
+import { translate } from '@src/i18n'
+import { NavigationService, ROUTES } from '@src/navigation'
+import { ITheme, useTheme } from '@src/theme'
+import { IState } from '@src/types'
 import React from 'react'
 import {
   Image,
-  View,
   ImageSourcePropType,
   ImageStyle,
+  Pressable,
+  StyleProp,
   TextStyle,
   TouchableOpacity,
-  ViewStyle,
-  Pressable,
-  StyleProp
+  View,
+  ViewStyle
 } from 'react-native'
-import { IState } from '@src/types'
-import { translate } from '@src/i18n'
-import { ViewProps } from 'react-native'
 
 /**
  * TextWithIconPress props
@@ -118,14 +118,18 @@ const Footer = () => {
   const app = useAppSelector((_state: IState.State) => _state.app)
 
   return (
-    <View style={styles.footer(theme)}>
+    <TouchableOpacity
+      onPress={() => {
+        NavigationService.navigate(ROUTES.SiteStat)
+      }}
+      style={styles.footer(theme)}>
       <Text style={styles.footerItem(theme)}>
         {translate('brand.name')} {app.version.version}({app.version.buildId})
       </Text>
       <Text style={styles.footerItem(theme)}>
         {app.siteInfo?.title} - {app.siteInfo?.description}
       </Text>
-    </View>
+    </TouchableOpacity>
   )
 }
 
