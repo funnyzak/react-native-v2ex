@@ -122,6 +122,8 @@ export interface IThemeDimen {
   WINDOW_WIDTH: number
   WINDOW_HEIGHT: number
   layoutContainerWidth: number
+
+  layoutContainerHorizontalMargin: number
   headerHeight: number
   headerButtonSize: number
   badgeSize: number

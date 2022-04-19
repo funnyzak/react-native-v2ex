@@ -10,8 +10,8 @@ import { TableList, TableRow } from '../components'
 const OpenSourceLicense = ({ navigation }: ScreenProps) => {
   const { theme } = useTheme()
   return (
-    <View style={[SylCommon.Layout.fill, { backgroundColor: theme.colors.background }]}>
-      <TableList containerStyle={[{ marginTop: theme.spacing.tiny }]}>
+    <View style={SylCommon.Layout.fill}>
+      <TableList containerStyle={[{ marginTop: theme.spacing.small }]}>
         {OPENSOURCE_LIST.map((item, index) => (
           <TableRow
             key={index}

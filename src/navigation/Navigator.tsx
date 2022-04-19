@@ -227,7 +227,7 @@ const HotDrawerNavigator = ({
           <HeaderButton
             onPress={() => navigation.navigate(ROUTES.SiteStat)}
             source={theme.assets.images.icons.header.stat}
-            containerStyle={[{ marginRight: theme.spacing.medium }]}
+            containerStyle={[{ marginRight: theme.dimens.layoutContainerHorizontalMargin }]}
           />
         ),
         drawerActiveTintColor: theme.colors.secondary,

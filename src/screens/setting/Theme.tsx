@@ -26,8 +26,8 @@ const Theme = ({
   const { theme, resetTheme } = useTheme()
 
   return (
-    <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
-      <TableList containerStyle={[{ marginTop: theme.spacing.tiny }]}>
+    <View style={SylCommon.Layout.fill}>
+      <TableList containerStyle={[{ marginTop: theme.spacing.small }]}>
         {themeList.map((item, index) => (
           <TableRow
             key={index}

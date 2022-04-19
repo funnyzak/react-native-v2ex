@@ -120,7 +120,7 @@ const TableList: React.FC<TableListProps> = (data: TableListProps) => {
   const renderContent = () => {
     return (
       <View style={[tableStyles.container(theme), data.containerStyle]}>
-        <Text style={tableStyles.title(theme)}>{data.title}</Text>
+        {data.title && <Text style={tableStyles.title(theme)}>{data.title}</Text>}
         <View style={tableStyles.list(theme)}>{data.children}</View>
       </View>
     )
