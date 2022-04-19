@@ -27,7 +27,7 @@ const Language = ({
 
   return (
     <View style={SylCommon.Layout.fill}>
-      <TableList containerStyle={[{ marginTop: theme.spacing.tiny }]}>
+      <TableList containerStyle={[{ marginTop: theme.spacing.small }]}>
         {translationList.map((item, index) => (
           <TableRow
             key={index}

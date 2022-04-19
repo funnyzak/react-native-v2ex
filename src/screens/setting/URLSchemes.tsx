@@ -13,8 +13,8 @@ const URLSchemes = ({}: ScreenProps) => {
   const { showMessage } = useToast()
 
   return (
-    <View style={[SylCommon.Layout.fill, { backgroundColor: theme.colors.background }]}>
-      <TableList containerStyle={[{ marginTop: theme.spacing.tiny }]}>
+    <View style={SylCommon.Layout.fill}>
+      <TableList containerStyle={[{ marginTop: theme.spacing.small }]}>
         <TableRow
           title={translate('label.openApp')}
           description={URLSchemeList.OpenApp}

@@ -4,6 +4,8 @@ const screenHeight = Dimensions.get('window').height
 
 import { IThemeDimen } from '../types'
 
+const layoutContainerHorizontalMargin = 15
+
 const dimens: IThemeDimen = {
   /**
    * App level constants
@@ -11,7 +13,9 @@ const dimens: IThemeDimen = {
   WINDOW_WIDTH: screenWidth,
   WINDOW_HEIGHT: screenHeight,
 
-  layoutContainerWidth: screenWidth - 30,
+  layoutContainerWidth: screenWidth - layoutContainerHorizontalMargin * 2,
+
+  layoutContainerHorizontalMargin: layoutContainerHorizontalMargin,
 
   headerButtonSize: 23,
   headerHeight: 50,

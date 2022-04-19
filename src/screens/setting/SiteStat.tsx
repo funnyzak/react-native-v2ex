@@ -15,7 +15,7 @@ const SiteStat = ({
   const { theme } = useTheme()
   return (
     <View style={SylCommon.Layout.fill}>
-      <TableList containerStyle={[{ marginTop: theme.spacing.tiny }]}>
+      <TableList containerStyle={[{ marginTop: theme.spacing.small }]}>
         <TableRow
           title={translate('label.registedMember')}
           value={siteStat?.member_max.toString() ?? 'None'}
