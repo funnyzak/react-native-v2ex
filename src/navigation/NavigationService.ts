@@ -30,6 +30,10 @@ function goNodeTopics(nodeName: string, nodeTitle: string) {
   navigate(ROUTES.NodeTopics, { nodeName, nodeTitle })
 }
 
+function goNodeDetail(nodeName: string, nodeTitle: string) {
+  navigate(ROUTES.NodeDetail, { nodeName, nodeTitle })
+}
+
 export type NavigationType = NavigationContainerRefWithCurrent<RootStackParamList>
 
 // add other navigation functions that you need and export them
@@ -39,5 +43,6 @@ export default {
   setTopLevelNavigator,
   goTopicDetail,
   goNodeTopics,
+  goNodeDetail,
   goUserProfile
 }
