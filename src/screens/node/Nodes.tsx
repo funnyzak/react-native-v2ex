@@ -1,18 +1,20 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { View, ViewStyle, SectionList, TouchableOpacity } from 'react-native'
+/**
+ * Created by leon<silenceace@gmail.com> on 22/3/10.
+ */
 
-import { useTheme, SylCommon } from '@src/theme'
-import { IState, ITheme, V2exObject } from '@src/types'
-import { Text } from '@src/components'
-import { NodesScreenProps as ScreenProps, NavigationService } from '@src/navigation'
-import { TabNodes, nodeChildren } from '@src/helper/node'
-import { NotFound } from '../components'
-import { translate } from '@src/i18n'
 import * as Actions from '@src/actions'
+import { Placeholder, Text, useToast } from '@src/components'
+import { nodeChildren, TabNodes } from '@src/helper/node'
+import { translate } from '@src/i18n'
+import { NavigationService, NodesScreenProps as ScreenProps } from '@src/navigation'
+import { SylCommon, useTheme } from '@src/theme'
+import { IState, ITheme, V2exObject } from '@src/types'
+import React, { useEffect } from 'react'
+import { SectionList, TouchableOpacity, View, ViewStyle } from 'react-native'
+import { connect } from 'react-redux'
+import { HeaderButton } from '../components'
 
 const Node = ({
-  route,
   navigation,
   allNode,
   fetchAllNode
@@ -21,18 +23,41 @@ const Node = ({
   fetchAllNode: () => void
 }) => {
   const { theme } = useTheme()
-  const Item = ({ nodes }: { nodes: V2exObject.Node[] }) => (
-    <View style={styles.listContainer(theme)}>
-      {nodes.map((node) => (
-        <TouchableOpacity
-          key={node.name}
-          style={styles.item(theme)}
-          onPress={() => {
-            NavigationService.goNodeTopics(node.name, node.title)
-          }}>
-          <Text style={SylCommon.Node.nodeTitle(theme)}>{node.title}</Text>
-        </TouchableOpacity>
-      ))}
+  const { showMessage } = useToast()
+
+  const underConstruction = () => {
+    showMessage({
+      type: 'error',
+      text2: translate('label.underConstruction')
+    })
+  }
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <HeaderButton
+          onPress={underConstruction}
+          source={theme.assets.images.icons.header.search}
+          containerStyle={[{ marginRight: theme.dimens.layoutContainerHorizontalMargin }]}
+        />
+      )
+    })
+  }, [])
+  const Item = ({ list, title }: { list: V2exObject.Node[]; title: string }) => (
+    <View style={[SylCommon.Card.container(theme), styles.sectionContainer(theme)]}>
+      <Text style={{ ...theme.typography.subheadingTextBold }}>{title}</Text>
+      <View style={styles.nodeListContainer(theme)}>
+        {list.map((node) => (
+          <TouchableOpacity
+            key={node.name}
+            style={styles.item(theme)}
+            onPress={() => {
+              NavigationService.goNodeTopics(node.name, node.title)
+            }}>
+            <Text style={SylCommon.Node.nodeTitle(theme)}>{node.title}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
     </View>
   )
 
@@ -42,6 +67,7 @@ const Node = ({
       data: [
         {
           name: 'children' + idx,
+          title: node.title,
           list: nodeChildren(node, allNode)
         }
       ],
@@ -54,59 +80,46 @@ const Node = ({
 
     if (data.length === 0) {
       return (
-        <NotFound
-          text={translate('errors.noFound')}
+        <Placeholder
           buttonText={translate('button.tryAgain')}
-          buttonPress={() => {
-            fetchAllNode()
-          }}
+          placeholderText={translate('errors.noFound')}
+          buttonPress={fetchAllNode}
         />
       )
     }
     return (
-      <View style={styles.container(theme)}>
-        <SectionList
-          sections={data}
-          contentContainerStyle={[]}
-          keyExtractor={(item, index) => item.name + index}
-          renderItem={({ item }) => <Item nodes={item.list} />}
-          stickySectionHeadersEnabled={false}
-          renderSectionHeader={({ section: { title } }) => (
-            <View style={styles.section(theme)}>
-              <Text style={SylCommon.Node.sectionTitle(theme)}>{title}</Text>
-            </View>
-          )}
-        />
-      </View>
+      <SectionList
+        sections={data}
+        contentContainerStyle={[]}
+        keyExtractor={(item, index) => item.name + index}
+        renderItem={({ item }) => <Item {...item} />}
+        stickySectionHeadersEnabled={true}
+        renderSectionHeader={undefined}
+      />
     )
   }
-  return (
-    <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme), { alignItems: 'center' }]}>
-      {renderContent()}
-    </View>
-  )
+  return <View style={SylCommon.Layout.fill}>{renderContent()}</View>
 }
 
 /**
  * @description styles settings
  */
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    width: theme.dimens.WINDOW_WIDTH,
-    paddingLeft: theme.spacing.medium,
-    flex: 1
+  sectionContainer: (theme: ITheme) => ({
+    paddingVertical: theme.spacing.medium,
+    marginBottom: theme.spacing.medium
   }),
-  section: (theme: ITheme) => ({
-    width: styles.container(theme).width,
-    paddingVertical: theme.spacing.medium
-  }),
-  listContainer: (theme: ITheme): ViewStyle => ({
+  nodeListContainer: (theme: ITheme): ViewStyle => ({
+    paddingTop: theme.spacing.small,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'flex-start'
   }),
   item: (theme: ITheme): ViewStyle => ({
     width: 'auto',
+    borderRadius: theme.spacing.tiny,
+    borderColor: theme.colors.border,
+    borderWidth: 0.7,
     marginRight: theme.spacing.small,
     marginVertical: theme.spacing.tiny
   })

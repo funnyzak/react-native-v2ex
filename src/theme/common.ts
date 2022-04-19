@@ -40,20 +40,12 @@ export const View = {
 }
 
 export const Node = {
-  sectionTitle: (theme: ITheme) => ({
-    ...theme.typography.subheadingText
-  }),
   nodeTitle: (theme: ITheme) => ({
-    fontSize: 12,
+    ...theme.typography.labelText,
     paddingVertical: 1,
-    paddingHorizontal: 8,
-    backgroundColor: theme.colors.surface,
+    paddingHorizontal: theme.spacing.tiny,
     borderRadius: 4,
     color: theme.colors.secondary
-  }),
-  smallTitle: (theme: ITheme) => ({
-    ...Node.nodeTitle(theme),
-    fontSize: 10
   })
 }
 
@@ -78,53 +70,5 @@ export const Button = {
     borderBottomColor: theme.colors.transparent,
     paddingHorizontal: theme.spacing.medium,
     color: theme.colors.secondary
-  })
-}
-
-export const Table = {
-  container: (theme: ITheme): ViewStyle => ({
-    marginTop: theme.spacing.small,
-    backgroundColor: theme.colors.surface
-  }),
-  item: (theme: ITheme): ViewStyle => ({
-    padding: theme.spacing.large,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  }),
-  itemText: (theme: ITheme, actived: boolean = false): TextStyle => ({
-    ...theme.typography.subheadingText,
-    color: actived ? theme.colors.secondaryDark : theme.colors.titleText
-  }),
-  itemRightText: (theme: ITheme): TextStyle => ({
-    ...theme.typography.captionText,
-    color: theme.colors.bodyText
-  }),
-  itemArrow: (theme: ITheme): ImageStyle => ({
-    width: theme.typography.subheadingText.fontSize,
-    height: theme.typography.subheadingText.fontSize
-  })
-}
-
-export const Grid = {
-  container: (theme: ITheme): ViewStyle => ({
-    marginTop: theme.spacing.small,
-    paddingVertical: theme.spacing.tiny,
-    flexDirection: 'row',
-    paddingHorizontal: theme.spacing.extraLarge,
-    justifyContent: 'space-between',
-    backgroundColor: theme.colors.surface
-  }),
-  item: (theme: ITheme): ViewStyle => ({
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 8
-  }),
-  itemValue: (theme: ITheme): TextStyle => ({
-    ...theme.typography.headingText
-  }),
-  itemTitle: (theme: ITheme): TextStyle => ({
-    ...theme.typography.captionText,
-    color: theme.colors.titleText
   })
 }
