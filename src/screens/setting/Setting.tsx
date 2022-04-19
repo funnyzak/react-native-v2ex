@@ -12,7 +12,7 @@ import { SettingScreenProps as ScreenProps } from '@src/navigation/routes'
 const Setting = ({ route, navigation, loading }: ScreenProps) => {
   const { theme } = useTheme()
   return (
-    <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
+    <View style={SylCommon.Layout.fill}>
       <Text>Hello, Setting.</Text>
     </View>
   )

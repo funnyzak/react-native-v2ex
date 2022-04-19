@@ -13,7 +13,7 @@ import { FeedbackScreenProps as ScreenProps } from '@src/navigation/routes'
 const Feedback = ({ route, navigation, loading }: ScreenProps) => {
   const { theme } = useTheme()
   return (
-    <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
+    <View style={SylCommon.Layout.fill}>
       <Text>Hello, Feedback.</Text>
     </View>
   )
