@@ -5,6 +5,7 @@ import MemberReducer from './MemberReducer'
 import TabReducer from './TabReducer'
 import NotificationReducer from './NotificationReducer'
 import SettingReducer from './SettingReducer'
+import CacheReducer from './CacheReducer'
 
 const reducers = combineReducers({
   ui: UIReducer,
@@ -12,7 +13,8 @@ const reducers = combineReducers({
   app: AppReducer,
   tab: TabReducer,
   notification: NotificationReducer,
-  setting: SettingReducer
+  setting: SettingReducer,
+  cache: CacheReducer
 })
 
 export default reducers
