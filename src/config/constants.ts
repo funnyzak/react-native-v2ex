@@ -3,17 +3,22 @@
  */
 
 /**
- * @description 日期格式化规则
+ * 缓存时间
+ */
+export const CACHE_EXPIRE_TIME = 1000 * 60 * 60 * 24 * 7 // 7 days
+
+/**
+ * 日期格式化规则
  */
 export const DATE_FORMAT = 'DD/MM/YYYY'
 
 /**
- * @description 用户授权缓存key
+ * 用户授权缓存key
  */
 export const MEMBER_TOKEN_KEY = 'memberToken'
 
 /**
- * @description 特殊节点名称
+ * 特殊节点名称
  */
 export const SPECIAL_NODE_NAME_MAP = {
   LATEST: 'latest',
