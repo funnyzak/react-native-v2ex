@@ -10,10 +10,16 @@ import {
   PartialState,
   DefaultTheme,
   Route,
-  RouteProp
+  RouteProp,
+  NavigationProp
 } from '@react-navigation/native'
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack'
-import { createDrawerNavigator } from '@react-navigation/drawer'
+import {
+  createDrawerNavigator,
+  DrawerNavigationProp,
+  getDrawerStatusFromState,
+  useDrawerStatus
+} from '@react-navigation/drawer'
 import { ToastProvider } from '@src/components/toast'
 import { useAppSelector } from '@src/hooks'
 import { useUnRead } from '@src/hooks/useUnRead'
@@ -113,10 +119,14 @@ const getHeaderTitle = (
   // If the focused route is not found, we need to assume it's the initial screen
   // This can happen during if there hasn't been any navigation inside the screen
   // In our case, it's "Feed" as that's the first screen inside the navigator
-  const routeName = getFocusedRouteNameFromRoute(route) ?? ROUTES.HotDraw
+  const routeName = getFocusedRouteNameFromRoute(route) ?? ROUTES.Hot
   switch (routeName) {
     case ROUTES.HotDraw:
       return translate(`router.${ROUTES.Hot}`)
+    case ROUTES.Hot:
+      return translate(`router.${ROUTES.Hot}`)
+    case ROUTES.Latest:
+      return translate(`router.${ROUTES.Latest}`)
     case ROUTES.Nodes:
       return translate(`router.${ROUTES.Nodes}`)
     case ROUTES.Notifications:
@@ -179,17 +189,43 @@ const HotDrawerNavigator = (initialRouteName?: string) => {
   )
 }
 
-const MainBottomHeaderLeft = ({ route }: { route: RouteProp<RootStackParamList> }): ReactNode => {
+const MainBottomHeaderLeft = ({
+  navigation,
+  route
+}: {
+  route: RouteProp<RootStackParamList>
+  navigation: NavigationProp<RootStackParamList>
+}): ReactNode => {
   const { theme } = useTheme()
   const focusRouteName = getFocusedRouteNameFromRoute(route) ?? ROUTES.HotDraw
-  return focusRouteName === ROUTES.HotDraw ? <HeaderButton source={theme.assets.images.icons.header.more} /> : undefined
+  return focusRouteName === ROUTES.HotDraw ? (
+    <HeaderButton
+      source={theme.assets.images.icons.header.more}
+      onPress={() => {
+        console.log(getFocusedRouteNameFromRoute(route))
+      }}
+    />
+  ) : undefined
 }
 
-const MainBottomTabHeaderRight = ({ route }: { route: RouteProp<RootStackParamList> }): ReactNode => {
+const MainBottomTabHeaderRight = ({
+  navigation,
+  route
+}: {
+  route: RouteProp<RootStackParamList>
+  navigation: NavigationProp<RootStackParamList>
+}): ReactNode => {
   const { theme } = useTheme()
 
   const focusRouteName = getFocusedRouteNameFromRoute(route) ?? ROUTES.HotDraw
-  return focusRouteName === ROUTES.HotDraw ? <HeaderButton source={theme.assets.images.icons.header.stat} /> : undefined
+  return focusRouteName === ROUTES.HotDraw ? (
+    <HeaderButton
+      source={theme.assets.images.icons.header.stat}
+      onPress={() => {
+        NavigationService.navigate(ROUTES.SiteStat)
+      }}
+    />
+  ) : undefined
 }
 
 const MainAppNavigator = ({ navigation, route }: MainScreenProps) => {
@@ -346,13 +382,13 @@ export const AppNavigationContainer = () => {
             <StackNavigator.Screen
               name={ROUTES.Main}
               component={MainAppNavigator}
-              options={({ route }) => ({
+              options={({ route, navigation }) => ({
                 ...defaultScreenOptions(theme),
                 headerShadowVisible: ![ROUTES.HotDraw].includes(
                   getFocusedRouteNameFromRoute(route) ?? (ROUTES.Nodes as any)
                 ),
-                headerLeft: () => MainBottomHeaderLeft({ route }),
-                headerRight: () => MainBottomTabHeaderRight({ route }),
+                headerLeft: () => MainBottomHeaderLeft({ route, navigation }),
+                headerRight: () => MainBottomTabHeaderRight({ route, navigation }),
                 headerTitle: getHeaderTitle(route)
               })}
               initialParams={{
