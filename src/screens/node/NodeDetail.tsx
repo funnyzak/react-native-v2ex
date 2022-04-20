@@ -7,15 +7,17 @@ import { connect } from 'react-redux'
 import { NodeInfoCard } from '../components'
 
 const NodeDetail = ({ route, navigation }: ScreenProps) => {
-  const { node } = useNode({ nodeid: route.params.nodeName })
-
   useEffect(() => {
     navigation.setOptions({
       title: route.params.nodeTitle
     })
   }, [])
 
-  return <View style={SylCommon.Layout.fill}>{node && <NodeInfoCard info={node} />}</View>
+  return (
+    <View style={SylCommon.Layout.fill}>
+      <NodeInfoCard nodeid={route.params.nodeName} />
+    </View>
+  )
 }
 
 export default connect()(NodeDetail)

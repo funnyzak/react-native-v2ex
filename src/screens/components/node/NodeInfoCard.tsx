@@ -1,7 +1,7 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/04/19.
  */
-import { Avatar, Text } from '@src/components'
+import { Avatar, Spinner, Text } from '@src/components'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
@@ -10,6 +10,7 @@ import dayjs from 'dayjs'
 import React from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import { TextWithIconPress } from '../common'
+import { useNode } from '@src/hooks/useNode'
 
 /**
  * NodeInfoCard props
@@ -21,62 +22,71 @@ export interface NodeInfoCardProps {
   containerStyle?: StyleProp<ViewStyle>
 
   /**
-   * profile info
+   * node name or id
    */
-  info?: V2exObject.Node
+  nodeid: string | number
 }
 
-const NodeInfoCard: React.FC<NodeInfoCardProps> = ({ info, containerStyle }: NodeInfoCardProps) => {
+const NodeInfoCard: React.FC<NodeInfoCardProps> = ({ nodeid, containerStyle }: NodeInfoCardProps) => {
   const { theme } = useTheme()
+  const { node: info } = useNode({ nodeid: nodeid })
 
   const renderContent = () => {
     return (
       <View style={[SylCommon.Card.container(theme), { paddingVertical: theme.spacing.small }, containerStyle]}>
-        <View style={styles.infoItem(theme)}>
-          <View style={styles.baseAvatar(theme)}>
-            <Avatar size={60} source={info?.avatar_normal ? { uri: info?.avatar_normal } : undefined} />
-          </View>
-          <View style={styles.baseRightBox(theme)}>
-            <View style={styles.baseRightInfo(theme)}>
-              <Text style={[styles.baseRightItem(theme), theme.typography.subheadingText]}>{info?.title}</Text>
-              <View style={styles.infoItem(theme)}>
-                <TextWithIconPress
-                  containerStyle={{ marginRight: theme.spacing.small }}
-                  text={info?.topics?.toString() ?? 'null'}
-                  icon={theme.assets.images.icons.node.docment}
-                />
-                <TextWithIconPress
-                  containerStyle={{ marginRight: theme.spacing.small }}
-                  text={info?.stars?.toString() ?? 'null'}
-                  icon={theme.assets.images.icons.node.star}
-                />
-                <TextWithIconPress
-                  onPress={() => {
-                    NavigationService.navigate(ROUTES.WebViewer, {
-                      url: info?.url
-                    })
-                  }}
-                  text={info?.name?.toString() ?? 'null'}
-                  icon={theme.assets.images.icons.node.urlscheme}
-                />
+        {info !== undefined ? (
+          <>
+            <View style={styles.infoItem(theme)}>
+              <View style={styles.baseAvatar(theme)}>
+                <Avatar size={60} source={info?.avatar_normal ? { uri: info?.avatar_normal } : undefined} />
               </View>
-              {info?.last_modified ? (
-                <Text style={[styles.baseRightItem(theme), theme.typography.captionText]}>
-                  {translate('label.activeLatest').replace(
-                    '$',
-                    dayjs(info?.last_modified * 1000).format('YYYY-MM-DD HH:mm:ss')
-                  )}
-                </Text>
-              ) : null}
+              <View style={styles.baseRightBox(theme)}>
+                <View style={styles.baseRightInfo(theme)}>
+                  <Text style={[styles.baseRightItem(theme), theme.typography.subheadingText]}>{info?.title}</Text>
+                  <View style={styles.infoItem(theme)}>
+                    <TextWithIconPress
+                      containerStyle={{ marginRight: theme.spacing.small }}
+                      text={info?.topics?.toString() ?? 'null'}
+                      icon={theme.assets.images.icons.node.docment}
+                    />
+                    <TextWithIconPress
+                      containerStyle={{ marginRight: theme.spacing.small }}
+                      text={info?.stars?.toString() ?? 'null'}
+                      icon={theme.assets.images.icons.node.star}
+                    />
+                    <TextWithIconPress
+                      onPress={() => {
+                        NavigationService.navigate(ROUTES.WebViewer, {
+                          url: info?.url
+                        })
+                      }}
+                      text={info?.name?.toString() ?? 'null'}
+                      icon={theme.assets.images.icons.node.urlscheme}
+                    />
+                  </View>
+                  {info?.last_modified ? (
+                    <Text style={[styles.baseRightItem(theme), theme.typography.captionText]}>
+                      {translate('label.activeLatest').replace(
+                        '$',
+                        dayjs(info?.last_modified * 1000).format('YYYY-MM-DD HH:mm:ss')
+                      )}
+                    </Text>
+                  ) : null}
+                </View>
+              </View>
             </View>
+            {info?.header && <Text style={[styles.infoItem(theme), theme.typography.labelText]}>{info?.header}</Text>}
+            {info?.created ? (
+              <Text style={[styles.infoItem(theme), theme.typography.captionText]}>
+                {translate('label.createNodeSinceTime').replace('$', dayjs(info?.created * 1000).format())}
+              </Text>
+            ) : null}
+          </>
+        ) : (
+          <View style={{ height: 100 }}>
+            <Spinner size="small" />
           </View>
-        </View>
-        {info?.header && <Text style={[styles.infoItem(theme), theme.typography.labelText]}>{info?.header}</Text>}
-        {info?.created ? (
-          <Text style={[styles.infoItem(theme), theme.typography.captionText]}>
-            {translate('label.createNodeSinceTime').replace('$', dayjs(info?.created * 1000).format())}
-          </Text>
-        ) : null}
+        )}
       </View>
     )
   }
