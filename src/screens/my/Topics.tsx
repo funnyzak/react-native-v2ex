@@ -1,40 +1,53 @@
-import React, { useState } from 'react'
+import { useToast } from '@src/components'
+import { MyTopicsScreenProps as ScreenProps } from '@src/navigation'
+import { RootState } from '@src/store'
+import { SylCommon, useTheme } from '@src/theme'
+import { V2exObject } from '@src/types'
+import { v2exLib } from '@src/v2ex'
+import React, { useCallback, useState } from 'react'
+import { RefreshControl, View } from 'react-native'
 import { connect } from 'react-redux'
-import { View, ViewStyle, TouchableOpacity } from 'react-native'
+import { NeedLogin, TopicCardList } from '../components'
 
-import * as Actions from '@src/actions'
-import { translate } from '@src/i18n'
-import { useTheme, SylCommon } from '@src/theme'
-import { IState, ITheme, V2exObject } from '@src/types'
-import * as CompS from '../components'
-import { Text, Spinner, Placeholder } from '@src/components'
-import { MyTopicsScreenProps as ScreenProps, ROUTES } from '@src/navigation'
-
-const MyTopics = ({ route, navigation, loading }: ScreenProps) => {
+const MyTopics = ({
+  profile
+}: ScreenProps & {
+  profile?: V2exObject.Member
+}) => {
   const { theme } = useTheme()
+  const [refreshing, setRefreshing] = useState<boolean>(false)
+  const [list, setList] = useState<V2exObject.Topic[] | undefined>(undefined)
+  const { showMessage } = useToast()
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true)
+    if (!profile) return
+
+    v2exLib.topic
+      .topics(profile?.username, 'username')
+      .then((rlt: V2exObject.Topic[]) => {
+        setRefreshing(false)
+        setList(rlt)
+      })
+      .catch((err) => {
+        showMessage(err.message)
+      })
+  }, [])
+
   return (
-    <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
-      <Placeholder
-        displayType="icon"
-        icon={theme.assets.images.icons.placeholder.construction}
-        placeholderText={translate(`router.${ROUTES.MyTopics}`) + translate('label.underConstruction')}
+    <NeedLogin loginAfterAction={onRefresh}>
+      <TopicCardList
+        topics={list}
+        displayStyle={'full'}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+        canLoadMoreContent={false}
+        searchIndicator={false}
+        refreshCallback={onRefresh}
       />
-    </View>
+    </NeedLogin>
   )
 }
 
-/**
- * @description styles settings
- */
-const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    flex: 1
-  })
-}
-
-const mapStateToProps = ({ ui: { login } }: { ui: IState.UIState }) => {
-  const { error, success, loading } = login
-  return { error, success, loading }
-}
+const mapStateToProps = ({ member: { profile } }: RootState) => ({ profile })
 
 export default connect(mapStateToProps)(MyTopics)

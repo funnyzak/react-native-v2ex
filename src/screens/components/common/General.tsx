@@ -2,13 +2,13 @@
  * Created by leon<silenceace@gmail.com> on 22/04/06.
  */
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
-import { Text } from '@src/components'
+import { Placeholder, Text } from '@src/components'
 import { useAppSelector } from '@src/hooks'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
+import { RootState } from '@src/store'
 import { ITheme, useTheme } from '@src/theme'
-import { IState } from '@src/types'
-import React, { ComponentType } from 'react'
+import React, { ComponentType, useEffect } from 'react'
 import {
   Image,
   ImageSourcePropType,
@@ -116,7 +116,7 @@ const HeaderButton = ({
 
 const Footer = () => {
   const { theme } = useTheme()
-  const app = useAppSelector((_state: IState.State) => _state.app)
+  const app = useAppSelector((_state: RootState) => _state.app)
 
   return (
     <TouchableOpacity
@@ -131,6 +131,37 @@ const Footer = () => {
         {app.siteInfo?.title} - {app.siteInfo?.description}
       </Text>
     </TouchableOpacity>
+  )
+}
+
+/**
+ * Need Login
+ * @returns
+ */
+const NeedLogin = ({ loginAfterAction, children }: { loginAfterAction?: () => void; children?: React.ReactNode }) => {
+  const token = useAppSelector((_state: RootState) => _state.member.token)
+
+  useEffect(() => {
+    if (token) {
+      loginAfterAction && loginAfterAction()
+    }
+  }, [token])
+
+  return (
+    <View style={{ flex: 1 }}>
+      {!token ? (
+        <Placeholder
+          displayType="text"
+          placeholderText={translate('placeholder.needToLogin')}
+          buttonText={translate('label.goLogin')}
+          buttonPress={() => {
+            NavigationService.navigate(ROUTES.SignIn)
+          }}
+        />
+      ) : (
+        children
+      )}
+    </View>
   )
 }
 
@@ -256,4 +287,4 @@ const styles = {
   }
 }
 
-export { TextWithIconPress, TopTabList, TextGrid, BorderLine, HeaderButton, Footer }
+export { TextWithIconPress, NeedLogin, TopTabList, TextGrid, BorderLine, HeaderButton, Footer }
