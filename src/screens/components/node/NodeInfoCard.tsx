@@ -2,15 +2,14 @@
  * Created by leon<silenceace@gmail.com> on 22/04/19.
  */
 import { Avatar, Spinner, Text } from '@src/components'
+import { useNode } from '@src/hooks/useNode'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
-import { V2exObject } from '@src/types'
 import dayjs from 'dayjs'
 import React from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import { TextWithIconPress } from '../common'
-import { useNode } from '@src/hooks/useNode'
 
 /**
  * NodeInfoCard props
@@ -75,7 +74,9 @@ const NodeInfoCard: React.FC<NodeInfoCardProps> = ({ nodeid, containerStyle }: N
                 </View>
               </View>
             </View>
-            {info?.header && <Text style={[styles.infoItem(theme), theme.typography.labelText]}>{info?.header}</Text>}
+            {info?.header && info.header !== '' ? (
+              <Text style={[styles.infoItem(theme), theme.typography.labelText]}>{info?.header}</Text>
+            ) : null}
             {info?.created ? (
               <Text style={[styles.infoItem(theme), theme.typography.captionText]}>
                 {translate('label.createNodeSinceTime').replace('$', dayjs(info?.created * 1000).format())}
