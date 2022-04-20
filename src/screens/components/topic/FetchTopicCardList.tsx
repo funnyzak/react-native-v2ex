@@ -7,10 +7,15 @@ import { NODE_TABS } from '@src/navigation'
 import { V2exObject } from '@src/types'
 import { v2exLib } from '@src/v2ex'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { RefreshControl } from 'react-native'
+import { RefreshControl, StyleProp, ViewStyle } from 'react-native'
 import TopicCardList from './TopicCardList'
 
 export interface FetchTopicCardListProps {
+  /**
+   * container style
+   */
+  containerStyle?: StyleProp<ViewStyle>
+
   nodeName: string
   v2API?: boolean
   /**
@@ -22,6 +27,7 @@ export interface FetchTopicCardListProps {
 const FetchTopicCardList: React.FC<FetchTopicCardListProps> = ({
   nodeName,
   v2API = false,
+  containerStyle,
   displayStyle
 }: FetchTopicCardListProps) => {
   const { showMessage } = useToast()
@@ -103,6 +109,7 @@ const FetchTopicCardList: React.FC<FetchTopicCardListProps> = ({
 
   return (
     <TopicCardList
+      containerStyle={containerStyle}
       topics={list}
       displayStyle={displayStyle}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
