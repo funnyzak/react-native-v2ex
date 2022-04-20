@@ -35,7 +35,7 @@ const MyTopics = ({
   }, [])
 
   return (
-    <NeedLogin loginAfterAction={onRefresh}>
+    <NeedLogin onMount={onRefresh}>
       <TopicCardList
         topics={list}
         displayStyle={'full'}

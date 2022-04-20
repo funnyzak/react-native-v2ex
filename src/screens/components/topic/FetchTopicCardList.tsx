@@ -3,11 +3,15 @@
  */
 
 import { useToast } from '@src/components'
+import { useMember } from '@src/hooks/useMember'
+import { useSession } from '@src/hooks/useSession'
 import { NODE_TABS } from '@src/navigation'
+import { useTheme } from '@src/theme'
 import { V2exObject } from '@src/types'
 import { v2exLib } from '@src/v2ex'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { RefreshControl, StyleProp, ViewStyle } from 'react-native'
+import { NeedLogin } from '../common'
 import TopicCardList from './TopicCardList'
 
 export interface FetchTopicCardListProps {
@@ -30,6 +34,8 @@ const FetchTopicCardList: React.FC<FetchTopicCardListProps> = ({
   containerStyle,
   displayStyle
 }: FetchTopicCardListProps) => {
+  const { theme } = useTheme()
+  const { logined } = useSession()
   const { showMessage } = useToast()
   const [page, setPage] = useState(1)
   const [mounted, setMounted] = useState<boolean>(false)
@@ -45,7 +51,10 @@ const FetchTopicCardList: React.FC<FetchTopicCardListProps> = ({
 
   const fetchTopics = useCallback(
     (pageNum: number) => {
-      console.log('page number', pageNum)
+      if (v2API && !logined) {
+        return
+      }
+
       if (pageNum > 1 && (!v2API || specialNode)) {
         setHasMore(false)
         return
@@ -61,7 +70,7 @@ const FetchTopicCardList: React.FC<FetchTopicCardListProps> = ({
         ? nodeName === NODE_TABS.LATEST
           ? v2exLib.topic.latestTopics()
           : v2exLib.topic.hotTopics()
-        : v2API
+        : v2API && logined
         ? v2exLib.topic.pager(nodeName, pageNum)
         : v2exLib.topic.topics(nodeName, 'node_name')
       )
@@ -79,7 +88,7 @@ const FetchTopicCardList: React.FC<FetchTopicCardListProps> = ({
           showMessage(err.message)
         })
     },
-    [nodeName, showMessage, page]
+    [nodeName, showMessage, page, v2API, logined]
   ) // eslint-disable-line react-hooks/exhaustive-deps
 
   const onRefresh = () => {
@@ -108,16 +117,23 @@ const FetchTopicCardList: React.FC<FetchTopicCardListProps> = ({
   }
 
   return (
-    <TopicCardList
-      containerStyle={containerStyle}
-      topics={list}
-      displayStyle={displayStyle}
-      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-      onEndReached={onReached}
-      canLoadMoreContent={hasMore}
-      searchIndicator={false}
-      refreshCallback={onRefresh}
-    />
+    <NeedLogin
+      onMount={() => {
+        fetchTopics(1)
+      }}
+      mustLogin={v2API}
+      placeholderBackground={theme.colors.surface}>
+      <TopicCardList
+        containerStyle={containerStyle}
+        topics={list}
+        displayStyle={displayStyle}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+        onEndReached={onReached}
+        canLoadMoreContent={hasMore}
+        searchIndicator={false}
+        refreshCallback={onRefresh}
+      />
+    </NeedLogin>
   )
 }
 

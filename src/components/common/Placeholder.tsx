@@ -53,7 +53,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
-    marginVertical: _theme.spacing.small,
+    paddingVertical: _theme.spacing.small,
     marginBottom: _theme.spacing.large
   }),
   iconStyle: (_theme: ITheme): ViewStyle => ({}),

@@ -4,6 +4,7 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import { Placeholder, Text } from '@src/components'
 import { useAppSelector } from '@src/hooks'
+import { useSession } from '@src/hooks/useSession'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
 import { RootState } from '@src/store'
@@ -138,19 +139,35 @@ const Footer = () => {
  * Need Login
  * @returns
  */
-const NeedLogin = ({ loginAfterAction, children }: { loginAfterAction?: () => void; children?: React.ReactNode }) => {
-  const token = useAppSelector((_state: RootState) => _state.member.token)
+const NeedLogin = ({
+  containerStyle,
+  placeholderBackground,
+  mustLogin = true,
+  onMount,
+  children
+}: {
+  /**
+   * container style
+   */
+  containerStyle?: StyleProp<ViewStyle>
+  placeholderBackground?: string
+  mustLogin?: boolean
+  onMount?: () => void
+  children?: React.ReactNode
+}) => {
+  const { logined } = useSession()
 
   useEffect(() => {
-    if (token) {
-      loginAfterAction && loginAfterAction()
+    if (logined) {
+      onMount && onMount()
     }
-  }, [token])
+  }, [logined])
 
   return (
-    <View style={{ flex: 1 }}>
-      {!token ? (
+    <View style={[{ flex: 1 }, containerStyle]}>
+      {!logined && mustLogin ? (
         <Placeholder
+          containerStyle={[{ backgroundColor: placeholderBackground }]}
           displayType="text"
           placeholderText={translate('placeholder.needToLogin')}
           buttonText={translate('label.goLogin')}
