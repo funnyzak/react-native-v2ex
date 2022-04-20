@@ -40,7 +40,18 @@ export const APP_NODE_TOPICS_REFRESH = 'v2ex_node_loading'
 export const APP_NODE_TOPICS_LOAD_SUCCESS = 'v2ex_node_success'
 export const APP_NODE_LOAD_ERROR = 'v2ex_node_error'
 
+export const APP_CACHE_ADD_MEMBER = 'v2ex_cache_add_member'
+export const APP_CACHE_ADD_NODE = 'v2ex_cache_add_node'
+export const APP_CACHE_RESET_MEMBERS = 'v2ex_cache_reset_member'
+export const APP_CACHE_RESET_NODES = 'v2ex_cache_reset_node'
+export const APP_CACHE_RESET = 'v2ex_cache_reset'
+
 export const ActionTypes = {
+  APP_CACHE_RESET,
+  APP_CACHE_RESET_MEMBERS,
+  APP_CACHE_RESET_NODES,
+  APP_CACHE_ADD_MEMBER,
+  APP_CACHE_ADD_NODE,
   APP_INIT,
   APP_NODE_LOAD_ERROR,
   APP_NODE_TOPICS_LOAD_SUCCESS,

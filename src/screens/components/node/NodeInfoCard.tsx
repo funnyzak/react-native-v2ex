@@ -1,36 +1,93 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/04/01.
+ * Created by leon<silenceace@gmail.com> on 22/04/19.
  */
-import React from 'react'
-import { View, ViewStyle, TextStyle } from 'react-native'
-
-import { Text, Button, Spinner, Placeholder } from '@src/components'
-import { ITheme, SylCommon, useTheme } from '@src/theme'
+import { Avatar, Spinner, Text } from '@src/components'
+import { useNode } from '@src/hooks/useNode'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
-import { V2exObject } from '@src/types'
+import { ITheme, SylCommon, useTheme } from '@src/theme'
+import dayjs from 'dayjs'
+import React from 'react'
+import { StyleProp, View, ViewStyle } from 'react-native'
+import { TextWithIconPress } from '../common'
 
 /**
- * // TODO: NodeInfoCard
  * NodeInfoCard props
  */
 export interface NodeInfoCardProps {
   /**
-   * NodeInfoCard width
+   * container style
    */
-  width?: number | string
+  containerStyle?: StyleProp<ViewStyle>
 
   /**
-   * NodeInfoCard height
+   * node name or id
    */
-  height?: number | string
+  nodeid: string | number
 }
 
-const NodeInfoCard: React.FC<NodeInfoCardProps> = ({ width, height }: NodeInfoCardProps) => {
+const NodeInfoCard: React.FC<NodeInfoCardProps> = ({ nodeid, containerStyle }: NodeInfoCardProps) => {
+  const { theme } = useTheme()
+  const { node: info } = useNode({ nodeid: nodeid })
+
   const renderContent = () => {
     return (
-      <View>
-        <Text>Hello World, NodeInfoCard.</Text>
+      <View style={[SylCommon.Card.container(theme), { paddingVertical: theme.spacing.small }, containerStyle]}>
+        {info !== undefined ? (
+          <>
+            <View style={styles.infoItem(theme)}>
+              <View style={styles.baseAvatar(theme)}>
+                <Avatar size={60} source={info?.avatar_normal ? { uri: info?.avatar_normal } : undefined} />
+              </View>
+              <View style={styles.baseRightBox(theme)}>
+                <View style={styles.baseRightInfo(theme)}>
+                  <Text style={[styles.baseRightItem(theme), theme.typography.subheadingText]}>{info?.title}</Text>
+                  <View style={styles.infoItem(theme)}>
+                    <TextWithIconPress
+                      containerStyle={{ marginRight: theme.spacing.small }}
+                      text={info?.topics?.toString() ?? 'null'}
+                      icon={theme.assets.images.icons.node.docment}
+                    />
+                    <TextWithIconPress
+                      containerStyle={{ marginRight: theme.spacing.small }}
+                      text={info?.stars?.toString() ?? 'null'}
+                      icon={theme.assets.images.icons.node.star}
+                    />
+                    <TextWithIconPress
+                      onPress={() => {
+                        NavigationService.navigate(ROUTES.WebViewer, {
+                          url: info?.url
+                        })
+                      }}
+                      text={info?.name?.toString() ?? 'null'}
+                      icon={theme.assets.images.icons.node.urlscheme}
+                    />
+                  </View>
+                  {info?.last_modified ? (
+                    <Text style={[styles.baseRightItem(theme), theme.typography.captionText]}>
+                      {translate('label.activeLatest').replace(
+                        '$',
+                        dayjs(info?.last_modified * 1000).format('YYYY-MM-DD HH:mm:ss')
+                      )}
+                    </Text>
+                  ) : null}
+                </View>
+              </View>
+            </View>
+            {info?.header && info.header !== '' ? (
+              <Text style={[styles.infoItem(theme), theme.typography.labelText]}>{info?.header}</Text>
+            ) : null}
+            {info?.created ? (
+              <Text style={[styles.infoItem(theme), theme.typography.captionText]}>
+                {translate('label.createNodeSinceTime').replace('$', dayjs(info?.created * 1000).format())}
+              </Text>
+            ) : null}
+          </>
+        ) : (
+          <View style={{ height: 100 }}>
+            <Spinner size="small" />
+          </View>
+        )}
       </View>
     )
   }
@@ -40,7 +97,41 @@ const NodeInfoCard: React.FC<NodeInfoCardProps> = ({ width, height }: NodeInfoCa
 
 const styles = {
   container: (theme: ITheme): ViewStyle => ({
+    display: 'flex',
+    alignItems: 'flex-start',
+    flexDirection: 'column'
+  }),
+  infoItem: (theme: ITheme): ViewStyle => ({
+    paddingBottom: theme.spacing.medium,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    width: '100%'
+  }),
+  baseAvatar: (theme: ITheme): ViewStyle => ({
+    width: 60,
+    height: 60,
+    marginRight: theme.spacing.medium
+  }),
+  baseRightBox: (theme: ITheme): ViewStyle => ({
+    display: 'flex',
+    flexDirection: 'row',
     flex: 1
+  }),
+  baseRightInfo: (theme: ITheme): ViewStyle => ({
+    display: 'flex',
+    flexDirection: 'column',
+    flex: 1,
+    alignItems: 'flex-start'
+  }),
+  baseRightArrow: (theme: ITheme): ViewStyle => ({
+    width: 14,
+    display: 'flex',
+    justifyContent: 'center'
+  }),
+  baseRightItem: (theme: ITheme): ViewStyle => ({
+    paddingBottom: theme.spacing.small
   })
 }
 

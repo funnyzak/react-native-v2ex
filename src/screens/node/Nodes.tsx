@@ -52,7 +52,7 @@ const Node = ({
             key={node.name}
             style={styles.item(theme)}
             onPress={() => {
-              NavigationService.goNodeTopics(node.name, node.title)
+              NavigationService.goNodeDetail(node.name, node.title)
             }}>
             <Text style={SylCommon.Node.nodeTitle(theme)}>{node.title}</Text>
           </TouchableOpacity>

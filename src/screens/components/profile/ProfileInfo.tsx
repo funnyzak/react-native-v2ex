@@ -26,7 +26,7 @@ export interface ProfileInfoProps {
   /**
    * profile info
    */
-  profile?: V2exObject.Member
+  info?: V2exObject.Member
   /**
    * with right arrow
    */
@@ -34,13 +34,13 @@ export interface ProfileInfoProps {
 }
 
 const ProfileInfo: React.FC<ProfileInfoProps> = ({
-  profile,
+  info,
   containerStyle,
   styleType = 'simple',
   withArrow = false
 }: ProfileInfoProps) => {
   const { theme } = useTheme()
-  const isLogin = useMemo(() => profile && profile.username, [profile])
+  const isLogin = useMemo(() => info && info.username, [info])
 
   const renderContent = () => {
     return (
@@ -50,15 +50,15 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
             !withArrow
               ? undefined
               : isLogin
-              ? NavigationService.navigate(ROUTES.Profile, { username: profile?.username })
+              ? NavigationService.navigate(ROUTES.Profile, { username: info?.username })
               : NavigationService.navigate(ROUTES.SignIn)
           }
           style={styles.infoItem(theme)}>
           <View style={styles.baseAvatar(theme)}>
             <Avatar
               size={60}
-              source={profile?.avatar_normal ? { uri: profile?.avatar_normal } : undefined}
-              username={profile?.username}
+              source={info?.avatar_normal ? { uri: info?.avatar_normal } : undefined}
+              username={info?.username}
             />
           </View>
           <View style={styles.baseRightBox(theme)}>
@@ -69,18 +69,18 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
                   theme.typography.subheadingText,
                   { color: theme.colors.secondary }
                 ]}>
-                {profile?.username ?? translate('label.goLogin')}
+                {info?.username ?? translate('label.goLogin')}
               </Text>
-              {!isLogin || (isLogin && profile?.tagline) ? (
+              {!isLogin || (isLogin && info?.tagline) ? (
                 <Text style={[styles.baseRightItem(theme), theme.typography.bodyText]}>
-                  {profile?.tagline ?? translate('label.loginTips')}
+                  {info?.tagline ?? translate('label.loginTips')}
                 </Text>
               ) : null}
-              {profile?.last_modified ? (
+              {info?.last_modified ? (
                 <Text style={[styles.baseRightItem(theme), theme.typography.captionText]}>
                   {translate('label.profileLastModified').replace(
                     '$',
-                    dayjs(profile?.last_modified * 1000).format('YYYY-MM-DD HH:mm:ss')
+                    dayjs(info?.last_modified * 1000).format('YYYY-MM-DD HH:mm:ss')
                   )}
                 </Text>
               ) : null}
@@ -94,62 +94,60 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
         </TouchableOpacity>
         {styleType === 'full' && (
           <>
-            {profile?.bio ? (
-              <Text style={[styles.infoItem(theme), theme.typography.bodyText]}>{profile?.bio}</Text>
-            ) : null}
+            {info?.bio ? <Text style={[styles.infoItem(theme), theme.typography.bodyText]}>{info?.bio}</Text> : null}
             <View style={styles.infoItem(theme)}>
-              {profile?.location ? (
+              {info?.location ? (
                 <TextWithIconPress
                   containerStyle={{ marginRight: theme.spacing.small }}
-                  text={profile?.location}
+                  text={info?.location}
                   icon={theme.assets.images.icons.profile.location}
                 />
               ) : null}
-              {profile?.website ? (
+              {info?.website ? (
                 <TextWithIconPress
                   onPress={() => {
-                    NavigationService.navigate(ROUTES.WebViewer, { url: profile.website })
+                    NavigationService.navigate(ROUTES.WebViewer, { url: info.website })
                   }}
                   containerStyle={{ marginRight: theme.spacing.small }}
-                  text={profile?.website}
+                  text={info?.website}
                   icon={theme.assets.images.icons.profile.urlschme}
                 />
               ) : null}
             </View>
             <View style={styles.infoItem(theme)}>
-              {profile?.github ? (
+              {info?.github ? (
                 <TextWithIconPress
                   onPress={() => {
-                    NavigationService.navigate(ROUTES.WebViewer, { url: `https://github.com/${profile.twitter}` })
+                    NavigationService.navigate(ROUTES.WebViewer, { url: `https://github.com/${info.twitter}` })
                   }}
                   containerStyle={{ marginRight: theme.spacing.small }}
-                  text={profile?.github}
+                  text={info?.github}
                   icon={theme.assets.images.icons.profile.github}
                 />
               ) : null}
-              {profile?.telegram ? (
+              {info?.telegram ? (
                 <TextWithIconPress
                   containerStyle={{ marginRight: theme.spacing.small }}
-                  text={profile?.telegram}
+                  text={info?.telegram}
                   icon={theme.assets.images.icons.profile.telegram}
                 />
               ) : null}
-              {profile?.twitter ? (
+              {info?.twitter ? (
                 <TextWithIconPress
                   onPress={() => {
-                    NavigationService.navigate(ROUTES.WebViewer, { url: `https://twitter.com/${profile.twitter}` })
+                    NavigationService.navigate(ROUTES.WebViewer, { url: `https://twitter.com/${info.twitter}` })
                   }}
                   containerStyle={{ marginRight: theme.spacing.small }}
-                  text={profile?.twitter}
+                  text={info?.twitter}
                   icon={theme.assets.images.icons.profile.twitter}
                 />
               ) : null}
             </View>
-            {profile?.created ? (
+            {info?.created ? (
               <Text style={[styles.infoItem(theme), theme.typography.captionText]}>
                 {translate('label.joinV2exSinceTime')
-                  .replace('$', profile?.id.toString())
-                  .replace('$', dayjs(profile?.created * 1000).format())}
+                  .replace('$', info?.id.toString())
+                  .replace('$', dayjs(info?.created * 1000).format())}
               </Text>
             ) : null}
           </>

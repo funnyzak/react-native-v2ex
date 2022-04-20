@@ -1,14 +1,15 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/2/25.
  */
+import { RootState } from '@src/store'
 import { useEffect, useState } from 'react'
-import { V2exObject, IState } from '../types'
 import { readTopic } from '../actions'
-import { useAppSelector, useAppDispatch } from './'
+import { V2exObject } from '../types'
+import { useAppDispatch, useAppSelector } from './'
 
 export const useTopic = ({ topicId }: { topicId: number }) => {
   const [topic, setTopic] = useState<V2exObject.Topic | undefined>(undefined)
-  const v2ex = useAppSelector((_state: IState.State) => _state.app.v2ex)
+  const v2ex = useAppSelector((_state: RootState) => _state.app.v2ex)
   const dispatch = useAppDispatch()
 
   useEffect(() => {

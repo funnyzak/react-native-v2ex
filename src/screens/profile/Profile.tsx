@@ -56,7 +56,7 @@ const Profile = ({
     <View style={SylCommon.Layout.fill}>
       <View style={[SylCommon.Card.container(theme), styles.container(theme)]}>
         {profile ? (
-          <ProfileInfo profile={profile} styleType="full" />
+          <ProfileInfo info={profile} styleType="full" />
         ) : (
           <Spinner text={translate('placeholder.loading')} />
         )}

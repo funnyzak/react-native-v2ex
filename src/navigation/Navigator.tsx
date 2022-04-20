@@ -457,6 +457,15 @@ export const AppNavigationContainer = () => {
               }}
             />
             <StackNavigator.Screen
+              name={ROUTES.NodeDetail}
+              component={Screens.NodeDetailScreen}
+              options={{
+                title: translate(`router.${ROUTES.NodeDetail}`),
+                ...defaultScreenOptions(theme),
+                headerShown: true
+              }}
+            />
+            <StackNavigator.Screen
               name={ROUTES.Following}
               component={Screens.FollowingScreen}
               options={{

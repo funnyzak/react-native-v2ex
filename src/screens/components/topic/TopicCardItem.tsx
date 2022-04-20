@@ -115,7 +115,7 @@ const TopicCardItem = ({ containerStyle, displayStyle = 'auto', topic, onPress }
               <TextWithIconPress
                 text={topic.node?.title}
                 onPress={() => {
-                  NavigationService.navigate(ROUTES.NodeTopics, {
+                  NavigationService.navigate(ROUTES.NodeDetail, {
                     nodeName: topic.node?.name,
                     nodeTitle: topic.node?.title
                   })

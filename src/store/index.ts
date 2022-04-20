@@ -15,6 +15,7 @@ const memberSubsetBlacklistFilter = createBlacklistFilter('member', [
   'followPeople.refreshing',
   'likeTopics.refreshing'
 ])
+
 const uiSubsetBlacklistFilter = createBlacklistFilter('ui', [
   'refreshing',
   'login.loading',
@@ -22,6 +23,7 @@ const uiSubsetBlacklistFilter = createBlacklistFilter('ui', [
   'login.error',
   'feedback.processing'
 ])
+
 const appSubsetBlacklistFilter = createBlacklistFilter('app', [
   'version',
   'latestVersion',
@@ -29,7 +31,9 @@ const appSubsetBlacklistFilter = createBlacklistFilter('app', [
   'v2ex',
   'aboutUs'
 ])
+
 const tabSubsetWhitelistFilter = createBlacklistFilter('tab', ['list'])
+
 const notificationSubsetBlacklistFilter = createBlacklistFilter('notification', ['refreshing'])
 
 const persistConfig = {
@@ -53,9 +57,8 @@ const composeEnhancer = composeWithDevTools({
 
 export const store = createStore(persistedReducer, composeEnhancer(applyMiddleware(thunk)))
 
-export const persistor = persistStore(store as any)
+export const persistor = persistStore(store)
 
-export type TStore = typeof store
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 

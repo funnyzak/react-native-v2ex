@@ -1,13 +1,14 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/04/06.
  */
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import { Text } from '@src/components'
 import { useAppSelector } from '@src/hooks'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
 import { ITheme, useTheme } from '@src/theme'
 import { IState } from '@src/types'
-import React from 'react'
+import React, { ComponentType } from 'react'
 import {
   Image,
   ImageSourcePropType,
@@ -133,6 +134,62 @@ const Footer = () => {
   )
 }
 
+export interface TopTabListProps {
+  containerStyle?: StyleProp<ViewStyle>
+  list?: {
+    component: ComponentType<any>
+    title: string
+  }[]
+}
+
+const Tab = createMaterialTopTabNavigator()
+const TopTabList = (props: TopTabListProps) => {
+  const { theme } = useTheme()
+  return (
+    <Tab.Navigator
+      tabBarPosition="top"
+      style={[{ backgroundColor: theme.colors.surface }, props.containerStyle]}
+      screenOptions={{
+        lazy: true,
+        tabBarActiveTintColor: theme.colors.tabActiveTintColor,
+        tabBarInactiveTintColor: theme.colors.tabInactiveTintColor,
+        tabBarScrollEnabled: true,
+        swipeEnabled: false,
+        tabBarItemStyle: {
+          height: 35,
+          width: 'auto',
+          minHeight: 35,
+          padding: 0,
+          marginHorizontal: theme.spacing.tiny,
+          alignItems: 'center'
+        },
+        tabBarStyle: {
+          marginHorizontal: theme.dimens.layoutContainerHorizontalMargin,
+          elevation: 0,
+          shadowOpacity: 0,
+          borderBottomColor: theme.colors.border,
+          borderBottomWidth: 0.3
+        },
+        tabBarLabelStyle: {
+          fontSize: theme.typography.labelText.fontSize,
+          height: 20
+        },
+        tabBarIndicatorStyle: {
+          backgroundColor: theme.colors.secondary
+        }
+      }}>
+      {props.list?.map((v, i) => (
+        <Tab.Screen
+          key={i}
+          name={'tab-container-' + i.toString()}
+          component={v.component}
+          options={{ title: v.title }}
+        />
+      ))}
+    </Tab.Navigator>
+  )
+}
+
 const styles = {
   headerText: (theme: ITheme, textColor?: string): TextStyle => ({
     ...theme.typography.subheadingText,
@@ -199,4 +256,4 @@ const styles = {
   }
 }
 
-export { TextWithIconPress, TextGrid, BorderLine, HeaderButton, Footer }
+export { TextWithIconPress, TopTabList, TextGrid, BorderLine, HeaderButton, Footer }

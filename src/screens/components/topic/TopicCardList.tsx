@@ -4,10 +4,14 @@ import { NavigationService, ROUTES } from '@src/navigation'
 import { SylCommon, useTheme } from '@src/theme'
 import { ITheme, V2exObject } from '@src/types'
 import React from 'react'
-import { FlatList, View, ViewStyle } from 'react-native'
+import { FlatList, StyleProp, View, ViewStyle } from 'react-native'
 import TopicCardItem from './TopicCardItem'
 
 export interface TopicCardListProps {
+  /**
+   * container style
+   */
+  containerStyle?: StyleProp<ViewStyle>
   onRowPress?: (topic: V2exObject.Topic) => void
   canLoadMoreContent?: boolean
   topics?: Array<V2exObject.Topic>
@@ -23,6 +27,7 @@ export interface TopicCardListProps {
 }
 
 const TopicCardList: React.FC<TopicCardListProps> = ({
+  containerStyle,
   onRowPress,
   canLoadMoreContent,
   displayStyle,
@@ -101,7 +106,7 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
     }
   }
 
-  return <View style={styles.container(theme)}>{renderContent()}</View>
+  return <View style={[styles.container(theme), containerStyle]}>{renderContent()}</View>
 }
 
 /**

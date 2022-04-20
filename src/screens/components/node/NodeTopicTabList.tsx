@@ -1,47 +1,52 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/04/01.
  */
-import React from 'react'
-import { View, ViewStyle, TextStyle } from 'react-native'
-
-import { Text, Button, Spinner, Placeholder } from '@src/components'
-import { ITheme, SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
-import { NavigationService, ROUTES } from '@src/navigation'
-import { V2exObject } from '@src/types'
+import { useTheme } from '@src/theme'
+import React from 'react'
+import { StyleProp, ViewStyle } from 'react-native'
+import { TopTabList } from '../common'
+import { FetchTopicCardList } from '../topic'
 
 /**
- * // TODO: NodeTopicTabList
  * NodeTopicTabList props
  */
 export interface NodeTopicTabListProps {
   /**
-   * NodeTopicTabList width
+   * container style
    */
-  width?: number | string
+  containerStyle?: StyleProp<ViewStyle>
 
   /**
-   * NodeTopicTabList height
+   * node name
    */
-  height?: number | string
+  nodename: string
 }
 
-const NodeTopicTabList: React.FC<NodeTopicTabListProps> = ({ width, height }: NodeTopicTabListProps) => {
+const NodeTopicTabList: React.FC<NodeTopicTabListProps> = ({ nodename, containerStyle }: NodeTopicTabListProps) => {
+  const { theme } = useTheme()
+
+  const Newest = (newest: boolean) => () =>
+    <FetchTopicCardList nodeName={nodename} containerStyle={[{ minHeight: 100 }]} v2API={!newest} />
   const renderContent = () => {
     return (
-      <View>
-        <Text>Hello World, NodeTopicTabList.</Text>
-      </View>
+      <TopTabList
+        containerStyle={containerStyle}
+        list={[
+          {
+            component: Newest(true),
+            title: translate('common.latest')
+          },
+          {
+            component: Newest(false),
+            title: translate('common.all')
+          }
+        ]}
+      />
     )
   }
 
   return renderContent()
-}
-
-const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    flex: 1
-  })
 }
 
 export default NodeTopicTabList

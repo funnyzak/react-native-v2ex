@@ -57,7 +57,7 @@ const My = ({
         info={{
           styleType: 'simple',
           withArrow: true,
-          profile: profile
+          info: profile
         }}
         stat={{
           favorites: 0,
