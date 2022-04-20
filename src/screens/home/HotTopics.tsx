@@ -8,7 +8,7 @@ import { FetchTopicCardList } from '../components'
 const HotTopics = ({ route, navigation }: ScreenProps) => {
   const { theme } = useTheme()
   return (
-    <View style={[SylCommon.Layout.fill, { backgroundColor: theme.colors.background }]}>
+    <View style={SylCommon.Layout.fill}>
       <FetchTopicCardList displayStyle="full" nodeName={NODE_TABS.HOT} />
     </View>
   )
