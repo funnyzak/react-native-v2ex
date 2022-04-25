@@ -88,7 +88,6 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
           numColumns={1}
           horizontal={false}
           key={'ONE COLUMN'}
-          ListFooterComponentStyle={[]}
           maxToRenderPerBatch={10}
           initialNumToRender={10}
           ItemSeparatorComponent={renderItemSeparator}

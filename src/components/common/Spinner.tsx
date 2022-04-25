@@ -15,7 +15,7 @@ const Spinner = ({
   const { theme } = useTheme()
 
   return (
-    <View style={[SylCommon.Layout.fill, styles.containerStyle(theme), style]}>
+    <View style={[styles.containerStyle(theme), style]}>
       <ActivityIndicator size={size} color={theme.colors.secondary} />
       <View style={{ justifyContent: 'center', alignItems: 'center' }}>
         <Text adjustsFontSizeToFit={true} style={styles.textStyle(theme)}>
@@ -30,6 +30,7 @@ export { Spinner }
 
 const styles = {
   containerStyle: (_theme: ITheme): ViewStyle => ({
+    marginVertical: _theme.spacing.large,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column'
