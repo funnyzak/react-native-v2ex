@@ -48,8 +48,8 @@ const WebLink = ({ route, navigation }: ScreenProps) => {
   }, [navigation])
 
   return (
-    <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
-      {loading && <Spinner text={translate('placeholder.loading')} />}
+    <>
+      {loading && <Spinner text={translate('placeholder.loading')} style={SylCommon.Layout.fill} />}
       <WebView
         ref={webViewRef}
         originWhitelist={['*']}
@@ -73,7 +73,7 @@ const WebLink = ({ route, navigation }: ScreenProps) => {
           })
         }}
       />
-    </View>
+    </>
   )
 }
 
