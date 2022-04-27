@@ -4,6 +4,8 @@
     "intro": "这个项目使用了 React Native 构建了一个 V2EX 移动客户端应用。主要目的是为了构建一个 React Native 快速开发脚手架。"
   },
   "common": {
+    "more": "更多",
+    "home": "主页",
     "integrated": "综合",
     "help": "帮助",
     "replies": "回复",
@@ -89,7 +91,6 @@
     "joinSinceTime": "加入于",
     "joinV2exSinceTime": "第 $ 号会员，加入于 $。",
     "createNodeSinceTime": "节点从 $ 创建至今。",
-
     "noLogin": "未登陆",
     "posdedTopics": "$ 发布的主题",
     "openApp": "打开APP",

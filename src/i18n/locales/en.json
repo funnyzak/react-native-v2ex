@@ -4,6 +4,8 @@
     "intro": "This project used React Native to build a V2EX mobile client application. The main goal was to build a React Native rapid development scaffold."
   },
   "common": {
+    "more":"More",
+    "home": "Home",
     "integrated": "Integrated",
     "help": "Help",
     "replies": "Replies",

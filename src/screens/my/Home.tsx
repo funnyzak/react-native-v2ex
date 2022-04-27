@@ -38,7 +38,8 @@ const My = ({
       headerRight: () =>
         profile && (
           <HeaderButton
-            source={theme.assets.images.icons.header.more}
+            containerStyle={[{ marginRight: theme.dimens.layoutContainerHorizontalMargin }]}
+            text={translate('common.more')}
             onPress={() => {
               navigation.navigate(ROUTES.WebViewer, { url: profile?.url })
             }}
