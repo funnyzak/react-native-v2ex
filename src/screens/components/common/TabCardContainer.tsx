@@ -50,7 +50,6 @@ const TabCardContainer: React.FC<TabCardContainerProps> = ({
 
 const styles = {
   container: (theme: ITheme): ViewStyle => ({
-    marginTop: theme.spacing.small,
     flexDirection: 'column'
   }),
   tabBar: (theme: ITheme): ViewStyle => ({
