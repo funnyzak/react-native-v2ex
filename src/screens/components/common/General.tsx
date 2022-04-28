@@ -214,6 +214,7 @@ const TopTabList = (props: TopTabListProps) => {
         tabBarStyle: {
           marginHorizontal: theme.dimens.layoutContainerHorizontalMargin,
           elevation: 0,
+          backgroundColor: theme.colors.transparent,
           shadowOpacity: 0,
           borderBottomColor: theme.colors.border,
           borderBottomWidth: 0.3
