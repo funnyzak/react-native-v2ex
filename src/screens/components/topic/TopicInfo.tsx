@@ -29,7 +29,7 @@ const TopicInfo: React.FC<TopicInfoProps> = ({ containerStyle, info }: TopicInfo
   const renderContent = () => {
     return (
       <View style={[SylCommon.Card.container(theme), styles.container(theme), containerStyle]}>
-        <TopicCardItem topic={info} />
+        <TopicCardItem topic={info} showlastReplay={false} />
         <RenderHtml
           source={{
             html: `<div style="color:${theme.colors.bodyText}">${info.content_rendered}</div>` || '<p></p>'

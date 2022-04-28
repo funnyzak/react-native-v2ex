@@ -25,6 +25,11 @@ export interface TopicCardItemProps {
   displayStyle?: 'simple' | 'full' | 'auto'
 
   /**
+   * Whether to show last reply users
+   */
+  showlastReplay?: boolean
+
+  /**
    * Topic Info
    */
   topic: V2exObject.Topic
@@ -35,7 +40,13 @@ export interface TopicCardItemProps {
   onPress?: (topic: V2exObject.Topic) => void
 }
 
-const TopicCardItem = ({ containerStyle, displayStyle = 'auto', topic, onPress }: TopicCardItemProps) => {
+const TopicCardItem = ({
+  containerStyle,
+  showlastReplay = true,
+  displayStyle = 'auto',
+  topic,
+  onPress
+}: TopicCardItemProps) => {
   const { theme } = useTheme()
 
   const display_style = useMemo(
@@ -90,7 +101,7 @@ const TopicCardItem = ({ containerStyle, displayStyle = 'auto', topic, onPress }
 
           <View style={styles.infoMainItem(theme)}>
             <View style={styles.summaryContainer(theme)}>
-              {topic.last_reply_by !== '' && (
+              {topic.last_reply_by !== '' && showlastReplay ? (
                 <TextWithIconPress
                   containerStyle={[{ marginRight: theme.spacing.small }]}
                   text={topic.last_reply_by}
@@ -100,7 +111,7 @@ const TopicCardItem = ({ containerStyle, displayStyle = 'auto', topic, onPress }
                     NavigationService.navigate(ROUTES.Profile, { username: topic.last_reply_by })
                   }}
                 />
-              )}
+              ) : null}
               <TextWithIconPress
                 containerStyle={[{ marginRight: theme.spacing.small }]}
                 text={topic.replies.toString()}
@@ -157,7 +168,7 @@ const styles = {
   }),
   infoMainItem: (theme: ITheme): ViewStyle => ({
     flexDirection: 'row',
-    marginBottom: theme.spacing.tiny,
+    marginBottom: theme.spacing.small,
     justifyContent: 'space-between'
   }),
   summaryContainer: (theme: ITheme): ViewStyle => ({
