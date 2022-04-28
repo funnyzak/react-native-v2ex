@@ -57,7 +57,7 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    height: 30
+    height: 36
   }),
   content: (theme: ITheme): ViewStyle => ({
     marginVertical: theme.spacing.small

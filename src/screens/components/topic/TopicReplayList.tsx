@@ -77,6 +77,7 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({ containerStyle, topic
     return (
       <Placeholder
         placeholderText={translate('placeholder.noResult')}
+        displayType={'text'}
         buttonText={translate('button.tryAgain')}
         buttonPress={onRefresh}
       />
@@ -93,9 +94,7 @@ const styles = {
   container: (theme: ITheme): ViewStyle => ({
     flex: 1
   }),
-  itemContainer: (theme: ITheme): ViewStyle => ({
-    ...SylCommon.Card.container(theme)
-  }),
+  itemContainer: (theme: ITheme): ViewStyle => ({}),
   itemSeparator: (theme: ITheme) => ({
     height: 0
   })

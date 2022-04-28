@@ -45,7 +45,7 @@ const TopicInfo: React.FC<TopicInfoProps> = ({ containerStyle, info }: TopicInfo
 
 const styles = {
   container: (theme: ITheme): ViewStyle => ({
-    paddingTop: theme.spacing.medium
+    paddingVertical: theme.spacing.medium
   })
 }
 
