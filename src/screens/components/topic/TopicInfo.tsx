@@ -1,36 +1,41 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/04/01.
  */
-import React from 'react'
-import { View, ViewStyle, TextStyle } from 'react-native'
-
-import { Text, Button, Spinner, Placeholder } from '@src/components'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
-import { translate } from '@src/i18n'
-import { NavigationService, ROUTES } from '@src/navigation'
 import { V2exObject } from '@src/types'
+import React from 'react'
+import { StyleProp, View, ViewStyle } from 'react-native'
+import RenderHtml from 'react-native-render-html'
+import TopicCardItem from './TopicCardItem'
 
 /**
- * // TODO: TopicInfo
  * TopicInfo props
  */
 export interface TopicInfoProps {
   /**
-   * TopicInfo width
+   * container style
    */
-  width?: number | string
+  containerStyle?: StyleProp<ViewStyle>
 
   /**
-   * TopicInfo height
+   * TopicInfo width
    */
-  height?: number | string
+  info: V2exObject.Topic
 }
 
-const TopicInfo: React.FC<TopicInfoProps> = ({ width, height }: TopicInfoProps) => {
+const TopicInfo: React.FC<TopicInfoProps> = ({ containerStyle, info }: TopicInfoProps) => {
+  const { theme } = useTheme()
+
   const renderContent = () => {
     return (
-      <View>
-        <Text>Hello World, TopicInfo.</Text>
+      <View style={[SylCommon.Card.container(theme), styles.container(theme), containerStyle]}>
+        <TopicCardItem topic={info} showlastReplay={false} />
+        <RenderHtml
+          source={{
+            html: `<div style="color:${theme.colors.bodyText}">${info.content_rendered}</div>` || '<p></p>'
+          }}
+          contentWidth={theme.dimens.WINDOW_WIDTH - theme.spacing.large * 2}
+        />
       </View>
     )
   }
@@ -40,7 +45,7 @@ const TopicInfo: React.FC<TopicInfoProps> = ({ width, height }: TopicInfoProps) 
 
 const styles = {
   container: (theme: ITheme): ViewStyle => ({
-    flex: 1
+    paddingVertical: theme.spacing.medium
   })
 }
 
