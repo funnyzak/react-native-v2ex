@@ -1,17 +1,11 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/04/01.
  */
-import RenderHtml from 'react-native-render-html'
-
-import { Avatar, Text } from '@src/components'
-import { translate } from '@src/i18n'
-import { NavigationService, ROUTES } from '@src/navigation'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
 import { V2exObject } from '@src/types'
-import dayjs from 'dayjs'
-import React, { useMemo } from 'react'
-import { Image, StyleProp, TouchableOpacity, View, ViewStyle } from 'react-native'
-import { TextWithIconPress } from '../common'
+import React from 'react'
+import { StyleProp, View, ViewStyle } from 'react-native'
+import RenderHtml from 'react-native-render-html'
 import TopicCardItem from './TopicCardItem'
 
 /**
