@@ -79,6 +79,7 @@
   },
   "label": {
     "registedMember": "注册会员",
+    "latestReplay": "最新回复",
     "topicCount": "主题数量",
     "postedTime": "发布于 $",
     "lastReplyTime": "最后回复于 $",
