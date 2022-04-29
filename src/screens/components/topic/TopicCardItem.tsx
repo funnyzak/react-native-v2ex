@@ -3,7 +3,7 @@
  */
 
 import * as React from 'react'
-import { View, TouchableOpacity, ViewStyle, TextStyle } from 'react-native'
+import { View, TouchableOpacity, ViewStyle, TextStyle, StyleProp } from 'react-native'
 import { ITheme, V2exObject } from '@src/types'
 import { SylCommon, useTheme } from '@src/theme'
 import { Avatar, Text } from '@src/components'
@@ -17,7 +17,7 @@ export interface TopicCardItemProps {
   /**
    * container style
    */
-  containerStyle?: ViewStyle
+  containerStyle?: StyleProp<ViewStyle>
 
   /**
    * Display Style
@@ -146,7 +146,7 @@ const TopicCardItem = ({
 
 const styles = {
   container: (theme: ITheme): ViewStyle => ({
-    paddingTop: theme.spacing.tiny,
+    paddingTop: theme.spacing.small,
     width: '100%',
     flexDirection: 'column',
     justifyContent: 'flex-start',
@@ -154,7 +154,7 @@ const styles = {
   }),
   infoContainer: (theme: ITheme): ViewStyle => ({
     flexDirection: 'row',
-    marginBottom: theme.spacing.medium
+    marginBottom: theme.spacing.tiny
   }),
   avatar: (theme: ITheme): ViewStyle => ({
     width: 40,
