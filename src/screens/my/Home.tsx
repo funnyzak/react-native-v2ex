@@ -15,12 +15,14 @@ const My = ({
   navigation,
   app,
   profile,
+  topics,
   readedTopics
 }: ScreenProps &
   IState.State & {
     profile?: V2exObject.Member
     token?: V2exObject.MToken
     readedTopics?: V2exObject.Topic[]
+    topics?: V2exObject.Topic[]
     logout: () => void
   }) => {
   const { theme } = useTheme()
@@ -62,7 +64,7 @@ const My = ({
         }}
         stat={{
           favorites: 0,
-          topics: 0,
+          topics: topics?.length ?? 0,
           history: readedTopics?.length ?? 0,
           following: 0
         }}
@@ -187,9 +189,10 @@ const styles = {
 }
 
 const mapStateToProps = ({ member, setting, app }: IState.State) => {
-  const { profile, token, readedTopics } = member
+  const { profile, token, readedTopics, topics } = member
   return {
     profile,
+    topics,
     token,
     readedTopics,
     setting,
