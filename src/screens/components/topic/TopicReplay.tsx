@@ -30,7 +30,7 @@ const TopicReplay: React.FC<TopicReplayProps> = ({ containerStyle, info }: Topic
   const renderContent = () => {
     return (
       <>
-        <NeedLogin mustLogin={true}>
+        <NeedLogin mustLogin={false}>
           {list && list.length === 0 ? (
             <Placeholder placeholderText={translate('placeholder.noReplies')} />
           ) : (
