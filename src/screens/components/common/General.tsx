@@ -151,11 +151,13 @@ const NeedLogin = ({
    */
   containerStyle?: StyleProp<ViewStyle>
   placeholderBackground?: string
+  funcTitle?: string
   mustLogin?: boolean
   onMount?: () => void
   children?: React.ReactNode
 }) => {
   const { logined } = useSession()
+  const { theme } = useTheme()
 
   useEffect(() => {
     if (logined) {
@@ -167,7 +169,7 @@ const NeedLogin = ({
     <View style={[{ flex: 1 }, containerStyle]}>
       {!logined && mustLogin ? (
         <Placeholder
-          containerStyle={[{ backgroundColor: placeholderBackground }]}
+          containerStyle={[{ marginVertical: theme.spacing.medium, backgroundColor: placeholderBackground }]}
           displayType="text"
           placeholderText={translate('placeholder.needToLogin')}
           buttonText={translate('label.goLogin')}

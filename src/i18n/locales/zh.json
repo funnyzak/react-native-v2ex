@@ -4,6 +4,7 @@
     "intro": "这个项目使用了 React Native 构建了一个 V2EX 移动客户端应用。主要目的是为了构建一个 React Native 快速开发脚手架。"
   },
   "common": {
+    "refresh": "刷新",
     "more": "更多",
     "home": "主页",
     "integrated": "综合",
@@ -163,13 +164,13 @@
     "noLogin": "请先登陆",
     "noToken": "请输入API令牌",
     "noNotifications": "还没有任何通知。",
-    "noMoreReply": "没有更多回复了。",
-    "noMoreTopics": "没有更多主题了。",
-    "noMoreNodes": "没有更多节点了。",
-    "noMoreData": "没有更多数据了。",
-    "noMoreNotifications": "没有更多通知了。",
+    "noMoreReply": "没有更多回复了",
+    "noMoreTopics": "没有更多主题了",
+    "noMoreNodes": "没有更多节点了",
+    "noMoreData": "没有更多数据了",
+    "noMoreNotifications": "没有更多通知了",
     "noPostTopics": "没有发布主题。",
-    "needToLogin": "需要登陆，还是登陆下吧？！",
+    "needToLogin": "功能需要登陆，现在登陆吗？",
     "seemsErrorAndTryAgain": "貌似产生了一个错误，重试下？！",
     "openLinkFailAndTryAgain": "载入失败，试着默认浏览器打开？!"
   },
