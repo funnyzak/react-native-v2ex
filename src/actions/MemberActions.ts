@@ -11,7 +11,9 @@ import {
   APP_AUTH_ERROR,
   APP_AUTH_SUCCESS,
   V2exObject,
-  MEMBER_TOPICS
+  MEMBER_TOPICS,
+  MEMBER_INSEREST_NODE,
+  MEMBER_UNINTEREST_NODE
 } from '../types'
 import { v2exLib } from '@src/v2ex'
 import { logError } from '@src/helper/logger'
@@ -37,6 +39,16 @@ export const getToken = () => async (dispatch: Dispatch) => {
 export const setMyTopics = (topics: V2exObject.Topic[]) => ({
   type: MEMBER_TOPICS,
   payload: topics
+})
+
+export const interestNode = (node: V2exObject.Node) => ({
+  type: MEMBER_INSEREST_NODE,
+  payload: node
+})
+
+export const unInterestNode = (node: V2exObject.Node) => ({
+  type: MEMBER_UNINTEREST_NODE,
+  payload: node
 })
 
 export const setCurrentToken = (token?: V2exObject.MToken) => ({
