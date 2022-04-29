@@ -65,11 +65,11 @@
 
 ### iOS
 
-![preview](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/iOS/preview2.jpeg)
+![preview](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/dev/_docs/assets/screenshot/iOS/preview2.jpeg)
 
 ### Android
 
-![preview](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/Android/preview2.jpeg)
+![preview](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/dev/_docs/assets/screenshot/Android/preview2.jpeg)
 
 ## Development
 
