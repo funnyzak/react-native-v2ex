@@ -46,26 +46,28 @@ const ProfileTopics: React.FC<ProfileTopicsProps> = ({ containerStyle, username 
 
   const renderContent = () => {
     return (
-      <TabCardContainer
-        containerStyle={[styles.container(theme), containerStyle]}
-        icon={theme.assets.images.icons.tabbar.title.latest}
-        title={translate('label.postedTopics').replace('$', username)}>
+      <>
         {list == undefined || list.length > 0 ? (
-          <TopicCardList
-            itemContainerStyle={[{ paddingHorizontal: 0 }]}
-            useFlatList={false}
-            topics={list}
-            containerStyle={{ paddingHorizontal: 0 }}
-          />
+          <TabCardContainer
+            containerStyle={[styles.container(theme), containerStyle]}
+            icon={theme.assets.images.icons.tabbar.title.latest}
+            title={translate('label.postedTopics').replace('$', username)}>
+            <TopicCardList
+              itemContainerStyle={[{ paddingHorizontal: 0 }]}
+              useFlatList={false}
+              topics={list}
+              containerStyle={{ paddingHorizontal: 0 }}
+            />
+          </TabCardContainer>
         ) : (
           <Placeholder
-            placeholderText={translate('placeholder.noTopics')}
-            displayType="text"
-            buttonText={translate('button.tryAgain')}
+            containerStyle={[styles.container(theme), containerStyle]}
+            placeholderText={translate('placeholder.noPostTopics')}
+            buttonText={translate('common.refresh')}
             buttonPress={fetchTopics}
           />
         )}
-      </TabCardContainer>
+      </>
     )
   }
 

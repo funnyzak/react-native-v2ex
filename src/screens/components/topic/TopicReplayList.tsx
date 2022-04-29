@@ -17,9 +17,15 @@ export interface TopicReplayListProps {
   containerStyle?: StyleProp<ViewStyle>
 
   topicId: number
+
+  refreshCallBack?: (list: V2exObject.TopicReply[]) => void
 }
 
-const TopicReplayList: React.FC<TopicReplayListProps> = ({ containerStyle, topicId }: TopicReplayListProps) => {
+const TopicReplayList: React.FC<TopicReplayListProps> = ({
+  containerStyle,
+  topicId,
+  refreshCallBack
+}: TopicReplayListProps) => {
   const { theme } = useTheme()
   const { showMessage } = useToast()
   const [refreshing, setRefreshing] = useState<boolean>(false)
@@ -30,10 +36,12 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({ containerStyle, topic
       (res) => {
         setList(res)
         setRefreshing(false)
+        refreshCallBack && refreshCallBack(res)
       },
       (err) => {
         showMessage(translate('error.network'))
         setRefreshing(false)
+        refreshCallBack && refreshCallBack([])
       }
     )
   }, [topicId, v2exLib])

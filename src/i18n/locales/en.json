@@ -4,6 +4,7 @@
     "intro": "This project used React Native to build a V2EX mobile client application. The main goal was to build a React Native rapid development scaffold."
   },
   "common": {
+    "refresh": "Refresh",
     "more": "More",
     "home": "Home",
     "integrated": "Integrated",
@@ -169,7 +170,7 @@
     "noMoreData": "No more data.",
     "noMoreNotifications": "No more notifications.",
     "noPostTopics": "No more topics.",
-    "needToLogin": "Requires login, how about login?!",
+    "needToLogin": "Requires login, login now?!",
     "seemsErrorAndTryAgain": "Something went wrong, try again？！",
     "openLinkFailAndTryAgain": "Failed to load, try to open in default browser?!"
   },
