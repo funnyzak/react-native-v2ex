@@ -14,7 +14,7 @@ export declare module IState {
   }
 
   /**
-   * @description 全局状态
+   * 全局状态
    */
   export interface AppState {
     v2ex?: V2exAPI.V2ex
@@ -77,7 +77,7 @@ export declare module IState {
   }
 
   /**
-   * @description 通用页面状态
+   * 通用页面状态
    */
   export interface UIState {
     login: {
@@ -97,31 +97,31 @@ export declare module IState {
    */
   export interface TabNodeState {
     /**
-     * @description 失败提示
+     * 失败提示
      */
     error: string | null
     /**
-     * @description 拉取成功提示
+     * 拉取成功提示
      */
     success: string | null
     /**
-     * @description 节点基本信息
+     * 节点基本信息
      */
     nodeTab: NODE_TAB_TYPE
     /**
-     * @description 节点主题列表
+     * 节点主题列表
      */
     list?: V2exObject.Topic[]
     /**
-     * @description 节点主题列表刷新状态
+     * 节点主题列表刷新状态
      */
     refreshing: boolean
     /**
-     * @description has more topics
+     * has more topics
      */
     hasMore: boolean
     /**
-     * @description 是否显示加载更多状态
+     * 是否显示加载更多状态
      */
     loadMore: boolean
   }
@@ -131,27 +131,32 @@ export declare module IState {
    */
   export interface TabsState {
     /**
-     * @description 节点状态
+     * 节点状态
      */
     list: TabNodeState[]
   }
 
   /**
-   * @description 用户状态
+   * 用户状态
    */
   export interface MemberState {
     /**
-     * @description 用户令牌信息
+     * 用户令牌信息
      */
     token?: V2exObject.MToken
 
     /**
-     * @description 用户信息
+     * 用户信息
      */
     profile?: V2exObject.Member
 
     /**
-     * @description 用户信息拉取
+     * 用户发布的主题
+     */
+    topics?: V2exObject.Topic[]
+
+    /**
+     * 用户信息拉取
      */
     refreshing: boolean
 
@@ -178,20 +183,20 @@ export declare module IState {
   }
 
   /**
-   * @description 应用设置状态
+   * 应用设置状态
    */
   export interface SettingState {
     /**
-     * @description 应用语言设置
+     * 应用语言设置
      */
     languageTag: LanguageTagType
     /**
-     * @description 应用主题
+     * 应用主题
      */
     theme: ThemeType
   }
   /**
-   * @description 通知状态
+   * 通知状态
    */
   export interface NotificationState {
     refreshing: boolean

@@ -20,6 +20,7 @@ export const MEMBER_PROFILE = 'profile'
 export const MEMBER_FOLLOW_PEOPLE = 'follow_people'
 export const MEMBER_LIKE_TOPICS = 'like_topics'
 export const MEMBER_READ_TOPIC = 'read_topic'
+export const MEMBER_TOPICS = 'member_topics'
 
 export const FEEDBACKING = 'feedbacking'
 export const FEEDBACK_DONE = 'feedback_done'
@@ -47,6 +48,7 @@ export const APP_CACHE_RESET_NODES = 'v2ex_cache_reset_node'
 export const APP_CACHE_RESET = 'v2ex_cache_reset'
 
 export const ActionTypes = {
+  MEMBER_TOPICS,
   APP_CACHE_RESET,
   APP_CACHE_RESET_MEMBERS,
   APP_CACHE_RESET_NODES,

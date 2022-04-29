@@ -86,6 +86,7 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
       return useFlatList ? (
         <FlatList
           refreshControl={refreshControl}
+          style={styles.container(theme)}
           data={topics}
           renderItem={renderItemRow}
           keyExtractor={(item, index) => index.toString()}
@@ -121,7 +122,9 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
  * @description styles settings
  */
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({}),
+  container: (theme: ITheme): ViewStyle => ({
+    flex: 1
+  }),
   topicItemContainer: (theme: ITheme): ViewStyle => ({
     ...SylCommon.Card.container(theme)
   }),

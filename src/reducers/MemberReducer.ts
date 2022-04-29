@@ -1,10 +1,12 @@
-import { Action, IState, APP_AUTH, MEMBER_PROFILE, APP_LOGOUT, MEMBER_READ_TOPIC } from '../types'
+import { Action, IState, APP_AUTH, MEMBER_PROFILE, APP_LOGOUT, MEMBER_READ_TOPIC, MEMBER_TOPICS } from '../types'
 const INITIAL_STATE: IState.MemberState = {
   refreshing: false
 }
 
 export default (state: IState.MemberState = INITIAL_STATE, action: Action): IState.MemberState => {
   switch (action.type) {
+    case MEMBER_TOPICS:
+      return { ...state, topics: action.payload }
     case APP_AUTH:
       return { ...state, token: action.payload }
     case APP_LOGOUT:

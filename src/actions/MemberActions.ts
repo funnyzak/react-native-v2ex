@@ -10,7 +10,8 @@ import {
   APP_LOGOUT,
   APP_AUTH_ERROR,
   APP_AUTH_SUCCESS,
-  V2exObject
+  V2exObject,
+  MEMBER_TOPICS
 } from '../types'
 import { v2exLib } from '@src/v2ex'
 import { logError } from '@src/helper/logger'
@@ -32,6 +33,11 @@ export const getToken = () => async (dispatch: Dispatch) => {
     payload: {}
   })
 }
+
+export const setMyTopics = (topics: V2exObject.Topic[]) => ({
+  type: MEMBER_TOPICS,
+  payload: topics
+})
 
 export const setCurrentToken = (token?: V2exObject.MToken) => ({
   type: APP_AUTH,
