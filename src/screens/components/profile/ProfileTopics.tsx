@@ -27,10 +27,9 @@ const ProfileTopics: React.FC<ProfileTopicsProps> = ({ containerStyle, username 
 
   useEffect(() => {
     fetchTopics()
-  }, [])
+  }, [username])
 
   const fetchTopics = useCallback(() => {
-    setList([])
     v2exLib.topic
       .topics(username, 'username')
       .then((res) => {
@@ -51,7 +50,7 @@ const ProfileTopics: React.FC<ProfileTopicsProps> = ({ containerStyle, username 
         containerStyle={[styles.container(theme), containerStyle]}
         icon={theme.assets.images.icons.tabbar.title.latest}
         title={translate('label.postedTopics').replace('$', username)}>
-        {!list || list.length > 0 ? (
+        {list == undefined || list.length > 0 ? (
           <TopicCardList
             itemContainerStyle={[{ paddingHorizontal: 0 }]}
             useFlatList={false}
