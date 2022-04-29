@@ -19,14 +19,16 @@ export interface TopicCardListProps {
   refreshControl?: React.ReactElement
   searchIndicator?: boolean
   refreshCallback?: () => void
-
   /**
    * Display Style
    */
   displayStyle?: 'simple' | 'full' | 'auto'
+
+  useFlatList?: boolean
 }
 
 const TopicCardList: React.FC<TopicCardListProps> = ({
+  useFlatList = true,
   containerStyle,
   onRowPress,
   canLoadMoreContent,
@@ -47,6 +49,7 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
   const renderItemRow = ({ item }: { item: V2exObject.Topic }) =>
     !item || item === null ? null : (
       <TopicCardItem
+        key={item.id}
         displayStyle={displayStyle}
         containerStyle={styles.topicItemContainer(theme)}
         topic={item}
@@ -76,7 +79,7 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
     }
 
     if (topics.length > 0) {
-      return (
+      return useFlatList ? (
         <FlatList
           refreshControl={refreshControl}
           data={topics}
@@ -92,6 +95,8 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
           initialNumToRender={10}
           ItemSeparatorComponent={renderItemSeparator}
         />
+      ) : (
+        <>{topics.map((v) => renderItemRow({ item: v }))}</>
       )
     }
     if (!searchIndicator) {
