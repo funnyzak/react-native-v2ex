@@ -6,8 +6,9 @@ import { useNode } from '@src/hooks/useNode'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
+import { V2exObject } from '@src/types'
 import dayjs from 'dayjs'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import { TextWithIconPress } from '../common'
 
@@ -24,11 +25,22 @@ export interface NodeInfoCardProps {
    * node name or id
    */
   nodeid: string | number
+
+  /**
+   * Load completion callback
+   */
+  loadedCallback?: (node: V2exObject.Node) => void
 }
 
-const NodeInfoCard: React.FC<NodeInfoCardProps> = ({ nodeid, containerStyle }: NodeInfoCardProps) => {
+const NodeInfoCard: React.FC<NodeInfoCardProps> = ({ nodeid, loadedCallback, containerStyle }: NodeInfoCardProps) => {
   const { theme } = useTheme()
   const { node: info } = useNode({ nodeid: nodeid })
+
+  useEffect(() => {
+    if (loadedCallback && info) {
+      loadedCallback(info)
+    }
+  }, [info])
 
   const renderContent = () => {
     return (
