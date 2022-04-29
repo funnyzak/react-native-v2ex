@@ -93,7 +93,7 @@
     "joinV2exSinceTime": "第 $ 号会员，加入于 $。",
     "createNodeSinceTime": "节点从 $ 创建至今。",
     "noLogin": "未登陆",
-    "posdedTopics": "$ 发布的主题",
+    "postedTopics": "$ 发布的主题",
     "openApp": "打开APP",
     "goLogin": "去登陆",
     "loginTips": "登陆体验更多V2HUB功能",

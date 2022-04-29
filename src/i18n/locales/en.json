@@ -93,7 +93,7 @@
     "joinV2exSinceTime": "V2EXer #$, joined on $.",
     "createNodeSinceTime": "Created from $ .",
     "noLogin": "Not logged in",
-    "posdedTopics": "Topics posted by $",
+    "postedTopics": "Topics posted by $",
     "openApp": "Open APP",
     "goLogin": "Login Now",
     "loginTips": "experience more features",

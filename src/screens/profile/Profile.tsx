@@ -1,5 +1,5 @@
 import { logout as actionLogout } from '@src/actions'
-import { Spinner, Text } from '@src/components'
+import { Spinner, Text, useToast } from '@src/components'
 import { useProfile } from '@src/hooks/useProfile'
 import { translate } from '@src/i18n'
 import { ProfileScreenProps as ScreenProps, ROUTES } from '@src/navigation'
@@ -7,8 +7,9 @@ import { SylCommon, useTheme } from '@src/theme'
 import { IState, ITheme, V2exObject } from '@src/types'
 import React, { useEffect, useLayoutEffect, useMemo } from 'react'
 import { TouchableOpacity, View, ViewStyle } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler'
 import { connect } from 'react-redux'
-import { HeaderButton, ProfileInfo } from '../components'
+import { HeaderButton, ProfileDetail, ProfileInfo } from '../components'
 
 const Profile = ({
   route,
@@ -25,19 +26,23 @@ const Profile = ({
 
   useEffect(() => {
     navigation.setOptions({ title: username })
-  }, [])
+  }, [username])
+
+  const { showMessage } = useToast()
+
+  const underConstruction = () => {
+    showMessage({
+      type: 'error',
+      text2: translate('label.underConstruction')
+    })
+  }
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: profile
         ? () =>
             !authMember || authMember.id !== profile.id ? (
-              <HeaderButton
-                text={translate('common.follow')}
-                onPress={() => {
-                  // TODO: 关注
-                }}
-              />
+              <HeaderButton text={translate('common.follow')} onPress={underConstruction} />
             ) : (
               <HeaderButton
                 source={theme.assets.images.icons.header.logout}
@@ -53,25 +58,14 @@ const Profile = ({
   }, [navigation, profile])
 
   return (
-    <View style={SylCommon.Layout.fill}>
-      <View style={[SylCommon.Card.container(theme), styles.container(theme)]}>
-        {profile ? (
-          <ProfileInfo info={profile} styleType="full" />
-        ) : (
-          <Spinner text={translate('placeholder.loading')} />
-        )}
-      </View>
-    </View>
+    <ScrollView style={SylCommon.Layout.fill}>
+      {profile ? (
+        <ProfileDetail profile={profile} />
+      ) : (
+        <Spinner style={{ height: theme.dimens.WINDOW_HEIGHT }} text={translate('placeholder.loading')} />
+      )}
+    </ScrollView>
   )
-}
-
-/**
- * @description styles settings
- */
-const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    paddingTop: theme.spacing.medium
-  })
 }
 
 const mapStateToProps = ({ member }: { member: IState.MemberState }) => {

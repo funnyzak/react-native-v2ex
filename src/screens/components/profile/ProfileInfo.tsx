@@ -95,54 +95,59 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
         {styleType === 'full' && (
           <>
             {info?.bio ? <Text style={[styles.infoItem(theme), theme.typography.bodyText]}>{info?.bio}</Text> : null}
-            <View style={styles.infoItem(theme)}>
-              {info?.location ? (
-                <TextWithIconPress
-                  containerStyle={{ marginRight: theme.spacing.small }}
-                  text={info?.location}
-                  icon={theme.assets.images.icons.profile.location}
-                />
-              ) : null}
-              {info?.website ? (
-                <TextWithIconPress
-                  onPress={() => {
-                    NavigationService.navigate(ROUTES.WebViewer, { url: info.website })
-                  }}
-                  containerStyle={{ marginRight: theme.spacing.small }}
-                  text={info?.website}
-                  icon={theme.assets.images.icons.profile.urlschme}
-                />
-              ) : null}
-            </View>
-            <View style={styles.infoItem(theme)}>
-              {info?.github ? (
-                <TextWithIconPress
-                  onPress={() => {
-                    NavigationService.navigate(ROUTES.WebViewer, { url: `https://github.com/${info.twitter}` })
-                  }}
-                  containerStyle={{ marginRight: theme.spacing.small }}
-                  text={info?.github}
-                  icon={theme.assets.images.icons.profile.github}
-                />
-              ) : null}
-              {info?.telegram ? (
-                <TextWithIconPress
-                  containerStyle={{ marginRight: theme.spacing.small }}
-                  text={info?.telegram}
-                  icon={theme.assets.images.icons.profile.telegram}
-                />
-              ) : null}
-              {info?.twitter ? (
-                <TextWithIconPress
-                  onPress={() => {
-                    NavigationService.navigate(ROUTES.WebViewer, { url: `https://twitter.com/${info.twitter}` })
-                  }}
-                  containerStyle={{ marginRight: theme.spacing.small }}
-                  text={info?.twitter}
-                  icon={theme.assets.images.icons.profile.twitter}
-                />
-              ) : null}
-            </View>
+
+            {info && (info.location || info.website) ? (
+              <View style={styles.infoItem(theme)}>
+                {info?.location ? (
+                  <TextWithIconPress
+                    containerStyle={{ marginRight: theme.spacing.small }}
+                    text={info?.location}
+                    icon={theme.assets.images.icons.profile.location}
+                  />
+                ) : null}
+                {info?.website ? (
+                  <TextWithIconPress
+                    onPress={() => {
+                      NavigationService.navigate(ROUTES.WebViewer, { url: info.website })
+                    }}
+                    containerStyle={{ marginRight: theme.spacing.small }}
+                    text={info?.website}
+                    icon={theme.assets.images.icons.profile.urlschme}
+                  />
+                ) : null}
+              </View>
+            ) : null}
+            {info && (info.github || info.telegram || info.twitter) ? (
+              <View style={styles.infoItem(theme)}>
+                {info?.github ? (
+                  <TextWithIconPress
+                    onPress={() => {
+                      NavigationService.navigate(ROUTES.WebViewer, { url: `https://github.com/${info.twitter}` })
+                    }}
+                    containerStyle={{ marginRight: theme.spacing.small }}
+                    text={info?.github}
+                    icon={theme.assets.images.icons.profile.github}
+                  />
+                ) : null}
+                {info?.telegram ? (
+                  <TextWithIconPress
+                    containerStyle={{ marginRight: theme.spacing.small }}
+                    text={info?.telegram}
+                    icon={theme.assets.images.icons.profile.telegram}
+                  />
+                ) : null}
+                {info?.twitter ? (
+                  <TextWithIconPress
+                    onPress={() => {
+                      NavigationService.navigate(ROUTES.WebViewer, { url: `https://twitter.com/${info.twitter}` })
+                    }}
+                    containerStyle={{ marginRight: theme.spacing.small }}
+                    text={info?.twitter}
+                    icon={theme.assets.images.icons.profile.twitter}
+                  />
+                ) : null}
+              </View>
+            ) : null}
             {info?.created ? (
               <Text style={[styles.infoItem(theme), theme.typography.captionText]}>
                 {translate('label.joinV2exSinceTime')

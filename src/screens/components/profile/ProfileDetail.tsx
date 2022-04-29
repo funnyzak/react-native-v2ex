@@ -1,36 +1,33 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/04/01.
  */
-import React from 'react'
-import { View, ViewStyle, TextStyle } from 'react-native'
-
-import { Text, Button, Spinner, Placeholder } from '@src/components'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
-import { translate } from '@src/i18n'
-import { NavigationService, ROUTES } from '@src/navigation'
 import { V2exObject } from '@src/types'
+import React from 'react'
+import { StyleProp, View, ViewStyle } from 'react-native'
+import ProfileInfo from './ProfileInfo'
+import ProfileTopics from './ProfileTopics'
 
 /**
- * // TODO: ProfileDetail
  * ProfileDetail props
  */
 export interface ProfileDetailProps {
-  /**
-   * ProfileDetail width
-   */
-  width?: number | string
+  containerStyle?: StyleProp<ViewStyle>
 
-  /**
-   * ProfileDetail height
-   */
-  height?: number | string
+  profile: V2exObject.Member
 }
 
-const ProfileDetail: React.FC<ProfileDetailProps> = ({ width, height }: ProfileDetailProps) => {
+const ProfileDetail: React.FC<ProfileDetailProps> = ({ containerStyle, profile }: ProfileDetailProps) => {
+  const { theme } = useTheme()
   const renderContent = () => {
     return (
-      <View>
-        <Text>Hello World, ProfileDetail.</Text>
+      <View style={containerStyle}>
+        <ProfileInfo
+          containerStyle={[SylCommon.Card.container(theme), { paddingTop: theme.spacing.medium }]}
+          info={profile}
+          styleType="full"
+        />
+        <ProfileTopics username={profile.username} containerStyle={[{ marginTop: theme.spacing.small }]} />
       </View>
     )
   }

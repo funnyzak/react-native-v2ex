@@ -12,6 +12,9 @@ export interface TopicCardListProps {
    * container style
    */
   containerStyle?: StyleProp<ViewStyle>
+
+  itemContainerStyle?: StyleProp<ViewStyle>
+
   onRowPress?: (topic: V2exObject.Topic) => void
   canLoadMoreContent?: boolean
   topics?: Array<V2exObject.Topic>
@@ -19,16 +22,19 @@ export interface TopicCardListProps {
   refreshControl?: React.ReactElement
   searchIndicator?: boolean
   refreshCallback?: () => void
-
   /**
    * Display Style
    */
   displayStyle?: 'simple' | 'full' | 'auto'
+
+  useFlatList?: boolean
 }
 
 const TopicCardList: React.FC<TopicCardListProps> = ({
+  useFlatList = true,
   containerStyle,
   onRowPress,
+  itemContainerStyle,
   canLoadMoreContent,
   displayStyle,
   topics,
@@ -47,8 +53,9 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
   const renderItemRow = ({ item }: { item: V2exObject.Topic }) =>
     !item || item === null ? null : (
       <TopicCardItem
+        key={item.id}
         displayStyle={displayStyle}
-        containerStyle={styles.topicItemContainer(theme)}
+        containerStyle={[styles.topicItemContainer(theme), itemContainerStyle]}
         topic={item}
         onPress={onItemPress}
       />
@@ -76,7 +83,7 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
     }
 
     if (topics.length > 0) {
-      return (
+      return useFlatList ? (
         <FlatList
           refreshControl={refreshControl}
           data={topics}
@@ -92,6 +99,8 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
           initialNumToRender={10}
           ItemSeparatorComponent={renderItemSeparator}
         />
+      ) : (
+        <View style={[styles.container(theme), containerStyle]}>{topics.map((v) => renderItemRow({ item: v }))}</View>
       )
     }
     if (!searchIndicator) {
@@ -112,9 +121,7 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
  * @description styles settings
  */
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    flex: 1
-  }),
+  container: (theme: ITheme): ViewStyle => ({}),
   topicItemContainer: (theme: ITheme): ViewStyle => ({
     ...SylCommon.Card.container(theme)
   }),
