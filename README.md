@@ -40,7 +40,7 @@
 - [x] 界面语言文案修正
 - [x] 整理项目所使用开源库
 - [x] 全新开发
-- [ ] 评论列表
+- [x] 评论列表
 - [ ] 升级提醒
 - [ ] 通知模块
 - [ ] 上架 App Store、Google Play
@@ -65,11 +65,11 @@
 
 ### iOS
 
-![preview](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/iOS/preview.png)
+![preview](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/iOS/preview2.jpeg)
 
 ### Android
 
-![preview](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/Android/preview.png)
+![preview](https://raw.githubusercontent.com/funnyzak/react-native-v2ex/develop/_docs/assets/screenshot/Android/preview2.jpeg)
 
 ## Development
 
