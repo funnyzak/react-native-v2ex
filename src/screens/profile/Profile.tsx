@@ -59,7 +59,11 @@ const Profile = ({
 
   return (
     <ScrollView style={SylCommon.Layout.fill}>
-      {profile ? <ProfileDetail profile={profile} /> : <Spinner text={translate('placeholder.loading')} />}
+      {profile ? (
+        <ProfileDetail profile={profile} />
+      ) : (
+        <Spinner style={{ height: theme.dimens.WINDOW_HEIGHT }} text={translate('placeholder.loading')} />
+      )}
     </ScrollView>
   )
 }
