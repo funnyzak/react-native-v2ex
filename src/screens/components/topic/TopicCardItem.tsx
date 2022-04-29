@@ -92,7 +92,6 @@ const TopicCardItem = ({
             style={styles.infoMainItem(theme)}
             onPress={() => {
               onPress && onPress(topic)
-              NavigationService.navigate(ROUTES.TopicDetail, { topicId: topic.id })
             }}>
             <Text type="body" style={styles.title(theme)}>
               {topic.title}

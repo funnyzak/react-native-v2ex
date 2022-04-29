@@ -60,7 +60,7 @@ const styles = {
     height: 36
   }),
   content: (theme: ITheme): ViewStyle => ({
-    marginVertical: theme.spacing.small
+    marginTop: theme.spacing.small
   })
 }
 

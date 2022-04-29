@@ -49,9 +49,9 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({ containerStyle, topic
   }
 
   const renderItemRow = ({ item }: { item: V2exObject.TopicReply }) =>
-    !item || item === null ? null : <TopicReplayItem containerStyle={styles.itemContainer(theme)} info={item} />
-
-  const renderItemSeparator = () => <View style={styles.itemSeparator(theme)} />
+    !item || item === null ? null : (
+      <TopicReplayItem key={item.id} containerStyle={styles.itemContainer(theme)} info={item} />
+    )
 
   const renderContent = () => {
     if (!list) {
@@ -59,20 +59,7 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({ containerStyle, topic
     }
 
     if (list.length > 0) {
-      return (
-        <FlatList
-          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-          data={list}
-          renderItem={renderItemRow}
-          keyExtractor={(item, index) => index.toString()}
-          numColumns={1}
-          horizontal={false}
-          key={'ONE COLUMN'}
-          maxToRenderPerBatch={10}
-          initialNumToRender={10}
-          ItemSeparatorComponent={renderItemSeparator}
-        />
-      )
+      return <View>{list.map((v) => renderItemRow({ item: v }))}</View>
     }
     return (
       <Placeholder
@@ -94,10 +81,7 @@ const styles = {
   container: (theme: ITheme): ViewStyle => ({
     flex: 1
   }),
-  itemContainer: (theme: ITheme): ViewStyle => ({}),
-  itemSeparator: (theme: ITheme) => ({
-    height: 0
-  })
+  itemContainer: (theme: ITheme): ViewStyle => ({})
 }
 
 export default TopicReplayList
