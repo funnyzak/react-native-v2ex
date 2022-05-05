@@ -29,7 +29,7 @@ const WebLink = ({ route, navigation }: ScreenProps) => {
       headerRight: () => (
         <>
           <HeaderButton
-            containerStyle={[{ marginRight: theme.spacing.tiny }]}
+            containerStyle={[{ marginRight: theme.spacing.medium }]}
             source={theme.assets.images.icons.header.refresh}
             onPress={() => {
               setLoading(true)
