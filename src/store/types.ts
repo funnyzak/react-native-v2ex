@@ -180,6 +180,11 @@ export declare module IState {
      * 已读主题
      */
     readedTopics?: V2exObject.Topic[]
+
+    /**
+     * 感兴趣的节点
+     */
+    interestNodes: V2exObject.Node[]
   }
 
   /**

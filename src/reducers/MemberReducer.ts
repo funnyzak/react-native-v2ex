@@ -1,10 +1,34 @@
-import { Action, IState, APP_AUTH, MEMBER_PROFILE, APP_LOGOUT, MEMBER_READ_TOPIC, MEMBER_TOPICS } from '../types'
+import InterestNodes from '@src/screens/node/InterestNodes'
+import {
+  Action,
+  IState,
+  APP_AUTH,
+  MEMBER_PROFILE,
+  APP_LOGOUT,
+  MEMBER_READ_TOPIC,
+  MEMBER_TOPICS,
+  MEMBER_INSEREST_NODE,
+  MEMBER_UNINTEREST_NODE
+} from '../types'
 const INITIAL_STATE: IState.MemberState = {
-  refreshing: false
+  refreshing: false,
+  interestNodes: []
 }
 
 export default (state: IState.MemberState = INITIAL_STATE, action: Action): IState.MemberState => {
   switch (action.type) {
+    case MEMBER_INSEREST_NODE:
+      return {
+        ...state,
+        interestNodes: state.interestNodes.concat(
+          state.interestNodes.findIndex((v) => v.id === action.payload.id) >= 0 ? [] : action.payload
+        )
+      }
+    case MEMBER_UNINTEREST_NODE:
+      return {
+        ...state,
+        interestNodes: state.interestNodes.filter((v) => v.id !== action.payload.id)
+      }
     case MEMBER_TOPICS:
       return { ...state, topics: action.payload }
     case APP_AUTH:

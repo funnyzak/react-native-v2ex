@@ -7,8 +7,9 @@ import { Placeholder, Text, useToast } from '@src/components'
 import { nodeChildren, TabNodes } from '@src/helper/node'
 import { translate } from '@src/i18n'
 import { NavigationService, NodesScreenProps as ScreenProps } from '@src/navigation'
+import { RootState } from '@src/store'
 import { SylCommon, useTheme } from '@src/theme'
-import { IState, ITheme, V2exObject } from '@src/types'
+import { ITheme, V2exObject } from '@src/types'
 import React, { useEffect } from 'react'
 import { SectionList, TouchableOpacity, View, ViewStyle } from 'react-native'
 import { connect } from 'react-redux'
@@ -125,7 +126,7 @@ const styles = {
   })
 }
 
-const mapStateToProps = ({ app: { allNode } }: IState.State) => {
+const mapStateToProps = ({ app: { allNode } }: RootState) => {
   return { allNode }
 }
 
