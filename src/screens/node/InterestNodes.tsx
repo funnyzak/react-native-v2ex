@@ -1,40 +1,102 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import { View, ViewStyle, TouchableOpacity } from 'react-native'
-
-import * as Actions from '@src/actions'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+import { Placeholder } from '@src/components'
 import { translate } from '@src/i18n'
-import { useTheme, SylCommon } from '@src/theme'
-import { IState, ITheme, V2exObject } from '@src/types'
-import * as CompS from '../components'
-import { Text, Spinner, Placeholder } from '@src/components'
-import { InterestNodesScreenProps as ScreenProps, ROUTES } from '@src/navigation'
+import { HOME_NODES as tabs, InterestNodesScreenProps as ScreenProps } from '@src/navigation'
+import { RootState } from '@src/store'
+import { SylCommon, useTheme } from '@src/theme'
+import { V2exObject } from '@src/types'
+import React from 'react'
+import { View } from 'react-native'
+import { connect } from 'react-redux'
+import { NeedLogin } from '../components'
+import { NodeTopicListScreen } from '../topic'
 
-const LikeNodes = ({ route, navigation, loading }: ScreenProps) => {
+const Tab = createMaterialTopTabNavigator()
+
+const InterestNodes = ({
+  route,
+  navigation,
+  likeNodes
+}: ScreenProps & {
+  likeNodes: V2exObject.Node[]
+}) => {
   const { theme } = useTheme()
   return (
-    <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
-      <Placeholder
-        displayType="icon"
-        icon={theme.assets.images.icons.placeholder.construction}
-        placeholderText={translate(`router.${ROUTES.InterestNodes}`) + translate('label.underConstruction')}
-      />
+    <View style={SylCommon.Layout.fill}>
+      <NeedLogin>
+        {!likeNodes || likeNodes.length == 0 ? (
+          <Placeholder displayType="text" placeholderText={translate('placeholder.noInterestNodes')} />
+        ) : (
+          <Tab.Navigator
+            initialLayout={{ width: theme.dimens.WINDOW_WIDTH }}
+            tabBarPosition="top"
+            initialRouteName={`NODE-${tabs[0].name}`}
+            sceneContainerStyle={[
+              {
+                backgroundColor: theme.colors.background
+              }
+            ]}
+            screenOptions={{
+              lazy: true,
+              tabBarActiveTintColor: theme.colors.tabActiveTintColor,
+              tabBarInactiveTintColor: theme.colors.tabInactiveTintColor,
+              tabBarScrollEnabled: true,
+              swipeEnabled: false,
+              tabBarItemStyle: {
+                height: 35,
+                width: 'auto',
+                minHeight: 35,
+                padding: 0,
+                paddingLeft: 3,
+                paddingRight: 3,
+                marginLeft: 10,
+                marginRight: 10
+              },
+              tabBarStyle: {
+                elevation: 0,
+                shadowColor: theme.colors.tabShadowColor,
+                shadowOffset: { width: 5, height: 10 }, // change this for more shadow
+                shadowOpacity: 0,
+                shadowRadius: 6,
+                borderBottomWidth: 0,
+                borderColor: theme.colors.lightGrey,
+                backgroundColor: theme.colors.tabBarBackground
+              },
+              tabBarLabelStyle: {
+                padding: 0,
+                margin: 0,
+                fontSize: 14
+              },
+              tabBarIndicatorStyle: {
+                backgroundColor: theme.colors.secondary
+              },
+              tabBarIndicatorContainerStyle: {
+                backgroundColor: theme.colors.tabBarBackground
+              }
+            }}>
+            {likeNodes.map((item: V2exObject.Node) => (
+              <Tab.Screen
+                key={`NODE-${item.name}`}
+                name={`NODE-${item.name}`}
+                component={NodeTopicListScreen}
+                options={{
+                  title: item.title
+                }}
+                initialParams={{
+                  nodeName: item.name,
+                  nodeTitle: item.title
+                }}
+              />
+            ))}
+          </Tab.Navigator>
+        )}
+      </NeedLogin>
     </View>
   )
 }
 
-/**
- * @description styles settings
- */
-const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    flex: 1
-  })
+const mapStateToProps = ({ member: { interestNodes } }: RootState) => {
+  return { likeNodes: interestNodes }
 }
 
-const mapStateToProps = ({ ui: { login } }: { ui: IState.UIState }) => {
-  const { error, success, loading } = login
-  return { error, success, loading }
-}
-
-export default connect(mapStateToProps)(LikeNodes)
+export default connect(mapStateToProps)(InterestNodes)
