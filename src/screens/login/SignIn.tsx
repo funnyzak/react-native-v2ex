@@ -163,7 +163,7 @@ const styles = {
     flex: 1,
     width: theme.dimens.defaultButtonWidth,
     backgroundColor: theme.colors.transparent,
-    paddingTop: theme.dimens.WINDOW_HEIGHT / 5,
+    paddingTop: theme.dimens.WINDOW_HEIGHT / 3,
     alignSelf: 'center',
     flexDirection: 'column',
     justifyContent: 'flex-start',
@@ -199,7 +199,7 @@ const styles = {
   }),
   footer: (theme: ITheme): ViewStyle => ({
     width: '80%',
-    marginBottom: theme.spacing.medium,
+    marginBottom: theme.spacing.large,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
