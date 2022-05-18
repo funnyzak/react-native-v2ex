@@ -42,9 +42,9 @@ const LikeNodeHeaderButton = ({
       NavigationService.navigate(ROUTES.SignIn)
     } else {
       if (isInterest) {
-        dispatch(unInterestNode(node))
+        dispatch(unInterestNode(node) as any)
       } else {
-        dispatch(interestNode(node))
+        dispatch(interestNode(node) as any)
       }
     }
   }

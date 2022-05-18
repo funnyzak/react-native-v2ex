@@ -8,7 +8,8 @@ import {
   MEMBER_READ_TOPIC,
   MEMBER_TOPICS,
   MEMBER_INSEREST_NODE,
-  MEMBER_UNINTEREST_NODE
+  MEMBER_UNINTEREST_NODE,
+  MEMBER_SATE_SETTING
 } from '../types'
 const INITIAL_STATE: IState.MemberState = {
   refreshing: false,
@@ -29,6 +30,8 @@ export default (state: IState.MemberState = INITIAL_STATE, action: Action): ISta
         ...state,
         interestNodes: state.interestNodes.filter((v) => v.id !== action.payload.id)
       }
+    case MEMBER_SATE_SETTING:
+      return { ...state, ...action.payload }
     case MEMBER_TOPICS:
       return { ...state, topics: action.payload }
     case APP_AUTH:

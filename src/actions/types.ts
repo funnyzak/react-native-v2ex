@@ -23,6 +23,7 @@ export const MEMBER_READ_TOPIC = 'read_topic'
 export const MEMBER_TOPICS = 'member_topics'
 export const MEMBER_INSEREST_NODE = 'member_interest_node'
 export const MEMBER_UNINTEREST_NODE = 'member_uninterest_node'
+export const MEMBER_SATE_SETTING = 'member_state_setting'
 
 export const FEEDBACKING = 'feedbacking'
 export const FEEDBACK_DONE = 'feedback_done'
@@ -45,14 +46,19 @@ export const APP_NODE_LOAD_ERROR = 'v2ex_node_error'
 
 export const APP_CACHE_ADD_MEMBER = 'v2ex_cache_add_member'
 export const APP_CACHE_ADD_NODE = 'v2ex_cache_add_node'
+export const APP_CACHE_MEMBER_INTEREST_NODES = 'v2ex_cache_member_interest_nodes'
+export const APP_CACHE_MEMBER_FOLLOWING = 'v2ex_cache_member_following'
 export const APP_CACHE_RESET_MEMBERS = 'v2ex_cache_reset_member'
 export const APP_CACHE_RESET_NODES = 'v2ex_cache_reset_node'
 export const APP_CACHE_RESET = 'v2ex_cache_reset'
 
 export const ActionTypes = {
   MEMBER_INSEREST_NODE,
+  APP_CACHE_MEMBER_INTEREST_NODES,
   MEMBER_UNINTEREST_NODE,
+  APP_CACHE_MEMBER_FOLLOWING,
   MEMBER_TOPICS,
+  MEMBER_SATE_SETTING,
   APP_CACHE_RESET,
   APP_CACHE_RESET_MEMBERS,
   APP_CACHE_RESET_NODES,
