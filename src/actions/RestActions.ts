@@ -8,11 +8,12 @@ import { MEMBER_TOKEN_KEY } from '@src/config/constants'
 import { APP_INIT, APP_SITE_STAT, APP_INIT_ERROR, APP_SITE_INFO, APP_ALL_NODE_INFO, IState } from '../types'
 import { logError } from '@src/helper/logger'
 import DeviceInfo from 'react-native-device-info'
+import { RootState } from '@src/store'
 
 export const initV2ex = () => {
   v2exLib.setOptions(v2exOptions)
 
-  return async (dispatch: Dispatch, _getState: () => IState.AppState) => {
+  return async (dispatch: Dispatch, _getState: () => RootState) => {
     try {
       v2exLib.init()
 
