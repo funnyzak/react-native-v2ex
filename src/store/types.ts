@@ -74,6 +74,21 @@ export declare module IState {
       pullTime: number
       info: V2exObject.Node
     }[]
+
+    /**
+     * 当前登陆用户
+     */
+    currentSessionMember?: V2exObject.Member
+
+    /**
+     * 会员感兴趣的nodes
+     */
+    membersInterestNodes: Record<number, Array<V2exObject.Node> | undefined>
+
+    /**
+     * 会员follow的人
+     */
+    membersFollowing: Record<number, Array<V2exObject.Member> | undefined>
   }
 
   /**
@@ -163,18 +178,11 @@ export declare module IState {
     /**
      * 关注的人
      */
-    followPeople?: {
-      list: V2exObject.Member[]
-      refreshing: boolean
-    }
-
+    followPeoples?: V2exObject.Member[]
     /**
      * 收藏的主题
      */
-    likeTopics?: {
-      list: V2exObject.Topic[]
-      refreshing: boolean
-    }
+    likeTopics?: V2exObject.Topic[]
 
     /**
      * 已读主题
