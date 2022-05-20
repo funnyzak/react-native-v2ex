@@ -1,14 +1,19 @@
-import { Text, Placeholder } from '@src/components'
+import { Text, Placeholder, useToast } from '@src/components'
 import { translate } from '@src/i18n'
 import { NotificationsScreenProps as ScreenProps, ROUTES } from '@src/navigation/routes'
+import { RootState } from '@src/store'
 import { SylCommon, useTheme } from '@src/theme'
-import { IState, ITheme } from '@src/types'
-import React from 'react'
+import { V2exObject } from '@src/types'
+import React, { useState } from 'react'
 import { View, ViewStyle } from 'react-native'
 import { connect } from 'react-redux'
 
-const Notification = ({ route, navigation, loading }: ScreenProps) => {
+const Notification = ({ route, navigation }: ScreenProps) => {
   const { theme } = useTheme()
+  const [refreshing, setRefreshing] = useState<boolean>(false)
+  const [list, setList] = useState<V2exObject.Notification[] | undefined>(undefined)
+  const { showMessage } = useToast()
+
   return (
     <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
       <Placeholder
@@ -21,24 +26,14 @@ const Notification = ({ route, navigation, loading }: ScreenProps) => {
 }
 
 /**
- * @description styles settings
- */
-const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    flex: 1
-  })
-}
-
-/**
  * default props
  */
 Notification.defaultProps = {
   loading: false
 }
 
-const mapStateToProps = ({ ui: { login } }: { ui: IState.UIState }) => {
-  const { error, success, loading } = login
-  return { error, success, loading }
+const mapStateToProps = ({ member: { profile } }: RootState) => {
+  return { profile }
 }
 
 export default connect(mapStateToProps)(Notification)
