@@ -1,17 +1,16 @@
-import RenderHtml from 'react-native-render-html'
-import React, { useCallback, useState } from 'react'
-import { View, Text, FlatList, ViewStyle, TextStyle, TouchableOpacity, RefreshControl, StyleProp } from 'react-native'
-import { ITheme, V2exObject } from '@src/types'
-import { NeedLogin, NotFound } from '../'
 import { Avatar, Placeholder, Spinner, useToast } from '@src/components'
-import { SylCommon, useTheme } from '@src/theme'
-import { translate } from '@src/i18n'
-import { NavigationService } from '@src/navigation'
-import { useSession } from '@src/hooks/useSession'
-import { v2exLib } from '@src/v2ex'
 import { useMember } from '@src/hooks/useMember'
-import { BorderLine, TextWithIconPress } from '../common'
+import { useSession } from '@src/hooks/useSession'
+import { translate } from '@src/i18n'
+import { SylCommon, useTheme } from '@src/theme'
+import { ITheme, V2exObject } from '@src/types'
+import { v2exLib } from '@src/v2ex'
 import dayjs from 'dayjs'
+import React, { useCallback, useState } from 'react'
+import { FlatList, RefreshControl, StyleProp, TextStyle, View, ViewStyle } from 'react-native'
+import RenderHtml, { MixedStyleRecord } from 'react-native-render-html'
+import { NeedLogin, NotFound } from '../'
+import { BorderLine, TextWithIconPress } from '../common'
 
 export interface NotificationListProps {
   /**
@@ -83,6 +82,7 @@ const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: N
         <View style={styles.itemRight(theme)}>
           <View style={styles.itemRightItem(theme)}>
             <RenderHtml
+              tagsStyles={htmlContentTagsStyles(theme)}
               source={{
                 html: `<div style="color:${theme.colors.bodyText}">${item.text}</div>` || '<p></p>'
               }}
@@ -92,6 +92,7 @@ const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: N
           {item.payload && item.payload !== '' ? (
             <View style={styles.itemRightItem(theme)}>
               <RenderHtml
+                tagsStyles={htmlContentTagsStyles(theme)}
                 source={{
                   html: `<div style="color:${theme.colors.bodyText}">${item.payload_rendered}</div>` || '<p></p>'
                 }}
@@ -195,6 +196,15 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'space-between'
   })
+}
+
+const htmlContentTagsStyles = (theme: ITheme): MixedStyleRecord => {
+  return {
+    a: {
+      textDecorationLine: 'none',
+      color: theme.colors.secondary
+    }
+  }
 }
 
 export default NotificationList
