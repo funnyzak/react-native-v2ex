@@ -1,15 +1,14 @@
 import { logout as actionLogout } from '@src/actions'
-import { Spinner, Text, useToast } from '@src/components'
-import { useProfile } from '@src/hooks/useProfile'
+import { Spinner, useToast } from '@src/components'
+import { useMember } from '@src/hooks/useMember'
 import { translate } from '@src/i18n'
 import { ProfileScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 import { SylCommon, useTheme } from '@src/theme'
-import { IState, ITheme, V2exObject } from '@src/types'
+import { IState, V2exObject } from '@src/types'
 import React, { useEffect, useLayoutEffect, useMemo } from 'react'
-import { TouchableOpacity, View, ViewStyle } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { connect } from 'react-redux'
-import { HeaderButton, ProfileDetail, ProfileInfo } from '../components'
+import { HeaderButton, ProfileDetail } from '../components'
 
 const Profile = ({
   route,
@@ -22,7 +21,7 @@ const Profile = ({
 }) => {
   const { theme } = useTheme()
   const username = useMemo(() => route.params.username, [route])
-  const { profile } = useProfile({ username: username })
+  const { member } = useMember({ userid: username })
 
   useEffect(() => {
     navigation.setOptions({ title: username })
@@ -39,9 +38,9 @@ const Profile = ({
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerRight: profile
+      headerRight: member
         ? () =>
-            !authMember || authMember.id !== profile.id ? (
+            !authMember || authMember.id !== member.id ? (
               <HeaderButton text={translate('common.follow')} onPress={underConstruction} />
             ) : (
               <HeaderButton
@@ -55,12 +54,12 @@ const Profile = ({
             )
         : undefined
     })
-  }, [navigation, profile])
+  }, [navigation, member])
 
   return (
     <ScrollView style={SylCommon.Layout.fill}>
-      {profile ? (
-        <ProfileDetail profile={profile} />
+      {member ? (
+        <ProfileDetail profile={member} />
       ) : (
         <Spinner style={{ height: theme.dimens.WINDOW_HEIGHT }} text={translate('placeholder.loading')} />
       )}
