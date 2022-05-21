@@ -1,7 +1,7 @@
 import { NavigationService, ROUTES } from '@src/navigation'
 import { ITheme, useTheme } from '@src/theme'
-import React, { useEffect, useRef, useState } from 'react'
-import { Image, View, Pressable, ViewStyle, Animated } from 'react-native'
+import React, { useCallback, useRef } from 'react'
+import { Animated, Image, Pressable, ViewStyle } from 'react-native'
 import FastImage, { Source } from 'react-native-fast-image'
 
 interface IProps {
@@ -20,12 +20,12 @@ const AvatarComponent = ({ username, size = 24, source, onPress, style }: IProps
   const { theme } = useTheme()
   const avatarImageScaleValue = useRef(new Animated.Value(0)).current
 
-  const _handlePress = () => {
+  const _handlePress = useCallback(() => {
     if (username) {
       NavigationService.navigate(ROUTES.Profile, { username })
     }
     onPress && onPress()
-  }
+  }, [username])
 
   const onAvatarImageLoadEnd = () => {
     Animated.timing(avatarImageScaleValue, {
