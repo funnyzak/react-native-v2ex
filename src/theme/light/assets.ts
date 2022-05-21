@@ -106,6 +106,10 @@ const Assets: IThemeAssets = {
         paper: require('@res/images/icons/topic/paper.png'),
         talk: require('@res/images/icons/topic/people-voice.png'),
         time: require('@res/images/icons/topic/update.png')
+      },
+      notification: {
+        time: require('@res/images/icons/notification/time.png'),
+        action: require('@res/images/icons/notification/action.png')
       }
     }
   }
