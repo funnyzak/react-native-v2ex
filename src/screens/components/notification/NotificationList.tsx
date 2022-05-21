@@ -1,94 +1,148 @@
-import React from 'react'
-import { View, Text, FlatList, ViewStyle, TextStyle, TouchableOpacity } from 'react-native'
+import RenderHtml from 'react-native-render-html'
+import React, { useCallback, useState } from 'react'
+import { View, Text, FlatList, ViewStyle, TextStyle, TouchableOpacity, RefreshControl, StyleProp } from 'react-native'
 import { ITheme, V2exObject } from '@src/types'
-import { NotFound } from '../'
-import { Avatar, Spinner } from '@src/components'
+import { NeedLogin, NotFound } from '../'
+import { Avatar, Placeholder, Spinner, useToast } from '@src/components'
 import { SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
 import { NavigationService } from '@src/navigation'
+import { useSession } from '@src/hooks/useSession'
+import { v2exLib } from '@src/v2ex'
+import { useMember } from '@src/hooks/useMember'
+import { BorderLine, TextWithIconPress } from '../common'
+import dayjs from 'dayjs'
 
 export interface NotificationListProps {
-  onRowPress?: (notification: V2exObject.Notification) => void
-  canLoadMoreContent?: boolean
-  notifications?: Array<V2exObject.Notification>
-  onEndReached?: () => void
-  refreshControl?: React.ReactElement
-  refreshCallback?: () => void
+  /**
+   * container style
+   */
+  containerStyle?: StyleProp<ViewStyle>
 }
 
-const NotificationList: React.FC<NotificationListProps> = ({
-  onRowPress,
-  canLoadMoreContent,
-  notifications,
-  onEndReached,
-  refreshControl,
-  refreshCallback
-}: NotificationListProps) => {
+const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: NotificationListProps) => {
   const { theme } = useTheme()
+  const { logined } = useSession()
+  const { showMessage } = useToast()
+  const [page, setPage] = useState(1)
+  const [refreshing, setRefreshing] = useState<boolean>(false)
+  const [list, setList] = useState<V2exObject.Notification[] | undefined>(undefined)
+  const [hasMore, setHasMore] = useState<boolean>(true)
+  const [loadMore, setLoadMore] = useState<boolean>(false)
 
-  const onItemPress = (notification: V2exObject.Notification) => {
-    if (onRowPress) onRowPress(notification)
+  const fetchNotifications = useCallback(
+    (pageNum: number) => {
+      if (!logined || (pageNum > 1 && !hasMore)) {
+        return
+      }
+
+      if (pageNum === 1) {
+        setList(undefined)
+      }
+
+      setRefreshing(pageNum === 1)
+
+      setLoadMore(pageNum > 1)
+
+      v2exLib.notification
+        .list(pageNum)
+        .then((rlt: V2exObject.Notification[]) => {
+          if (rlt.length === 0 && pageNum > 1) {
+            setHasMore(false)
+          }
+          setRefreshing(false)
+          setLoadMore(false)
+
+          setList((list || []).concat(rlt))
+        })
+        .catch((err) => {
+          showMessage(err.message)
+        })
+    },
+    [showMessage, page, logined]
+  ) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const onRefresh = useCallback(() => {
+    setPage(1)
+    fetchNotifications(page)
+  }, [])
+
+  const MemberAvatar = ({ userid }: { userid: number }) => {
+    const { member: profile } = useMember({ userid: userid, forcePull: false })
+    return <Avatar size={40} source={{ uri: profile?.avatar_normal }} username={profile?.username} />
   }
 
   const renderItemRow = ({ item }: { item: V2exObject.Notification }) => {
     if (!item || item === null) return null
 
     return (
-      <View style={styles.itemContainer(theme)}>
+      <View style={[styles.itemContainer(theme), SylCommon.Card.container(theme)]}>
         <View style={styles.itemLeft(theme)}>
-          <Text>avatar</Text>
+          <MemberAvatar userid={item.member_id} />
         </View>
         <View style={styles.itemRight(theme)}>
-          <TouchableOpacity
-            onPress={() => {
-              NavigationService.goUserProfile('')
-            }}>
-            <Text style={styles.txtUsername(theme)}>{item.for_member_id}</Text>
-          </TouchableOpacity>
-          <Text style={styles.txtAction(theme)}>动作</Text>
-          <TouchableOpacity
-            onPress={() => {
-              NavigationService.goTopicDetail(item.payload)
-            }}>
-            <Text style={styles.txtTitle(theme)}>标题</Text>
-          </TouchableOpacity>
-          <Text style={styles.txtTime(theme)}>{item.created}</Text>
-          <TouchableOpacity>
-            <Text style={styles.txtBtn(theme)}>删除</Text>
-          </TouchableOpacity>
+          <View style={styles.itemRightItem(theme)}>
+            <RenderHtml
+              source={{
+                html: `<div style="color:${theme.colors.bodyText}">${item.text}</div>` || '<p></p>'
+              }}
+              contentWidth={theme.dimens.layoutContainerWidth - 40 - theme.spacing.large}
+            />
+          </View>
+          {item.payload && item.payload !== '' ? (
+            <View style={styles.itemRightItem(theme)}>
+              <RenderHtml
+                source={{
+                  html: `<div style="color:${theme.colors.bodyText}">${item.payload_rendered}</div>` || '<p></p>'
+                }}
+                contentWidth={theme.dimens.layoutContainerWidth - 40 - theme.spacing.large}
+              />
+            </View>
+          ) : null}
+          <View style={[styles.itemRightItem(theme), styles.itemAction(theme)]}>
+            <TextWithIconPress
+              icon={theme.assets.images.icons.notification.time}
+              text={dayjs(item.created * 1000).fromNow()}
+            />
+            <TextWithIconPress icon={theme.assets.images.icons.notification.action} />
+          </View>
         </View>
       </View>
     )
   }
 
   const renderFooter = () => {
-    if (canLoadMoreContent) {
+    if (loadMore) {
       return <Spinner style={{ padding: theme.spacing.large }} />
-    } else if (notifications && notifications.length > 0) {
-      return (
-        <View style={styles.notFoundTextWrap()}>
-          <Text style={styles.notFoundText(theme)}>{translate('tips.noMore')}</Text>
-        </View>
-      )
+    } else if (list && list.length > 0) {
+      return <Placeholder placeholderText={translate('tips.noMore')} />
     }
     return null
   }
 
-  const renderItemSeparator = () => <View style={styles.itemSeparator(theme)} />
+  const onReached = () => {
+    if (hasMore && !loadMore && !refreshing) {
+      setPage(page + 1)
+    }
+  }
+
+  const renderItemSeparator = () => <BorderLine />
+
+  const renderRefreshControl = () => <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
 
   const renderContent = () => {
-    if (!notifications) {
+    if (!list) {
       return <Spinner style={{ marginTop: 50 }} />
     }
 
-    if (notifications.length > 0) {
+    if (list.length > 0) {
       return (
         <FlatList
-          refreshControl={refreshControl}
-          data={notifications}
+          refreshControl={renderRefreshControl()}
+          data={list}
           renderItem={renderItemRow}
           keyExtractor={(item, index) => index.toString()}
-          onEndReached={onEndReached}
+          onEndReached={onReached}
           onEndReachedThreshold={0.1}
           ListFooterComponent={renderFooter}
           numColumns={1}
@@ -101,15 +155,18 @@ const NotificationList: React.FC<NotificationListProps> = ({
       <NotFound
         text={translate('placeholder.noNotifications')}
         buttonText={translate('button.oneceAgain')}
-        buttonPress={refreshCallback}
+        buttonPress={onReached}
       />
     )
   }
 
   return (
-    <>
-      <View style={styles.container(theme)}>{renderContent()}</View>
-    </>
+    <NeedLogin
+      onMount={() => {
+        onRefresh()
+      }}>
+      <View style={containerStyle}>{renderContent()}</View>
+    </NeedLogin>
   )
 }
 
@@ -117,39 +174,27 @@ const NotificationList: React.FC<NotificationListProps> = ({
  * @description styles settings
  */
 const styles = {
-  container: (theme: ITheme) => ({
-    paddingVertical: theme.spacing.small,
-    ...SylCommon.Layout.fill,
-    backgroundColor: theme.colors.surface
-  }),
-  notFoundTextWrap: (): TextStyle => ({
-    flex: 1,
-    paddingVertical: 20,
-    justifyContent: 'center'
-  }),
-  notFoundText: (theme: ITheme): TextStyle => ({
-    ...theme.typography.bodyText,
-    textAlign: 'center'
-  }),
   itemContainer: (theme: ITheme): ViewStyle => ({
-    flex: 1
+    flex: 1,
+    paddingTop: theme.spacing.small,
+    flexDirection: 'row'
   }),
   itemLeft: (theme: ITheme): ViewStyle => ({
-    flex: 1,
-    width: 65
+    width: 40,
+    marginRight: 15
   }),
   itemRight: (theme: ITheme): ViewStyle => ({
-    flex: 1
+    flex: 1,
+    flexDirection: 'column'
   }),
-  itemSeparator: (theme: ITheme) => ({
-    height: theme.spacing.small,
-    flex: 1
+  itemRightItem: (theme: ITheme): TextStyle => ({
+    marginBottom: theme.spacing.medium
   }),
-  txtUsername: (theme: ITheme): TextStyle => ({}),
-  txtAction: (theme: ITheme): TextStyle => ({}),
-  txtTitle: (theme: ITheme): TextStyle => ({}),
-  txtTime: (theme: ITheme): TextStyle => ({}),
-  txtBtn: (theme: ITheme): TextStyle => ({})
+  itemAction: (theme: ITheme): ViewStyle => ({
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  })
 }
 
 export default NotificationList
