@@ -28,7 +28,7 @@ import {
 export interface TextWithIconPressProps {
   containerStyle?: StyleProp<ViewStyle>
   textStyle?: StyleProp<TextStyle>
-  text: string
+  text?: string
   icon?: ImageSourcePropType
   onPress?: () => void
 }
@@ -46,7 +46,7 @@ const TextWithIconPress: React.FC<TextWithIconPressProps> = ({
     return (
       <TouchableOpacity style={[styles.textWithIconPress.container(theme), containerStyle]} onPress={onPress}>
         {icon && <Image source={icon} style={styles.textWithIconPress.icon(theme)} />}
-        <Text style={[styles.textWithIconPress.text(theme), textStyle]}>{text}</Text>
+        {text && <Text style={[styles.textWithIconPress.text(theme), textStyle]}>{text}</Text>}
       </TouchableOpacity>
     )
   }

@@ -1,3 +1,4 @@
+import { setMyTopics } from '@src/actions'
 import { useToast } from '@src/components'
 import { MyTopicsScreenProps as ScreenProps } from '@src/navigation'
 import { RootState } from '@src/store'
@@ -8,7 +9,6 @@ import React, { useCallback, useState } from 'react'
 import { RefreshControl, View } from 'react-native'
 import { connect } from 'react-redux'
 import { NeedLogin, TopicCardList } from '../components'
-import { setMyTopics } from '@src/actions'
 
 const MyTopics = ({
   profile,

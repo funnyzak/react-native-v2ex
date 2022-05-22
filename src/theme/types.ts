@@ -293,6 +293,10 @@ export interface IThemeAssets {
         talk: ImageSourcePropType
         time: ImageSourcePropType
       }
+      notification: {
+        time: ImageSourcePropType
+        action: ImageSourcePropType
+      }
     }
   }
 }

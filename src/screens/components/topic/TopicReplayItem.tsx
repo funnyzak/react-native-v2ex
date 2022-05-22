@@ -1,17 +1,15 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/04/28.
  */
-import RenderHtml from 'react-native-render-html'
-import React, { useMemo } from 'react'
-import { View, ViewStyle, TextStyle, StyleProp } from 'react-native'
-
-import { Text, Button, Spinner, Placeholder, Avatar } from '@src/components'
-import { ITheme, SylCommon, useTheme } from '@src/theme'
+import { Avatar } from '@src/components'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
+import { ITheme, useTheme } from '@src/theme'
 import { V2exObject } from '@src/types'
-import { BorderLine, TextWithIconPress } from '../common'
 import dayjs from 'dayjs'
+import React, { useMemo } from 'react'
+import { StyleProp, View, ViewStyle } from 'react-native'
+import { BorderLine, RenderHTML, TextWithIconPress } from '../common'
 
 /**
  * TopicReplayItem props
@@ -44,10 +42,8 @@ const TopicReplayItem: React.FC<TopicReplayItemProps> = ({ containerStyle, info 
             />
           </View>
           <View style={styles.infoMainItem(theme)}>
-            <RenderHtml
-              source={{
-                html: `<div style="color:${theme.colors.bodyText}">${info.content_rendered}</div>` || '<p></p>'
-              }}
+            <RenderHTML
+              htmlString={info.content_rendered}
               contentWidth={theme.dimens.layoutContainerWidth - 40 - theme.spacing.large}
             />
           </View>
