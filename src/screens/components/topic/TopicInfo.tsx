@@ -6,7 +6,7 @@ import { ITheme, SylCommon, useTheme } from '@src/theme'
 import { V2exObject } from '@src/types'
 import React from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
-import RenderHtml from 'react-native-render-html'
+import { RenderHTML } from '../common'
 import TopicCardItem from './TopicCardItem'
 
 /**
@@ -39,10 +39,8 @@ const TopicInfo: React.FC<TopicInfoProps> = ({ containerStyle, info }: TopicInfo
             })
           }}
         />
-        <RenderHtml
-          source={{
-            html: `<div style="color:${theme.colors.bodyText}">${info.content_rendered}</div>` || '<p></p>'
-          }}
+        <RenderHTML
+          htmlString={info.content_rendered}
           contentWidth={theme.dimens.WINDOW_WIDTH - theme.spacing.large * 2}
         />
       </View>

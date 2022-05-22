@@ -24,7 +24,7 @@ const Profile = ({
   const { member } = useMember({ userid: username })
 
   useEffect(() => {
-    navigation.setOptions({ title: username })
+    navigation.setOptions({ title: member?.username })
   }, [username])
 
   const { showMessage } = useToast()

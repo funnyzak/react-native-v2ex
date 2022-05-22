@@ -1,3 +1,6 @@
+/**
+ * Created by leon<silenceace@gmail.com> on 22/05/21.
+ */
 import { Avatar, Placeholder, Spinner, useToast } from '@src/components'
 import { useMember } from '@src/hooks/useMember'
 import { useSession } from '@src/hooks/useSession'
@@ -8,9 +11,8 @@ import { v2exLib } from '@src/v2ex'
 import dayjs from 'dayjs'
 import React, { useCallback, useState } from 'react'
 import { FlatList, RefreshControl, StyleProp, TextStyle, View, ViewStyle } from 'react-native'
-import RenderHtml, { MixedStyleRecord } from 'react-native-render-html'
-import { NeedLogin, NotFound } from '../'
-import { BorderLine, TextWithIconPress } from '../common'
+import { NeedLogin } from '../'
+import { BorderLine, RenderHTML, TextWithIconPress } from '../common'
 
 export interface NotificationListProps {
   /**
@@ -81,22 +83,16 @@ const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: N
         </View>
         <View style={styles.itemRight(theme)}>
           <View style={styles.itemRightItem(theme)}>
-            <RenderHtml
-              tagsStyles={htmlContentTagsStyles(theme)}
-              source={{
-                html: `<div style="color:${theme.colors.bodyText}">${item.text}</div>` || '<p></p>'
-              }}
+            <RenderHTML
               contentWidth={theme.dimens.layoutContainerWidth - 40 - theme.spacing.large}
+              htmlString={item.text}
             />
           </View>
           {item.payload && item.payload !== '' ? (
             <View style={styles.itemRightItem(theme)}>
-              <RenderHtml
-                tagsStyles={htmlContentTagsStyles(theme)}
-                source={{
-                  html: `<div style="color:${theme.colors.bodyText}">${item.payload_rendered}</div>` || '<p></p>'
-                }}
+              <RenderHTML
                 contentWidth={theme.dimens.layoutContainerWidth - 40 - theme.spacing.large}
+                htmlString={item.payload_rendered}
               />
             </View>
           ) : null}
@@ -153,8 +149,8 @@ const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: N
       )
     }
     return (
-      <NotFound
-        text={translate('placeholder.noNotifications')}
+      <Placeholder
+        placeholderText={translate('placeholder.noNotifications')}
         buttonText={translate('button.oneceAgain')}
         buttonPress={onReached}
       />
@@ -196,15 +192,6 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'space-between'
   })
-}
-
-const htmlContentTagsStyles = (theme: ITheme): MixedStyleRecord => {
-  return {
-    a: {
-      textDecorationLine: 'none',
-      color: theme.colors.secondary
-    }
-  }
 }
 
 export default NotificationList
