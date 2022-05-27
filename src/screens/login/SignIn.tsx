@@ -3,10 +3,8 @@
  */
 import { loginByToken } from '@src/actions'
 import { Button, Input, Text, useToast } from '@src/components'
-import { useAppSelector } from '@src/hooks'
 import { translate } from '@src/i18n'
 import { ROUTES, SignInScreenProps as ScreenProps } from '@src/navigation'
-import { RootState } from '@src/store'
 import { SylCommon, useTheme } from '@src/theme'
 import { IState, ITheme } from '@src/types'
 import * as utils from '@src/utils'
@@ -17,15 +15,13 @@ import {
   KeyboardAvoidingView,
   Platform,
   Pressable,
-  StatusBar,
   TextStyle,
   TouchableOpacity,
   View,
   ViewStyle
 } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import { connect } from 'react-redux'
-import { HeaderButton, SetStatusBar } from '../components'
+import { SetStatusBar } from '../components'
 
 const Screen = ({
   navigation,
@@ -39,23 +35,6 @@ const Screen = ({
   const [token, setToken] = useState('')
   const { theme } = useTheme()
   const { showMessage } = useToast()
-
-  const {
-    login: { tokenGeneratedLink }
-  } = useAppSelector((state: RootState) => state.ui)
-
-  useEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-        <HeaderButton
-          text={translate('button.getToken')}
-          onPress={() => {
-            navigation.navigate(ROUTES.WebViewer, { url: tokenGeneratedLink })
-          }}
-        />
-      )
-    })
-  }, [])
 
   const goNextRoute = () => {
     navigation.reset({

@@ -358,6 +358,9 @@ const StackNavigator = createNativeStackNavigator<RootStackParamList>()
 
 export const AppNavigationContainer = () => {
   const { token } = useAppSelector((state: RootState) => state.member)
+  const {
+    login: { tokenGeneratedLink }
+  } = useAppSelector((state: RootState) => state.ui)
   const { languageTag } = useAppSelector((state: RootState) => state.setting)
   const { theme } = useTheme()
   const [mounted, setMounted] = useState<boolean>(false)
@@ -414,7 +417,15 @@ export const AppNavigationContainer = () => {
                 title: translate(`router.${ROUTES.SignIn}`),
                 headerTitleStyle: { color: theme.colors.transparent },
                 headerBackTitleVisible: false,
-                headerShown: true
+                headerShown: true,
+                headerRight: () => (
+                  <HeaderButton
+                    text={translate('button.getToken')}
+                    onPress={() => {
+                      NavigationService.navigate(ROUTES.WebViewer, { url: tokenGeneratedLink })
+                    }}
+                  />
+                )
               }}
             />
             <StackNavigator.Screen
