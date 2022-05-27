@@ -9,6 +9,7 @@ import { SylCommon, useTheme } from '@src/theme'
 import React, { useEffect } from 'react'
 import { ScrollView, View } from 'react-native'
 import { HeaderButton, SetStatusBar, TopicInfo, TopicReplay } from '../components'
+import { LikeTopicHeaderButton } from '../components/button'
 const TopicDetail = ({ route, navigation }: ScreenProps) => {
   const { theme } = useTheme()
   const { topic } = useTopic({ topicId: route.params.topicId })
@@ -22,16 +23,12 @@ const TopicDetail = ({ route, navigation }: ScreenProps) => {
   }
 
   useEffect(() => {
-    navigation.setOptions({
-      title: !topic ? translate(`router.${ROUTES.TopicDetail}`) : `${topic.node?.title}`,
-      headerRight: () => {
-        return (
-          <>
-            <HeaderButton source={theme.assets.images.icons.header.star} onPress={underConstruction} />
-          </>
-        )
-      }
-    })
+    if (topic) {
+      navigation.setOptions({
+        title: !topic ? translate(`router.${ROUTES.TopicDetail}`) : `${topic.node?.title}`,
+        headerRight: () => <LikeTopicHeaderButton topic={topic} />
+      })
+    }
   }, [topic, navigation])
 
   const reanderContent = () => {
