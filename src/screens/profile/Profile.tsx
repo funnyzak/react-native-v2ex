@@ -9,6 +9,7 @@ import React, { useEffect, useLayoutEffect, useMemo } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import { connect } from 'react-redux'
 import { HeaderButton, ProfileDetail } from '../components'
+import { FollowPeopleHeaderButton } from '../components/button'
 
 const Profile = ({
   route,
@@ -41,7 +42,7 @@ const Profile = ({
       headerRight: member
         ? () =>
             !authMember || authMember.id !== member.id ? (
-              <HeaderButton text={translate('common.follow')} onPress={underConstruction} />
+              <FollowPeopleHeaderButton member={member} />
             ) : (
               <HeaderButton
                 source={theme.assets.images.icons.header.logout}
