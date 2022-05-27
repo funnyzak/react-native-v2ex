@@ -39,7 +39,8 @@ export const myProfile = () => async (dispatch: Dispatch, getState: () => RootSt
     type: MEMBER_SATE_SETTING,
     payload: {
       interestNodes: getState().cache.membersInterestNodes[_member.id],
-      followPeoples: getState().cache.membersFollowing[_member.id]
+      followPeoples: getState().cache.membersFollowing[_member.id],
+      likeTopics: getState().cache.membersLikeTopics[_member.id]
     }
   })
 }
