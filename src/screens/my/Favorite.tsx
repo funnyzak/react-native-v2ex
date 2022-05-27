@@ -22,7 +22,7 @@ const FavoriteTopics = ({
     if (!likeTopics) {
       return <Placeholder />
     }
-    return <TopicCardList topics={likeTopics} canLoadMoreContent={false} searchIndicator={false} />
+    return <TopicCardList topics={[...likeTopics].reverse()} canLoadMoreContent={false} searchIndicator={false} />
   }
 
   return <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>{renderContent()}</View>
