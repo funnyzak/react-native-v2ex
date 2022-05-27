@@ -9,7 +9,7 @@ import { V2exObject } from '@src/types'
 import React from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
-import { TopicCardList } from '../components'
+import { NeedLogin, TopicCardList } from '../components'
 
 const FavoriteTopics = ({
   likeTopics
@@ -22,7 +22,11 @@ const FavoriteTopics = ({
     if (!likeTopics) {
       return <Placeholder />
     }
-    return <TopicCardList topics={[...likeTopics].reverse()} canLoadMoreContent={false} searchIndicator={false} />
+    return (
+      <NeedLogin>
+        <TopicCardList topics={[...likeTopics].reverse()} canLoadMoreContent={false} searchIndicator={false} />
+      </NeedLogin>
+    )
   }
 
   return <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>{renderContent()}</View>
