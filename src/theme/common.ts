@@ -1,4 +1,7 @@
-import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native'
+/**
+ * Created by leon<silenceace@gmail.com> on 22/03/09.
+ */
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native'
 import { ITheme } from './types'
 
 export const Layout = StyleSheet.create({
