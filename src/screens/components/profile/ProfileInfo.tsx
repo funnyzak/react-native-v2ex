@@ -4,12 +4,13 @@
 import { Avatar, Text } from '@src/components'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
-import { ITheme, SylCommon, useTheme } from '@src/theme'
+import { useTheme } from '@src/theme'
 import { V2exObject } from '@src/types'
 import dayjs from 'dayjs'
 import React, { useMemo } from 'react'
 import { Image, StyleProp, TouchableOpacity, View, ViewStyle } from 'react-native'
 import { TextWithIconPress } from '../common'
+import { ProfileInfoStyle } from './profile'
 
 /**
  * ProfileInfo props
@@ -44,7 +45,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
 
   const renderContent = () => {
     return (
-      <View style={[styles.container(theme), containerStyle]}>
+      <View style={[ProfileInfoStyle.container(theme), containerStyle]}>
         <TouchableOpacity
           onPress={() =>
             !withArrow
@@ -53,31 +54,31 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
               ? NavigationService.navigate(ROUTES.Profile, { username: info?.username })
               : NavigationService.navigate(ROUTES.SignIn)
           }
-          style={styles.infoItem(theme)}>
-          <View style={styles.baseAvatar(theme)}>
+          style={ProfileInfoStyle.infoItem(theme)}>
+          <View style={ProfileInfoStyle.baseAvatar(theme)}>
             <Avatar
               size={60}
               source={info?.avatar_normal ? { uri: info?.avatar_normal } : undefined}
               username={info?.username}
             />
           </View>
-          <View style={styles.baseRightBox(theme)}>
-            <View style={styles.baseRightInfo(theme)}>
+          <View style={ProfileInfoStyle.baseRightBox(theme)}>
+            <View style={ProfileInfoStyle.baseRightInfo(theme)}>
               <Text
                 style={[
-                  styles.baseRightItem(theme),
+                  ProfileInfoStyle.baseRightItem(theme),
                   theme.typography.subheadingText,
                   { color: theme.colors.secondary }
                 ]}>
                 {info?.username ?? translate('label.goLogin')}
               </Text>
               {!isLogin || (isLogin && info?.tagline) ? (
-                <Text style={[styles.baseRightItem(theme), theme.typography.bodyText]}>
+                <Text style={[ProfileInfoStyle.baseRightItem(theme), theme.typography.bodyText]}>
                   {info?.tagline ?? translate('label.loginTips')}
                 </Text>
               ) : null}
               {info?.last_modified ? (
-                <Text style={[styles.baseRightItem(theme), theme.typography.captionText]}>
+                <Text style={[ProfileInfoStyle.baseRightItem(theme), theme.typography.captionText]}>
                   {translate('label.profileLastModified').replace(
                     '$',
                     dayjs(info?.last_modified * 1000).format('YYYY-MM-DD HH:mm:ss')
@@ -86,7 +87,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
               ) : null}
             </View>
             {withArrow && (
-              <View style={styles.baseRightArrow(theme)}>
+              <View style={ProfileInfoStyle.baseRightArrow(theme)}>
                 <Image source={theme.assets.images.icons.table.rightArrow} style={{ width: 14, height: 14 }} />
               </View>
             )}
@@ -94,10 +95,12 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
         </TouchableOpacity>
         {styleType === 'full' && (
           <>
-            {info?.bio ? <Text style={[styles.infoItem(theme), theme.typography.bodyText]}>{info?.bio}</Text> : null}
+            {info?.bio ? (
+              <Text style={[ProfileInfoStyle.infoItem(theme), theme.typography.bodyText]}>{info?.bio}</Text>
+            ) : null}
 
             {info && (info.location || info.website) ? (
-              <View style={styles.infoItem(theme)}>
+              <View style={ProfileInfoStyle.infoItem(theme)}>
                 {info?.location ? (
                   <TextWithIconPress
                     containerStyle={{ marginRight: theme.spacing.small }}
@@ -118,7 +121,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
               </View>
             ) : null}
             {info && (info.github || info.telegram || info.twitter) ? (
-              <View style={styles.infoItem(theme)}>
+              <View style={ProfileInfoStyle.infoItem(theme)}>
                 {info?.github ? (
                   <TextWithIconPress
                     onPress={() => {
@@ -149,7 +152,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
               </View>
             ) : null}
             {info?.created ? (
-              <Text style={[styles.infoItem(theme), theme.typography.captionText]}>
+              <Text style={[ProfileInfoStyle.infoItem(theme), theme.typography.captionText]}>
                 {translate('label.joinV2exSinceTime')
                   .replace('$', info?.id.toString())
                   .replace('$', dayjs(info?.created * 1000).format())}
@@ -162,46 +165,6 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
   }
 
   return renderContent()
-}
-
-const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    display: 'flex',
-    alignItems: 'flex-start',
-    flexDirection: 'column'
-  }),
-  infoItem: (theme: ITheme): ViewStyle => ({
-    paddingBottom: theme.spacing.medium,
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-    width: '100%'
-  }),
-  baseAvatar: (theme: ITheme): ViewStyle => ({
-    width: 60,
-    height: 60,
-    marginRight: theme.spacing.medium
-  }),
-  baseRightBox: (theme: ITheme): ViewStyle => ({
-    display: 'flex',
-    flexDirection: 'row',
-    flex: 1
-  }),
-  baseRightInfo: (theme: ITheme): ViewStyle => ({
-    display: 'flex',
-    flexDirection: 'column',
-    flex: 1,
-    alignItems: 'flex-start'
-  }),
-  baseRightArrow: (theme: ITheme): ViewStyle => ({
-    width: 14,
-    display: 'flex',
-    justifyContent: 'center'
-  }),
-  baseRightItem: (theme: ITheme): ViewStyle => ({
-    paddingBottom: theme.spacing.small
-  })
 }
 
 export default ProfileInfo

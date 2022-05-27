@@ -26,7 +26,7 @@ const Profile = ({
 
   useEffect(() => {
     navigation.setOptions({ title: member?.username })
-  }, [username])
+  }, [username, member])
 
   useLayoutEffect(() => {
     navigation.setOptions({
