@@ -29,7 +29,7 @@ const NodeDetail = ({
 
   useEffect(() => {
     navigation.setOptions({
-      title: route.params.nodeTitle,
+      title: route.params.nodeTitle || info?.title,
       headerRight: HeaderRight()
     })
   }, [interestNodes, info])
