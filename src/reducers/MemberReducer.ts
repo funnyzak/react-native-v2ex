@@ -22,7 +22,9 @@ export default (state: IState.MemberState = INITIAL_STATE, action: Action): ISta
       return {
         ...state,
         interestNodes: state.interestNodes.concat(
-          state.interestNodes.findIndex((v) => v.id === action.payload.id) >= 0 ? [] : action.payload
+          state.interestNodes && state.interestNodes.findIndex((v) => v.id === action.payload.id) >= 0
+            ? []
+            : action.payload
         )
       }
     case MEMBER_UNINTEREST_NODE:
