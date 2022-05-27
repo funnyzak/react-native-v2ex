@@ -10,6 +10,7 @@ import {
   APP_CACHE_ADD_NODE,
   APP_CACHE_MEMBER_FOLLOWING,
   APP_CACHE_MEMBER_INTEREST_NODES,
+  APP_CACHE_MEMBER_LIKE_TOPICS,
   APP_CACHE_RESET,
   APP_CACHE_RESET_MEMBERS,
   APP_CACHE_RESET_NODES,
@@ -48,6 +49,11 @@ export const cacheMemberFollowing = (members: V2exObject.Member[] | undefined) =
 export const cacheMemberInterestNodes = (nodes: V2exObject.Node[] | undefined) => ({
   type: APP_CACHE_MEMBER_INTEREST_NODES,
   payload: nodes
+})
+
+export const cacheMemberLikeTopicss = (topics: V2exObject.Topic[] | undefined) => ({
+  type: APP_CACHE_MEMBER_LIKE_TOPICS,
+  payload: topics
 })
 
 export const resetCache = (type: 'all' | 'nodes' | 'members') => ({

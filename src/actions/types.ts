@@ -52,8 +52,11 @@ export const APP_NODE_LOAD_ERROR = 'v2ex_node_error'
 
 export const APP_CACHE_ADD_MEMBER = 'v2ex_cache_add_member'
 export const APP_CACHE_ADD_NODE = 'v2ex_cache_add_node'
+
 export const APP_CACHE_MEMBER_INTEREST_NODES = 'v2ex_cache_member_interest_nodes'
 export const APP_CACHE_MEMBER_FOLLOWING = 'v2ex_cache_member_following'
+export const APP_CACHE_MEMBER_LIKE_TOPICS = 'v2ex_cache_member_like_topics'
+
 export const APP_CACHE_RESET_MEMBERS = 'v2ex_cache_reset_member'
 export const APP_CACHE_RESET_NODES = 'v2ex_cache_reset_node'
 export const APP_CACHE_RESET = 'v2ex_cache_reset'
@@ -61,6 +64,7 @@ export const APP_CACHE_RESET = 'v2ex_cache_reset'
 export const ActionTypes = {
   MEMBER_INSEREST_NODE,
   APP_CACHE_MEMBER_INTEREST_NODES,
+  APP_CACHE_MEMBER_LIKE_TOPICS,
   MEMBER_UNINTEREST_NODE,
   APP_CACHE_MEMBER_FOLLOWING,
   MEMBER_TOPICS,
