@@ -10,7 +10,7 @@ import { V2exObject } from '@src/types'
 import dayjs from 'dayjs'
 import React, { useEffect } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
-import { TextWithIconPress } from '../common'
+import { RenderHTML, TextWithIconPress } from '../common'
 
 /**
  * NodeInfoCard props
@@ -87,7 +87,12 @@ const NodeInfoCard: React.FC<NodeInfoCardProps> = ({ nodeid, loadedCallback, con
               </View>
             </View>
             {info?.header && info.header !== '' ? (
-              <Text style={[styles.infoItem(theme), theme.typography.labelText]}>{info?.header}</Text>
+              <View style={styles.infoItem(theme)}>
+                <RenderHTML
+                  htmlString={info?.header}
+                  contentWidth={theme.dimens.WINDOW_WIDTH - theme.dimens.layoutContainerHorizontalMargin * 2}
+                />
+              </View>
             ) : null}
             {info?.created ? (
               <Text style={[styles.infoItem(theme), theme.typography.captionText]}>

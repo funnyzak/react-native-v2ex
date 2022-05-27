@@ -67,6 +67,10 @@ const renderersProps = {
         NavigationService.navigate(ROUTES.TopicDetail, { topicId: match[2] })
       } else if (type === 'member' && match && match[2] !== null) {
         NavigationService.navigate(ROUTES.Profile, { username: match[2] })
+      } else if (type === 'go' && match && match[2] !== null) {
+        NavigationService.navigate(ROUTES.NodeDetail, {
+          nodeName: match[2]
+        })
       }
     }
   }

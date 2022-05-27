@@ -33,7 +33,7 @@ const LikeNodeHeaderButton = ({
   const { interestNodes } = useAppSelector((RootState) => RootState.member)
   const dispatch = useAppDispatch()
   const isInterest = useMemo(
-    () => (logined ? interestNodes.findIndex((v) => v.id === node.id) >= 0 : false),
+    () => (logined ? interestNodes && interestNodes.findIndex((v) => v.id === node.id) >= 0 : false),
     [interestNodes]
   )
 
