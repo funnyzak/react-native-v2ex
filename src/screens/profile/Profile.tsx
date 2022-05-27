@@ -1,5 +1,5 @@
 import { logout as actionLogout } from '@src/actions'
-import { Spinner, useToast } from '@src/components'
+import { Spinner } from '@src/components'
 import { useMember } from '@src/hooks/useMember'
 import { translate } from '@src/i18n'
 import { ProfileScreenProps as ScreenProps, ROUTES } from '@src/navigation'
@@ -27,15 +27,6 @@ const Profile = ({
   useEffect(() => {
     navigation.setOptions({ title: member?.username })
   }, [username])
-
-  const { showMessage } = useToast()
-
-  const underConstruction = () => {
-    showMessage({
-      type: 'error',
-      text2: translate('label.underConstruction')
-    })
-  }
 
   useLayoutEffect(() => {
     navigation.setOptions({
