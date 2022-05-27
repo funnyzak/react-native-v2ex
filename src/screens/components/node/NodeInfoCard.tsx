@@ -37,7 +37,7 @@ const NodeInfoCard: React.FC<NodeInfoCardProps> = ({ nodeid, loadedCallback, con
   const { node: info } = useNode({ nodeid: nodeid })
 
   useEffect(() => {
-    if (loadedCallback && info) {
+    if (loadedCallback && info !== undefined) {
       loadedCallback(info)
     }
   }, [info])
