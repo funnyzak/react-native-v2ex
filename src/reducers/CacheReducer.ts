@@ -4,6 +4,7 @@ import {
   APP_CACHE_ADD_NODE,
   APP_CACHE_MEMBER_FOLLOWING,
   APP_CACHE_MEMBER_INTEREST_NODES,
+  APP_CACHE_MEMBER_LIKE_TOPICS,
   APP_CACHE_RESET,
   APP_CACHE_RESET_MEMBERS,
   APP_CACHE_RESET_NODES,
@@ -16,7 +17,8 @@ const INITIAL_STATE: IState.CacheState = {
   members: [],
   nodes: [],
   membersFollowing: { 0: undefined },
-  membersInterestNodes: { 0: undefined }
+  membersInterestNodes: { 0: undefined },
+  membersLikeTopics: { 0: undefined }
 }
 
 export default (state: IState.CacheState = INITIAL_STATE, action: Action): IState.CacheState => {
@@ -37,6 +39,9 @@ export default (state: IState.CacheState = INITIAL_STATE, action: Action): IStat
       return { ...state, nodes }
     case APP_CACHE_MEMBER_INTEREST_NODES:
       state.membersInterestNodes[state.currentSessionMember?.id ?? 0] = action.payload
+      return { ...state }
+    case APP_CACHE_MEMBER_LIKE_TOPICS:
+      state.membersLikeTopics[state.currentSessionMember?.id ?? 0] = action.payload
       return { ...state }
     case APP_CACHE_MEMBER_FOLLOWING:
       state.membersFollowing[state.currentSessionMember?.id ?? 0] = action.payload
