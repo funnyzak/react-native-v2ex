@@ -9,11 +9,17 @@ import {
   MEMBER_TOPICS,
   MEMBER_INSEREST_NODE,
   MEMBER_UNINTEREST_NODE,
+  MEMBER_FOLLOW_PEOPLE,
+  MEMBER_UNFOLLOW_PEOPLE,
+  MEMBER_LIKE_TOPICS,
+  MEMBER_UNLIKE_TOPICS,
   MEMBER_SATE_SETTING
 } from '../types'
 const INITIAL_STATE: IState.MemberState = {
   refreshing: false,
-  interestNodes: []
+  interestNodes: [],
+  followPeoples: [],
+  likeTopics: []
 }
 
 export default (state: IState.MemberState = INITIAL_STATE, action: Action): IState.MemberState => {
@@ -31,6 +37,32 @@ export default (state: IState.MemberState = INITIAL_STATE, action: Action): ISta
       return {
         ...state,
         interestNodes: state.interestNodes.filter((v) => v.id !== action.payload.id)
+      }
+    case MEMBER_FOLLOW_PEOPLE:
+      return {
+        ...state,
+        followPeoples: state.followPeoples.concat(
+          state.followPeoples && state.followPeoples.findIndex((v) => v.id === action.payload.id) >= 0
+            ? []
+            : action.payload
+        )
+      }
+    case MEMBER_UNFOLLOW_PEOPLE:
+      return {
+        ...state,
+        followPeoples: state.followPeoples.filter((v) => v.id !== action.payload.id)
+      }
+    case MEMBER_LIKE_TOPICS:
+      return {
+        ...state,
+        likeTopics: state.likeTopics.concat(
+          state.likeTopics && state.likeTopics.findIndex((v) => v.id === action.payload.id) >= 0 ? [] : action.payload
+        )
+      }
+    case MEMBER_UNLIKE_TOPICS:
+      return {
+        ...state,
+        likeTopics: state.likeTopics.filter((v) => v.id !== action.payload.id)
       }
     case MEMBER_SATE_SETTING:
       return { ...state, ...action.payload }

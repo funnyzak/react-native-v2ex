@@ -16,6 +16,8 @@ const My = ({
   app,
   profile,
   topics,
+  likeTopics,
+  followPeoples,
   readedTopics
 }: ScreenProps &
   IState.State & {
@@ -23,6 +25,8 @@ const My = ({
     token?: V2exObject.MToken
     readedTopics?: V2exObject.Topic[]
     topics?: V2exObject.Topic[]
+    likeTopics: V2exObject.Topic[]
+    followPeoples: V2exObject.Member[]
     logout: () => void
   }) => {
   const { theme } = useTheme()
@@ -63,10 +67,10 @@ const My = ({
           info: profile
         }}
         stat={{
-          favorites: 0,
+          favorites: likeTopics.length ?? 0,
           topics: topics?.length ?? 0,
           history: readedTopics?.length ?? 0,
-          following: 0
+          following: followPeoples.length ?? 0
         }}
       />
       <TableList title={translate('common.setting')}>
@@ -189,11 +193,13 @@ const styles = {
 }
 
 const mapStateToProps = ({ member, setting, app }: IState.State) => {
-  const { profile, token, readedTopics, topics } = member
+  const { profile, token, readedTopics, topics, likeTopics, followPeoples } = member
   return {
     profile,
     topics,
     token,
+    likeTopics,
+    followPeoples,
     readedTopics,
     setting,
     app

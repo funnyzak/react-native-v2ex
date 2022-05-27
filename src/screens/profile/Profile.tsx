@@ -1,5 +1,5 @@
 import { logout as actionLogout } from '@src/actions'
-import { Spinner, useToast } from '@src/components'
+import { Spinner } from '@src/components'
 import { useMember } from '@src/hooks/useMember'
 import { translate } from '@src/i18n'
 import { ProfileScreenProps as ScreenProps, ROUTES } from '@src/navigation'
@@ -9,6 +9,7 @@ import React, { useEffect, useLayoutEffect, useMemo } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import { connect } from 'react-redux'
 import { HeaderButton, ProfileDetail } from '../components'
+import { FollowPeopleHeaderButton } from '../components/button'
 
 const Profile = ({
   route,
@@ -27,21 +28,12 @@ const Profile = ({
     navigation.setOptions({ title: member?.username })
   }, [username])
 
-  const { showMessage } = useToast()
-
-  const underConstruction = () => {
-    showMessage({
-      type: 'error',
-      text2: translate('label.underConstruction')
-    })
-  }
-
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: member
         ? () =>
             !authMember || authMember.id !== member.id ? (
-              <HeaderButton text={translate('common.follow')} onPress={underConstruction} />
+              <FollowPeopleHeaderButton member={member} />
             ) : (
               <HeaderButton
                 source={theme.assets.images.icons.header.logout}

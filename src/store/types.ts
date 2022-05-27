@@ -89,6 +89,11 @@ export declare module IState {
      * 会员follow的人
      */
     membersFollowing: Record<number, Array<V2exObject.Member> | undefined>
+
+    /**
+     * 会员喜欢的帖子
+     */
+    membersLikeTopics: Record<number, Array<V2exObject.Topic> | undefined>
   }
 
   /**
@@ -178,11 +183,11 @@ export declare module IState {
     /**
      * 关注的人
      */
-    followPeoples?: V2exObject.Member[]
+    followPeoples: V2exObject.Member[]
     /**
      * 收藏的主题
      */
-    likeTopics?: V2exObject.Topic[]
+    likeTopics: V2exObject.Topic[]
 
     /**
      * 已读主题

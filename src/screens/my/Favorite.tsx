@@ -1,46 +1,38 @@
-import React, { useState } from 'react'
+/**
+ * Created by leon<silenceace@gmail.com> on 22/05/27.
+ */
+import { Placeholder } from '@src/components'
+import { FavoriteTopicsScreenProps as ScreenProps } from '@src/navigation'
+import { RootState } from '@src/store'
+import { SylCommon, useTheme } from '@src/theme'
+import { V2exObject } from '@src/types'
+import React from 'react'
+import { View } from 'react-native'
 import { connect } from 'react-redux'
-import { StyleSheet, View, ViewStyle, TextStyle } from 'react-native'
+import { TopicCardList } from '../components'
 
-import { translate } from '@src/i18n'
-import { useTheme, SylCommon } from '@src/theme'
-import { IState, ITheme, V2exObject } from '@src/types'
-import * as CompS from '../components'
-import { Text, Spinner, Placeholder } from '@src/components'
-import { FavoriteTopicsScreenProps as ScreenProps, ROUTES } from '@src/navigation'
-
-const FavoriteTopics = ({ route, navigation, loading }: ScreenProps) => {
+const FavoriteTopics = ({
+  likeTopics
+}: ScreenProps & {
+  likeTopics: V2exObject.Topic[]
+}) => {
   const { theme } = useTheme()
-  return (
-    <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
-      <Placeholder
-        displayType="icon"
-        icon={theme.assets.images.icons.placeholder.construction}
-        placeholderText={translate(`router.${ROUTES.FavoriteTopics}`) + translate('label.underConstruction')}
-      />
-    </View>
-  )
+
+  const renderContent = () => {
+    if (!likeTopics) {
+      return <Placeholder />
+    }
+    return <TopicCardList topics={[...likeTopics].reverse()} canLoadMoreContent={false} searchIndicator={false} />
+  }
+
+  return <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>{renderContent()}</View>
 }
 
-/**
- * @description styles settings
- */
-const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    flex: 1
-  })
-}
-
-/**
- * default props
- */
-FavoriteTopics.defaultProps = {
-  loading: false
-}
-
-const mapStateToProps = ({ ui: { login } }: { ui: IState.UIState }) => {
-  const { error, success, loading } = login
-  return { error, success, loading }
+const mapStateToProps = ({ member }: RootState) => {
+  const { likeTopics } = member
+  return {
+    likeTopics
+  }
 }
 
 export default connect(mapStateToProps)(FavoriteTopics)
