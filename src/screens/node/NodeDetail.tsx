@@ -1,7 +1,6 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/04/30.
  */
-import { interestNode, unInterestNode } from '@src/actions'
 import { NodeDetailScreenProps as ScreenProps } from '@src/navigation/routes'
 import { RootState } from '@src/store'
 import { SylCommon, useTheme } from '@src/theme'
@@ -23,15 +22,13 @@ const NodeDetail = ({
   const nodeName = useMemo(() => route.params.nodeName, [route])
   const [info, setInfo] = useState<V2exObject.Node | undefined>(undefined)
 
-  const HeaderRight = () => () => {
-    return !info ? undefined : <LikeNodeHeaderButton node={info} />
-  }
-
   useEffect(() => {
-    navigation.setOptions({
-      title: route.params.nodeTitle || info?.title,
-      headerRight: HeaderRight()
-    })
+    if (info) {
+      navigation.setOptions({
+        title: route.params.nodeTitle || info?.title,
+        headerRight: () => <LikeNodeHeaderButton node={info} />
+      })
+    }
   }, [interestNodes, info])
 
   return (
