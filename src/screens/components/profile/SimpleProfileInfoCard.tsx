@@ -32,7 +32,7 @@ export interface SimpleProfileInfoCardProps {
 const SimpleProfileInfoCard: React.FC<SimpleProfileInfoCardProps> = ({
   info,
   containerStyle,
-  withArrow = false
+  withArrow = true
 }: SimpleProfileInfoCardProps) => {
   const { theme } = useTheme()
 
@@ -56,19 +56,35 @@ const SimpleProfileInfoCard: React.FC<SimpleProfileInfoCardProps> = ({
               <Text
                 style={[
                   ProfileInfoStyle.baseRightItem(theme),
+                  styles.baseRightItem(theme),
                   theme.typography.subheadingText,
                   { color: theme.colors.secondary }
                 ]}>
-                {info?.username ?? translate('label.goLogin')}
+                {info?.username}
               </Text>
               {info?.tagline ? (
-                <Text style={[ProfileInfoStyle.baseRightItem(theme), theme.typography.bodyText]}>{info.tagline}</Text>
+                <Text
+                  style={[
+                    ProfileInfoStyle.baseRightItem(theme),
+                    styles.baseRightItem(theme),
+                    theme.typography.bodyText
+                  ]}>
+                  {info.tagline}
+                </Text>
+              ) : null}
+              {info ? (
+                <Text
+                  style={[
+                    ProfileInfoStyle.baseRightItem(theme),
+                    styles.baseRightItem(theme),
+                    theme.typography.captionText
+                  ]}>
+                  {translate('label.v2exNumber').replace('$', info?.id.toString())}
+                </Text>
               ) : null}
               {info?.created ? (
                 <Text style={[ProfileInfoStyle.infoItem(theme), theme.typography.captionText]}>
-                  {translate('label.joinV2exSinceTime')
-                    .replace('$', info?.id.toString())
-                    .replace('$', dayjs(info?.created * 1000).format())}
+                  {translate('label.joinSinceTime').replace('$', dayjs(info?.created * 1000).format())}
                 </Text>
               ) : null}
             </View>
@@ -84,6 +100,12 @@ const SimpleProfileInfoCard: React.FC<SimpleProfileInfoCardProps> = ({
   }
 
   return renderContent()
+}
+
+const styles = {
+  baseRightItem: (theme: ITheme): ViewStyle => ({
+    paddingBottom: theme.spacing.tiny
+  })
 }
 
 export default SimpleProfileInfoCard
