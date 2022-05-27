@@ -9,17 +9,7 @@ import { SylCommon, useTheme } from '@src/theme'
 import { IState, ITheme } from '@src/types'
 import * as utils from '@src/utils'
 import React, { useEffect, useState } from 'react'
-import {
-  Image,
-  ImageStyle,
-  KeyboardAvoidingView,
-  Platform,
-  Pressable,
-  TextStyle,
-  TouchableOpacity,
-  View,
-  ViewStyle
-} from 'react-native'
+import { Image, ImageStyle, Pressable, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native'
 import { connect } from 'react-redux'
 import { SetStatusBar } from '../components'
 
@@ -35,6 +25,7 @@ const Screen = ({
   const [token, setToken] = useState('')
   const { theme } = useTheme()
   const { showMessage } = useToast()
+  const [keyboardRaise, setKeyboardRaise] = useState(false)
 
   const goNextRoute = () => {
     navigation.reset({
@@ -81,58 +72,59 @@ const Screen = ({
   }
 
   return (
-    <View style={[SylCommon.Layout.fill, { backgroundColor: theme.colors.background }]}>
+    <View
+      style={[
+        SylCommon.Card.container(theme),
+        styles.mainContainer(theme, keyboardRaise),
+        { backgroundColor: theme.colors.background }
+      ]}>
       <SetStatusBar backgroundColor={theme.colors.background} />
-      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{ flex: 1 }}>
-        <View style={[SylCommon.Card.container(theme), styles.mainContainer(theme)]}>
-          <View style={styles.columnItem(theme)}>
-            <Image
-              source={
-                theme.name === 'dark'
-                  ? theme.assets.images.icons.app.arrow.light
-                  : theme.assets.images.icons.app.arrow.dark
-              }
-              style={styles.logo(theme)}
-            />
-          </View>
-          <View style={styles.columnItem(theme)}>
-            <Input
-              autoCapitalize="none"
-              underlineColorAndroid="transparent"
-              placeholder={translate('placeholder.token')}
-              keyboardType="default"
-              returnKeyType="next"
-              autoCorrect={false}
-              value={token}
-              editable={!loading}
-              onChangeText={setToken}
-              containerStyle={styles.input(theme)}
-              textContentType="none"
-            />
-            {renderButtons()}
-          </View>
-        </View>
-        <View style={styles.footer(theme)}>
-          <Text style={styles.footerText(theme)}>{translate('label.confirmTerms')}</Text>
-          <Pressable
-            onPress={() => {
-              navigation.navigate(ROUTES.PrivacyPolicy)
-            }}>
-            <Text style={[styles.footerText(theme), { color: theme.colors.secondary }]}>
-              {translate('common.privacyPolicy')}
-            </Text>
-          </Pressable>
-          <Text style={styles.footerText(theme)}>{translate('common.and')}</Text>
-          <Pressable
-            onPress={() => {
-              navigation.navigate(ROUTES.TermsOfService)
-            }}>
-            <Text style={[styles.footerText(theme), { color: theme.colors.secondary }]}>
-              {translate('common.termsOfService')}
-            </Text>
-          </Pressable>
-        </View>
-      </KeyboardAvoidingView>
+      <View style={styles.columnItem(theme)}>
+        <Image
+          source={
+            theme.name === 'dark' ? theme.assets.images.icons.app.arrow.light : theme.assets.images.icons.app.arrow.dark
+          }
+          style={styles.logo(theme)}
+        />
+      </View>
+      <View style={styles.columnItem(theme)}>
+        <Input
+          autoCapitalize="none"
+          underlineColorAndroid="transparent"
+          placeholder={translate('placeholder.token')}
+          keyboardType="default"
+          returnKeyType="next"
+          autoCorrect={false}
+          value={token}
+          onFocus={() => setKeyboardRaise(true)}
+          onBlur={() => setKeyboardRaise(false)}
+          editable={!loading}
+          onChangeText={setToken}
+          containerStyle={styles.input(theme)}
+          textContentType="none"
+        />
+        {renderButtons()}
+      </View>
+      <View style={styles.footer(theme)}>
+        <Text style={styles.footerText(theme)}>{translate('label.confirmTerms')}</Text>
+        <Pressable
+          onPress={() => {
+            navigation.navigate(ROUTES.PrivacyPolicy)
+          }}>
+          <Text style={[styles.footerText(theme), { color: theme.colors.secondary }]}>
+            {translate('common.privacyPolicy')}
+          </Text>
+        </Pressable>
+        <Text style={styles.footerText(theme)}>{translate('common.and')}</Text>
+        <Pressable
+          onPress={() => {
+            navigation.navigate(ROUTES.TermsOfService)
+          }}>
+          <Text style={[styles.footerText(theme), { color: theme.colors.secondary }]}>
+            {translate('common.termsOfService')}
+          </Text>
+        </Pressable>
+      </View>
     </View>
   )
 }
@@ -141,14 +133,14 @@ const Screen = ({
  * @description styles settings
  */
 const styles = {
-  mainContainer: (theme: ITheme): ViewStyle => ({
+  mainContainer: (theme: ITheme, keyboardRaise: boolean): ViewStyle => ({
     flex: 1,
     width: theme.dimens.defaultButtonWidth,
     backgroundColor: theme.colors.transparent,
-    paddingTop: theme.dimens.WINDOW_HEIGHT / 3,
-    alignSelf: 'center',
+    paddingTop: theme.dimens.WINDOW_HEIGHT / (keyboardRaise ? 10 : 3),
     flexDirection: 'column',
     justifyContent: 'flex-start',
+    alignSelf: 'center',
     alignItems: 'center'
   }),
   columnItem: (theme: ITheme): ViewStyle => ({
