@@ -1,3 +1,6 @@
+/**
+ * Created by leon<silenceace@gmail.com> on 22/04/14.
+ */
 import { loginByToken } from '@src/actions'
 import { Button, Input, Text, useToast } from '@src/components'
 import { useAppSelector } from '@src/hooks'
