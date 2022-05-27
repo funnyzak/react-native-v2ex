@@ -17,10 +17,16 @@ export const APP_NOTIFICATION_LATEST = 'notification'
 export const APP_NOTIFICATION_REMOVE = 'notification_remove'
 
 export const MEMBER_PROFILE = 'profile'
-export const MEMBER_FOLLOW_PEOPLE = 'follow_people'
-export const MEMBER_LIKE_TOPICS = 'like_topics'
+
+export const MEMBER_FOLLOW_PEOPLE = 'member_follow_people'
+export const MEMBER_UNFOLLOW_PEOPLE = 'member_unfollow_people'
+
+export const MEMBER_LIKE_TOPICS = 'member_like_topics'
+export const MEMBER_UNLIKE_TOPICS = 'member_unlike_topics'
+
 export const MEMBER_READ_TOPIC = 'read_topic'
 export const MEMBER_TOPICS = 'member_topics'
+
 export const MEMBER_INSEREST_NODE = 'member_interest_node'
 export const MEMBER_UNINTEREST_NODE = 'member_uninterest_node'
 export const MEMBER_SATE_SETTING = 'member_state_setting'
@@ -84,7 +90,9 @@ export const ActionTypes = {
   APP_AUTH_LOADING,
   APP_AUTH_RESET,
   MEMBER_FOLLOW_PEOPLE,
+  MEMBER_UNFOLLOW_PEOPLE,
   MEMBER_LIKE_TOPICS,
+  MEMBER_UNLIKE_TOPICS,
   APP_AUTH,
   FEEDBACKING,
   TOPIC_GET,
