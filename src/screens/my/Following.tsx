@@ -9,7 +9,7 @@ import { V2exObject } from '@src/types'
 import React from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
-import { ProfileCardList } from '../components'
+import { NeedLogin, ProfileCardList } from '../components'
 
 const Following = ({
   followPeoples
@@ -21,7 +21,11 @@ const Following = ({
     if (!followPeoples) {
       return <Placeholder />
     }
-    return <ProfileCardList members={[...followPeoples].reverse()} canLoadMoreContent={false} searchIndicator={false} />
+    return (
+      <NeedLogin>
+        <ProfileCardList members={[...followPeoples].reverse()} canLoadMoreContent={false} searchIndicator={false} />
+      </NeedLogin>
+    )
   }
 
   return <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>{renderContent()}</View>
