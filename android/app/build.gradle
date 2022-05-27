@@ -134,8 +134,8 @@ android {
         applicationId "github.funnyzak.v2ex"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 26
-        versionName "0.6.2"
+        versionCode 27
+        versionName "0.6.3"
     }
     splits {
         abi {
