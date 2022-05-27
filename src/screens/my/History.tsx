@@ -1,3 +1,5 @@
+import { Placeholder } from '@src/components'
+import { translate } from '@src/i18n'
 import { HistoryScreenProps as ScreenProps } from '@src/navigation/routes'
 import { RootState } from '@src/store'
 import { SylCommon, useTheme } from '@src/theme'
@@ -5,7 +7,7 @@ import { V2exObject } from '@src/types'
 import React from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
-import { NotFound, TopicCardList } from '../components'
+import { TopicCardList } from '../components'
 
 const History = ({
   route,
@@ -18,7 +20,7 @@ const History = ({
 
   const renderContent = () => {
     if (!readedTopics) {
-      return <NotFound />
+      return <Placeholder />
     }
     return <TopicCardList topics={readedTopics} canLoadMoreContent={false} searchIndicator={false} />
   }

@@ -2,6 +2,7 @@ import React from 'react'
 import { View, ViewStyle, TextStyle, ImageSourcePropType, Image, StyleProp } from 'react-native'
 import { useTheme, ITheme } from '@src/theme'
 import { Text, Button } from '.'
+import { translate } from '@src/i18n'
 
 const Placeholder = ({
   containerStyle,
@@ -14,7 +15,7 @@ const Placeholder = ({
   containerStyle?: StyleProp<ViewStyle>
   displayType?: 'icon' | 'text' | 'none'
   icon?: ImageSourcePropType
-  placeholderText: string
+  placeholderText?: string
   buttonText?: string
   buttonPress?: () => void
 }) => {
@@ -36,7 +37,7 @@ const Placeholder = ({
   return (
     <View style={[styles.containerStyle(theme), containerStyle]}>
       {renderIcon()}
-      <Text style={styles.textStyle(theme)}>{placeholderText}</Text>
+      <Text style={styles.textStyle(theme)}>{placeholderText ?? translate('placeholder.empty')}</Text>
 
       {buttonText && (
         <Button style={styles.buttonContainer(theme)} disabled={false} type="small" onPress={buttonPress}>
