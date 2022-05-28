@@ -12,6 +12,7 @@ import { useTheme, ITheme } from '@src/theme'
 export interface TouchableOpacityProps extends NativeTouchableOpacityProps {
   loading?: boolean
   disabled?: boolean
+  textColor?: string
   type?: 'large' | 'small'
 }
 
@@ -19,6 +20,7 @@ const Button = ({
   onPress,
   children,
   style,
+  textColor,
   loading = false,
   disabled = false,
   type = 'large'
@@ -30,7 +32,7 @@ const Button = ({
       {loading && (
         <ActivityIndicator size={'small'} color={theme.colors.white} style={{ marginRight: theme.spacing.tiny }} />
       )}
-      <Text style={styles.buttonTitle(theme, type, disabled)}>{children}</Text>
+      <Text style={styles.buttonTitle(theme, type, disabled, textColor)}>{children}</Text>
     </TouchableOpacity>
   )
 }
@@ -60,16 +62,16 @@ const styles = {
           justifyContent: 'center',
           borderRadius: _theme.dimens.defaultButtonRadius
         },
-  buttonTitle: (_theme: ITheme, type: 'large' | 'small', disabled: boolean): TextStyle =>
+  buttonTitle: (_theme: ITheme, type: 'large' | 'small', disabled: boolean, textColor?: string): TextStyle =>
     type === 'large'
       ? {
           ..._theme.typography.subheadingText,
-          color: _theme.colors.white,
+          color: textColor ?? _theme.colors.white,
           alignSelf: 'center'
         }
       : {
           ..._theme.typography.bodyText,
-          color: disabled ? _theme.colors.disabled : _theme.colors.secondary,
+          color: textColor ?? disabled ? _theme.colors.disabled : _theme.colors.secondary,
           alignSelf: 'center'
         }
 }

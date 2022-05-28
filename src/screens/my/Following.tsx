@@ -2,6 +2,7 @@
  * Created by leon<silenceace@gmail.com> on 22/04/07.
  */
 import { Placeholder } from '@src/components'
+import { translate } from '@src/i18n'
 import { FollowingScreenProps as ScreenProps } from '@src/navigation'
 import { RootState } from '@src/store'
 import { SylCommon, useTheme } from '@src/theme'
@@ -18,8 +19,8 @@ const Following = ({
 }) => {
   const { theme } = useTheme()
   const renderContent = () => {
-    if (!followPeoples) {
-      return <Placeholder />
+    if (!followPeoples || followPeoples.length === 0) {
+      return <Placeholder placeholderText={translate('placeholder.noFollow')} />
     }
     return (
       <NeedLogin>

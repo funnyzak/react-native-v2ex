@@ -32,6 +32,7 @@
     "count": "数量",
     "ok": "确定",
     "cancel": "取消",
+    "confirm": "确定",
     "continue": "继续",
     "select": "选择",
     "save": "保存",
@@ -170,6 +171,7 @@
     "noMoreTopics": "没有更多主题了",
     "noMoreNodes": "没有更多节点了",
     "noMoreData": "没有更多数据了",
+    "noFollow":"没有关注任何人",
     "noMoreNotifications": "没有更多通知了",
     "noPostTopics": "没有发布主题。",
     "needToLogin": "功能需要登陆，现在登陆吗？",
@@ -207,7 +209,7 @@
     "noMore": "没有了"
   },
   "confirm": {
-    "logout": "确定推出登陆吗？"
+    "logout": "确定退出登陆吗，登出不会清除你的缓存信息？"
   },
   "errors": {
     "error": "产生了一个错误。",
