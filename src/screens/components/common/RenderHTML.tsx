@@ -36,6 +36,9 @@ const RenderHTML = ({
 
 const contentTagsStyles = (theme: ITheme): MixedStyleRecord => {
   return {
+    body: {
+      color: theme.colors.bodyText
+    },
     div: {
       color: theme.colors.bodyText
     },
