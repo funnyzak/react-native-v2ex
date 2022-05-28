@@ -1,15 +1,14 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
-import { ViewStyle, TextStyle, ScrollView } from 'react-native'
-
-import { translate } from '@src/i18n'
-import { SylCommon, useTheme } from '@src/theme'
-import { IState, ITheme, V2exObject } from '@src/types'
-import { MyScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 import { logout as logoutAction } from '@src/actions'
-import { linking } from '@src/utils'
-import { ProfileCard, TableList, TableRow, Footer, HeaderButton, SetStatusBar } from '../components'
 import { useToast } from '@src/components/toast'
+import { translate } from '@src/i18n'
+import { MyScreenProps as ScreenProps, ROUTES } from '@src/navigation'
+import { SylCommon, useTheme } from '@src/theme'
+import { IState, V2exObject } from '@src/types'
+import { linking } from '@src/utils'
+import React, { useEffect } from 'react'
+import { ScrollView } from 'react-native'
+import { connect } from 'react-redux'
+import { Footer, HeaderButton, ProfileCard, SetStatusBar, TableList, TableRow } from '../components'
 
 const My = ({
   navigation,
@@ -67,10 +66,10 @@ const My = ({
           info: profile
         }}
         stat={{
-          favorites: likeTopics.length ?? 0,
-          topics: topics?.length ?? 0,
-          history: readedTopics?.length ?? 0,
-          following: followPeoples.length ?? 0
+          favorites: (likeTopics && likeTopics.length) || 0,
+          topics: (topics && topics?.length) || 0,
+          history: (readedTopics && readedTopics?.length) || 0,
+          following: (followPeoples && followPeoples.length) || 0
         }}
       />
       <TableList title={translate('common.setting')}>
@@ -171,25 +170,6 @@ const My = ({
       <Footer />
     </ScrollView>
   )
-}
-
-/**
- * @description styles.settings
- */
-const styles = {
-  container: (theme: ITheme): ViewStyle => ({
-    backgroundColor: theme.colors.background
-  }),
-  loginTip: (theme: ITheme): TextStyle => ({
-    fontSize: 12,
-    color: theme.colors.secondary
-  }),
-  logoutBox: (theme: ITheme): ViewStyle => ({
-    marginTop: 30,
-    flex: 1,
-    width: '100%',
-    alignItems: 'center'
-  })
 }
 
 const mapStateToProps = ({ member, setting, app }: IState.State) => {

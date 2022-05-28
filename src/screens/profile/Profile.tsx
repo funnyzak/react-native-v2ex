@@ -1,15 +1,18 @@
+/**
+ * Created by leon<silenceace@gmail.com> on 22/03/4.
+ */
 import { logout as actionLogout } from '@src/actions'
 import { Spinner } from '@src/components'
 import { useMember } from '@src/hooks/useMember'
 import { translate } from '@src/i18n'
-import { ProfileScreenProps as ScreenProps, ROUTES } from '@src/navigation'
+import { ProfileScreenProps as ScreenProps } from '@src/navigation'
 import { SylCommon, useTheme } from '@src/theme'
 import { IState, V2exObject } from '@src/types'
 import React, { useEffect, useLayoutEffect, useMemo } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import { connect } from 'react-redux'
-import { HeaderButton, ProfileDetail } from '../components'
-import { FollowPeopleHeaderButton } from '../components/button'
+import { ProfileDetail } from '../components'
+import { FollowPeopleHeaderButton, LogoutHeaderButton } from '../components/button'
 
 const Profile = ({
   route,
@@ -35,14 +38,7 @@ const Profile = ({
             !authMember || authMember.id !== member.id ? (
               <FollowPeopleHeaderButton member={member} />
             ) : (
-              <HeaderButton
-                source={theme.assets.images.icons.header.logout}
-                onPress={() => {
-                  // TODO: 退出确认
-                  logout()
-                  navigation.navigate(ROUTES.SignIn)
-                }}
-              />
+              <LogoutHeaderButton member={member} />
             )
         : undefined
     })
