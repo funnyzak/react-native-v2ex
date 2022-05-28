@@ -112,5 +112,9 @@ export const OPENSOURCE_LIST: Array<openSourceInfoType> = [
   {
     name: 'react-native-skeleton-placeholder',
     repoUrl: 'https://github.com/chramos/react-native-skeleton-placeholder'
+  },
+  {
+    name: 'react-native-actions-sheet',
+    repoUrl: 'https://github.com/ammarahm-ed/react-native-actions-sheet'
   }
 ]
