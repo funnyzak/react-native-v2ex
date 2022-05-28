@@ -19,7 +19,6 @@ export let TabNodes: TabNodeProps[] = [
   { title: 'V2EX', parentNodeNames: ['v2ex'] },
   { title: 'Internet', parentNodeNames: ['internet'] },
   { title: 'Programming', parentNodeNames: ['programming'] },
-  { title: 'Programming', parentNodeNames: ['programming'] },
   { title: 'Apple', parentNodeNames: ['apple'] },
   { title: 'Games', parentNodeNames: ['games'] },
   { title: 'Cloud', parentNodeNames: ['cloud'] },
