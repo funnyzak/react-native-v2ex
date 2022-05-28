@@ -130,6 +130,10 @@ const renderBottomIcon = (focused: boolean, activeIcon: any, inactiveIcon: any):
 const defaultTabBarSetting = (theme: ITheme, insets: EdgeInsets) => {
   return {
     ...defaultCommonScreenOptions(theme),
+    headerTitleStyle: {
+      fontWeight: 'bold',
+      fontSize: theme.typography.titleText.fontSize
+    },
     headerShown: true,
     tabBarActiveTintColor: theme.colors.tabBarIconActive,
     tabBarInactiveTintColor: theme.colors.tabBarIconInactive,
