@@ -1,7 +1,9 @@
 # React Native V2EX
 
+<!-- [![js-standard-style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/feross/standard) -->
+
 [![license][license-image]][repository-url]
-[![js-standard-style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/feross/standard)
+[![Sourcegraph][sg-image]][sg-url]
 [![action][ci-image]][ci-url]
 [![GitHub repo size][repo-size-image]][repository-url]
 [![Release Date][rle-image]][rle-url]
@@ -21,6 +23,8 @@
 [ci-image]: https://img.shields.io/github/workflow/status/funnyzak/react-native-v2ex/react-native-android-build-apk
 [ci-url]: https://github.com/funnyzak/react-native-v2ex/actions
 [rle-image]: https://img.shields.io/github/release-date/funnyzak/react-native-v2ex.svg
+[sg-image]: https://img.shields.io/badge/view%20on-Sourcegraph-brightgreen.svg?style=flat-square
+[sg-url]: https://sourcegraph.com/github.com/funnyzak/react-native-v2ex
 
 ## Overview
 
