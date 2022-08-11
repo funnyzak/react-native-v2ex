@@ -1,6 +1,6 @@
 {
   "name": "react-native-v2ex",
-  "version": "0.6.7",
+  "version": "0.6.5",
   "description": "react native v2ex project",
   "main": "index.js",
   "private": false,
