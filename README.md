@@ -39,6 +39,10 @@
 
 ## TODO
 
+- [ ] 升级 RN 到到 **0.69.4**
+- [ ] 升级提醒
+- [ ] 上架 App Store、Google Play
+- [ ] 通过 cheerio，获取更多的数据，开发交互功能
 - [x] 整体规划，重新设计功能架构
 - [x] 发布 Testflight 版
 - [x] 节点模块
@@ -50,9 +54,6 @@
 - [x] 通知模块
 - [x] 收藏主题
 - [x] 关注的人
-- [ ] 升级提醒
-- [ ] 上架 App Store、Google Play
-- [ ] 通过 cheerio，获取更多的数据，开发交互功能
 
 ## Features
 
