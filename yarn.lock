@@ -7483,7 +7483,7 @@ react-devtools-core@4.19.1:
     shell-quote "^1.6.1"
     ws "^7"
 
-react-devtools-core@4.25.0:
+react-devtools-core@4.25.0, react-devtools-core@~4.25.0:
   version "4.25.0"
   resolved "https://registry.npmmirror.com/react-devtools-core/-/react-devtools-core-4.25.0.tgz#78b11a2c9f81dd9ebff3745ab4ee2147cc96c12a"
   integrity sha512-iewRrnu0ZnmfL+jJayKphXj04CFh6i3ezVnpCtcnZbTPSQgN09XqHAzXbKbqNDl7aTg9QLNkQRP6M3DvdrinWA==
@@ -7491,7 +7491,7 @@ react-devtools-core@4.25.0:
     shell-quote "^1.6.1"
     ws "^7"
 
-react-devtools@4.25.0:
+react-devtools@^4.25.0:
   version "4.25.0"
   resolved "https://registry.npmmirror.com/react-devtools/-/react-devtools-4.25.0.tgz#09ccd58d0a730aca8fdbb233e7995db5f207e343"
   integrity sha512-b6BEjWP0BOF1umqKDAVeSi4sm+crIQJ9WlwPTAxT4T73mKYMqFOr4nf5JwnQK0Vt2U/+kKlLSQqrTKPa2feq+Q==
