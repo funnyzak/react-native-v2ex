@@ -110,6 +110,9 @@ $ git clone https://github.com/funnyzak/react-native-v2ex.git && cd react-native
 # deps install
 $ yarn
 
+# 依赖包额外补丁
+yarn postinstall
+
 # ios build
 npx pod-install
 
@@ -265,6 +268,7 @@ cd android
 - [react-native-skeleton-placeholder](https://github.com/chramos/react-native-skeleton-placeholder)
 - [react-native-actions-sheet](https://github.com/ammarahm-ed/react-native-actions-sheet)
 - prettier
+- (patch-package)[https://github.com/ds300/patch-package]
 
 ## Reference
 
