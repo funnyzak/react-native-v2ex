@@ -39,7 +39,7 @@
 
 ## TODO
 
-- [ ] 升级 RN 到到 **0.69.4**
+- [x] 升级 RN 到到 **0.69.4**
 - [ ] 升级提醒
 - [ ] 上架 App Store、Google Play
 - [ ] 通过 cheerio，获取更多的数据，开发交互功能
@@ -57,7 +57,7 @@
 
 ## Features
 
-1. 基于 React Native 0.67.2 版本。
+1. 基于 React Native 0.69.4 版本。
 2. 引入 TypeScript 强类型检查，保证维护性、可读性、稳定性。
 3. eslint 代码规范检查，prettier 代码美化、Husky 作为 git hooks 进行代码格式化、规范校验。
 4. i18n 集成，支持多国语言。实现了语言切换功能。
@@ -84,7 +84,7 @@
 
 在 MacOS 下开发，在 iOS 为 13+ 的 iPhone Simulator/iPhone 12、Android 9.0 的 AVD 模拟器/Mi Phone 均编译成功运行。
 
-必须安装 NodeJS(16.0+)、Yarn、[Watchman](https://reactnative.cn/docs/environment-setup)。
+必须安装 NodeJS(16.0+)、Yarn、[Watchman](https://reactnative.cn/docs/environment-setup)。JDK 最低要求 11。
 
 - iOS：[CocoaPods](https://reactnative.cn/docs/environment-setup)、Xcode、iOS Simulator。
 - Android：Java JDK、Android Studio、Gradle、Android SDK、[Android Home 配置](https://reactnative.cn/docs/environment-setup)、[Android 真机](https://reactnative.cn/docs/running-on-device) 或 [Android AVD](https://developer.android.com/studio/run/managing-avds)（建议用真机）。
