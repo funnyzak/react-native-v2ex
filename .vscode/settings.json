@@ -1,5 +1,14 @@
 {
   "search.exclude": {
     "**/node_modules": false
+  },
+  "[gradle]": {
+    "files.trimTrailingWhitespace": false,
+    "spotlessGradle.diagnostics.enable": true,
+    "spotlessGradle.format.enable": true,
+    "editor.defaultFormatter": "richardwillis.vscode-spotless-gradle",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.spotlessGradle": true
+    }
   }
 }

@@ -292,7 +292,8 @@ cd android
 - [v2ex api](https://www.v2ex.com/p/7v9TEc53)
 - [v2ex token](https://www.v2ex.com/settings/tokens)
 - [react native sample](https://github.com/facebook/react-native)
-- [react native typescript sample](https://github.com/react-native-community/react-native-template-typescript) |
+- [react native typescript sample](https://github.com/react-native-community/react-native-template-typescript)
+- [React Native Upgrade Helper](https://react-native-community.github.io/upgrade-helper/)
 
 ## License
 
