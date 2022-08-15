@@ -14,8 +14,8 @@
     "tip": "提示",
     "language": "语言",
     "auth": "授权",
-    "logout": "退出登陆",
-    "login": "登陆",
+    "logout": "退出登录",
+    "login": "登录",
     "search": "搜索",
     "setting": "设置",
     "theme": "主题",
@@ -95,13 +95,13 @@
     "joinSinceTime": "加入于 $。",
     "joinV2exSinceTime": "第 $ 号会员，加入于 $。",
     "createNodeSinceTime": "节点从 $ 创建至今。",
-    "noLogin": "未登陆",
+    "noLogin": "未登录",
     "postedTopics": "$ 发布的主题",
     "openApp": "打开APP",
-    "goLogin": "去登陆",
-    "loginTips": "登陆体验更多V2HUB功能",
+    "goLogin": "去登录",
+    "loginTips": "登录体验更多V2HUB功能",
     "underConstruction": "正在建设中",
-    "confirmTerms": "登陆即表示你同意"
+    "confirmTerms": "登录即表示你同意"
   },
   "theme": {
     "auto": "自动",
@@ -164,7 +164,7 @@
     "noNode": "节点不存在",
     "noTopic": "主题不存在",
     "noReply": "回复不存在",
-    "noLogin": "请先登陆",
+    "noLogin": "请先登录",
     "noToken": "请输入API令牌",
     "noNotifications": "还没有任何通知。",
     "noMoreReply": "没有更多回复了",
@@ -174,7 +174,7 @@
     "noFollow":"没有关注任何人",
     "noMoreNotifications": "没有更多通知了",
     "noPostTopics": "没有发布主题。",
-    "needToLogin": "功能需要登陆，现在登陆吗？",
+    "needToLogin": "功能需要登录，现在登录吗？",
     "seemsErrorAndTryAgain": "貌似产生了一个错误，重试下？！",
     "openLinkFailAndTryAgain": "载入失败，试着默认浏览器打开？!"
   },
@@ -184,10 +184,10 @@
     "likeTopics": "收藏主题",
     "readed": "浏览记录",
     "reload": "重新载入",
-    "clickToLogin": "点击此处授权登陆",
+    "clickToLogin": "点击此处授权登录",
     "oneceAgain": "再来一次",
     "tryAgain": "再试试",
-    "loginByToken": "使用Token授权登陆",
+    "loginByToken": "使用Token授权登录",
     "rate": "评分鼓励",
     "shareFriend": "分享给好友",
     "URLSechmes": "URL Schemes",
@@ -200,7 +200,7 @@
   "link": {
     "getToken": "从 V2EX 官方获取API令牌",
     "skipLogin": "跳过，暂不授权",
-    "confirmTerms": "登陆即表示你同意服务条款和隐私政策。"
+    "confirmTerms": "登录即表示你同意服务条款和隐私政策。"
   },
   "tips": {
     "authSuccess": "授权成功。",
@@ -209,7 +209,7 @@
     "noMore": "没有了"
   },
   "confirm": {
-    "logout": "确定退出登陆吗，登出不会清除你的缓存信息？"
+    "logout": "确定退出登录吗，登出不会清除你的缓存信息？"
   },
   "errors": {
     "error": "产生了一个错误。",
