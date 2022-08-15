@@ -269,7 +269,7 @@ cd android
 - [react-native-skeleton-placeholder](https://github.com/chramos/react-native-skeleton-placeholder)
 - [react-native-actions-sheet](https://github.com/ammarahm-ed/react-native-actions-sheet)
 - prettier
-- (patch-package)[https://github.com/ds300/patch-package]
+- [patch-package](https://github.com/ds300/patch-package)
 
 ## Reference
 
