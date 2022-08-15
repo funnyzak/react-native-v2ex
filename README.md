@@ -28,7 +28,7 @@
 
 ## Overview
 
-项目使用了 React Native 构建了一个 [V2EX](https://v2ex.com) 移动客户端应用。目的是为了构建一个 React Native 快速开发脚手架。客户端数据完全基于 [V2EX](https://v2ex.com) 开放 API。
+项目使用了 React Native 构建了一个 [V2EX](https://v2ex.com) 移动客户端应用。目的是为了构建一个 React Native 快速开发脚手架。客户端数据完全基于 [V2EX](https://v2ex.com) 开放 API。基于 RN 0.69.4。
 
 **Figma 设计稿已经开源，可[从此 Duplicate](https://www.figma.com/community/file/1101074002447399194)。**
 
