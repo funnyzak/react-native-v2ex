@@ -76,7 +76,7 @@ export declare module IState {
     }[]
 
     /**
-     * 当前登陆用户
+     * 当前登录用户
      */
     currentSessionMember?: V2exObject.Member
 
