@@ -40,6 +40,7 @@
 ## TODO
 
 - [x] 升级 RN 到到 **0.69.4**
+- [ ] pop 模板创建
 - [ ] 升级提醒
 - [ ] 上架 App Store、Google Play
 - [ ] 通过 cheerio，获取更多的数据，开发交互功能
