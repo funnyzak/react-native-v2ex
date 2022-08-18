@@ -392,7 +392,7 @@ PODS:
     - SDWebImageWebPCoder (~> 0.8.4)
   - RNGestureHandler (2.5.0):
     - React-Core
-  - RNLocalize (2.2.2):
+  - RNLocalize (2.2.3):
     - React-Core
   - RNReanimated (2.9.1):
     - DoubleConversion
@@ -683,7 +683,7 @@ SPEC CHECKSUMS:
   RNDeviceInfo: 0a7c1d2532aa7691f9b9925a27e43af006db4dae
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
   RNGestureHandler: bad495418bcbd3ab47017a38d93d290ebd406f50
-  RNLocalize: 95a43f85e41a966be7bc9cff2437128911c52da0
+  RNLocalize: a64514b46a01375fdfae9349036b4dc7130333b5
   RNReanimated: 2cf7451318bb9cc430abeec8d67693f9cf4e039c
   RNScreens: 4a1af06327774490d97342c00aee0c2bafb497b7
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
