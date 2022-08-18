@@ -12,7 +12,7 @@
     "test": "jest",
     "pod": "pod-install",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "prepare": "if [[ $NODE_ENV != \"production\" ]]; then husky install; fi",
+    "prepare": "if [[ $NODE_ENV != \"production\" ]]; then husky install; fi && patch-package",
     "upgrade": "react-native upgrade",
     "check-dependencies": "rnx-dep-check",
     "fix-dependencies": "rnx-dep-check --write",
