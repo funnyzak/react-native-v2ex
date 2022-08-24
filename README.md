@@ -226,10 +226,16 @@ cd android
         remove app from the emulator
         npm cache clean --force
         watchman watch-del-all
+
+        # for ios
         cd ios
         pod update / pod install
         cd ..
         npx react-native run-ios
+        # for android
+        cd android && ./gradlew clean
+        cd ..
+        npx react-native run-android
 
     [https://stackoverflow.com/questions/64768328/invariant-violation-module-appregistry-is-not-a-registered-callable-module-cal](https://stackoverflow.com/questions/64768328/invariant-violation-module-appregistry-is-not-a-registered-callable-module-cal)
 
