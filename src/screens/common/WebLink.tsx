@@ -1,17 +1,16 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef } from 'react'
-import { View } from 'react-native'
-import { WebView, WebViewProps } from 'react-native-webview'
+import { WebView } from 'react-native-webview'
 
-import { useTheme, SylCommon } from '@src/theme'
-import { WebViewerScreenProps as ScreenProps } from '@src/navigation/routes'
 import { Spinner } from '@src/components'
-import { HeaderButton } from '../components'
-import { linking } from '@src/utils'
 import { translate } from '@src/i18n'
+import { WebViewerScreenProps as ScreenProps } from '@src/navigation/routes'
+import { SylCommon, useTheme } from '@src/theme'
+import { linking } from '@src/utils'
+import { HeaderButton } from '../components'
 
 const WebLink = ({ route, navigation }: ScreenProps) => {
   const { theme } = useTheme()
-  const webViewRef = useRef(new WebView<{ current?: any }>({}))
+  const webViewRef = useRef<WebView>(null)
   const [loading, setLoading] = React.useState(true)
   const url = useMemo(
     () => (!route.params.url.startsWith('http') ? `http://${route.params.url}` : route.params.url),
@@ -33,7 +32,7 @@ const WebLink = ({ route, navigation }: ScreenProps) => {
             source={theme.assets.images.icons.header.refresh}
             onPress={() => {
               setLoading(true)
-              webViewRef.current.reload()
+              webViewRef.current?.reload()
             }}
           />
           <HeaderButton
