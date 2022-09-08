@@ -2,7 +2,7 @@
   "name": "react-native-v2ex",
   "version": "0.7.1",
   "description": "react native v2ex project",
-  "main": "App.js",
+  "main": "index.js",
   "private": false,
   "scripts": {
     "postinstall": "patch-package",
