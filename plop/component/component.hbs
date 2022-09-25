@@ -1,0 +1,22 @@
+import React from 'react'
+import { View, ViewStyle } from 'react-native'
+
+interface {{ upperFirstName }}Props {
+  containerStyle?: StyleProp<ViewStyle>
+}
+
+const {{ upperFirstName }}Component = ({ containerStyle }: {{ upperFirstName }}Props) => {
+  const { theme } = useTheme()
+
+  return <View style={[styles.container(theme), containerStyle]}></View>
+}
+
+const {{ upperFirstName }} = React.memo({{ upperFirstName }}Component)
+
+const styles = {
+  container: (theme: ITheme) => ({
+    flex: 1
+  })
+}
+
+export default {{ upperFirstName }}
