@@ -1,4 +1,11 @@
-import { APP_NOTIFICATION_PULL, APP_LOGOUT, APP_NOTIFICATION_LATEST, APP_NOTIFICATION_REMOVE, Action, IState } from '../types'
+import {
+  APP_NOTIFICATION_PULL,
+  APP_LOGOUT,
+  APP_NOTIFICATION_LATEST,
+  APP_NOTIFICATION_REMOVE,
+  Action,
+  IState
+} from '../types'
 
 const INITIAL_STATE: IState.NotificationState = {
   refreshing: false,

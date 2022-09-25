@@ -147,7 +147,6 @@ class V2ex {
       // })
       fetch(uri, { method, headers, body: JSON.stringify(data) })
         .then((response: Response) => {
-          console.log(uri, response.ok, response.status, response.statusText)
           if (response.ok) {
             return response.json()
           }
