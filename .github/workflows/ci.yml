@@ -9,25 +9,28 @@ jobs:
   install-and-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Install dependencies
+      - 
+        uses: actions/checkout@v2
+      - 
+        name: Install dependencies
         run: |
           yarn
+          yarn lint
   build-android:
     needs: install-and-test
     runs-on: ubuntu-latest
     steps: 
-      - uses: actions/checkout@v2
-
-      - name: Use Node.js
+      - 
+        uses: actions/checkout@v2
+      - 
+        name: Use Node.js
         uses: actions/setup-node@v2
         with:
           node-version: "16.16.0"
-
-      - name: Get yarn cache directory path
+      - 
+        name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
-
       - uses: actions/cache@v1
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
@@ -35,23 +38,23 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-
-      - name: Install dependencies
+      - 
+        name: Install dependencies
         run: |
           yarn
-
-      - name: Build Android Release
+      - 
+        name: Build Android Release
         run: |
           cd android && ./gradlew assembleRelease
-
-      - name: Get the version
+      - 
+        name: Get the version
         id: get_version
         run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
-
-      - name: Rename Apk Name 
+      - 
+        name: Rename Apk Name 
         run: cp android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/v2hub-${{ steps.get_version.outputs.VERSION }}.apk
-
-      - name: build changelog
+      - 
+        name: build changelog
         id: build_changelog
         if: startsWith(github.ref, 'refs/tags/')
         uses: mikepenz/release-changelog-builder-action@v2.9.0
@@ -60,8 +63,8 @@ jobs:
         with:
           configuration: ".config/changelog_configuration.json"
           ignorePreReleases: "false"
-          
-      - name: Create Release
+      - 
+        name: Create Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
@@ -71,21 +74,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
 
-      # - name: Upload Artifact
-      #   uses: actions/upload-artifact@v1
-      #   with:
-      #     name: app-release.apk
-      #     path: android/app/build/outputs/apk/release/
-
-
-  jishida-push:
+  push:
     runs-on: ubuntu-latest
     needs: [build-android]
     if: startsWith(github.ref, 'refs/tags/')
     steps:
-      - name: JiShiDa Push
-        uses: funnyzak/jishida-action@master
+      - 
+        name: V2Hub Release Push
+        uses: funnyzak/pushoo-action@main
         with:
-          key: ${{secrets.JPUSH_KEY}}
-          head: ${{github.repository}}已完成打包发布
-          body: 来自GithubAction：${{github.repository}} 发布已完成，下载地址：https://github.com/funnyzak/react-native-v2ex/releases。
+          platforms: ifttt, bark
+          tokens: ${{ secrets.PUSH_KEY }}
+          content: |
+            # ${{github.repository}} Released
+          options: '{"bark": { "url": "https://github.com/funnyzak" }}'
+          debug: false

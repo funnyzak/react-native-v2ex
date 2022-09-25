@@ -8,7 +8,6 @@ import { RefreshControl, View } from 'react-native'
 import { connect } from 'react-redux'
 import { SetStatusBar, TopicCardList } from '../components'
 
-
 const NodeTopics = ({
   route,
   navigation,
@@ -75,7 +74,7 @@ const NodeTopics = ({
   }
 
   return (
-    <View style={[ SylCommon.Layout.fill]}>
+    <View style={SylCommon.Layout.fill}>
       <SetStatusBar />
       <TopicCardList
         topics={list}

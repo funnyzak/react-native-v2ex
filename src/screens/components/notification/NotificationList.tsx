@@ -61,7 +61,7 @@ const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: N
         })
     },
     [showMessage, page, logined]
-  ) // eslint-disable-line react-hooks/exhaustive-deps
+  )
 
   const onRefresh = useCallback(() => {
     setPage(1)
