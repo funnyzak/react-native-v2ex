@@ -130,6 +130,9 @@ yarn ios
 # Android simulator start
 yarn android
 
+# plop generate template
+yarn p
+
 # print rn info
 npx react-native info
 
