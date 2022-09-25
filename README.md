@@ -28,7 +28,7 @@
 
 ## Overview
 
-项目使用了 React Native 构建了一个 [V2EX](https://v2ex.com) 移动客户端应用。目的是为了构建一个 React Native 快速开发脚手架。客户端数据完全基于 [V2EX](https://v2ex.com) 开放 API。基于 RN 0.69.4。
+项目使用了 React Native 构建了一个 [V2EX](https://v2ex.com) 移动客户端应用。目的是为了构建一个 React Native 快速开发脚手架。客户端数据完全基于 [V2EX](https://v2ex.com) 开放 API。基于 RN 0.70.1。
 
 **Figma 设计稿已经开源，可[从此 Duplicate](https://www.figma.com/community/file/1101074002447399194)。**
 
@@ -39,11 +39,12 @@
 
 ## TODO
 
-- [x] 升级 RN 到到 **0.69.4**
 - [ ] pop 模板创建
 - [ ] 升级提醒
 - [ ] 上架 App Store、Google Play
 - [ ] 通过 cheerio，获取更多的数据，开发交互功能
+- [x] 升级 RN 到到 **0.70.1**
+- [x] 升级 RN 到到 **0.69.4**
 - [x] 整体规划，重新设计功能架构
 - [x] 发布 Testflight 版
 - [x] 节点模块
@@ -58,7 +59,7 @@
 
 ## Features
 
-1. 基于 React Native 0.69.4 版本。
+1. 基于 React Native 0.70.1 版本。
 2. 引入 TypeScript 强类型检查，保证维护性、可读性、稳定性。
 3. eslint 代码规范检查，prettier 代码美化、Husky 作为 git hooks 进行代码格式化、规范校验。
 4. i18n 集成，支持多国语言。实现了语言切换功能。
@@ -88,7 +89,7 @@
 必须安装 NodeJS(16.0+)、Yarn、[Watchman](https://reactnative.cn/docs/environment-setup)。JDK 最低要求 11。
 
 - iOS：[CocoaPods](https://reactnative.cn/docs/environment-setup)、Xcode、iOS Simulator。
-- Android：Java JDK、Android Studio、Gradle、Android SDK、[Android Home 配置](https://reactnative.cn/docs/environment-setup)、[Android 真机](https://reactnative.cn/docs/running-on-device) 或 [Android AVD](https://developer.android.com/studio/run/managing-avds)（建议用真机）。
+- Android：Java JDK(Java 11，配置环境变量 **JAVE_HOME**)、Android Studio、Gradle、Android SDK、[Android Home 配置](https://reactnative.cn/docs/environment-setup)、[Android 真机](https://reactnative.cn/docs/running-on-device) 或 [Android AVD](https://developer.android.com/studio/run/managing-avds)（建议用真机）。
 
 具体可根据官网进行 React Native 开发环境和 iOS、Android 运行环境的配置。
 
