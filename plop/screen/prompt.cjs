@@ -1,37 +1,42 @@
 const toUpperCase = (str) => str.charAt(0).toUpperCase() + str.slice(1)
 
 module.exports = {
-  description: 'Create tsx component',
+  description: 'Create screen',
   prompts: [
     {
       type: 'input',
+      name: 'path',
+      message: '请输入路径（Please enter a screen path）',
+      default: 'common'
+    },
+    {
+      type: 'input',
       name: 'name',
-      message: '请输入组件名称（Please enter the component name）'
+      message: '请输入视图名称（Please enter screen name）'
     }
   ],
   actions: (data) => {
-    const { name } = data
+    const { name, path } = data
     const upperFirstName = toUpperCase(name)
-    const lowerName = name.toLowerCase()
     const templateData = {
       name,
       dtime: `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`,
       upperFirstName
     }
+    let actions = []
 
-    const actions = []
     if (name) {
       actions.push(
         {
           type: 'add',
-          path: `./src/components/${lowerName}/${upperFirstName}.tsx`,
-          templateFile: './plop/component/component.hbs',
+          path: `./src/screens/${path}/${upperFirstName}.tsx`,
+          templateFile: './plop/screen/screen.hbs',
           data: templateData
         },
         {
           type: 'add',
-          path: `./src/components/${lowerName}/index.ts`,
-          templateFile: './plop/component/index.hbs',
+          path: `./src/screens/${path}/index.ts`,
+          templateFile: './plop/screen/index.hbs',
           data: templateData
         }
       )
