@@ -1,7 +1,7 @@
 {
   "name": "react-native-v2ex",
   "version": "0.8.0",
-  "description": "react native v2ex project",
+  "description": "This project used React Native to build a V2EX mobile client application. The main goal was to build a React Native rapid development scaffold.",
   "main": "index.js",
   "private": false,
   "scripts": {
@@ -17,6 +17,7 @@
     "lint": "yarn lint:code && yarn lint:style",
     "lint:fix": "yarn lint:style:fix && yarn lint:code --fix",
     "prepare": "if [[ $NODE_ENV != \"production\" ]]; then husky install; fi && patch-package",
+    "p": "plop",
     "upgrade": "react-native upgrade",
     "check-dependencies": "rnx-dep-check",
     "fix-dependencies": "rnx-dep-check --write",
@@ -34,7 +35,6 @@
     "react-native",
     "v2ex",
     "react-native-v2ex",
-    "javascript",
     "js",
     "redux",
     "quick-start",
@@ -45,7 +45,7 @@
   "bugs": {
     "url": "https://github.com/funnyzak/react-native-v2ex/issues"
   },
-  "homepage": "https://github.com/funnyzak/react-native-v2ex#readme",
+  "homepage": "https://v2hub.yycc.dev/",
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.8",
     "@react-native-masked-view/masked-view": "^0.2.7",
@@ -111,6 +111,7 @@
     "metro-react-native-babel-preset": "^0.72.1",
     "npm-check-updates": "^16.0.5",
     "patch-package": "^6.4.7",
+    "plop": "^3.1.1",
     "pod-install": "^0.1.38",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.7.1",

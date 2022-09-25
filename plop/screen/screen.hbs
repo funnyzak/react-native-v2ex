@@ -1,3 +1,7 @@
+/**
+ * Created by leon<silenceace@gmail.com> on {{ dtime }}
+ */
+
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { StyleSheet, View, ViewStyle, TextStyle } from 'react-native'
@@ -7,20 +11,20 @@ import { useTheme, SylCommon } from '@src/theme'
 import { IState, ITheme, V2exObject } from '@src/types'
 import * as CompS from '../components'
 import { Text, Spinner } from '@src/components'
-import { SearchScreenProps as ScreenProps } from '@src/navigation/routes'
+import { {{ upperFirstName }}ScreenProps as ScreenProps } from '@src/navigation/routes'
 import { RootState } from '@src/store'
 
-const Search = ({ route, navigation, loading }: ScreenProps) => {
+const {{ upperFirstName }} = ({ route, navigation, loading }: ScreenProps) => {
   const { theme } = useTheme()
   return (
     <View style={SylCommon.Layout.fill}>
-      <Text>Hello, Search.</Text>
+      <Text>Hello, {{ upperFirstName }}.</Text>
     </View>
   )
 }
 
 /**
- * @description styles Searchs
+ * @description styles {{ upperFirstName }}
  */
 const styles = {
   container: (theme: ITheme): ViewStyle => ({
@@ -31,12 +35,12 @@ const styles = {
 /**
  * default props
  */
-Search.defaultProps = {
+{{ upperFirstName }}.defaultProps = {
   loading: false
 }
 
 const mapStateToProps = (state: RootState) => {
-  return { loading: state.member }
+  return { member: state.member }
 }
 
-export default connect(mapStateToProps)(Search)
+export default connect(mapStateToProps)({{ upperFirstName }})

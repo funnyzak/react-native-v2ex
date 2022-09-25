@@ -39,10 +39,10 @@
 
 ## TODO
 
-- [ ] pop 模板创建
 - [ ] 升级提醒
 - [ ] 上架 App Store、Google Play
 - [ ] 通过 cheerio，获取更多的数据，开发交互功能
+- [x] plop 模板创建
 - [x] 升级 RN 到到 **0.70.1**
 - [x] 升级 RN 到到 **0.69.4**
 - [x] 整体规划，重新设计功能架构
@@ -129,6 +129,9 @@ yarn ios
 
 # Android simulator start
 yarn android
+
+# plop generate template
+yarn p
 
 # print rn info
 npx react-native info
