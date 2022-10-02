@@ -11,7 +11,8 @@ If applicable, add screenshots of end result.
 
 ## **Where has this been tested?**
 
-- Magento Version: [e.g. 2.1.0]
-- Device: [e.g. iPhone6]
-- OS: [e.g. iOS8.1]
-- Version [e.g. 22]
+- OS: [e.g. Windows 10]
+- Version [e.g. 1.0.0]
+- Node.js version [e.g. 12.16.1]
+- Yarn version [e.g. 1.22.4]
+- ...etc
