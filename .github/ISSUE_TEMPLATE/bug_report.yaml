@@ -16,10 +16,3 @@ body:
         a minimal example to reproduce the issue.
     validations:
       required: true
-  - type: input
-    attributes:
-      label: Library version
-      description: |
-        Output of the `serve --version` command
-    validations:
-      required: true
