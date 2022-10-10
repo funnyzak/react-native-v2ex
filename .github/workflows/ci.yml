@@ -53,11 +53,11 @@ jobs:
         id: get_version
         run: |
           echo ::set-output name=PACKAGE_VERSION_NAME::$(node -p "require('./package.json').version")
+          echo ::set-output name=COMMIT_ID::$(echo ${{ github.sha }} | cut -c1-7)
       - name: Set apk name
         id: set_apk_name
         run: |
-          echo ::set-output name=COMMIT_ID::$(echo $GITHUB_SHA | cut -c 1-7)
-          echo ::set-output name=APK_NAME::$(echo "v2hub-${{ steps.get_version.outputs.PACKAGE_VERSION_NAME }}-${{ steps.set_apk_name.outputs.COMMIT_ID }}.apk")
+          echo ::set-output name=APK_NAME::$(echo "v2hub-${{ steps.get_version.outputs.PACKAGE_VERSION_NAME }}-${{ steps.get_version.outputs.COMMIT_ID }}.apk")
       - name: Move release apk to target directory
         run: cp android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/${{ steps.set_apk_name.outputs.APK_NAME }}
       - name: Build changelog
