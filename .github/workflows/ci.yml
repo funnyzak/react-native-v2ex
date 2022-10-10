@@ -5,26 +5,26 @@ on:
       - '*'
   workflow_dispatch:
 jobs:
-  lint-and-test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          registry-url: 'https://registry.npmjs.org/'
-          cache: 'yarn'
-      - name: Install dependencies
-        run: |
-          yarn
+  # lint-and-test:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       node-version: [16.x]
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #         registry-url: 'https://registry.npmjs.org/'
+  #         cache: 'yarn'
+  #     - name: Install dependencies
+  #       run: |
+  #         yarn
   build-android-apk:
     name: Build Android APK
-    needs: lint-and-test
+    # needs: lint-and-test
     runs-on: ubuntu-latest
     strategy:
       matrix:
