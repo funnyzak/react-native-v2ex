@@ -1,17 +1,18 @@
 # React Native V2EX
 
-<!-- [![js-standard-style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/feross/standard) -->
-
+[![Build Status][build-status-image]][build-status]
 [![license][license-image]][repository-url]
-[![Sourcegraph][sg-image]][sg-url]
-[![action][ci-image]][ci-url]
 [![GitHub repo size][repo-size-image]][repository-url]
 [![Release Date][rle-image]][rle-url]
 [![GitHub last commit][last-commit-image]][repository-url]
+[![tag][tag-image]][rle-url]
 
+<!-- [![action][ci-image]][ci-url] -->
+<!-- [![js-standard-style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/feross/standard) -->
 <!-- [![GitHub commit activity][commit-activity-image]][repository-url] -->
+<!-- [![Sourcegraph][sg-image]][sg-url] -->
 
-[repo-size-image]: https://img.shields.io/github/repo-size/funnyzak/react-native-v2ex
+[repo-size-image]: https://img.shields.io/github/repo-size/funnyzak/react-native-v2ex?style=flat-square&logo=github&logoColor=white&label=size
 [down-latest-image]: https://img.shields.io/github/downloads/funnyzak/react-native-v2ex/latest/total.svg
 [down-total-image]: https://img.shields.io/github/downloads/funnyzak/react-native-v2ex/total.svg
 [commit-activity-image]: https://img.shields.io/github/commit-activity/m/funnyzak/react-native-v2ex?style=flat-square
@@ -22,9 +23,12 @@
 [rle-all-url]: https://github.com/funnyzak/react-native-v2ex/releases
 [ci-image]: https://img.shields.io/github/workflow/status/funnyzak/react-native-v2ex/react-native-android-build-apk
 [ci-url]: https://github.com/funnyzak/react-native-v2ex/actions
-[rle-image]: https://img.shields.io/github/release-date/funnyzak/react-native-v2ex.svg
+[rle-image]: https://img.shields.io/github/release-date/funnyzak/react-native-v2ex.svg?style=flat-square&label=release
 [sg-image]: https://img.shields.io/badge/view%20on-Sourcegraph-brightgreen.svg?style=flat-square
 [sg-url]: https://sourcegraph.com/github.com/funnyzak/react-native-v2ex
+[build-status-image]: https://github.com/funnyzak/react-native-v2ex/actions/workflows/ci.yml/badge.svg
+[build-status]: https://github.com/funnyzak/react-native-v2ex/actions
+[tag-image]: https://img.shields.io/github/tag/funnyzak/react-native-v2ex.svg
 
 ## Overview
 
