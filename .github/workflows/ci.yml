@@ -1,50 +1,69 @@
-name: react-native-android-build-apk
+name: CI
 on:
+  pull_request:
   push:
+    branches:
+      - main
+      - dev
     tags:
       - '*'
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 jobs:
-  install-and-test:
+  lint-and-test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x, 15.x, 16.x]
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: 'https://registry.npmjs.org/'
+          cache: 'yarn'
       - name: Install dependencies
         run: |
           yarn
-          yarn lint
-  build-android:
-    needs: install-and-test
+  build-android-apk:
+    name: Build Android APK
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: lint-and-test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Use Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16.16.0'
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+          node-version: '16.0.0'
+      - name: Restore yarn cache
+        uses: actions/cache@v2
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-node-
       - name: Install dependencies
         run: |
           yarn
-      - name: Build Android Release
+      - name: Build android apk
         run: |
           cd android && ./gradlew assembleRelease
       - name: Get the version
         id: get_version
-        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
-      - name: Rename Apk Name
-        run: cp android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/v2hub-${{ steps.get_version.outputs.VERSION }}.apk
-      - name: build changelog
+        run: |
+          echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+          echo ::set-output name=PACKAGE_VERSION_NAME::$(node -p "require('./package.json').version")
+      - name: Set apk name
+        id: set_apk_name
+        run: |
+          echo ::set-output name=COMMIT_ID::$(echo $GITHUB_SHA | cut -c 1-7)
+          echo ::set-output name=APK_NAME::$(echo "v2hub-${{ steps.get_version.outputs.PACKAGE_VERSION_NAME }}-${{ steps.set_apk_name.outputs.COMMIT_ID }}.apk")
+      - name: Move release apk to target directory
+        run: cp android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/${{ steps.set_apk_name.outputs.APK_NAME }}
+      - name: Build changelog
         id: build_changelog
         if: startsWith(github.ref, 'refs/tags/')
         uses: mikepenz/release-changelog-builder-action@v2.9.0
@@ -53,27 +72,35 @@ jobs:
         with:
           configuration: '.config/changelog_configuration.json'
           ignorePreReleases: 'false'
-      - name: Create Release
+      - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           body: ${{steps.build_changelog.outputs.changelog}}
           files: |
-            android/app/build/outputs/apk/release/v2hub-${{ steps.get_version.outputs.VERSION }}.apk
+            android/app/build/outputs/apk/release/${{ steps.set_apk_name.outputs.APK_NAME }}
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
 
-  push:
+  push-release-message:
+    name: Push release message
     runs-on: ubuntu-latest
-    needs: [build-android]
-    if: startsWith(github.ref, 'refs/tags/')
+    needs: [build-android-apk]
     steps:
-      - name: V2Hub Release Push
+      - name: Push message
         uses: funnyzak/pushoo-action@main
         with:
-          platforms: ifttt, bark
-          tokens: ${{ secrets.PUSH_KEY }}
+          platforms: ifttt,wecombot,bark
+          tokens: ${{ secrets.PUSH_TOKEN }}
           content: |
-            # ${{github.repository}} Released
-          options: '{"bark": { "url": "https://github.com/funnyzak" }}'
+            # ${{ github.event.repository.name }} Released
+            ## trigger: ${{ github.event_name }} at ${{ github.event.head_commit.timestamp }}
+            ## commit message: ${{ github.event.head_commit.message }}
+            ## commit url: ${{ github.event.head_commit.url }}
+            ## commit author: ${{ github.event.head_commit.author.name }}
+            ## commit email: ${{ github.event.head_commit.author.email }}
+            ## commit id: ${{ github.event.head_commit.id }}
+          title: |
+            ${{ github.repository }} ${{ github.event_name }} Message
+          options: '{"bark": { "url": "https://github.com/${{github.repository}}" }}'
           debug: false
