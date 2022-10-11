@@ -42,7 +42,7 @@ jobs:
         id: get_version
         run: |
           echo ::set-output name=PACKAGE_VERSION_NAME::$(node -p "require('./package.json').version")
-          echo ::set-output name=PACKAGE_NAME::$(node -p "require('./package.json').version")
+          echo ::set-output name=PACKAGE_NAME::$(node -p "require('./package.json').name")
           echo ::set-output name=COMMIT_ID::$(echo ${{ github.sha }} | cut -c1-7)
       - name: Set name
         id: set_name
