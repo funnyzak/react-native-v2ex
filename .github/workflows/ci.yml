@@ -7,7 +7,6 @@ on:
 
 env:
   DIST_ARCHIVE_PREFIX_NAME: ${{ github.event.repository.name }}
-  SOURCE_ARCHIVE_NAME: ${{ github.event.repository.name }}
 
 jobs:
   # lint-and-test:
@@ -43,12 +42,13 @@ jobs:
         id: get_version
         run: |
           echo ::set-output name=PACKAGE_VERSION_NAME::$(node -p "require('./package.json').version")
+          echo ::set-output name=PACKAGE_NAME::$(node -p "require('./package.json').version")
           echo ::set-output name=COMMIT_ID::$(echo ${{ github.sha }} | cut -c1-7)
       - name: Set name
         id: set_name
         run: |
-          echo ::set-output name=APK_NAME::$(echo "${{ env.DIST_ARCHIVE_PREFIX_NAME }}-${{ steps.get_version.outputs.PACKAGE_VERSION_NAME }}-${{ steps.get_version.outputs.COMMIT_ID }}.apk")
-          echo ::set-output name=SOURCE_ZIP_NAME::$(echo "${{ env.SOURCE_ARCHIVE_NAME }}-${{ steps.get_version.outputs.PACKAGE_VERSION_NAME }}-${{ steps.get_version.outputs.COMMIT_ID }}.zip")
+          echo ::set-output name=APK_NAME::$(echo "${{ steps.get_version.outputs.PACKAGE_NAME}}-${{ steps.get_version.outputs.PACKAGE_VERSION_NAME }}-${{ steps.get_version.outputs.COMMIT_ID }}.apk")
+          echo ::set-output name=SOURCE_ZIP_NAME::$(echo "${{ env.DIST_ARCHIVE_PREFIX_NAME }}-${{ steps.get_version.outputs.PACKAGE_VERSION_NAME }}-${{ steps.get_version.outputs.COMMIT_ID }}.zip")
       - name: Archive source code
         uses: papeloto/action-zip@v1
         with:
