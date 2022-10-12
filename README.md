@@ -34,7 +34,7 @@
 
 项目使用了 React Native 构建了一个 [V2EX](https://v2ex.com) 移动客户端应用。目的是为了构建一个 React Native 快速开发脚手架。客户端数据完全基于 [V2EX](https://v2ex.com) 开放 API。基于 RN 0.70.1。
 
-**Figma 设计稿已经开源，可[从此 Duplicate](https://www.figma.com/community/file/1101074002447399194)。**
+`Figma 设计稿` 已经开源，可[从此 Duplicate](https://www.figma.com/community/file/1101074002447399194)。
 
 ## Installation
 
@@ -119,8 +119,8 @@ $ yarn
 # 依赖包额外补丁
 yarn postinstall
 
-# ios build
-npx pod-install
+# ios pod install
+yarn pod
 
 # start react-native-debugger（only mac）
 yarn debug
@@ -148,6 +148,9 @@ npx react-native run-ios --verbose
 
 # iOS release build
 npx react-native run-ios --configuration Release
+
+# iOS debug use special device
+react-native run-ios --simulator="iPhone 8"
 
 # Android debug info start
 npx react-native run-android --verbose
