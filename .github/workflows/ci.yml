@@ -29,7 +29,6 @@ jobs:
 
   build-android-apk:
     name: Build Android APK
-    if: startsWith(github.ref, 'refs/tags/')
     # needs: lint-and-test
     runs-on: ubuntu-latest
     strategy:
@@ -37,18 +36,39 @@ jobs:
         node-version: [16.x]
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Get the version
         id: get_version
         run: |
+          # Get the version from package.json
           echo ::set-output name=PACKAGE_VERSION_NAME::$(node -p "require('./package.json').version")
+          # Get the name from package.json
           echo ::set-output name=PACKAGE_NAME::$(node -p "require('./package.json').name")
+          # current push sha
           echo ::set-output name=COMMIT_ID::$(echo ${{ github.sha }} | cut -c1-7)
+          # current push tag
+          echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+          # latest tag
+          echo ::set-output name=TAG_NAME::$(git describe --tags --abbrev=0)
+          # set current timestamp
+          echo ::set-output name=TIMESTAMP::$(date +%s)
+          # set current time and format
+          echo ::set-output name=BUILD_TIME::$(date "+%Y-%m-%d-%H-%M")
       - name: Set name
         id: set_name
         run: |
-          echo ::set-output name=APK_NAME::$(echo "${{ steps.get_version.outputs.PACKAGE_NAME}}-${{ steps.get_version.outputs.PACKAGE_VERSION_NAME }}-${{ steps.get_version.outputs.COMMIT_ID }}.apk")
-          echo ::set-output name=SOURCE_ZIP_NAME::$(echo "${{ env.DIST_ARCHIVE_PREFIX_NAME }}-${{ steps.get_version.outputs.PACKAGE_VERSION_NAME }}-${{ steps.get_version.outputs.COMMIT_ID }}.zip")
+          echo ::set-output name=APK_NAME::$(echo "${{ steps.get_version.outputs.PACKAGE_NAME}}-${{ steps.get_version.outputs.PACKAGE_VERSION_NAME }}-${{steps.get_version.outputs.TIMESTAMP}}-${{ steps.get_version.outputs.COMMIT_ID }}.apk")
+          echo ::set-output name=SOURCE_ZIP_NAME::$(echo "${{ env.DIST_ARCHIVE_PREFIX_NAME }}-${{ steps.get_version.outputs.PACKAGE_VERSION_NAME }}-${{steps.get_version.outputs.TIMESTAMP}}-${{ steps.get_version.outputs.COMMIT_ID }}.zip")
+      - name: Build changelog
+        id: build_changelog
+        uses: mikepenz/release-changelog-builder-action@v2.9.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          configuration: '.github/config/changelog_configuration.json'
+          ignorePreReleases: 'false'
       - name: Archive source code
         uses: papeloto/action-zip@v1
         with:
@@ -75,18 +95,12 @@ jobs:
           cd android && ./gradlew assembleRelease
       - name: Move release apk to target directory
         run: cp android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/${{ steps.set_name.outputs.APK_NAME }}
-      - name: Build changelog
-        id: build_changelog
-        uses: mikepenz/release-changelog-builder-action@v2.9.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          configuration: '.github/config/changelog_configuration.json'
-          ignorePreReleases: 'false'
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           body: ${{steps.build_changelog.outputs.changelog}}
+          name: ${{ steps.get_version.outputs.PACKAGE_VERSION_NAME }}-${{ steps.get_version.outputs.COMMIT_ID }}
+          tag_name: ${{ steps.get_version.outputs.TAG_NAME }}
           files: |
             android/app/build/outputs/apk/release/${{ steps.set_name.outputs.APK_NAME }}
             ${{ steps.set_name.outputs.SOURCE_ZIP_NAME }}
