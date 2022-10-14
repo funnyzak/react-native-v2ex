@@ -46,6 +46,9 @@
 - [ ] 升级提醒
 - [ ] 上架 App Store、Google Play
 - [ ] 通过 cheerio，获取更多的数据，开发交互功能
+
+## 完成
+
 - [x] plop 模板创建
 - [x] 升级 RN 到到 **0.70.1**
 - [x] 升级 RN 到到 **0.69.4**
@@ -88,23 +91,15 @@
 
 ## Development
 
-在 MacOS 下开发，在 iOS 为 13+ 的 iPhone Simulator/iPhone 12、Android 9.0 的 AVD 模拟器/Mi Phone 均编译成功运行。
+目前在 MacOS 下开发，在 iOS 为 13+ 的 iPhone Simulator/iPhone 12、Android 9.0 的 AVD 模拟器/Mi Phone 均编译成功运行。
 
-必须安装 NodeJS(16.0+)、Yarn、[Watchman](https://reactnative.cn/docs/environment-setup)。JDK 最低要求 11。
+- 安装 NodeJS(16.0+)、Yarn、[Watchman](https://reactnative.cn/docs/environment-setup)。
+- Java JDK建议用 11（配置环境变量 **JAVE_HOME**，高于这个版本编译可能会报错）。
+- iOS平台需要配置[CocoaPods](https://reactnative.cn/docs/environment-setup)、Xcode、iOS Simulator。
+- Android Studio、Gradle、Android SDK、[Android Home 配置](https://reactnative.cn/docs/environment-setup)
+- Android平台需要 [Android 真机](https://reactnative.cn/docs/running-on-device) 或 [Android AVD](https://developer.android.com/studio/run/managing-avds)（建议用真机）。
 
-- iOS：[CocoaPods](https://reactnative.cn/docs/environment-setup)、Xcode、iOS Simulator。
-- Android：Java JDK(Java 11，配置环境变量 **JAVE_HOME**)、Android Studio、Gradle、Android SDK、[Android Home 配置](https://reactnative.cn/docs/environment-setup)、[Android 真机](https://reactnative.cn/docs/running-on-device) 或 [Android AVD](https://developer.android.com/studio/run/managing-avds)（建议用真机）。
-
-具体可根据官网进行 React Native 开发环境和 iOS、Android 运行环境的配置。
-
-参考[这里](https://reactnative.dev/docs/environment-setup)。
-
-关于调试可以安装如下工具：
-
-- Flipper
-- react-devtools
-- React Native Debugger
-- Google Chrome
+具体可根据官网进行 React Native 开发环境和 iOS、Android 运行环境的配置。参考[这里](https://reactnative.dev/docs/environment-setup)。
 
 ## Quick Start
 
@@ -214,25 +209,29 @@ cd android
   <img src="https://contrib.rocks/image?repo=funnyzak/react-native-v2ex" />
 </a>
 
-## Debug
+## 调试
 
-### iOS Debug
+### 工具
 
-> 可以通过摇晃设备或是选择 iOS 模拟器的"Hardware"菜单中的"Shake Gesture"选项来打开开发菜单。另外，如果是在 iOS 模拟器中运行，还可以按下 Command⌘ + D 快捷键，Android 模拟器对应的则是 Command⌘ + M（windows 上可能是 F1 或者 F2），或是直接在命令行中运行 adb shell input keyevent 82 来发送菜单键命令。
+- 使用 **[Flipper](https://fbflipper.com/docs/getting-started/index/)** 调试。[参考](https://reactnative.cn/docs/debugging#flipper)。
+- 使用 **[react-devtools](https://www.npmjs.com/package/react-devtools)** 调试。 [参考](https://reactnative.cn/docs/debugging#react-devtools)。
+- React Native Debugger [参考](https://reactnative.cn/docs/debugging#react-native-debugger)。
+- Google Chrome 调试，[参考](https://reactnative.cn/docs/debugging#chrome)。
 
-使用 **[Flipper](https://fbflipper.com/docs/getting-started/index/)** 调试。
+### 提示
 
-使用 **[react-devtools](https://www.npmjs.com/package/react-devtools)**。
+#### 快捷操作
 
-### react-native-debugger 调试
+可以通过摇晃设备或是选择 iOS 模拟器的"Hardware"菜单中的"Shake Gesture"选项来打开开发菜单。另外，如果是在 iOS 模拟器中运行，还可以按下 Command⌘ + D 快捷键，Android 模拟器对应的则是 Command⌘ + M（windows 上可能是 F1 或者 F2），或是直接在命令行中运行 adb shell input keyevent 82 来发送菜单键命令。
+#### react-native-debugger 调试
 
 1. 安装 **[react-native-debugger](https://github.com/jhen0409/react-native-debugger)**；
 2. `yarn debug` 启动 react-native-debugger。
 3. 启动模拟器 `yarn ios`，在模拟器打开 debug remote 选项；
 
-## Question
+## FAQ
 
-1.  **Invariant Violation: Module AppRegistry is not a registered callable module**
+###  **Invariant Violation: Module AppRegistry is not a registered callable module**
 
         remove app from the emulator
         npm cache clean --force
@@ -250,21 +249,32 @@ cd android
 
     [https://stackoverflow.com/questions/64768328/invariant-violation-module-appregistry-is-not-a-registered-callable-module-cal](https://stackoverflow.com/questions/64768328/invariant-violation-module-appregistry-is-not-a-registered-callable-module-cal)
 
-2.  **RCTBridge required dispatch_sync to load RNGestureHandlerModule**
+### RCTBridge required dispatch_sync to load RNGestureHandlerModule
 
     > [https://github.com/software-mansion/react-native-gesture-handler/issues/722](https://github.com/software-mansion/react-native-gesture-handler/issues/722)
 
-3.  **xcode 编译报错**
+### xcode 编译报错
 
-        # 删除编译缓存
-        rm -rf ~/Library/Developer/Xcode/DerivedData
+```bash
+# 删除编译缓存
+rm -rf ~/Library/Developer/Xcode/DerivedData
+```
 
-4.  Android 编译启动注意
+### Android 编译启动注意
 
-    注意 gradle 和 java sdk(java home)的版本对应，可在 ./android/gradle.properties 设置 org.gradle.java.home
+注意 gradle 和 java sdk(java home)的版本对应，可在 ./android/gradle.properties 设置 org.gradle.java.home
 
-5.  开屏图的设置 iOS 使用 LaunchScreen.storyboard，使用 Xcode 修改即可。
-6.  修改 bundle name [看这里](https://stackoverflow.com/questions/37389905/change-package-name-for-android-in-react-native)。
+### 开屏图的设置
+
+iOS 使用 LaunchScreen.storyboard，使用 Xcode 修改即可。
+
+### 修改 bundle name
+
+[看这里](https://stackoverflow.com/questions/37389905/change-package-name-for-android-in-react-native)。
+
+### Android签名打包发布
+
+[看这里](https://reactnative.cn/docs/signed-apk-android/)。
 
 ## Dependencies
 
