@@ -9,27 +9,28 @@ env:
   DIST_ARCHIVE_PREFIX_NAME: ${{ github.event.repository.name }}
 
 jobs:
-  # lint-and-test:
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     matrix:
-  #       node-version: [16.x]
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
-  #     - name: Use Node.js ${{ matrix.node-version }}
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: ${{ matrix.node-version }}
-  #         registry-url: 'https://registry.npmjs.org/'
-  #         cache: 'yarn'
-  #     - name: Install dependencies
-  #       run: |
-  #         yarn
+  lint-and-test:
+    name: Lint and Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: 'https://registry.npmjs.org/'
+          cache: 'yarn'
+      - name: Install dependencies
+        run: |
+          yarn
 
   build-android-apk:
     name: Build Android APK
-    # needs: lint-and-test
+    needs: lint-and-test
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -90,6 +91,10 @@ jobs:
       - name: Install dependencies
         run: |
           yarn
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '11'
       - name: Build android apk
         run: |
           cd android && ./gradlew assembleRelease
