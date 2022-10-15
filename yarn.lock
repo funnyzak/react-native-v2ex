@@ -3183,10 +3183,10 @@ command-exists@^1.2.8:
   resolved "https://registry.yarnpkg.com/command-exists/-/command-exists-1.2.9.tgz#c50725af3808c8ab0260fd60b01fbfa25b954f69"
   integrity sha512-LTQ/SGc+s0Xc0Fu5WaKnR0YiygZkm9eKFvyS+fRsU7/ZWFF8ykFM6Pc9aCVf1+xasOOZpO3BAVgVrKvsqKHV7w==
 
-commander@^9.3.0, commander@^9.4.0:
-  version "9.4.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-9.4.0.tgz#bc4a40918fefe52e22450c111ecd6b7acce6f11c"
-  integrity sha512-sRPT+umqkz90UA8M1yqYfnHlZA7fF6nSphDtxeywPZ49ysjxDQybzk13CL+mXekDRG92skbcqCLVovuCusNmFw==
+commander@^9.3.0, commander@^9.4.0, commander@^9.4.1:
+  version "9.4.1"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-9.4.1.tgz#d1dd8f2ce6faf93147295c0df13c7c21141cfbdd"
+  integrity sha512-5EEkTNyHNGFPD2H+c/dXXfQZYa/scCKasxWcXJaWnNJ99pnQN9Vnmqow+p+PlFPE63Q6mThaZws1T+HxfpgtPw==
 
 commander@~2.13.0:
   version "2.13.0"
@@ -7325,14 +7325,14 @@ npm-bundled@^2.0.0:
   dependencies:
     npm-normalize-package-bin "^2.0.0"
 
-npm-check-updates@^16.0.5:
-  version "16.3.2"
-  resolved "https://registry.yarnpkg.com/npm-check-updates/-/npm-check-updates-16.3.2.tgz#90191c44ec6deeb97ab1d4d2762eab93fb6cbc2e"
-  integrity sha512-ebxWtGPu8yHmT+MYB/UvluemkpV81nFOZEMOtlw7/YygyyZq0eYFbkDy8/M5k3brbhtWjIrnBNXV4bPLoVWiOg==
+npm-check-updates@^16.3.11:
+  version "16.3.11"
+  resolved "https://registry.yarnpkg.com/npm-check-updates/-/npm-check-updates-16.3.11.tgz#96e5074234301a86861c6f80d56ff43b86825960"
+  integrity sha512-MxdqS3kXAJasoEaz5BLqTR1Dak+Dm6PoK2N4KdKcQGUEhdVwt0ggfJ0R0Yym8sWc48CYqEl02HBkUAZFUCufHA==
   dependencies:
     chalk "^5.0.1"
     cli-table "^0.3.11"
-    commander "^9.4.0"
+    commander "^9.4.1"
     fast-memoize "^2.5.2"
     find-up "5.0.0"
     fp-and-or "^0.1.3"
