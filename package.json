@@ -88,7 +88,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
-    "@babel/runtime": "^7.12.5",
+    "@babel/runtime": "^7.19.4",
     "@react-native-community/eslint-config": "^3.1.0",
     "@rnx-kit/dep-check": "^1.12.20",
     "@types/i18n-js": "^3.8.2",
