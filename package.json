@@ -58,7 +58,7 @@
     "@types/react": "^18",
     "bugsnag-react-native": "^2.23.10",
     "dayjs": "^1.11.4",
-    "i18n-js": "^3.8.0",
+    "i18n-js": "^4.1.1",
     "lodash": "^4.17.21",
     "react": "18.1.0",
     "react-native": "0.70.3",
