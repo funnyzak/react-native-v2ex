@@ -51,7 +51,7 @@ const My = ({
           />
         )
     })
-  }, [])
+  }, [profile]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <ScrollView

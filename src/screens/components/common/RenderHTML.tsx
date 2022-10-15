@@ -62,7 +62,7 @@ const renderersProps = {
         return
       }
 
-      const regexp = /about\:\/{3}([\w]+)\/(\w+)/
+      const regexp = /about:\/{3}([\w]+)\/(\w+)/
       const match = href.match(regexp)
       const type = match && match.length > 1 ? match[1] : ''
 

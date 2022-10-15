@@ -88,7 +88,7 @@ const FetchTopicCardList: React.FC<FetchTopicCardListProps> = ({
           showMessage(err.message)
         })
     },
-    [nodeName, showMessage, page, v2API, logined]
+    [nodeName, showMessage, page, v2API, logined] // eslint-disable-line react-hooks/exhaustive-deps
   )
 
   const onRefresh = () => {

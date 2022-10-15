@@ -29,7 +29,7 @@ const NodeDetail = ({
         headerRight: () => <LikeNodeHeaderButton node={info} />
       })
     }
-  }, [interestNodes, info])
+  }, [interestNodes, info]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <View style={SylCommon.Layout.fill}>

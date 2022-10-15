@@ -19,7 +19,6 @@ const MyTopics = ({
   profile?: V2exObject.Member
   setTopics: (topics: V2exObject.Topic[]) => void
 }) => {
-  const { theme } = useTheme()
   const [refreshing, setRefreshing] = useState<boolean>(false)
   const [list, setList] = useState<V2exObject.Topic[] | undefined>(topics)
   const { showMessage } = useToast()
@@ -38,7 +37,7 @@ const MyTopics = ({
       .catch((err) => {
         showMessage(err.message)
       })
-  }, [])
+  }, [profile]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <View style={SylCommon.Layout.fill}>

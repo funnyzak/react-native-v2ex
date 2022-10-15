@@ -39,13 +39,13 @@ const Screen = ({
       showMessage({ type: 'success', text2: success })
       goNextRoute()
     }
-  }, [success])
+  }, [success]) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (error) {
       showMessage({ type: 'error', text2: error })
     }
-  }, [error])
+  }, [error]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const onLoginPress = () => {
     _auth(token)

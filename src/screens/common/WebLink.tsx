@@ -21,7 +21,7 @@ const WebLink = ({ route, navigation }: ScreenProps) => {
     if (loading) {
       navigation.setOptions({ title: translate('placeholder.loading') })
     }
-  }, [])
+  })
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -44,7 +44,7 @@ const WebLink = ({ route, navigation }: ScreenProps) => {
         </>
       )
     })
-  }, [navigation])
+  }, [navigation]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
