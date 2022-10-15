@@ -104,7 +104,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           body: ${{steps.build_changelog.outputs.changelog}}
-          name: ${{ steps.get_version.outputs.PACKAGE_VERSION_NAME }}-${{ steps.get_version.outputs.COMMIT_ID }}
+          name: ${{ steps.get_version.outputs.PACKAGE_VERSION_NAME }}
           tag_name: ${{ steps.get_version.outputs.TAG_NAME }}
           files: |
             android/app/build/outputs/apk/release/${{ steps.set_name.outputs.APK_NAME }}
