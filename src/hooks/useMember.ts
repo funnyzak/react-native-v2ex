@@ -24,7 +24,7 @@ export const useMember = ({ userid: id, forcePull = true }: { userid: string | n
     } else {
       dispatch(cacheMember(id) as any)
     }
-  }, [id, info, members])
+  }, [id, info, members]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return {
     member: info

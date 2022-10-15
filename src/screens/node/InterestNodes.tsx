@@ -24,7 +24,7 @@ const InterestNodes = ({
   return (
     <View style={SylCommon.Layout.fill}>
       <NeedLogin>
-        {!likeNodes || likeNodes.length == 0 ? (
+        {!likeNodes || likeNodes.length === 0 ? (
           <Placeholder displayType="text" placeholderText={translate('placeholder.noInterestNodes')} />
         ) : (
           <Tab.Navigator

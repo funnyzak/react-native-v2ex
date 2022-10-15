@@ -18,7 +18,7 @@ module.exports = {
         'comma-dangle': ['error', 'never'],
         'import/no-unresolved': 'off',
         'import/no-extraneous-dependencies': 'off',
-        'no-console': 'warn',
+        'no-console': 'off',
         'no-debugger': 'error',
         'no-plusplus': 'off',
         'camelcase': 'off',
@@ -88,14 +88,16 @@ module.exports = {
             endOfLine: 'auto'
           }
         ],
+        'eslint-comments/no-unused-disable': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
-        'react-hooks/exhaustive-deps': 'warn',
+        'react-hooks/exhaustive-deps': 'off',
         'react-native/no-unused-styles': 2,
         'react-native/split-platform-components': 2,
         'react-native/no-inline-styles': 'off',
         'react-native/no-color-literals': 2,
         'react-native/no-raw-text': 0,
-        'react-native/no-single-element-style-arrays': 2
+        'react-native/no-single-element-style-arrays': 2,
+        'react/no-unstable-nested-components': 'off'
       }
     }
   ]

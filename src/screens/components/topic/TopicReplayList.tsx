@@ -38,13 +38,13 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({
         setRefreshing(false)
         refreshCallBack && refreshCallBack(res)
       },
-      (err) => {
+      (_err) => {
         showMessage(translate('error.network'))
         setRefreshing(false)
         refreshCallBack && refreshCallBack([])
       }
     )
-  }, [topicId, v2exLib])
+  }, [topicId, v2exLib]) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     onRefresh()

@@ -22,7 +22,7 @@ export const useNode = ({ nodeid: id }: { nodeid: number | string }) => {
     } else {
       dispatch(cacheNode(id) as any)
     }
-  }, [id, info, nodes])
+  }, [id, info, nodes]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return {
     node: info

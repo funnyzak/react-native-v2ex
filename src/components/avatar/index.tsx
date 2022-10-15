@@ -25,7 +25,7 @@ const AvatarComponent = ({ username, size = 24, source, onPress, style }: IProps
       NavigationService.navigate(ROUTES.Profile, { username })
     }
     onPress && onPress()
-  }, [username])
+  }, [username, onPress])
 
   const onAvatarImageLoadEnd = () => {
     Animated.timing(avatarImageScaleValue, {

@@ -47,7 +47,7 @@ const ProfileTopics: React.FC<ProfileTopicsProps> = ({ containerStyle, username 
   const renderContent = () => {
     return (
       <>
-        {list == undefined || list.length > 0 ? (
+        {list === undefined || list.length > 0 ? (
           <TabCardContainer
             containerStyle={[styles.container(theme), containerStyle]}
             icon={theme.assets.images.icons.tabbar.title.latest}

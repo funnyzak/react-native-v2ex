@@ -34,7 +34,7 @@ const FollowPeopleHeaderButton = ({
   const dispatch = useAppDispatch()
   const isInterest = useMemo(
     () => (logined ? followPeoples && followPeoples.findIndex((v) => v.id === member.id) >= 0 : false),
-    [followPeoples]
+    [followPeoples, logined, member]
   )
 
   const buttonPress = () => {

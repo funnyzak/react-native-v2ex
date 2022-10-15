@@ -10,7 +10,7 @@ export const memberFromCache = (
   list?: { pullTime: number; info: V2exObject.Member }[],
   cacheExpireTime: number = CACHE_EXPIRE_TIME
 ) => {
-  if (!list || list.length == 0) {
+  if (!list || list.length === 0) {
     return undefined
   }
   return (
@@ -23,7 +23,7 @@ export const memberFromCache = (
 }
 
 export const nodeFromCache = (nodeid: number | string, list?: { pullTime: number; info: V2exObject.Node }[]) => {
-  if (!list || list.length == 0) {
+  if (!list || list.length === 0) {
     return undefined
   }
   return (

@@ -158,7 +158,7 @@ const HotDrawerContent = (props: DrawerContentComponentProps) => {
     (route_index: number) => {
       return props.state.index === route_index
     },
-    [theme, props]
+    [props]
   )
 
   const textStyle = useCallback(
@@ -167,7 +167,7 @@ const HotDrawerContent = (props: DrawerContentComponentProps) => {
         color: isFocus(route_index) ? theme.colors.secondary : theme.colors.captionText
       }
     },
-    [theme, props]
+    [theme, isFocus]
   )
   return (
     <View style={[drawContentStyles.drawerContent(theme), { paddingTop: insets.top }]}>
