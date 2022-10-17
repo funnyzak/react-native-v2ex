@@ -8041,10 +8041,10 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-native-actions-sheet@^0.7.2:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/react-native-actions-sheet/-/react-native-actions-sheet-0.7.2.tgz#7434f26267cb2a4e6d8faaabf89f1b722d5ea5ec"
-  integrity sha512-au9QkDnSC+lhiTMHYA2cNdOhrKW/6v/vdeOTNigRFuvYoVVS2+vJOJpt2Z3mumRjmD02UocV0WmHu4anSsqqpA==
+react-native-actions-sheet@^0.8.8:
+  version "0.8.8"
+  resolved "https://registry.yarnpkg.com/react-native-actions-sheet/-/react-native-actions-sheet-0.8.8.tgz#17b68fe45ad57bfea76e39cce832dabdd572a41a"
+  integrity sha512-//lMb261oVYf2oGhmy7hB/4Ub4Y77GSkaS0+CP3psXi0sjOganfINtUXF8jqj7exRrnimWaW5lGwN4/DP28XwQ==
 
 react-native-codegen@^0.70.5:
   version "0.70.5"
