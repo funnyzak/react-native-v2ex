@@ -255,9 +255,9 @@ cd android
 ###  Invariant Violation: Module AppRegistry is not a registered callable module
 
 ```bash
-remove app from the emulator
 npm cache clean --force
 watchman watch-del-all
+rm -rf node_modules
 
 # for ios
 cd ios
