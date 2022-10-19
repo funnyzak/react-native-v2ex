@@ -6,4 +6,4 @@ updates:
     interval: daily
   open-pull-requests-limit: 3
   ignore:
-  - dependency-name: "i18n"
+  - dependency-name: "i18n-js"
