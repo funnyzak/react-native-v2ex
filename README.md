@@ -232,23 +232,45 @@ cd android
 
 ## FAQ
 
-###  **Invariant Violation: Module AppRegistry is not a registered callable module**
+### 配置BugSnag
 
-        remove app from the emulator
-        npm cache clean --force
-        watchman watch-del-all
+1. [Create a bugsnag account](https://app.bugsnag.com/user/new).
 
-        # for ios
-        cd ios
-        pod update / pod install
-        cd ..
-        npx react-native run-ios
-        # for android
-        cd android && ./gradlew clean
-        cd ..
-        npx react-native run-android
+2. Add your project api key to [android/app/src/main/AndroidManifest.xml](android/app/src/main/AndroidManifest.xml#L25-L26):
 
-    [https://stackoverflow.com/questions/64768328/invariant-violation-module-appregistry-is-not-a-registered-callable-module-cal](https://stackoverflow.com/questions/64768328/invariant-violation-module-appregistry-is-not-a-registered-callable-module-cal)
+   ```xml
+      <meta-data android:name="com.bugsnag.android.API_KEY"
+                 android:value="YOUR-API-KEY-HERE" />
+   ```
+
+   and [ios/app/Info.plist](ios/app/Info.plist):
+
+   ```xml
+    <key>BugsnagAPIKey</key>
+    <string>YOUR-API-KEY-HERE</string>
+   ```
+
+    The API key can be found in the Bugsnag settings for your project.
+
+###  Invariant Violation: Module AppRegistry is not a registered callable module
+
+```bash
+remove app from the emulator
+npm cache clean --force
+watchman watch-del-all
+
+# for ios
+cd ios
+pod update / pod install
+cd ..
+npx react-native run-ios
+# for android
+cd android && ./gradlew clean
+cd ..
+npx react-native run-android
+```
+
+Reference: [https://stackoverflow.com/questions/64768328/invariant-violation-module-appregistry-is-not-a-registered-callable-module-cal](https://stackoverflow.com/questions/64768328/invariant-violation-module-appregistry-is-not-a-registered-callable-module-cal)
 
 ### RCTBridge required dispatch_sync to load RNGestureHandlerModule
 
