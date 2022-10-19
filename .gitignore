@@ -65,3 +65,5 @@ buck-out/
 /vendor/bundle/
 
 .eslintcache
+
+podfile.lock

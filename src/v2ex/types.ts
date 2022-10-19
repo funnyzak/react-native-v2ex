@@ -1,4 +1,4 @@
-export declare module V2exAPI {
+export namespace V2exAPI {
   export type API_VERSION = undefined | 'v2'
 
   /**
@@ -195,7 +195,7 @@ export declare module V2exAPI {
     replies(topic_id: number): Promise<V2exObject.TopicReply[]>
   }
 }
-export declare module V2exObject {
+export namespace V2exObject {
   export interface SiteInfo {
     title: string
     slogan: string

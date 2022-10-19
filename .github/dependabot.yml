@@ -4,4 +4,6 @@ updates:
   directory: "/"
   schedule:
     interval: daily
-  open-pull-requests-limit: 5
+  open-pull-requests-limit: 3
+  ignore:
+  - dependency-name: "i18n"
