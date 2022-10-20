@@ -78,7 +78,7 @@ jobs:
           recursive: false
           dest: ${{ steps.set_name.outputs.SOURCE_ZIP_NAME }}
       - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
       - name: Restore yarn cache
