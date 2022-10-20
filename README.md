@@ -323,28 +323,30 @@ iOS 使用 LaunchScreen.storyboard，使用 Xcode 修改即可。
 
 ## Reference
 
-- [enviroment setup](https://reactnative.dev/docs/environment-setup)
-- [running on device](https://reactnative.dev/docs/running-on-device)
-- [debugging](https://twitter.com/i/spaces/1YqJDqDpqzAxV)
-- [react native typescript](https://reactnative.dev/docs/typescript)
-- [react native cn](https://reactnative.cn/)
-- [react-devtools](https://www.npmjs.com/package/react-devtools)
-- [fetch](https://reactnative.cn/docs/network)
-- [bundle tool](https://developer.android.google.cn/studio/command-line/bundletool)
-- [android build](https://reactnative.cn/docs/signed-apk-android)
-- [watchman](https://facebook.github.io/watchman/docs/cli-options.html)
-- [EsLint](https://eslint.org/docs/user-guide/configuring/)
-- [eslintignore-file](https://eslint.org/docs/user-guide/configuring/ignoring-code#the-eslintignore-file)
-- [TSconfig](https://www.typescriptlang.org/tsconfig/)
-- [npmrc](https://docs.npmjs.com/cli/v7/configuring-npm/npmrc)
-- [gitignore](https://git-scm.com/docs/gitignore)
-- [prettier](https://prettier.io/docs/en/index.html)
-- [v2ex api 2.0](https://v2ex.com/help/api)
-- [v2ex api](https://www.v2ex.com/p/7v9TEc53)
-- [v2ex token](https://www.v2ex.com/settings/tokens)
-- [react native sample](https://github.com/facebook/react-native)
-- [react native typescript sample](https://github.com/react-native-community/react-native-template-typescript)
-- [React Native Upgrade Helper](https://react-native-community.github.io/upgrade-helper/)
+- [enviroment setup](https://reactnative.dev/docs/environment-setup) to setup react-native development environment.
+- [running on device](https://reactnative.dev/docs/running-on-device) to run app on device.
+- [debugging](https://twitter.com/i/spaces/1YqJDqDpqzAxV) to debug app.
+- [react native typescript](https://reactnative.dev/docs/typescript) to use typescript in react-native.
+- [react native cn](https://reactnative.cn/) to learn react-native.
+- [react-devtools](https://www.npmjs.com/package/react-devtools) to debug react component.
+- [fetch](https://reactnative.cn/docs/network) to use fetch in react-native.
+- [bundle tool](https://developer.android.google.cn/studio/command-line/bundletool) to generate android bundle.
+- [android build](https://reactnative.cn/docs/signed-apk-android) to generate android apk.
+- [watchman](https://facebook.github.io/watchman/docs/cli-options.html) to watch file change.
+- [EsLint](https://eslint.org/docs/user-guide/configuring/) to lint code.
+- [eslintignore-file](https://eslint.org/docs/user-guide/configuring/ignoring-code#the-eslintignore-file) to ignore lint file.
+- [TSconfig](https://www.typescriptlang.org/tsconfig/) to config typescript.
+- [npmrc](https://docs.npmjs.com/cli/v7/configuring-npm/npmrc) to config npm.
+- [gitignore](https://git-scm.com/docs/gitignore) to ignore git file.
+- [prettier](https://prettier.io/docs/en/index.html) to format code.
+- [v2ex api 2.0](https://v2ex.com/help/api) to get v2ex api.
+- [v2ex api](https://www.v2ex.com/p/7v9TEc53) to get v2ex api.
+- [v2ex token](https://www.v2ex.com/settings/tokens) to get v2ex token.
+- [react native sample](https://github.com/facebook/react-native) to learn react-native.
+- [react native typescript sample](https://github.com/react-native-community/react-native-template-typescript) to learn react-native typescript.
+- [React Native Upgrade Helper](https://react-native-community.github.io/upgrade-helper/) to upgrade react-native.
+- [Easy App Icon](https://easyappicon.com/) to generate app icon.
+- [App Image Sets](https://appicon.co/#image-sets) to generate app icon and image set.
 
 ## License
 
