@@ -1,4 +1,4 @@
-import { AppAPI, APPDataObject } from '../../types'
+import { AppAPI, AppObject } from '../../types'
 
 export default (v2ex: AppAPI.APP): AppAPI.Reply => ({
   /**
@@ -6,21 +6,15 @@ export default (v2ex: AppAPI.APP): AppAPI.Reply => ({
    * @param topic_id : topic id
    * @param page : page num
    */
-  pager: (topic_id: number, page: number): Promise<APPDataObject.TopicReply[]> =>
-    v2ex.get<APPDataObject.TopicReply[]>(
-      `/topics/${topic_id}/replies?p=${page}`,
-      undefined,
-      undefined,
-      undefined,
-      'v2'
-    ),
+  pager: (topic_id: number, page: number): Promise<AppObject.TopicReply[]> =>
+    v2ex.get<AppObject.TopicReply[]>(`/topics/${topic_id}/replies?p=${page}`, undefined, undefined, undefined, 'v2'),
 
   /**
    * Get topic replies
    * @param topic_id : topic id
    */
-  replies: (topic_id: number): Promise<APPDataObject.TopicReply[]> =>
-    v2ex.get<APPDataObject.TopicReply[]>(
+  replies: (topic_id: number): Promise<AppObject.TopicReply[]> =>
+    v2ex.get<AppObject.TopicReply[]>(
       `/replies/show.json?topic_id=${topic_id}`,
       undefined,
       undefined,

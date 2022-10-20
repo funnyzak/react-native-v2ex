@@ -4,7 +4,7 @@
 import { Placeholder, Spinner, useToast } from '@src/components'
 import { translate } from '@src/i18n'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
-import { APPDataObject } from '@src/types'
+import { AppObject } from '@src/types'
 import { ApiLib } from '@src/api'
 import React, { useCallback, useEffect, useState } from 'react'
 import { FlatList, RefreshControl, StyleProp, View, ViewStyle } from 'react-native'
@@ -18,7 +18,7 @@ export interface TopicReplayListProps {
 
   topicId: number
 
-  refreshCallBack?: (list: APPDataObject.TopicReply[]) => void
+  refreshCallBack?: (list: AppObject.TopicReply[]) => void
 }
 
 const TopicReplayList: React.FC<TopicReplayListProps> = ({
@@ -29,7 +29,7 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({
   const { theme } = useTheme()
   const { showMessage } = useToast()
   const [refreshing, setRefreshing] = useState<boolean>(false)
-  const [list, setList] = useState<APPDataObject.TopicReply[] | undefined>(undefined)
+  const [list, setList] = useState<AppObject.TopicReply[] | undefined>(undefined)
 
   const fetchReplay = useCallback(() => {
     ApiLib.reply.replies(topicId).then(
@@ -56,7 +56,7 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({
     fetchReplay()
   }
 
-  const renderItemRow = ({ item }: { item: APPDataObject.TopicReply }) =>
+  const renderItemRow = ({ item }: { item: AppObject.TopicReply }) =>
     !item || item === null ? null : (
       <TopicReplayItem key={item.id} containerStyle={styles.itemContainer(theme)} info={item} />
     )

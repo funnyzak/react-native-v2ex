@@ -4,7 +4,7 @@
 import { NodeDetailScreenProps as ScreenProps } from '@src/navigation/routes'
 import { RootState } from '@src/store'
 import { SylCommon, useTheme } from '@src/theme'
-import { APPDataObject } from '@src/types'
+import { AppObject } from '@src/types'
 import React, { useEffect, useMemo, useState } from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
@@ -16,11 +16,11 @@ const NodeDetail = ({
   route,
   navigation
 }: ScreenProps & {
-  interestNodes: APPDataObject.Node[]
+  interestNodes: AppObject.Node[]
 }) => {
   const { theme } = useTheme()
   const nodeName = useMemo(() => route.params.nodeName, [route])
-  const [info, setInfo] = useState<APPDataObject.Node | undefined>(undefined)
+  const [info, setInfo] = useState<AppObject.Node | undefined>(undefined)
 
   useEffect(() => {
     if (info) {

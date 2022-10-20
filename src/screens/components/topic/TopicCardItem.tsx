@@ -4,7 +4,7 @@
 
 import * as React from 'react'
 import { View, TouchableOpacity, ViewStyle, TextStyle, StyleProp } from 'react-native'
-import { ITheme, APPDataObject } from '@src/types'
+import { ITheme, AppObject } from '@src/types'
 import { SylCommon, useTheme } from '@src/theme'
 import { Avatar, Text } from '@src/components'
 import dayjs from 'dayjs'
@@ -32,12 +32,12 @@ export interface TopicCardItemProps {
   /**
    * Topic Info
    */
-  topic: APPDataObject.Topic
+  topic: AppObject.Topic
 
   /**
    * Topic Title Press Event
    */
-  onPress?: (topic: APPDataObject.Topic) => void
+  onPress?: (topic: AppObject.Topic) => void
 }
 
 const TopicCardItem = ({

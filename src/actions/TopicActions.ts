@@ -14,7 +14,7 @@ import {
   APP_NODE_TOPICS_REFRESH,
   APP_NODE_LOAD_MORE_TOPICS,
   APP_NODE_TOPICS_LOAD_SUCCESS,
-  APPDataObject
+  AppObject
 } from '@src/types'
 import { SPECIAL_NODE_NAME_MAP } from '@src/config/constants'
 
@@ -23,7 +23,7 @@ import { SPECIAL_NODE_NAME_MAP } from '@src/config/constants'
  * @param topic
  * @returns
  */
-export const readTopic = (topic: APPDataObject.Topic) => ({
+export const readTopic = (topic: AppObject.Topic) => ({
   type: MEMBER_READ_TOPIC,
   payload: topic
 })
@@ -58,7 +58,7 @@ export const getHomeNodeTopics =
     }
 
     try {
-      let _topics: APPDataObject.Topic[] = []
+      let _topics: AppObject.Topic[] = []
       if (specialNode) {
         if (node === SPECIAL_NODE_NAME_MAP.HOT) {
           _topics = await ApiLib.topic.hotTopics()

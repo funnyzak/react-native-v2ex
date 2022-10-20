@@ -5,7 +5,7 @@ import { Avatar, Text } from '@src/components'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
 import { useTheme } from '@src/theme'
-import { APPDataObject } from '@src/types'
+import { AppObject } from '@src/types'
 import dayjs from 'dayjs'
 import React, { useMemo } from 'react'
 import { Image, StyleProp, TouchableOpacity, View, ViewStyle } from 'react-native'
@@ -27,7 +27,7 @@ export interface ProfileInfoProps {
   /**
    * profile info
    */
-  info?: APPDataObject.Member
+  info?: AppObject.Member
   /**
    * with right arrow
    */

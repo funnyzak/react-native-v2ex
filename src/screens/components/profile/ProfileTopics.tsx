@@ -4,7 +4,7 @@
 import { Placeholder, useToast } from '@src/components'
 import { translate } from '@src/i18n'
 import { ITheme, useTheme } from '@src/theme'
-import { APPDataObject } from '@src/types'
+import { AppObject } from '@src/types'
 import { ApiLib } from '@src/api'
 import React, { useCallback, useEffect, useState } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
@@ -23,7 +23,7 @@ export interface ProfileTopicsProps {
 const ProfileTopics: React.FC<ProfileTopicsProps> = ({ containerStyle, username }: ProfileTopicsProps) => {
   const { theme } = useTheme()
   const { showMessage } = useToast()
-  const [list, setList] = useState<APPDataObject.Topic[] | undefined>(undefined)
+  const [list, setList] = useState<AppObject.Topic[] | undefined>(undefined)
 
   useEffect(() => {
     fetchTopics()

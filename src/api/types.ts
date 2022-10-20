@@ -63,8 +63,8 @@ export declare namespace AppAPI {
     init: () => void
     setToken(token?: string): void
     setUserAgent(userAgent?: string): void
-    siteInfo: () => Promise<APPDataObject.SiteInfo>
-    siteStat: () => Promise<APPDataObject.SiteStat>
+    siteInfo: () => Promise<AppObject.SiteInfo>
+    siteStat: () => Promise<AppObject.SiteStat>
     post<T>(
       path: string,
       headers?: { [name: string]: string },
@@ -104,22 +104,22 @@ export declare namespace AppAPI {
     /**
      * Get my token info
      */
-    myToken: () => Promise<APPDataObject.MToken>
+    myToken: () => Promise<AppObject.MToken>
 
     /**
      * Get my profile
      */
-    myProfile: () => Promise<APPDataObject.Member>
+    myProfile: () => Promise<AppObject.Member>
 
     /**
      * Get user profile
      */
-    profile: (id: string | number) => Promise<APPDataObject.Member>
+    profile: (id: string | number) => Promise<AppObject.Member>
 
     /**
      * check user token
      */
-    token: (token: string) => Promise<APPDataObject.MToken>
+    token: (token: string) => Promise<AppObject.MToken>
   }
 
   export interface Node {
@@ -128,19 +128,19 @@ export declare namespace AppAPI {
      * @param node id or node name
      * @param version
      */
-    get(id: string | number, version: API_VERSION): Promise<APPDataObject.Node>
+    get(id: string | number, version: API_VERSION): Promise<AppObject.Node>
 
     /**
      * Get All nodes by api version 1
      */
-    all(): Promise<APPDataObject.Node[]>
+    all(): Promise<AppObject.Node[]>
   }
 
   export interface Notification {
     /**
      * Get my latest notifications
      */
-    list: (page: number) => Promise<APPDataObject.Notification[]>
+    list: (page: number) => Promise<AppObject.Notification[]>
 
     /**
      * Remove notification
@@ -152,32 +152,32 @@ export declare namespace AppAPI {
     /**
      * Get latest topic list by api version 1
      */
-    latestTopics: () => Promise<APPDataObject.Topic[]>
+    latestTopics: () => Promise<AppObject.Topic[]>
 
     /**
      * Get hot topic list by api version 1
      */
-    hotTopics: () => Promise<APPDataObject.Topic[]>
+    hotTopics: () => Promise<AppObject.Topic[]>
 
     /**
      * Get topic info by topic id use api verson 1
      * @param id : topic id
      * @param version : api version
      */
-    topic(id: number, api_version: API_VERSION): Promise<APPDataObject.Topic>
+    topic(id: number, api_version: API_VERSION): Promise<AppObject.Topic>
 
     /**
      *  pager note topic list by api version 2
      * @param name : node name
      */
-    pager(name: string, page: number): Promise<APPDataObject.Topic[]>
+    pager(name: string, page: number): Promise<AppObject.Topic[]>
 
     /**
      * get node topic by api version 1
      * @param id : topic id
      * @param get_type :  'username' | 'node_id' | 'node_name'
      */
-    topics(id: string | number, get_type: 'username' | 'node_id' | 'node_name' | 'id'): Promise<APPDataObject.Topic[]>
+    topics(id: string | number, get_type: 'username' | 'node_id' | 'node_name' | 'id'): Promise<AppObject.Topic[]>
   }
 
   export interface Reply {
@@ -186,16 +186,16 @@ export declare namespace AppAPI {
      * @param topic_id : topic id
      * @param page : page number
      */
-    pager(topic_id: number, page: number): Promise<APPDataObject.TopicReply[]>
+    pager(topic_id: number, page: number): Promise<AppObject.TopicReply[]>
 
     /**
      * Get topic replies
      * @param topic_id : topic id
      */
-    replies(topic_id: number): Promise<APPDataObject.TopicReply[]>
+    replies(topic_id: number): Promise<AppObject.TopicReply[]>
   }
 }
-export declare namespace APPDataObject {
+export declare namespace AppObject {
   export interface SiteInfo {
     title: string
     slogan: string

@@ -1,4 +1,4 @@
-import { AppAPI, APPDataObject } from '@src/types'
+import { AppAPI, AppObject } from '@src/types'
 import { ThemeType } from '@src/theme'
 import { LanguageTagType } from '@src/i18n'
 import { NODE_TAB_TYPE } from '@src/navigation'
@@ -55,11 +55,11 @@ export declare module IState {
       copyright: string
     }
 
-    siteInfo?: APPDataObject.SiteInfo
+    siteInfo?: AppObject.SiteInfo
 
-    siteStat?: APPDataObject.SiteStat
+    siteStat?: AppObject.SiteStat
 
-    allNode?: APPDataObject.Node[]
+    allNode?: AppObject.Node[]
 
     errorMessage?: Error[]
   }
@@ -67,33 +67,33 @@ export declare module IState {
   export interface CacheState {
     members: {
       pullTime: number
-      info: APPDataObject.Member
+      info: AppObject.Member
     }[]
 
     nodes: {
       pullTime: number
-      info: APPDataObject.Node
+      info: AppObject.Node
     }[]
 
     /**
      * 当前登录用户
      */
-    currentSessionMember?: APPDataObject.Member
+    currentSessionMember?: AppObject.Member
 
     /**
      * 会员感兴趣的nodes
      */
-    membersInterestNodes: Record<number, Array<APPDataObject.Node> | undefined>
+    membersInterestNodes: Record<number, Array<AppObject.Node> | undefined>
 
     /**
      * 会员follow的人
      */
-    membersFollowing: Record<number, Array<APPDataObject.Member> | undefined>
+    membersFollowing: Record<number, Array<AppObject.Member> | undefined>
 
     /**
      * 会员喜欢的帖子
      */
-    membersLikeTopics: Record<number, Array<APPDataObject.Topic> | undefined>
+    membersLikeTopics: Record<number, Array<AppObject.Topic> | undefined>
   }
 
   /**
@@ -131,7 +131,7 @@ export declare module IState {
     /**
      * 节点主题列表
      */
-    list?: APPDataObject.Topic[]
+    list?: AppObject.Topic[]
     /**
      * 节点主题列表刷新状态
      */
@@ -163,17 +163,17 @@ export declare module IState {
     /**
      * 用户令牌信息
      */
-    token?: APPDataObject.MToken
+    token?: AppObject.MToken
 
     /**
      * 用户信息
      */
-    profile?: APPDataObject.Member
+    profile?: AppObject.Member
 
     /**
      * 用户发布的主题
      */
-    topics?: APPDataObject.Topic[]
+    topics?: AppObject.Topic[]
 
     /**
      * 用户信息拉取
@@ -183,21 +183,21 @@ export declare module IState {
     /**
      * 关注的人
      */
-    followPeoples: APPDataObject.Member[]
+    followPeoples: AppObject.Member[]
     /**
      * 收藏的主题
      */
-    likeTopics: APPDataObject.Topic[]
+    likeTopics: AppObject.Topic[]
 
     /**
      * 已读主题
      */
-    readedTopics?: APPDataObject.Topic[]
+    readedTopics?: AppObject.Topic[]
 
     /**
      * 感兴趣的节点
      */
-    interestNodes: APPDataObject.Node[]
+    interestNodes: AppObject.Node[]
   }
 
   /**
@@ -219,6 +219,6 @@ export declare module IState {
   export interface NotificationState {
     refreshing: boolean
     unread: number
-    list?: APPDataObject.Notification[]
+    list?: AppObject.Notification[]
   }
 }

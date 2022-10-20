@@ -4,7 +4,7 @@
 import { Placeholder, Spinner } from '@src/components'
 import { translate } from '@src/i18n'
 import { SylCommon, useTheme } from '@src/theme'
-import { ITheme, APPDataObject } from '@src/types'
+import { ITheme, AppObject } from '@src/types'
 import React from 'react'
 import { FlatList, StyleProp, View, ViewStyle } from 'react-native'
 import { BorderLine } from '../common'
@@ -19,7 +19,7 @@ export interface ProfileCardListProps {
   itemContainerStyle?: StyleProp<ViewStyle>
 
   canLoadMoreContent?: boolean
-  members?: Array<APPDataObject.Member>
+  members?: Array<AppObject.Member>
   onEndReached?: () => void
   refreshControl?: React.ReactElement
   searchIndicator?: boolean
@@ -41,7 +41,7 @@ const ProfileCardList: React.FC<ProfileCardListProps> = ({
 }: ProfileCardListProps) => {
   const { theme } = useTheme()
 
-  const renderItemRow = ({ item }: { item: APPDataObject.Member }) =>
+  const renderItemRow = ({ item }: { item: AppObject.Member }) =>
     !item || item === null ? null : (
       <SimpleProfileInfoCard
         key={item.id}

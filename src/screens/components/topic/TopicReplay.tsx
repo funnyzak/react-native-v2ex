@@ -4,7 +4,7 @@
 import { Placeholder } from '@src/components'
 import { translate } from '@src/i18n'
 import { ITheme, useTheme } from '@src/theme'
-import { APPDataObject } from '@src/types'
+import { AppObject } from '@src/types'
 import React from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import { ReplayList } from '.'
@@ -16,14 +16,14 @@ import { NeedLogin, TabCardContainer } from '../common'
 export interface TopicReplayProps {
   containerStyle?: StyleProp<ViewStyle>
 
-  info: APPDataObject.Topic
+  info: AppObject.Topic
 }
 
 const TopicReplay: React.FC<TopicReplayProps> = ({ containerStyle, info }: TopicReplayProps) => {
   const { theme } = useTheme()
-  const [list, setList] = React.useState<APPDataObject.TopicReply[] | undefined>(undefined)
+  const [list, setList] = React.useState<AppObject.TopicReply[] | undefined>(undefined)
 
-  const refreshCallback = (_list: APPDataObject.TopicReply[]) => {
+  const refreshCallback = (_list: AppObject.TopicReply[]) => {
     setList(_list)
   }
 

@@ -3,7 +3,7 @@ import { translate } from '@src/i18n'
 import { HistoryScreenProps as ScreenProps } from '@src/navigation/routes'
 import { RootState } from '@src/store'
 import { SylCommon, useTheme } from '@src/theme'
-import { APPDataObject } from '@src/types'
+import { AppObject } from '@src/types'
 import React from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
@@ -14,7 +14,7 @@ const History = ({
   navigation,
   readedTopics
 }: ScreenProps & {
-  readedTopics?: APPDataObject.Topic[]
+  readedTopics?: AppObject.Topic[]
 }) => {
   const { theme } = useTheme()
 

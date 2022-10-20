@@ -2,7 +2,7 @@
  * Created by leon<silenceace@gmail.com> on 22/3/20.
  */
 import { store } from '@src/store'
-import { APPDataObject } from '@src/types'
+import { AppObject } from '@src/types'
 
 /**
  * home tab nodes
@@ -10,7 +10,7 @@ import { APPDataObject } from '@src/types'
 export interface TabNodeProps {
   title: string
   parentNodeNames: any[]
-  children?: APPDataObject.Node[]
+  children?: AppObject.Node[]
 }
 
 export let TabNodes: TabNodeProps[] = [
@@ -26,10 +26,10 @@ export let TabNodes: TabNodeProps[] = [
   { title: 'Earth', parentNodeNames: ['cn', 'us'] }
 ]
 
-export const nodeChildren = (rootNode: TabNodeProps, nodeData?: APPDataObject.Node[]): APPDataObject.Node[] => {
+export const nodeChildren = (rootNode: TabNodeProps, nodeData?: AppObject.Node[]): AppObject.Node[] => {
   const { title, parentNodeNames: parentNodes } = rootNode
 
-  let nodes: APPDataObject.Node[] = []
+  let nodes: AppObject.Node[] = []
 
   const all_node = nodeData ?? store.getState().app.allNode
   if (!all_node) return nodes

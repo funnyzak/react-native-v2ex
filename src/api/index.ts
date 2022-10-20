@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { AppAPI, APPDataObject } from './types'
+import { AppAPI, AppObject } from './types'
 import member from './lib/member'
 import node from './lib/node'
 import notification from './lib/notification'
@@ -60,11 +60,11 @@ class V2ex {
   }
 
   siteInfo() {
-    return this.get<APPDataObject.SiteInfo>('/site/info.json', undefined, undefined, undefined)
+    return this.get<AppObject.SiteInfo>('/site/info.json', undefined, undefined, undefined)
   }
 
   siteStat() {
-    return this.get<APPDataObject.SiteStat>('/site/stats.json', undefined, undefined, undefined)
+    return this.get<AppObject.SiteStat>('/site/stats.json', undefined, undefined, undefined)
   }
 
   post<T>(

@@ -2,7 +2,7 @@ import { Placeholder, Spinner } from '@src/components'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
 import { SylCommon, useTheme } from '@src/theme'
-import { ITheme, APPDataObject } from '@src/types'
+import { ITheme, AppObject } from '@src/types'
 import React from 'react'
 import { FlatList, StyleProp, View, ViewStyle } from 'react-native'
 import TopicCardItem from './TopicCardItem'
@@ -15,9 +15,9 @@ export interface TopicCardListProps {
 
   itemContainerStyle?: StyleProp<ViewStyle>
 
-  onRowPress?: (topic: APPDataObject.Topic) => void
+  onRowPress?: (topic: AppObject.Topic) => void
   canLoadMoreContent?: boolean
-  topics?: Array<APPDataObject.Topic>
+  topics?: Array<AppObject.Topic>
   onEndReached?: () => void
   refreshControl?: React.ReactElement
   searchIndicator?: boolean
@@ -45,12 +45,12 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
 }: TopicCardListProps) => {
   const { theme } = useTheme()
 
-  const onItemPress = (topic: APPDataObject.Topic) => {
+  const onItemPress = (topic: AppObject.Topic) => {
     if (onRowPress) onRowPress(topic)
     NavigationService.navigate(ROUTES.TopicDetail, { topicId: topic.id })
   }
 
-  const renderItemRow = ({ item }: { item: APPDataObject.Topic }) =>
+  const renderItemRow = ({ item }: { item: AppObject.Topic }) =>
     !item || item === null ? null : (
       <TopicCardItem
         key={item.id}

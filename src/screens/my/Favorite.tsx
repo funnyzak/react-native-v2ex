@@ -5,7 +5,7 @@ import { Placeholder } from '@src/components'
 import { FavoriteTopicsScreenProps as ScreenProps } from '@src/navigation'
 import { RootState } from '@src/store'
 import { SylCommon, useTheme } from '@src/theme'
-import { APPDataObject } from '@src/types'
+import { AppObject } from '@src/types'
 import React from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
@@ -14,7 +14,7 @@ import { NeedLogin, TopicCardList } from '../components'
 const FavoriteTopics = ({
   likeTopics
 }: ScreenProps & {
-  likeTopics: APPDataObject.Topic[]
+  likeTopics: AppObject.Topic[]
 }) => {
   const { theme } = useTheme()
 

@@ -8,7 +8,7 @@ import { Text, Button, Spinner, Placeholder } from '@src/components'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
-import { APPDataObject } from '@src/types'
+import { AppObject } from '@src/types'
 
 /**
  * // TODO: Layout

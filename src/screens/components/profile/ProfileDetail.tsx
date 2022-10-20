@@ -2,7 +2,7 @@
  * Created by leon<silenceace@gmail.com> on 22/04/01.
  */
 import { ITheme, SylCommon, useTheme } from '@src/theme'
-import { APPDataObject } from '@src/types'
+import { AppObject } from '@src/types'
 import React from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import ProfileInfo from './ProfileInfo'
@@ -14,7 +14,7 @@ import ProfileTopics from './ProfileTopics'
 export interface ProfileDetailProps {
   containerStyle?: StyleProp<ViewStyle>
 
-  profile: APPDataObject.Member
+  profile: AppObject.Member
 }
 
 const ProfileDetail: React.FC<ProfileDetailProps> = ({ containerStyle, profile }: ProfileDetailProps) => {

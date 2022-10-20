@@ -4,7 +4,7 @@ import { translate } from '@src/i18n'
 import { HOME_NODES as tabs, InterestNodesScreenProps as ScreenProps } from '@src/navigation'
 import { RootState } from '@src/store'
 import { SylCommon, useTheme } from '@src/theme'
-import { APPDataObject } from '@src/types'
+import { AppObject } from '@src/types'
 import React from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
@@ -18,7 +18,7 @@ const InterestNodes = ({
   navigation,
   likeNodes
 }: ScreenProps & {
-  likeNodes: APPDataObject.Node[]
+  likeNodes: AppObject.Node[]
 }) => {
   const { theme } = useTheme()
   return (
@@ -74,7 +74,7 @@ const InterestNodes = ({
                 backgroundColor: theme.colors.tabBarBackground
               }
             }}>
-            {likeNodes.map((item: APPDataObject.Node) => (
+            {likeNodes.map((item: AppObject.Node) => (
               <Tab.Screen
                 key={`NODE-${item.name}`}
                 name={`NODE-${item.name}`}

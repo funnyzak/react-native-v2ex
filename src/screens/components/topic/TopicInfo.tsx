@@ -3,7 +3,7 @@
  */
 import { NavigationService, ROUTES } from '@src/navigation'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
-import { APPDataObject } from '@src/types'
+import { AppObject } from '@src/types'
 import React from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import { RenderHTML } from '../common'
@@ -21,7 +21,7 @@ export interface TopicInfoProps {
   /**
    * TopicInfo width
    */
-  info: APPDataObject.Topic
+  info: AppObject.Topic
 }
 
 const TopicInfo: React.FC<TopicInfoProps> = ({ containerStyle, info }: TopicInfoProps) => {

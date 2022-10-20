@@ -14,7 +14,7 @@ import {
   APP_CACHE_RESET,
   APP_CACHE_RESET_MEMBERS,
   APP_CACHE_RESET_NODES,
-  APPDataObject
+  AppObject
 } from '../types'
 
 export const cacheMember = (userid: string | number) => async (dispatch: AppDispatch) => {
@@ -41,17 +41,17 @@ export const cacheNode = (nodeid: string | number) => async (dispatch: AppDispat
   }
 }
 
-export const cacheMemberFollowing = (members: APPDataObject.Member[] | undefined) => ({
+export const cacheMemberFollowing = (members: AppObject.Member[] | undefined) => ({
   type: APP_CACHE_MEMBER_FOLLOWING,
   payload: members
 })
 
-export const cacheMemberInterestNodes = (nodes: APPDataObject.Node[] | undefined) => ({
+export const cacheMemberInterestNodes = (nodes: AppObject.Node[] | undefined) => ({
   type: APP_CACHE_MEMBER_INTEREST_NODES,
   payload: nodes
 })
 
-export const cacheMemberLikeTopicss = (topics: APPDataObject.Topic[] | undefined) => ({
+export const cacheMemberLikeTopicss = (topics: AppObject.Topic[] | undefined) => ({
   type: APP_CACHE_MEMBER_LIKE_TOPICS,
   payload: topics
 })
