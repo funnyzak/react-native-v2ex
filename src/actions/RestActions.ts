@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Dispatch } from 'redux'
 import _ from 'lodash'
-import { v2exLib } from '@src/v2ex'
+import { v2exLib } from '@src/api'
 import { fetchAllNode } from './NodeActions'
 import { v2exOptions } from '@src/config/v2ex'
 import { MEMBER_TOKEN_KEY } from '@src/config/constants'

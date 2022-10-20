@@ -3,7 +3,7 @@
  */
 import { logError } from '@src/helper/logger'
 import { AppDispatch } from '@src/store'
-import { v2exLib } from '@src/v2ex'
+import { v2exLib } from '@src/api'
 
 import {
   APP_CACHE_ADD_MEMBER,

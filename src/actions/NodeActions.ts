@@ -3,7 +3,7 @@
  */
 
 import { Dispatch } from 'redux'
-import { v2exLib } from '@src/v2ex'
+import { v2exLib } from '@src/api'
 import { APP_ALL_NODE_INFO } from './types'
 import { logError } from '@src/helper/logger'
 

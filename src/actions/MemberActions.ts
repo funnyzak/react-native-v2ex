@@ -6,7 +6,7 @@ import { MEMBER_TOKEN_KEY } from '@src/config/constants'
 import { logError } from '@src/helper/logger'
 import NavigationService from '@src/navigation/NavigationService'
 import { RootState } from '@src/store'
-import { v2exLib } from '@src/v2ex'
+import { v2exLib } from '@src/api'
 import { Dispatch } from 'redux'
 import {
   APP_AUTH,
