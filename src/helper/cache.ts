@@ -2,12 +2,12 @@
  * Created by leon<silenceace@gmail.com> on 22/4/19.
  */
 
-import { V2exObject } from '@src/types'
+import { APPDataObject } from '@src/types'
 import { CACHE_EXPIRE_TIME } from '@src/config/constants'
 
 export const memberFromCache = (
   userid: number | string,
-  list?: { pullTime: number; info: V2exObject.Member }[],
+  list?: { pullTime: number; info: APPDataObject.Member }[],
   cacheExpireTime: number = CACHE_EXPIRE_TIME
 ) => {
   if (!list || list.length === 0) {
@@ -22,7 +22,7 @@ export const memberFromCache = (
   )
 }
 
-export const nodeFromCache = (nodeid: number | string, list?: { pullTime: number; info: V2exObject.Node }[]) => {
+export const nodeFromCache = (nodeid: number | string, list?: { pullTime: number; info: APPDataObject.Node }[]) => {
   if (!list || list.length === 0) {
     return undefined
   }

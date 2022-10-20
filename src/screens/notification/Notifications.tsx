@@ -1,5 +1,5 @@
 import { NotificationsScreenProps as ScreenProps } from '@src/navigation/routes'
-import { V2exObject } from '@src/types'
+import { APPDataObject } from '@src/types'
 import React from 'react'
 import { connect } from 'react-redux'
 import { NotificationList } from '../components'
@@ -9,7 +9,7 @@ const Notification = ({
   navigation,
   profile
 }: ScreenProps & {
-  profile?: V2exObject.Member
+  profile?: APPDataObject.Member
 }) => {
   return <NotificationList containerStyle={[]} />
 }

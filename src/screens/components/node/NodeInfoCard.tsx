@@ -6,7 +6,7 @@ import { useNode } from '@src/hooks/useNode'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
-import { V2exObject } from '@src/types'
+import { APPDataObject } from '@src/types'
 import dayjs from 'dayjs'
 import React, { useEffect } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
@@ -29,7 +29,7 @@ export interface NodeInfoCardProps {
   /**
    * Load completion callback
    */
-  loadedCallback?: (node: V2exObject.Node) => void
+  loadedCallback?: (node: APPDataObject.Node) => void
 }
 
 const NodeInfoCard: React.FC<NodeInfoCardProps> = ({ nodeid, loadedCallback, containerStyle }: NodeInfoCardProps) => {

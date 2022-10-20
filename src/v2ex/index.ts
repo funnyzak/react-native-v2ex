@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { V2exAPI, V2exObject } from './types'
+import { AppAPI, APPDataObject } from './types'
 import member from './lib/member'
 import node from './lib/node'
 import notification from './lib/notification'
@@ -23,16 +23,16 @@ const defaultConfiguration = {
 }
 
 class V2ex {
-  configuration: V2exAPI.Configuration = defaultConfiguration
+  configuration: AppAPI.BaseConfiguration = defaultConfiguration
   root_path?: string
   token?: string
-  reply: V2exAPI.Reply = reply(this)
-  member: V2exAPI.Member = member(this)
-  node: V2exAPI.Node = node(this)
-  topic: V2exAPI.Topic = topic(this)
-  notification: V2exAPI.Notification = notification(this)
+  reply: AppAPI.Reply = reply(this)
+  member: AppAPI.Member = member(this)
+  node: AppAPI.Node = node(this)
+  topic: AppAPI.Topic = topic(this)
+  notification: AppAPI.Notification = notification(this)
 
-  setOptions(options: V2exAPI.Configuration) {
+  setOptions(options: AppAPI.BaseConfiguration) {
     this.configuration = _.merge(this.configuration, options)
     this.root_path = `/${this.configuration.store}`
 
@@ -60,18 +60,18 @@ class V2ex {
   }
 
   siteInfo() {
-    return this.get<V2exObject.SiteInfo>('/site/info.json', undefined, undefined, undefined)
+    return this.get<APPDataObject.SiteInfo>('/site/info.json', undefined, undefined, undefined)
   }
 
   siteStat() {
-    return this.get<V2exObject.SiteStat>('/site/stats.json', undefined, undefined, undefined)
+    return this.get<APPDataObject.SiteStat>('/site/stats.json', undefined, undefined, undefined)
   }
 
   post<T>(
     path: string,
     headers?: { [name: string]: string },
     params?: Record<string, string>,
-    version?: V2exAPI.API_VERSION
+    version?: AppAPI.API_VERSION
   ): Promise<T> {
     return this.send<T>(path, 'POST', headers, undefined, params, version)
   }
@@ -80,7 +80,7 @@ class V2ex {
     path: string,
     headers?: { [name: string]: string },
     params?: Record<string, string>,
-    version?: V2exAPI.API_VERSION
+    version?: AppAPI.API_VERSION
   ): Promise<T> {
     return this.send<T>(path, 'PUT', headers, undefined, params, version)
   }
@@ -90,7 +90,7 @@ class V2ex {
     headers?: { [name: string]: string },
     params?: Record<string, string>,
     data?: any,
-    version?: V2exAPI.API_VERSION
+    version?: AppAPI.API_VERSION
   ): Promise<T> {
     return this.send<T>(path, 'GET', headers, params, data, version)
   }
@@ -99,18 +99,18 @@ class V2ex {
     path: string,
     headers?: { [name: string]: string },
     params?: Record<string, string>,
-    version?: V2exAPI.API_VERSION
+    version?: AppAPI.API_VERSION
   ): Promise<T> {
     return this.send<T>(path, 'DELETE', headers, params, undefined, version)
   }
 
   send<T>(
     path: string,
-    method: V2exAPI.Method,
+    method: AppAPI.Method,
     headers?: { [name: string]: string },
     params?: Record<string, string>,
     data?: any,
-    version?: V2exAPI.API_VERSION
+    version?: AppAPI.API_VERSION
   ): Promise<T> {
     let uri = `${this.configuration.url}${this.root_path}${version === 'v2' ? '/v2' : ''}${path}`
 
@@ -169,7 +169,7 @@ class V2ex {
         .then((responseData) => {
           if (responseData) {
             if (version === 'v2') {
-              const res = responseData as V2exAPI.V2Response<T>
+              const res = responseData as AppAPI.Response<T>
               return resolve(res.result)
             }
             resolve(responseData)
@@ -201,6 +201,6 @@ class V2ex {
   }
 }
 
-const v2exLib: V2exAPI.V2ex = new V2ex()
+const v2exLib: AppAPI.APP = new V2ex()
 
 export { v2exLib }

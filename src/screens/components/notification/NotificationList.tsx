@@ -6,7 +6,7 @@ import { useMember } from '@src/hooks/useMember'
 import { useSession } from '@src/hooks/useSession'
 import { translate } from '@src/i18n'
 import { SylCommon, useTheme } from '@src/theme'
-import { ITheme, V2exObject } from '@src/types'
+import { ITheme, APPDataObject } from '@src/types'
 import { v2exLib } from '@src/v2ex'
 import dayjs from 'dayjs'
 import React, { useCallback, useState } from 'react'
@@ -27,7 +27,7 @@ const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: N
   const { showMessage } = useToast()
   const [page, setPage] = useState(1)
   const [refreshing, setRefreshing] = useState<boolean>(false)
-  const [list, setList] = useState<V2exObject.Notification[] | undefined>(undefined)
+  const [list, setList] = useState<APPDataObject.Notification[] | undefined>(undefined)
   const [hasMore, setHasMore] = useState<boolean>(true)
   const [loadMore, setLoadMore] = useState<boolean>(false)
 
@@ -47,7 +47,7 @@ const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: N
 
       v2exLib.notification
         .list(pageNum)
-        .then((rlt: V2exObject.Notification[]) => {
+        .then((rlt: APPDataObject.Notification[]) => {
           if (rlt.length === 0 && pageNum > 1) {
             setHasMore(false)
           }
@@ -73,7 +73,7 @@ const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: N
     return <Avatar size={40} source={{ uri: profile?.avatar_normal }} username={profile?.username} />
   }
 
-  const renderItemRow = ({ item }: { item: V2exObject.Notification }) => {
+  const renderItemRow = ({ item }: { item: APPDataObject.Notification }) => {
     if (!item || item === null) return null
 
     return (

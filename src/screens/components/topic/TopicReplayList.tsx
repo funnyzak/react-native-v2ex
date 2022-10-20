@@ -4,7 +4,7 @@
 import { Placeholder, Spinner, useToast } from '@src/components'
 import { translate } from '@src/i18n'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
-import { V2exObject } from '@src/types'
+import { APPDataObject } from '@src/types'
 import { v2exLib } from '@src/v2ex'
 import React, { useCallback, useEffect, useState } from 'react'
 import { FlatList, RefreshControl, StyleProp, View, ViewStyle } from 'react-native'
@@ -18,7 +18,7 @@ export interface TopicReplayListProps {
 
   topicId: number
 
-  refreshCallBack?: (list: V2exObject.TopicReply[]) => void
+  refreshCallBack?: (list: APPDataObject.TopicReply[]) => void
 }
 
 const TopicReplayList: React.FC<TopicReplayListProps> = ({
@@ -29,7 +29,7 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({
   const { theme } = useTheme()
   const { showMessage } = useToast()
   const [refreshing, setRefreshing] = useState<boolean>(false)
-  const [list, setList] = useState<V2exObject.TopicReply[] | undefined>(undefined)
+  const [list, setList] = useState<APPDataObject.TopicReply[] | undefined>(undefined)
 
   const fetchReplay = useCallback(() => {
     v2exLib.reply.replies(topicId).then(
@@ -56,7 +56,7 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({
     fetchReplay()
   }
 
-  const renderItemRow = ({ item }: { item: V2exObject.TopicReply }) =>
+  const renderItemRow = ({ item }: { item: APPDataObject.TopicReply }) =>
     !item || item === null ? null : (
       <TopicReplayItem key={item.id} containerStyle={styles.itemContainer(theme)} info={item} />
     )

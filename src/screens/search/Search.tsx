@@ -4,7 +4,7 @@ import { StyleSheet, View, ViewStyle, TextStyle } from 'react-native'
 
 import { translate } from '@src/i18n'
 import { useTheme, SylCommon } from '@src/theme'
-import { IState, ITheme, V2exObject } from '@src/types'
+import { IState, ITheme, APPDataObject } from '@src/types'
 import * as CompS from '../components'
 import { Text, Spinner } from '@src/components'
 import { SearchScreenProps as ScreenProps } from '@src/navigation/routes'

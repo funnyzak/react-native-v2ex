@@ -2,7 +2,7 @@
  * Created by leon<silenceace@gmail.com> on 22/3/20.
  */
 import { store } from '@src/store'
-import { V2exObject } from '@src/types'
+import { APPDataObject } from '@src/types'
 
 /**
  * home tab nodes
@@ -10,7 +10,7 @@ import { V2exObject } from '@src/types'
 export interface TabNodeProps {
   title: string
   parentNodeNames: any[]
-  children?: V2exObject.Node[]
+  children?: APPDataObject.Node[]
 }
 
 export let TabNodes: TabNodeProps[] = [
@@ -26,10 +26,10 @@ export let TabNodes: TabNodeProps[] = [
   { title: 'Earth', parentNodeNames: ['cn', 'us'] }
 ]
 
-export const nodeChildren = (rootNode: TabNodeProps, nodeData?: V2exObject.Node[]): V2exObject.Node[] => {
+export const nodeChildren = (rootNode: TabNodeProps, nodeData?: APPDataObject.Node[]): APPDataObject.Node[] => {
   const { title, parentNodeNames: parentNodes } = rootNode
 
-  let nodes: V2exObject.Node[] = []
+  let nodes: APPDataObject.Node[] = []
 
   const all_node = nodeData ?? store.getState().app.allNode
   if (!all_node) return nodes

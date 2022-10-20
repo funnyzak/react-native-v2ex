@@ -1,8 +1,8 @@
-import { V2exAPI, V2exObject } from '../../types'
+import { AppAPI, APPDataObject } from '../../types'
 
-export default (v2ex: V2exAPI.V2ex): V2exAPI.Node => ({
-  get: (id: string | number, version: V2exAPI.API_VERSION): Promise<V2exObject.Node> =>
-    v2ex.get<V2exObject.Node>(
+export default (v2ex: AppAPI.APP): AppAPI.Node => ({
+  get: (id: string | number, version: AppAPI.API_VERSION): Promise<APPDataObject.Node> =>
+    v2ex.get<APPDataObject.Node>(
       version === 'v2' ? `/nodes/${id}` : `/nodes/show.json?${typeof id === 'string' ? 'name' : 'id'}=${id}`,
       undefined,
       undefined,
@@ -10,5 +10,5 @@ export default (v2ex: V2exAPI.V2ex): V2exAPI.Node => ({
       version
     ),
 
-  all: () => v2ex.get<V2exObject.Node[]>('/nodes/all.json', undefined, undefined, undefined, undefined)
+  all: () => v2ex.get<APPDataObject.Node[]>('/nodes/all.json', undefined, undefined, undefined, undefined)
 })

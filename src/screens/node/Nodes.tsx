@@ -9,7 +9,7 @@ import { translate } from '@src/i18n'
 import { NavigationService, NodesScreenProps as ScreenProps } from '@src/navigation'
 import { RootState } from '@src/store'
 import { SylCommon, useTheme } from '@src/theme'
-import { ITheme, V2exObject } from '@src/types'
+import { ITheme, APPDataObject } from '@src/types'
 import React, { useEffect } from 'react'
 import { SectionList, TouchableOpacity, View, ViewStyle } from 'react-native'
 import { connect } from 'react-redux'
@@ -20,7 +20,7 @@ const Node = ({
   allNode,
   fetchAllNode
 }: ScreenProps & {
-  allNode?: V2exObject.Node[]
+  allNode?: APPDataObject.Node[]
   fetchAllNode: () => void
 }) => {
   const { theme } = useTheme()
@@ -44,7 +44,7 @@ const Node = ({
       )
     })
   }, [])
-  const Item = ({ list, title }: { list: V2exObject.Node[]; title: string }) => (
+  const Item = ({ list, title }: { list: APPDataObject.Node[]; title: string }) => (
     <View style={[SylCommon.Card.container(theme), styles.sectionContainer(theme)]}>
       <Text style={{ ...theme.typography.subheadingTextBold }}>{title}</Text>
       <View style={styles.nodeListContainer(theme)}>

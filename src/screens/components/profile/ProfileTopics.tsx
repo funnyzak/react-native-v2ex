@@ -4,7 +4,7 @@
 import { Placeholder, useToast } from '@src/components'
 import { translate } from '@src/i18n'
 import { ITheme, useTheme } from '@src/theme'
-import { V2exObject } from '@src/types'
+import { APPDataObject } from '@src/types'
 import { v2exLib } from '@src/v2ex'
 import React, { useCallback, useEffect, useState } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
@@ -23,7 +23,7 @@ export interface ProfileTopicsProps {
 const ProfileTopics: React.FC<ProfileTopicsProps> = ({ containerStyle, username }: ProfileTopicsProps) => {
   const { theme } = useTheme()
   const { showMessage } = useToast()
-  const [list, setList] = useState<V2exObject.Topic[] | undefined>(undefined)
+  const [list, setList] = useState<APPDataObject.Topic[] | undefined>(undefined)
 
   useEffect(() => {
     fetchTopics()

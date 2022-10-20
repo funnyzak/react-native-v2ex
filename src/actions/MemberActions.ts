@@ -23,7 +23,7 @@ import {
   MEMBER_UNFOLLOW_PEOPLE,
   MEMBER_LIKE_TOPICS,
   MEMBER_UNLIKE_TOPICS,
-  V2exObject
+  APPDataObject
 } from '../types'
 import { cacheMemberFollowing, cacheMemberInterestNodes, cacheMemberLikeTopicss } from './CacheAction'
 
@@ -52,12 +52,12 @@ export const getToken = () => async (dispatch: Dispatch) => {
   })
 }
 
-export const setMyTopics = (topics: V2exObject.Topic[]) => ({
+export const setMyTopics = (topics: APPDataObject.Topic[]) => ({
   type: MEMBER_TOPICS,
   payload: topics
 })
 
-export const interestNode = (node: V2exObject.Node) => async (dispatch: Dispatch, getState: () => RootState) => {
+export const interestNode = (node: APPDataObject.Node) => async (dispatch: Dispatch, getState: () => RootState) => {
   dispatch({
     type: MEMBER_INSEREST_NODE,
     payload: node
@@ -65,7 +65,7 @@ export const interestNode = (node: V2exObject.Node) => async (dispatch: Dispatch
   dispatch(cacheMemberInterestNodes(getState().member.interestNodes))
 }
 
-export const unInterestNode = (node: V2exObject.Node) => async (dispatch: Dispatch, getState: () => RootState) => {
+export const unInterestNode = (node: APPDataObject.Node) => async (dispatch: Dispatch, getState: () => RootState) => {
   dispatch({
     type: MEMBER_UNINTEREST_NODE,
     payload: node
@@ -73,7 +73,7 @@ export const unInterestNode = (node: V2exObject.Node) => async (dispatch: Dispat
   dispatch(cacheMemberInterestNodes(getState().member.interestNodes))
 }
 
-export const likeTopic = (topic: V2exObject.Topic) => async (dispatch: Dispatch, getState: () => RootState) => {
+export const likeTopic = (topic: APPDataObject.Topic) => async (dispatch: Dispatch, getState: () => RootState) => {
   dispatch({
     type: MEMBER_LIKE_TOPICS,
     payload: topic
@@ -81,7 +81,7 @@ export const likeTopic = (topic: V2exObject.Topic) => async (dispatch: Dispatch,
   dispatch(cacheMemberLikeTopicss(getState().member.likeTopics))
 }
 
-export const unLikeTopic = (topic: V2exObject.Topic) => async (dispatch: Dispatch, getState: () => RootState) => {
+export const unLikeTopic = (topic: APPDataObject.Topic) => async (dispatch: Dispatch, getState: () => RootState) => {
   dispatch({
     type: MEMBER_UNLIKE_TOPICS,
     payload: topic
@@ -89,7 +89,7 @@ export const unLikeTopic = (topic: V2exObject.Topic) => async (dispatch: Dispatc
   dispatch(cacheMemberLikeTopicss(getState().member.likeTopics))
 }
 
-export const followPeople = (member: V2exObject.Member) => async (dispatch: Dispatch, getState: () => RootState) => {
+export const followPeople = (member: APPDataObject.Member) => async (dispatch: Dispatch, getState: () => RootState) => {
   dispatch({
     type: MEMBER_FOLLOW_PEOPLE,
     payload: member
@@ -97,15 +97,16 @@ export const followPeople = (member: V2exObject.Member) => async (dispatch: Disp
   dispatch(cacheMemberFollowing(getState().member.followPeoples))
 }
 
-export const unFollowPeople = (member: V2exObject.Member) => async (dispatch: Dispatch, getState: () => RootState) => {
-  dispatch({
-    type: MEMBER_UNFOLLOW_PEOPLE,
-    payload: member
-  })
-  dispatch(cacheMemberFollowing(getState().member.followPeoples))
-}
+export const unFollowPeople =
+  (member: APPDataObject.Member) => async (dispatch: Dispatch, getState: () => RootState) => {
+    dispatch({
+      type: MEMBER_UNFOLLOW_PEOPLE,
+      payload: member
+    })
+    dispatch(cacheMemberFollowing(getState().member.followPeoples))
+  }
 
-export const setCurrentToken = (token?: V2exObject.MToken) => ({
+export const setCurrentToken = (token?: APPDataObject.MToken) => ({
   type: APP_AUTH,
   payload: token
 })
@@ -121,7 +122,7 @@ export const loginByToken = (token: string) => async (dispatch: Dispatch) => {
   }
 }
 
-const loginByTokenSuccess = (token: V2exObject.MToken) => async (dispatch: Dispatch, getState: () => RootState) => {
+const loginByTokenSuccess = (token: APPDataObject.MToken) => async (dispatch: Dispatch, getState: () => RootState) => {
   await AsyncStorage.setItem(MEMBER_TOKEN_KEY, token.token)
 
   v2exLib.setToken(token.token)

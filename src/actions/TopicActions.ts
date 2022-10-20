@@ -14,7 +14,7 @@ import {
   APP_NODE_TOPICS_REFRESH,
   APP_NODE_LOAD_MORE_TOPICS,
   APP_NODE_TOPICS_LOAD_SUCCESS,
-  V2exObject
+  APPDataObject
 } from '@src/types'
 import { SPECIAL_NODE_NAME_MAP } from '@src/config/constants'
 
@@ -23,7 +23,7 @@ import { SPECIAL_NODE_NAME_MAP } from '@src/config/constants'
  * @param topic
  * @returns
  */
-export const readTopic = (topic: V2exObject.Topic) => ({
+export const readTopic = (topic: APPDataObject.Topic) => ({
   type: MEMBER_READ_TOPIC,
   payload: topic
 })
@@ -58,7 +58,7 @@ export const getHomeNodeTopics =
     }
 
     try {
-      let _topics: V2exObject.Topic[] = []
+      let _topics: APPDataObject.Topic[] = []
       if (specialNode) {
         if (node === SPECIAL_NODE_NAME_MAP.HOT) {
           _topics = await v2exLib.topic.hotTopics()

@@ -1,11 +1,11 @@
-import { V2exAPI, V2exObject } from '../../types'
+import { AppAPI, APPDataObject } from '../../types'
 
-export default (v2ex: V2exAPI.V2ex): V2exAPI.Notification => ({
+export default (v2ex: AppAPI.APP): AppAPI.Notification => ({
   /**
    * Get my latest notifications
    */
   list: (page: number) =>
-    v2ex.get<V2exObject.Notification[]>(`/notifications?p=${page}`, undefined, undefined, undefined, 'v2'),
+    v2ex.get<APPDataObject.Notification[]>(`/notifications?p=${page}`, undefined, undefined, undefined, 'v2'),
 
   /**
    * Remove notification
