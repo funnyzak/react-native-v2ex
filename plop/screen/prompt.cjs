@@ -31,12 +31,20 @@ module.exports = {
           type: 'add',
           path: `./src/screens/${path}/${upperFirstName}.tsx`,
           templateFile: './plop/screen/screen.hbs',
-          data: templateData
+          data: templateData,
+          skipIfExists: true
         },
         {
           type: 'add',
           path: `./src/screens/${path}/index.ts`,
           templateFile: './plop/screen/index.hbs',
+          data: templateData,
+          skipIfExists: true
+        },
+        {
+          type: 'append',
+          path: `./src/screens/${path}/index.ts`,
+          templateFile: './plop/screen/append.hbs',
           data: templateData
         }
       )
