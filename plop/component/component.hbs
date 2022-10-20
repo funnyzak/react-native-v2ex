@@ -1,8 +1,9 @@
 /**
  * Created by leon<silenceace@gmail.com> on {{ dtime }}
  */
+import { ITheme, useTheme } from '@src/theme'
 import React from 'react'
-import { View, ViewStyle } from 'react-native'
+import { StyleProp, View, ViewStyle } from 'react-native'
 
 interface {{ upperFirstName }}Props {
   containerStyle?: StyleProp<ViewStyle>
@@ -11,7 +12,7 @@ interface {{ upperFirstName }}Props {
 const {{ upperFirstName }}Component = ({ containerStyle }: {{ upperFirstName }}Props) => {
   const { theme } = useTheme()
 
-  return <View style={[styles.container(theme), containerStyle]}></View>
+  return <View style={[styles.container(theme), containerStyle]} />
 }
 
 const {{ upperFirstName }} = React.memo({{ upperFirstName }}Component)

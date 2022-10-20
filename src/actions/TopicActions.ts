@@ -3,7 +3,7 @@
  */
 
 import { Dispatch } from 'redux'
-import { v2exLib } from '@src/v2ex'
+import { ApiLib } from '@src/api'
 import { logError } from '@src/helper/logger'
 
 import {
@@ -14,7 +14,7 @@ import {
   APP_NODE_TOPICS_REFRESH,
   APP_NODE_LOAD_MORE_TOPICS,
   APP_NODE_TOPICS_LOAD_SUCCESS,
-  V2exObject
+  AppObject
 } from '@src/types'
 import { SPECIAL_NODE_NAME_MAP } from '@src/config/constants'
 
@@ -23,7 +23,7 @@ import { SPECIAL_NODE_NAME_MAP } from '@src/config/constants'
  * @param topic
  * @returns
  */
-export const readTopic = (topic: V2exObject.Topic) => ({
+export const readTopic = (topic: AppObject.Topic) => ({
   type: MEMBER_READ_TOPIC,
   payload: topic
 })
@@ -58,15 +58,15 @@ export const getHomeNodeTopics =
     }
 
     try {
-      let _topics: V2exObject.Topic[] = []
+      let _topics: AppObject.Topic[] = []
       if (specialNode) {
         if (node === SPECIAL_NODE_NAME_MAP.HOT) {
-          _topics = await v2exLib.topic.hotTopics()
+          _topics = await ApiLib.topic.hotTopics()
         } else if (node === SPECIAL_NODE_NAME_MAP.LATEST) {
-          _topics = await v2exLib.topic.latestTopics()
+          _topics = await ApiLib.topic.latestTopics()
         }
       } else {
-        _topics = await (v2Use ? v2exLib.topic.pager(node, page) : v2exLib.topic.topics(node, 'node_name'))
+        _topics = await (v2Use ? ApiLib.topic.pager(node, page) : ApiLib.topic.topics(node, 'node_name'))
       }
 
       dispatch({

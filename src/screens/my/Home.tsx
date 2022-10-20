@@ -3,7 +3,7 @@ import { useToast } from '@src/components/toast'
 import { translate } from '@src/i18n'
 import { MyScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 import { SylCommon, useTheme } from '@src/theme'
-import { IState, V2exObject } from '@src/types'
+import { IState, AppObject } from '@src/types'
 import { linking } from '@src/utils'
 import React, { useEffect } from 'react'
 import { ScrollView } from 'react-native'
@@ -20,12 +20,12 @@ const My = ({
   readedTopics
 }: ScreenProps &
   IState.State & {
-    profile?: V2exObject.Member
-    token?: V2exObject.MToken
-    readedTopics?: V2exObject.Topic[]
-    topics?: V2exObject.Topic[]
-    likeTopics: V2exObject.Topic[]
-    followPeoples: V2exObject.Member[]
+    profile?: AppObject.Member
+    token?: AppObject.MToken
+    readedTopics?: AppObject.Topic[]
+    topics?: AppObject.Topic[]
+    likeTopics: AppObject.Topic[]
+    followPeoples: AppObject.Member[]
     logout: () => void
   }) => {
   const { theme } = useTheme()

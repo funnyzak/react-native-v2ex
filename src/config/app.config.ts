@@ -1,11 +1,7 @@
 /**
- * v2ex Settings for the app,
- *
- * url                     : Base url of the v2ex website
- * token            : Token to access v2ex API, without it
- *                           app won't work
+ * App Api Configuration
  */
-export const v2exOptions = {
+export const AppApiOptions = {
   url: 'https://www.v2ex.com',
   store: 'api',
   userAgent: 'V2ex App API Library',

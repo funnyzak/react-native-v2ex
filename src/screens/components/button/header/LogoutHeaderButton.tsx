@@ -7,7 +7,7 @@ import { useSession } from '@src/hooks/useSession'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
 import { useTheme } from '@src/theme'
-import { V2exObject } from '@src/types'
+import { AppObject } from '@src/types'
 import React, { useState } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import { SheetManager } from 'react-native-actions-sheet'
@@ -28,7 +28,7 @@ const LogoutHeaderButton = ({
   member
 }: {
   containerStyle?: StyleProp<ViewStyle>
-  member: V2exObject.Member
+  member: AppObject.Member
 }) => {
   const [confirmSheetId] = useState<string>('action_logout')
   const { theme } = useTheme()

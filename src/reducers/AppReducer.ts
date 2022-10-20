@@ -9,7 +9,7 @@ import {
   IState,
   APP_ALL_NODE_INFO
 } from '../types'
-import { aboutUs } from '@src/config/v2ex'
+import { aboutUs } from '@src/config/app.config'
 
 const INITIAL_STATE: IState.AppState = {
   aboutUs,

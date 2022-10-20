@@ -1,7 +1,7 @@
 import { translate } from '@src/i18n'
 import { SiteStatScreenProps as ScreenProps } from '@src/navigation/routes'
 import { SylCommon, useTheme } from '@src/theme'
-import { IState, V2exObject } from '@src/types'
+import { IState, AppObject } from '@src/types'
 import React from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
@@ -10,7 +10,7 @@ import { TableList, TableRow } from '../components'
 const SiteStat = ({
   siteStat
 }: ScreenProps & {
-  siteStat?: V2exObject.SiteStat
+  siteStat?: AppObject.SiteStat
 }) => {
   const { theme } = useTheme()
   return (

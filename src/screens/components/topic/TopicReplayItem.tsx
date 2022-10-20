@@ -5,7 +5,7 @@ import { Avatar } from '@src/components'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
 import { ITheme, useTheme } from '@src/theme'
-import { V2exObject } from '@src/types'
+import { AppObject } from '@src/types'
 import dayjs from 'dayjs'
 import React, { useMemo } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
@@ -17,7 +17,7 @@ import { BorderLine, RenderHTML, TextWithIconPress } from '../common'
 export interface TopicReplayItemProps {
   containerStyle?: StyleProp<ViewStyle>
 
-  info: V2exObject.TopicReply
+  info: AppObject.TopicReply
 }
 
 const TopicReplayItem: React.FC<TopicReplayItemProps> = ({ containerStyle, info }: TopicReplayItemProps) => {

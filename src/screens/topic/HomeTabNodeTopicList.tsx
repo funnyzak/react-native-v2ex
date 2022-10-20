@@ -2,7 +2,7 @@ import * as Actions from '@src/actions'
 import { useToast } from '@src/components/toast'
 import { NodeTopicsScreenProps as ScreenProps } from '@src/navigation'
 import { SylCommon, useTheme } from '@src/theme'
-import { IState, V2exObject } from '@src/types'
+import { IState, AppObject } from '@src/types'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { RefreshControl, View } from 'react-native'
 import { connect } from 'react-redux'
@@ -69,7 +69,7 @@ const NodeTopics = ({
     }
   }
 
-  const onRowPress = (item: V2exObject.Topic) => {
+  const onRowPress = (item: AppObject.Topic) => {
     // ...
   }
 

@@ -5,7 +5,7 @@ import { Avatar, Text } from '@src/components'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
 import { ITheme, useTheme } from '@src/theme'
-import { V2exObject } from '@src/types'
+import { AppObject } from '@src/types'
 import dayjs from 'dayjs'
 import React from 'react'
 import { Image, StyleProp, TouchableOpacity, View, ViewStyle } from 'react-native'
@@ -22,7 +22,7 @@ export interface SimpleProfileInfoCardProps {
   /**
    * profile info
    */
-  info?: V2exObject.Member
+  info?: AppObject.Member
   /**
    * with right arrow
    */

@@ -1,4 +1,4 @@
-import { V2exAPI, V2exObject } from '@src/types'
+import { AppAPI, AppObject } from '@src/types'
 import { ThemeType } from '@src/theme'
 import { LanguageTagType } from '@src/i18n'
 import { NODE_TAB_TYPE } from '@src/navigation'
@@ -17,7 +17,7 @@ export declare module IState {
    * 全局状态
    */
   export interface AppState {
-    v2ex?: V2exAPI.V2ex
+    v2ex?: AppAPI.APP
 
     name?: string
 
@@ -55,11 +55,11 @@ export declare module IState {
       copyright: string
     }
 
-    siteInfo?: V2exObject.SiteInfo
+    siteInfo?: AppObject.SiteInfo
 
-    siteStat?: V2exObject.SiteStat
+    siteStat?: AppObject.SiteStat
 
-    allNode?: V2exObject.Node[]
+    allNode?: AppObject.Node[]
 
     errorMessage?: Error[]
   }
@@ -67,33 +67,33 @@ export declare module IState {
   export interface CacheState {
     members: {
       pullTime: number
-      info: V2exObject.Member
+      info: AppObject.Member
     }[]
 
     nodes: {
       pullTime: number
-      info: V2exObject.Node
+      info: AppObject.Node
     }[]
 
     /**
      * 当前登录用户
      */
-    currentSessionMember?: V2exObject.Member
+    currentSessionMember?: AppObject.Member
 
     /**
      * 会员感兴趣的nodes
      */
-    membersInterestNodes: Record<number, Array<V2exObject.Node> | undefined>
+    membersInterestNodes: Record<number, Array<AppObject.Node> | undefined>
 
     /**
      * 会员follow的人
      */
-    membersFollowing: Record<number, Array<V2exObject.Member> | undefined>
+    membersFollowing: Record<number, Array<AppObject.Member> | undefined>
 
     /**
      * 会员喜欢的帖子
      */
-    membersLikeTopics: Record<number, Array<V2exObject.Topic> | undefined>
+    membersLikeTopics: Record<number, Array<AppObject.Topic> | undefined>
   }
 
   /**
@@ -131,7 +131,7 @@ export declare module IState {
     /**
      * 节点主题列表
      */
-    list?: V2exObject.Topic[]
+    list?: AppObject.Topic[]
     /**
      * 节点主题列表刷新状态
      */
@@ -163,17 +163,17 @@ export declare module IState {
     /**
      * 用户令牌信息
      */
-    token?: V2exObject.MToken
+    token?: AppObject.MToken
 
     /**
      * 用户信息
      */
-    profile?: V2exObject.Member
+    profile?: AppObject.Member
 
     /**
      * 用户发布的主题
      */
-    topics?: V2exObject.Topic[]
+    topics?: AppObject.Topic[]
 
     /**
      * 用户信息拉取
@@ -183,21 +183,21 @@ export declare module IState {
     /**
      * 关注的人
      */
-    followPeoples: V2exObject.Member[]
+    followPeoples: AppObject.Member[]
     /**
      * 收藏的主题
      */
-    likeTopics: V2exObject.Topic[]
+    likeTopics: AppObject.Topic[]
 
     /**
      * 已读主题
      */
-    readedTopics?: V2exObject.Topic[]
+    readedTopics?: AppObject.Topic[]
 
     /**
      * 感兴趣的节点
      */
-    interestNodes: V2exObject.Node[]
+    interestNodes: AppObject.Node[]
   }
 
   /**
@@ -219,6 +219,6 @@ export declare module IState {
   export interface NotificationState {
     refreshing: boolean
     unread: number
-    list?: V2exObject.Notification[]
+    list?: AppObject.Notification[]
   }
 }

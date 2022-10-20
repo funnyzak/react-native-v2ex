@@ -4,8 +4,8 @@
 import { Placeholder, Spinner, useToast } from '@src/components'
 import { translate } from '@src/i18n'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
-import { V2exObject } from '@src/types'
-import { v2exLib } from '@src/v2ex'
+import { AppObject } from '@src/types'
+import { ApiLib } from '@src/api'
 import React, { useCallback, useEffect, useState } from 'react'
 import { FlatList, RefreshControl, StyleProp, View, ViewStyle } from 'react-native'
 import TopicReplayItem from './TopicReplayItem'
@@ -18,7 +18,7 @@ export interface TopicReplayListProps {
 
   topicId: number
 
-  refreshCallBack?: (list: V2exObject.TopicReply[]) => void
+  refreshCallBack?: (list: AppObject.TopicReply[]) => void
 }
 
 const TopicReplayList: React.FC<TopicReplayListProps> = ({
@@ -29,10 +29,10 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({
   const { theme } = useTheme()
   const { showMessage } = useToast()
   const [refreshing, setRefreshing] = useState<boolean>(false)
-  const [list, setList] = useState<V2exObject.TopicReply[] | undefined>(undefined)
+  const [list, setList] = useState<AppObject.TopicReply[] | undefined>(undefined)
 
   const fetchReplay = useCallback(() => {
-    v2exLib.reply.replies(topicId).then(
+    ApiLib.reply.replies(topicId).then(
       (res) => {
         setList(res)
         setRefreshing(false)
@@ -44,7 +44,7 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({
         refreshCallBack && refreshCallBack([])
       }
     )
-  }, [topicId, v2exLib]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [topicId, ApiLib]) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     onRefresh()
@@ -56,7 +56,7 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({
     fetchReplay()
   }
 
-  const renderItemRow = ({ item }: { item: V2exObject.TopicReply }) =>
+  const renderItemRow = ({ item }: { item: AppObject.TopicReply }) =>
     !item || item === null ? null : (
       <TopicReplayItem key={item.id} containerStyle={styles.itemContainer(theme)} info={item} />
     )

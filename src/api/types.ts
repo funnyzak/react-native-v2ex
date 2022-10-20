@@ -1,10 +1,10 @@
-export namespace V2exAPI {
+export declare namespace AppAPI {
   export type API_VERSION = undefined | 'v2'
 
   /**
    * V2ex Version 2.0 Response
    */
-  export interface V2Response<T> {
+  export interface Response<T> {
     success: boolean
     message: string
     result: T
@@ -13,7 +13,7 @@ export namespace V2exAPI {
   /**
    * V2ex API Configuration
    */
-  export interface Configuration {
+  export interface BaseConfiguration {
     url?: string
     store?: string
     userAgent?: string
@@ -50,8 +50,8 @@ export namespace V2exAPI {
   /**
    * V2ex Main API
    */
-  export interface V2ex {
-    configuration: Configuration
+  export interface APP {
+    configuration: BaseConfiguration
     root_path?: string
     token?: string
     node: Node
@@ -59,12 +59,12 @@ export namespace V2exAPI {
     notification: Notification
     member: Member
     reply: Reply
-    setOptions: (options: Configuration) => void
+    setOptions: (options: BaseConfiguration) => void
     init: () => void
     setToken(token?: string): void
     setUserAgent(userAgent?: string): void
-    siteInfo: () => Promise<V2exObject.SiteInfo>
-    siteStat: () => Promise<V2exObject.SiteStat>
+    siteInfo: () => Promise<AppObject.SiteInfo>
+    siteStat: () => Promise<AppObject.SiteStat>
     post<T>(
       path: string,
       headers?: { [name: string]: string },
@@ -104,22 +104,22 @@ export namespace V2exAPI {
     /**
      * Get my token info
      */
-    myToken: () => Promise<V2exObject.MToken>
+    myToken: () => Promise<AppObject.MToken>
 
     /**
      * Get my profile
      */
-    myProfile: () => Promise<V2exObject.Member>
+    myProfile: () => Promise<AppObject.Member>
 
     /**
      * Get user profile
      */
-    profile: (id: string | number) => Promise<V2exObject.Member>
+    profile: (id: string | number) => Promise<AppObject.Member>
 
     /**
      * check user token
      */
-    token: (token: string) => Promise<V2exObject.MToken>
+    token: (token: string) => Promise<AppObject.MToken>
   }
 
   export interface Node {
@@ -128,19 +128,19 @@ export namespace V2exAPI {
      * @param node id or node name
      * @param version
      */
-    get(id: string | number, version: API_VERSION): Promise<V2exObject.Node>
+    get(id: string | number, version: API_VERSION): Promise<AppObject.Node>
 
     /**
      * Get All nodes by api version 1
      */
-    all(): Promise<V2exObject.Node[]>
+    all(): Promise<AppObject.Node[]>
   }
 
   export interface Notification {
     /**
      * Get my latest notifications
      */
-    list: (page: number) => Promise<V2exObject.Notification[]>
+    list: (page: number) => Promise<AppObject.Notification[]>
 
     /**
      * Remove notification
@@ -152,32 +152,32 @@ export namespace V2exAPI {
     /**
      * Get latest topic list by api version 1
      */
-    latestTopics: () => Promise<V2exObject.Topic[]>
+    latestTopics: () => Promise<AppObject.Topic[]>
 
     /**
      * Get hot topic list by api version 1
      */
-    hotTopics: () => Promise<V2exObject.Topic[]>
+    hotTopics: () => Promise<AppObject.Topic[]>
 
     /**
      * Get topic info by topic id use api verson 1
      * @param id : topic id
      * @param version : api version
      */
-    topic(id: number, api_version: API_VERSION): Promise<V2exObject.Topic>
+    topic(id: number, api_version: API_VERSION): Promise<AppObject.Topic>
 
     /**
      *  pager note topic list by api version 2
      * @param name : node name
      */
-    pager(name: string, page: number): Promise<V2exObject.Topic[]>
+    pager(name: string, page: number): Promise<AppObject.Topic[]>
 
     /**
      * get node topic by api version 1
      * @param id : topic id
      * @param get_type :  'username' | 'node_id' | 'node_name'
      */
-    topics(id: string | number, get_type: 'username' | 'node_id' | 'node_name' | 'id'): Promise<V2exObject.Topic[]>
+    topics(id: string | number, get_type: 'username' | 'node_id' | 'node_name' | 'id'): Promise<AppObject.Topic[]>
   }
 
   export interface Reply {
@@ -186,16 +186,16 @@ export namespace V2exAPI {
      * @param topic_id : topic id
      * @param page : page number
      */
-    pager(topic_id: number, page: number): Promise<V2exObject.TopicReply[]>
+    pager(topic_id: number, page: number): Promise<AppObject.TopicReply[]>
 
     /**
      * Get topic replies
      * @param topic_id : topic id
      */
-    replies(topic_id: number): Promise<V2exObject.TopicReply[]>
+    replies(topic_id: number): Promise<AppObject.TopicReply[]>
   }
 }
-export namespace V2exObject {
+export declare namespace AppObject {
   export interface SiteInfo {
     title: string
     slogan: string

@@ -7,8 +7,8 @@ import { useMember } from '@src/hooks/useMember'
 import { useSession } from '@src/hooks/useSession'
 import { NODE_TABS } from '@src/navigation'
 import { useTheme } from '@src/theme'
-import { V2exObject } from '@src/types'
-import { v2exLib } from '@src/v2ex'
+import { AppObject } from '@src/types'
+import { ApiLib } from '@src/api'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { RefreshControl, StyleProp, ViewStyle } from 'react-native'
 import { NeedLogin } from '../common'
@@ -40,7 +40,7 @@ const FetchTopicCardList: React.FC<FetchTopicCardListProps> = ({
   const [page, setPage] = useState(1)
   const [mounted, setMounted] = useState<boolean>(false)
   const [refreshing, setRefreshing] = useState<boolean>(false)
-  const [list, setList] = useState<V2exObject.Topic[] | undefined>(undefined)
+  const [list, setList] = useState<AppObject.Topic[] | undefined>(undefined)
   const [hasMore, setHasMore] = useState<boolean>(true)
   const [loadMore, setLoadMore] = useState<boolean>(false)
   const specialNode = useMemo(() => [NODE_TABS.LATEST, NODE_TABS.HOT].includes(nodeName), [nodeName])
@@ -68,13 +68,13 @@ const FetchTopicCardList: React.FC<FetchTopicCardListProps> = ({
       setLoadMore(pageNum > 1 && v2API)
       ;(specialNode
         ? nodeName === NODE_TABS.LATEST
-          ? v2exLib.topic.latestTopics()
-          : v2exLib.topic.hotTopics()
+          ? ApiLib.topic.latestTopics()
+          : ApiLib.topic.hotTopics()
         : v2API && logined
-        ? v2exLib.topic.pager(nodeName, pageNum)
-        : v2exLib.topic.topics(nodeName, 'node_name')
+        ? ApiLib.topic.pager(nodeName, pageNum)
+        : ApiLib.topic.topics(nodeName, 'node_name')
       )
-        .then((rlt: V2exObject.Topic[]) => {
+        .then((rlt: AppObject.Topic[]) => {
           if (rlt.length === 0 || specialNode || !v2API) {
             setHasMore(false)
           }

@@ -3,8 +3,8 @@ import { useToast } from '@src/components'
 import { MyTopicsScreenProps as ScreenProps } from '@src/navigation'
 import { RootState } from '@src/store'
 import { SylCommon, useTheme } from '@src/theme'
-import { V2exObject } from '@src/types'
-import { v2exLib } from '@src/v2ex'
+import { AppObject } from '@src/types'
+import { ApiLib } from '@src/api'
 import React, { useCallback, useState } from 'react'
 import { RefreshControl, View } from 'react-native'
 import { connect } from 'react-redux'
@@ -15,21 +15,21 @@ const MyTopics = ({
   topics,
   setTopics
 }: ScreenProps & {
-  topics?: V2exObject.Topic[]
-  profile?: V2exObject.Member
-  setTopics: (topics: V2exObject.Topic[]) => void
+  topics?: AppObject.Topic[]
+  profile?: AppObject.Member
+  setTopics: (topics: AppObject.Topic[]) => void
 }) => {
   const [refreshing, setRefreshing] = useState<boolean>(false)
-  const [list, setList] = useState<V2exObject.Topic[] | undefined>(topics)
+  const [list, setList] = useState<AppObject.Topic[] | undefined>(topics)
   const { showMessage } = useToast()
 
   const onRefresh = useCallback(() => {
     setRefreshing(true)
     if (!profile) return
 
-    v2exLib.topic
+    ApiLib.topic
       .topics(profile?.username, 'username')
-      .then((rlt: V2exObject.Topic[]) => {
+      .then((rlt: AppObject.Topic[]) => {
         setRefreshing(false)
         setList(rlt)
         setTopics(rlt)

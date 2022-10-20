@@ -6,7 +6,7 @@ import { translate } from '@src/i18n'
 import { FollowingScreenProps as ScreenProps } from '@src/navigation'
 import { RootState } from '@src/store'
 import { SylCommon, useTheme } from '@src/theme'
-import { V2exObject } from '@src/types'
+import { AppObject } from '@src/types'
 import React from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
@@ -15,7 +15,7 @@ import { NeedLogin, ProfileCardList } from '../components'
 const Following = ({
   followPeoples
 }: ScreenProps & {
-  followPeoples: V2exObject.Member[]
+  followPeoples: AppObject.Member[]
 }) => {
   const { theme } = useTheme()
   const renderContent = () => {

@@ -7,7 +7,7 @@ import { useSession } from '@src/hooks/useSession'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
 import { useTheme } from '@src/theme'
-import { V2exObject } from '@src/types'
+import { AppObject } from '@src/types'
 import React, { useMemo } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import { HeaderButton } from '../../common'
@@ -26,7 +26,7 @@ const LikeNodeHeaderButton = ({
   node
 }: {
   containerStyle?: StyleProp<ViewStyle>
-  node: V2exObject.Node
+  node: AppObject.Node
 }) => {
   const { theme } = useTheme()
   const { logined } = useSession()

@@ -7,7 +7,7 @@ import { useMember } from '@src/hooks/useMember'
 import { translate } from '@src/i18n'
 import { ProfileScreenProps as ScreenProps } from '@src/navigation'
 import { SylCommon, useTheme } from '@src/theme'
-import { IState, V2exObject } from '@src/types'
+import { IState, AppObject } from '@src/types'
 import React, { useEffect, useLayoutEffect, useMemo } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import { connect } from 'react-redux'
@@ -20,7 +20,7 @@ const Profile = ({
   authMember,
   logout
 }: ScreenProps & {
-  authMember?: V2exObject.Member
+  authMember?: AppObject.Member
   logout: () => void
 }) => {
   const { theme } = useTheme()

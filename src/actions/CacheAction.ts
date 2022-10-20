@@ -3,7 +3,7 @@
  */
 import { logError } from '@src/helper/logger'
 import { AppDispatch } from '@src/store'
-import { v2exLib } from '@src/v2ex'
+import { ApiLib } from '@src/api'
 
 import {
   APP_CACHE_ADD_MEMBER,
@@ -14,12 +14,12 @@ import {
   APP_CACHE_RESET,
   APP_CACHE_RESET_MEMBERS,
   APP_CACHE_RESET_NODES,
-  V2exObject
+  AppObject
 } from '../types'
 
 export const cacheMember = (userid: string | number) => async (dispatch: AppDispatch) => {
   try {
-    const member = await v2exLib.member.profile(userid)
+    const member = await ApiLib.member.profile(userid)
     dispatch({
       type: APP_CACHE_ADD_MEMBER,
       payload: member
@@ -31,7 +31,7 @@ export const cacheMember = (userid: string | number) => async (dispatch: AppDisp
 
 export const cacheNode = (nodeid: string | number) => async (dispatch: AppDispatch) => {
   try {
-    const node = await v2exLib.node.get(nodeid, undefined)
+    const node = await ApiLib.node.get(nodeid, undefined)
     return dispatch({
       type: APP_CACHE_ADD_NODE,
       payload: node
@@ -41,17 +41,17 @@ export const cacheNode = (nodeid: string | number) => async (dispatch: AppDispat
   }
 }
 
-export const cacheMemberFollowing = (members: V2exObject.Member[] | undefined) => ({
+export const cacheMemberFollowing = (members: AppObject.Member[] | undefined) => ({
   type: APP_CACHE_MEMBER_FOLLOWING,
   payload: members
 })
 
-export const cacheMemberInterestNodes = (nodes: V2exObject.Node[] | undefined) => ({
+export const cacheMemberInterestNodes = (nodes: AppObject.Node[] | undefined) => ({
   type: APP_CACHE_MEMBER_INTEREST_NODES,
   payload: nodes
 })
 
-export const cacheMemberLikeTopicss = (topics: V2exObject.Topic[] | undefined) => ({
+export const cacheMemberLikeTopicss = (topics: AppObject.Topic[] | undefined) => ({
   type: APP_CACHE_MEMBER_LIKE_TOPICS,
   payload: topics
 })
