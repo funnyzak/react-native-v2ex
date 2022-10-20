@@ -6,7 +6,7 @@ import { MEMBER_TOKEN_KEY } from '@src/config/constants'
 import { logError } from '@src/helper/logger'
 import NavigationService from '@src/navigation/NavigationService'
 import { RootState } from '@src/store'
-import { v2exLib } from '@src/api'
+import { ApiLib } from '@src/api'
 import { Dispatch } from 'redux'
 import {
   APP_AUTH,
@@ -28,7 +28,7 @@ import {
 import { cacheMemberFollowing, cacheMemberInterestNodes, cacheMemberLikeTopicss } from './CacheAction'
 
 export const myProfile = () => async (dispatch: Dispatch, getState: () => RootState) => {
-  const _member = await v2exLib.member.myProfile()
+  const _member = await ApiLib.member.myProfile()
 
   dispatch({
     type: MEMBER_PROFILE,
@@ -114,7 +114,7 @@ export const setCurrentToken = (token?: APPDataObject.MToken) => ({
 export const loginByToken = (token: string) => async (dispatch: Dispatch) => {
   try {
     dispatch({ type: APP_AUTH_LOADING })
-    const token_info = await v2exLib.member.token(token)
+    const token_info = await ApiLib.member.token(token)
     dispatch(loginByTokenSuccess(token_info) as any)
   } catch (e: any) {
     logError(e)
@@ -125,7 +125,7 @@ export const loginByToken = (token: string) => async (dispatch: Dispatch) => {
 const loginByTokenSuccess = (token: APPDataObject.MToken) => async (dispatch: Dispatch, getState: () => RootState) => {
   await AsyncStorage.setItem(MEMBER_TOKEN_KEY, token.token)
 
-  v2exLib.setToken(token.token)
+  ApiLib.setToken(token.token)
 
   dispatch(setCurrentToken(token))
 
@@ -146,7 +146,7 @@ export const errorMessage = (error: string) => ({
 
 export const logout = () => (dispatch: Dispatch) => {
   AsyncStorage.setItem(MEMBER_TOKEN_KEY, '')
-  v2exLib.setToken(undefined)
+  ApiLib.setToken(undefined)
   dispatch({ type: APP_LOGOUT })
 
   NavigationService.navigate('SignIn')

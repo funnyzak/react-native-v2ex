@@ -3,7 +3,7 @@
  */
 import { logError } from '@src/helper/logger'
 import { AppDispatch } from '@src/store'
-import { v2exLib } from '@src/api'
+import { ApiLib } from '@src/api'
 
 import {
   APP_CACHE_ADD_MEMBER,
@@ -19,7 +19,7 @@ import {
 
 export const cacheMember = (userid: string | number) => async (dispatch: AppDispatch) => {
   try {
-    const member = await v2exLib.member.profile(userid)
+    const member = await ApiLib.member.profile(userid)
     dispatch({
       type: APP_CACHE_ADD_MEMBER,
       payload: member
@@ -31,7 +31,7 @@ export const cacheMember = (userid: string | number) => async (dispatch: AppDisp
 
 export const cacheNode = (nodeid: string | number) => async (dispatch: AppDispatch) => {
   try {
-    const node = await v2exLib.node.get(nodeid, undefined)
+    const node = await ApiLib.node.get(nodeid, undefined)
     return dispatch({
       type: APP_CACHE_ADD_NODE,
       payload: node

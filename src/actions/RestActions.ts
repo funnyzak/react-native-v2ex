@@ -1,9 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Dispatch } from 'redux'
 import _ from 'lodash'
-import { v2exLib } from '@src/api'
+import { ApiLib } from '@src/api'
 import { fetchAllNode } from './NodeActions'
-import { v2exOptions } from '@src/config/v2ex'
+import { AppApiOptions } from '@src/config/app.config'
 import { MEMBER_TOKEN_KEY } from '@src/config/constants'
 import { APP_INIT, APP_SITE_STAT, APP_INIT_ERROR, APP_SITE_INFO, APP_ALL_NODE_INFO, IState } from '../types'
 import { logError } from '@src/helper/logger'
@@ -11,17 +11,17 @@ import DeviceInfo from 'react-native-device-info'
 import { RootState } from '@src/store'
 
 export const initV2ex = () => {
-  v2exLib.setOptions(v2exOptions)
+  ApiLib.setOptions(AppApiOptions)
 
   return async (dispatch: Dispatch, _getState: () => RootState) => {
     try {
-      v2exLib.init()
+      ApiLib.init()
 
       const customerToken = await AsyncStorage.getItem(MEMBER_TOKEN_KEY)
 
-      v2exLib.setUserAgent(await DeviceInfo.getUserAgent())
+      ApiLib.setUserAgent(await DeviceInfo.getUserAgent())
       if (customerToken !== null) {
-        v2exLib.setToken(customerToken)
+        ApiLib.setToken(customerToken)
       }
 
       dispatchSiteInfo(dispatch)
@@ -33,7 +33,7 @@ export const initV2ex = () => {
       dispatch({
         type: APP_INIT,
         payload: {
-          v2ex: v2exLib,
+          v2ex: ApiLib,
 
           name: DeviceInfo.getApplicationName(),
 
@@ -65,7 +65,7 @@ export const initV2ex = () => {
 
 const dispatchSiteInfo = async (dispatch: Dispatch) => {
   try {
-    const site_info = await v2exLib.siteInfo()
+    const site_info = await ApiLib.siteInfo()
 
     dispatch({
       type: APP_SITE_INFO,
@@ -78,7 +78,7 @@ const dispatchSiteInfo = async (dispatch: Dispatch) => {
 
 const dispatchSiteStat = async (dispatch: Dispatch) => {
   try {
-    const site_stat = await v2exLib.siteStat()
+    const site_stat = await ApiLib.siteStat()
 
     dispatch({
       type: APP_SITE_STAT,

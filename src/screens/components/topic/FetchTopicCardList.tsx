@@ -8,7 +8,7 @@ import { useSession } from '@src/hooks/useSession'
 import { NODE_TABS } from '@src/navigation'
 import { useTheme } from '@src/theme'
 import { APPDataObject } from '@src/types'
-import { v2exLib } from '@src/api'
+import { ApiLib } from '@src/api'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { RefreshControl, StyleProp, ViewStyle } from 'react-native'
 import { NeedLogin } from '../common'
@@ -68,11 +68,11 @@ const FetchTopicCardList: React.FC<FetchTopicCardListProps> = ({
       setLoadMore(pageNum > 1 && v2API)
       ;(specialNode
         ? nodeName === NODE_TABS.LATEST
-          ? v2exLib.topic.latestTopics()
-          : v2exLib.topic.hotTopics()
+          ? ApiLib.topic.latestTopics()
+          : ApiLib.topic.hotTopics()
         : v2API && logined
-        ? v2exLib.topic.pager(nodeName, pageNum)
-        : v2exLib.topic.topics(nodeName, 'node_name')
+        ? ApiLib.topic.pager(nodeName, pageNum)
+        : ApiLib.topic.topics(nodeName, 'node_name')
       )
         .then((rlt: APPDataObject.Topic[]) => {
           if (rlt.length === 0 || specialNode || !v2API) {

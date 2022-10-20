@@ -5,7 +5,7 @@ import { Placeholder, useToast } from '@src/components'
 import { translate } from '@src/i18n'
 import { ITheme, useTheme } from '@src/theme'
 import { APPDataObject } from '@src/types'
-import { v2exLib } from '@src/api'
+import { ApiLib } from '@src/api'
 import React, { useCallback, useEffect, useState } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import { TabCardContainer } from '../common'
@@ -30,7 +30,7 @@ const ProfileTopics: React.FC<ProfileTopicsProps> = ({ containerStyle, username 
   }, [username])
 
   const fetchTopics = useCallback(() => {
-    v2exLib.topic
+    ApiLib.topic
       .topics(username, 'username')
       .then((res) => {
         setList(res)

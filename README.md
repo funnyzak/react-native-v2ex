@@ -181,7 +181,7 @@ cd android
 │   ├── theme                # 主题
 │   ├── types                # 类型定义
 │   ├── utils                # 工具类
-│   └── v2ex                 # app网络库
+│   └── api                  # API库
 ├── .buckconfig              # buck的配置文件，buck是Facebook开源的高效编译系统
 ├── .editorconfig            # 编辑器配置
 ├── .eslintrc.js             # eslint的配置文件

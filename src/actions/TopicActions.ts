@@ -3,7 +3,7 @@
  */
 
 import { Dispatch } from 'redux'
-import { v2exLib } from '@src/api'
+import { ApiLib } from '@src/api'
 import { logError } from '@src/helper/logger'
 
 import {
@@ -61,12 +61,12 @@ export const getHomeNodeTopics =
       let _topics: APPDataObject.Topic[] = []
       if (specialNode) {
         if (node === SPECIAL_NODE_NAME_MAP.HOT) {
-          _topics = await v2exLib.topic.hotTopics()
+          _topics = await ApiLib.topic.hotTopics()
         } else if (node === SPECIAL_NODE_NAME_MAP.LATEST) {
-          _topics = await v2exLib.topic.latestTopics()
+          _topics = await ApiLib.topic.latestTopics()
         }
       } else {
-        _topics = await (v2Use ? v2exLib.topic.pager(node, page) : v2exLib.topic.topics(node, 'node_name'))
+        _topics = await (v2Use ? ApiLib.topic.pager(node, page) : ApiLib.topic.topics(node, 'node_name'))
       }
 
       dispatch({

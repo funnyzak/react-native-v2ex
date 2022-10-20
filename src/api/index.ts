@@ -201,6 +201,6 @@ class V2ex {
   }
 }
 
-const v2exLib: AppAPI.APP = new V2ex()
+const ApiLib: AppAPI.APP = new V2ex()
 
-export { v2exLib }
+export { ApiLib }

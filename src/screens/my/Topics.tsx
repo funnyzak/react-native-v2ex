@@ -4,7 +4,7 @@ import { MyTopicsScreenProps as ScreenProps } from '@src/navigation'
 import { RootState } from '@src/store'
 import { SylCommon, useTheme } from '@src/theme'
 import { APPDataObject } from '@src/types'
-import { v2exLib } from '@src/api'
+import { ApiLib } from '@src/api'
 import React, { useCallback, useState } from 'react'
 import { RefreshControl, View } from 'react-native'
 import { connect } from 'react-redux'
@@ -27,7 +27,7 @@ const MyTopics = ({
     setRefreshing(true)
     if (!profile) return
 
-    v2exLib.topic
+    ApiLib.topic
       .topics(profile?.username, 'username')
       .then((rlt: APPDataObject.Topic[]) => {
         setRefreshing(false)

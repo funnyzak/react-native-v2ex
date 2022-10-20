@@ -7,7 +7,7 @@ import { useSession } from '@src/hooks/useSession'
 import { translate } from '@src/i18n'
 import { SylCommon, useTheme } from '@src/theme'
 import { ITheme, APPDataObject } from '@src/types'
-import { v2exLib } from '@src/api'
+import { ApiLib } from '@src/api'
 import dayjs from 'dayjs'
 import React, { useCallback, useState } from 'react'
 import { FlatList, RefreshControl, StyleProp, TextStyle, View, ViewStyle } from 'react-native'
@@ -45,7 +45,7 @@ const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: N
 
       setLoadMore(pageNum > 1)
 
-      v2exLib.notification
+      ApiLib.notification
         .list(pageNum)
         .then((rlt: APPDataObject.Notification[]) => {
           if (rlt.length === 0 && pageNum > 1) {

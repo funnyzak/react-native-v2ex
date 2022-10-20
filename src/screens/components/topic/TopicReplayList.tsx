@@ -5,7 +5,7 @@ import { Placeholder, Spinner, useToast } from '@src/components'
 import { translate } from '@src/i18n'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
 import { APPDataObject } from '@src/types'
-import { v2exLib } from '@src/api'
+import { ApiLib } from '@src/api'
 import React, { useCallback, useEffect, useState } from 'react'
 import { FlatList, RefreshControl, StyleProp, View, ViewStyle } from 'react-native'
 import TopicReplayItem from './TopicReplayItem'
@@ -32,7 +32,7 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({
   const [list, setList] = useState<APPDataObject.TopicReply[] | undefined>(undefined)
 
   const fetchReplay = useCallback(() => {
-    v2exLib.reply.replies(topicId).then(
+    ApiLib.reply.replies(topicId).then(
       (res) => {
         setList(res)
         setRefreshing(false)
@@ -44,7 +44,7 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({
         refreshCallBack && refreshCallBack([])
       }
     )
-  }, [topicId, v2exLib]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [topicId, ApiLib]) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     onRefresh()
