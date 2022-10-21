@@ -163,7 +163,7 @@ export declare module IState {
     /**
      * 用户令牌信息
      */
-    token?: AppObject.MToken
+    token?: AppObject.MemberToken
 
     /**
      * 用户信息
