@@ -105,7 +105,7 @@ export const unFollowPeople = (member: AppObject.Member) => async (dispatch: Dis
   dispatch(cacheMemberFollowing(getState().member.followPeoples))
 }
 
-export const setCurrentToken = (token?: AppObject.MToken) => ({
+export const setCurrentToken = (token?: AppObject.MemberToken) => ({
   type: APP_AUTH,
   payload: token
 })
@@ -121,7 +121,7 @@ export const loginByToken = (token: string) => async (dispatch: Dispatch) => {
   }
 }
 
-const loginByTokenSuccess = (token: AppObject.MToken) => async (dispatch: Dispatch, getState: () => RootState) => {
+const loginByTokenSuccess = (token: AppObject.MemberToken) => async (dispatch: Dispatch, getState: () => RootState) => {
   await AsyncStorage.setItem(MEMBER_TOKEN_KEY, token.token)
 
   ApiLib.setToken(token.token)

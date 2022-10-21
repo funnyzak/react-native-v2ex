@@ -1,6 +1,6 @@
 import { AppAPI, AppObject } from '../../types'
 
-export default (v2ex: AppAPI.APP): AppAPI.Notification => ({
+export default (v2ex: AppAPI.APP): AppAPI.NotificationAPI => ({
   /**
    * Get my latest notifications
    */

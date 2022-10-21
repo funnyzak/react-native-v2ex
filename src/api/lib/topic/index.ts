@@ -1,6 +1,6 @@
 import { AppAPI, AppObject } from '../../types'
 
-export default (v2ex: AppAPI.APP): AppAPI.Topic => ({
+export default (v2ex: AppAPI.APP): AppAPI.TopicAPI => ({
   /**
    * pager note topic list by api version 2
    * @param name : node name

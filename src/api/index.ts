@@ -23,16 +23,23 @@ const defaultConfiguration = {
 }
 
 class V2ex {
-  configuration: AppAPI.BaseConfiguration = defaultConfiguration
+  configuration: AppAPI.APIConfiguration = defaultConfiguration
   root_path?: string
   token?: string
-  reply: AppAPI.Reply = reply(this)
-  member: AppAPI.Member = member(this)
-  node: AppAPI.Node = node(this)
-  topic: AppAPI.Topic = topic(this)
-  notification: AppAPI.Notification = notification(this)
+  reply: AppAPI.ReplyAPI = reply(this)
+  member: AppAPI.MemberAPI = member(this)
+  node: AppAPI.NodeAPI = node(this)
+  topic: AppAPI.TopicAPI = topic(this)
+  notification: AppAPI.NotificationAPI = notification(this)
 
-  setOptions(options: AppAPI.BaseConfiguration) {
+  constructor(options?: AppAPI.APIConfiguration) {
+    if (options) {
+      this.setOptions(options)
+    }
+    this.init()
+  }
+
+  setOptions(options: AppAPI.APIConfiguration) {
     this.configuration = _.merge(this.configuration, options)
     this.root_path = `/${this.configuration.store}`
 
@@ -106,7 +113,7 @@ class V2ex {
 
   send<T>(
     path: string,
-    method: AppAPI.Method,
+    method: AppAPI.HttpMethod,
     headers?: { [name: string]: string },
     params?: Record<string, string>,
     data?: any,
@@ -138,13 +145,6 @@ class V2ex {
     headers = _.merge(_headers, headers)
 
     return new Promise<T>((resolve, reject) => {
-      // console.log({
-      //   uri,
-      //   method,
-      //   headers,
-      //   data,
-      //   ...params
-      // })
       fetch(uri, { method, headers, body: JSON.stringify(data) })
         .then((response: Response) => {
           if (response.ok) {

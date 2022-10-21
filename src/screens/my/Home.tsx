@@ -21,7 +21,7 @@ const My = ({
 }: ScreenProps &
   IState.State & {
     profile?: AppObject.Member
-    token?: AppObject.MToken
+    token?: AppObject.MemberToken
     readedTopics?: AppObject.Topic[]
     topics?: AppObject.Topic[]
     likeTopics: AppObject.Topic[]

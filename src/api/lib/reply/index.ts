@@ -1,6 +1,6 @@
 import { AppAPI, AppObject } from '../../types'
 
-export default (v2ex: AppAPI.APP): AppAPI.Reply => ({
+export default (v2ex: AppAPI.APP): AppAPI.ReplyAPI => ({
   /**
    * Get topic replies
    * @param topic_id : topic id

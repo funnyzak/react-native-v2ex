@@ -13,7 +13,7 @@ export declare namespace AppAPI {
   /**
    * V2ex API Configuration
    */
-  export interface BaseConfiguration {
+  export interface APIConfiguration {
     url?: string
     store?: string
     userAgent?: string
@@ -25,7 +25,7 @@ export declare namespace AppAPI {
     extend?: { [name: string]: string | undefined }
   }
 
-  export type Method =
+  export type HttpMethod =
     | 'get'
     | 'GET'
     | 'delete'
@@ -50,16 +50,17 @@ export declare namespace AppAPI {
   /**
    * V2ex Main API
    */
-  export interface APP {
-    configuration: BaseConfiguration
+  export class APP {
+    constructor(configuration?: APIConfiguration)
+    configuration: APIConfiguration
     root_path?: string
     token?: string
-    node: Node
-    topic: Topic
-    notification: Notification
-    member: Member
-    reply: Reply
-    setOptions: (options: BaseConfiguration) => void
+    node: NodeAPI
+    topic: TopicAPI
+    notification: NotificationAPI
+    member: MemberAPI
+    reply: ReplyAPI
+    setOptions: (options: APIConfiguration) => void
     init: () => void
     setToken(token?: string): void
     setUserAgent(userAgent?: string): void
@@ -100,11 +101,11 @@ export declare namespace AppAPI {
     ): Promise<T>
     getErrorMessageForResponse(data: any): string
   }
-  export interface Member {
+  export interface MemberAPI {
     /**
      * Get my token info
      */
-    myToken: () => Promise<AppObject.MToken>
+    myToken: () => Promise<AppObject.MemberToken>
 
     /**
      * Get my profile
@@ -119,10 +120,10 @@ export declare namespace AppAPI {
     /**
      * check user token
      */
-    token: (token: string) => Promise<AppObject.MToken>
+    token: (token: string) => Promise<AppObject.MemberToken>
   }
 
-  export interface Node {
+  export interface NodeAPI {
     /**
      * Get node info by node name/id
      * @param node id or node name
@@ -136,7 +137,7 @@ export declare namespace AppAPI {
     all(): Promise<AppObject.Node[]>
   }
 
-  export interface Notification {
+  export interface NotificationAPI {
     /**
      * Get my latest notifications
      */
@@ -148,7 +149,7 @@ export declare namespace AppAPI {
     remove: (id: string) => Promise<void>
   }
 
-  export interface Topic {
+  export interface TopicAPI {
     /**
      * Get latest topic list by api version 1
      */
@@ -180,7 +181,7 @@ export declare namespace AppAPI {
     topics(id: string | number, get_type: 'username' | 'node_id' | 'node_name' | 'id'): Promise<AppObject.Topic[]>
   }
 
-  export interface Reply {
+  export interface ReplyAPI {
     /**
      * Get topic replies by api version 1
      * @param topic_id : topic id
@@ -211,7 +212,7 @@ export declare namespace AppObject {
   /**
    * Member Token Info
    */
-  export interface MToken {
+  export interface MemberToken {
     token: string
     scope: string
     expiration: number
