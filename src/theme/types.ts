@@ -6,10 +6,10 @@ import { TextStyle, ImageSourcePropType } from 'react-native'
 
 export interface IThemeColor {
   /**
-   * ========================= V2EX Logo color =========================
+   * ========================= App Logo color =========================
    */
-  v2exLight: string
-  v2exDark: string
+  AppLight: string
+  AppDark: string
 
   /**
    * ========================= Primary color : (Brand color) =========================

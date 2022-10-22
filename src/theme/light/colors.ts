@@ -4,8 +4,8 @@ const colors: IThemeColor = {
   /**
    * ========================= V2EX Logo color =========================
    */
-  v2exLight: '#FBFBFB',
-  v2exDark: '#222223',
+  AppLight: '#FBFBFB',
+  AppDark: '#222223',
 
   /**
    * ========================= Primary color : (Brand color) =========================

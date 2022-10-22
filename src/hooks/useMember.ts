@@ -12,7 +12,6 @@ import { AppObject } from '../types'
 export const useMember = ({ userid: id, forcePull = true }: { userid: string | number; forcePull?: boolean }) => {
   const members = useAppSelector((_state: RootState) => _state.cache.members)
   const [info, setInfo] = useState<AppObject.Member | undefined>(memberFromCache(id, members))
-  const v2ex = useAppSelector((_state: RootState) => _state.app.v2ex)
 
   const dispatch = useAppDispatch()
 
