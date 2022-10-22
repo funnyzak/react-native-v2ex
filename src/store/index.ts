@@ -1,13 +1,13 @@
-import { createStore, applyMiddleware, compose } from 'redux'
+import { applyMiddleware, legacy_createStore as createStore } from 'redux'
 // https://github.com/reduxjs/redux-thunk
 import thunk from 'redux-thunk'
 // https://github.com/rt2zz/redux-persist
-import { persistStore, persistReducer } from 'redux-persist'
-import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
-import { createBlacklistFilter, createWhitelistFilter } from 'redux-persist-transform-filter'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { composeWithDevTools } from '@redux-devtools/extension'
 import reducers from '@src/reducers'
+import { persistReducer, persistStore } from 'redux-persist'
+import { createBlacklistFilter } from 'redux-persist-transform-filter'
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 import { IState } from './types'
 
 const memberSubsetBlacklistFilter = createBlacklistFilter('member', [
