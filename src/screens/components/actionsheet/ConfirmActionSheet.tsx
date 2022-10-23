@@ -8,7 +8,7 @@ import { SylCommon, useTheme } from '@src/theme'
 import { ITheme } from '@src/types'
 import React, { useRef } from 'react'
 import { Text, TextStyle, View, ViewStyle } from 'react-native'
-import ActionSheet, { SheetManager } from 'react-native-actions-sheet'
+import ActionSheet, { SheetManager, ActionSheetRef } from 'react-native-actions-sheet'
 
 /**
  * Confirm Action Sheet
@@ -30,7 +30,7 @@ const ConfirmActionSheet = ({
   cancelText?: string
 }) => {
   const { theme } = useTheme()
-  const actionSheetRef = useRef<ActionSheet>(null)
+  const actionSheetRef = useRef<ActionSheetRef>(null)
 
   const buttonConfirm = async (yes: boolean) => {
     confirmAction && confirmAction(yes)
@@ -43,13 +43,10 @@ const ConfirmActionSheet = ({
     <>
       <ActionSheet
         id={sheetId}
-        initialOffsetFromBottom={1}
         onBeforeShow={(data) => console.log(data)}
         ref={actionSheetRef}
         statusBarTranslucent
-        bounceOnOpen={true}
         drawUnderStatusBar={true}
-        bounciness={8}
         gestureEnabled={true}
         defaultOverlayOpacity={0.5}
         containerStyle={{
