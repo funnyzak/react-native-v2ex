@@ -6,7 +6,7 @@ module.exports = {
     {
       type: 'input',
       name: 'path',
-      message: '请输入路径（Please enter a screen path）',
+      message: '请输入路径（Please enter a component path）',
       default: 'common'
     },
     {
