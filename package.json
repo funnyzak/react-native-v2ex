@@ -62,7 +62,7 @@
     "lodash": "^4.17.21",
     "react": "18.1.0",
     "react-native": "0.70.3",
-    "react-native-actions-sheet": "^0.8.8",
+    "react-native-actions-sheet": "^0.8.9",
     "react-native-device-info": "^10.3.0",
     "react-native-easy-toast": "^2.0.0",
     "react-native-fast-image": "^8.5.11",
