@@ -1,7 +1,7 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/2/21.
  */
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { BottomTabNavigationOptions, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createDrawerNavigator, DrawerContentComponentProps } from '@react-navigation/drawer'
 import {
   DefaultTheme,
@@ -122,12 +122,12 @@ const getDrawHeaderTitle = (
 }
 
 const bottomTabBarIconSize = 30
-const renderBottomIcon = (focused: boolean, activeIcon: any, inactiveIcon: any): Element => {
+const renderBottomIcon = (focused: boolean, activeIcon: any, inactiveIcon: any): ReactNode => {
   const icon = focused ? activeIcon : inactiveIcon
   return <Image source={icon} style={{ width: bottomTabBarIconSize, height: bottomTabBarIconSize }} />
 }
 
-const defaultTabBarSetting = (theme: ITheme, insets: EdgeInsets) => {
+const defaultTabBarSetting = (theme: ITheme, insets: EdgeInsets): BottomTabNavigationOptions => {
   return {
     ...defaultCommonScreenOptions(theme),
     headerTitleStyle: {
