@@ -2,7 +2,7 @@ import { AppAPI, AppObject } from '@src/types'
 import { ThemeType } from '@src/theme'
 import { LanguageTagType } from '@src/i18n'
 import { NODE_TAB_TYPE } from '@src/navigation'
-export declare module IState {
+export namespace IState {
   export interface State {
     ui: UIState
     member: MemberState
@@ -23,7 +23,7 @@ export declare module IState {
 
     deviceInfo?: {
       brand: string
-      bunildId: string
+      bundleId: string
       systemName: string
       uniqueId: string
       userAgent: string
