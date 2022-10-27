@@ -32,7 +32,7 @@
 
 ## Overview
 
-项目使用了 React Native 构建了一个 [V2EX](https://v2ex.com) 移动客户端应用。目的是为了构建一个 React Native 快速开发脚手架。客户端数据完全基于 [V2EX](https://v2ex.com) 开放 API。基于 RN 0.70.3。
+项目使用了 React Native 构建了一个 [V2EX](https://v2ex.com) 移动客户端应用。目的是为了构建一个 React Native 快速开发脚手架。客户端数据完全基于 [V2EX](https://v2ex.com) 开放 API。基于 RN 0.70.4。
 
 `Figma 设计稿` 已经开源，可[从此 Duplicate](https://www.figma.com/community/file/1101074002447399194)。
 
@@ -49,6 +49,7 @@
 
 ## 完成
 
+- [x] 升级 RN 到到 **0.70.4**
 - [x] 升级 RN 到到 **0.70.3**
 - [x] plop 模板创建
 - [x] 升级 RN 到到 **0.70.1**
@@ -67,7 +68,7 @@
 
 ## Features
 
-1. 基于 React Native 0.70.3 版本。
+1. 基于 React Native 0.70.4 版本。
 2. 引入 TypeScript 强类型检查，保证维护性、可读性、稳定性。
 3. eslint 代码规范检查，prettier 代码美化、Husky 作为 git hooks 进行代码格式化、规范校验。
 4. i18n 集成，支持多国语言。实现了语言切换功能。
