@@ -110,7 +110,7 @@
     "lint-staged": "13.0.3",
     "metro-react-native-babel-preset": "0.73.3",
     "npm-check-updates": "16.3.15",
-    "patch-package": "6.4.7",
+    "patch-package": "6.5.0",
     "plop": "3.1.1",
     "pod-install": "0.1.38",
     "postinstall-postinstall": "2.1.0",
