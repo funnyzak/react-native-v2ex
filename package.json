@@ -92,7 +92,7 @@
     "@react-native-community/eslint-config": "3.1.0",
     "@rnx-kit/dep-check": "1.13.4",
     "@types/i18n-js": "3.8.3",
-    "@types/jest": "29.2.0",
+    "@types/jest": "29.2.1",
     "@types/lodash": "4.14.187",
     "@types/react-native": "0.70.6",
     "@types/react-test-renderer": "18.0.0",
