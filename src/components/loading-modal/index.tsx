@@ -29,7 +29,7 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: theme.colors.background
+    backgroundColor: 'rgba(255, 255, 255, 0.8)'
   }),
   modalContainer: (theme: ITheme): ViewStyle => ({
     width: 80,

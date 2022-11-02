@@ -1,21 +1,37 @@
+import { ITheme, useTheme } from '@src/theme'
 import React from 'react'
-import { View, StyleProp, ViewStyle, ActivityIndicator, TextStyle } from 'react-native'
+import { ActivityIndicator, StyleProp, TextStyle, View, ViewStyle } from 'react-native'
 import { Text } from './Text'
-import { ITheme, SylCommon, useTheme } from '@src/theme'
 
 const Spinner = ({
   size = 'large',
   style,
-  text
+  text,
+  mask = false
 }: {
   size?: 'small' | 'large' | undefined
   style?: StyleProp<ViewStyle>
+  mask?: boolean
   text?: string
 }) => {
   const { theme } = useTheme()
 
   return (
-    <View style={[styles.containerStyle(theme), style]}>
+    <View
+      style={[
+        styles.containerStyle(theme),
+        mask
+          ? {
+              flex: 1,
+              position: 'absolute',
+              zIndex: 10,
+              width: '100%',
+              height: '100%',
+              backgroundColor: 'rgba(255,255,255, 0.8)'
+            }
+          : {},
+        style
+      ]}>
       <ActivityIndicator size={size} color={theme.colors.secondary} />
       <View style={{ justifyContent: 'center', alignItems: 'center' }}>
         <Text adjustsFontSizeToFit={true} style={styles.textStyle(theme)}>
@@ -30,7 +46,7 @@ export { Spinner }
 
 const styles = {
   containerStyle: (_theme: ITheme): ViewStyle => ({
-    marginVertical: _theme.spacing.large,
+    paddingVertical: _theme.spacing.large,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column'
