@@ -303,7 +303,18 @@ iOS 使用 LaunchScreen.storyboard，使用 Xcode 修改即可。
 [看这里](https://reactnative.cn/docs/signed-apk-android/)。
 
 ### Using fetch to get/post on a HTTPS web server which is using a valid and trusted but not public CA.
-[看这里](https://github.com/facebook/react-native/issues/32931)。
+
+1. Edit the android/app/src/main/AndroidManifest.xml
+2. Add the android:networkSecurityConfig="@xml/network_security_config" to the <application /> tag
+3. Create the folder android/app/src/main/res/xml and inside a file called network_security_config.xml
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <network-security-config>
+      <base-config cleartextTrafficPermitted="true" />
+    </network-security-config>
+    ```
+- [https://github.com/facebook/react-native/issues/32931](https://github.com/facebook/react-native/issues/32931)
+- [https://developer.android.com/training/articles/security-config](https://developer.android.com/training/articles/security-config)
 
 ## Dependencies
 
