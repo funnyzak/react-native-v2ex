@@ -162,6 +162,8 @@ cd android
 # apk file
 ./gradlew assembleRelease
 
+npx react-native run-android --variant release
+
 ```
 
 ## Structure
