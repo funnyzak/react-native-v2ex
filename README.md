@@ -302,6 +302,9 @@ iOS 使用 LaunchScreen.storyboard，使用 Xcode 修改即可。
 
 [看这里](https://reactnative.cn/docs/signed-apk-android/)。
 
+### Using fetch to get/post on a HTTPS web server which is using a valid and trusted but not public CA.
+[看这里](https://github.com/facebook/react-native/issues/32931)。
+
 ## Dependencies
 
 - eslint
