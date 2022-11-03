@@ -855,10 +855,10 @@
   resolved "https://registry.yarnpkg.com/@bugsnag/plugin-react/-/plugin-react-7.18.0.tgz#cce7e0185ba4f7c2ca581138efa3f0f6ad1c5564"
   integrity sha512-i4FYauv/8G1ZRH4dTegYPzw5+xt76ubt1GCr4wRieD8q5QBKcvHIqaNrnM9yQ/QNmWnz24LeCCDUVdIb5SrhPA==
 
-"@bugsnag/react-native@7.18.1":
-  version "7.18.1"
-  resolved "https://registry.yarnpkg.com/@bugsnag/react-native/-/react-native-7.18.1.tgz#99a70c55545cc9083957c81b9105c52bacd1905d"
-  integrity sha512-MxYzB7hrqnRW3ZtMT9xTUw3n6tSH6wNu3at8D53jB9da1F5iNwARJIFVnqw1MEbhIwYWsi5k8zwU1mdGGNqG8w==
+"@bugsnag/react-native@7.18.2":
+  version "7.18.2"
+  resolved "https://registry.yarnpkg.com/@bugsnag/react-native/-/react-native-7.18.2.tgz#9d2116d141543d2edfab38b4580580bd815fcbfc"
+  integrity sha512-x2Bf8NLNX4WR9a+ZdTZTGjaAPVHG0nw86YICoyKCqmI9mybqo6xyJw8UWTqsSwFzYQkKlISvEBTNxXz9x7SXIA==
   dependencies:
     "@bugsnag/core" "^7.18.0"
     "@bugsnag/delivery-react-native" "^7.18.0"
