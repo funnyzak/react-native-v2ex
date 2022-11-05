@@ -1,8 +1,8 @@
-import React from 'react'
 import { useTheme } from '@src/theme'
-import { Text as RNText, TextProps as NativeTextProps, StyleSheet, TextStyle } from 'react-native'
 import { ITheme } from '@src/types'
 import { validKey } from '@src/utils'
+import React from 'react'
+import { Text as RNText, TextProps as NativeTextProps, TextStyle } from 'react-native'
 
 // Possible value for prop "type" for Text
 const HEADING = 'heading'

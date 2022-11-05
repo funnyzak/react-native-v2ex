@@ -34,7 +34,8 @@ import { EdgeInsets, SafeAreaProvider, useSafeAreaInsets } from 'react-native-sa
 import SplashScreen from 'react-native-splash-screen'
 import NavigationService from './NavigationService'
 import { CommonScreenProps, MainScreenProps, RootStackParamList, ROUTES } from './routes'
-
+import { SheetProvider } from 'react-native-actions-sheet'
+import '../components/actions-sheet'
 /**
  * dayjs
  */
@@ -387,272 +388,274 @@ export const AppNavigationContainer = () => {
   return (
     <SafeAreaProvider style={{ backgroundColor: theme.colors.background }}>
       <ToastProvider>
-        <NavigationContainer
-          ref={(navigatorRef: NavigationContainerRefWithCurrent<RootStackParamList>) => {
-            NavigationService.setTopLevelNavigator(navigatorRef)
-          }}
-          theme={{
-            dark: theme.name === 'dark',
-            colors: {
-              ...DefaultTheme.colors,
-              background: theme.colors.background
-            }
-          }}
-          documentTitle={{
-            formatter: (options, route) => `${options?.title ?? route?.name}`
-          }}>
-          <StatusBar
-            backgroundColor={
-              Platform.OS === 'ios'
-                ? 'default'
-                : theme.name === 'dark'
-                ? theme.colors.primaryDark
-                : theme.colors.primary
-            }
-            barStyle={theme.name === 'dark' ? 'light-content' : 'dark-content'}
-          />
-          <StackNavigator.Navigator initialRouteName={!token ? ROUTES.Main : ROUTES.Main}>
-            <StackNavigator.Screen
-              name={ROUTES.SignIn}
-              component={Screens.SignInScreen}
-              options={{
-                ...defaultScreenOptions,
-                headerBackground: () => null,
-                title: translate(`router.${ROUTES.SignIn}`),
-                headerTitleStyle: { color: theme.colors.transparent },
-                headerBackTitleVisible: false,
-                headerShown: true,
-                headerRight: () => (
-                  <HeaderButton
-                    text={translate('button.getToken')}
-                    onPress={() => {
-                      NavigationService.navigate(ROUTES.WebViewer, { url: tokenGeneratedLink })
-                    }}
-                  />
-                )
-              }}
+        <SheetProvider>
+          <NavigationContainer
+            ref={(navigatorRef: NavigationContainerRefWithCurrent<RootStackParamList>) => {
+              NavigationService.setTopLevelNavigator(navigatorRef)
+            }}
+            theme={{
+              dark: theme.name === 'dark',
+              colors: {
+                ...DefaultTheme.colors,
+                background: theme.colors.background
+              }
+            }}
+            documentTitle={{
+              formatter: (options, route) => `${options?.title ?? route?.name}`
+            }}>
+            <StatusBar
+              backgroundColor={
+                Platform.OS === 'ios'
+                  ? 'default'
+                  : theme.name === 'dark'
+                  ? theme.colors.primaryDark
+                  : theme.colors.primary
+              }
+              barStyle={theme.name === 'dark' ? 'light-content' : 'dark-content'}
             />
-            <StackNavigator.Screen
-              name={ROUTES.Main}
-              component={MainAppNavigator}
-              options={({ route, navigation }) => ({
-                ...defaultScreenOptions(theme),
-                headerBackground: undefined,
-                headerShown: false
-              })}
-              initialParams={{
-                initialRouteName: ROUTES.My
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.NodeTopics}
-              component={Screens.NodeTopicListScreen}
-              options={{
-                title: translate(`router.${ROUTES.NodeTopics}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.TopicDetail}
-              component={Screens.TopicDetailScreen}
-              options={{
-                title: translate(`router.${ROUTES.TopicDetail}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.Profile}
-              component={Screens.ProfileScreen}
-              options={{
-                title: translate(`router.${ROUTES.Profile}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.NodeDetail}
-              component={Screens.NodeDetailScreen}
-              options={{
-                title: translate(`router.${ROUTES.NodeDetail}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.Following}
-              component={Screens.FollowingScreen}
-              options={{
-                title: translate(`router.${ROUTES.Following}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.FavoriteTopics}
-              component={Screens.FavoriteTopicsScreen}
-              options={{
-                title: translate(`router.${ROUTES.FavoriteTopics}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.MyTopics}
-              component={Screens.MyTopics}
-              options={{
-                title: translate(`router.${ROUTES.MyTopics}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.Setting}
-              component={Screens.SettingScreen}
-              options={{
-                title: translate(`router.${ROUTES.Setting}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.Language}
-              component={Screens.LanguageScreen}
-              options={{
-                title: translate(`router.${ROUTES.Language}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.About}
-              component={Screens.AboutScreen}
-              options={{
-                title: translate(`router.${ROUTES.About}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.Feedback}
-              component={Screens.FeedbackScreen}
-              options={{
-                title: translate(`router.${ROUTES.Feedback}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.ThemeSetting}
-              component={Screens.ThemeScreen}
-              options={{
-                title: translate(`router.${ROUTES.ThemeSetting}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.URLSchemes}
-              component={Screens.URLSchemesScreen}
-              options={{
-                title: translate(`router.${ROUTES.URLSchemes}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.CacheSetting}
-              component={Screens.CacheSettingScreen}
-              options={{
-                title: translate(`router.${ROUTES.CacheSetting}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.ChangeLog}
-              component={Screens.ChangeLogScreen}
-              options={{
-                title: translate(`router.${ROUTES.ChangeLog}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.HowToUse}
-              component={Screens.HowToUseScreen}
-              options={{
-                title: translate(`router.${ROUTES.HowToUse}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.PrivacyPolicy}
-              component={Screens.PrivacyScreen}
-              options={{
-                title: translate(`router.${ROUTES.PrivacyPolicy}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.TermsOfService}
-              component={Screens.TermsOfServiceScreen}
-              options={{
-                title: translate(`router.${ROUTES.TermsOfService}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.SiteStat}
-              component={Screens.SiteStatScreen}
-              options={{
-                title: translate(`router.${ROUTES.SiteStat}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.OpenSourceLicense}
-              component={Screens.OpenSourceScreen}
-              options={{
-                title: translate(`router.${ROUTES.OpenSourceLicense}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.Search}
-              component={Screens.SearchScreen}
-              options={{
-                title: translate(`router.${ROUTES.Search}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.History}
-              component={Screens.HistoryScreen}
-              options={{
-                title: translate(`router.${ROUTES.History}`),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              }}
-            />
-            <StackNavigator.Screen
-              name={ROUTES.WebViewer}
-              component={Screens.WebLinkScreen}
-              options={({ route }) => ({
-                title: route?.params?.title ?? translate('brand.name'),
-                ...defaultScreenOptions(theme),
-                headerShown: true
-              })}
-            />
-          </StackNavigator.Navigator>
-        </NavigationContainer>
+            <StackNavigator.Navigator initialRouteName={!token ? ROUTES.Main : ROUTES.Main}>
+              <StackNavigator.Screen
+                name={ROUTES.SignIn}
+                component={Screens.SignInScreen}
+                options={{
+                  ...defaultScreenOptions,
+                  headerBackground: () => null,
+                  title: translate(`router.${ROUTES.SignIn}`),
+                  headerTitleStyle: { color: theme.colors.transparent },
+                  headerBackTitleVisible: false,
+                  headerShown: true,
+                  headerRight: () => (
+                    <HeaderButton
+                      text={translate('button.getToken')}
+                      onPress={() => {
+                        NavigationService.navigate(ROUTES.WebViewer, { url: tokenGeneratedLink })
+                      }}
+                    />
+                  )
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.Main}
+                component={MainAppNavigator}
+                options={({ route, navigation }) => ({
+                  ...defaultScreenOptions(theme),
+                  headerBackground: undefined,
+                  headerShown: false
+                })}
+                initialParams={{
+                  initialRouteName: ROUTES.My
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.NodeTopics}
+                component={Screens.NodeTopicListScreen}
+                options={{
+                  title: translate(`router.${ROUTES.NodeTopics}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.TopicDetail}
+                component={Screens.TopicDetailScreen}
+                options={{
+                  title: translate(`router.${ROUTES.TopicDetail}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.Profile}
+                component={Screens.ProfileScreen}
+                options={{
+                  title: translate(`router.${ROUTES.Profile}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.NodeDetail}
+                component={Screens.NodeDetailScreen}
+                options={{
+                  title: translate(`router.${ROUTES.NodeDetail}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.Following}
+                component={Screens.FollowingScreen}
+                options={{
+                  title: translate(`router.${ROUTES.Following}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.FavoriteTopics}
+                component={Screens.FavoriteTopicsScreen}
+                options={{
+                  title: translate(`router.${ROUTES.FavoriteTopics}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.MyTopics}
+                component={Screens.MyTopics}
+                options={{
+                  title: translate(`router.${ROUTES.MyTopics}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.Setting}
+                component={Screens.SettingScreen}
+                options={{
+                  title: translate(`router.${ROUTES.Setting}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.Language}
+                component={Screens.LanguageScreen}
+                options={{
+                  title: translate(`router.${ROUTES.Language}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.About}
+                component={Screens.AboutScreen}
+                options={{
+                  title: translate(`router.${ROUTES.About}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.Feedback}
+                component={Screens.FeedbackScreen}
+                options={{
+                  title: translate(`router.${ROUTES.Feedback}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.ThemeSetting}
+                component={Screens.ThemeScreen}
+                options={{
+                  title: translate(`router.${ROUTES.ThemeSetting}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.URLSchemes}
+                component={Screens.URLSchemesScreen}
+                options={{
+                  title: translate(`router.${ROUTES.URLSchemes}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.CacheSetting}
+                component={Screens.CacheSettingScreen}
+                options={{
+                  title: translate(`router.${ROUTES.CacheSetting}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.ChangeLog}
+                component={Screens.ChangeLogScreen}
+                options={{
+                  title: translate(`router.${ROUTES.ChangeLog}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.HowToUse}
+                component={Screens.HowToUseScreen}
+                options={{
+                  title: translate(`router.${ROUTES.HowToUse}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.PrivacyPolicy}
+                component={Screens.PrivacyScreen}
+                options={{
+                  title: translate(`router.${ROUTES.PrivacyPolicy}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.TermsOfService}
+                component={Screens.TermsOfServiceScreen}
+                options={{
+                  title: translate(`router.${ROUTES.TermsOfService}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.SiteStat}
+                component={Screens.SiteStatScreen}
+                options={{
+                  title: translate(`router.${ROUTES.SiteStat}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.OpenSourceLicense}
+                component={Screens.OpenSourceScreen}
+                options={{
+                  title: translate(`router.${ROUTES.OpenSourceLicense}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.Search}
+                component={Screens.SearchScreen}
+                options={{
+                  title: translate(`router.${ROUTES.Search}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.History}
+                component={Screens.HistoryScreen}
+                options={{
+                  title: translate(`router.${ROUTES.History}`),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                }}
+              />
+              <StackNavigator.Screen
+                name={ROUTES.WebViewer}
+                component={Screens.WebLinkScreen}
+                options={({ route }) => ({
+                  title: route?.params?.title ?? translate('brand.name'),
+                  ...defaultScreenOptions(theme),
+                  headerShown: true
+                })}
+              />
+            </StackNavigator.Navigator>
+          </NavigationContainer>
+        </SheetProvider>
       </ToastProvider>
     </SafeAreaProvider>
   )

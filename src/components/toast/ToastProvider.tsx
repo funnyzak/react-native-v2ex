@@ -1,6 +1,7 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/3/10.
  */
+import { logInfo } from '@src/helper/logger'
 import { translate } from '@src/i18n'
 import React, { useState } from 'react'
 import { TextStyle } from 'react-native'
@@ -15,19 +16,23 @@ type Props = {
 
 const ToastProvider = ({ children }: Props) => {
   const [toast, setToast] = useState<ToastComponent | undefined>(undefined)
-  const [toastPosition, setToastPosition] = useState<ToastPositionType>('bottom')
+  const [toastPosition, setToastPosition] = useState<ToastPositionType>('center')
   const [toastOpacity, setToastOpacity] = useState<number>(1)
 
   const showToast = (opts: ToastShowType) => {
-    if (typeof opts !== 'string') {
+    logInfo('ToastProvider', 'showToast', 'opts', typeof opts, opts)
+
+    if (opts === undefined) {
+      return
+    } else if (typeof opts === 'object') {
       const { text, position, duration, callback, opacity } = opts
 
-      setToastPosition(position || 'bottom')
+      setToastPosition(position || 'center')
       setToastOpacity(opacity || 1)
 
       toast?.show(text, duration || 1500, callback)
     } else {
-      toast?.show(opts)
+      toast?.show(opts.toString())
     }
   }
 
