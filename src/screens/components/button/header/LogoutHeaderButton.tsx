@@ -11,7 +11,6 @@ import { AppObject } from '@src/types'
 import React, { useState } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import { SheetManager } from 'react-native-actions-sheet'
-import { ConfirmActionSheet } from '../../actionsheet'
 import { HeaderButton } from '../../common'
 
 /**
@@ -39,21 +38,20 @@ const LogoutHeaderButton = ({
     <>
       <HeaderButton
         source={theme.assets.images.icons.header.logout}
-        onPress={() => SheetManager.show(confirmSheetId)}
+        onPress={() =>
+          SheetManager.show('confirm-sheet', {
+            onClose: (data: any) => {
+              if (data === true) {
+                dispatch(actionLogout() as any)
+                NavigationService.navigate(ROUTES.SignIn)
+              }
+            },
+            payload: {
+              description: translate('confirm.logout')
+            }
+          })
+        }
         containerStyle={containerStyle}
-      />
-      <ConfirmActionSheet
-        sheetId={confirmSheetId}
-        title={translate('brand.name')}
-        text={translate('confirm.logout')}
-        confirmText={translate('common.confirm')}
-        cancelText={translate('common.cancel')}
-        confirmAction={(yes: boolean) => {
-          if (yes) {
-            dispatch(actionLogout() as any)
-            NavigationService.navigate(ROUTES.SignIn)
-          }
-        }}
       />
     </>
   ) : null
