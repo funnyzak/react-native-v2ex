@@ -1,3 +1,6 @@
+/**
+ * Created by leon<silenceace@gmail.com> on 22/3/10.
+ */
 import { Button } from '@src/components'
 import { translate } from '@src/i18n'
 import { SylCommon, useTheme } from '@src/theme'

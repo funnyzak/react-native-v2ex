@@ -1,15 +1,8 @@
-import React from 'react'
-import {
-  TextInput,
-  View,
-  ViewPropTypes,
-  TextInputProps as NativeTextInputProps,
-  ViewStyle,
-  TextStyle
-} from 'react-native'
-import { Text } from './Text'
 import { useTheme } from '@src/theme'
 import { ITheme } from '@src/types'
+import React from 'react'
+import { TextInput, TextInputProps as NativeTextInputProps, TextStyle, View, ViewStyle } from 'react-native'
+import { Text } from './Text'
 
 export interface TextInputProps extends NativeTextInputProps {
   label?: string
