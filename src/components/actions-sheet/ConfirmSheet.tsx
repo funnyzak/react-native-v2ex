@@ -48,11 +48,12 @@ const ConfirmActionSheet = (props: SheetProps) => {
   return (
     <ActionSheet
       id={sheetId}
-      springOffset={1}
+      springOffset={50}
       onBeforeShow={(data) => console.log(data)}
       ref={actionSheetRef}
       statusBarTranslucent
       drawUnderStatusBar={true}
+      useBottomSafeAreaPadding={false}
       gestureEnabled={true}
       defaultOverlayOpacity={0.5}
       containerStyle={{

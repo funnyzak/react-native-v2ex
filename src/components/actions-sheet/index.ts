@@ -1,5 +1,6 @@
 import { registerSheet } from 'react-native-actions-sheet'
 import ConfirmSheet from './ConfirmSheet'
+import ContentSheet from './ContentSheet'
 import './MenuSheet'
 
 /**
@@ -7,6 +8,7 @@ import './MenuSheet'
  * hot reload during development.
  */
 registerSheet('confirm-sheet', ConfirmSheet, 'global')
+registerSheet('content-sheet', ContentSheet, 'global')
 
 export {}
 
