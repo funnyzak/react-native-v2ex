@@ -29,7 +29,7 @@ const ContentSheet = (props: SheetProps) => {
   return (
     <ActionSheet
       id={sheetId}
-      springOffset={1}
+      springOffset={50}
       onBeforeShow={(data) => console.log(data)}
       ref={actionSheetRef}
       statusBarTranslucent
