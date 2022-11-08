@@ -8,7 +8,7 @@ import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
 import { useTheme } from '@src/theme'
 import { AppObject } from '@src/types'
-import React, { useState } from 'react'
+import React from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import { SheetManager } from 'react-native-actions-sheet'
 import { HeaderButton } from '../../common'
@@ -29,7 +29,6 @@ const LogoutHeaderButton = ({
   containerStyle?: StyleProp<ViewStyle>
   member: AppObject.Member
 }) => {
-  const [confirmSheetId] = useState<string>('action_logout')
   const { theme } = useTheme()
   const { profile } = useSession()
   const dispatch = useAppDispatch()

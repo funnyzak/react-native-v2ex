@@ -6,7 +6,7 @@ import { translate } from '@src/i18n'
 import { SylCommon, useTheme } from '@src/theme'
 import { ITheme } from '@src/types'
 import React, { useRef } from 'react'
-import { Text, TextStyle, View, ViewStyle } from 'react-native'
+import { Text, TextInput, TextStyle, View, ViewStyle } from 'react-native'
 import ActionSheet, { ActionSheetRef, SheetManager, SheetProps } from 'react-native-actions-sheet'
 
 /* usage:
@@ -31,6 +31,7 @@ const ConfirmActionSheet = (props: SheetProps) => {
     payload: {
       title = translate('brand.name'),
       description,
+      height,
       confirmText = translate('common.confirm'),
       cancelText = translate('common.cancel')
     }
@@ -62,9 +63,13 @@ const ConfirmActionSheet = (props: SheetProps) => {
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20
       }}>
-      <View style={[styles.container(theme), SylCommon.Card.container(theme)]}>
+      <View style={[styles.container(theme), SylCommon.Card.container(theme), { height: height }]}>
         {title && <Text style={styles.title(theme)}>{title}</Text>}
-        {description && <Text style={styles.text(theme)}>{description}</Text>}
+        {description && (
+          <TextInput scrollEnabled multiline editable={false} style={styles.text(theme)}>
+            {description}
+          </TextInput>
+        )}
         <View style={styles.buttonContainer(theme)}>
           <Button
             type="large"
@@ -90,17 +95,20 @@ const ConfirmActionSheet = (props: SheetProps) => {
 const styles = {
   safeareview: (theme: ITheme): ViewStyle => ({}),
   container: (theme: ITheme): ViewStyle => ({
-    paddingBottom: theme.spacing.extraLarge,
+    paddingBottom: theme.spacing.small,
     width: '100%',
+    maxHeight: theme.dimens.WINDOW_HEIGHT / 2,
+    minHeight: theme.dimens.WINDOW_HEIGHT / 6,
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
     backgroundColor: theme.colors.surface
   }),
   title: (theme: ITheme): TextStyle => ({
     ...theme.typography.headingTextBold,
-    paddingVertical: theme.spacing.small
+    paddingVertical: theme.spacing.small,
+    alignSelf: 'center'
   }),
   text: (theme: ITheme): TextStyle => ({
     ...theme.typography.labelText,
