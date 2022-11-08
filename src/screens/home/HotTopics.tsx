@@ -1,3 +1,4 @@
+import { CheckUpdate } from '@src/components'
 import { InterestNodesScreenProps as ScreenProps, NODE_TABS } from '@src/navigation'
 import { SylCommon, useTheme } from '@src/theme'
 import React from 'react'
@@ -10,6 +11,7 @@ const HotTopics = ({ route, navigation }: ScreenProps) => {
   return (
     <View style={SylCommon.Layout.fill}>
       <FetchTopicCardList displayStyle="full" nodeName={NODE_TABS.HOT} />
+      <CheckUpdate />
     </View>
   )
 }
