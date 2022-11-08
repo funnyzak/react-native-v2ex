@@ -1,14 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { Dispatch } from 'redux'
-import _ from 'lodash'
 import { ApiLib } from '@src/api'
-import { fetchAllNode } from './NodeActions'
 import { AppApiOptions } from '@src/config/app.config'
 import { MEMBER_TOKEN_KEY } from '@src/config/constants'
-import { APP_INIT, APP_SITE_STAT, APP_INIT_ERROR, APP_SITE_INFO, APP_ALL_NODE_INFO, IState } from '../types'
 import { logError } from '@src/helper/logger'
-import DeviceInfo from 'react-native-device-info'
 import { RootState } from '@src/store'
+import DeviceInfo from 'react-native-device-info'
+import { Dispatch } from 'redux'
+import { APP_INIT, APP_INIT_ERROR, APP_SITE_INFO, APP_SITE_STAT } from '../types'
+import { fetchAllNode } from './NodeActions'
 
 export const initV2ex = () => {
   ApiLib.setOptions(AppApiOptions)
@@ -35,21 +34,21 @@ export const initV2ex = () => {
         payload: {
           v2ex: ApiLib,
 
-          name: DeviceInfo.getApplicationName(),
+          name: await DeviceInfo.getApplicationName(),
 
           deviceInfo: {
-            brand: DeviceInfo.getBrand(),
-            bundleId: DeviceInfo.getBundleId(),
-            systemName: DeviceInfo.getSystemName(),
-            systemVersion: DeviceInfo.getSystemVersion(),
-            uniqueId: DeviceInfo.getUniqueId(),
+            brand: await DeviceInfo.getBrand(),
+            bundleId: await DeviceInfo.getBundleId(),
+            systemName: await DeviceInfo.getSystemName(),
+            systemVersion: await DeviceInfo.getSystemVersion(),
+            uniqueId: await DeviceInfo.getUniqueId(),
             userAgent: await DeviceInfo.getUserAgent()
           },
 
           version: {
-            version: DeviceInfo.getVersion(),
-            buildId: DeviceInfo.getBuildNumber(),
-            buildNumber: DeviceInfo.getBuildNumber()
+            version: await DeviceInfo.getVersion(),
+            buildId: await DeviceInfo.getBuildNumber(),
+            buildNumber: await DeviceInfo.getBuildNumber()
           }
         }
       })

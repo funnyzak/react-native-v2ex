@@ -30,12 +30,12 @@ import zhCN from 'dayjs/locale/zh-cn'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import React, { ReactNode, useCallback, useEffect, useState } from 'react'
 import { Image, Platform, StatusBar, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native'
+import { SheetProvider } from 'react-native-actions-sheet'
 import { EdgeInsets, SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context'
 import SplashScreen from 'react-native-splash-screen'
-import NavigationService from './NavigationService'
-import { CommonScreenProps, MainScreenProps, RootStackParamList, ROUTES } from './routes'
-import { SheetProvider } from 'react-native-actions-sheet'
 import '../components/actions-sheet'
+import NavigationService from './NavigationService'
+import { CommonScreenProps, RootStackParamList, ROUTES } from './routes'
 /**
  * dayjs
  */
