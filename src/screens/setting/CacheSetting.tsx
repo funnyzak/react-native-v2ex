@@ -1,24 +1,34 @@
-import React, { useState } from 'react'
+/**
+ * Created by leon<silenceace@gmail.com> on 22/11/09.
+ */
+import React from 'react'
+import { View, ViewStyle } from 'react-native'
 import { connect } from 'react-redux'
-import { View, ViewStyle, TouchableOpacity } from 'react-native'
 
-import * as Actions from '@src/actions'
+import { CacheSettingScreenProps as ScreenProps } from '@src/navigation'
+import { SylCommon, useTheme } from '@src/theme'
+import { IState, ITheme } from '@src/types'
+import { TableList, TableRow } from '../components'
+import { useToast } from '@src/components'
 import { translate } from '@src/i18n'
-import { useTheme, SylCommon } from '@src/theme'
-import { IState, ITheme, AppObject } from '@src/types'
-import * as CompS from '../components'
-import { Text, Spinner, Placeholder } from '@src/components'
-import { CacheSettingScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 
 const CacheSetting = ({ route, navigation, loading }: ScreenProps) => {
   const { theme } = useTheme()
+  const { showMessage } = useToast()
+  const clearCache = (type: 'tmp' | 'history' | 'all') => {
+    showMessage({
+      type: 'error',
+      text2: translate('label.underConstruction')
+    })
+  }
+
   return (
     <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
-      <Placeholder
-        displayType="icon"
-        icon={theme.assets.images.icons.placeholder.construction}
-        placeholderText={translate(`router.${ROUTES.CacheSetting}`) + translate('label.underConstruction')}
-      />
+      <TableList containerStyle={[{ marginTop: theme.spacing.small }]}>
+        <TableRow title={translate('button.clearTmpCache')} withArrow={true} onPress={() => clearCache('tmp')} />
+        <TableRow title={translate('button.clearHistory')} withArrow={true} onPress={() => clearCache('history')} />
+        <TableRow title={translate('button.clearAllCache')} withArrow={true} onPress={() => clearCache('all')} />
+      </TableList>
     </View>
   )
 }
