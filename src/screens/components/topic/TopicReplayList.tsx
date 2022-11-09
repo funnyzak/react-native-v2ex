@@ -1,13 +1,14 @@
 /**
  * Created by leon<silenceace@gmail.com> on 22/04/28.
  */
+import { ApiLib } from '@src/api'
 import { Placeholder, Spinner, useToast } from '@src/components'
 import { translate } from '@src/i18n'
-import { ITheme, SylCommon, useTheme } from '@src/theme'
+import { ITheme, useTheme } from '@src/theme'
 import { AppObject } from '@src/types'
-import { ApiLib } from '@src/api'
 import React, { useCallback, useEffect, useState } from 'react'
-import { FlatList, RefreshControl, StyleProp, View, ViewStyle } from 'react-native'
+import { StyleProp, View, ViewStyle } from 'react-native'
+import Animated, { LightSpeedInLeft } from 'react-native-reanimated'
 import TopicReplayItem from './TopicReplayItem'
 
 /**
@@ -58,7 +59,9 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({
 
   const renderItemRow = ({ item }: { item: AppObject.TopicReply }) =>
     !item || item === null ? null : (
-      <TopicReplayItem key={item.id} containerStyle={styles.itemContainer(theme)} info={item} />
+      <Animated.View key={item.id} entering={LightSpeedInLeft}>
+        <TopicReplayItem key={item.id} containerStyle={styles.itemContainer(theme)} info={item} />
+      </Animated.View>
     )
 
   const renderContent = () => {
