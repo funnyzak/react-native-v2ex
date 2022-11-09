@@ -9,6 +9,7 @@ import { ApiLib } from '@src/api'
 import React, { useCallback, useEffect, useState } from 'react'
 import { FlatList, RefreshControl, StyleProp, View, ViewStyle } from 'react-native'
 import TopicReplayItem from './TopicReplayItem'
+import Animated, { LightSpeedInLeft } from 'react-native-reanimated'
 
 /**
  * TopicReplayList props
@@ -58,7 +59,9 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({
 
   const renderItemRow = ({ item }: { item: AppObject.TopicReply }) =>
     !item || item === null ? null : (
-      <TopicReplayItem key={item.id} containerStyle={styles.itemContainer(theme)} info={item} />
+      <Animated.View key={item.id} entering={LightSpeedInLeft}>
+        <TopicReplayItem key={item.id} containerStyle={styles.itemContainer(theme)} info={item} />
+      </Animated.View>
     )
 
   const renderContent = () => {

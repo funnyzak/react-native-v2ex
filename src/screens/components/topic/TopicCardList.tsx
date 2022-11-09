@@ -2,9 +2,10 @@ import { Placeholder, Spinner } from '@src/components'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
 import { SylCommon, useTheme } from '@src/theme'
-import { ITheme, AppObject } from '@src/types'
+import { AppObject, ITheme } from '@src/types'
 import React from 'react'
 import { FlatList, StyleProp, View, ViewStyle } from 'react-native'
+import Animated, { LightSpeedInLeft, LightSpeedInRight } from 'react-native-reanimated'
 import TopicCardItem from './TopicCardItem'
 
 export interface TopicCardListProps {
@@ -52,13 +53,14 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
 
   const renderItemRow = ({ item }: { item: AppObject.Topic }) =>
     !item || item === null ? null : (
-      <TopicCardItem
-        key={item.id}
-        displayStyle={displayStyle}
-        containerStyle={[styles.topicItemContainer(theme), itemContainerStyle]}
-        topic={item}
-        onPress={onItemPress}
-      />
+      <Animated.View key={item.id} entering={LightSpeedInLeft}>
+        <TopicCardItem
+          displayStyle={displayStyle}
+          containerStyle={[styles.topicItemContainer(theme), itemContainerStyle]}
+          topic={item}
+          onPress={onItemPress}
+        />
+      </Animated.View>
     )
 
   const renderFooter = () => {
