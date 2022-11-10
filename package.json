@@ -83,7 +83,7 @@
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
     "redux-persist-transform-filter": "^0.0.20",
-    "redux-thunk": "^2.4.1"
+    "redux-thunk": "^2.4.2"
   },
   "devDependencies": {
     "@babel/core": "7.19.3",
