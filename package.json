@@ -93,7 +93,7 @@
     "@rnx-kit/dep-check": "1.13.5",
     "@types/i18n-js": "3.8.3",
     "@types/jest": "29.2.2",
-    "@types/lodash": "4.14.188",
+    "@types/lodash": "4.14.189",
     "@types/react-native": "0.70.6",
     "@types/react-test-renderer": "18.0.0",
     "@typescript-eslint/eslint-plugin": "5.42.0",
