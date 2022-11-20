@@ -27,7 +27,6 @@ interface SearchBarProps {
   clearButton?: boolean
   onActiveSearch: (val: boolean) => void
   onSubmitSearch: (val: string) => void
-  onToggleSearchBar: (val: boolean) => void
   inputActiveColor?: ColorValue
   inputInactiveColor?: ColorValue
   inputContainerStyle?: StyleProp<ViewStyle>
