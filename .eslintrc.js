@@ -12,8 +12,16 @@ module.exports = {
       rules: {
         '@typescript-eslint/no-shadow': ['error'],
         'no-undef': 'off',
-        // 代码长度
-        'max-len': ['error', { code: 200, ignoreComments: true, ignoreUrls: true, ignoreTemplateLiterals: true }],
+        'max-len': [
+          'error',
+          {
+            code: 200,
+            ignoreComments: true,
+            ignoreUrls: true,
+            ignoreTemplateLiterals: true,
+            ignorePattern: 'd="([\\s\\S]*?)"'
+          }
+        ],
         'semi': ['error', 'never'],
         'comma-dangle': ['error', 'never'],
         'import/no-unresolved': 'off',
