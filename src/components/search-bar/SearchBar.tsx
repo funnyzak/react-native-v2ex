@@ -23,6 +23,7 @@ import ClearIcon from './ClearIcon'
 import SearchIcon from './SearchIcon'
 
 interface SearchBarProps {
+  searchToolContainerStyle?: StyleProp<ViewStyle>
   clearButton?: boolean
   onActiveSearch: (val: boolean) => void
   onSubmitSearch: (val: string) => void
@@ -35,10 +36,12 @@ interface SearchBarProps {
   customIcon?: React.ReactNode
   iconStyle?: StyleProp<ViewStyle>
   buttonStyle?: StyleProp<ViewStyle>
+  buttonText?: string
   buttonTextStyle?: StyleProp<TextStyle>
 }
 
 const SearchBarComponent = ({
+  searchToolContainerStyle,
   onActiveSearch,
   onSubmitSearch,
   clearButton = true,
@@ -47,6 +50,7 @@ const SearchBarComponent = ({
   inputProps,
   inputTextStyle,
   buttonStyle,
+  buttonText = 'Search',
   buttonTextStyle,
   inputContainerStyle,
   inputActiveColor,
@@ -86,7 +90,7 @@ const SearchBarComponent = ({
     onActiveSearch(false)
   }, [])
   return (
-    <View style={styles.searchToolContainer(theme)}>
+    <View style={[styles.searchToolContainer(theme), searchToolContainerStyle]}>
       <View
         style={[
           styles.inputContainerStyle(theme),
@@ -141,7 +145,7 @@ const SearchBarComponent = ({
         )}
       </View>
       <Pressable onLayout={onLayout} onPress={onSubmit} style={[styles.searchButton(theme), buttonStyle]}>
-        <Text style={[styles.searchButtonText(theme), buttonTextStyle]}>Search</Text>
+        <Text style={[styles.searchButtonText(theme), buttonTextStyle]}>{buttonText}</Text>
       </Pressable>
     </View>
   )
