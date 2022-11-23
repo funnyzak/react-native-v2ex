@@ -8486,10 +8486,10 @@ react-native-screens@^3.15.0:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
 
-react-native-skeleton-placeholder@^5.0.0:
-  version "5.2.3"
-  resolved "https://registry.yarnpkg.com/react-native-skeleton-placeholder/-/react-native-skeleton-placeholder-5.2.3.tgz#2dddf1f84d43110b90c22f715b2dbbe2c54732e1"
-  integrity sha512-nikmTfex3oydnZ4prV62KxibMvcu2l2NegsHGtXhsWwFIX5QaKneBohP7etinUq/c2PkSr3ZlfqooDG2yIHRdg==
+react-native-skeleton-placeholder@^5.2.4:
+  version "5.2.4"
+  resolved "https://registry.yarnpkg.com/react-native-skeleton-placeholder/-/react-native-skeleton-placeholder-5.2.4.tgz#a654fa083ff274a39c763e086f8a850c556d4c95"
+  integrity sha512-OZntVq1hU1UX33FltxK2ezT2v9vHIhV8YnEbnMWUCvxT0N9OsgD1qxiHm6qb9YRJVgq2o5z3S7dNPsPnDF/jNg==
 
 react-native-splash-screen@^3.3.0:
   version "3.3.0"
