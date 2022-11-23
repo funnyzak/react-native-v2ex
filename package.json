@@ -91,7 +91,7 @@
     "@babel/plugin-proposal-export-namespace-from": "7.18.9",
     "@babel/runtime": "7.20.1",
     "@react-native-community/eslint-config": "3.2.0",
-    "@rnx-kit/dep-check": "1.13.5",
+    "@rnx-kit/dep-check": "1.14.0",
     "@types/i18n-js": "3.8.3",
     "@types/jest": "29.2.2",
     "@types/lodash": "4.14.189",
