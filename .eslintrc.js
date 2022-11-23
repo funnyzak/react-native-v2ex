@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  plugins: ['react', 'react-native', '@typescript-eslint'],
+  plugins: ['jest', 'react', 'react-native', '@typescript-eslint'],
   extends: ['@react-native-community', 'prettier'],
   globals: {
     window: true
