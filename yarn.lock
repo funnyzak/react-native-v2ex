@@ -1635,10 +1635,10 @@
     color "^4.2.3"
     warn-once "^0.1.0"
 
-"@react-navigation/elements@^1.3.6":
-  version "1.3.6"
-  resolved "https://registry.yarnpkg.com/@react-navigation/elements/-/elements-1.3.6.tgz#fa700318528db93f05144b1be4b691b9c1dd1abe"
-  integrity sha512-pNJ8R9JMga6SXOw6wGVN0tjmE6vegwPmJBL45SEMX2fqTfAk2ykDnlJHodRpHpAgsv0DaI8qX76z3A+aqKSU0w==
+"@react-navigation/elements@^1.3.6", "@react-navigation/elements@^1.3.7":
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/@react-navigation/elements/-/elements-1.3.7.tgz#40d80a7f34d645b605289da10bc4b6c3a7667215"
+  integrity sha512-OZg2N/dd2tl6qkfrWvmUjFsYsbEyHEv4NbZSBuT+CR+d1pzmexN2IeVmi4cEMoR7U7GwhFcHRevF36yBsjU/dw==
 
 "@react-navigation/material-top-tabs@^6.2.2":
   version "6.3.0"
@@ -1648,12 +1648,12 @@
     color "^4.2.3"
     warn-once "^0.1.0"
 
-"@react-navigation/native-stack@^6.9.1":
-  version "6.9.1"
-  resolved "https://registry.yarnpkg.com/@react-navigation/native-stack/-/native-stack-6.9.1.tgz#6013300e4cd0b33e242aa18593e4dff7db2ab3d1"
-  integrity sha512-aOuJP97ge6NRz8wH6sDKfLTfdygGmraYh0apKrrVbGvMnflbPX4kpjQiAQcUPUpMeas0betH/Su8QubNL8HEkg==
+"@react-navigation/native-stack@^6.9.2":
+  version "6.9.2"
+  resolved "https://registry.yarnpkg.com/@react-navigation/native-stack/-/native-stack-6.9.2.tgz#8c861a59a2a86aaf25f0f33a990958edc36ddac4"
+  integrity sha512-W5CYX+mYVyOYUgWoN15O34Pv/JieX2/pU09yh+kacxPHPEm4gYTQM/OIHACOov5T2WyiNSU6iIHjfzQ6e7M9zw==
   dependencies:
-    "@react-navigation/elements" "^1.3.6"
+    "@react-navigation/elements" "^1.3.7"
     warn-once "^0.1.0"
 
 "@react-navigation/native@^6.0.11":
