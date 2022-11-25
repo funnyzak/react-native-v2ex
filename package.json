@@ -53,7 +53,7 @@
     "@react-navigation/bottom-tabs": "^6.4.1",
     "@react-navigation/drawer": "^6.5.1",
     "@react-navigation/material-top-tabs": "^6.2.2",
-    "@react-navigation/native": "^6.0.11",
+    "@react-navigation/native": "^6.0.14",
     "@react-navigation/native-stack": "^6.9.2",
     "@redux-devtools/extension": "^3.2.2",
     "@types/react": "^18",
