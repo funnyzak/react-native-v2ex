@@ -8468,10 +8468,10 @@ react-native-localize@^2.2.2:
   resolved "https://registry.yarnpkg.com/react-native-localize/-/react-native-localize-2.2.4.tgz#3bc46ade48499ab9df61bf17a9b66633a5ba9bb9"
   integrity sha512-gVmbyAEQQnBQ8vKlAQchFfIISeId3qT6Lc7LHmKF39nsYWX9KN4PHuG6Hk+7gduMI6IHKeZGKcLsOdh6wvN6cg==
 
-react-native-pager-view@^6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/react-native-pager-view/-/react-native-pager-view-6.1.1.tgz#e396b0c78d74931a92d1c9bf28c450eb356b904d"
-  integrity sha512-4WqR0YWBjaUtc3iPVk8w6wsTsMq+r0plNiXdqPXOiUdQIhxKfsP1iqb6hRzdeJKOo8UH7RCP6zI7dxdFEAXzrw==
+react-native-pager-view@^6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-pager-view/-/react-native-pager-view-6.1.2.tgz#3522079b9a9d6634ca5e8d153bc0b4d660254552"
+  integrity sha512-qs2KSFc+7N7B+UZ6SG2sTvCkppagm5fVyRclv1KFKc7lDtrhXLzN59tXJw575LDP/dRJoXsNwqUAhZJdws6ABQ==
 
 react-native-reanimated@^2.13.0:
   version "2.13.0"
