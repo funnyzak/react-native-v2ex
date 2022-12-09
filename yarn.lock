@@ -7191,10 +7191,17 @@ minimatch@^3.0.2, minimatch@^3.0.4, minimatch@^3.0.5, minimatch@^3.1.1, minimatc
   dependencies:
     brace-expansion "^1.1.7"
 
-minimatch@^5.0.1, minimatch@^5.1.0:
+minimatch@^5.0.1:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-5.1.0.tgz#1717b464f4971b144f6aabe8f2d0b8e4511e09c7"
   integrity sha512-9TPBGGak4nHfGZsPBohm9AWg6NoT7QTCehS3BIJABslyZbzxfV78QM2Y6+i741OPZIafFAaiiEMh5OyIrJPgtg==
+  dependencies:
+    brace-expansion "^2.0.1"
+
+minimatch@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-5.1.1.tgz#6c9dffcf9927ff2a31e74b5af11adf8b9604b022"
+  integrity sha512-362NP+zlprccbEt/SkxKfRMHnNY85V74mVnpUpNyr3F35covl09Kec7/sEFLt3RA4oXmewtoaanoIf67SE5Y5g==
   dependencies:
     brace-expansion "^2.0.1"
 
@@ -7479,10 +7486,10 @@ npm-bundled@^3.0.0:
   dependencies:
     npm-normalize-package-bin "^3.0.0"
 
-npm-check-updates@16.5.0:
-  version "16.5.0"
-  resolved "https://registry.yarnpkg.com/npm-check-updates/-/npm-check-updates-16.5.0.tgz#e91412590919867cdbb4a12ad9b800b3c27aa057"
-  integrity sha512-2L8iwlWquc2HOtQDPtF6rCaYis6zE1TDUHlliJGO0MVMwjMq9M3Ds1++WANc96thdVqmRqCfTFS5QyMAfEc3uw==
+npm-check-updates@16.5.2:
+  version "16.5.2"
+  resolved "https://registry.yarnpkg.com/npm-check-updates/-/npm-check-updates-16.5.2.tgz#7ca417287e868d68223daa196069df4c1817b3eb"
+  integrity sha512-AuEi6tQFw0bYRz/U4h6ABXc2xf7HHZGqA/rAr6MnJe2Vs/PGzMgPv6+aHsrLICEAOJ6UlIyRYspVJ+Voxpu0qA==
   dependencies:
     chalk "^5.1.2"
     cli-table "^0.3.11"
@@ -7497,7 +7504,7 @@ npm-check-updates@16.5.0:
     json-parse-helpfulerror "^1.0.3"
     jsonlines "^0.1.1"
     lodash "^4.17.21"
-    minimatch "^5.1.0"
+    minimatch "^5.1.1"
     p-map "^4.0.0"
     pacote "15.0.6"
     parse-github-url "^1.0.2"
