@@ -64,7 +64,7 @@ jobs:
           echo ::set-output name=SOURCE_ZIP_NAME::$(echo "${{ env.DIST_ARCHIVE_PREFIX_NAME }}-${{ steps.get_version.outputs.PACKAGE_VERSION_NAME }}-${{steps.get_version.outputs.TIMESTAMP}}-${{ steps.get_version.outputs.COMMIT_ID }}.zip")
       - name: Build changelog
         id: build_changelog
-        uses: mikepenz/release-changelog-builder-action@v3.4.0
+        uses: mikepenz/release-changelog-builder-action@v3.5.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
