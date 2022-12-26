@@ -2981,10 +2981,10 @@ chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1, chalk@^4.1.2:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chalk@^5.0.0, chalk@^5.0.1, chalk@^5.1.2:
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.1.2.tgz#d957f370038b75ac572471e83be4c5ca9f8e8c45"
-  integrity sha512-E5CkT4jWURs1Vy5qGJye+XwCkNj7Od3Af7CP6SujMetSMkLs8Do2RWJK5yx1wamHV/op8Rz+9rltjaTQWDnEFQ==
+chalk@^5.0.0, chalk@^5.0.1, chalk@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.2.0.tgz#249623b7d66869c673699fb66d65723e54dfcfb3"
+  integrity sha512-ree3Gqw/nazQAPuJJEy+avdl7QfZMcUvmHIKgEZkGL+xOBzRvup5Hxo6LHuMceSxOabuJLJm5Yp/92R9eMmMvA==
 
 change-case@^4.1.2:
   version "4.1.2"
@@ -4584,6 +4584,13 @@ fs-minipass@^2.0.0, fs-minipass@^2.1.0:
   integrity sha512-V/JgOLFCS+R6Vcq0slCuaeWEdNC3ouDlJMNIsacH2VtALiu9mV4LPrHc5cDl8k5aw6J8jwgWWpiTo5RYhmIzvg==
   dependencies:
     minipass "^3.0.0"
+
+fs-minipass@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/fs-minipass/-/fs-minipass-3.0.0.tgz#8e6ed2b4e1ba44077cae69971393068a1bbeeed6"
+  integrity sha512-EUojgQaSPy6sxcqcZgQv6TVF6jiKvurji3AxhAivs/Ep4O1UpS8TusaxpybfFHZ2skRhLqzk6WR8nqNYIMMDeA==
+  dependencies:
+    minipass "^4.0.0"
 
 fs.realpath@^1.0.0:
   version "1.0.0"
@@ -7151,17 +7158,10 @@ minimatch@^3.0.2, minimatch@^3.0.4, minimatch@^3.0.5, minimatch@^3.1.1, minimatc
   dependencies:
     brace-expansion "^1.1.7"
 
-minimatch@^5.0.1:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-5.1.0.tgz#1717b464f4971b144f6aabe8f2d0b8e4511e09c7"
-  integrity sha512-9TPBGGak4nHfGZsPBohm9AWg6NoT7QTCehS3BIJABslyZbzxfV78QM2Y6+i741OPZIafFAaiiEMh5OyIrJPgtg==
-  dependencies:
-    brace-expansion "^2.0.1"
-
-minimatch@^5.1.1:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-5.1.1.tgz#6c9dffcf9927ff2a31e74b5af11adf8b9604b022"
-  integrity sha512-362NP+zlprccbEt/SkxKfRMHnNY85V74mVnpUpNyr3F35covl09Kec7/sEFLt3RA4oXmewtoaanoIf67SE5Y5g==
+minimatch@^5.0.1, minimatch@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-5.1.2.tgz#0939d7d6f0898acbd1508abe534d1929368a8fff"
+  integrity sha512-bNH9mmM9qsJ2X4r2Nat1B//1dJVcn3+iBLa3IgqJ7EbGaDNepL9QSHOxN4ng33s52VMMhhIfgCYDk3C4ZmlDAg==
   dependencies:
     brace-expansion "^2.0.1"
 
@@ -7232,6 +7232,13 @@ minipass@^3.0.0, minipass@^3.1.1, minipass@^3.1.6:
   version "3.3.4"
   resolved "https://registry.yarnpkg.com/minipass/-/minipass-3.3.4.tgz#ca99f95dd77c43c7a76bf51e6d200025eee0ffae"
   integrity sha512-I9WPbWHCGu8W+6k1ZiGpPu0GkoKBeorkfKNuAFBNS1HNFJvke82sxvI5bzcCNpWPorkOO5QQ+zomzzwRxejXiw==
+  dependencies:
+    yallist "^4.0.0"
+
+minipass@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/minipass/-/minipass-4.0.0.tgz#7cebb0f9fa7d56f0c5b17853cbe28838a8dbbd3b"
+  integrity sha512-g2Uuh2jEKoht+zvO6vJqXmYpflPqzRBT+Th2h01DKh5z7wbY/AZ2gCQ78cP70YoHPyFdY30YBV5WxgLOEwOykw==
   dependencies:
     yallist "^4.0.0"
 
@@ -7446,12 +7453,12 @@ npm-bundled@^3.0.0:
   dependencies:
     npm-normalize-package-bin "^3.0.0"
 
-npm-check-updates@16.5.6:
-  version "16.5.6"
-  resolved "https://registry.yarnpkg.com/npm-check-updates/-/npm-check-updates-16.5.6.tgz#aacb0b452f323979a10fced3d0a15bd7ccae7691"
-  integrity sha512-Obrza1omHC2hqpGAHikNj5+15XAwfzdnDRhiqdsLk7oVrmEm7RPiuhmdzbIrtdYEFrmv37kBdU0uwsVljG5Urg==
+npm-check-updates@16.6.2:
+  version "16.6.2"
+  resolved "https://registry.yarnpkg.com/npm-check-updates/-/npm-check-updates-16.6.2.tgz#cd1c807f1ee134c5180226e0e080d50d32a2ced9"
+  integrity sha512-J/L90a+NDDWscBQGKIsPKer+qbQEQRJDpK+BPsVZf9YWDN5DCAMicPqRb+Emnxfi8QboiNmvDJWRUFFWRQzDMg==
   dependencies:
-    chalk "^5.1.2"
+    chalk "^5.2.0"
     cli-table "^0.3.11"
     commander "^9.4.1"
     fast-memoize "^2.5.2"
@@ -7464,9 +7471,9 @@ npm-check-updates@16.5.6:
     json-parse-helpfulerror "^1.0.3"
     jsonlines "^0.1.1"
     lodash "^4.17.21"
-    minimatch "^5.1.1"
+    minimatch "^5.1.2"
     p-map "^4.0.0"
-    pacote "15.0.6"
+    pacote "15.0.8"
     parse-github-url "^1.0.2"
     progress "^2.0.3"
     prompts-ncu "^2.5.1"
@@ -7479,7 +7486,7 @@ npm-check-updates@16.5.6:
     spawn-please "^2.0.1"
     untildify "^4.0.0"
     update-notifier "^6.0.2"
-    yaml "^2.1.3"
+    yaml "^2.2.0"
 
 npm-conf@^1.1.3:
   version "1.1.3"
@@ -7874,18 +7881,18 @@ package-json@^8.1.0:
     registry-url "^6.0.0"
     semver "^7.3.7"
 
-pacote@15.0.6:
-  version "15.0.6"
-  resolved "https://registry.yarnpkg.com/pacote/-/pacote-15.0.6.tgz#8c498b5c23270da4f4c87f7eeba0248a3ae61342"
-  integrity sha512-dQwcz/sME7QIL+cdrw/jftQfMMXxSo17i2kJ/gnhBhUvvBAsxoBu1lw9B5IzCH/Ce8CvEkG/QYZ6txzKfn0bTw==
+pacote@15.0.8:
+  version "15.0.8"
+  resolved "https://registry.yarnpkg.com/pacote/-/pacote-15.0.8.tgz#8a1cb1e0207f9f3c74894feaa716aaa9e35f890e"
+  integrity sha512-UlcumB/XS6xyyIMwg/WwMAyUmga+RivB5KgkRwA1hZNtrx+0Bt41KxHCvg1kr0pZ/ZeD8qjhW4fph6VaYRCbLw==
   dependencies:
     "@npmcli/git" "^4.0.0"
     "@npmcli/installed-package-contents" "^2.0.1"
     "@npmcli/promise-spawn" "^6.0.1"
     "@npmcli/run-script" "^6.0.0"
     cacache "^17.0.0"
-    fs-minipass "^2.1.0"
-    minipass "^3.1.6"
+    fs-minipass "^3.0.0"
+    minipass "^4.0.0"
     npm-package-arg "^10.0.0"
     npm-packlist "^7.0.0"
     npm-pick-manifest "^8.0.0"
@@ -10407,10 +10414,10 @@ yaml@^1.10.2:
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.2.tgz#2301c5ffbf12b467de8da2333a459e29e7920e4b"
   integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
 
-yaml@^2.1.3:
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.1.3.tgz#9b3a4c8aff9821b696275c79a8bee8399d945207"
-  integrity sha512-AacA8nRULjKMX2DvWvOAdBZMOfQlypSFkjcOcu9FalllIDJ1kvlREzcdIZmidQUqqeMv7jorHjq2HlLv/+c2lg==
+yaml@^2.1.3, yaml@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.2.0.tgz#882c762992888b4144bffdec5745df340627fdd3"
+  integrity sha512-auf7Gi6QwO7HW//GA9seGvTXVGWl1CM/ADWh1+RxtXr6XOxnT65ovDl9fTi4e0monEyJxCHqDpF6QnFDXmJE4g==
 
 yargs-parser@^18.1.2:
   version "18.1.3"
