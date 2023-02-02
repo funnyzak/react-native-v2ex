@@ -1,6 +1,6 @@
 {
   "name": "v2hub",
-  "version": "0.8.6",
+  "version": "0.8.7",
   "description": "This project used React Native to build a V2EX mobile client application. The main goal was to build a React Native rapid development scaffold.",
   "main": "index.js",
   "private": false,
