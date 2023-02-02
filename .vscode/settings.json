@@ -11,5 +11,6 @@
       "source.fixAll.spotlessGradle": true
     }
   },
-  "java.configuration.updateBuildConfiguration": "automatic"
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.compile.nullAnalysis.mode": "disabled"
 }

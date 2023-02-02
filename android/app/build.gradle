@@ -138,8 +138,8 @@ android {
         applicationId "github.funnyzak.v2ex"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 40
-        versionName "0.8.6"
+        versionCode 41
+        versionName "0.8.7"
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
 
         if (isNewArchitectureEnabled()) {
