@@ -96,9 +96,9 @@
 
 ## Development
 
-目前在 MacOS 下开发，在 iOS 为 13+ 的 iPhone Simulator/iPhone 12、Android 9.0 的 AVD 模拟器/Mi Phone 均编译成功运行。
+目前在 MacOS 下开发，在 iOS 为 14+ 的 iPhone Simulator/iPhone 14、Android 9.0 的 AVD 模拟器/Mi Phone 均编译成功运行。
 
-- 安装 NodeJS(16.0+)、Yarn、[Watchman](https://reactnative.cn/docs/environment-setup)。
+- 安装 NodeJS(18.0+)、Yarn、[Watchman](https://reactnative.cn/docs/environment-setup)。
 - Java JDK建议用 11（配置环境变量 **JAVE_HOME**，高于这个版本编译可能会报错）。
 - iOS平台需要配置[CocoaPods](https://reactnative.cn/docs/environment-setup)、Xcode、iOS Simulator。
 - Android Studio、Gradle、Android SDK、[Android Home 配置](https://reactnative.cn/docs/environment-setup)、Android NDK。
@@ -267,7 +267,7 @@ rm -rf node_modules
 
 # for ios
 cd ios
-pod update / pod install
+pod update && pod install
 cd ..
 npx react-native run-ios
 # for android
