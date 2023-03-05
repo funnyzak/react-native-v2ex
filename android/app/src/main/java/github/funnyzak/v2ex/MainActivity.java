@@ -22,8 +22,6 @@ public class MainActivity extends ReactActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     // react-native-splash-screen
-
-    // custom theme
     SplashScreen.show(this, R.style.SplashScreenTheme, false);
 
     // SplashScreen.show(this, false);
