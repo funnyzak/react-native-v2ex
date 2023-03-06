@@ -60,8 +60,6 @@ react {
  */
 def enableSeparateBuildPerCPUArchitecture = false
 
-apply from: "../../node_modules/react-native/react.gradle"
-
 /**
  * Set this to true to Run Proguard on Release builds to minify the Java bytecode.
  */
@@ -95,6 +93,7 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
+    namespace "github.funnyzak.v2ex"
     defaultConfig {
         applicationId "github.funnyzak.v2ex"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -138,7 +137,7 @@ android {
             // see https://reactnative.dev/docs/signed-apk-android.
             signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro" 
         }
     }
 
