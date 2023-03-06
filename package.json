@@ -119,8 +119,8 @@
     "pod-install": "0.1.38",
     "postinstall-postinstall": "2.1.0",
     "prettier": "2.8.0",
-    "react-devtools": "4.27.1",
-    "react-devtools-core": "4.27.1",
+    "react-devtools": "4.27.2",
+    "react-devtools-core": "4.27.2",
     "react-test-renderer": "18.2.0",
     "rimraf": "3.0.2",
     "typescript": "4.9.5"

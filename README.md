@@ -46,7 +46,7 @@
 - [ ] 上架 App Store、Google Play
 - [ ] 通过 cheerio，获取更多的数据，开发交互功能
 
-## 完成
+## Done
 
 - [x] 升级提醒
 - [x] 升级 RN 到到 **0.71.3**
@@ -71,7 +71,7 @@
 
 ## Features
 
-1. 基于 React Native 0.70.4 版本。
+1. 基于 React Native 0.71.3 版本。
 2. 引入 TypeScript 强类型检查，保证维护性、可读性、稳定性。
 3. eslint 代码规范检查，prettier 代码美化、Husky 作为 git hooks 进行代码格式化、规范校验。
 4. i18n 集成，支持多国语言。实现了语言切换功能。
@@ -106,7 +106,7 @@
 
 具体可根据官网进行 React Native 开发环境和 iOS、Android 运行环境的配置。参考[这里](https://reactnative.dev/docs/environment-setup)。
 
-## Quick Start
+## Develop
 
 ```bash
 
@@ -188,7 +188,6 @@ npx react-native run-android --variant release
 │   ├── types                # 类型定义
 │   ├── utils                # 工具类
 │   └── api                  # API库
-├── .buckconfig              # buck的配置文件，buck是Facebook开源的高效编译系统
 ├── .editorconfig            # 编辑器配置
 ├── .eslintrc.js             # eslint的配置文件
 ├── .gitignore               # 配置git提交需要忽略的文件
@@ -216,32 +215,33 @@ npx react-native run-android --variant release
   <img src="https://contrib.rocks/image?repo=funnyzak/react-native-v2ex" />
 </a>
 
-## 调试
+## Debug
 
-### 工具
+### Debug Tools
 
-- 使用 **[Flipper](https://fbflipper.com/docs/getting-started/index/)** 调试。[参考](https://reactnative.cn/docs/debugging#flipper)。
-- 使用 **[react-devtools](https://www.npmjs.com/package/react-devtools)** 调试。 [参考](https://reactnative.cn/docs/debugging#react-devtools)。
-- React Native Debugger [参考](https://reactnative.cn/docs/debugging#react-native-debugger)。
+- **[Hermes Debugger](https://reactnative.cn/docs/hermes#debugger)** is a standalone app for debugging React Native apps that use Hermes.
+- **[Flipper](https://fbflipper.com/docs/getting-started/index/)** is a desktop debugging platform for mobile developers.
+- **[react-devtools](https://www.npmjs.com/package/react-devtools)** is a standalone app for inspecting the React component hierarchy.
+- **[React Native Debugger](https://github.com/jhen0409/react-native-debugger/blob/master/docs/getting-started.md) is a standalone app for debugging React Native apps, and includes React DevTools.
 - Google Chrome 调试，[参考](https://reactnative.cn/docs/debugging#chrome)。
 
-### 提示
-
-#### 快捷操作
+### Debug Menu
 
 可以通过摇晃设备或是选择 iOS 模拟器的"Hardware"菜单中的"Shake Gesture"选项来打开开发菜单。另外，如果是在 iOS 模拟器中运行，还可以按下 Command⌘ + D 快捷键，Android 模拟器对应的则是 Command⌘ + M（windows 上可能是 F1 或者 F2），或是直接在命令行中运行 adb shell input keyevent 82 来发送菜单键命令。
-#### react-native-debugger 调试
 
-1. 安装 **[react-native-debugger](https://github.com/jhen0409/react-native-debugger)**；
-2. `yarn debug` 启动 react-native-debugger。
-3. 启动模拟器 `yarn ios`，在模拟器打开 debug remote 选项；
+### react-native-debugger
+
+1. 安装 **[react-native-debugger](https://github.com/jhen0409/react-native-debugger/blob/master/docs/getting-started.md)**;
+2. `yarn debug` 启动 react-native-debugger;
+3. 启动模拟器 `yarn ios`，在模拟器打开 debug remote 选项。
+
+**注意：** 使用此方式，需要禁用 `Hermes`，否则会报错。建议启用 Hermes 开关，使用 Hermes 调试。
 
 ## FAQ
 
 ### 配置BugSnag
 
 1. [Create a bugsnag account](https://app.bugsnag.com/user/new).
-
 2. Add your project api key to [android/app/src/main/AndroidManifest.xml](android/app/src/main/AndroidManifest.xml#L25-L26):
 
    ```xml
@@ -258,7 +258,7 @@ npx react-native run-android --variant release
 
     The API key can be found in the Bugsnag settings for your project.
 
-###  Invariant Violation: Module AppRegistry is not a registered callable module
+### Invariant Violation: Module AppRegistry is not a registered callable module
 
 ```bash
 npm cache clean --force
@@ -280,7 +280,7 @@ Reference: [https://stackoverflow.com/questions/64768328/invariant-violation-mod
 
 ### RCTBridge required dispatch_sync to load RNGestureHandlerModule
 
-    > [https://github.com/software-mansion/react-native-gesture-handler/issues/722](https://github.com/software-mansion/react-native-gesture-handler/issues/722)
+> [https://github.com/software-mansion/react-native-gesture-handler/issues/722](https://github.com/software-mansion/react-native-gesture-handler/issues/722)
 
 ### xcode 编译报错
 
