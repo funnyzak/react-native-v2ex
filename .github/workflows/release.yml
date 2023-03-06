@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -34,34 +34,31 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Get the version
-        id: get_version
+      - name: Set variables
+        id: set_veriables
         run: |
           # Get the version from package.json
-          echo ::set-output name=PACKAGE_VERSION_NAME::$(node -p "require('./package.json').version")
+          echo "PACKAGE_VERSION_NAME=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
           # Get the name from package.json
-          echo ::set-output name=PACKAGE_NAME::$(node -p "require('./package.json').name")
+          echo "PACKAGE_NAME=$(node -p "require('./package.json').name")" >> $GITHUB_ENV
           # current push sha
-          echo ::set-output name=COMMIT_ID::$(echo ${{ github.sha }} | cut -c1-7)
+          echo "COMMIT_ID=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV
           # current push tag
-          echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+          echo "VERSION=$(echo $GITHUB_REF | cut -d / -f 3)" >> $GITHUB_ENV
           # latest tag
-          echo ::set-output name=TAG_NAME::$(git describe --tags --abbrev=0)
+          echo "TAG_NAME=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
           # set current timestamp
-          echo ::set-output name=TIMESTAMP::$(date +%s)
+          echo "TIMESTAMP=$(date +%s)" >> $GITHUB_ENV
           # set current time and format
-          echo ::set-output name=BUILD_TIME::$(date "+%Y-%m-%d-%H-%M")
-      - name: Set name
-        id: set_name
-        run: |
-          echo ::set-output name=APK_NAME::$(echo "${{ steps.get_version.outputs.PACKAGE_NAME}}-${{ steps.get_version.outputs.PACKAGE_VERSION_NAME }}-${{steps.get_version.outputs.TIMESTAMP}}-${{ steps.get_version.outputs.COMMIT_ID }}.apk")
-          echo ::set-output name=SOURCE_ZIP_NAME::$(echo "${{ env.DIST_ARCHIVE_PREFIX_NAME }}-${{ steps.get_version.outputs.PACKAGE_VERSION_NAME }}-${{steps.get_version.outputs.TIMESTAMP}}-${{ steps.get_version.outputs.COMMIT_ID }}.zip")
+          echo "BUILD_TIME=$(date "+%Y-%m-%d-%H-%M")" >> $GITHUB_ENV
+          # set apk name
+          echo "APK_NAME=${{ env.PACKAGE_NAME }}-${{ env.PACKAGE_VERSION_NAME }}-${{ env.TIMESTAMP }}-${{ env.COMMIT_ID }}.apk" >> $GITHUB_ENV
       - name: Build changelog
         id: build_changelog
         uses: mikepenz/release-changelog-builder-action@v3.4.0
@@ -70,14 +67,7 @@ jobs:
         with:
           configuration: '.github/config/changelog_configuration.json'
           ignorePreReleases: 'false'
-      - name: Archive source code
-        uses: papeloto/action-zip@v1
-        with:
-          files: |
-            ./
-          recursive: false
-          dest: ${{ steps.set_name.outputs.SOURCE_ZIP_NAME }}
-      - name: Use Node.js
+      - name: Use node
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
@@ -95,20 +85,19 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '11'
-      - name: Build android apk
+      - name: Build APK
         run: |
           cd android && ./gradlew assembleRelease
-      - name: Move release apk to target directory
-        run: cp android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/${{ steps.set_name.outputs.APK_NAME }}
+      - name: Move apk to target directory
+        run: cp android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/${{ env.APK_NAME }}
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          body: ${{steps.build_changelog.outputs.changelog}}
-          name: ${{ steps.get_version.outputs.PACKAGE_VERSION_NAME }}
-          tag_name: ${{ steps.get_version.outputs.TAG_NAME }}
+          body: ${{ steps.build_changelog.outputs.changelog }}
+          name: ${{ env.PACKAGE_VERSION_NAME }}
+          tag_name: ${{ env.TAG_NAME }}
           files: |
-            android/app/build/outputs/apk/release/${{ steps.set_name.outputs.APK_NAME }}
-            ${{ steps.set_name.outputs.SOURCE_ZIP_NAME }}
+            android/app/build/outputs/apk/release/${{ env.APK_NAME }}
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
 

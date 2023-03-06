@@ -367,6 +367,6 @@ Apache-2.0 License © 2021 [funnyzak](https://github.com/funnyzak)
 [rle-image]: https://img.shields.io/github/release-date/funnyzak/react-native-v2ex.svg?style=flat-square&label=release
 [sg-image]: https://img.shields.io/badge/view%20on-Sourcegraph-brightgreen.svg?style=flat-square
 [sg-url]: https://sourcegraph.com/github.com/funnyzak/react-native-v2ex
-[build-status-image]: https://github.com/funnyzak/react-native-v2ex/actions/workflows/ci.yml/badge.svg
+[build-status-image]: https://github.com/funnyzak/react-native-v2ex/actions/workflows/release.yml/badge.svg
 [build-status]: https://github.com/funnyzak/react-native-v2ex/actions
 [tag-image]: https://img.shields.io/github/tag/funnyzak/react-native-v2ex.svg
