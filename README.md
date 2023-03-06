@@ -7,31 +7,6 @@
 [![GitHub last commit][last-commit-image]][repository-url]
 [![tag][tag-image]][rle-url]
 
-<!-- [![action][ci-image]][ci-url] -->
-<!-- [![js-standard-style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/feross/standard) -->
-<!-- [![GitHub commit activity][commit-activity-image]][repository-url] -->
-<!-- [![Sourcegraph][sg-image]][sg-url] -->
-
-[repo-size-image]: https://img.shields.io/github/repo-size/funnyzak/react-native-v2ex?style=flat-square&logo=github&logoColor=white&label=size
-[down-latest-image]: https://img.shields.io/github/downloads/funnyzak/react-native-v2ex/latest/total.svg
-[down-total-image]: https://img.shields.io/github/downloads/funnyzak/react-native-v2ex/total.svg
-[commit-activity-image]: https://img.shields.io/github/commit-activity/m/funnyzak/react-native-v2ex?style=flat-square
-[last-commit-image]: https://img.shields.io/github/last-commit/funnyzak/react-native-v2ex?style=flat-square
-[license-image]: https://img.shields.io/github/license/funnyzak/react-native-v2ex.svg?style=flat-square
-[repository-url]: https://github.com/funnyzak/react-native-v2ex
-[rle-url]: https://github.com/funnyzak/react-native-v2ex/releases/latest
-[rle-all-url]: https://github.com/funnyzak/react-native-v2ex/releases
-[ci-image]: https://img.shields.io/github/workflow/status/funnyzak/react-native-v2ex/react-native-android-build-apk
-[ci-url]: https://github.com/funnyzak/react-native-v2ex/actions
-[rle-image]: https://img.shields.io/github/release-date/funnyzak/react-native-v2ex.svg?style=flat-square&label=release
-[sg-image]: https://img.shields.io/badge/view%20on-Sourcegraph-brightgreen.svg?style=flat-square
-[sg-url]: https://sourcegraph.com/github.com/funnyzak/react-native-v2ex
-[build-status-image]: https://github.com/funnyzak/react-native-v2ex/actions/workflows/ci.yml/badge.svg
-[build-status]: https://github.com/funnyzak/react-native-v2ex/actions
-[tag-image]: https://img.shields.io/github/tag/funnyzak/react-native-v2ex.svg
-
-## Overview
-
 项目使用了 React Native 构建了一个 [V2EX](https://v2ex.com) 移动客户端应用。目的是为了构建一个 React Native 快速开发脚手架。客户端数据完全基于 [V2EX](https://v2ex.com) 开放 API。基于 RN 0.71.3。
 
 `Figma 设计稿` 已经开源，可[从此 Duplicate](https://www.figma.com/community/file/1101074002447399194)。
@@ -371,3 +346,27 @@ iOS 使用 LaunchScreen.storyboard，使用 Xcode 修改即可。
 ## License
 
 Apache-2.0 License © 2021 [funnyzak](https://github.com/funnyzak)
+
+
+<!-- [![action][ci-image]][ci-url] -->
+<!-- [![js-standard-style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/feross/standard) -->
+<!-- [![GitHub commit activity][commit-activity-image]][repository-url] -->
+<!-- [![Sourcegraph][sg-image]][sg-url] -->
+
+[repo-size-image]: https://img.shields.io/github/repo-size/funnyzak/react-native-v2ex?style=flat-square&logo=github&logoColor=white&label=size
+[down-latest-image]: https://img.shields.io/github/downloads/funnyzak/react-native-v2ex/latest/total.svg
+[down-total-image]: https://img.shields.io/github/downloads/funnyzak/react-native-v2ex/total.svg
+[commit-activity-image]: https://img.shields.io/github/commit-activity/m/funnyzak/react-native-v2ex?style=flat-square
+[last-commit-image]: https://img.shields.io/github/last-commit/funnyzak/react-native-v2ex?style=flat-square
+[license-image]: https://img.shields.io/github/license/funnyzak/react-native-v2ex.svg?style=flat-square
+[repository-url]: https://github.com/funnyzak/react-native-v2ex
+[rle-url]: https://github.com/funnyzak/react-native-v2ex/releases/latest
+[rle-all-url]: https://github.com/funnyzak/react-native-v2ex/releases
+[ci-image]: https://img.shields.io/github/workflow/status/funnyzak/react-native-v2ex/react-native-android-build-apk
+[ci-url]: https://github.com/funnyzak/react-native-v2ex/actions
+[rle-image]: https://img.shields.io/github/release-date/funnyzak/react-native-v2ex.svg?style=flat-square&label=release
+[sg-image]: https://img.shields.io/badge/view%20on-Sourcegraph-brightgreen.svg?style=flat-square
+[sg-url]: https://sourcegraph.com/github.com/funnyzak/react-native-v2ex
+[build-status-image]: https://github.com/funnyzak/react-native-v2ex/actions/workflows/ci.yml/badge.svg
+[build-status]: https://github.com/funnyzak/react-native-v2ex/actions
+[tag-image]: https://img.shields.io/github/tag/funnyzak/react-native-v2ex.svg
