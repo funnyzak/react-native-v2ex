@@ -102,7 +102,7 @@
     "@typescript-eslint/eslint-plugin": "5.54.0",
     "@typescript-eslint/parser": "5.46.1",
     "babel-jest": "29.4.3",
-    "babel-plugin-module-resolver": "4.1.0",
+    "babel-plugin-module-resolver": "5.0.0",
     "deprecated-react-native-prop-types": "2.3.0",
     "eslint": "8.29.0",
     "eslint-config-prettier": "8.5.0",
