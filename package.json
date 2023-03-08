@@ -115,7 +115,7 @@
     "lint-staged": "13.1.0",
     "metro-react-native-babel-preset": "0.75.1",
     "npm-check-updates": "16.7.10",
-    "patch-package": "6.5.0",
+    "patch-package": "6.5.1",
     "plop": "3.1.1",
     "pod-install": "0.1.38",
     "postinstall-postinstall": "2.1.0",
