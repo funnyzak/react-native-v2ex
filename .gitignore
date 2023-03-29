@@ -39,7 +39,7 @@ npm-debug.log
 yarn-error.log
 
 *.keystore
-!v2ex.keystore
+!app.keystore
 !debug.keystore
 
 # fastlane

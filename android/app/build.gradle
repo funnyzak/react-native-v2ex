@@ -119,11 +119,11 @@ android {
         }
 
         release {
-            if (project.hasProperty('V2EX_STORE_FILE')) {
-                storeFile file(V2EX_STORE_FILE)
-                storePassword V2EX_STORE_PASSWORD
-                keyAlias V2EX_KEY_ALIAS
-                keyPassword V2EX_KEY_PASSWORD
+            if (project.hasProperty('APP_STORE_FILE')) {
+                storeFile file(APP_STORE_FILE)
+                storePassword APP_STORE_PASSWORD
+                keyAlias APP_KEY_ALIAS
+                keyPassword APP_KEY_PASSWORD
             }
         }
     }
