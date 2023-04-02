@@ -7,7 +7,7 @@
 [![GitHub last commit][last-commit-image]][repository-url]
 [![tag][tag-image]][rle-url]
 
-项目使用了 React Native 构建了一个 [V2EX](https://v2ex.com) 移动客户端应用。目的是为了构建一个 React Native 快速开发脚手架。客户端数据完全基于 [V2EX](https://v2ex.com) 开放 API。基于 RN 0.71.3。
+项目使用了 React Native 构建了一个 [V2EX](https://v2ex.com) 移动客户端应用。目的是为了构建一个 React Native 快速开发脚手架。客户端数据完全基于 [V2EX](https://v2ex.com) 开放 API。基于 RN 0.71.5。
 
 `Figma 设计稿` 已经开源，可[从此 Duplicate](https://www.figma.com/community/file/1101074002447399194)。
 
@@ -24,6 +24,7 @@
 ## Done
 
 - [x] 升级提醒
+- [x] 升级 RN 到到 **0.71.5**
 - [x] 升级 RN 到到 **0.71.3**
 - [x] 升级 RN 到到 **0.70.6**
 - [x] 升级 RN 到到 **0.70.5**
@@ -74,10 +75,10 @@
 目前在 MacOS 下开发，在 iOS 为 16+ 的 iPhone Simulator/iPhone 14、Android 9.0 的 AVD 模拟器/Mi Phone 均编译成功运行。
 
 - 安装 NodeJS(18.0+)、Yarn、[Watchman](https://reactnative.cn/docs/environment-setup)。
-- Java JDK建议用 11（配置环境变量 **JAVE_HOME**，高于这个版本编译可能会报错）。
-- iOS平台需要配置[CocoaPods](https://reactnative.cn/docs/environment-setup)、Xcode、iOS Simulator。
+- Java JDK 建议用 11（配置环境变量 **JAVE_HOME**，高于这个版本编译可能会报错）。
+- iOS 平台需要配置[CocoaPods](https://reactnative.cn/docs/environment-setup)、Xcode、iOS Simulator。
 - Android Studio、Gradle、Android SDK、[Android Home 配置](https://reactnative.cn/docs/environment-setup)、Android NDK。
-- Android平台需要 [Android 真机](https://reactnative.cn/docs/running-on-device) 或 [Android AVD](https://developer.android.com/studio/run/managing-avds)（建议用真机）。
+- Android 平台需要 [Android 真机](https://reactnative.cn/docs/running-on-device) 或 [Android AVD](https://developer.android.com/studio/run/managing-avds)（建议用真机）。
 
 具体可根据官网进行 React Native 开发环境和 iOS、Android 运行环境的配置。参考[这里](https://reactnative.dev/docs/environment-setup)。
 
@@ -197,7 +198,7 @@ npx react-native run-android --variant release
 - **[Hermes Debugger](https://reactnative.cn/docs/hermes#debugger)** is a standalone app for debugging React Native apps that use Hermes.
 - **[Flipper](https://fbflipper.com/docs/getting-started/index/)** is a desktop debugging platform for mobile developers.
 - **[react-devtools](https://www.npmjs.com/package/react-devtools)** is a standalone app for inspecting the React component hierarchy.
-- **[React Native Debugger](https://github.com/jhen0409/react-native-debugger/blob/master/docs/getting-started.md) is a standalone app for debugging React Native apps, and includes React DevTools.
+- \*\*[React Native Debugger](https://github.com/jhen0409/react-native-debugger/blob/master/docs/getting-started.md) is a standalone app for debugging React Native apps, and includes React DevTools.
 - Google Chrome 调试，[参考](https://reactnative.cn/docs/debugging#chrome)。
 
 ### Debug Menu
@@ -214,7 +215,7 @@ npx react-native run-android --variant release
 
 ## FAQ
 
-### 配置BugSnag
+### 配置 BugSnag
 
 1. [Create a bugsnag account](https://app.bugsnag.com/user/new).
 2. Add your project api key to [android/app/src/main/AndroidManifest.xml](android/app/src/main/AndroidManifest.xml#L25-L26):
@@ -231,7 +232,7 @@ npx react-native run-android --variant release
     <string>YOUR-API-KEY-HERE</string>
    ```
 
-    The API key can be found in the Bugsnag settings for your project.
+   The API key can be found in the Bugsnag settings for your project.
 
 ### Invariant Violation: Module AppRegistry is not a registered callable module
 
@@ -276,7 +277,7 @@ iOS 使用 LaunchScreen.storyboard，使用 Xcode 修改即可。
 
 [看这里](https://stackoverflow.com/questions/37389905/change-package-name-for-android-in-react-native)。
 
-### Android签名打包发布
+### Android 签名打包发布
 
 [看这里](https://reactnative.cn/docs/signed-apk-android/)。
 
@@ -285,12 +286,13 @@ iOS 使用 LaunchScreen.storyboard，使用 Xcode 修改即可。
 1. Edit the android/app/src/main/AndroidManifest.xml
 2. Add the android:networkSecurityConfig="@xml/network_security_config" to the <application /> tag
 3. Create the folder android/app/src/main/res/xml and inside a file called network_security_config.xml
-    ```xml
-    <?xml version="1.0" encoding="utf-8"?>
-    <network-security-config>
-      <base-config cleartextTrafficPermitted="true" />
-    </network-security-config>
-    ```
+   ```xml
+   <?xml version="1.0" encoding="utf-8"?>
+   <network-security-config>
+     <base-config cleartextTrafficPermitted="true" />
+   </network-security-config>
+   ```
+
 - [https://github.com/facebook/react-native/issues/32931](https://github.com/facebook/react-native/issues/32931)
 - [https://developer.android.com/training/articles/security-config](https://developer.android.com/training/articles/security-config)
 
@@ -346,7 +348,6 @@ iOS 使用 LaunchScreen.storyboard，使用 Xcode 修改即可。
 ## License
 
 Apache-2.0 License © 2021 [funnyzak](https://github.com/funnyzak)
-
 
 <!-- [![action][ci-image]][ci-url] -->
 <!-- [![js-standard-style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/feross/standard) -->
