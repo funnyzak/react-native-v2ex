@@ -1,3 +1,8 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-02-23 21:38:29.
+ * Last modified at 2022-04-14 15:51:50
+ */
+
 import {
   APP_AUTH_SUCCESS,
   FEEDBACKING,
@@ -10,11 +15,9 @@ import {
   APP_LOGOUT
 } from '../types'
 import { translate } from '@src/i18n'
-
 const INITIAL_STATE: IState.UIState = {
   login: {
     tokenGeneratedLink: 'https://v2ex.com/settings/tokens',
-
     error: null,
     success: null,
     loading: false
@@ -23,7 +26,6 @@ const INITIAL_STATE: IState.UIState = {
     processing: false
   }
 }
-
 export default (state: IState.UIState = INITIAL_STATE, action: Action): IState.UIState => {
   switch (action.type) {
     case APP_AUTH_RESET:

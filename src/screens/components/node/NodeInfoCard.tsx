@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/04/19.
+ * Created by Leon<silenceace@gmail.com> at 2022-04-01 14:00:14.
+ * Last modified at 2022-10-20 18:07:33
  */
+
 import { Avatar, Spinner, Text } from '@src/components'
 import { useNode } from '@src/hooks/useNode'
 import { translate } from '@src/i18n'
@@ -11,7 +13,6 @@ import dayjs from 'dayjs'
 import React, { useEffect } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import { RenderHTML, TextWithIconPress } from '../common'
-
 /**
  * NodeInfoCard props
  */
@@ -20,28 +21,23 @@ export interface NodeInfoCardProps {
    * container style
    */
   containerStyle?: StyleProp<ViewStyle>
-
   /**
    * node name or id
    */
   nodeid: string | number
-
   /**
    * Load completion callback
    */
   loadedCallback?: (node: AppObject.Node) => void
 }
-
 const NodeInfoCard: React.FC<NodeInfoCardProps> = ({ nodeid, loadedCallback, containerStyle }: NodeInfoCardProps) => {
   const { theme } = useTheme()
   const { node: info } = useNode({ nodeid: nodeid })
-
   useEffect(() => {
     if (loadedCallback && info !== undefined) {
       loadedCallback(info)
     }
   }, [info])
-
   const renderContent = () => {
     return (
       <View style={[SylCommon.Card.container(theme), { paddingVertical: theme.spacing.small }, containerStyle]}>
@@ -108,10 +104,8 @@ const NodeInfoCard: React.FC<NodeInfoCardProps> = ({ nodeid, loadedCallback, con
       </View>
     )
   }
-
   return renderContent()
 }
-
 const styles = {
   container: (theme: ITheme): ViewStyle => ({
     display: 'flex',
@@ -151,5 +145,4 @@ const styles = {
     paddingBottom: theme.spacing.small
   })
 }
-
 export default NodeInfoCard

@@ -1,9 +1,10 @@
 /**
- * Created by leon<silenceace@gmail.com> on 2022-11-20.
+ * Created by Leon<silenceace@gmail.com> at 2022-11-20 21:04:09.
+ * Last modified at 2022-11-20 21:04:09
  */
+
 import React from 'react'
 import Svg, { Path, SvgProps } from 'react-native-svg'
-
 const IconComponent = (props: SvgProps) => {
   return (
     <Svg viewBox="0 0 1024 1024" p-id="2678" width="256" height="256" fill={'grey'} {...props}>
@@ -14,7 +15,5 @@ const IconComponent = (props: SvgProps) => {
     </Svg>
   )
 }
-
 const Icon = React.memo(IconComponent)
-
 export default Icon

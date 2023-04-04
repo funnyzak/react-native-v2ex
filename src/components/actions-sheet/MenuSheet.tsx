@@ -1,10 +1,13 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-11-05 20:08:36.
+ * Last modified at 2022-11-05 20:08:36
+ */
+
 import React, { useRef } from 'react'
 import ActionSheet, { ActionSheetRef, registerSheet, SheetProps } from 'react-native-actions-sheet'
 import MenuButton from './Btn'
-
 const Sheet = (props: SheetProps) => {
   const actionSheetRef = useRef<ActionSheetRef>(null)
-
   return (
     <ActionSheet
       ref={actionSheetRef}
@@ -19,7 +22,5 @@ const Sheet = (props: SheetProps) => {
     </ActionSheet>
   )
 }
-
 registerSheet('menu-sheet', Sheet)
-
 export default Sheet

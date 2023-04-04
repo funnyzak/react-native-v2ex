@@ -1,15 +1,15 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-10-20 17:25:36.
+ * Last modified at 2022-10-21 14:31:58
+ */
+
 export declare namespace AppAPI {
   export type API_VERSION = undefined | 'v2'
-
-  /**
-   * V2ex Version 2.0 Response
-   */
   export interface Response<T> {
     success: boolean
     message: string
     result: T
   }
-
   /**
    * V2ex API Configuration
    */
@@ -24,7 +24,6 @@ export declare namespace AppAPI {
     }
     extend?: { [name: string]: string | undefined }
   }
-
   export type HttpMethod =
     | 'get'
     | 'GET'
@@ -46,7 +45,6 @@ export declare namespace AppAPI {
     | 'LINK'
     | 'unlink'
     | 'UNLINK'
-
   /**
    * V2ex Main API
    */
@@ -106,23 +104,19 @@ export declare namespace AppAPI {
      * Get my token info
      */
     myToken: () => Promise<AppObject.MemberToken>
-
     /**
      * Get my profile
      */
     myProfile: () => Promise<AppObject.Member>
-
     /**
      * Get user profile
      */
     profile: (id: string | number) => Promise<AppObject.Member>
-
     /**
      * check user token
      */
     token: (token: string) => Promise<AppObject.MemberToken>
   }
-
   export interface NodeAPI {
     /**
      * Get node info by node name/id
@@ -130,49 +124,41 @@ export declare namespace AppAPI {
      * @param version
      */
     get(id: string | number, version: API_VERSION): Promise<AppObject.Node>
-
     /**
      * Get All nodes by api version 1
      */
     all(): Promise<AppObject.Node[]>
   }
-
   export interface NotificationAPI {
     /**
      * Get my latest notifications
      */
     list: (page: number) => Promise<AppObject.Notification[]>
-
     /**
      * Remove notification
      */
     remove: (id: string) => Promise<void>
   }
-
   export interface TopicAPI {
     /**
      * Get latest topic list by api version 1
      */
     latestTopics: () => Promise<AppObject.Topic[]>
-
     /**
      * Get hot topic list by api version 1
      */
     hotTopics: () => Promise<AppObject.Topic[]>
-
     /**
      * Get topic info by topic id use api verson 1
      * @param id : topic id
      * @param version : api version
      */
     topic(id: number, api_version: API_VERSION): Promise<AppObject.Topic>
-
     /**
      *  pager note topic list by api version 2
      * @param name : node name
      */
     pager(name: string, page: number): Promise<AppObject.Topic[]>
-
     /**
      * get node topic by api version 1
      * @param id : topic id
@@ -180,7 +166,6 @@ export declare namespace AppAPI {
      */
     topics(id: string | number, get_type: 'username' | 'node_id' | 'node_name' | 'id'): Promise<AppObject.Topic[]>
   }
-
   export interface ReplyAPI {
     /**
      * Get topic replies by api version 1
@@ -188,7 +173,6 @@ export declare namespace AppAPI {
      * @param page : page number
      */
     pager(topic_id: number, page: number): Promise<AppObject.TopicReply[]>
-
     /**
      * Get topic replies
      * @param topic_id : topic id
@@ -203,12 +187,10 @@ export declare namespace AppObject {
     description: string
     domain: string
   }
-
   export interface SiteStat {
     topic_max: number
     member_max: number
   }
-
   /**
    * Member Token Info
    */
@@ -221,7 +203,6 @@ export declare namespace AppObject {
     last_used: number
     created: number
   }
-
   /**
    * Member Profile
    */
@@ -249,7 +230,6 @@ export declare namespace AppObject {
     last_modified?: number
     status?: string
   }
-
   export interface Node {
     avatar_large?: string
     name: string
@@ -269,7 +249,6 @@ export declare namespace AppObject {
     last_modified?: number
     created?: number
   }
-
   export interface Topic {
     node?: Node
     member?: Member
@@ -285,7 +264,6 @@ export declare namespace AppObject {
     replies: number
     id: number
   }
-
   export interface TopicReply {
     id: number
     content: string
@@ -293,7 +271,6 @@ export declare namespace AppObject {
     created: number
     member: Member
   }
-
   export interface Notification {
     id: number
     member_id: number

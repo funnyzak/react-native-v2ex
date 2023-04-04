@@ -1,5 +1,6 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/04/15.
+ * Created by Leon<silenceace@gmail.com> at 2022-04-15 21:52:35.
+ * Last modified at 2022-11-09 16:15:36
  */
 
 import * as React from 'react'
@@ -12,34 +13,28 @@ import { NavigationService, ROUTES } from '@src/navigation'
 import { BorderLine, TextWithIconPress } from '../common'
 import { useMemo } from 'react'
 import { translate } from '@src/i18n'
-
 export interface TopicCardItemProps {
   /**
    * container style
    */
   containerStyle?: StyleProp<ViewStyle>
-
   /**
    * Display Style
    */
   displayStyle?: 'simple' | 'full' | 'auto'
-
   /**
    * Whether to show last reply users
    */
   showlastReplay?: boolean
-
   /**
    * Topic Info
    */
   topic: AppObject.Topic
-
   /**
    * Topic Title Press Event
    */
   onPress?: (topic: AppObject.Topic) => void
 }
-
 const TopicCardItem = ({
   containerStyle,
   showlastReplay = true,
@@ -48,7 +43,6 @@ const TopicCardItem = ({
   onPress
 }: TopicCardItemProps) => {
   const { theme } = useTheme()
-
   const display_style = useMemo(
     () =>
       ['auto', 'full'].includes(displayStyle) && topic.member && (topic.member.avatar || topic.member.avatar_normal)
@@ -56,12 +50,10 @@ const TopicCardItem = ({
         : 'simple',
     [displayStyle]
   )
-
   const avatar_link = useMemo(
     () => (topic.member ? topic.member.avatar || topic.member.avatar_normal : undefined),
     [topic]
   )
-
   return (
     <View style={[styles.container(theme), containerStyle]}>
       <View style={styles.infoContainer(theme)}>
@@ -98,7 +90,6 @@ const TopicCardItem = ({
               {topic.title}
             </Text>
           </TouchableOpacity>
-
           <View style={styles.infoMainItem(theme)}>
             <View style={styles.summaryContainer(theme)}>
               {topic.last_reply_by !== '' && showlastReplay ? (
@@ -144,7 +135,6 @@ const TopicCardItem = ({
     </View>
   )
 }
-
 const styles = {
   container: (theme: ITheme): ViewStyle => ({
     paddingTop: theme.spacing.small,
@@ -179,5 +169,4 @@ const styles = {
     ...theme.typography.bodyText
   })
 }
-
 export default TopicCardItem

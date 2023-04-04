@@ -1,5 +1,6 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/04/14.
+ * Created by Leon<silenceace@gmail.com> at 2022-03-04 19:20:02.
+ * Last modified at 2022-04-14 22:35:29
  */
 
 import { HELP_PAGE_LINK, RELEASE_NOTES_LINK, REPO_GITHUB_URL, REPO_NAME } from '@src/config/constants'
@@ -11,7 +12,6 @@ import React from 'react'
 import { Image, ImageStyle, Text, TextStyle, View, ViewStyle } from 'react-native'
 import { connect } from 'react-redux'
 import { SetStatusBar, TableList, TableRow } from '../components'
-
 const About = ({
   app,
   navigation
@@ -104,7 +104,6 @@ const About = ({
     </View>
   )
 }
-
 /**
  * @description style
  */
@@ -134,9 +133,7 @@ const styles = {
     color: theme.colors.captionText
   })
 }
-
 const mapStateToProps = ({ app }: { app: IState.AppState }) => {
   return { app }
 }
-
 export default connect(mapStateToProps)(About)

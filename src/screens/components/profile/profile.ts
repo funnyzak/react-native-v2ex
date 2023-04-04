@@ -1,10 +1,10 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/05/27.
+ * Created by Leon<silenceace@gmail.com> at 2022-05-27 21:34:46.
+ * Last modified at 2022-05-27 21:34:46
  */
 
 import { ITheme } from '@src/theme'
 import { ViewStyle } from 'react-native'
-
 export const ProfileInfoStyle = {
   container: (theme: ITheme): ViewStyle => ({
     display: 'flex',

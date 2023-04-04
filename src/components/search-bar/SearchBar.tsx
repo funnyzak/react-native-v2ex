@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 2022-11-20.
+ * Created by Leon<silenceace@gmail.com> at 2022-11-20 21:04:09.
+ * Last modified at 2022-11-20 22:48:15
  */
+
 import { logInfo } from '@src/helper/logger'
 import { ITheme, useTheme } from '@src/theme'
 import React, { memo, useCallback, useRef, useState } from 'react'
@@ -21,7 +23,6 @@ import {
 } from 'react-native'
 import ClearIcon from './ClearIcon'
 import SearchIcon from './SearchIcon'
-
 interface SearchBarProps {
   searchToolContainerStyle?: StyleProp<ViewStyle>
   clearButton?: boolean
@@ -38,7 +39,6 @@ interface SearchBarProps {
   buttonText?: string
   buttonTextStyle?: StyleProp<TextStyle>
 }
-
 const SearchBarComponent = ({
   searchToolContainerStyle,
   onActiveSearch,
@@ -56,16 +56,13 @@ const SearchBarComponent = ({
   inputInactiveColor
 }: SearchBarProps) => {
   const { theme } = useTheme()
-
   const [inputTextActive, setInputTextActive] = useState(false)
   const [inputValue, setInputValue] = useState('')
   let textInputRef = useRef<TextInput>()
   let shouldClearButtonShow = useRef(false)
-
   const onSubmit = () => {
     logInfo('onSubmit')
     shouldClearButtonShow.current = false
-
     onSubmitSearch(inputValue)
     // dissmiss keyboard
     Keyboard.dismiss()
@@ -149,9 +146,7 @@ const SearchBarComponent = ({
     </View>
   )
 }
-
 const SearchBar = memo(SearchBarComponent)
-
 const styles = {
   searchToolContainer: (theme: ITheme): ViewStyle => ({
     width: '100%',
@@ -198,5 +193,4 @@ const styles = {
     marginLeft: 5
   })
 }
-
 export default SearchBar

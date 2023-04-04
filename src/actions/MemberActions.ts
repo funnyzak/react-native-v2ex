@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/2/22.
+ * Created by Leon<silenceace@gmail.com> at 2022-02-22 19:58:57.
+ * Last modified at 2022-10-21 14:31:58
  */
+
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { MEMBER_TOKEN_KEY } from '@src/config/constants'
 import { logError } from '@src/helper/logger'
@@ -26,15 +28,12 @@ import {
   AppObject
 } from '../types'
 import { cacheMemberFollowing, cacheMemberInterestNodes, cacheMemberLikeTopicss } from './CacheAction'
-
 export const myProfile = () => async (dispatch: Dispatch, getState: () => RootState) => {
   const _member = await ApiLib.member.myProfile()
-
   dispatch({
     type: MEMBER_PROFILE,
     payload: _member
   })
-
   dispatch({
     type: MEMBER_SATE_SETTING,
     payload: {
@@ -44,19 +43,16 @@ export const myProfile = () => async (dispatch: Dispatch, getState: () => RootSt
     }
   })
 }
-
 export const getToken = () => async (dispatch: Dispatch) => {
   dispatch({
     type: APP_AUTH_SUCCESS,
     payload: {}
   })
 }
-
 export const setMyTopics = (topics: AppObject.Topic[]) => ({
   type: MEMBER_TOPICS,
   payload: topics
 })
-
 export const interestNode = (node: AppObject.Node) => async (dispatch: Dispatch, getState: () => RootState) => {
   dispatch({
     type: MEMBER_INSEREST_NODE,
@@ -64,7 +60,6 @@ export const interestNode = (node: AppObject.Node) => async (dispatch: Dispatch,
   })
   dispatch(cacheMemberInterestNodes(getState().member.interestNodes))
 }
-
 export const unInterestNode = (node: AppObject.Node) => async (dispatch: Dispatch, getState: () => RootState) => {
   dispatch({
     type: MEMBER_UNINTEREST_NODE,
@@ -72,7 +67,6 @@ export const unInterestNode = (node: AppObject.Node) => async (dispatch: Dispatc
   })
   dispatch(cacheMemberInterestNodes(getState().member.interestNodes))
 }
-
 export const likeTopic = (topic: AppObject.Topic) => async (dispatch: Dispatch, getState: () => RootState) => {
   dispatch({
     type: MEMBER_LIKE_TOPICS,
@@ -80,7 +74,6 @@ export const likeTopic = (topic: AppObject.Topic) => async (dispatch: Dispatch, 
   })
   dispatch(cacheMemberLikeTopicss(getState().member.likeTopics))
 }
-
 export const unLikeTopic = (topic: AppObject.Topic) => async (dispatch: Dispatch, getState: () => RootState) => {
   dispatch({
     type: MEMBER_UNLIKE_TOPICS,
@@ -88,7 +81,6 @@ export const unLikeTopic = (topic: AppObject.Topic) => async (dispatch: Dispatch
   })
   dispatch(cacheMemberLikeTopicss(getState().member.likeTopics))
 }
-
 export const followPeople = (member: AppObject.Member) => async (dispatch: Dispatch, getState: () => RootState) => {
   dispatch({
     type: MEMBER_FOLLOW_PEOPLE,
@@ -96,7 +88,6 @@ export const followPeople = (member: AppObject.Member) => async (dispatch: Dispa
   })
   dispatch(cacheMemberFollowing(getState().member.followPeoples))
 }
-
 export const unFollowPeople = (member: AppObject.Member) => async (dispatch: Dispatch, getState: () => RootState) => {
   dispatch({
     type: MEMBER_UNFOLLOW_PEOPLE,
@@ -104,12 +95,10 @@ export const unFollowPeople = (member: AppObject.Member) => async (dispatch: Dis
   })
   dispatch(cacheMemberFollowing(getState().member.followPeoples))
 }
-
 export const setCurrentToken = (token?: AppObject.MemberToken) => ({
   type: APP_AUTH,
   payload: token
 })
-
 export const loginByToken = (token: string) => async (dispatch: Dispatch) => {
   try {
     dispatch({ type: APP_AUTH_LOADING })
@@ -120,33 +109,24 @@ export const loginByToken = (token: string) => async (dispatch: Dispatch) => {
     loginByTokenFail(dispatch, e.message)
   }
 }
-
 const loginByTokenSuccess = (token: AppObject.MemberToken) => async (dispatch: Dispatch, getState: () => RootState) => {
   await AsyncStorage.setItem(MEMBER_TOKEN_KEY, token.token)
-
   ApiLib.setToken(token.token)
-
   dispatch(setCurrentToken(token))
-
   dispatch({ type: APP_AUTH_SUCCESS, payload: token })
-
   dispatch(myProfile() as any)
 }
-
 const loginByTokenFail = (dispatch: Dispatch, message: string) => {
   AsyncStorage.removeItem(MEMBER_TOKEN_KEY)
-
   dispatch(errorMessage(message))
 }
 export const errorMessage = (error: string) => ({
   type: APP_AUTH_ERROR,
   payload: error
 })
-
 export const logout = () => (dispatch: Dispatch) => {
   AsyncStorage.setItem(MEMBER_TOKEN_KEY, '')
   ApiLib.setToken(undefined)
   dispatch({ type: APP_LOGOUT })
-
   NavigationService.navigate('SignIn')
 }

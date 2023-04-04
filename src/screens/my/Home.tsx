@@ -1,3 +1,8 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-03-04 19:20:02.
+ * Last modified at 2022-10-21 14:31:58
+ */
+
 import { logout as logoutAction } from '@src/actions'
 import { useToast } from '@src/components/toast'
 import { translate } from '@src/i18n'
@@ -9,7 +14,6 @@ import React, { useEffect } from 'react'
 import { ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { Footer, HeaderButton, ProfileCard, SetStatusBar, TableList, TableRow } from '../components'
-
 const My = ({
   navigation,
   app,
@@ -30,14 +34,12 @@ const My = ({
   }) => {
   const { theme } = useTheme()
   const { showMessage } = useToast()
-
   const underConstruction = () => {
     showMessage({
       type: 'error',
       text2: translate('label.underConstruction')
     })
   }
-
   useEffect(() => {
     navigation.setOptions({
       headerRight: () =>
@@ -52,7 +54,6 @@ const My = ({
         )
     })
   }, [profile]) // eslint-disable-line react-hooks/exhaustive-deps
-
   return (
     <ScrollView
       overScrollMode={'never'}
@@ -98,7 +99,6 @@ const My = ({
           }}
         />
       </TableList>
-
       <TableList title={translate('common.integrated')}>
         <TableRow
           title={translate(`button.rate`)}
@@ -137,7 +137,6 @@ const My = ({
           }}
         />
       </TableList>
-
       <TableList title={translate('common.feedback')}>
         <TableRow
           title={translate(`common.email`)}
@@ -171,7 +170,6 @@ const My = ({
     </ScrollView>
   )
 }
-
 const mapStateToProps = ({ member, setting, app }: IState.State) => {
   const { profile, token, readedTopics, topics, likeTopics, followPeoples } = member
   return {
@@ -185,7 +183,6 @@ const mapStateToProps = ({ member, setting, app }: IState.State) => {
     app
   }
 }
-
 export default connect(mapStateToProps, {
   logout: logoutAction
 })(My)

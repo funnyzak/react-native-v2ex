@@ -1,11 +1,11 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/2/22.
+ * Created by Leon<silenceace@gmail.com> at 2022-02-22 19:58:57.
+ * Last modified at 2022-10-20 18:07:33
  */
 
 import { Dispatch } from 'redux'
 import { ApiLib } from '@src/api'
 import { logError } from '@src/helper/logger'
-
 import {
   TOPIC_GET,
   TOPIC_REPLIES,
@@ -17,7 +17,6 @@ import {
   AppObject
 } from '@src/types'
 import { SPECIAL_NODE_NAME_MAP } from '@src/config/constants'
-
 /**
  * 阅读主题
  * @param topic
@@ -27,7 +26,6 @@ export const readTopic = (topic: AppObject.Topic) => ({
   type: MEMBER_READ_TOPIC,
   payload: topic
 })
-
 /**
  * 获取主题列表
  * @param node 节点name
@@ -40,11 +38,9 @@ export const getHomeNodeTopics =
     const specialNode = Object.values(SPECIAL_NODE_NAME_MAP).includes(node)
     const refreshing = page === 1 || specialNode
     const loadmore = !refreshing && page > 1
-
     if ((!v2Use || specialNode) && page > 1) {
       return
     }
-
     if (refreshing) {
       dispatch({
         type: APP_NODE_TOPICS_REFRESH,
@@ -56,7 +52,6 @@ export const getHomeNodeTopics =
         payload: { node }
       })
     }
-
     try {
       let _topics: AppObject.Topic[] = []
       if (specialNode) {
@@ -68,7 +63,6 @@ export const getHomeNodeTopics =
       } else {
         _topics = await (v2Use ? ApiLib.topic.pager(node, page) : ApiLib.topic.topics(node, 'node_name'))
       }
-
       dispatch({
         type: APP_NODE_TOPICS_LOAD_SUCCESS,
         payload: {
@@ -87,14 +81,12 @@ export const getHomeNodeTopics =
       })
     }
   }
-
 export const topicGet = (topicId: string) => async (dispatch: Dispatch) => {
   dispatch({
     type: TOPIC_GET,
     payload: {}
   })
 }
-
 export const topicReplies = (topicId: string, pager: number) => async (dispatch: Dispatch) => {
   dispatch({
     type: TOPIC_REPLIES,

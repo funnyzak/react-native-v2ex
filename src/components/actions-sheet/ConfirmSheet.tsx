@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/3/10.
+ * Created by Leon<silenceace@gmail.com> at 2022-11-05 20:08:36.
+ * Last modified at 2022-11-08 23:51:11
  */
+
 import { Button } from '@src/components'
 import { translate } from '@src/i18n'
 import { SylCommon, useTheme } from '@src/theme'
@@ -8,7 +10,6 @@ import { ITheme } from '@src/types'
 import React, { useRef } from 'react'
 import { Text, TextInput, TextStyle, View, ViewStyle } from 'react-native'
 import ActionSheet, { ActionSheetRef, SheetManager, SheetProps } from 'react-native-actions-sheet'
-
 /* usage:
   SheetManager.show('confirm-sheet', {
     onClose: (data: any) => {
@@ -23,7 +24,6 @@ import ActionSheet, { ActionSheetRef, SheetManager, SheetProps } from 'react-nat
     }
   })
 **/
-
 const ConfirmActionSheet = (props: SheetProps) => {
   const { theme } = useTheme()
   const {
@@ -37,7 +37,6 @@ const ConfirmActionSheet = (props: SheetProps) => {
     }
   } = props
   const actionSheetRef = useRef<ActionSheetRef>(null)
-
   const buttonConfirm = (yes: boolean) => {
     console.log('buttonConfirm', yes, sheetId)
     SheetManager.hide(sheetId, {
@@ -45,7 +44,6 @@ const ConfirmActionSheet = (props: SheetProps) => {
       context: 'global'
     })
   }
-
   return (
     <ActionSheet
       id={sheetId}
@@ -91,7 +89,6 @@ const ConfirmActionSheet = (props: SheetProps) => {
     </ActionSheet>
   )
 }
-
 const styles = {
   safeareview: (theme: ITheme): ViewStyle => ({}),
   container: (theme: ITheme): ViewStyle => ({
@@ -128,5 +125,4 @@ const styles = {
     borderRadius: 20
   })
 }
-
 export default ConfirmActionSheet

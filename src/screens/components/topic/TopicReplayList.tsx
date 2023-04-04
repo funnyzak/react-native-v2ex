@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/04/28.
+ * Created by Leon<silenceace@gmail.com> at 2022-04-28 20:25:04.
+ * Last modified at 2022-11-09 16:15:36
  */
+
 import { ApiLib } from '@src/api'
 import { Placeholder, Spinner, useToast } from '@src/components'
 import { translate } from '@src/i18n'
@@ -10,18 +12,14 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import Animated, { LightSpeedInLeft } from 'react-native-reanimated'
 import TopicReplayItem from './TopicReplayItem'
-
 /**
  * TopicReplayList props
  */
 export interface TopicReplayListProps {
   containerStyle?: StyleProp<ViewStyle>
-
   topicId: number
-
   refreshCallBack?: (list: AppObject.TopicReply[]) => void
 }
-
 const TopicReplayList: React.FC<TopicReplayListProps> = ({
   containerStyle,
   topicId,
@@ -31,7 +29,6 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({
   const { showMessage } = useToast()
   const [refreshing, setRefreshing] = useState<boolean>(false)
   const [list, setList] = useState<AppObject.TopicReply[] | undefined>(undefined)
-
   const fetchReplay = useCallback(() => {
     ApiLib.reply.replies(topicId).then(
       (res) => {
@@ -46,29 +43,24 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({
       }
     )
   }, [topicId, ApiLib]) // eslint-disable-line react-hooks/exhaustive-deps
-
   useEffect(() => {
     onRefresh()
   }, [])
-
   const onRefresh = () => {
     setRefreshing(true)
     setList(undefined)
     fetchReplay()
   }
-
   const renderItemRow = ({ item }: { item: AppObject.TopicReply }) =>
     !item || item === null ? null : (
       <Animated.View key={item.id} entering={LightSpeedInLeft}>
         <TopicReplayItem key={item.id} containerStyle={styles.itemContainer(theme)} info={item} />
       </Animated.View>
     )
-
   const renderContent = () => {
     if (!list) {
       return <Spinner style={{ marginTop: 50 }} />
     }
-
     if (list.length > 0) {
       return <View>{list.map((v) => renderItemRow({ item: v }))}</View>
     }
@@ -81,10 +73,8 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({
       />
     )
   }
-
   return <View style={[styles.container(theme), containerStyle]}>{renderContent()}</View>
 }
-
 /**
  * @description styles settings
  */
@@ -94,5 +84,4 @@ const styles = {
   }),
   itemContainer: (theme: ITheme): ViewStyle => ({})
 }
-
 export default TopicReplayList

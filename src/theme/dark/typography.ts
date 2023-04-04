@@ -1,22 +1,20 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-03-03 18:01:46.
+ * Last modified at 2022-04-11 19:23:02
+ */
+
 import { Platform } from 'react-native'
 import { IThemeTypography } from '../types'
 import colors from './colors'
-
 const fontFamily = Platform.select({ android: 'sans-serif', ios: 'Helvetica' })
 const fontWeightRegular = 'normal'
 const fontWeightSemiBold = '600'
 const fontWeightBold = 'bold'
-
 const appbarTitleTextColor = colors.appbarTint
 const titleTextColor = colors.titleText
 const bodyTextColor = colors.bodyText
 const captionTextColor = colors.captionText
-
 const typographys: IThemeTypography = {
-  /**
-   * Title is reserved for the title of a screen(Toolbar)
-   * and the titles of Modal dialogs.
-   */
   titleText: {
     fontFamily,
     color: appbarTitleTextColor,
@@ -144,5 +142,4 @@ const typographys: IThemeTypography = {
     color: colors.titleText
   }
 }
-
 export default typographys

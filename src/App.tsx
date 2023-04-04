@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/2/21.
+ * Created by Leon<silenceace@gmail.com> at 2022-02-18 21:26:32.
+ * Last modified at 2023-03-05 22:33:59
  */
+
 import { persistor, store } from '@src/store'
 import React from 'react'
 import { Provider } from 'react-redux'
@@ -9,9 +11,7 @@ import { Spinner } from './components/common'
 import { onAppStart } from './helper/app'
 import { AppNavigationContainer } from './navigation/Navigator'
 import { ThemeProvider } from './theme'
-
 onAppStart(store)
-
 const App = () => {
   return (
     <Provider store={store}>
@@ -23,5 +23,4 @@ const App = () => {
     </Provider>
   )
 }
-
 export default App

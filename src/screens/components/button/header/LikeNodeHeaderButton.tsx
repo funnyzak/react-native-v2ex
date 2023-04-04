@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/05/5.
+ * Created by Leon<silenceace@gmail.com> at 2022-05-28 19:56:02.
+ * Last modified at 2022-10-20 18:07:33
  */
+
 import { interestNode, unInterestNode } from '@src/actions'
 import { useAppDispatch, useAppSelector } from '@src/hooks'
 import { useSession } from '@src/hooks/useSession'
@@ -11,7 +13,6 @@ import { AppObject } from '@src/types'
 import React, { useMemo } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import { HeaderButton } from '../../common'
-
 /**
  * Like Node Button
  * @param {
@@ -36,7 +37,6 @@ const LikeNodeHeaderButton = ({
     () => (logined ? interestNodes && interestNodes.findIndex((v) => v.id === node.id) >= 0 : false),
     [interestNodes]
   )
-
   const buttonPress = () => {
     if (!logined) {
       NavigationService.navigate(ROUTES.SignIn)
@@ -48,7 +48,6 @@ const LikeNodeHeaderButton = ({
       }
     }
   }
-
   return (
     <HeaderButton
       text={translate(`common.${isInterest ? 'cancel' : 'follow'}`)}
@@ -58,5 +57,4 @@ const LikeNodeHeaderButton = ({
     />
   )
 }
-
 export default LikeNodeHeaderButton

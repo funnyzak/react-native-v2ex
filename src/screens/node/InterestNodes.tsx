@@ -1,3 +1,8 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-04-01 17:54:02.
+ * Last modified at 2022-10-20 18:07:33
+ */
+
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import { Placeholder } from '@src/components'
 import { translate } from '@src/i18n'
@@ -10,9 +15,7 @@ import { View } from 'react-native'
 import { connect } from 'react-redux'
 import { NeedLogin } from '../components'
 import { NodeTopicListScreen } from '../topic'
-
 const Tab = createMaterialTopTabNavigator()
-
 const InterestNodes = ({
   route,
   navigation,
@@ -94,9 +97,7 @@ const InterestNodes = ({
     </View>
   )
 }
-
 const mapStateToProps = ({ member: { interestNodes } }: RootState) => {
   return { likeNodes: interestNodes }
 }
-
 export default connect(mapStateToProps)(InterestNodes)

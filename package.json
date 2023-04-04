@@ -5,6 +5,7 @@
   "main": "index.js",
   "private": false,
   "scripts": {
+    "add:copyright": "curl -sSL https://raw.githubusercontent.com/funnyzak/batch-copyright-updater/main/addCopyright.js | node /dev/stdin src 'Leon' 'silenceace@gmail.com' '.tsx,.ts,.js' 0",
     "postinstall": "patch-package",
     "android": "react-native run-android",
     "ios": "react-native run-ios",

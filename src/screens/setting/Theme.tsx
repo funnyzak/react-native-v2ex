@@ -1,3 +1,8 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-03-04 19:20:02.
+ * Last modified at 2022-04-19 17:04:45
+ */
+
 import * as Actions from '@src/actions'
 import { translate } from '@src/i18n'
 import { ThemeSettingScreenProps as ScreenProps } from '@src/navigation/routes'
@@ -7,7 +12,6 @@ import React, { useMemo } from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
 import { TableList, TableRow } from '../components'
-
 const Theme = ({
   themeName,
   setTheme
@@ -24,7 +28,6 @@ const Theme = ({
     [themeName]
   )
   const { theme, resetTheme } = useTheme()
-
   return (
     <View style={SylCommon.Layout.fill}>
       <TableList containerStyle={[{ marginTop: theme.spacing.small }]}>
@@ -45,9 +48,7 @@ const Theme = ({
     </View>
   )
 }
-
 const mapStateToProps = ({ setting: { theme } }: { setting: IState.SettingState }) => {
   return { themeName: theme }
 }
-
 export default connect(mapStateToProps, { setTheme: Actions.setTheme })(Theme)

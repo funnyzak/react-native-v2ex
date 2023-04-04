@@ -1,17 +1,17 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/11/09.
+ * Created by Leon<silenceace@gmail.com> at 2022-03-30 22:08:54.
+ * Last modified at 2022-11-09 16:17:41
  */
+
 import React from 'react'
 import { View, ViewStyle } from 'react-native'
 import { connect } from 'react-redux'
-
 import { CacheSettingScreenProps as ScreenProps } from '@src/navigation'
 import { SylCommon, useTheme } from '@src/theme'
 import { IState, ITheme } from '@src/types'
 import { TableList, TableRow } from '../components'
 import { useToast } from '@src/components'
 import { translate } from '@src/i18n'
-
 const CacheSetting = ({ route, navigation, loading }: ScreenProps) => {
   const { theme } = useTheme()
   const { showMessage } = useToast()
@@ -21,7 +21,6 @@ const CacheSetting = ({ route, navigation, loading }: ScreenProps) => {
       text2: translate('label.underConstruction')
     })
   }
-
   return (
     <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>
       <TableList containerStyle={[{ marginTop: theme.spacing.small }]}>
@@ -32,7 +31,6 @@ const CacheSetting = ({ route, navigation, loading }: ScreenProps) => {
     </View>
   )
 }
-
 /**
  * @description styles settings
  */
@@ -41,10 +39,8 @@ const styles = {
     flex: 1
   })
 }
-
 const mapStateToProps = ({ ui: { login } }: { ui: IState.UIState }) => {
   const { error, success, loading } = login
   return { error, success, loading }
 }
-
 export default connect(mapStateToProps)(CacheSetting)

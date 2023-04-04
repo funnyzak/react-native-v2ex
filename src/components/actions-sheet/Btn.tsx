@@ -1,12 +1,15 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-11-05 20:08:36.
+ * Last modified at 2022-11-05 20:08:36
+ */
+
 import React from 'react'
 import { ColorValue, GestureResponderEvent, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
-
 type MenuButtonProps = {
   title: string
   onPress?: ((event: GestureResponderEvent) => void) | undefined
   color?: ColorValue | undefined
 }
-
 function MenuButton({ title, color, onPress }: MenuButtonProps) {
   return (
     <TouchableHighlight accessible={true} underlayColor={'rgba(0, 0, 0, 0.15)'} onPress={onPress}>
@@ -16,7 +19,6 @@ function MenuButton({ title, color, onPress }: MenuButtonProps) {
     </TouchableHighlight>
   )
 }
-
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
@@ -33,5 +35,4 @@ const styles = StyleSheet.create({
     color: '#1A212E'
   }
 })
-
 export default MenuButton

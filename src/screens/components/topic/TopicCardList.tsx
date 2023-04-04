@@ -1,3 +1,8 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-04-15 21:52:35.
+ * Last modified at 2022-11-09 15:33:35
+ */
+
 import { Placeholder, Spinner } from '@src/components'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
@@ -7,15 +12,9 @@ import React from 'react'
 import { FlatList, StyleProp, View, ViewStyle } from 'react-native'
 import Animated, { LightSpeedInLeft, LightSpeedInRight } from 'react-native-reanimated'
 import TopicCardItem from './TopicCardItem'
-
 export interface TopicCardListProps {
-  /**
-   * container style
-   */
   containerStyle?: StyleProp<ViewStyle>
-
   itemContainerStyle?: StyleProp<ViewStyle>
-
   onRowPress?: (topic: AppObject.Topic) => void
   canLoadMoreContent?: boolean
   topics?: Array<AppObject.Topic>
@@ -27,10 +26,8 @@ export interface TopicCardListProps {
    * Display Style
    */
   displayStyle?: 'simple' | 'full' | 'auto'
-
   useFlatList?: boolean
 }
-
 const TopicCardList: React.FC<TopicCardListProps> = ({
   useFlatList = true,
   containerStyle,
@@ -45,12 +42,10 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
   refreshCallback
 }: TopicCardListProps) => {
   const { theme } = useTheme()
-
   const onItemPress = (topic: AppObject.Topic) => {
     if (onRowPress) onRowPress(topic)
     NavigationService.navigate(ROUTES.TopicDetail, { topicId: topic.id })
   }
-
   const renderItemRow = ({ item }: { item: AppObject.Topic }) =>
     !item || item === null ? null : (
       <Animated.View key={item.id} entering={LightSpeedInLeft}>
@@ -62,7 +57,6 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
         />
       </Animated.View>
     )
-
   const renderFooter = () => {
     if (canLoadMoreContent) {
       return <Spinner style={{ padding: theme.spacing.large }} />
@@ -76,14 +70,11 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
     }
     return null
   }
-
   const renderItemSeparator = () => <View style={styles.itemSeparator(theme)} />
-
   const renderContent = () => {
     if (!topics) {
       return <Spinner style={{ marginTop: 50 }} />
     }
-
     if (topics.length > 0) {
       return useFlatList ? (
         <FlatList
@@ -116,10 +107,8 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
       )
     }
   }
-
   return <View style={[styles.container(theme), containerStyle]}>{renderContent()}</View>
 }
-
 /**
  * @description styles settings
  */
@@ -134,5 +123,4 @@ const styles = {
     height: 0
   })
 }
-
 export default TopicCardList

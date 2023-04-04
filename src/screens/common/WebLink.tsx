@@ -1,13 +1,16 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-03-16 12:22:20.
+ * Last modified at 2022-10-15 21:47:22
+ */
+
 import React, { useEffect, useLayoutEffect, useMemo, useRef } from 'react'
 import { WebView } from 'react-native-webview'
-
 import { Spinner } from '@src/components'
 import { translate } from '@src/i18n'
 import { WebViewerScreenProps as ScreenProps } from '@src/navigation/routes'
 import { SylCommon, useTheme } from '@src/theme'
 import { linking } from '@src/utils'
 import { HeaderButton } from '../components'
-
 const WebLink = ({ route, navigation }: ScreenProps) => {
   const { theme } = useTheme()
   const webViewRef = useRef<WebView>(null)
@@ -16,13 +19,11 @@ const WebLink = ({ route, navigation }: ScreenProps) => {
     () => (!route.params.url.startsWith('http') ? `http://${route.params.url}` : route.params.url),
     [route]
   )
-
   useEffect(() => {
     if (loading) {
       navigation.setOptions({ title: translate('placeholder.loading') })
     }
   })
-
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -45,7 +46,6 @@ const WebLink = ({ route, navigation }: ScreenProps) => {
       )
     })
   }, [navigation]) // eslint-disable-line react-hooks/exhaustive-deps
-
   return (
     <>
       {loading && <Spinner text={translate('placeholder.loading')} style={SylCommon.Layout.fill} />}
@@ -60,13 +60,11 @@ const WebLink = ({ route, navigation }: ScreenProps) => {
           const { nativeEvent } = syntheticEvent
           setLoading(false)
           navigation.setOptions({ title: translate('errors.error') })
-
           console.warn('WebView error: ', nativeEvent)
         }}
         onLoadEnd={(syntheticEvent) => {
           const { nativeEvent } = syntheticEvent
           setLoading(false)
-
           navigation.setOptions({
             title: !route.params.title ? nativeEvent.title : route.params.title
           })
@@ -75,5 +73,4 @@ const WebLink = ({ route, navigation }: ScreenProps) => {
     </>
   )
 }
-
 export default WebLink

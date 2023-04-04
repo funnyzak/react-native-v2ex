@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/04/30.
+ * Created by Leon<silenceace@gmail.com> at 2022-03-30 22:08:54.
+ * Last modified at 2022-10-20 18:07:33
  */
+
 import { NodeDetailScreenProps as ScreenProps } from '@src/navigation/routes'
 import { RootState } from '@src/store'
 import { SylCommon, useTheme } from '@src/theme'
@@ -10,7 +12,6 @@ import { View } from 'react-native'
 import { connect } from 'react-redux'
 import { NodeInfoCard, NodeTopicTabList } from '../components'
 import { LikeNodeHeaderButton } from '../components/button'
-
 const NodeDetail = ({
   interestNodes,
   route,
@@ -21,7 +22,6 @@ const NodeDetail = ({
   const { theme } = useTheme()
   const nodeName = useMemo(() => route.params.nodeName, [route])
   const [info, setInfo] = useState<AppObject.Node | undefined>(undefined)
-
   useEffect(() => {
     if (info) {
       navigation.setOptions({
@@ -30,7 +30,6 @@ const NodeDetail = ({
       })
     }
   }, [interestNodes, info]) // eslint-disable-line react-hooks/exhaustive-deps
-
   return (
     <View style={SylCommon.Layout.fill}>
       <NodeInfoCard nodeid={nodeName} loadedCallback={setInfo} />
@@ -38,9 +37,7 @@ const NodeDetail = ({
     </View>
   )
 }
-
 const mapStateToProps = ({ member: { interestNodes } }: RootState) => {
   return { interestNodes }
 }
-
 export default connect(mapStateToProps, {})(NodeDetail)

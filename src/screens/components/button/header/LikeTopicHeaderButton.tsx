@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/05/27.
+ * Created by Leon<silenceace@gmail.com> at 2022-05-28 19:56:02.
+ * Last modified at 2022-10-20 18:07:33
  */
+
 import { likeTopic, unLikeTopic } from '@src/actions'
 import { useAppDispatch, useAppSelector } from '@src/hooks'
 import { useSession } from '@src/hooks/useSession'
@@ -11,7 +13,6 @@ import { AppObject } from '@src/types'
 import React, { useMemo } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import { HeaderButton } from '../../common'
-
 /**
  * Like Topic Button
  * @param {
@@ -31,13 +32,11 @@ const LikeTopicHeaderButton = ({
   const { theme } = useTheme()
   const { logined } = useSession()
   const { likeTopics } = useAppSelector((RootState) => RootState.member)
-
   const dispatch = useAppDispatch()
   const isLike = useMemo(
     () => (logined ? likeTopics && likeTopics.findIndex((v) => v.id === topic.id) >= 0 : false),
     [likeTopics]
   )
-
   const buttonPress = () => {
     if (!logined) {
       NavigationService.navigate(ROUTES.SignIn)
@@ -49,7 +48,6 @@ const LikeTopicHeaderButton = ({
       }
     }
   }
-
   return (
     <HeaderButton
       text={translate(`common.${isLike ? 'cancel' : 'favorite'}`)}
@@ -59,5 +57,4 @@ const LikeTopicHeaderButton = ({
     />
   )
 }
-
 export default LikeTopicHeaderButton

@@ -1,5 +1,9 @@
-// import BugSnag from '@bugsnag/react-native'
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-02-23 22:06:29.
+ * Last modified at 2022-11-05 20:08:36
+ */
 
+// import BugSnag from '@bugsnag/react-native'
 // BugSnag.start({
 //   context: 'context',
 //   onBreadcrumb: (breadcrumb) => {
@@ -9,7 +13,6 @@
 //     console.log('onError', event)
 //     cb(null, true)
 //   },
-
 //   logger: {
 //     debug: (...args) => {
 //       console.log('debug', args)
@@ -35,13 +38,10 @@
 //     email: 'email'
 //   }
 // })
-
 // export default BugSnag
-
 export const logError = (error: any) => {
   console.log(error)
 }
-
 export const logInfo = (...info: any[]) => {
   if (info[0] instanceof Error) {
     console.error(info)

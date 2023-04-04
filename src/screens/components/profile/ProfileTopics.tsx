@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/04/29.
+ * Created by Leon<silenceace@gmail.com> at 2022-04-29 15:02:27.
+ * Last modified at 2022-10-20 18:07:33
  */
+
 import { Placeholder, useToast } from '@src/components'
 import { translate } from '@src/i18n'
 import { ITheme, useTheme } from '@src/theme'
@@ -10,25 +12,20 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import { TabCardContainer } from '../common'
 import { TopicCardList } from '../topic'
-
 /**
  * ProfileTopics props
  */
 export interface ProfileTopicsProps {
   containerStyle?: StyleProp<ViewStyle>
-
   username: string
 }
-
 const ProfileTopics: React.FC<ProfileTopicsProps> = ({ containerStyle, username }: ProfileTopicsProps) => {
   const { theme } = useTheme()
   const { showMessage } = useToast()
   const [list, setList] = useState<AppObject.Topic[] | undefined>(undefined)
-
   useEffect(() => {
     fetchTopics()
   }, [username])
-
   const fetchTopics = useCallback(() => {
     ApiLib.topic
       .topics(username, 'username')
@@ -43,7 +40,6 @@ const ProfileTopics: React.FC<ProfileTopicsProps> = ({ containerStyle, username 
         })
       })
   }, [username])
-
   const renderContent = () => {
     return (
       <>
@@ -70,14 +66,11 @@ const ProfileTopics: React.FC<ProfileTopicsProps> = ({ containerStyle, username 
       </>
     )
   }
-
   return renderContent()
 }
-
 const styles = {
   container: (theme: ITheme): ViewStyle => ({
     marginTop: theme.spacing.small
   })
 }
-
 export default ProfileTopics

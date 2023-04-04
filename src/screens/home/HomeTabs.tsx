@@ -1,3 +1,8 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-03-09 15:59:19.
+ * Last modified at 2022-04-15 11:07:42
+ */
+
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import { useAppSelector } from '@src/hooks'
 import { HomeTabsScreenProps, HOME_NODES as tabs, NODE_TAB_TYPE } from '@src/navigation'
@@ -5,18 +10,14 @@ import { RootState } from '@src/store'
 import { useTheme } from '@src/theme'
 import React, { useMemo } from 'react'
 import { HomeTabNodeTopicListScreen } from '../topic'
-
 const Tab = createMaterialTopTabNavigator()
-
 const TopicTabList = ({}: HomeTabsScreenProps) => {
   const { theme } = useTheme()
   const isLogged = useAppSelector((state: RootState) => (state.member ? true : false))
-
   const filterNodes = useMemo(
     () => tabs.filter((item) => !item.loginRequired || (item.loginRequired && isLogged)),
     [isLogged]
   )
-
   return (
     <Tab.Navigator
       initialLayout={{ width: theme.dimens.WINDOW_WIDTH }}
@@ -81,5 +82,4 @@ const TopicTabList = ({}: HomeTabsScreenProps) => {
     </Tab.Navigator>
   )
 }
-
 export default TopicTabList

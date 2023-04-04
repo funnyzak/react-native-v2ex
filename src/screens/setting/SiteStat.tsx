@@ -1,3 +1,8 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-03-30 22:08:54.
+ * Last modified at 2022-10-20 18:07:33
+ */
+
 import { translate } from '@src/i18n'
 import { SiteStatScreenProps as ScreenProps } from '@src/navigation/routes'
 import { SylCommon, useTheme } from '@src/theme'
@@ -6,7 +11,6 @@ import React from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
 import { TableList, TableRow } from '../components'
-
 const SiteStat = ({
   siteStat
 }: ScreenProps & {
@@ -30,9 +34,7 @@ const SiteStat = ({
     </View>
   )
 }
-
 const mapStateToProps = ({ app: { siteStat } }: { app: IState.AppState }) => {
   return { siteStat }
 }
-
 export default connect(mapStateToProps)(SiteStat)

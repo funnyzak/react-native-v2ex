@@ -1,3 +1,8 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-03-30 22:08:54.
+ * Last modified at 2022-04-19 17:04:45
+ */
+
 import { OPENSOURCE_LIST } from '@src/config/constants'
 import { OpenSourceLicenseScreenProps as ScreenProps, ROUTES } from '@src/navigation/routes'
 import { SylCommon, useTheme } from '@src/theme'
@@ -6,7 +11,6 @@ import React from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
 import { TableList, TableRow } from '../components'
-
 const OpenSourceLicense = ({ navigation }: ScreenProps) => {
   const { theme } = useTheme()
   return (
@@ -26,5 +30,4 @@ const OpenSourceLicense = ({ navigation }: ScreenProps) => {
     </View>
   )
 }
-
 export default connect()(OpenSourceLicense)

@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/04/28.
+ * Created by Leon<silenceace@gmail.com> at 2022-04-28 20:43:52.
+ * Last modified at 2022-10-20 18:07:33
  */
+
 import { Avatar } from '@src/components'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
@@ -10,16 +12,13 @@ import dayjs from 'dayjs'
 import React, { useMemo } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import { BorderLine, RenderHTML, TextWithIconPress } from '../common'
-
 /**
  * TopicReplayItem props
  */
 export interface TopicReplayItemProps {
   containerStyle?: StyleProp<ViewStyle>
-
   info: AppObject.TopicReply
 }
-
 const TopicReplayItem: React.FC<TopicReplayItemProps> = ({ containerStyle, info }: TopicReplayItemProps) => {
   const { theme } = useTheme()
   const avatar_link = useMemo(() => (info.member ? info.member.avatar || info.member.avatar_normal : undefined), [info])
@@ -27,7 +26,6 @@ const TopicReplayItem: React.FC<TopicReplayItemProps> = ({ containerStyle, info 
     <View style={[styles.container(theme), containerStyle]}>
       <View style={styles.infoContainer(theme)}>
         <Avatar size={40} source={{ uri: avatar_link }} username={info.member?.username} style={styles.avatar(theme)} />
-
         <View style={styles.infoMain(theme)}>
           <View style={styles.infoMainItem(theme)}>
             <TextWithIconPress
@@ -53,7 +51,6 @@ const TopicReplayItem: React.FC<TopicReplayItemProps> = ({ containerStyle, info 
     </View>
   )
 }
-
 const styles = {
   container: (theme: ITheme): ViewStyle => ({
     paddingTop: theme.spacing.medium,
@@ -81,5 +78,4 @@ const styles = {
     justifyContent: 'space-between'
   })
 }
-
 export default TopicReplayItem

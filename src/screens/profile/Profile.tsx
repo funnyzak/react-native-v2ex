@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/03/4.
+ * Created by Leon<silenceace@gmail.com> at 2022-04-01 17:54:02.
+ * Last modified at 2022-10-20 18:07:33
  */
+
 import { logout as actionLogout } from '@src/actions'
 import { Spinner } from '@src/components'
 import { useMember } from '@src/hooks/useMember'
@@ -13,7 +15,6 @@ import { ScrollView } from 'react-native-gesture-handler'
 import { connect } from 'react-redux'
 import { ProfileDetail } from '../components'
 import { FollowPeopleHeaderButton, LogoutHeaderButton } from '../components/button'
-
 const Profile = ({
   route,
   navigation,
@@ -26,11 +27,9 @@ const Profile = ({
   const { theme } = useTheme()
   const username = useMemo(() => route.params.username, [route])
   const { member } = useMember({ userid: username })
-
   useEffect(() => {
     navigation.setOptions({ title: member?.username })
   }, [username, member])
-
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: member
@@ -43,7 +42,6 @@ const Profile = ({
         : undefined
     })
   }, [navigation, member])
-
   return (
     <ScrollView style={SylCommon.Layout.fill}>
       {member ? (
@@ -54,12 +52,10 @@ const Profile = ({
     </ScrollView>
   )
 }
-
 const mapStateToProps = ({ member }: { member: IState.MemberState }) => {
   const { profile: authMember } = member
   return { authMember }
 }
-
 export default connect(mapStateToProps, {
   logout: actionLogout
 })(Profile)

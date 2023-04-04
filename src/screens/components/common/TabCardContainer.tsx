@@ -1,27 +1,23 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/04/28.
+ * Created by Leon<silenceace@gmail.com> at 2022-04-28 20:04:54.
+ * Last modified at 2022-04-29 15:02:27
  */
+
 import { Text } from '@src/components'
 import { ITheme, SylCommon, useTheme } from '@src/theme'
 import React from 'react'
 import { Image, ImageSourcePropType, StyleProp, View, ViewStyle } from 'react-native'
 import { BorderLine } from './General'
-
 /**
  * TabCardContainer props
  */
 export interface TabCardContainerProps {
   containerStyle?: StyleProp<ViewStyle>
-
   title?: string
-
   icon?: ImageSourcePropType
-
   children?: React.ReactNode
-
   hasMore?: boolean
 }
-
 const TabCardContainer: React.FC<TabCardContainerProps> = ({
   containerStyle,
   title,
@@ -29,7 +25,6 @@ const TabCardContainer: React.FC<TabCardContainerProps> = ({
   children
 }: TabCardContainerProps) => {
   const { theme } = useTheme()
-
   const renderContent = () => {
     return (
       <View style={[SylCommon.Card.container(theme), styles.container(theme), containerStyle]}>
@@ -42,10 +37,8 @@ const TabCardContainer: React.FC<TabCardContainerProps> = ({
       </View>
     )
   }
-
   return renderContent()
 }
-
 const styles = {
   container: (theme: ITheme): ViewStyle => ({
     flexDirection: 'column'
@@ -61,5 +54,4 @@ const styles = {
     marginTop: theme.spacing.small
   })
 }
-
 export default TabCardContainer

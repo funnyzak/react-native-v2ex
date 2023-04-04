@@ -1,9 +1,13 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-03-01 16:42:43.
+ * Last modified at 2022-11-05 20:10:31
+ */
+
 import { useTheme } from '@src/theme'
 import { ITheme } from '@src/types'
 import React from 'react'
 import { TextInput, TextInputProps as NativeTextInputProps, TextStyle, View, ViewStyle } from 'react-native'
 import { Text } from './Text'
-
 export interface TextInputProps extends NativeTextInputProps {
   label?: string
   assignRef?: (ref: TextInput) => void
@@ -11,7 +15,6 @@ export interface TextInputProps extends NativeTextInputProps {
   labelStyle?: ViewStyle
   inputStyle?: ViewStyle
 }
-
 const Input = ({
   label,
   value = '',
@@ -25,7 +28,6 @@ const Input = ({
   ...props
 }: TextInputProps) => {
   const { theme } = useTheme()
-
   return (
     <View style={[styles.containerStyle(theme), containerStyle]}>
       {label && (
@@ -49,7 +51,6 @@ const Input = ({
     </View>
   )
 }
-
 const styles = {
   containerStyle: (_theme: ITheme): ViewStyle => ({
     height: _theme.dimens.defaultInputBoxHeight,
@@ -71,5 +72,4 @@ const styles = {
     flex: 1
   })
 }
-
 export { Input }

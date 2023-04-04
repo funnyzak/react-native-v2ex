@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/04/07.
+ * Created by Leon<silenceace@gmail.com> at 2022-04-01 17:54:02.
+ * Last modified at 2022-10-20 18:07:33
  */
+
 import { Placeholder } from '@src/components'
 import { translate } from '@src/i18n'
 import { FollowingScreenProps as ScreenProps } from '@src/navigation'
@@ -11,7 +13,6 @@ import React from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
 import { NeedLogin, ProfileCardList } from '../components'
-
 const Following = ({
   followPeoples
 }: ScreenProps & {
@@ -28,14 +29,11 @@ const Following = ({
       </NeedLogin>
     )
   }
-
   return <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>{renderContent()}</View>
 }
-
 const mapStateToProps = ({ member: { followPeoples } }: RootState) => {
   return {
     followPeoples
   }
 }
-
 export default connect(mapStateToProps)(Following)

@@ -1,3 +1,8 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-02-23 21:38:16.
+ * Last modified at 2022-10-20 17:37:56
+ */
+
 import {
   Action,
   APP_AUTH,
@@ -20,7 +25,6 @@ const INITIAL_STATE: IState.MemberState = {
   followPeoples: [],
   likeTopics: []
 }
-
 export default (state: IState.MemberState = INITIAL_STATE, action: Action): IState.MemberState => {
   switch (action.type) {
     case MEMBER_INSEREST_NODE:

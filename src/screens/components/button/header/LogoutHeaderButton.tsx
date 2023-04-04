@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/05/5.
+ * Created by Leon<silenceace@gmail.com> at 2022-05-28 19:56:02.
+ * Last modified at 2022-11-08 23:51:01
  */
+
 import { logout as actionLogout } from '@src/actions'
 import { useAppDispatch } from '@src/hooks'
 import { useSession } from '@src/hooks/useSession'
@@ -12,7 +14,6 @@ import React from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import { SheetManager } from 'react-native-actions-sheet'
 import { HeaderButton } from '../../common'
-
 /**
  * Logout Header Button
  * @param {
@@ -32,7 +33,6 @@ const LogoutHeaderButton = ({
   const { theme } = useTheme()
   const { profile } = useSession()
   const dispatch = useAppDispatch()
-
   return member && profile && member.id === profile.id ? (
     <>
       <HeaderButton
@@ -55,5 +55,4 @@ const LogoutHeaderButton = ({
     </>
   ) : null
 }
-
 export default LogoutHeaderButton

@@ -1,3 +1,8 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-02-23 21:43:03.
+ * Last modified at 2022-11-08 23:51:01
+ */
+
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { ApiLib } from '@src/api'
 import { AppApiOptions } from '@src/config/app.config'
@@ -8,34 +13,24 @@ import DeviceInfo from 'react-native-device-info'
 import { Dispatch } from 'redux'
 import { APP_INIT, APP_INIT_ERROR, APP_SITE_INFO, APP_SITE_STAT } from '../types'
 import { fetchAllNode } from './NodeActions'
-
 export const initV2ex = () => {
   ApiLib.setOptions(AppApiOptions)
-
   return async (dispatch: Dispatch, _getState: () => RootState) => {
     try {
       ApiLib.init()
-
       const customerToken = await AsyncStorage.getItem(MEMBER_TOKEN_KEY)
-
       ApiLib.setUserAgent(await DeviceInfo.getUserAgent())
       if (customerToken !== null) {
         ApiLib.setToken(customerToken)
       }
-
       dispatchSiteInfo(dispatch)
-
       dispatchSiteStat(dispatch)
-
       dispatch(fetchAllNode() as any)
-
       dispatch({
         type: APP_INIT,
         payload: {
           v2ex: ApiLib,
-
           name: await DeviceInfo.getApplicationName(),
-
           deviceInfo: {
             brand: await DeviceInfo.getBrand(),
             bundleId: await DeviceInfo.getBundleId(),
@@ -44,7 +39,6 @@ export const initV2ex = () => {
             uniqueId: await DeviceInfo.getUniqueId(),
             userAgent: await DeviceInfo.getUserAgent()
           },
-
           version: {
             version: await DeviceInfo.getVersion(),
             buildId: await DeviceInfo.getBuildNumber(),
@@ -61,11 +55,9 @@ export const initV2ex = () => {
     }
   }
 }
-
 const dispatchSiteInfo = async (dispatch: Dispatch) => {
   try {
     const site_info = await ApiLib.siteInfo()
-
     dispatch({
       type: APP_SITE_INFO,
       payload: site_info
@@ -74,11 +66,9 @@ const dispatchSiteInfo = async (dispatch: Dispatch) => {
     logError(e)
   }
 }
-
 const dispatchSiteStat = async (dispatch: Dispatch) => {
   try {
     const site_stat = await ApiLib.siteStat()
-
     dispatch({
       type: APP_SITE_STAT,
       payload: site_stat

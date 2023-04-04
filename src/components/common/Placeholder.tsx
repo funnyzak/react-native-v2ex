@@ -1,9 +1,13 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-04-07 09:12:34.
+ * Last modified at 2022-05-27 20:58:00
+ */
+
 import React from 'react'
 import { View, ViewStyle, TextStyle, ImageSourcePropType, Image, StyleProp } from 'react-native'
 import { useTheme, ITheme } from '@src/theme'
 import { Text, Button } from '.'
 import { translate } from '@src/i18n'
-
 const Placeholder = ({
   containerStyle,
   displayType = 'none',
@@ -20,7 +24,6 @@ const Placeholder = ({
   buttonPress?: () => void
 }) => {
   const { theme } = useTheme()
-
   const renderIcon = () => {
     if (displayType === 'none') return null
     return (
@@ -33,12 +36,10 @@ const Placeholder = ({
       </View>
     )
   }
-
   return (
     <View style={[styles.containerStyle(theme), containerStyle]}>
       {renderIcon()}
       <Text style={styles.textStyle(theme)}>{placeholderText ?? translate('placeholder.empty')}</Text>
-
       {buttonText && (
         <Button style={styles.buttonContainer(theme)} disabled={false} type="small" onPress={buttonPress}>
           {buttonText}
@@ -47,7 +48,6 @@ const Placeholder = ({
     </View>
   )
 }
-
 const styles = {
   containerStyle: (_theme: ITheme): ViewStyle => ({
     flex: 1,
@@ -71,5 +71,4 @@ const styles = {
     marginTop: _theme.spacing.small
   })
 }
-
 export { Placeholder }

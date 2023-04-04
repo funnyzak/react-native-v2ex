@@ -1,3 +1,8 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-02-28 13:33:51.
+ * Last modified at 2022-10-27 14:09:11
+ */
+
 import { AppAPI, AppObject } from '@src/types'
 import { ThemeType } from '@src/theme'
 import { LanguageTagType } from '@src/i18n'
@@ -12,15 +17,9 @@ export namespace IState {
     setting: SettingState
     cache: CacheState
   }
-
-  /**
-   * 全局状态
-   */
   export interface AppState {
     v2ex?: AppAPI.APP
-
     name?: string
-
     deviceInfo?: {
       brand: string
       bundleId: string
@@ -29,19 +28,16 @@ export namespace IState {
       userAgent: string
       systemVersion: string
     }
-
     version: {
       version: string
       buildId?: string
       buildNumber?: string
     }
-
     latestVersion?: {
       version: string
       buildId: string
       features: string
     }
-
     aboutUs: {
       author: string
       email: string
@@ -54,55 +50,43 @@ export namespace IState {
       telegram: string
       copyright: string
     }
-
     siteInfo?: AppObject.SiteInfo
-
     siteStat?: AppObject.SiteStat
-
     allNode?: AppObject.Node[]
-
     errorMessage?: Error[]
   }
-
   export interface CacheState {
     members: {
       pullTime: number
       info: AppObject.Member
     }[]
-
     nodes: {
       pullTime: number
       info: AppObject.Node
     }[]
-
     /**
      * 当前登录用户
      */
     currentSessionMember?: AppObject.Member
-
     /**
      * 会员感兴趣的nodes
      */
     membersInterestNodes: Record<number, Array<AppObject.Node> | undefined>
-
     /**
      * 会员follow的人
      */
     membersFollowing: Record<number, Array<AppObject.Member> | undefined>
-
     /**
      * 会员喜欢的帖子
      */
     membersLikeTopics: Record<number, Array<AppObject.Topic> | undefined>
   }
-
   /**
    * 通用页面状态
    */
   export interface UIState {
     login: {
       tokenGeneratedLink: string
-
       error: string | null
       success: string | null
       loading: boolean
@@ -111,7 +95,6 @@ export namespace IState {
       processing: boolean
     }
   }
-
   /**
    * 节点状态
    */
@@ -145,7 +128,6 @@ export namespace IState {
      */
     loadMore: boolean
   }
-
   /**
    * Node Topics状态
    */
@@ -155,7 +137,6 @@ export namespace IState {
      */
     list: TabNodeState[]
   }
-
   /**
    * 用户状态
    */
@@ -164,22 +145,18 @@ export namespace IState {
      * 用户令牌信息
      */
     token?: AppObject.MemberToken
-
     /**
      * 用户信息
      */
     profile?: AppObject.Member
-
     /**
      * 用户发布的主题
      */
     topics?: AppObject.Topic[]
-
     /**
      * 用户信息拉取
      */
     refreshing: boolean
-
     /**
      * 关注的人
      */
@@ -188,18 +165,15 @@ export namespace IState {
      * 收藏的主题
      */
     likeTopics: AppObject.Topic[]
-
     /**
      * 已读主题
      */
     readedTopics?: AppObject.Topic[]
-
     /**
      * 感兴趣的节点
      */
     interestNodes: AppObject.Node[]
   }
-
   /**
    * 应用设置状态
    */

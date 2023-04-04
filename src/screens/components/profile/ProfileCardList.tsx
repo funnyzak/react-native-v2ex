@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/05/27.
+ * Created by Leon<silenceace@gmail.com> at 2022-05-27 22:03:36.
+ * Last modified at 2022-10-20 18:07:33
  */
+
 import { Placeholder, Spinner } from '@src/components'
 import { translate } from '@src/i18n'
 import { SylCommon, useTheme } from '@src/theme'
@@ -9,25 +11,20 @@ import React from 'react'
 import { FlatList, StyleProp, View, ViewStyle } from 'react-native'
 import { BorderLine } from '../common'
 import SimpleProfileInfoCard from './SimpleProfileInfoCard'
-
 export interface ProfileCardListProps {
   /**
    * container style
    */
   containerStyle?: StyleProp<ViewStyle>
-
   itemContainerStyle?: StyleProp<ViewStyle>
-
   canLoadMoreContent?: boolean
   members?: Array<AppObject.Member>
   onEndReached?: () => void
   refreshControl?: React.ReactElement
   searchIndicator?: boolean
   refreshCallback?: () => void
-
   useFlatList?: boolean
 }
-
 const ProfileCardList: React.FC<ProfileCardListProps> = ({
   useFlatList = true,
   containerStyle,
@@ -40,7 +37,6 @@ const ProfileCardList: React.FC<ProfileCardListProps> = ({
   refreshCallback
 }: ProfileCardListProps) => {
   const { theme } = useTheme()
-
   const renderItemRow = ({ item }: { item: AppObject.Member }) =>
     !item || item === null ? null : (
       <SimpleProfileInfoCard
@@ -49,7 +45,6 @@ const ProfileCardList: React.FC<ProfileCardListProps> = ({
         info={item}
       />
     )
-
   const renderFooter = () => {
     if (canLoadMoreContent) {
       return <Spinner style={{ padding: theme.spacing.large }} />
@@ -63,14 +58,11 @@ const ProfileCardList: React.FC<ProfileCardListProps> = ({
     }
     return null
   }
-
   const renderItemSeparator = () => <BorderLine />
-
   const renderContent = () => {
     if (!members) {
       return <Spinner style={{ marginTop: 50 }} />
     }
-
     if (members.length > 0) {
       return useFlatList ? (
         <FlatList
@@ -97,10 +89,8 @@ const ProfileCardList: React.FC<ProfileCardListProps> = ({
       return <Placeholder buttonText={translate('button.tryAgain')} buttonPress={refreshCallback} />
     }
   }
-
   return <View style={[styles.container(theme), containerStyle]}>{renderContent()}</View>
 }
-
 /**
  * @description styles settings
  */
@@ -113,5 +103,4 @@ const styles = {
     paddingTop: theme.spacing.medium
   })
 }
-
 export default ProfileCardList

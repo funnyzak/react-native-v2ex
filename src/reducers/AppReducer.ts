@@ -1,3 +1,8 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-02-25 15:45:37.
+ * Last modified at 2022-10-20 17:37:56
+ */
+
 import {
   APP_INIT,
   APP_INIT_ERROR,
@@ -10,14 +15,12 @@ import {
   APP_ALL_NODE_INFO
 } from '../types'
 import { aboutUs } from '@src/config/app.config'
-
 const INITIAL_STATE: IState.AppState = {
   aboutUs,
   version: {
     version: '1.0.0'
   }
 }
-
 export default (state: IState.AppState = INITIAL_STATE, action: Action): IState.AppState => {
   switch (action.type) {
     case APP_INIT:

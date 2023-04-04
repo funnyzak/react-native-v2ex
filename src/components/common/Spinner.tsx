@@ -1,8 +1,12 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-02-24 10:14:09.
+ * Last modified at 2022-11-02 12:06:19
+ */
+
 import { ITheme, useTheme } from '@src/theme'
 import React from 'react'
 import { ActivityIndicator, StyleProp, TextStyle, View, ViewStyle } from 'react-native'
 import { Text } from './Text'
-
 const Spinner = ({
   size = 'large',
   style,
@@ -15,7 +19,6 @@ const Spinner = ({
   text?: string
 }) => {
   const { theme } = useTheme()
-
   return (
     <View
       style={[
@@ -41,9 +44,7 @@ const Spinner = ({
     </View>
   )
 }
-
 export { Spinner }
-
 const styles = {
   containerStyle: (_theme: ITheme): ViewStyle => ({
     paddingVertical: _theme.spacing.large,

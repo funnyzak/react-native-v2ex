@@ -1,10 +1,10 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/4/19.
+ * Created by Leon<silenceace@gmail.com> at 2022-04-19 20:42:19.
+ * Last modified at 2022-10-20 18:07:33
  */
 
 import { AppObject } from '@src/types'
 import { CACHE_EXPIRE_TIME } from '@src/config/constants'
-
 export const memberFromCache = (
   userid: number | string,
   list?: { pullTime: number; info: AppObject.Member }[],
@@ -21,7 +21,6 @@ export const memberFromCache = (
     )?.info ?? undefined
   )
 }
-
 export const nodeFromCache = (nodeid: number | string, list?: { pullTime: number; info: AppObject.Node }[]) => {
   if (!list || list.length === 0) {
     return undefined

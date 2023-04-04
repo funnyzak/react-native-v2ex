@@ -1,13 +1,14 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/05/22.
+ * Created by Leon<silenceace@gmail.com> at 2022-05-22 13:08:38.
+ * Last modified at 2022-10-15 21:47:22
  */
+
 import { NavigationService, ROUTES } from '@src/navigation'
 import { useTheme } from '@src/theme'
 import { ITheme } from '@src/types'
 import React from 'react'
 import { Alert, GestureResponderEvent, StyleProp, View, ViewStyle } from 'react-native'
 import RenderHtml, { MixedStyleRecord } from 'react-native-render-html'
-
 const RenderHTML = ({
   htmlString,
   containerStyle,
@@ -21,7 +22,6 @@ const RenderHTML = ({
   const source = {
     html: htmlString ?? ''
   }
-
   return (
     <View style={containerStyle}>
       <RenderHtml
@@ -33,7 +33,6 @@ const RenderHTML = ({
     </View>
   )
 }
-
 const contentTagsStyles = (theme: ITheme): MixedStyleRecord => {
   return {
     body: {
@@ -51,7 +50,6 @@ const contentTagsStyles = (theme: ITheme): MixedStyleRecord => {
     }
   }
 }
-
 const renderersProps = {
   a: {
     onPress: (event: GestureResponderEvent, href: string) => {
@@ -61,11 +59,9 @@ const renderersProps = {
         })
         return
       }
-
       const regexp = /about:\/{3}([\w]+)\/(\w+)/
       const match = href.match(regexp)
       const type = match && match.length > 1 ? match[1] : ''
-
       if (type === 't' && match && match[2] !== null) {
         NavigationService.navigate(ROUTES.TopicDetail, { topicId: match[2] })
       } else if (type === 'member' && match && match[2] !== null) {
@@ -78,5 +74,4 @@ const renderersProps = {
     }
   }
 }
-
 export default RenderHTML

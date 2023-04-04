@@ -1,3 +1,8 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-03-08 13:50:04.
+ * Last modified at 2022-03-11 15:30:32
+ */
+
 import {
   APP_NODE_NODE_TOPICS,
   APP_NODE_LOAD_ERROR,
@@ -9,7 +14,6 @@ import {
 } from '../types'
 import { HOME_NODES } from '@src/navigation/tabs'
 import { translate } from '@src/i18n'
-
 const INITIAL_STATE: IState.TabsState = {
   list: HOME_NODES.map((node) => ({
     error: null,
@@ -20,13 +24,10 @@ const INITIAL_STATE: IState.TabsState = {
     loadMore: false
   }))
 }
-
 export default (state: IState.TabsState = INITIAL_STATE, action: Action): IState.TabsState => {
   const nodeName = action.payload && action.payload.node
   let node = state.list.find((v) => v.nodeTab.name === nodeName)
-
   if (!node) return state
-
   switch (action.type) {
     case APP_NODE_NODE_TOPICS:
       node = { ...node, refreshing: false, success: '', error: '', list: action.payload.data }
@@ -69,7 +70,6 @@ export default (state: IState.TabsState = INITIAL_STATE, action: Action): IState
       node = { ...node }
       break
   }
-
   state.list = state.list.filter((v) => v.nodeTab.name !== nodeName).concat([node])
   return { ...state }
 }

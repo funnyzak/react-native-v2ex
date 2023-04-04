@@ -1,9 +1,10 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/03/09.
+ * Created by Leon<silenceace@gmail.com> at 2022-03-09 18:31:19.
+ * Last modified at 2022-05-27 21:34:46
  */
+
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native'
 import { ITheme } from './types'
-
 export const Layout = StyleSheet.create({
   column: {
     flexDirection: 'column'
@@ -27,7 +28,6 @@ export const Layout = StyleSheet.create({
     alignItems: 'flex-start'
   }
 })
-
 export const Card = {
   container: (theme: ITheme): ViewStyle => ({
     ...Layout.fullWidth,
@@ -35,13 +35,11 @@ export const Card = {
     paddingHorizontal: (theme.dimens.WINDOW_WIDTH - theme.dimens.layoutContainerWidth) / 2
   })
 }
-
 export const View = {
   background: (theme: ITheme): ViewStyle => ({
     backgroundColor: theme.colors.background
   })
 }
-
 export const Node = {
   nodeTitle: (theme: ITheme) => ({
     ...theme.typography.labelText,
@@ -51,7 +49,6 @@ export const Node = {
     color: theme.colors.secondary
   })
 }
-
 export const Divider = {
   item: (theme: ITheme): ViewStyle => ({
     height: 0.5,
@@ -60,7 +57,6 @@ export const Divider = {
     marginVertical: theme.spacing.medium
   })
 }
-
 export const Button = {
   textAction: (theme: ITheme): TextStyle => ({
     ...theme.typography.labelText,

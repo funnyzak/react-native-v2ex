@@ -1,5 +1,9 @@
-import { IThemeAssets } from '../types'
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-03-03 21:32:14.
+ * Last modified at 2022-05-21 16:56:19
+ */
 
+import { IThemeAssets } from '../types'
 const Assets: IThemeAssets = {
   images: {
     icons: {
@@ -114,5 +118,4 @@ const Assets: IThemeAssets = {
     }
   }
 }
-
 export default Assets

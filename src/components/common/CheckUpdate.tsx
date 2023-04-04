@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 11/8/2022 9:53:58 PM
+ * Created by Leon<silenceace@gmail.com> at 2022-11-08 23:51:44.
+ * Last modified at 2022-11-08 23:51:44
  */
+
 import { RELEASE_API } from '@src/config/constants'
 import { logInfo } from '@src/helper/logger'
 import { useAppSelector } from '@src/hooks'
@@ -9,12 +11,9 @@ import { resolve } from '@src/utils/promise'
 import { compareVersion } from '@src/utils/utils'
 import { useEffect } from 'react'
 import { SheetManager } from 'react-native-actions-sheet'
-
 interface CheckUpdateProps {}
-
 const CheckUpdate = ({}: CheckUpdateProps) => {
   const app = useAppSelector((state) => state.app)
-
   const requestRelease = async () => {
     try {
       const api_res = await fetch(RELEASE_API)
@@ -29,7 +28,6 @@ const CheckUpdate = ({}: CheckUpdateProps) => {
       throw e
     }
   }
-
   useEffect(() => {
     const showUpdate = (release: any) => {
       SheetManager.show('confirm-sheet', {
@@ -46,19 +44,14 @@ const CheckUpdate = ({}: CheckUpdateProps) => {
         }
       })
     }
-
     const checkUpdate = async () => {
       const [_err, rlt] = await resolve(requestRelease())
       if (_err) return
-
       const hasNew = compareVersion(rlt.tag_name, app.version.version) > 0
       if (hasNew) showUpdate(rlt)
     }
-
     checkUpdate()
   }, [])
-
   return null
 }
-
 export default CheckUpdate

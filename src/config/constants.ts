@@ -1,22 +1,20 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/2/24.
+ * Created by Leon<silenceace@gmail.com> at 2022-02-25 17:45:51.
+ * Last modified at 2022-11-08 23:51:44
  */
 
 /**
  * 缓存时间
  */
 export const CACHE_EXPIRE_TIME = 1000 * 60 * 60 * 24 * 7 // 7 days
-
 /**
  * 日期格式化规则
  */
 export const DATE_FORMAT = 'DD/MM/YYYY'
-
 /**
  * 用户授权缓存key
  */
 export const MEMBER_TOKEN_KEY = 'memberToken'
-
 /**
  * 特殊节点名称
  */
@@ -24,40 +22,33 @@ export const SPECIAL_NODE_NAME_MAP = {
   LATEST: 'latest',
   HOT: 'hot'
 }
-
 export const REPO_NAME = 'funnyzak/react-native-v2ex'
 /**
  * 项目地址
  */
 export const REPO_GITHUB_URL = `https://github.com/${REPO_NAME}`
-
 /**
  * 帮助文档
  */
 export const HELP_PAGE_LINK = 'https://yycc.dev/2022/03/17/react-native-v2ex/'
-
 /**
  * 最新发布
  */
 export const RELEASE_NOTES_LINK = `${REPO_GITHUB_URL}/releases`
-
 /**
  * API JSON
  */
 export const RELEASE_API = `https://api.github.com/repos/${REPO_NAME}/releases/latest`
-
 declare type openSourceInfoType = {
   name: string
   repoUrl: string
 }
-
 /**
  * URLSchemes
  */
 export const URLSchemeList = {
   OpenApp: 'v2hub://run'
 }
-
 /**
  * 使用开源列表
  */

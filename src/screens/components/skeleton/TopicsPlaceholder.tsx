@@ -1,15 +1,11 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-04-01 10:44:43.
+ * Last modified at 2022-04-01 10:44:43
+ */
+
 import React from 'react'
 import { View } from 'react-native'
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
-
-/**
- *  // TODO: styles settings
- * Colors topic detail placeholder
- * @param {
- *   color = "#CCCCCC",
- * }
- * @returns
- */
 const TopicsPlaceholder = ({ color = '#CCCCCC' }: { color?: string }) => {
   return (
     <SkeletonPlaceholder>

@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/04/14.
+ * Created by Leon<silenceace@gmail.com> at 2022-03-03 11:30:16.
+ * Last modified at 2022-10-15 21:47:22
  */
+
 import { loginByToken } from '@src/actions'
 import { Button, Input, Text, useToast } from '@src/components'
 import { translate } from '@src/i18n'
@@ -12,7 +14,6 @@ import React, { useEffect, useState } from 'react'
 import { Image, ImageStyle, Pressable, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native'
 import { connect } from 'react-redux'
 import { SetStatusBar } from '../components'
-
 const Screen = ({
   navigation,
   loading = false,
@@ -26,31 +27,26 @@ const Screen = ({
   const { theme } = useTheme()
   const { showMessage } = useToast()
   const [keyboardRaise, setKeyboardRaise] = useState(false)
-
   const goNextRoute = () => {
     navigation.reset({
       index: 0,
       routes: [{ name: ROUTES.Main }]
     })
   }
-
   useEffect(() => {
     if (success) {
       showMessage({ type: 'success', text2: success })
       goNextRoute()
     }
   }, [success]) // eslint-disable-line react-hooks/exhaustive-deps
-
   useEffect(() => {
     if (error) {
       showMessage({ type: 'error', text2: error })
     }
   }, [error]) // eslint-disable-line react-hooks/exhaustive-deps
-
   const onLoginPress = () => {
     _auth(token)
   }
-
   const renderButtons = () => {
     return (
       <View>
@@ -70,7 +66,6 @@ const Screen = ({
       </View>
     )
   }
-
   return (
     <View
       style={[
@@ -128,7 +123,6 @@ const Screen = ({
     </View>
   )
 }
-
 /**
  * @description styles settings
  */
@@ -184,10 +178,8 @@ const styles = {
     ...theme.typography.labelText
   })
 }
-
 const mapStateToProps = ({ ui: { login } }: { ui: IState.UIState }) => {
   const { error, success, loading } = login
   return { error, success, loading }
 }
-
 export default connect(mapStateToProps, { auth: loginByToken })(Screen)

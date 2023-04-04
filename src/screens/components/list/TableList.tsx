@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/04/01.
+ * Created by Leon<silenceace@gmail.com> at 2022-04-01 14:00:14.
+ * Last modified at 2022-04-19 17:04:45
  */
+
 import { Text } from '@src/components'
 import { ITheme, useTheme } from '@src/theme'
 import React from 'react'
@@ -14,7 +16,6 @@ import {
   View,
   ViewStyle
 } from 'react-native'
-
 /**
  * Table Row Item Props
  */
@@ -23,27 +24,22 @@ export interface TableRowProps {
    * container style
    */
   containerStyle?: StyleProp<ViewStyle>
-
   /**
    * Optional
    */
   leftIcon?: ImageSourcePropType
-
   /**
    * Row title
    */
   title: string
-
   /**
    * highlight title
    */
   highlightTitle?: boolean
-
   /**
    * Row description
    */
   description?: string
-
   /**
    * value
    */
@@ -52,26 +48,21 @@ export interface TableRowProps {
    * Row right arrow icon
    */
   withArrow?: boolean
-
   /**
    * custom right icon
    */
   rightIcon?: ImageSourcePropType
-
   /**
    * Row right text
    */
   rightText?: string
-
   /**
    * press callback
    */
   onPress?: () => void
 }
-
 const TableRow: React.FC<TableRowProps> = (data: TableRowProps) => {
   const { theme } = useTheme()
-
   return (
     <TouchableOpacity onPress={data.onPress} style={[data.containerStyle, rowStyles.container(theme)]}>
       <View style={rowStyles.left(theme)}>
@@ -97,7 +88,6 @@ const TableRow: React.FC<TableRowProps> = (data: TableRowProps) => {
     </TouchableOpacity>
   )
 }
-
 /**
  * TableList props
  */
@@ -106,15 +96,12 @@ export interface TableListProps {
    * container style
    */
   containerStyle?: StyleProp<ViewStyle>
-
   /**
    * Table group title
    */
   title?: string
-
   children?: React.ReactNode
 }
-
 const TableList: React.FC<TableListProps> = (data: TableListProps) => {
   const { theme } = useTheme()
   const renderContent = () => {
@@ -125,10 +112,8 @@ const TableList: React.FC<TableListProps> = (data: TableListProps) => {
       </View>
     )
   }
-
   return renderContent()
 }
-
 const rowStyles = {
   container: (theme: ITheme): ViewStyle => ({
     display: 'flex',
@@ -176,7 +161,6 @@ const rowStyles = {
     height: 16
   })
 }
-
 const tableStyles = {
   container: (theme: ITheme): ViewStyle => ({
     display: 'flex',
@@ -197,5 +181,4 @@ const tableStyles = {
     width: '100%'
   })
 }
-
 export { TableList, TableRow }

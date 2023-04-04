@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/04/28.
+ * Created by Leon<silenceace@gmail.com> at 2022-03-15 21:39:55.
+ * Last modified at 2022-05-27 20:48:21
  */
+
 import { Spinner } from '@src/components'
 import { useTopic } from '@src/hooks/useTopic'
 import { translate } from '@src/i18n'
@@ -13,7 +15,6 @@ import { LikeTopicHeaderButton } from '../components/button'
 const TopicDetail = ({ route, navigation }: ScreenProps) => {
   const { theme } = useTheme()
   const { topic } = useTopic({ topicId: route.params.topicId })
-
   useEffect(() => {
     if (topic) {
       navigation.setOptions({
@@ -22,12 +23,10 @@ const TopicDetail = ({ route, navigation }: ScreenProps) => {
       })
     }
   }, [topic, navigation])
-
   const reanderContent = () => {
     if (!topic) {
       return <Spinner style={{ marginTop: 50 }} />
     }
-
     return (
       <>
         <SetStatusBar />
@@ -38,8 +37,6 @@ const TopicDetail = ({ route, navigation }: ScreenProps) => {
       </>
     )
   }
-
   return <View style={[SylCommon.Layout.fill, SylCommon.View.background(theme)]}>{reanderContent()}</View>
 }
-
 export default TopicDetail

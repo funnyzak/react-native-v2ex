@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/04/01.
+ * Created by Leon<silenceace@gmail.com> at 2022-04-01 14:00:14.
+ * Last modified at 2022-04-14 17:55:56
  */
+
 import { useAppSelector } from '@src/hooks'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
@@ -8,7 +10,6 @@ import { IState } from '@src/types'
 import React, { useMemo } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import { TextGrid } from '../common'
-
 /**
  * ProfileGrid props
  */
@@ -22,7 +23,6 @@ export interface ProfileGridProps {
   following?: number
   history?: number
 }
-
 const ProfileGrid: React.FC<ProfileGridProps> = ({
   containerStyle,
   topics,
@@ -63,8 +63,6 @@ const ProfileGrid: React.FC<ProfileGridProps> = ({
       </View>
     )
   }
-
   return renderContent()
 }
-
 export default ProfileGrid

@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/2/21.
+ * Created by Leon<silenceace@gmail.com> at 2022-02-28 19:53:33.
+ * Last modified at 2022-11-08 23:51:01
  */
+
 import { BottomTabNavigationOptions, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createDrawerNavigator, DrawerContentComponentProps } from '@react-navigation/drawer'
 import {
@@ -40,7 +42,6 @@ import { CommonScreenProps, RootStackParamList, ROUTES } from './routes'
  * dayjs
  */
 dayjs.extend(relativeTime)
-
 /**
  * header background default style
  * @param borderWidth
@@ -59,43 +60,34 @@ const defaultHeaderBackground = (theme: ITheme, borderWidth?: number): ReactNode
     />
   )
 }
-
 const defaultCommonScreenOptions = (theme: ITheme) => ({
   // hide header shadow
   headerShadowVisible: false,
-
   headerStyle: {
     backgroundColor: theme.colors.transparent
   },
   headerBackground: () => defaultHeaderBackground(theme),
   headerTintColor: theme.colors.appbarTint,
-
   // screen main content style
   contentStyle: {
     backgroundColor: theme.colors.background
   }
 })
-
 const defaultScreenOptions = (theme: ITheme): NativeStackNavigationOptions => ({
   ...defaultCommonScreenOptions(theme),
-
   animationTypeForReplace: 'push',
   animation: 'slide_from_right',
-
   headerTitleStyle: {
     fontWeight: 'bold',
     fontSize: theme.typography.titleText.fontSize
   },
-
   headerBackTitle: undefined,
   headerBackTitleVisible: false
 })
-
 const resetLocales = (locale: LanguageTagType) => {
   changeLocale(locale)
   dayjs.locale(locale === 'zh' ? zhCN : enUS)
 }
-
 const badgeStyles = {
   badge: (theme: ITheme): TextStyle => ({
     height: theme.dimens.badgeSize,
@@ -104,7 +96,6 @@ const badgeStyles = {
     borderRadius: theme.dimens.badgeSize
   })
 }
-
 const getDrawHeaderTitle = (
   route: Partial<Route<string>> & {
     state?: PartialState<NavigationState>
@@ -121,13 +112,11 @@ const getDrawHeaderTitle = (
       return translate(`router.${ROUTES.Latest}`)
   }
 }
-
 const bottomTabBarIconSize = 30
 const renderBottomIcon = (focused: boolean, activeIcon: any, inactiveIcon: any): ReactNode => {
   const icon = focused ? activeIcon : inactiveIcon
   return <Image source={icon} style={{ width: bottomTabBarIconSize, height: bottomTabBarIconSize }} />
 }
-
 const defaultTabBarSetting = (theme: ITheme, insets: EdgeInsets): BottomTabNavigationOptions => {
   return {
     ...defaultCommonScreenOptions(theme),
@@ -150,18 +139,15 @@ const defaultTabBarSetting = (theme: ITheme, insets: EdgeInsets): BottomTabNavig
     }
   }
 }
-
 const HotDrawerContent = (props: DrawerContentComponentProps) => {
   const { theme } = useTheme()
   const insets = useSafeAreaInsets()
-
   const isFocus = useCallback(
     (route_index: number) => {
       return props.state.index === route_index
     },
     [props]
   )
-
   const textStyle = useCallback(
     (route_index: number) => {
       return {
@@ -195,7 +181,6 @@ const HotDrawerContent = (props: DrawerContentComponentProps) => {
     </View>
   )
 }
-
 const drawContentStyles = {
   drawerContent: (theme: ITheme): ViewStyle => ({
     flexDirection: 'column',
@@ -208,7 +193,6 @@ const drawContentStyles = {
     marginBottom: theme.spacing.medium
   })
 }
-
 /**
  * Crate Drawer Navigator
  */
@@ -223,11 +207,9 @@ const HotDrawerNavigator = ({
   initialRouteName = initialRouteName ?? ROUTES.Hot
   const { theme } = useTheme()
   const { languageTag } = useAppSelector((state: RootState) => state.setting)
-
   useEffect(() => {
     resetLocales(languageTag)
   }, [languageTag])
-
   return (
     <HotDraw.Navigator
       initialRouteName={initialRouteName}
@@ -268,18 +250,15 @@ const HotDrawerNavigator = ({
     </HotDraw.Navigator>
   )
 }
-
 const MainBottomTabNavigator = createBottomTabNavigator()
 const MainAppNavigator = () => {
   const insets = useSafeAreaInsets()
   const { unread } = useUnRead()
   const { languageTag } = useAppSelector((state: RootState) => state.setting)
   const { theme } = useTheme()
-
   useEffect(() => {
     resetLocales(languageTag)
   }, [languageTag])
-
   return (
     <MainBottomTabNavigator.Navigator>
       <MainBottomTabNavigator.Screen
@@ -358,9 +337,7 @@ const MainAppNavigator = () => {
     </MainBottomTabNavigator.Navigator>
   )
 }
-
 const StackNavigator = createNativeStackNavigator<RootStackParamList>()
-
 export const AppNavigationContainer = () => {
   const { token } = useAppSelector((state: RootState) => state.member)
   const {
@@ -369,22 +346,18 @@ export const AppNavigationContainer = () => {
   const { languageTag } = useAppSelector((state: RootState) => state.setting)
   const { theme } = useTheme()
   const [mounted, setMounted] = useState<boolean>(false)
-
   if (!mounted) {
     resetLocales((store.getState() as any).setting.languageTag)
   }
-
   useEffect(() => {
     setMounted(true)
     wait(1000, () => {
       SplashScreen.hide()
     })
   }, [])
-
   useEffect(() => {
     resetLocales(languageTag)
   }, [languageTag])
-
   return (
     <SafeAreaProvider style={{ backgroundColor: theme.colors.background }}>
       <ToastProvider>

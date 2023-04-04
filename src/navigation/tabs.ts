@@ -1,5 +1,6 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/2/25.
+ * Created by Leon<silenceace@gmail.com> at 2022-02-25 17:45:12.
+ * Last modified at 2022-10-20 17:37:56
  */
 
 export const NODE_TABS = {
@@ -20,9 +21,7 @@ export const NODE_TABS = {
   MEMBERS: 'members',
   LIFE: 'life'
 }
-
 export type NODE_TABS = typeof NODE_TABS[keyof typeof NODE_TABS]
-
 export type NODE_TAB_TYPE = {
   name: string
   title: string
@@ -32,7 +31,6 @@ export type NODE_TAB_TYPE = {
   pager: boolean
   loginRequired: boolean
 }
-
 export const HOME_NODES: Array<NODE_TAB_TYPE> = [
   {
     name: NODE_TABS.LATEST,

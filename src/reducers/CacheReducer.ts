@@ -1,3 +1,8 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-04-19 20:02:26.
+ * Last modified at 2022-05-27 20:38:49
+ */
+
 import {
   Action,
   APP_CACHE_ADD_MEMBER,
@@ -12,7 +17,6 @@ import {
   IState,
   MEMBER_PROFILE
 } from '../types'
-
 const INITIAL_STATE: IState.CacheState = {
   members: [],
   nodes: [],
@@ -20,7 +24,6 @@ const INITIAL_STATE: IState.CacheState = {
   membersInterestNodes: { 0: undefined },
   membersLikeTopics: { 0: undefined }
 }
-
 export default (state: IState.CacheState = INITIAL_STATE, action: Action): IState.CacheState => {
   switch (action.type) {
     case MEMBER_PROFILE:

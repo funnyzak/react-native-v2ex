@@ -1,5 +1,6 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/04/18.
+ * Created by Leon<silenceace@gmail.com> at 2022-04-18 17:13:51.
+ * Last modified at 2022-10-20 18:07:33
  */
 
 import { useToast } from '@src/components'
@@ -13,13 +14,11 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { RefreshControl, StyleProp, ViewStyle } from 'react-native'
 import { NeedLogin } from '../common'
 import TopicCardList from './TopicCardList'
-
 export interface FetchTopicCardListProps {
   /**
    * container style
    */
   containerStyle?: StyleProp<ViewStyle>
-
   nodeName: string
   v2API?: boolean
   /**
@@ -27,7 +26,6 @@ export interface FetchTopicCardListProps {
    */
   displayStyle?: 'simple' | 'full' | 'auto'
 }
-
 const FetchTopicCardList: React.FC<FetchTopicCardListProps> = ({
   nodeName,
   v2API = false,
@@ -44,26 +42,21 @@ const FetchTopicCardList: React.FC<FetchTopicCardListProps> = ({
   const [hasMore, setHasMore] = useState<boolean>(true)
   const [loadMore, setLoadMore] = useState<boolean>(false)
   const specialNode = useMemo(() => [NODE_TABS.LATEST, NODE_TABS.HOT].includes(nodeName), [nodeName])
-
   useEffect(() => {
     setMounted(true)
   }, [])
-
   const fetchTopics = useCallback(
     (pageNum: number) => {
       if (v2API && !logined) {
         return
       }
-
       if (pageNum > 1 && (!v2API || specialNode)) {
         setHasMore(false)
         return
       }
-
       if (pageNum === 1) {
         setList(undefined)
       }
-
       setRefreshing(pageNum === 1)
       setLoadMore(pageNum > 1 && v2API)
       ;(specialNode
@@ -78,10 +71,8 @@ const FetchTopicCardList: React.FC<FetchTopicCardListProps> = ({
           if (rlt.length === 0 || specialNode || !v2API) {
             setHasMore(false)
           }
-
           setRefreshing(false)
           setLoadMore(false)
-
           setList((list || []).concat(rlt))
         })
         .catch((err) => {
@@ -90,32 +81,25 @@ const FetchTopicCardList: React.FC<FetchTopicCardListProps> = ({
     },
     [nodeName, showMessage, page, v2API, logined] // eslint-disable-line react-hooks/exhaustive-deps
   )
-
   const onRefresh = () => {
     setList(undefined)
-
     setPage(1)
     fetchTopics(1)
   }
-
   if (!mounted) {
     // ..
   }
-
   useEffect(() => {
     setPage(1)
   }, [nodeName])
-
   useEffect(() => {
     fetchTopics(page)
   }, [page, nodeName])
-
   const onReached = () => {
     if (hasMore && !loadMore && !refreshing) {
       setPage(page + 1)
     }
   }
-
   return (
     <NeedLogin
       onMount={() => {
@@ -136,5 +120,4 @@ const FetchTopicCardList: React.FC<FetchTopicCardListProps> = ({
     </NeedLogin>
   )
 }
-
 export default FetchTopicCardList

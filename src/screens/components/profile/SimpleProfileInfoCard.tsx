@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/05/27.
+ * Created by Leon<silenceace@gmail.com> at 2022-05-27 21:36:01.
+ * Last modified at 2022-10-20 18:07:33
  */
+
 import { Avatar, Text } from '@src/components'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
@@ -10,7 +12,6 @@ import dayjs from 'dayjs'
 import React from 'react'
 import { Image, StyleProp, TouchableOpacity, View, ViewStyle } from 'react-native'
 import { ProfileInfoStyle } from './profile'
-
 /**
  * SimpleProfileInfoCard props
  */
@@ -28,14 +29,12 @@ export interface SimpleProfileInfoCardProps {
    */
   withArrow?: boolean
 }
-
 const SimpleProfileInfoCard: React.FC<SimpleProfileInfoCardProps> = ({
   info,
   containerStyle,
   withArrow = true
 }: SimpleProfileInfoCardProps) => {
   const { theme } = useTheme()
-
   const renderContent = () => {
     return (
       <View style={[ProfileInfoStyle.container(theme), containerStyle]}>
@@ -98,14 +97,11 @@ const SimpleProfileInfoCard: React.FC<SimpleProfileInfoCardProps> = ({
       </View>
     )
   }
-
   return renderContent()
 }
-
 const styles = {
   baseRightItem: (theme: ITheme): ViewStyle => ({
     paddingBottom: theme.spacing.tiny
   })
 }
-
 export default SimpleProfileInfoCard

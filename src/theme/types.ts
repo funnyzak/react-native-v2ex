@@ -1,16 +1,15 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/2/21.
+ * Created by Leon<silenceace@gmail.com> at 2022-02-24 10:13:44.
+ * Last modified at 2022-10-22 19:06:30
  */
 
 import { TextStyle, ImageSourcePropType } from 'react-native'
-
 export interface IThemeColor {
   /**
    * ========================= App Logo color =========================
    */
   AppLight: string
   AppDark: string
-
   /**
    * ========================= Primary color : (Brand color) =========================
    * primaryDark: color for the status bar and for dark tint
@@ -21,18 +20,14 @@ export interface IThemeColor {
    */
   primaryDark: string
   primary: string
-
   headerBackground: string
-
   tabBarBackground: string
   tabBarIconInactive: string
   tabBarIconActive: string
   appbarTint: string
-
   tabShadowColor: string
   tabActiveTintColor: string
   tabInactiveTintColor: string
-
   /**
    * ========================= Secondary color =========================
    * secondaryLight: to be used for hover state
@@ -42,79 +37,65 @@ export interface IThemeColor {
   secondaryLight: string
   secondary: string
   secondaryDark: string
-
   /**
    * disabled: To be used for disabled component background
    * disabledDark: To be used for disabled component border and text color
    */
   disabled: string
   disabledDark: string
-
   /**
    * A helper for making something see-thru. Use sparingly as many layers of transparency
    * can cause older AndroiddisabledDark devices to slow down due to the excessive compositing required
    * by their under-powered GPUs.
    */
   transparent: string
-
   /**
    * The screen background.
    */
   background: string
-
   /**
    * To be used as a default background for all components, like Card, CardSection, List etc
    */
   surface: string
-
   /**
    * Use it for card border
    */
   border: string
-
   /**
    * The default color of text in many components.
    * To be used for heading, subheading, label text
    */
   titleText: string
-
   /**
    * To be used for normal text like paragraph
    */
   bodyText: string
-
   /**
    * To be used for hint text component
    */
   captionText: string
-
   /**
    * Success messages and icons.
    */
   success: string
-
   /**
    * Error messages and icons.
    */
   error: string
-
   /**
    * Warning messages and icons.
    */
   warning: string
-
   /**
    * Info messages and icons.
    */
   info: string
-
   black: string
   white: string
   grey: string
   lightGrey: string
   darkGrey: string
 }
-
 export interface IThemeDimen {
   /**
    * App level constants
@@ -122,7 +103,6 @@ export interface IThemeDimen {
   WINDOW_WIDTH: number
   WINDOW_HEIGHT: number
   layoutContainerWidth: number
-
   layoutContainerHorizontalMargin: number
   headerHeight: number
   headerButtonSize: number
@@ -134,7 +114,6 @@ export interface IThemeDimen {
   defaultLineWidth: number
   defaultInputBoxHeight: number
 }
-
 export interface IThemeSpacing {
   tiny: number
   small: number
@@ -142,7 +121,6 @@ export interface IThemeSpacing {
   large: number
   extraLarge: number
 }
-
 export interface IThemeTypography {
   /**
    * Title is reserved for the title of a screen(Toolbar)
@@ -185,7 +163,6 @@ export interface IThemeTypography {
    */
   inputText: TextStyle
 }
-
 export interface IThemeAssets {
   images: {
     icons: {
@@ -300,7 +277,6 @@ export interface IThemeAssets {
     }
   }
 }
-
 export interface ITheme {
   name: string
   colors: IThemeColor

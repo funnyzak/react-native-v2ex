@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/04/01.
+ * Created by Leon<silenceace@gmail.com> at 2022-04-01 14:00:14.
+ * Last modified at 2022-10-20 18:07:33
  */
+
 import { Avatar, Text } from '@src/components'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
@@ -11,7 +13,6 @@ import React, { useMemo } from 'react'
 import { Image, StyleProp, TouchableOpacity, View, ViewStyle } from 'react-native'
 import { TextWithIconPress } from '../common'
 import { ProfileInfoStyle } from './profile'
-
 /**
  * ProfileInfo props
  */
@@ -33,7 +34,6 @@ export interface ProfileInfoProps {
    */
   withArrow?: boolean
 }
-
 const ProfileInfo: React.FC<ProfileInfoProps> = ({
   info,
   containerStyle,
@@ -42,7 +42,6 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
 }: ProfileInfoProps) => {
   const { theme } = useTheme()
   const isLogin = useMemo(() => info && info.username, [info])
-
   const renderContent = () => {
     return (
       <View style={[ProfileInfoStyle.container(theme), containerStyle]}>
@@ -98,7 +97,6 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
             {info?.bio ? (
               <Text style={[ProfileInfoStyle.infoItem(theme), theme.typography.bodyText]}>{info?.bio}</Text>
             ) : null}
-
             {info && (info.location || info.website) ? (
               <View style={ProfileInfoStyle.infoItem(theme)}>
                 {info?.location ? (
@@ -163,8 +161,6 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
       </View>
     )
   }
-
   return renderContent()
 }
-
 export default ProfileInfo

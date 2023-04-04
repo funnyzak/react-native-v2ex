@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/05/21.
+ * Created by Leon<silenceace@gmail.com> at 2022-03-17 22:17:19.
+ * Last modified at 2022-10-20 18:07:33
  */
+
 import { Avatar, Placeholder, Spinner, useToast } from '@src/components'
 import { useMember } from '@src/hooks/useMember'
 import { useSession } from '@src/hooks/useSession'
@@ -13,14 +15,12 @@ import React, { useCallback, useState } from 'react'
 import { FlatList, RefreshControl, StyleProp, TextStyle, View, ViewStyle } from 'react-native'
 import { NeedLogin } from '../'
 import { BorderLine, RenderHTML, TextWithIconPress } from '../common'
-
 export interface NotificationListProps {
   /**
    * container style
    */
   containerStyle?: StyleProp<ViewStyle>
 }
-
 const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: NotificationListProps) => {
   const { theme } = useTheme()
   const { logined } = useSession()
@@ -30,21 +30,16 @@ const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: N
   const [list, setList] = useState<AppObject.Notification[] | undefined>(undefined)
   const [hasMore, setHasMore] = useState<boolean>(true)
   const [loadMore, setLoadMore] = useState<boolean>(false)
-
   const fetchNotifications = useCallback(
     (pageNum: number) => {
       if (!logined || (pageNum > 1 && !hasMore)) {
         return
       }
-
       if (pageNum === 1) {
         setList(undefined)
       }
-
       setRefreshing(pageNum === 1)
-
       setLoadMore(pageNum > 1)
-
       ApiLib.notification
         .list(pageNum)
         .then((rlt: AppObject.Notification[]) => {
@@ -53,7 +48,6 @@ const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: N
           }
           setRefreshing(false)
           setLoadMore(false)
-
           setList((list || []).concat(rlt))
         })
         .catch((err) => {
@@ -62,20 +56,16 @@ const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: N
     },
     [showMessage, page, logined]
   )
-
   const onRefresh = useCallback(() => {
     setPage(1)
     fetchNotifications(page)
   }, [])
-
   const MemberAvatar = ({ userid }: { userid: number }) => {
     const { member: profile } = useMember({ userid: userid, forcePull: false })
     return <Avatar size={40} source={{ uri: profile?.avatar_normal }} username={profile?.username} />
   }
-
   const renderItemRow = ({ item }: { item: AppObject.Notification }) => {
     if (!item || item === null) return null
-
     return (
       <View style={[styles.itemContainer(theme), SylCommon.Card.container(theme)]}>
         <View style={styles.itemLeft(theme)}>
@@ -107,7 +97,6 @@ const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: N
       </View>
     )
   }
-
   const renderFooter = () => {
     if (loadMore) {
       return <Spinner style={{ padding: theme.spacing.large }} />
@@ -116,22 +105,17 @@ const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: N
     }
     return null
   }
-
   const onReached = () => {
     if (hasMore && !loadMore && !refreshing) {
       setPage(page + 1)
     }
   }
-
   const renderItemSeparator = () => <BorderLine />
-
   const renderRefreshControl = () => <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-
   const renderContent = () => {
     if (!list) {
       return <Spinner style={{ marginTop: 50 }} />
     }
-
     if (list.length > 0) {
       return (
         <FlatList
@@ -156,7 +140,6 @@ const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: N
       />
     )
   }
-
   return (
     <NeedLogin
       onMount={() => {
@@ -166,7 +149,6 @@ const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: N
     </NeedLogin>
   )
 }
-
 /**
  * @description styles settings
  */
@@ -193,5 +175,4 @@ const styles = {
     justifyContent: 'space-between'
   })
 }
-
 export default NotificationList

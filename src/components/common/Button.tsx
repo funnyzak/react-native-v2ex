@@ -1,3 +1,8 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-03-01 16:42:43.
+ * Last modified at 2022-05-28 23:04:37
+ */
+
 import React from 'react'
 import {
   TouchableOpacity,
@@ -8,14 +13,12 @@ import {
 } from 'react-native'
 import { Text } from './Text'
 import { useTheme, ITheme } from '@src/theme'
-
 export interface TouchableOpacityProps extends NativeTouchableOpacityProps {
   loading?: boolean
   disabled?: boolean
   textColor?: string
   type?: 'large' | 'small'
 }
-
 const Button = ({
   onPress,
   children,
@@ -26,7 +29,6 @@ const Button = ({
   type = 'large'
 }: TouchableOpacityProps) => {
   const { theme } = useTheme()
-
   return (
     <TouchableOpacity onPress={onPress} style={[styles.buttonStyle(theme, type, disabled), style]} disabled={disabled}>
       {loading && (
@@ -36,7 +38,6 @@ const Button = ({
     </TouchableOpacity>
   )
 }
-
 const styles = {
   buttonStyle: (_theme: ITheme, type: 'large' | 'small', disabled: boolean): ViewStyle =>
     type === 'large'
@@ -75,5 +76,4 @@ const styles = {
           alignSelf: 'center'
         }
 }
-
 export { Button }

@@ -1,3 +1,8 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-03-30 22:08:54.
+ * Last modified at 2022-04-19 17:04:45
+ */
+
 import { URLSchemeList } from '@src/config/constants'
 import { translate } from '@src/i18n'
 import { URLSchemescreenProps as ScreenProps } from '@src/navigation'
@@ -7,11 +12,9 @@ import { View } from 'react-native'
 import { connect } from 'react-redux'
 import { TableList, TableRow } from '../components'
 import { useToast } from '@src/components/toast'
-
 const URLSchemes = ({}: ScreenProps) => {
   const { theme } = useTheme()
   const { showMessage } = useToast()
-
   return (
     <View style={SylCommon.Layout.fill}>
       <TableList containerStyle={[{ marginTop: theme.spacing.small }]}>
@@ -31,5 +34,4 @@ const URLSchemes = ({}: ScreenProps) => {
     </View>
   )
 }
-
 export default connect()(URLSchemes)

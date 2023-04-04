@@ -1,5 +1,6 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/3/10.
+ * Created by Leon<silenceace@gmail.com> at 2022-04-01 17:54:02.
+ * Last modified at 2022-10-20 18:07:33
  */
 
 import * as Actions from '@src/actions'
@@ -14,7 +15,6 @@ import React, { useEffect } from 'react'
 import { SectionList, TouchableOpacity, View, ViewStyle } from 'react-native'
 import { connect } from 'react-redux'
 import { HeaderButton } from '../components'
-
 const Node = ({
   navigation,
   allNode,
@@ -25,14 +25,12 @@ const Node = ({
 }) => {
   const { theme } = useTheme()
   const { showMessage } = useToast()
-
   const underConstruction = () => {
     showMessage({
       type: 'error',
       text2: translate('label.underConstruction')
     })
   }
-
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -61,7 +59,6 @@ const Node = ({
       </View>
     </View>
   )
-
   const sectionData = () => {
     return TabNodes.map((node, idx) => ({
       title: node.title,
@@ -75,10 +72,8 @@ const Node = ({
       key: node.title
     })).filter((v) => v.data.length > 0)
   }
-
   const renderContent = () => {
     const data = sectionData()
-
     if (data.length === 0) {
       return (
         <Placeholder
@@ -101,7 +96,6 @@ const Node = ({
   }
   return <View style={SylCommon.Layout.fill}>{renderContent()}</View>
 }
-
 /**
  * @description styles settings
  */
@@ -125,9 +119,7 @@ const styles = {
     marginVertical: theme.spacing.tiny
   })
 }
-
 const mapStateToProps = ({ app: { allNode } }: RootState) => {
   return { allNode }
 }
-
 export default connect(mapStateToProps, { fetchAllNode: Actions.fetchAllNode })(Node)

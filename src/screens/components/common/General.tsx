@@ -1,6 +1,8 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/04/06.
+ * Created by Leon<silenceace@gmail.com> at 2022-04-06 16:45:50.
+ * Last modified at 2022-05-21 16:58:11
  */
+
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import { Placeholder, Text } from '@src/components'
 import { useAppSelector } from '@src/hooks'
@@ -21,7 +23,6 @@ import {
   View,
   ViewStyle
 } from 'react-native'
-
 /**
  * TextWithIconPress props
  */
@@ -32,7 +33,6 @@ export interface TextWithIconPressProps {
   icon?: ImageSourcePropType
   onPress?: () => void
 }
-
 const TextWithIconPress: React.FC<TextWithIconPressProps> = ({
   text,
   icon,
@@ -41,7 +41,6 @@ const TextWithIconPress: React.FC<TextWithIconPressProps> = ({
   onPress
 }: TextWithIconPressProps) => {
   const { theme } = useTheme()
-
   const renderContent = () => {
     return (
       <TouchableOpacity style={[styles.textWithIconPress.container(theme), containerStyle]} onPress={onPress}>
@@ -50,10 +49,8 @@ const TextWithIconPress: React.FC<TextWithIconPressProps> = ({
       </TouchableOpacity>
     )
   }
-
   return renderContent()
 }
-
 /**
  * TextGrid props
  */
@@ -65,10 +62,8 @@ export interface TextGridProps {
     press?: () => void
   }[]
 }
-
 const TextGrid: React.FC<TextGridProps> = ({ list, columnNum }: TextGridProps) => {
   const { theme } = useTheme()
-
   const renderContent = () => {
     return (
       <View style={styles.textGrid.container(theme)}>
@@ -83,15 +78,12 @@ const TextGrid: React.FC<TextGridProps> = ({ list, columnNum }: TextGridProps) =
       </View>
     )
   }
-
   return renderContent()
 }
-
 const BorderLine = ({ width = 0.3 }: { width?: number }) => {
   const { theme } = useTheme()
   return <View style={[styles.borderLine(theme), { height: width }]} />
 }
-
 const HeaderButton = ({
   containerStyle: style,
   source,
@@ -106,7 +98,6 @@ const HeaderButton = ({
   onPress?: () => void
 }) => {
   const { theme } = useTheme()
-
   return (
     <Pressable onPress={onPress} style={style}>
       {source && <Image source={source} width={24} />}
@@ -114,11 +105,9 @@ const HeaderButton = ({
     </Pressable>
   )
 }
-
 const Footer = () => {
   const { theme } = useTheme()
   const app = useAppSelector((_state: RootState) => _state.app)
-
   return (
     <TouchableOpacity
       onPress={() => {
@@ -134,7 +123,6 @@ const Footer = () => {
     </TouchableOpacity>
   )
 }
-
 /**
  * Need Login
  * @returns
@@ -158,13 +146,11 @@ const NeedLogin = ({
 }) => {
   const { logined } = useSession()
   const { theme } = useTheme()
-
   useEffect(() => {
     if (logined) {
       onMount && onMount()
     }
   }, [logined])
-
   return (
     <View style={[{ flex: 1 }, containerStyle]}>
       {!logined && mustLogin ? (
@@ -183,7 +169,6 @@ const NeedLogin = ({
     </View>
   )
 }
-
 export interface TopTabListProps {
   containerStyle?: StyleProp<ViewStyle>
   list?: {
@@ -191,7 +176,6 @@ export interface TopTabListProps {
     title: string
   }[]
 }
-
 const Tab = createMaterialTopTabNavigator()
 const TopTabList = (props: TopTabListProps) => {
   const { theme } = useTheme()
@@ -240,7 +224,6 @@ const TopTabList = (props: TopTabListProps) => {
     </Tab.Navigator>
   )
 }
-
 const styles = {
   headerText: (theme: ITheme, textColor?: string): TextStyle => ({
     ...theme.typography.subheadingText,
@@ -306,5 +289,4 @@ const styles = {
     })
   }
 }
-
 export { TextWithIconPress, NeedLogin, TopTabList, TextGrid, BorderLine, HeaderButton, Footer }

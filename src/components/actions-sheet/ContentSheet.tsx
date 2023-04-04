@@ -1,13 +1,14 @@
 /**
- * Created by leon<silenceace@gmail.com> on 22/11/06.
+ * Created by Leon<silenceace@gmail.com> at 2022-11-06 13:49:16.
+ * Last modified at 2022-11-06 13:51:33
  */
+
 import { translate } from '@src/i18n'
 import { SylCommon, useTheme } from '@src/theme'
 import { ITheme } from '@src/types'
 import React, { useRef } from 'react'
 import { ScrollView, Text, TextStyle, View, ViewStyle } from 'react-native'
 import ActionSheet, { ActionSheetRef, SheetProps } from 'react-native-actions-sheet'
-
 /* usage:
   SheetManager.show('content-sheet', {
     payload: {
@@ -17,7 +18,6 @@ import ActionSheet, { ActionSheetRef, SheetProps } from 'react-native-actions-sh
     }
   })
 **/
-
 const ContentSheet = (props: SheetProps) => {
   const { theme } = useTheme()
   const {
@@ -25,7 +25,6 @@ const ContentSheet = (props: SheetProps) => {
     payload: { title = translate('brand.name'), textStyle, text = '无内容', height = theme.dimens.WINDOW_HEIGHT / 2 }
   } = props
   const actionSheetRef = useRef<ActionSheetRef>(null)
-
   return (
     <ActionSheet
       id={sheetId}
@@ -58,7 +57,6 @@ const ContentSheet = (props: SheetProps) => {
     </ActionSheet>
   )
 }
-
 const styles = {
   safeareview: (theme: ITheme): ViewStyle => ({}),
   container: (theme: ITheme): ViewStyle => ({
@@ -80,5 +78,4 @@ const styles = {
     flexWrap: 'wrap'
   })
 }
-
 export default ContentSheet

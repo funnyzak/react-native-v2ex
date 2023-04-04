@@ -1,3 +1,8 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-02-25 15:45:37.
+ * Last modified at 2022-09-25 16:13:58
+ */
+
 import {
   APP_NOTIFICATION_PULL,
   APP_LOGOUT,
@@ -6,12 +11,10 @@ import {
   Action,
   IState
 } from '../types'
-
 const INITIAL_STATE: IState.NotificationState = {
   refreshing: false,
   unread: 0
 }
-
 export default (state: IState.NotificationState = INITIAL_STATE, action: Action): IState.NotificationState => {
   switch (action.type) {
     case APP_NOTIFICATION_PULL:

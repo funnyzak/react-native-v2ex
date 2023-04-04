@@ -1,9 +1,13 @@
+/**
+ * Created by Leon<silenceace@gmail.com> at 2022-03-04 19:36:25.
+ * Last modified at 2022-10-15 21:47:22
+ */
+
 import { NavigationService, ROUTES } from '@src/navigation'
 import { ITheme, useTheme } from '@src/theme'
 import React, { useCallback, useRef } from 'react'
 import { Animated, Image, Pressable, ViewStyle } from 'react-native'
 import FastImage, { Source } from 'react-native-fast-image'
-
 interface IProps {
   style?: ViewStyle
   username?: string
@@ -11,22 +15,15 @@ interface IProps {
   source?: Source
   onPress?: () => void
 }
-/**
- * Usernames avatar component
- * @param { username, size = 24, source, onPress, style }
- * @returns
- */
 const AvatarComponent = ({ username, size = 24, source, onPress, style }: IProps) => {
   const { theme } = useTheme()
   const avatarImageScaleValue = useRef(new Animated.Value(0)).current
-
   const _handlePress = useCallback(() => {
     if (username) {
       NavigationService.navigate(ROUTES.Profile, { username })
     }
     onPress && onPress()
   }, [username, onPress])
-
   const onAvatarImageLoadEnd = () => {
     Animated.timing(avatarImageScaleValue, {
       toValue: 1,
@@ -35,7 +32,6 @@ const AvatarComponent = ({ username, size = 24, source, onPress, style }: IProps
       useNativeDriver: true
     }).start()
   }
-
   return (
     <Pressable style={style} onPress={_handlePress}>
       {source ? (
@@ -56,9 +52,7 @@ const AvatarComponent = ({ username, size = 24, source, onPress, style }: IProps
     </Pressable>
   )
 }
-
 const avatar = React.memo(AvatarComponent)
-
 const styles = {
   avatar: (theme: ITheme, size: number) => ({
     width: size,
@@ -69,5 +63,4 @@ const styles = {
     borderRadius: size * 0.12
   })
 }
-
 export default avatar
