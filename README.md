@@ -218,21 +218,8 @@ npx react-native run-android --variant release
 ### 配置 BugSnag
 
 1. [Create a bugsnag account](https://app.bugsnag.com/user/new).
-2. Add your project api key to [android/app/src/main/AndroidManifest.xml](android/app/src/main/AndroidManifest.xml#L25-L26):
-
-   ```xml
-      <meta-data android:name="com.bugsnag.android.API_KEY"
-                 android:value="YOUR-API-KEY-HERE" />
-   ```
-
-   and [ios/app/Info.plist](ios/app/Info.plist):
-
-   ```xml
-    <key>BugsnagAPIKey</key>
-    <string>YOUR-API-KEY-HERE</string>
-   ```
-
-   The API key can be found in the Bugsnag settings for your project.
+2. 使用 @bugsnag/react-native-cli 在项目中初始化 bugsnag 配置.
+3. 或者 [follow the manual setup instructions](https://docs.bugsnag.com/platforms/react-native/react-native/#manual-setup).
 
 ### Invariant Violation: Module AppRegistry is not a registered callable module
 
