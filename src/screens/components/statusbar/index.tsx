@@ -10,7 +10,7 @@ import { Platform, StatusBar } from 'react-native'
 // set statusbar if the screen is currently focused.
 // https://reactnavigation.org/docs/use-focus-effect/
 export const SetStatusBar = ({ backgroundColor }: { backgroundColor?: string }) => {
-  const { theme, themeName } = useTheme()
+  const { theme } = useTheme()
   useFocusEffect(
     useCallback(() => {
       if (Platform.OS === 'android') {
@@ -19,7 +19,7 @@ export const SetStatusBar = ({ backgroundColor }: { backgroundColor?: string }) 
         )
       }
       return () => null
-    }, [backgroundColor, themeName])
+    }, [backgroundColor, theme])
   )
   return null
 }

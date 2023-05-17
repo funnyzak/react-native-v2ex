@@ -3,21 +3,21 @@
  * Last modified at 2022-09-25 16:13:58
  */
 
-import React, { useState, useMemo } from 'react'
+import { store } from '@src/store'
+import React, { useMemo, useState } from 'react'
+import { useColorScheme } from 'react-native'
 import ThemeContext from './ThemeContext'
 import themes, { ThemeType } from './themes'
-import { store } from '@src/store'
 type Props = {
   children?: JSX.Element
 }
-const isDayTime = () => {
-  const hours = new Date().getHours()
-  return hours > 6 && hours < 20
-}
+
 const ThemeProvider = ({ children }: Props) => {
   const [themeName, resetTheme] = useState<ThemeType>((store.getState() as any).setting.theme)
+  const colorScheme = useColorScheme()
+
   const theme = useMemo(
-    () => (themeName === 'auto' ? themes[isDayTime() ? 'light' : 'dark'] : themes[themeName]),
+    () => (themeName === 'auto' ? themes[colorScheme !== 'dark' ? 'light' : 'dark'] : themes[themeName]),
     [themeName]
   )
   return <ThemeContext.Provider value={{ theme: theme, themeName, resetTheme }}>{children}</ThemeContext.Provider>
