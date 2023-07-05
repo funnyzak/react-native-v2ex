@@ -18,6 +18,7 @@ export const SetStatusBar = ({ backgroundColor }: { backgroundColor?: string }) 
           backgroundColor ?? (theme.name === 'dark' ? theme.colors.primaryDark : theme.colors.primary)
         )
       }
+      StatusBar.setBarStyle(theme.statusBarStyle)
       return () => null
     }, [backgroundColor, theme])
   )
