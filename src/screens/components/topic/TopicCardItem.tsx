@@ -5,7 +5,7 @@
 
 import * as React from 'react'
 import { View, TouchableOpacity, ViewStyle, TextStyle, StyleProp } from 'react-native'
-import { ITheme, AppObject } from '@src/types'
+import { Theme, AppObject } from '@src/types'
 import { SylCommon, useTheme } from '@src/theme'
 import { Avatar, Text } from '@src/components'
 import dayjs from 'dayjs'
@@ -136,36 +136,36 @@ const TopicCardItem = ({
   )
 }
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     paddingTop: theme.spacing.small,
     width: '100%',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center'
   }),
-  infoContainer: (theme: ITheme): ViewStyle => ({
+  infoContainer: (theme: Theme): ViewStyle => ({
     flexDirection: 'row',
     marginBottom: theme.spacing.tiny
   }),
-  avatar: (theme: ITheme): ViewStyle => ({
+  avatar: (theme: Theme): ViewStyle => ({
     width: 40,
     marginRight: theme.spacing.large
   }),
-  infoMain: (theme: ITheme): ViewStyle => ({
+  infoMain: (theme: Theme): ViewStyle => ({
     flex: 1,
     justifyContent: 'flex-start',
     flexDirection: 'column'
   }),
-  infoMainItem: (theme: ITheme): ViewStyle => ({
+  infoMainItem: (theme: Theme): ViewStyle => ({
     flexDirection: 'row',
     marginBottom: theme.spacing.small,
     justifyContent: 'space-between'
   }),
-  summaryContainer: (theme: ITheme): ViewStyle => ({
+  summaryContainer: (theme: Theme): ViewStyle => ({
     flexDirection: 'row',
     justifyContent: 'flex-start'
   }),
-  title: (theme: ITheme): TextStyle => ({
+  title: (theme: Theme): TextStyle => ({
     ...theme.typography.bodyText
   })
 }

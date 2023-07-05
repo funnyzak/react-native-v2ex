@@ -3,9 +3,9 @@
  * Last modified at 2022-03-03 21:32:14
  */
 
-import { IThemeSpacing } from '../types'
+import { Spacing } from '../types'
 const baseSpacing = 10
-const spacing: IThemeSpacing = {
+const spacing: Spacing = {
   tiny: baseSpacing * 0.4,
   small: baseSpacing * 0.8,
   medium: baseSpacing * 1.2,

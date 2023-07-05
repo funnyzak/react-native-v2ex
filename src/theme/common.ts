@@ -4,7 +4,7 @@
  */
 
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native'
-import { ITheme } from './types'
+import { Theme } from './types'
 export const Layout = StyleSheet.create({
   column: {
     flexDirection: 'column'
@@ -29,19 +29,19 @@ export const Layout = StyleSheet.create({
   }
 })
 export const Card = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     ...Layout.fullWidth,
     backgroundColor: theme.colors.surface,
-    paddingHorizontal: (theme.dimens.WINDOW_WIDTH - theme.dimens.layoutContainerWidth) / 2
+    paddingHorizontal: (theme.dimensions.WINDOW_WIDTH - theme.dimensions.layoutContainerWidth) / 2
   })
 }
 export const View = {
-  background: (theme: ITheme): ViewStyle => ({
+  background: (theme: Theme): ViewStyle => ({
     backgroundColor: theme.colors.background
   })
 }
 export const Node = {
-  nodeTitle: (theme: ITheme) => ({
+  nodeTitle: (theme: Theme) => ({
     ...theme.typography.labelText,
     paddingVertical: 1,
     paddingHorizontal: theme.spacing.tiny,
@@ -50,7 +50,7 @@ export const Node = {
   })
 }
 export const Divider = {
-  item: (theme: ITheme): ViewStyle => ({
+  item: (theme: Theme): ViewStyle => ({
     height: 0.5,
     width: '100%',
     backgroundColor: theme.colors.border,
@@ -58,7 +58,7 @@ export const Divider = {
   })
 }
 export const Button = {
-  textAction: (theme: ITheme): TextStyle => ({
+  textAction: (theme: Theme): TextStyle => ({
     ...theme.typography.labelText,
     marginTop: theme.spacing.medium,
     textAlign: 'center',

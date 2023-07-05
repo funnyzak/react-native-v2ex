@@ -3,8 +3,8 @@
  * Last modified at 2022-10-22 19:06:30
  */
 
-import { IThemeColor } from '../types'
-const colors: IThemeColor = {
+import { ColorPalette } from '../types'
+const colors: ColorPalette = {
   AppLight: '#FBFBFB',
   AppDark: '#222223',
   /**

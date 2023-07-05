@@ -4,10 +4,10 @@
  */
 
 import React, { useContext } from 'react'
-import { ITheme } from './types'
+import { Theme } from './types'
 import themes, { ThemeType } from './themes'
 export interface ThemeContextProps {
-  theme: ITheme
+  theme: Theme
   themeName: ThemeType
   resetTheme: (theme: ThemeType) => void
 }

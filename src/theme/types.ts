@@ -4,7 +4,7 @@
  */
 
 import { TextStyle, ImageSourcePropType } from 'react-native'
-export interface IThemeColor {
+export interface ColorPalette {
   /**
    * ========================= App Logo color =========================
    */
@@ -96,7 +96,7 @@ export interface IThemeColor {
   lightGrey: string
   darkGrey: string
 }
-export interface IThemeDimen {
+export interface Dimensions {
   /**
    * App level constants
    */
@@ -114,14 +114,14 @@ export interface IThemeDimen {
   defaultLineWidth: number
   defaultInputBoxHeight: number
 }
-export interface IThemeSpacing {
+export interface Spacing {
   tiny: number
   small: number
   medium: number
   large: number
   extraLarge: number
 }
-export interface IThemeTypography {
+export interface Typography {
   /**
    * Title is reserved for the title of a screen(Toolbar)
    * and the titles of Modal dialogs.
@@ -163,7 +163,7 @@ export interface IThemeTypography {
    */
   inputText: TextStyle
 }
-export interface IThemeAssets {
+export interface ThemeAssets {
   images: {
     icons: {
       app: {
@@ -277,11 +277,16 @@ export interface IThemeAssets {
     }
   }
 }
-export interface ITheme {
+
+export type StatusBarStyle = 'light-content' | 'dark-content'
+
+export interface Theme {
   name: string
-  colors: IThemeColor
-  spacing: IThemeSpacing
-  dimens: IThemeDimen
-  typography: IThemeTypography
-  assets: IThemeAssets
+  statusBarStyle: StatusBarStyle
+  isDark: boolean
+  colors: ColorPalette
+  spacing: Spacing
+  dimensions: Dimensions
+  typography: Typography
+  assets: ThemeAssets
 }

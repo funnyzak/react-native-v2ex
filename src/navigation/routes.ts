@@ -4,7 +4,7 @@
  */
 
 import type { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { ITheme } from '@src/types'
+import { Theme } from '@src/types'
 export type RootStackParamList = {
   HotDraw: undefined
   Main: {
@@ -46,7 +46,7 @@ export type CommonScreenProps = {
   loading: boolean
   error: string | null
   success: string | null
-  theme: ITheme
+  theme: Theme
 }
 export type HotDrawScreenProps = NativeStackScreenProps<RootStackParamList, 'HotDraw'> & CommonScreenProps
 export type MainScreenProps = NativeStackScreenProps<RootStackParamList, 'Main'> & CommonScreenProps

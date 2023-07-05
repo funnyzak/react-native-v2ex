@@ -17,10 +17,14 @@ export type ToastShowType = ToastShowProps | string
 export interface ToastContextProps {
   showToast: (opts: ToastShowType) => void
   showMessage: (opts: string | ToastMessageShowParams) => void
+  hideMessage: (params?: any) => void
+  closeToast: (duration?: number) => void
 }
 export const ToastContext = React.createContext<ToastContextProps>({
   showToast: () => {},
-  showMessage: () => {}
+  showMessage: () => {},
+  hideMessage: () => {},
+  closeToast: () => {}
 })
 export const useToast = () => useContext(ToastContext)
 export default ToastContext

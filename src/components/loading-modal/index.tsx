@@ -6,7 +6,7 @@
 import React from 'react'
 import { Modal, View, ViewStyle } from 'react-native'
 import Loading from '../loading'
-import { useTheme, ITheme } from '@src/theme'
+import { useTheme, Theme } from '@src/theme'
 interface IProps {
   visible: boolean
 }
@@ -25,13 +25,13 @@ const LoadingModalComponent = ({ visible }: IProps) => {
 const LoadingModal = React.memo(LoadingModalComponent)
 export default LoadingModal
 const styles = {
-  modal: (theme: ITheme): ViewStyle => ({
+  modal: (theme: Theme): ViewStyle => ({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(255, 255, 255, 0.8)'
   }),
-  modalContainer: (theme: ITheme): ViewStyle => ({
+  modalContainer: (theme: Theme): ViewStyle => ({
     width: 80,
     height: 80,
     justifyContent: 'center',

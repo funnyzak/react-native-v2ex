@@ -6,7 +6,7 @@
 import { Avatar, Text } from '@src/components'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
-import { ITheme, useTheme } from '@src/theme'
+import { Theme, useTheme } from '@src/theme'
 import { AppObject } from '@src/types'
 import dayjs from 'dayjs'
 import React from 'react'
@@ -100,7 +100,7 @@ const SimpleProfileInfoCard: React.FC<SimpleProfileInfoCardProps> = ({
   return renderContent()
 }
 const styles = {
-  baseRightItem: (theme: ITheme): ViewStyle => ({
+  baseRightItem: (theme: Theme): ViewStyle => ({
     paddingBottom: theme.spacing.tiny
   })
 }

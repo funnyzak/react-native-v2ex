@@ -3,9 +3,9 @@
  * Last modified at 2022-03-30 21:35:37
  */
 
-import { IThemeSpacing } from '../types'
+import { Spacing } from '../types'
 import lightSpacing from '../light/spacing'
-const spacing: IThemeSpacing = {
+const spacing: Spacing = {
   /**
    * base on light theme spacing
    */

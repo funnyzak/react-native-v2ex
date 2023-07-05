@@ -5,7 +5,7 @@
 
 import { Placeholder } from '@src/components'
 import { translate } from '@src/i18n'
-import { ITheme, useTheme } from '@src/theme'
+import { Theme, useTheme } from '@src/theme'
 import { AppObject } from '@src/types'
 import React from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
@@ -45,7 +45,7 @@ const TopicReplay: React.FC<TopicReplayProps> = ({ containerStyle, info }: Topic
   return renderContent()
 }
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     marginTop: theme.spacing.small,
     flex: 1
   })

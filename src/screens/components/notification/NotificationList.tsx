@@ -8,7 +8,7 @@ import { useMember } from '@src/hooks/useMember'
 import { useSession } from '@src/hooks/useSession'
 import { translate } from '@src/i18n'
 import { SylCommon, useTheme } from '@src/theme'
-import { ITheme, AppObject } from '@src/types'
+import { Theme, AppObject } from '@src/types'
 import { ApiLib } from '@src/api'
 import dayjs from 'dayjs'
 import React, { useCallback, useState } from 'react'
@@ -74,14 +74,14 @@ const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: N
         <View style={styles.itemRight(theme)}>
           <View style={styles.itemRightItem(theme)}>
             <RenderHTML
-              contentWidth={theme.dimens.layoutContainerWidth - 40 - theme.spacing.large}
+              contentWidth={theme.dimensions.layoutContainerWidth - 40 - theme.spacing.large}
               htmlString={item.text}
             />
           </View>
           {item.payload && item.payload !== '' ? (
             <View style={styles.itemRightItem(theme)}>
               <RenderHTML
-                contentWidth={theme.dimens.layoutContainerWidth - 40 - theme.spacing.large}
+                contentWidth={theme.dimensions.layoutContainerWidth - 40 - theme.spacing.large}
                 htmlString={item.payload_rendered}
               />
             </View>
@@ -153,23 +153,23 @@ const NotificationList: React.FC<NotificationListProps> = ({ containerStyle }: N
  * @description styles settings
  */
 const styles = {
-  itemContainer: (theme: ITheme): ViewStyle => ({
+  itemContainer: (theme: Theme): ViewStyle => ({
     flex: 1,
     paddingTop: theme.spacing.small,
     flexDirection: 'row'
   }),
-  itemLeft: (theme: ITheme): ViewStyle => ({
+  itemLeft: (theme: Theme): ViewStyle => ({
     width: 40,
     marginRight: 15
   }),
-  itemRight: (theme: ITheme): ViewStyle => ({
+  itemRight: (theme: Theme): ViewStyle => ({
     flex: 1,
     flexDirection: 'column'
   }),
-  itemRightItem: (theme: ITheme): TextStyle => ({
+  itemRightItem: (theme: Theme): TextStyle => ({
     marginBottom: theme.spacing.medium
   }),
-  itemAction: (theme: ITheme): ViewStyle => ({
+  itemAction: (theme: Theme): ViewStyle => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between'

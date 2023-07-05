@@ -4,7 +4,7 @@
  */
 
 import { useTheme } from '@src/theme'
-import { ITheme } from '@src/types'
+import { Theme } from '@src/types'
 import React from 'react'
 import { TextInput, TextInputProps as NativeTextInputProps, TextStyle, View, ViewStyle } from 'react-native'
 import { Text } from './Text'
@@ -52,22 +52,22 @@ const Input = ({
   )
 }
 const styles = {
-  containerStyle: (_theme: ITheme): ViewStyle => ({
-    height: _theme.dimens.defaultInputBoxHeight,
+  containerStyle: (_theme: Theme): ViewStyle => ({
+    height: _theme.dimensions.defaultInputBoxHeight,
     backgroundColor: _theme.colors.white,
     borderWidth: 0.3,
-    borderRadius: _theme.dimens.borderRadius * 2,
+    borderRadius: _theme.dimensions.borderRadius * 2,
     borderColor: _theme.colors.border,
     flexDirection: 'row',
     alignItems: 'center'
   }),
-  inputStyle: (_theme: ITheme): TextStyle => ({
+  inputStyle: (_theme: Theme): TextStyle => ({
     ..._theme.typography.inputText,
     color: _theme.colors.darkGrey,
     paddingHorizontal: _theme.spacing.small,
     flex: 2
   }),
-  labelStyle: (_theme: ITheme): ViewStyle => ({
+  labelStyle: (_theme: Theme): ViewStyle => ({
     paddingLeft: _theme.spacing.large,
     flex: 1
   })

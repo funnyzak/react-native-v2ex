@@ -10,7 +10,7 @@ import { translate } from '@src/i18n'
 import { NavigationService, NodesScreenProps as ScreenProps } from '@src/navigation'
 import { RootState } from '@src/store'
 import { SylCommon, useTheme } from '@src/theme'
-import { ITheme, AppObject } from '@src/types'
+import { Theme, AppObject } from '@src/types'
 import React, { useEffect } from 'react'
 import { SectionList, TouchableOpacity, View, ViewStyle } from 'react-native'
 import { connect } from 'react-redux'
@@ -37,7 +37,7 @@ const Node = ({
         <HeaderButton
           onPress={underConstruction}
           source={theme.assets.images.icons.header.search}
-          containerStyle={[{ marginRight: theme.dimens.layoutContainerHorizontalMargin }]}
+          containerStyle={[{ marginRight: theme.dimensions.layoutContainerHorizontalMargin }]}
         />
       )
     })
@@ -100,17 +100,17 @@ const Node = ({
  * @description styles settings
  */
 const styles = {
-  sectionContainer: (theme: ITheme) => ({
+  sectionContainer: (theme: Theme) => ({
     paddingVertical: theme.spacing.medium,
     marginBottom: theme.spacing.medium
   }),
-  nodeListContainer: (theme: ITheme): ViewStyle => ({
+  nodeListContainer: (theme: Theme): ViewStyle => ({
     paddingTop: theme.spacing.small,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'flex-start'
   }),
-  item: (theme: ITheme): ViewStyle => ({
+  item: (theme: Theme): ViewStyle => ({
     width: 'auto',
     borderRadius: theme.spacing.tiny,
     borderColor: theme.colors.border,

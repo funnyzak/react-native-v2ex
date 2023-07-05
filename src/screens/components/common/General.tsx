@@ -10,7 +10,7 @@ import { useSession } from '@src/hooks/useSession'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
 import { RootState } from '@src/store'
-import { ITheme, useTheme } from '@src/theme'
+import { Theme, useTheme } from '@src/theme'
 import React, { ComponentType, useEffect } from 'react'
 import {
   Image,
@@ -198,7 +198,7 @@ const TopTabList = (props: TopTabListProps) => {
           alignItems: 'center'
         },
         tabBarStyle: {
-          marginHorizontal: theme.dimens.layoutContainerHorizontalMargin,
+          marginHorizontal: theme.dimensions.layoutContainerHorizontalMargin,
           elevation: 0,
           backgroundColor: theme.colors.transparent,
           shadowOpacity: 0,
@@ -225,65 +225,65 @@ const TopTabList = (props: TopTabListProps) => {
   )
 }
 const styles = {
-  headerText: (theme: ITheme, textColor?: string): TextStyle => ({
+  headerText: (theme: Theme, textColor?: string): TextStyle => ({
     ...theme.typography.subheadingText,
     color: textColor ?? theme.colors.secondary
   }),
-  footer: (theme: ITheme): ViewStyle => ({
+  footer: (theme: Theme): ViewStyle => ({
     marginVertical: theme.spacing.extraLarge,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
   }),
-  footerItem: (theme: ITheme): TextStyle => ({
+  footerItem: (theme: Theme): TextStyle => ({
     marginBottom: theme.spacing.small,
     ...theme.typography.captionText
   }),
-  borderLine: (theme: ITheme): ViewStyle => ({
+  borderLine: (theme: Theme): ViewStyle => ({
     width: '100%',
     height: 0.3,
     backgroundColor: theme.colors.border
   }),
   textWithIconPress: {
-    container: (theme: ITheme): ViewStyle => ({
+    container: (theme: Theme): ViewStyle => ({
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'flex-start'
     }),
-    item: (theme: ITheme): ViewStyle => ({
+    item: (theme: Theme): ViewStyle => ({
       marginRight: 3,
       flex: 1
     }),
-    icon: (theme: ITheme): ImageStyle => ({
+    icon: (theme: Theme): ImageStyle => ({
       marginRight: 3,
       width: 15,
       height: 15
     }),
-    text: (theme: ITheme): TextStyle => ({
+    text: (theme: Theme): TextStyle => ({
       ...theme.typography.captionText,
       color: theme.colors.captionText
     })
   },
   textGrid: {
-    container: (theme: ITheme): ViewStyle => ({
+    container: (theme: Theme): ViewStyle => ({
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
       flexWrap: 'wrap',
       justifyContent: 'space-between'
     }),
-    item: (theme: ITheme, columnNum?: number): ViewStyle => ({
+    item: (theme: Theme, columnNum?: number): ViewStyle => ({
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
       paddingVertical: theme.spacing.small
     }),
-    count: (theme: ITheme): TextStyle => ({
+    count: (theme: Theme): TextStyle => ({
       alignSelf: 'center',
       ...theme.typography.subheadingTextBold
     }),
-    text: (theme: ITheme): TextStyle => ({
+    text: (theme: Theme): TextStyle => ({
       alignSelf: 'center',
       ...theme.typography.bodyText
     })

@@ -24,7 +24,7 @@ import { changeLocale, LanguageTagType, translate } from '@src/i18n'
 import * as Screens from '@src/screens'
 import { HeaderButton } from '@src/screens/components'
 import { RootState, store } from '@src/store'
-import { ITheme, useTheme } from '@src/theme'
+import { Theme, useTheme } from '@src/theme'
 import { wait } from '@src/utils/utils'
 import dayjs from 'dayjs'
 import enUS from 'dayjs/locale/en'
@@ -47,7 +47,7 @@ dayjs.extend(relativeTime)
  * @param borderWidth
  * @returns
  */
-const defaultHeaderBackground = (theme: ITheme, borderWidth?: number): ReactNode => {
+const defaultHeaderBackground = (theme: Theme, borderWidth?: number): ReactNode => {
   return (
     <View
       style={{
@@ -60,7 +60,7 @@ const defaultHeaderBackground = (theme: ITheme, borderWidth?: number): ReactNode
     />
   )
 }
-const defaultCommonScreenOptions = (theme: ITheme) => ({
+const defaultCommonScreenOptions = (theme: Theme) => ({
   // hide header shadow
   headerShadowVisible: false,
   headerStyle: {
@@ -73,7 +73,7 @@ const defaultCommonScreenOptions = (theme: ITheme) => ({
     backgroundColor: theme.colors.background
   }
 })
-const defaultScreenOptions = (theme: ITheme): NativeStackNavigationOptions => ({
+const defaultScreenOptions = (theme: Theme): NativeStackNavigationOptions => ({
   ...defaultCommonScreenOptions(theme),
   animationTypeForReplace: 'push',
   animation: 'slide_from_right',
@@ -89,11 +89,11 @@ const resetLocales = (locale: LanguageTagType) => {
   dayjs.locale(locale === 'zh' ? zhCN : enUS)
 }
 const badgeStyles = {
-  badge: (theme: ITheme): TextStyle => ({
-    height: theme.dimens.badgeSize,
-    fontSize: theme.dimens.badgeSize - 6,
+  badge: (theme: Theme): TextStyle => ({
+    height: theme.dimensions.badgeSize,
+    fontSize: theme.dimensions.badgeSize - 6,
     fontWeight: 'bold',
-    borderRadius: theme.dimens.badgeSize
+    borderRadius: theme.dimensions.badgeSize
   })
 }
 const getDrawHeaderTitle = (
@@ -117,7 +117,7 @@ const renderBottomIcon = (focused: boolean, activeIcon: any, inactiveIcon: any):
   const icon = focused ? activeIcon : inactiveIcon
   return <Image source={icon} style={{ width: bottomTabBarIconSize, height: bottomTabBarIconSize }} />
 }
-const defaultTabBarSetting = (theme: ITheme, insets: EdgeInsets): BottomTabNavigationOptions => {
+const defaultTabBarSetting = (theme: Theme, insets: EdgeInsets): BottomTabNavigationOptions => {
   return {
     ...defaultCommonScreenOptions(theme),
     headerTitleStyle: {
@@ -182,14 +182,14 @@ const HotDrawerContent = (props: DrawerContentComponentProps) => {
   )
 }
 const drawContentStyles = {
-  drawerContent: (theme: ITheme): ViewStyle => ({
+  drawerContent: (theme: Theme): ViewStyle => ({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
     flex: 1,
     backgroundColor: theme.colors.background
   }),
-  drawItem: (theme: ITheme): ViewStyle => ({
+  drawItem: (theme: Theme): ViewStyle => ({
     marginBottom: theme.spacing.medium
   })
 }
@@ -219,7 +219,7 @@ const HotDrawerNavigator = ({
           <HeaderButton
             onPress={() => navigation.navigate(ROUTES.SiteStat)}
             source={theme.assets.images.icons.header.stat}
-            containerStyle={[{ marginRight: theme.dimens.layoutContainerHorizontalMargin }]}
+            containerStyle={[{ marginRight: theme.dimensions.layoutContainerHorizontalMargin }]}
           />
         ),
         drawerActiveTintColor: theme.colors.secondary,

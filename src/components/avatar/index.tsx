@@ -4,7 +4,7 @@
  */
 
 import { NavigationService, ROUTES } from '@src/navigation'
-import { ITheme, useTheme } from '@src/theme'
+import { Theme, useTheme } from '@src/theme'
 import React, { useCallback, useRef } from 'react'
 import { Animated, Image, Pressable, ViewStyle } from 'react-native'
 import FastImage, { Source } from 'react-native-fast-image'
@@ -54,7 +54,7 @@ const AvatarComponent = ({ username, size = 24, source, onPress, style }: IProps
 }
 const avatar = React.memo(AvatarComponent)
 const styles = {
-  avatar: (theme: ITheme, size: number) => ({
+  avatar: (theme: Theme, size: number) => ({
     width: size,
     height: size,
     borderWidth: 0.3,

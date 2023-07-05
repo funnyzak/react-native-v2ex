@@ -20,7 +20,7 @@ const TopicTabList = ({}: HomeTabsScreenProps) => {
   )
   return (
     <Tab.Navigator
-      initialLayout={{ width: theme.dimens.WINDOW_WIDTH }}
+      initialLayout={{ width: theme.dimensions.WINDOW_WIDTH }}
       tabBarPosition="top"
       initialRouteName={`NODE-${tabs[0].name}`}
       sceneContainerStyle={[

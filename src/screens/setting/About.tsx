@@ -7,7 +7,7 @@ import { HELP_PAGE_LINK, RELEASE_NOTES_LINK, REPO_GITHUB_URL, REPO_NAME } from '
 import { translate } from '@src/i18n'
 import { AboutScreenProps as ScreenProps, ROUTES } from '@src/navigation'
 import { SylCommon, useTheme } from '@src/theme'
-import { IState, ITheme } from '@src/types'
+import { IState, Theme } from '@src/types'
 import React from 'react'
 import { Image, ImageStyle, Text, TextStyle, View, ViewStyle } from 'react-native'
 import { connect } from 'react-redux'
@@ -108,25 +108,25 @@ const About = ({
  * @description style
  */
 const styles = {
-  logoContainer: (theme: ITheme): ViewStyle => ({
+  logoContainer: (theme: Theme): ViewStyle => ({
     height: 170,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
   }),
-  logo: (theme: ITheme): ImageStyle => ({
+  logo: (theme: Theme): ImageStyle => ({
     marginTop: 32,
     borderRadius: 10,
     width: 75,
     height: 75,
     alignSelf: 'center'
   }),
-  desc: (theme: ITheme): TextStyle => ({
+  desc: (theme: Theme): TextStyle => ({
     ...theme.typography.labelText,
     color: theme.colors.captionText,
     paddingTop: theme.spacing.tiny
   }),
-  footerText: (theme: ITheme): TextStyle => ({
+  footerText: (theme: Theme): TextStyle => ({
     height: 50,
     alignSelf: 'center',
     ...theme.typography.bodyText,

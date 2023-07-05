@@ -47,7 +47,7 @@ const Profile = ({
       {member ? (
         <ProfileDetail profile={member} />
       ) : (
-        <Spinner style={{ height: theme.dimens.WINDOW_HEIGHT }} text={translate('placeholder.loading')} />
+        <Spinner style={{ height: theme.dimensions.WINDOW_HEIGHT }} text={translate('placeholder.loading')} />
       )}
     </ScrollView>
   )

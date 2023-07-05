@@ -5,7 +5,7 @@
 
 import React from 'react'
 import { View, ViewStyle, TextStyle, ImageSourcePropType, Image, StyleProp } from 'react-native'
-import { useTheme, ITheme } from '@src/theme'
+import { useTheme, Theme } from '@src/theme'
 import { Text, Button } from '.'
 import { translate } from '@src/i18n'
 const Placeholder = ({
@@ -49,7 +49,7 @@ const Placeholder = ({
   )
 }
 const styles = {
-  containerStyle: (_theme: ITheme): ViewStyle => ({
+  containerStyle: (_theme: Theme): ViewStyle => ({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -57,17 +57,17 @@ const styles = {
     paddingVertical: _theme.spacing.small,
     marginBottom: _theme.spacing.large
   }),
-  iconStyle: (_theme: ITheme): ViewStyle => ({}),
-  iconTextStyle: (_theme: ITheme): TextStyle => ({
+  iconStyle: (_theme: Theme): ViewStyle => ({}),
+  iconTextStyle: (_theme: Theme): TextStyle => ({
     fontSize: 48,
     color: _theme.colors.captionText
   }),
-  textStyle: (_theme: ITheme): TextStyle => ({
+  textStyle: (_theme: Theme): TextStyle => ({
     paddingTop: _theme.spacing.small,
     ..._theme.typography.bodyText,
     color: _theme.colors.captionText
   }),
-  buttonContainer: (_theme: ITheme): ViewStyle => ({
+  buttonContainer: (_theme: Theme): ViewStyle => ({
     marginTop: _theme.spacing.small
   })
 }

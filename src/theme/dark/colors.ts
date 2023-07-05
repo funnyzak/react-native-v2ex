@@ -4,8 +4,8 @@
  */
 
 import lightColors from '../light/colors'
-import { IThemeColor } from '../types'
-const colors: IThemeColor = {
+import { ColorPalette } from '../types'
+const colors: ColorPalette = {
   ...lightColors,
   primaryDark: '#161921',
   headerBackground: '#161921',

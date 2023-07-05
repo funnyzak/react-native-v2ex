@@ -3,12 +3,12 @@
  * Last modified at 2022-04-19 17:04:45
  */
 
-import { Dimensions } from 'react-native'
-const screenWidth = Dimensions.get('window').width
-const screenHeight = Dimensions.get('window').height
-import { IThemeDimen } from '../types'
+import { Dimensions as _Dimensions } from 'react-native'
+const screenWidth = _Dimensions.get('window').width
+const screenHeight = _Dimensions.get('window').height
+import { Dimensions } from '../types'
 const layoutContainerHorizontalMargin = 15
-const dimens: IThemeDimen = {
+const dimens: Dimensions = {
   WINDOW_WIDTH: screenWidth,
   WINDOW_HEIGHT: screenHeight,
   layoutContainerWidth: screenWidth - layoutContainerHorizontalMargin * 2,

@@ -6,7 +6,7 @@
 import { ApiLib } from '@src/api'
 import { Placeholder, Spinner, useToast } from '@src/components'
 import { translate } from '@src/i18n'
-import { ITheme, useTheme } from '@src/theme'
+import { Theme, useTheme } from '@src/theme'
 import { AppObject } from '@src/types'
 import React, { useCallback, useEffect, useState } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
@@ -79,9 +79,9 @@ const TopicReplayList: React.FC<TopicReplayListProps> = ({
  * @description styles settings
  */
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     flex: 1
   }),
-  itemContainer: (theme: ITheme): ViewStyle => ({})
+  itemContainer: (theme: Theme): ViewStyle => ({})
 }
 export default TopicReplayList
