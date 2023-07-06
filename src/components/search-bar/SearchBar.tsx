@@ -4,7 +4,7 @@
  */
 
 import { logInfo } from '@src/helper/logger'
-import { ITheme, useTheme } from '@src/theme'
+import { Theme, useTheme } from '@src/theme'
 import React, { memo, useCallback, useRef, useState } from 'react'
 import {
   ColorValue,
@@ -148,21 +148,21 @@ const SearchBarComponent = ({
 }
 const SearchBar = memo(SearchBarComponent)
 const styles = {
-  searchToolContainer: (theme: ITheme): ViewStyle => ({
+  searchToolContainer: (theme: Theme): ViewStyle => ({
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
     height: 30
   }),
-  inputContainerStyle: (theme: ITheme): ViewStyle => ({
+  inputContainerStyle: (theme: Theme): ViewStyle => ({
     height: '100%',
     borderWidth: 1,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center'
   }),
-  searchBarInput: (theme: ITheme): TextStyle => ({
+  searchBarInput: (theme: Theme): TextStyle => ({
     fontSize: 16,
     height: '100%',
     lineHeight: 22,
@@ -171,7 +171,7 @@ const styles = {
     padding: theme.spacing.tiny,
     flex: 1
   }),
-  searchButton: (theme: ITheme): ViewStyle => ({
+  searchButton: (theme: Theme): ViewStyle => ({
     borderRadius: 5,
     marginLeft: theme.spacing.tiny,
     flexDirection: 'row',
@@ -182,13 +182,13 @@ const styles = {
     paddingHorizontal: 10,
     backgroundColor: theme.colors.secondary
   }),
-  searchButtonText: (theme: ITheme): TextStyle => ({
+  searchButtonText: (theme: Theme): TextStyle => ({
     fontSize: 14,
     lineHeight: 22,
     fontWeight: 'bold',
     color: '#f5f3ff'
   }),
-  iconStyle: (theme: ITheme): ViewStyle => ({
+  iconStyle: (theme: Theme): ViewStyle => ({
     marginRight: 10,
     marginLeft: 5
   })

@@ -7,7 +7,7 @@ import { Placeholder, Spinner } from '@src/components'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
 import { SylCommon, useTheme } from '@src/theme'
-import { AppObject, ITheme } from '@src/types'
+import { AppObject, Theme } from '@src/types'
 import React from 'react'
 import { FlatList, StyleProp, View, ViewStyle } from 'react-native'
 import Animated, { LightSpeedInLeft, LightSpeedInRight } from 'react-native-reanimated'
@@ -113,13 +113,13 @@ const TopicCardList: React.FC<TopicCardListProps> = ({
  * @description styles settings
  */
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     flex: 1
   }),
-  topicItemContainer: (theme: ITheme): ViewStyle => ({
+  topicItemContainer: (theme: Theme): ViewStyle => ({
     ...SylCommon.Card.container(theme)
   }),
-  itemSeparator: (theme: ITheme) => ({
+  itemSeparator: (theme: Theme) => ({
     height: 0
   })
 }

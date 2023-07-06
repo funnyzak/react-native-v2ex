@@ -8,7 +8,7 @@ import { Button, Input, Text, useToast } from '@src/components'
 import { translate } from '@src/i18n'
 import { ROUTES, SignInScreenProps as ScreenProps } from '@src/navigation'
 import { SylCommon, useTheme } from '@src/theme'
-import { IState, ITheme } from '@src/types'
+import { IState, Theme } from '@src/types'
 import * as utils from '@src/utils'
 import React, { useEffect, useState } from 'react'
 import { Image, ImageStyle, Pressable, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native'
@@ -127,45 +127,45 @@ const Screen = ({
  * @description styles settings
  */
 const styles = {
-  mainContainer: (theme: ITheme, keyboardRaise: boolean): ViewStyle => ({
+  mainContainer: (theme: Theme, keyboardRaise: boolean): ViewStyle => ({
     flex: 1,
-    width: theme.dimens.defaultButtonWidth,
+    width: theme.dimensions.defaultButtonWidth,
     backgroundColor: theme.colors.transparent,
-    paddingTop: theme.dimens.WINDOW_HEIGHT / (keyboardRaise ? 10 : 3),
+    paddingTop: theme.dimensions.WINDOW_HEIGHT / (keyboardRaise ? 10 : 3),
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignSelf: 'center',
     alignItems: 'center'
   }),
-  columnItem: (theme: ITheme): ViewStyle => ({
+  columnItem: (theme: Theme): ViewStyle => ({
     marginBottom: theme.spacing.large,
     width: '100%',
     display: 'flex',
     flexDirection: 'column'
   }),
-  logo: (theme: ITheme): ImageStyle => ({
+  logo: (theme: Theme): ImageStyle => ({
     width: 150 * 0.9,
     height: 128 * 0.9,
     alignSelf: 'center',
     marginBottom: 100
   }),
-  actionContainer: (theme: ITheme): ViewStyle => ({
+  actionContainer: (theme: Theme): ViewStyle => ({
     flexDirection: 'column',
     justifyContent: 'flex-start'
   }),
-  input: (theme: ITheme): ViewStyle => ({
+  input: (theme: Theme): ViewStyle => ({
     width: '100%',
     marginBottom: theme.spacing.large
   }),
-  button: (theme: ITheme): ViewStyle => ({
+  button: (theme: Theme): ViewStyle => ({
     width: '100%'
   }),
-  linkSkip: (theme: ITheme): TextStyle => ({
+  linkSkip: (theme: Theme): TextStyle => ({
     marginTop: theme.spacing.large * 3,
     color: theme.colors.bodyText,
     height: 30
   }),
-  footer: (theme: ITheme): ViewStyle => ({
+  footer: (theme: Theme): ViewStyle => ({
     width: '80%',
     marginBottom: theme.spacing.large,
     flexDirection: 'row',
@@ -174,7 +174,7 @@ const styles = {
     alignSelf: 'center',
     flexWrap: 'wrap'
   }),
-  footerText: (theme: ITheme): TextStyle => ({
+  footerText: (theme: Theme): TextStyle => ({
     ...theme.typography.labelText
   })
 }

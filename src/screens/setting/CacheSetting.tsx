@@ -8,7 +8,7 @@ import { View, ViewStyle } from 'react-native'
 import { connect } from 'react-redux'
 import { CacheSettingScreenProps as ScreenProps } from '@src/navigation'
 import { SylCommon, useTheme } from '@src/theme'
-import { IState, ITheme } from '@src/types'
+import { IState, Theme } from '@src/types'
 import { TableList, TableRow } from '../components'
 import { useToast } from '@src/components'
 import { translate } from '@src/i18n'
@@ -35,7 +35,7 @@ const CacheSetting = ({ route, navigation, loading }: ScreenProps) => {
  * @description styles settings
  */
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     flex: 1
   })
 }

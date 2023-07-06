@@ -4,7 +4,7 @@
  */
 
 import { Text } from '@src/components'
-import { ITheme } from '@src/theme'
+import { Theme } from '@src/theme'
 import React from 'react'
 import { View, ViewStyle } from 'react-native'
 /**
@@ -31,7 +31,7 @@ const GridList: React.FC<GridListProps> = ({ width, height }: GridListProps) => 
   return renderContent()
 }
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     flex: 1
   })
 }

@@ -4,8 +4,8 @@
  */
 
 import lightDimens from '../light/dimens'
-import { IThemeDimen } from './../types'
-const dimens: IThemeDimen = {
+import { Dimensions } from './../types'
+const dimens: Dimensions = {
   ...lightDimens
 }
 export default dimens

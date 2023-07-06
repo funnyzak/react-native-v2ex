@@ -12,7 +12,7 @@ import {
   ActivityIndicator
 } from 'react-native'
 import { Text } from './Text'
-import { useTheme, ITheme } from '@src/theme'
+import { useTheme, Theme } from '@src/theme'
 export interface TouchableOpacityProps extends NativeTouchableOpacityProps {
   loading?: boolean
   disabled?: boolean
@@ -39,19 +39,19 @@ const Button = ({
   )
 }
 const styles = {
-  buttonStyle: (_theme: ITheme, type: 'large' | 'small', disabled: boolean): ViewStyle =>
+  buttonStyle: (_theme: Theme, type: 'large' | 'small', disabled: boolean): ViewStyle =>
     type === 'large'
       ? {
           borderWidth: 1,
           backgroundColor: disabled ? _theme.colors.secondaryLight : _theme.colors.secondary,
           borderColor: disabled ? _theme.colors.secondaryLight : _theme.colors.secondary,
-          width: _theme.dimens.defaultButtonWidth,
-          height: _theme.dimens.defaultButtonHeight,
+          width: _theme.dimensions.defaultButtonWidth,
+          height: _theme.dimensions.defaultButtonHeight,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           flexDirection: 'row',
-          borderRadius: _theme.dimens.defaultButtonRadius
+          borderRadius: _theme.dimensions.defaultButtonRadius
         }
       : {
           borderWidth: 1,
@@ -61,9 +61,9 @@ const styles = {
           height: 24,
           alignItems: 'center',
           justifyContent: 'center',
-          borderRadius: _theme.dimens.defaultButtonRadius
+          borderRadius: _theme.dimensions.defaultButtonRadius
         },
-  buttonTitle: (_theme: ITheme, type: 'large' | 'small', disabled: boolean, textColor?: string): TextStyle =>
+  buttonTitle: (_theme: Theme, type: 'large' | 'small', disabled: boolean, textColor?: string): TextStyle =>
     type === 'large'
       ? {
           ..._theme.typography.subheadingText,

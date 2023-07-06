@@ -5,7 +5,7 @@
 
 import { Placeholder, useToast } from '@src/components'
 import { translate } from '@src/i18n'
-import { ITheme, useTheme } from '@src/theme'
+import { Theme, useTheme } from '@src/theme'
 import { AppObject } from '@src/types'
 import { ApiLib } from '@src/api'
 import React, { useCallback, useEffect, useState } from 'react'
@@ -69,7 +69,7 @@ const ProfileTopics: React.FC<ProfileTopicsProps> = ({ containerStyle, username 
   return renderContent()
 }
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     marginTop: theme.spacing.small
   })
 }

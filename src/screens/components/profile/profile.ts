@@ -3,15 +3,15 @@
  * Last modified at 2022-05-27 21:34:46
  */
 
-import { ITheme } from '@src/theme'
+import { Theme } from '@src/theme'
 import { ViewStyle } from 'react-native'
 export const ProfileInfoStyle = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     display: 'flex',
     alignItems: 'flex-start',
     flexDirection: 'column'
   }),
-  infoItem: (theme: ITheme): ViewStyle => ({
+  infoItem: (theme: Theme): ViewStyle => ({
     paddingBottom: theme.spacing.medium,
     display: 'flex',
     flexDirection: 'row',
@@ -19,28 +19,28 @@ export const ProfileInfoStyle = {
     justifyContent: 'flex-start',
     width: '100%'
   }),
-  baseAvatar: (theme: ITheme): ViewStyle => ({
+  baseAvatar: (theme: Theme): ViewStyle => ({
     width: 60,
     height: 60,
     marginRight: theme.spacing.medium
   }),
-  baseRightBox: (theme: ITheme): ViewStyle => ({
+  baseRightBox: (theme: Theme): ViewStyle => ({
     display: 'flex',
     flexDirection: 'row',
     flex: 1
   }),
-  baseRightInfo: (theme: ITheme): ViewStyle => ({
+  baseRightInfo: (theme: Theme): ViewStyle => ({
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
     alignItems: 'flex-start'
   }),
-  baseRightArrow: (theme: ITheme): ViewStyle => ({
+  baseRightArrow: (theme: Theme): ViewStyle => ({
     width: 14,
     display: 'flex',
     justifyContent: 'center'
   }),
-  baseRightItem: (theme: ITheme): ViewStyle => ({
+  baseRightItem: (theme: Theme): ViewStyle => ({
     paddingBottom: theme.spacing.small
   })
 }

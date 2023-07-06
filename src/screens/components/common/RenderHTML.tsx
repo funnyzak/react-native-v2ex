@@ -5,7 +5,7 @@
 
 import { NavigationService, ROUTES } from '@src/navigation'
 import { useTheme } from '@src/theme'
-import { ITheme } from '@src/types'
+import { Theme } from '@src/types'
 import React from 'react'
 import { Alert, GestureResponderEvent, StyleProp, View, ViewStyle } from 'react-native'
 import RenderHtml, { MixedStyleRecord } from 'react-native-render-html'
@@ -33,7 +33,7 @@ const RenderHTML = ({
     </View>
   )
 }
-const contentTagsStyles = (theme: ITheme): MixedStyleRecord => {
+const contentTagsStyles = (theme: Theme): MixedStyleRecord => {
   return {
     body: {
       color: theme.colors.bodyText

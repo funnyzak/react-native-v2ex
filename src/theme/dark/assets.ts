@@ -4,8 +4,8 @@
  */
 
 import lightAssets from '../light/assets'
-import { IThemeAssets } from '../types'
-const Assets: IThemeAssets = {
+import { ThemeAssets } from '../types'
+const Assets: ThemeAssets = {
   ...lightAssets
 }
 export default Assets

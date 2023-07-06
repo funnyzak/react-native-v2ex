@@ -4,7 +4,7 @@
  */
 
 import { Platform } from 'react-native'
-import { IThemeTypography } from '../types'
+import { Typography } from '../types'
 import colors from './colors'
 const fontFamily = Platform.select({ android: 'sans-serif', ios: 'Helvetica' })
 const fontWeightRegular = 'normal'
@@ -14,7 +14,7 @@ const appbarTitleTextColor = colors.appbarTint
 const titleTextColor = colors.titleText
 const bodyTextColor = colors.bodyText
 const captionTextColor = colors.captionText
-const typographys: IThemeTypography = {
+const typographys: Typography = {
   titleText: {
     fontFamily,
     color: appbarTitleTextColor,

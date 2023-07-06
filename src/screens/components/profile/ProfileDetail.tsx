@@ -3,7 +3,7 @@
  * Last modified at 2022-10-20 18:07:33
  */
 
-import { ITheme, SylCommon, useTheme } from '@src/theme'
+import { Theme, SylCommon, useTheme } from '@src/theme'
 import { AppObject } from '@src/types'
 import React from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
@@ -33,7 +33,7 @@ const ProfileDetail: React.FC<ProfileDetailProps> = ({ containerStyle, profile }
   return renderContent()
 }
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     flex: 1
   })
 }

@@ -9,7 +9,7 @@ import { View, ViewStyle, TouchableOpacity } from 'react-native'
 import * as Actions from '@src/actions'
 import { translate } from '@src/i18n'
 import { useTheme, SylCommon } from '@src/theme'
-import { IState, ITheme, AppObject } from '@src/types'
+import { IState, Theme, AppObject } from '@src/types'
 import * as CompS from '../components'
 import { Text, Spinner, Placeholder } from '@src/components'
 import { ChangeLogScreenProps as ScreenProps, ROUTES } from '@src/navigation'
@@ -24,7 +24,7 @@ const ChangeLog = ({ route, navigation, loading }: ScreenProps) => {
   )
 }
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     flex: 1
   })
 }

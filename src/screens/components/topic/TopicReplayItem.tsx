@@ -6,7 +6,7 @@
 import { Avatar } from '@src/components'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
-import { ITheme, useTheme } from '@src/theme'
+import { Theme, useTheme } from '@src/theme'
 import { AppObject } from '@src/types'
 import dayjs from 'dayjs'
 import React, { useMemo } from 'react'
@@ -42,7 +42,7 @@ const TopicReplayItem: React.FC<TopicReplayItemProps> = ({ containerStyle, info 
           <View style={styles.infoMainItem(theme)}>
             <RenderHTML
               htmlString={info.content_rendered}
-              contentWidth={theme.dimens.layoutContainerWidth - 40 - theme.spacing.large}
+              contentWidth={theme.dimensions.layoutContainerWidth - 40 - theme.spacing.large}
             />
           </View>
         </View>
@@ -52,27 +52,27 @@ const TopicReplayItem: React.FC<TopicReplayItemProps> = ({ containerStyle, info 
   )
 }
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     paddingTop: theme.spacing.medium,
     width: '100%',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center'
   }),
-  infoContainer: (theme: ITheme): ViewStyle => ({
+  infoContainer: (theme: Theme): ViewStyle => ({
     flexDirection: 'row',
     marginBottom: theme.spacing.small
   }),
-  avatar: (theme: ITheme): ViewStyle => ({
+  avatar: (theme: Theme): ViewStyle => ({
     width: 40,
     marginRight: theme.spacing.large
   }),
-  infoMain: (theme: ITheme): ViewStyle => ({
+  infoMain: (theme: Theme): ViewStyle => ({
     flex: 1,
     justifyContent: 'flex-start',
     flexDirection: 'column'
   }),
-  infoMainItem: (theme: ITheme): ViewStyle => ({
+  infoMainItem: (theme: Theme): ViewStyle => ({
     flexDirection: 'row',
     marginBottom: theme.spacing.small,
     justifyContent: 'space-between'

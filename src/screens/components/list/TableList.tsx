@@ -4,7 +4,7 @@
  */
 
 import { Text } from '@src/components'
-import { ITheme, useTheme } from '@src/theme'
+import { Theme, useTheme } from '@src/theme'
 import React from 'react'
 import {
   Image,
@@ -115,7 +115,7 @@ const TableList: React.FC<TableListProps> = (data: TableListProps) => {
   return renderContent()
 }
 const rowStyles = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     display: 'flex',
     flexDirection: 'row',
     height: 40,
@@ -124,56 +124,56 @@ const rowStyles = {
     borderBottomWidth: 0.3,
     borderColor: theme.colors.border
   }),
-  left: (theme: ITheme): ViewStyle => ({
+  left: (theme: Theme): ViewStyle => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center'
   }),
-  leftIcon: (theme: ITheme): ImageStyle => ({
+  leftIcon: (theme: Theme): ImageStyle => ({
     height: 21,
     width: 21,
     marginRight: theme.spacing.small
   }),
-  textBox: (theme: ITheme): ViewStyle => ({
+  textBox: (theme: Theme): ViewStyle => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center'
   }),
-  title: (theme: ITheme, highlightTitle: boolean): TextStyle => ({
+  title: (theme: Theme, highlightTitle: boolean): TextStyle => ({
     ...theme.typography.labelText,
     color: highlightTitle ? theme.colors.secondary : theme.colors.bodyText
   }),
-  description: (theme: ITheme): TextStyle => ({
+  description: (theme: Theme): TextStyle => ({
     ...theme.typography.captionText
   }),
-  right: (theme: ITheme): ViewStyle => ({
+  right: (theme: Theme): ViewStyle => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     marginRight: theme.spacing.medium
   }),
-  rightText: (theme: ITheme): TextStyle => ({
+  rightText: (theme: Theme): TextStyle => ({
     ...theme.typography.captionText
   }),
-  rightIcon: (theme: ITheme): ImageStyle => ({
+  rightIcon: (theme: Theme): ImageStyle => ({
     width: 16,
     height: 16
   })
 }
 const tableStyles = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
     marginTop: theme.spacing.extraLarge
   }),
-  title: (theme: ITheme): TextStyle => ({
+  title: (theme: Theme): TextStyle => ({
     ...theme.typography.captionText,
     paddingLeft: theme.spacing.medium,
     marginBottom: theme.spacing.small
   }),
-  list: (theme: ITheme): ViewStyle => ({
+  list: (theme: Theme): ViewStyle => ({
     display: 'flex',
     paddingLeft: theme.spacing.medium,
     flexDirection: 'column',

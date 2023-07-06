@@ -3,7 +3,7 @@
  * Last modified at 2022-11-02 12:06:19
  */
 
-import { ITheme, useTheme } from '@src/theme'
+import { Theme, useTheme } from '@src/theme'
 import React from 'react'
 import { ActivityIndicator, StyleProp, TextStyle, View, ViewStyle } from 'react-native'
 import { Text } from './Text'
@@ -46,13 +46,13 @@ const Spinner = ({
 }
 export { Spinner }
 const styles = {
-  containerStyle: (_theme: ITheme): ViewStyle => ({
+  containerStyle: (_theme: Theme): ViewStyle => ({
     paddingVertical: _theme.spacing.large,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column'
   }),
-  textStyle: (_theme: ITheme): TextStyle => ({
+  textStyle: (_theme: Theme): TextStyle => ({
     ..._theme.typography.bodyText,
     marginTop: _theme.spacing.small
   })

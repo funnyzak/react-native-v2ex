@@ -4,7 +4,7 @@
  */
 
 import { Text } from '@src/components'
-import { ITheme, SylCommon, useTheme } from '@src/theme'
+import { Theme, SylCommon, useTheme } from '@src/theme'
 import React from 'react'
 import { Image, ImageSourcePropType, StyleProp, View, ViewStyle } from 'react-native'
 import { BorderLine } from './General'
@@ -40,17 +40,17 @@ const TabCardContainer: React.FC<TabCardContainerProps> = ({
   return renderContent()
 }
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     flexDirection: 'column'
   }),
-  tabBar: (theme: ITheme): ViewStyle => ({
+  tabBar: (theme: Theme): ViewStyle => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
     height: 36
   }),
-  content: (theme: ITheme): ViewStyle => ({
+  content: (theme: Theme): ViewStyle => ({
     marginTop: theme.spacing.small
   })
 }

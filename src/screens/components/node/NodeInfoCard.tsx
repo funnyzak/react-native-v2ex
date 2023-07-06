@@ -7,7 +7,7 @@ import { Avatar, Spinner, Text } from '@src/components'
 import { useNode } from '@src/hooks/useNode'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
-import { ITheme, SylCommon, useTheme } from '@src/theme'
+import { Theme, SylCommon, useTheme } from '@src/theme'
 import { AppObject } from '@src/types'
 import dayjs from 'dayjs'
 import React, { useEffect } from 'react'
@@ -86,7 +86,7 @@ const NodeInfoCard: React.FC<NodeInfoCardProps> = ({ nodeid, loadedCallback, con
               <View style={styles.infoItem(theme)}>
                 <RenderHTML
                   htmlString={info?.header}
-                  contentWidth={theme.dimens.WINDOW_WIDTH - theme.dimens.layoutContainerHorizontalMargin * 2}
+                  contentWidth={theme.dimensions.WINDOW_WIDTH - theme.dimensions.layoutContainerHorizontalMargin * 2}
                 />
               </View>
             ) : null}
@@ -107,12 +107,12 @@ const NodeInfoCard: React.FC<NodeInfoCardProps> = ({ nodeid, loadedCallback, con
   return renderContent()
 }
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     display: 'flex',
     alignItems: 'flex-start',
     flexDirection: 'column'
   }),
-  infoItem: (theme: ITheme): ViewStyle => ({
+  infoItem: (theme: Theme): ViewStyle => ({
     paddingBottom: theme.spacing.medium,
     display: 'flex',
     flexDirection: 'row',
@@ -120,28 +120,28 @@ const styles = {
     justifyContent: 'flex-start',
     width: '100%'
   }),
-  baseAvatar: (theme: ITheme): ViewStyle => ({
+  baseAvatar: (theme: Theme): ViewStyle => ({
     width: 60,
     height: 60,
     marginRight: theme.spacing.medium
   }),
-  baseRightBox: (theme: ITheme): ViewStyle => ({
+  baseRightBox: (theme: Theme): ViewStyle => ({
     display: 'flex',
     flexDirection: 'row',
     flex: 1
   }),
-  baseRightInfo: (theme: ITheme): ViewStyle => ({
+  baseRightInfo: (theme: Theme): ViewStyle => ({
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
     alignItems: 'flex-start'
   }),
-  baseRightArrow: (theme: ITheme): ViewStyle => ({
+  baseRightArrow: (theme: Theme): ViewStyle => ({
     width: 14,
     display: 'flex',
     justifyContent: 'center'
   }),
-  baseRightItem: (theme: ITheme): ViewStyle => ({
+  baseRightItem: (theme: Theme): ViewStyle => ({
     paddingBottom: theme.spacing.small
   })
 }

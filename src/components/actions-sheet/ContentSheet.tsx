@@ -5,7 +5,7 @@
 
 import { translate } from '@src/i18n'
 import { SylCommon, useTheme } from '@src/theme'
-import { ITheme } from '@src/types'
+import { Theme } from '@src/types'
 import React, { useRef } from 'react'
 import { ScrollView, Text, TextStyle, View, ViewStyle } from 'react-native'
 import ActionSheet, { ActionSheetRef, SheetProps } from 'react-native-actions-sheet'
@@ -22,7 +22,12 @@ const ContentSheet = (props: SheetProps) => {
   const { theme } = useTheme()
   const {
     sheetId,
-    payload: { title = translate('brand.name'), textStyle, text = '无内容', height = theme.dimens.WINDOW_HEIGHT / 2 }
+    payload: {
+      title = translate('brand.name'),
+      textStyle,
+      text = '无内容',
+      height = theme.dimensions.WINDOW_HEIGHT / 2
+    }
   } = props
   const actionSheetRef = useRef<ActionSheetRef>(null)
   return (
@@ -58,8 +63,8 @@ const ContentSheet = (props: SheetProps) => {
   )
 }
 const styles = {
-  safeareview: (theme: ITheme): ViewStyle => ({}),
-  container: (theme: ITheme): ViewStyle => ({
+  safeareview: (theme: Theme): ViewStyle => ({}),
+  container: (theme: Theme): ViewStyle => ({
     paddingBottom: theme.spacing.extraLarge,
     width: '100%',
     display: 'flex',
@@ -68,11 +73,11 @@ const styles = {
     alignItems: 'center',
     backgroundColor: theme.colors.surface
   }),
-  title: (theme: ITheme): TextStyle => ({
+  title: (theme: Theme): TextStyle => ({
     ...theme.typography.headingTextBold,
     paddingVertical: theme.spacing.small
   }),
-  text: (theme: ITheme): TextStyle => ({
+  text: (theme: Theme): TextStyle => ({
     ...theme.typography.bodyText,
     lineHeight: theme.typography.bodyText.fontSize! * 2,
     flexWrap: 'wrap'

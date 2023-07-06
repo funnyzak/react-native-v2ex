@@ -6,7 +6,7 @@
 import { Placeholder, Spinner } from '@src/components'
 import { translate } from '@src/i18n'
 import { SylCommon, useTheme } from '@src/theme'
-import { ITheme, AppObject } from '@src/types'
+import { Theme, AppObject } from '@src/types'
 import React from 'react'
 import { FlatList, StyleProp, View, ViewStyle } from 'react-native'
 import { BorderLine } from '../common'
@@ -95,10 +95,10 @@ const ProfileCardList: React.FC<ProfileCardListProps> = ({
  * @description styles settings
  */
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     flex: 1
   }),
-  infoItemContainer: (theme: ITheme): ViewStyle => ({
+  infoItemContainer: (theme: Theme): ViewStyle => ({
     ...SylCommon.Card.container(theme),
     paddingTop: theme.spacing.medium
   })

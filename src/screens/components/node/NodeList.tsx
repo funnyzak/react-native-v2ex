@@ -6,7 +6,7 @@
 import React from 'react'
 import { View, ViewStyle, TextStyle } from 'react-native'
 import { Text, Button, Spinner, Placeholder } from '@src/components'
-import { ITheme, SylCommon, useTheme } from '@src/theme'
+import { Theme, SylCommon, useTheme } from '@src/theme'
 import { translate } from '@src/i18n'
 import { NavigationService, ROUTES } from '@src/navigation'
 import { AppObject } from '@src/types'
@@ -35,7 +35,7 @@ const NodeList: React.FC<NodeListProps> = ({ width, height }: NodeListProps) => 
   return renderContent()
 }
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     flex: 1
   })
 }

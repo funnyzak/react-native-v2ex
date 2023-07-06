@@ -3,8 +3,8 @@
  * Last modified at 2022-05-21 16:56:19
  */
 
-import { IThemeAssets } from '../types'
-const Assets: IThemeAssets = {
+import { ThemeAssets } from '../types'
+const Assets: ThemeAssets = {
   images: {
     icons: {
       app: {

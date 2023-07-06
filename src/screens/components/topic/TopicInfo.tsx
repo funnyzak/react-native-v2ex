@@ -4,7 +4,7 @@
  */
 
 import { NavigationService, ROUTES } from '@src/navigation'
-import { ITheme, SylCommon, useTheme } from '@src/theme'
+import { Theme, SylCommon, useTheme } from '@src/theme'
 import { AppObject } from '@src/types'
 import React from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
@@ -39,7 +39,7 @@ const TopicInfo: React.FC<TopicInfoProps> = ({ containerStyle, info }: TopicInfo
         />
         <RenderHTML
           htmlString={info.content_rendered}
-          contentWidth={theme.dimens.WINDOW_WIDTH - theme.spacing.large * 2}
+          contentWidth={theme.dimensions.WINDOW_WIDTH - theme.spacing.large * 2}
         />
       </View>
     )
@@ -47,7 +47,7 @@ const TopicInfo: React.FC<TopicInfoProps> = ({ containerStyle, info }: TopicInfo
   return renderContent()
 }
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     paddingVertical: theme.spacing.medium
   })
 }

@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 import { StyleSheet, View, ViewStyle, TextStyle } from 'react-native'
 import { translate } from '@src/i18n'
 import { useTheme, SylCommon } from '@src/theme'
-import { IState, ITheme, AppObject } from '@src/types'
+import { IState, Theme, AppObject } from '@src/types'
 import * as CompS from '../components'
 import { Text, Spinner } from '@src/components'
 import { SearchScreenProps as ScreenProps } from '@src/navigation/routes'
@@ -22,7 +22,7 @@ const Search = ({ route, navigation, loading }: ScreenProps) => {
   )
 }
 const styles = {
-  container: (theme: ITheme): ViewStyle => ({
+  container: (theme: Theme): ViewStyle => ({
     flex: 1
   })
 }

@@ -6,7 +6,7 @@
 import { Button } from '@src/components'
 import { translate } from '@src/i18n'
 import { SylCommon, useTheme } from '@src/theme'
-import { ITheme } from '@src/types'
+import { Theme } from '@src/types'
 import React, { useRef } from 'react'
 import { Text, TextInput, TextStyle, View, ViewStyle } from 'react-native'
 import ActionSheet, { ActionSheetRef, SheetManager, SheetProps } from 'react-native-actions-sheet'
@@ -90,37 +90,37 @@ const ConfirmActionSheet = (props: SheetProps) => {
   )
 }
 const styles = {
-  safeareview: (theme: ITheme): ViewStyle => ({}),
-  container: (theme: ITheme): ViewStyle => ({
+  safeareview: (theme: Theme): ViewStyle => ({}),
+  container: (theme: Theme): ViewStyle => ({
     paddingBottom: theme.spacing.small,
     width: '100%',
-    maxHeight: theme.dimens.WINDOW_HEIGHT / 2,
-    minHeight: theme.dimens.WINDOW_HEIGHT / 6,
+    maxHeight: theme.dimensions.WINDOW_HEIGHT / 2,
+    minHeight: theme.dimensions.WINDOW_HEIGHT / 6,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
     backgroundColor: theme.colors.surface
   }),
-  title: (theme: ITheme): TextStyle => ({
+  title: (theme: Theme): TextStyle => ({
     ...theme.typography.headingTextBold,
     paddingVertical: theme.spacing.small,
     alignSelf: 'center'
   }),
-  text: (theme: ITheme): TextStyle => ({
+  text: (theme: Theme): TextStyle => ({
     ...theme.typography.labelText,
     width: '100%',
     textAlign: 'left',
     paddingVertical: theme.spacing.small
   }),
-  buttonContainer: (theme: ITheme): ViewStyle => ({
+  buttonContainer: (theme: Theme): ViewStyle => ({
     paddingVertical: theme.spacing.small,
     flexDirection: 'row',
     display: 'flex',
     width: '100%',
     justifyContent: 'space-between'
   }),
-  button: (theme: ITheme): ViewStyle => ({
+  button: (theme: Theme): ViewStyle => ({
     width: '48%',
     borderRadius: 20
   })

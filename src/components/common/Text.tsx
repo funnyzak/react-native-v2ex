@@ -4,7 +4,7 @@
  */
 
 import { useTheme } from '@src/theme'
-import { ITheme } from '@src/types'
+import { Theme } from '@src/types'
 import { validKey } from '@src/utils'
 import React from 'react'
 import { Text as RNText, TextProps as NativeTextProps, TextStyle } from 'react-native'
@@ -38,7 +38,7 @@ const Text = ({
   const { theme } = useTheme()
   return <RNText style={[styles.text(type, bold, theme), style]} {...props} />
 }
-const getTextStyle = (type: TextType, bold: boolean, theme: ITheme): TextStyle => {
+const getTextStyle = (type: TextType, bold: boolean, theme: Theme): TextStyle => {
   let style = ''
   switch (type) {
     case HEADING:
@@ -62,7 +62,7 @@ const getTextStyle = (type: TextType, bold: boolean, theme: ITheme): TextStyle =
   return theme.typography[validKey(style, theme.typography) ? style : 'bodyText']
 }
 const styles = {
-  text: (type: TextType, bold: boolean, theme: ITheme) => ({
+  text: (type: TextType, bold: boolean, theme: Theme) => ({
     ...getTextStyle(type, bold, theme)
   })
 }

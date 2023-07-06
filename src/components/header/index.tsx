@@ -6,7 +6,7 @@
 import { StatusBar, View, ViewStyle } from 'react-native'
 import React from 'react'
 import { useTheme } from '@src/theme'
-import { ITheme } from '@src/types'
+import { Theme } from '@src/types'
 import { Logo } from '../atoms'
 const Header = ({ headerRight }: { headerRight: React.ReactNode }) => {
   const { theme } = useTheme()
@@ -20,7 +20,7 @@ const Header = ({ headerRight }: { headerRight: React.ReactNode }) => {
 }
 export default Header
 const styles = {
-  header: (theme: ITheme) => ({
+  header: (theme: Theme) => ({
     backgroundColor: theme.colors.white,
     paddingHorizontal: 16,
     paddingVertical: 8
