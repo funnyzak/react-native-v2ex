@@ -4,6 +4,13 @@
  */
 
 /**
+ * 项目官网
+ */
+export const OFFICIAL_SITE = 'https://v2hub.yycc.dev'
+
+export const AppleStore_ID = '1234567890'
+
+/**
  * 缓存时间
  */
 export const CACHE_EXPIRE_TIME = 1000 * 60 * 60 * 24 * 7 // 7 days

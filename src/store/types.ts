@@ -186,6 +186,11 @@ export namespace IState {
      * 应用主题
      */
     theme: ThemeType
+
+    /**
+     * 是否在应用内打开链接
+     */
+    openLinkInApp: boolean
   }
   /**
    * 通知状态

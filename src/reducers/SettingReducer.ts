@@ -7,6 +7,7 @@ import { LanguageTagType, APP_SETTING_LOCALES, APP_SETTING_THEME, Action, IState
 import { i18n } from '@src/i18n'
 const INITIAL_STATE: IState.SettingState = {
   languageTag: i18n.currentLocale() as LanguageTagType,
+  openLinkInApp: true,
   theme: 'light'
 }
 export default (state: IState.SettingState = INITIAL_STATE, action: Action): IState.SettingState => {

@@ -21,3 +21,5 @@ declare module '*.gif' {
   const value: ImageSourcePropType
   export default value
 }
+
+declare type Recordable<T = any, K = string> = Record<K extends null | undefined ? string : K, T>

@@ -37,3 +37,103 @@ export function compareVersion(_v1: string, _v2: string) {
   }
   return 0
 }
+
+export function truncateString(
+  str: string,
+  length: number,
+  placeholder = '...',
+  placeholderPosition: 'start' | 'end' | 'middle' = 'end'
+) {
+  if (!str) return str
+  if (str.length <= length) {
+    return str
+  }
+  const placeholderLength = placeholder.length
+  let truncated = ''
+  if (placeholderPosition === 'end') {
+    truncated = str.slice(0, length - placeholderLength) + placeholder
+  } else if (placeholderPosition === 'start') {
+    truncated = placeholder + str.slice(str.length - length + placeholderLength, str.length)
+  } else if (placeholderPosition === 'middle') {
+    const startLength = Math.floor((length - placeholderLength) / 2)
+    const endLength = length - startLength - placeholderLength
+    truncated = str.slice(0, startLength) + placeholder + str.slice(str.length - endLength, str.length)
+  }
+  return truncated
+}
+export function randomString(length: number) {
+  const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'
+  let _randomString = ''
+  for (let i = 0; i < length; i++) {
+    const rnum = Math.floor(Math.random() * chars.length)
+    _randomString += chars.substring(rnum, rnum + 1)
+  }
+  return _randomString
+}
+export const isDayTime = () => {
+  const hours = new Date().getHours()
+  return hours > 6 && hours < 20
+}
+export function findMin<T>(array: T[], compareFn: (a: T) => number): T | undefined {
+  if (array.length === 0) {
+    return undefined
+  }
+  let minIndex = 0
+  for (let i = 1; i < array.length; i++) {
+    if (compareFn(array[i]) < compareFn(array[minIndex])) {
+      minIndex = i
+    }
+  }
+  return array[minIndex]
+}
+export function findMax<T>(array: T[], compareFn: (a: T) => number): T | undefined {
+  if (array.length === 0) {
+    return undefined
+  }
+  let maxIndex = 0
+  for (let i = 1; i < array.length; i++) {
+    if (compareFn(array[i]) > compareFn(array[maxIndex])) {
+      maxIndex = i
+    }
+  }
+  return array[maxIndex]
+}
+export function isJsonString(str: string) {
+  try {
+    if (typeof JSON.parse(str) === 'object') {
+      return true
+    }
+  } catch (e) {
+    return false
+  }
+  return false
+}
+export function getTimestampSecond(_date: Date = new Date()) {
+  return Math.floor(_date.getTime() / 1000)
+}
+export function dateOrMillisecondToSecondTimestamp(dateOrMillisecond: Date | number) {
+  if (dateOrMillisecond instanceof Date) {
+    return getTimestampSecond(dateOrMillisecond)
+  }
+  return Math.floor(dateOrMillisecond / 1000)
+}
+
+export function runWithouthError(fn: Function) {
+  try {
+    fn()
+  } catch (error) {
+    console.log('runWithouthError error:', error)
+  }
+}
+
+export function runAsyncWithouthError(fn: Function, finallyFn?: Function) {
+  return async () => {
+    try {
+      await fn()
+      finallyFn && finallyFn()
+    } catch (error) {
+      console.log('runAsyncWithouthError error:', error)
+      finallyFn && finallyFn()
+    }
+  }
+}
