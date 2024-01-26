@@ -90,7 +90,7 @@
   "devDependencies": {
     "@babel/core": "7.22.6",
     "@babel/plugin-proposal-export-namespace-from": "7.18.9",
-    "@babel/preset-env": "7.22.6",
+    "@babel/preset-env": "7.23.9",
     "@babel/runtime": "7.20.6",
     "@react-native-community/eslint-config": "3.2.0",
     "@rnx-kit/dep-check": "1.14.0",
