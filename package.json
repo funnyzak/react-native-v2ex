@@ -99,7 +99,7 @@
     "@types/jest": "29.4.0",
     "@types/lodash": "4.14.191",
     "@types/react-native": "0.70.8",
-    "@types/react-test-renderer": "18.0.0",
+    "@types/react-test-renderer": "18.0.7",
     "@typescript-eslint/eslint-plugin": "5.54.0",
     "@typescript-eslint/parser": "5.46.1",
     "babel-jest": "29.4.3",
