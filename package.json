@@ -58,7 +58,7 @@
     "@react-navigation/native-stack": "^6.9.8",
     "@redux-devtools/extension": "^3.2.2",
     "@types/react": "18.0.28",
-    "dayjs": "^1.11.7",
+    "dayjs": "^1.11.13",
     "i18n-js": "^3.8.0",
     "lodash": "^4.17.21",
     "react": "18.2.0",
