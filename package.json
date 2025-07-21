@@ -67,7 +67,7 @@
     "react-native-device-info": "^10.7.0",
     "react-native-easy-toast": "2.3.0",
     "react-native-fast-image": "^8.6.3",
-    "react-native-gesture-handler": "2.9.0",
+    "react-native-gesture-handler": "2.27.2",
     "react-native-linear-gradient": "^2.6.2",
     "react-native-localize": "^2.2.2",
     "react-native-pager-view": "^6.1.2",
