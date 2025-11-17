@@ -2284,10 +2284,10 @@
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-2.0.0.tgz#f544a148d3ab35801c1f633a7441fd87c2e484bf"
   integrity sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==
 
-"@tsconfig/react-native@2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@tsconfig/react-native/-/react-native-2.0.3.tgz#79ad8efc6d3729152da6cb23725b6c364a7349b2"
-  integrity sha512-jE58snEKBd9DXfyR4+ssZmYJ/W2mOSnNrvljR0aLyQJL9JKX6vlWELHkRjb3HBbcM9Uy0hZGijXbqEAjOERW2A==
+"@tsconfig/react-native@3.0.8":
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/@tsconfig/react-native/-/react-native-3.0.8.tgz#a8fbc4f9b466d4f6ab308cdaefe40e1f5d455785"
+  integrity sha512-UYj/xmU3JizeDj6E4pdGCFNlLCB7WdMg0Yyxnma4W3UNcKwJUtdBJ8BR8azwdLlOy2iKszl59nt4mWn/pS+bqQ==
 
 "@tufjs/models@1.0.1":
   version "1.0.1"
