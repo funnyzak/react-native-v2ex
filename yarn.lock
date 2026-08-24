@@ -8887,10 +8887,10 @@ plop@3.1.1:
     ora "^6.0.1"
     v8flags "^4.0.0"
 
-pod-install@0.1.38:
-  version "0.1.38"
-  resolved "https://registry.yarnpkg.com/pod-install/-/pod-install-0.1.38.tgz#1c16a800a5fc1abea0cafcc0e190f376368c76ab"
-  integrity sha512-NeDWGigjJRriOIKBOvpW2/tK2tYLfyUT7ia6C6L+oarCAhBNP+IGODWdU+GEAqvfsseqOApcFclpXAJTL0UPzA==
+pod-install@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/pod-install/-/pod-install-1.1.0.tgz#1f7d98cd1bacc71cade77e49a02de297acf6ba2b"
+  integrity sha512-WKLQ+5mcCoDJKOuGdKZC9j6C8+DJR5eiQCzO1iN4uNipZ68puOkjGVf/TQt9CxvQg1VqaA+1wGZvPiDu3qM47A==
 
 posix-character-classes@^0.1.0:
   version "0.1.1"
